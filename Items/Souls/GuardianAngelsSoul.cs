@@ -114,6 +114,7 @@ namespace Fargowiltas.Items.Souls
 		
 		public override void AddRecipes()
         {
+	//SAVE US DANNY THIS RECIPE NEEDS YOU
 			if(Fargowiltas.instance.thoriumLoaded)
 			{
 				ModRecipe recipe = new ModRecipe(mod);
