@@ -17,7 +17,7 @@ namespace Fargowiltas.Items.Enchantments
 								"30% increased weapon use speed\n" +
 								"Enemies will explode into cobalt shards on death\n" +
 								"Greatly increases life regeneration after striking an enemy\n" +
-								"Very small chance for an attack to gain 50% life steal\n" + 
+								"Very small chance for an attack to gain 33% life steal\n" + 
 								"Chance for a fireball to spew from a hit enemy\n" +
 								"20% chance to shoot multiple projectiles with single shot magic weapons \n" +
 								"Briefly become invulnerable after striking an enemy\n" +
