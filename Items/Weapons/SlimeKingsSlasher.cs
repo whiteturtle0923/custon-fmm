@@ -10,6 +10,7 @@ namespace Fargowiltas.Items.Weapons
 {
 	public class SlimeKingsSlasher : ModItem
 	{
+		public int shoot = 0;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Slime King's Slasher");
@@ -17,7 +18,7 @@ namespace Fargowiltas.Items.Weapons
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 18;
+			item.damage = 16;
 			item.melee=true;
 			item.width = 40;
 			item.height = 40;
@@ -29,7 +30,22 @@ namespace Fargowiltas.Items.Weapons
 			item.rare = 2;
 			item.UseSound = SoundID.Item1; 
 			item.autoReuse = true; 
+			item.shoot = mod.ProjectileType("SlimeBall");
+			item.shootSpeed = 8f;
 		}
+		
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockback)
+		{
+			shoot++;
+			if(shoot % 4 == 0)
+			{
+				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockback, player.whoAmI);
+				shoot = 0;
+			}
+			return false; 
+        }
+
+
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
