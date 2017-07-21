@@ -22,7 +22,7 @@ namespace Fargowiltas.Projectiles
 			projectile.aiStyle = 14;
 			projectile.friendly = true;
 			projectile.melee = true;
-			projectile.timeLeft = 45;
+			projectile.timeLeft = 65;
 		}
 		public override Color? GetAlpha(Color lightColor)
 		{
