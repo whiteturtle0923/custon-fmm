@@ -18,7 +18,7 @@ namespace Fargowiltas.Items.Souls
         {
             DisplayName.SetDefault("Guardian Angel's Soul");
 
-            if (Fargowiltas.instance.thoriumLoaded)
+            if (ModLoader.GetLoadedMods().Contains("ThoriumMod"))
             {
                 Tooltip.SetDefault("'Divine Intervention' \n" +
                                     "40% increased radiant damage\n" +
@@ -30,7 +30,7 @@ namespace Fargowiltas.Items.Souls
                                     "You and nearby allies will take 8% reduced damage\n" +
                                     "Taking fatal damage unleashes your inner spirit");
             }
-            else
+            else 
             {
                 Tooltip.SetDefault("'Divine Intervention' \n" +
                                    "Enemies are less likely to target you" +
