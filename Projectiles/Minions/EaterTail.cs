@@ -4,103 +4,59 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Linq;
 
 namespace Fargowiltas.Projectiles.Minions
 {
-    public class EaterTail : ModProjectile
-    {
+	public class EaterTail : ModProjectile
+	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Eater");
 		}
-        public override void SetDefaults()
-        {
-            projectile.width = 34;
-            projectile.height = 48;
-            projectile.friendly = true;
-            projectile.ignoreWater = true;
-            projectile.alpha = 255;
-            projectile.netImportant = true;
-            projectile.timeLeft = 18000;
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            projectile.penetrate = -1;
-            projectile.tileCollide = false;
-            projectile.timeLeft *= 5;
-            projectile.minion = true;
-            projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 4;
-        }
-
-        public override void AI()
+		public override void SetDefaults()
 		{
-			Lighting.AddLight((int)((projectile.position.X + (float)(projectile.width / 2)) / 16f), (int)((projectile.position.Y + (float)(projectile.height / 2)) / 16f), 0.15f, 0.01f, 0.15f);
-			Player player9 = Main.player[projectile.owner];
-			FargoPlayer modPlayer = player9.GetModPlayer<FargoPlayer>(mod);
-			if ((int)Main.time % 120 == 0)
+			projectile.width = 28;
+			projectile.height = 32;
+			projectile.friendly = true;
+			projectile.ignoreWater = true;
+			projectile.penetrate = -1;
+			projectile.timeLeft = 100;
+			projectile.tileCollide = false;
+			projectile.usesLocalNPCImmunity = true;
+			projectile.localNPCHitCooldown = 1;
+			
+			projectile.aiStyle = 1; //
+			aiType = ProjectileID.Bullet; //
+		}
+
+		public override void AI()
+		{
+			//dust!
+			int DustID = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 173, projectile.velocity.X * 1.5f, projectile.velocity.Y * 2f, 100, default(Color), .5f);
+			Main.dust[DustID].noGravity = true;
+			int DustID3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 173, projectile.velocity.X * 1.5f, projectile.velocity.Y * 2f, 100, default(Color), .5f);
+			Main.dust[DustID3].noGravity = true;
+			
+			
+			projectile.spriteDirection = projectile.direction;
+			
+			 if (ModLoader.GetLoadedMods().Contains("Luiafk"))
+			 {
+				 projectile.spriteDirection = -projectile.direction;
+			 }
+		}
+		
+		public override void Kill(int timeleft)
+		{
+			for (int num468 = 0; num468 < 20; num468++)
 			{
-				projectile.netUpdate = true;
+				int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 62, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default(Color), 5f);
+				Main.dust[num469].noGravity = true;
+				Main.dust[num469].velocity *= 2f;
+				num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 62, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default(Color), 5f);
+				Main.dust[num469].velocity *= 2f;
 			}
-			if (!player9.active)
-			{
-				projectile.active = false;
-				return;
-			}
-			int num1051 = 10;
-			if (player9.dead)
-			{
-				modPlayer.eaterMinion = false;
-			}
-			if (modPlayer.eaterMinion)
-			{
-				projectile.timeLeft = 2;
-			}
-			Vector2 value68 = Vector2.Zero;
-			float num1064 = 0f;
-			float scaleFactor17 = 0f;
-			float scaleFactor18 = 1f;
-			if (projectile.ai[1] == 1f)
-			{
-				projectile.ai[1] = 0f;
-				projectile.netUpdate = true;
-			}
-			int chase = (int)projectile.ai[0];
-			if (chase >= 0 && Main.projectile[chase].active)
-			{
-				value68 = Main.projectile[chase].Center;
-				Vector2 arg_2DE6A_0 = Main.projectile[chase].velocity;
-				num1064 = Main.projectile[chase].rotation;
-				scaleFactor18 = MathHelper.Clamp(Main.projectile[chase].scale, 0f, 50f);
-				scaleFactor17 = 16f;
-				Main.projectile[chase].localAI[0] = projectile.localAI[0] + 1f;
-			} 
-			else
-			{
-				projectile.Kill();
-				return;
-			}
-			projectile.alpha -= 42;
-			if (projectile.alpha < 0)
-			{
-				projectile.alpha = 0;
-			}
-			projectile.velocity = Vector2.Zero;
-			Vector2 vector134 = value68 - projectile.Center;
-			if (num1064 != projectile.rotation)
-			{
-				float num1068 = MathHelper.WrapAngle(num1064 - projectile.rotation);
-				vector134 = vector134.RotatedBy((double)(num1068 * 0.1f), default(Vector2));
-			}
-			projectile.rotation = vector134.ToRotation() + 1.57079637f;
-			projectile.position = projectile.Center;
-			projectile.scale = scaleFactor18;
-			projectile.width = (projectile.height = (int)((float)num1051 * projectile.scale));
-			projectile.Center = projectile.position;
-			if (vector134 != Vector2.Zero)
-			{
-				projectile.Center = value68 - Vector2.Normalize(vector134) * scaleFactor17 * scaleFactor18;
-			}
-			projectile.spriteDirection = ((vector134.X > 0f) ? 1 : -1);
-			return;
 		}
 	}
 }
