@@ -608,7 +608,7 @@ namespace Fargowiltas.NPCs
 				//PREHARDMODE BOSSES
 				
 						shop.item[nextSlot].SetDefaults(mod.ItemType("Overloader"));
-						shop.item[nextSlot].value=400000;
+						shop.item[nextSlot].value=500000;
 						nextSlot++;
 				
 						shop.item[nextSlot].SetDefaults(mod.ItemType("PandorasBox"));
@@ -644,7 +644,7 @@ namespace Fargowiltas.NPCs
 			 
 				if (NPC.downedSlimeKing == true)
 				{
-						shop.item[nextSlot].SetDefaults(ItemID.SlimeCrown);
+						shop.item[nextSlot].SetDefaults(mod.ItemType("SlimyCrown"));
 						shop.item[nextSlot].value=30000;
 						nextSlot++;
 				} 
@@ -678,7 +678,7 @@ namespace Fargowiltas.NPCs
 			
 				if (NPC.downedBoss1 == true)
 				{			 
-						shop.item[nextSlot].SetDefaults(ItemID.SuspiciousLookingEye);
+						shop.item[nextSlot].SetDefaults(mod.ItemType("SuspiciousEye"));
 						shop.item[nextSlot].value=50000;
 						nextSlot++;
 					
@@ -720,11 +720,11 @@ namespace Fargowiltas.NPCs
 			
 				if (NPC.downedBoss2 == true)
 				{
-						shop.item[nextSlot].SetDefaults(ItemID.WormFood);
+						shop.item[nextSlot].SetDefaults(mod.ItemType("WormyFood"));
 						shop.item[nextSlot].value=60000;
 						nextSlot++;
 			
-						shop.item[nextSlot].SetDefaults(ItemID.BloodySpine);
+						shop.item[nextSlot].SetDefaults(mod.ItemType("GoreySpine"));
 						shop.item[nextSlot].value=60000;
 						nextSlot++;
 			
@@ -792,7 +792,7 @@ namespace Fargowiltas.NPCs
 			
 				if (NPC.downedQueenBee == true)
                 {
-                    shop.item[nextSlot].SetDefaults(ItemID.Abeemination);
+                    shop.item[nextSlot].SetDefaults(mod.ItemType("Abeemination2"));
                     shop.item[nextSlot].value=90000;
                     nextSlot++;
                 }
@@ -1071,7 +1071,7 @@ namespace Fargowiltas.NPCs
 			
 			if (NPC.downedMechBoss1 == true)
 			{	
-						shop.item[nextSlot].SetDefaults(ItemID.MechanicalWorm);
+						shop.item[nextSlot].SetDefaults(mod.ItemType("MechWorm"));
 						shop.item[nextSlot].value=120000;
 						nextSlot++;
 			
@@ -1088,14 +1088,14 @@ namespace Fargowiltas.NPCs
 			
 			if (NPC.downedMechBoss3 == true)
 			{	
-						shop.item[nextSlot].SetDefaults(ItemID.MechanicalSkull);
+						shop.item[nextSlot].SetDefaults(mod.ItemType("MechSkull"));
 						shop.item[nextSlot].value=120000;
 						nextSlot++;
 			}
 		
 			if (NPC.downedMechBoss2 == true)
 			{	
-						shop.item[nextSlot].SetDefaults(ItemID.MechanicalEye);
+						shop.item[nextSlot].SetDefaults(mod.ItemType("MechEye"));
 						shop.item[nextSlot].value=120000;
 						nextSlot++;
 			}
