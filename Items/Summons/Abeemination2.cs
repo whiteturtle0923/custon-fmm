@@ -4,12 +4,12 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons
 {
-	public class SuspiciousSkull : ModItem
+	public class Abeemination2 : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Suspicious Skull");
-			Tooltip.SetDefault("Summons Skeletron without killing the Clothier");
+			DisplayName.SetDefault("A Bee In My Nation");
+			Tooltip.SetDefault("Summons Queen Bee");
 		}
 		public override void SetDefaults()
 		{
@@ -23,16 +23,11 @@ namespace Fargowiltas.Items.Summons
 			item.useStyle = 4;
 			item.consumable = true;
 		}
-
-		public override bool CanUseItem(Player player)
-		{
-			return Main.dayTime != true;
-		}
 		
 		public override bool UseItem(Player player)
 		{
-			NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.SkeletronHead);
-			Main.NewText("Skeletron has awoken!", 175, 75, 255);
+			NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.QueenBee);
+			Main.NewText("Queen Bee has awoken!", 175, 75, 255);
 			
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
 			return true;
@@ -41,7 +36,7 @@ namespace Fargowiltas.Items.Summons
 		public override void AddRecipes()
 		{
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ClothierVoodooDoll);
+            recipe.AddIngredient(ItemID.Abeemination);
 			recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

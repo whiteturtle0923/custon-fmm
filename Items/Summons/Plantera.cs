@@ -24,14 +24,9 @@ namespace Fargowiltas.Items.Summons
 			item.consumable = true;
 		}
 
-		public override bool CanUseItem(Player player)
-		{
-			return Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !NPC.AnyNPCs(NPCID.Plantera);
-		}
-
 		public override bool UseItem(Player player)
 		{
-			NPC.SpawnOnPlayer(player.whoAmI, NPCID.Plantera);
+			NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(250, 1000), NPCID.Plantera);
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
 			return true;
 		}
