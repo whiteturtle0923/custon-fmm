@@ -24,6 +24,11 @@ namespace Fargowiltas.Items.Summons
 			item.consumable = true;
 		}
 		
+		public override bool CanUseItem(Player player)
+		{
+			return Main.dayTime != true;
+		}
+		
 		public override bool UseItem(Player player)
 		{
 			NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.Spazmatism);
