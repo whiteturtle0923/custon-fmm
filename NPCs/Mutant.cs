@@ -497,7 +497,7 @@ namespace Fargowiltas.NPCs
 			}
 			
 			
-			switch (Main.rand.Next(17))
+			switch (Main.rand.Next(16))
 			{
 				case 0:
 					return "Savagery, barbarism, bloodthirst, that's what I like seeing in people.";
@@ -528,11 +528,9 @@ namespace Fargowiltas.NPCs
 				case 13:
 					return "Those guys really need to get more creative. All their first bosses are desert themed!";
 				case 14:	
-					return "Those guys really need to get more creative. All their first bosses are desert themed!";
-				case 15:	
 					return "I am proud to be known as the Mutant, but thank Fargo I'm no Abomination";
 				default:
-					return "Cthulu's got nothing on me!";
+					return "Cthulhu's got nothing on me!";
 			}
 			
 			
