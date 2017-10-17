@@ -210,6 +210,23 @@ namespace Fargowiltas.NPCs
 			get { return CalamityMod.CalamityWorld.downedCrabulon; }
 		}
 		
+		public bool CalamityModDownedAstrum
+		{
+			get { return CalamityMod.CalamityWorld.downedStarGod; }
+		}
+		
+		public bool CalamityModDownedBirb
+		{
+			get { return CalamityMod.CalamityWorld.downedBumble; }
+		}
+		
+		public bool CalamityModDownedPolter
+		{
+			get { return CalamityMod.CalamityWorld.downedPolterghast; }
+		}
+		
+		
+		
 		//sacred tools bools
 		public bool SacredToolsDownedHarpy
 		{
@@ -273,92 +290,102 @@ namespace Fargowiltas.NPCs
 		//tremor
 		public bool TremorDownedCorn
 		{
-			get { return Tremor.TremorWorld.downedEvilCorn; }
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.EvilCorn]; }
 		}
 		
 		public bool TremorDownedRukh
 		{
-			get { return Tremor.TremorWorld.downedRukh; }
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Rukh]; }
 		}
 		
 		public bool TremorDownedFungus
 		{
-			get { return Tremor.TremorWorld.downedFungusBeetle; }
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.FungusBeetle]; }
 		}
 		
 		public bool TremorDownedWhale
 		{
-			get { return Tremor.TremorWorld.downedSpaceWhale; }
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.SpaceWhale]; }
 		}
 		
 		public bool TremorDownedTrinity
 		{
-			get { return Tremor.TremorWorld.downedTrinity; }
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Trinity]; }
 		}
 		
 		public bool TremorDownedTotem
 		{
-			get { return Tremor.TremorWorld.downedTikiTotem; }
-		}
-		
-		public bool TremorDownedJelly
-		{
-			get { return Tremor.TremorWorld.downedStormJellyfish; }
-		}
-		
-		public bool TremorDownedCyberKing
-		{
-			get { return Tremor.TremorWorld.downedCyberKing; }
-		}
-		
-		public bool TremorDownedHeater
-		{
-			get { return Tremor.TremorWorld.downedHeaterofWorlds; }
-		}
-		
-		public bool TremorDownedFrostKing
-		{
-			get { return Tremor.TremorWorld.downedFrostKing; }
-		}
-		
-		public bool TremorDownedDarkEmperor
-		{
-			get { return Tremor.TremorWorld.downedDarkEmperor; }
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.TikiTotem]; }
+		}                                              
+		                                               
+		public bool TremorDownedJelly                  
+		{                                              
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.StormJellyfish]; }
+		}                                             
+		                                              
+		public bool TremorDownedCyberKing             
+		{                                             
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.CyberKing]; }
+		}                                              
+		                                               
+		public bool TremorDownedHeater                 
+		{                                              
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.HeaterofWorlds]; }
+		}                                             
+		                                              
+		public bool TremorDownedFrostKing             
+		{                                             
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.FrostKing]; }
+		}                                              
+		                                               
+		public bool TremorDownedDarkEmperor            
+		{                                              
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.DarkEmperor]; }
 		}
 		
 		public bool TremorDownedPixie
 		{
-			get { return Tremor.TremorWorld.downedPixieQueen; }
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.PixieQueen]; }
+		}                                             
+		                                              
+		public bool TremorDownedAlchemaster           
+		{                                             
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Alchemaster]; }
+		}                                            
+		                                             
+		public bool TremorDownedBrutallisk           
+		{                                            
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Brutallisk]; }
+		}                                            
+		                                             
+		public bool TremorDownedParadoxTitan         
+		{                                            
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan]; }
+		}                                             
+		                                              
+		public bool TremorDownedCogLord               
+		{                                             
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.CogLord]; }
+		}                                             
+		                                              
+		public bool TremorDownedWall                  
+		{                                             
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.WallOfShadow]; }
+		}                                             
+		                                              
+		public bool TremorDownedMotherboard           
+		{                                             
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Motherboard]; }
 		}
 		
-		public bool TremorDownedAlchemaster
-		{
-			get { return Tremor.TremorWorld.downedAlchemaster; }
+		public bool TremorDownedDragon         
+		{                                             
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.AncientDragon]; }
 		}
 		
-		public bool TremorDownedBrutallisk
-		{
-			get { return Tremor.TremorWorld.downedBrutallisk; }
-		}
-		
-		public bool TremorDownedParadoxTitan
-		{
-			get { return Tremor.TremorWorld.downedParadoxTitan; }
-		}
-		
-		public bool TremorDownedCogLord
-		{
-			get { return Tremor.TremorWorld.downedCogLord; }
-		}
-		
-		public bool TremorDownedWall
-		{
-			get { return Tremor.TremorWorld.downedWallofShadow; }
-		}
-		
-		public bool TremorDownedMotherboard
-		{
-			get { return Tremor.TremorWorld.downedMotherboard; }
+		public bool TremorDownedAndas        
+		{                                             
+			get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Andas]; }
 		}
 		
 		//spirit
@@ -402,6 +429,16 @@ namespace Fargowiltas.NPCs
 			get { return SpiritMod.MyWorld.downedOverseer; }
 		}
 		
+		public bool SpiritDownedVine
+		{
+			get { return SpiritMod.MyWorld.downedReachBoss; }
+		}
+		
+		public bool SpiritDownedUmbra
+		{
+			get { return SpiritMod.MyWorld.downedSpiritCore; }
+		}
+		
 		//BTFA
 		public bool BtfaTitan
 		{
@@ -417,6 +454,66 @@ namespace Fargowiltas.NPCs
 		{
 			get { return ForgottenMemories.TGEMWorld.downedGhastlyEnt; }
 		}
+		
+		//Bluemagics
+		public bool BlueDownedPhantom
+		{
+			get { return Bluemagic.BluemagicWorld.downedPhantom; }
+		}
+		
+		public bool BlueDownedAbom
+		{
+			get { return Bluemagic.BluemagicWorld.downedAbomination; }
+		}
+		
+		//Eota
+		public bool AncientsDownedWorms
+		{
+			get { return EchoesoftheAncients.AncientWorld.downedWyrms; }		
+		}
+		
+		//Crystilium
+		public bool CrystiliumDownedKing
+		{
+			get { return CrystiliumMod.CrystalWorld.downedCrystalKing; }			
+		}
+		
+		//exodus
+		public bool ExodusDownedAbom
+		{
+			get { return Exodus.ExodusWorld.downedExodusAbomination; }			
+		}
+		
+		public bool ExodusDownedBlob
+		{
+			get { return Exodus.ExodusWorld.downedExodusEvilBlob; }			
+		}
+		
+		public bool ExodusDownedColoss
+		{
+			get { return Exodus.ExodusWorld.downedExodusColossus; }			
+		}
+		
+		public bool ExodusDownedEmperor
+		{
+			get { return Exodus.ExodusWorld.downedExodusDesertEmperor; }			
+		}
+		
+		public bool ExodusDownedHive
+		{
+			get { return Exodus.ExodusWorld.downedExodusHivemind; }			
+		}
+		
+		public bool ExodusDownedMaster
+		{
+			get { return Exodus.ExodusWorld.downedExodusMaster; }			
+		}
+
+		public bool ExodusDownedHeart
+		{
+			get { return Exodus.ExodusWorld.downedExodusSludgeheart; }			
+		}
+
 		
 		/*//Xervos
 		public bool XervosDownedDeceased
@@ -533,7 +630,6 @@ namespace Fargowiltas.NPCs
 					return "Cthulhu's got nothing on me!";
 			}
 			
-			
 		}
 		
 		public override void SetChatButtons(ref string button, ref string button2)
@@ -620,16 +716,16 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 				}
 				
-				if (Fargowiltas.instance.spiritLoaded)
+				if (ModLoader.GetLoadedMods().Contains("Exodus"))
 				{
-					if(SpiritDownedScarab)
+					if(ExodusDownedAbom)
 					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("ScarabIdol"));
-						shop.item[nextSlot].value=10000;
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Exodus").ItemType("ZombieMeat"));
+						shop.item[nextSlot].value=20000;
 						nextSlot++;
 					}
-				}		
-			 
+				}
+				
 				if (Fargowiltas.instance.thoriumLoaded)
 				{
 					if(ThoriumModDownedThunderBird)
@@ -639,13 +735,33 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 					}
 				}
-			 
+				
+				if (Fargowiltas.instance.spiritLoaded)
+				{
+					if(SpiritDownedScarab)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("ScarabIdol"));
+						shop.item[nextSlot].value=10000;
+						nextSlot++;
+					}
+				}
+			
 				if (NPC.downedSlimeKing == true)
 				{
 						shop.item[nextSlot].SetDefaults(mod.ItemType("SlimyCrown"));
 						shop.item[nextSlot].value=30000;
 						nextSlot++;
 				} 
+				
+				if (ModLoader.GetLoadedMods().Contains("Exodus"))
+				{
+					if(ExodusDownedBlob)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Exodus").ItemType("DisgustingJelly"));
+						shop.item[nextSlot].value=30000;
+						nextSlot++;
+					}
+				}
 				
 				if(Fargowiltas.instance.gabeLoaded)
 				{
@@ -665,13 +781,6 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=60000;
 						nextSlot++;
 					}
-					
-					if(CalamityModDownedCrab)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("DecapoditaSprout"));;
-						shop.item[nextSlot].value=70000;
-						nextSlot++;
-					}
 				}
 			
 				if (NPC.downedBoss1 == true)
@@ -689,23 +798,43 @@ namespace Fargowiltas.NPCs
 					
 				}
 				
-				if (Fargowiltas.instance.tremorLoaded)
+				if (ModLoader.GetLoadedMods().Contains("Exodus"))
+				{
+					if(ExodusDownedColoss)
 					{
-						if(TremorDownedRukh)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("DesertCrown"));
-						shop.item[nextSlot].value=50000;
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Exodus").ItemType("GraniteAnomaly"));
+						shop.item[nextSlot].value=40000;
 						nextSlot++;
-						}
-						
-						if(TremorDownedCorn)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("CursedPopcorn"));
-						shop.item[nextSlot].value=50000;
-						nextSlot++;
-						}
 					}
 					
+					if(ExodusDownedEmperor)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Exodus").ItemType("AncientArtifact"));
+						shop.item[nextSlot].value=40000;
+						nextSlot++;
+					}
+				}
+				
+				if (Fargowiltas.instance.tremorLoaded)
+				{
+					if(TremorDownedRukh)
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("DesertCrown"));
+					shop.item[nextSlot].value=50000;
+					nextSlot++;
+					}
+				}
+				
+				if (Fargowiltas.instance.calamityLoaded)
+				{					
+					if(CalamityModDownedCrab)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("DecapoditaSprout"));;
+						shop.item[nextSlot].value=70000;
+						nextSlot++;
+					}
+				}
+
 				if(Fargowiltas.instance.btfaLoaded)
 				{
 					if(BtfaGhastly)
@@ -736,34 +865,34 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=60000;
 						nextSlot++;
 					}
-					
-					if(Fargowiltas.instance.tremorLoaded)
-					{
-						if(TremorDownedTotem)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("MysteriousDrum"));
-						shop.item[nextSlot].value=60000;
-						nextSlot++;
-						}
-						
-						if(TremorDownedJelly)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("StormJelly"));
-						shop.item[nextSlot].value=70000;
-						nextSlot++;
-						}
-	
-					}
-			
-					if (Fargowiltas.instance.shroomsLoaded)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Shrooms").ItemType("SLM"));
-						shop.item[nextSlot].value=60000;
-						nextSlot++;
-					}
-					
 				}
-			
+				
+				
+					
+				if(Fargowiltas.instance.tremorLoaded)
+				{
+					if(TremorDownedTotem)
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("MysteriousDrum"));
+					shop.item[nextSlot].value=50000;
+					nextSlot++;
+					}
+					
+					if(TremorDownedCorn)
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("CursedPopcorn"));
+					shop.item[nextSlot].value=50000;
+					nextSlot++;
+					}
+					
+					if(TremorDownedJelly)
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("StormJelly"));
+					shop.item[nextSlot].value=60000;
+					nextSlot++;
+					}
+				}
+				
 				if (Fargowiltas.instance.thoriumLoaded)
 				{
 					if(ThoriumModDownedJelly)
@@ -774,26 +903,49 @@ namespace Fargowiltas.NPCs
 					}
 				}
 				
-				if (Fargowiltas.instance.calamityLoaded)
+				if(Fargowiltas.instance.tremorLoaded)
+				{
+					if(TremorDownedDragon)
 					{
-						if((CalamityModDownedPerforator == true) || (CalamityModDownedHiveMind))
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("BloodyWormFood"));
-						shop.item[nextSlot].value=150000;
-						nextSlot++;
-			
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("Teratoma"));
-						shop.item[nextSlot].value=150000;
-						nextSlot++;
-						}
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("RustyLantern"));
+					shop.item[nextSlot].value=70000;
+					nextSlot++;
 					}
+				}
+				
+				if (Fargowiltas.instance.spiritLoaded)
+				{
+					if (SpiritDownedVine)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("ReachBossSummon"));
+						shop.item[nextSlot].value = 70000;
+						nextSlot++;
+					}
+				}
 			
+				if (Fargowiltas.instance.shroomsLoaded)
+				{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Shrooms").ItemType("SLM"));
+					shop.item[nextSlot].value=60000;
+					nextSlot++;
+				}
+				
 				if (NPC.downedQueenBee == true)
                 {
                     shop.item[nextSlot].SetDefaults(mod.ItemType("Abeemination2"));
                     shop.item[nextSlot].value=90000;
                     nextSlot++;
                 }
+
+				if((NPC.downedBoss3 == true) && (NPC.downedQueenBee == true))
+				{
+					if (Fargowiltas.instance.nightmaresLoaded)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("TrueEater").ItemType("SpitterSpawner"));
+						shop.item[nextSlot].value=70000;
+						nextSlot++;
+					}
+				}
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
@@ -814,6 +966,20 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 					}
 				}
+				
+				if (Fargowiltas.instance.calamityLoaded)
+				{
+					if((CalamityModDownedPerforator == true) || (CalamityModDownedHiveMind))
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("BloodyWormFood"));
+					shop.item[nextSlot].value=150000;
+					nextSlot++;
+			
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("Teratoma"));
+					shop.item[nextSlot].value=150000;
+					nextSlot++;
+					}
+				}
 			
 				if (NPC.downedBoss3 == true)
 				{
@@ -822,16 +988,26 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 				}
 				
-				if (Fargowiltas.instance.sacredToolsLoaded)
+				if (ModLoader.GetLoadedMods().Contains("Exodus"))
+				{
+					if(ExodusDownedHive)
 					{
-						if(SacredToolsDownedHarpy)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SacredTools").ItemType("HarpySummon"));
-						shop.item[nextSlot].value=60000;
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Exodus").ItemType("VineSerpent"));
+						shop.item[nextSlot].value=80000;
 						nextSlot++;
-						}
-					}	
-					
+					}
+				}
+				
+				if (Fargowiltas.instance.spiritLoaded)
+				{
+					if (SpiritDownedRaider)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("StarWormSummon"));
+						shop.item[nextSlot].value = 80000;
+						nextSlot++;
+					}
+				}
+				
 				if(Fargowiltas.instance.tremorLoaded)
 				{
 					if(TremorDownedFungus)
@@ -841,27 +1017,7 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 					}
 				}
-				/*
-				if(Fargowiltas.instance.xervosLoaded)
-				{
-						if(XervosDownedDeceased)
-						{
-							shop.item[nextSlot].SetDefaults(ModLoader.GetMod("XervosMod").ItemType("DeceasedEye"));
-							shop.item[nextSlot].value=150000;
-							nextSlot++;
-						}
-				}*/
-			
-				if((NPC.downedBoss3 == true) && (NPC.downedQueenBee == true))
-				{
-					if (Fargowiltas.instance.nightmaresLoaded)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("TrueEater").ItemType("SpitterSpawner"));
-						shop.item[nextSlot].value=70000;
-						nextSlot++;
-					}
-				}
-			
+				
 				if (Fargowiltas.instance.thoriumLoaded)
 				{
 					if(ThoriumModDownedStorm)
@@ -877,7 +1033,30 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=80000;
 						nextSlot++;
 					}
-
+				}
+				
+				if (Fargowiltas.instance.sacredToolsLoaded)
+				{
+					if(SacredToolsDownedHarpy)
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SacredTools").ItemType("HarpySummon"));
+					shop.item[nextSlot].value=60000;
+					nextSlot++;
+					}
+				}	
+					
+				if(Fargowiltas.instance.tremorLoaded)
+				{
+					if(TremorDownedHeater)
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("MoltenHeart"));
+					shop.item[nextSlot].value=80000;
+					nextSlot++;
+					}
+				}
+			
+				if (Fargowiltas.instance.thoriumLoaded)
+				{
 					if (ThoriumModDownedScout)
 					{
 						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("ThoriumMod").ItemType("StarCaller"));
@@ -885,26 +1064,6 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 					}
 				}
-
-				if (Fargowiltas.instance.spiritLoaded)
-				{
-					if (SpiritDownedRaider)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("StarWormSummon"));
-						shop.item[nextSlot].value = 80000;
-						nextSlot++;
-					}
-				}
-				
-				if(Fargowiltas.instance.tremorLoaded)
-					{
-						if(TremorDownedHeater)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("MoltenHeart"));
-						shop.item[nextSlot].value=80000;
-						nextSlot++;
-						}
-					}
 				
 				if (Fargowiltas.instance.calamityLoaded)
 				{
@@ -964,15 +1123,15 @@ namespace Fargowiltas.NPCs
 					//}
 				//}
 			
-				if (Fargowiltas.instance.spiritLoaded)
+				if (ModLoader.GetLoadedMods().Contains("Exodus"))
+				{
+					if(ExodusDownedMaster)
 					{
-						if(SpiritDownedInfer)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("CursedCloth"));
-						shop.item[nextSlot].value=90000;
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Exodus").ItemType("GlowingSkull"));
+						shop.item[nextSlot].value=100000;
 						nextSlot++;
-						}
 					}
+				}
 			
 				if (Fargowiltas.instance.thoriumLoaded)
 				{
@@ -982,13 +1141,16 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=100000;
 						nextSlot++;
 						}
-						
-						if(ThoriumModDownedFallenBeholder)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("ThoriumMod").ItemType("VoidLens"));
-						shop.item[nextSlot].value=150000;
-						nextSlot++;
-						}
+				}
+				
+				if (Fargowiltas.instance.thoriumLoaded)
+				{
+					if(ThoriumModDownedFallenBeholder)
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("ThoriumMod").ItemType("VoidLens"));
+					shop.item[nextSlot].value=150000;
+					nextSlot++;
+					}
 				}
 			
 				if (Fargowiltas.instance.calamityLoaded)
@@ -1001,15 +1163,25 @@ namespace Fargowiltas.NPCs
 					}
 				}
 				
-				if(Fargowiltas.instance.tremorLoaded)
+				if (Fargowiltas.instance.spiritLoaded)
+				{
+					if(SpiritDownedInfer)
 					{
-						if(TremorDownedAlchemaster)
-						{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("AncientMosaic"));
-						shop.item[nextSlot].value=120000;
-						nextSlot++;
-						}
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("CursedCloth"));
+					shop.item[nextSlot].value=90000;
+					nextSlot++;
 					}
+				}
+				
+				if(Fargowiltas.instance.tremorLoaded)
+				{
+					if(TremorDownedAlchemaster)
+					{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("AncientMosaic"));
+					shop.item[nextSlot].value=120000;
+					nextSlot++;
+					}
+				}
 			
 			 if (NPC.downedMechBossAny)
                 {				
@@ -1056,32 +1228,19 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 					}
 				}
-				
-				if (Fargowiltas.instance.spiritLoaded)
-				{
-					if(SpiritDownedDusking)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("DuskCrown"));
-						shop.item[nextSlot].value=100000;
-						nextSlot++;
-					}
-				}		
 			
 			if (NPC.downedMechBoss1 == true)
 			{	
 						shop.item[nextSlot].SetDefaults(mod.ItemType("MechWorm"));
 						shop.item[nextSlot].value=120000;
 						nextSlot++;
+			}
 			
-				if (Fargowiltas.instance.tremorLoaded)
-				{
-					if(TremorDownedMotherboard)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("MechanicalBrain"));
+			if (NPC.downedMechBoss2 == true)
+			{	
+						shop.item[nextSlot].SetDefaults(mod.ItemType("MechEye"));
 						shop.item[nextSlot].value=120000;
 						nextSlot++;
-					}
-				}
 			}
 			
 			if (NPC.downedMechBoss3 == true)
@@ -1090,12 +1249,15 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=120000;
 						nextSlot++;
 			}
-		
-			if (NPC.downedMechBoss2 == true)
-			{	
-						shop.item[nextSlot].SetDefaults(mod.ItemType("MechEye"));
-						shop.item[nextSlot].value=120000;
-						nextSlot++;
+			
+			if (Fargowiltas.instance.tremorLoaded)
+			{
+				if(TremorDownedMotherboard)
+				{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("MechanicalBrain"));
+					shop.item[nextSlot].value=120000;
+					nextSlot++;
+				}
 			}
 			
 			if ((NPC.downedMechBoss1 == true) && (NPC.downedMechBoss2 == true) && (NPC.downedMechBoss3 == true))
@@ -1121,15 +1283,22 @@ namespace Fargowiltas.NPCs
 			}
 			
 			if (Fargowiltas.instance.spiritLoaded)
-			{
-				if(SpiritDownedIlluminant)
 				{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("ChaosFire"));
-						shop.item[nextSlot].value=120000;
+					if(SpiritDownedDusking)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("DuskCrown"));
+						shop.item[nextSlot].value=100000;
 						nextSlot++;
+					}
+					
+					if(SpiritDownedUmbra)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("UmbraSummon"));
+						shop.item[nextSlot].value=100000;
+						nextSlot++;
+					}
 				}
-			}		
-				
+
 			if (Fargowiltas.instance.calamityLoaded)
 			{
 				if(CalamityModDownedBrimstone)
@@ -1138,34 +1307,18 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=140000;
 						nextSlot++;
 				}
-			}
-			
+			}	
+				
 			if (Fargowiltas.instance.tremorLoaded)
+			{
+				if(TremorDownedPixie)
 				{
-					if(TremorDownedPixie)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("PixieinaJar"));
-						shop.item[nextSlot].value=120000;
-						nextSlot++;
-					}
-					
-					if(TremorDownedCogLord)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("ArtifactEngine"));
-						shop.item[nextSlot].value=120000;
-						nextSlot++;
-					}
-					
-					if(TremorDownedFrostKing)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("FrostCrown"));
-						shop.item[nextSlot].value=120000;
-						nextSlot++;
-					}
-					
-                }
-			
-			
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("PixieinaJar"));
+					shop.item[nextSlot].value=120000;
+					nextSlot++;
+				}
+			}
+				
 			if (Fargowiltas.instance.thoriumLoaded)
 			{
 					if(ThoriumModDownedLich)
@@ -1175,7 +1328,7 @@ namespace Fargowiltas.NPCs
 						nextSlot++; 
 					}
 			}
-				
+			
 			 if (Fargowiltas.instance.sacredToolsLoaded)
 			 {
 				 if(SacredToolsDownedRaynare)
@@ -1185,7 +1338,17 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 				 }
              }
-			
+
+			if (Fargowiltas.instance.spiritLoaded)
+			{
+				if(SpiritDownedIlluminant)
+				{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("ChaosFire"));
+						shop.item[nextSlot].value=120000;
+						nextSlot++;
+				}
+			}		
+				
 			if (Fargowiltas.instance.calamityLoaded)
 			{
 				if(CalamityModDownedCalamitas)
@@ -1210,15 +1373,57 @@ namespace Fargowiltas.NPCs
 				}
 			}
 			
+			if (ModLoader.GetLoadedMods().Contains("Exodus"))
+				{
+					if(ExodusDownedHeart)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Exodus").ItemType("JungleCrown"));
+						shop.item[nextSlot].value=120000;
+						nextSlot++;
+					}
+				}
+			
+			if (Fargowiltas.instance.tremorLoaded)
+				{
+					if(TremorDownedFrostKing)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("FrostCrown"));
+						shop.item[nextSlot].value=120000;
+						nextSlot++;
+					}
+					
+                }
+			
 			if (Fargowiltas.instance.calamityLoaded)
 			{
 				if(CalamityModDownedLeviathan)
 				{
 						shop.item[nextSlot].SetDefaults(mod.ItemType("LeviathanSummon"));
-						shop.item[nextSlot].value=500000;
+						shop.item[nextSlot].value=400000;
 						nextSlot++;
 				}
 			}
+			
+			if (Fargowiltas.instance.tremorLoaded)
+				{
+					if(TremorDownedWall)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("ShadowRelic"));
+						shop.item[nextSlot].value=120000;
+						nextSlot++;
+					}
+					
+                }
+			
+			/*if (Fargowiltas.instance.calamityLoaded)
+			{
+				if(CalamityModDownedAstrum)
+				{
+						shop.item[nextSlot].SetDefaults(mod.ItemType("Starcore"));
+						shop.item[nextSlot].value=400000;
+						nextSlot++;
+				}
+			}*/
 			
 			if (NPC.downedGolemBoss == true)
 			{	
@@ -1227,25 +1432,22 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 			}
 			
-			if (Fargowiltas.instance.tremorLoaded)
+			if(FargoWorld.downedBetsy == true)
 			{
-					if(TremorDownedCyberKing)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("AdvancedCircuit"));
-						shop.item[nextSlot].value=150000;
+						shop.item[nextSlot].SetDefaults(mod.ItemType("BetsyEgg"));
+						shop.item[nextSlot].value=160000;
 						nextSlot++;
-					}
 			}
 			
-			if (Fargowiltas.instance.spiritLoaded)
-			{
-				if(SpiritDownedAtlas)
+			if (Fargowiltas.instance.tremorLoaded)
 				{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("StoneSkin"));
-						shop.item[nextSlot].value=150000;
+					if(TremorDownedCogLord)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("ArtifactEngine"));
+						shop.item[nextSlot].value=120000;
 						nextSlot++;
-				}
-			}		
+					}
+                }
 			
 			if (Fargowiltas.instance.thoriumLoaded == true)
 			{
@@ -1257,13 +1459,6 @@ namespace Fargowiltas.NPCs
 					}
 			}
 			
-			if(FargoWorld.downedBetsy == true)
-			{
-						shop.item[nextSlot].SetDefaults(mod.ItemType("BetsyEgg"));
-						shop.item[nextSlot].value=160000;
-						nextSlot++;
-			}
-			
 			if (Fargowiltas.instance.calamityLoaded)
 				{	
 					if(CalamityModDownedPlaguebringer)	
@@ -1272,7 +1467,30 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=2000000;
 						nextSlot++;
 					}
-					
+				}
+			
+			if (Fargowiltas.instance.tremorLoaded)
+			{
+					if(TremorDownedCyberKing)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("AdvancedCircuit"));
+						shop.item[nextSlot].value=150000;
+						nextSlot++;
+					}
+			}
+			
+			if (ModLoader.GetLoadedMods().Contains("CrystiliumMod"))
+				{
+					if(CrystiliumDownedKing)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CrystiliumMod").ItemType("CrypticCrystal"));
+						shop.item[nextSlot].value=120000;
+						nextSlot++;
+					}
+				}
+				
+				if (Fargowiltas.instance.calamityLoaded)
+				{	
 					if(CalamityModDownedRavager)
 					{
 						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("AncientMedallion"));
@@ -1287,12 +1505,7 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=150000;
 						nextSlot++;
 			
-				if (ModLoader.GetLoadedMods().Contains("CrystiliumMod"))
-				{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CrystiliumMod").ItemType("CrypticCrystal"));
-						shop.item[nextSlot].value=120000;
-						nextSlot++;
-				}
+				
 			
 				if (ModLoader.GetLoadedMods().Contains("WaterBiomeMod"))
 				{
@@ -1300,13 +1513,6 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=2000000;
 						nextSlot++;
 				}
-				
-				if (Fargowiltas.instance.blueMagicLoaded)
-				{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Bluemagic").ItemType("PaladinEmblem"));
-						shop.item[nextSlot].value=180000;
-						nextSlot++;
-                }
 			}
 			
 			if (ModLoader.GetLoadedMods().Contains("Pumpking"))
@@ -1318,16 +1524,36 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 				}							
 			}
-		
-			if((NPC.downedGolemBoss) && (NPC.downedFishron) && (NPC.downedHalloweenKing) && (NPC.downedChristmasIceQueen))
+			
+			if (Fargowiltas.instance.spiritLoaded)
 			{
+				if(SpiritDownedAtlas)
+				{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("StoneSkin"));
+						shop.item[nextSlot].value=150000;
+						nextSlot++;
+				}
+			}	
+
 				if (Fargowiltas.instance.blueMagicLoaded)
 				{
+					if(BlueDownedPhantom)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Bluemagic").ItemType("PaladinEmblem"));
+						shop.item[nextSlot].value=180000;
+						nextSlot++;
+					}
+                }
+
+				if (Fargowiltas.instance.blueMagicLoaded)
+				{
+					if(BlueDownedAbom)
+					{
 						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Bluemagic").ItemType("FoulOrb"));
 						shop.item[nextSlot].value=250000;
 						nextSlot++;
+					}
                 }
-			}
 			
 			if (NPC.downedMoonlord == true)
 			{	
@@ -1344,6 +1570,16 @@ namespace Fargowiltas.NPCs
 		else
 		{
 			
+			if (Fargowiltas.instance.tremorLoaded)
+			{
+					if(TremorDownedDarkEmperor)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("EmperorCrown"));
+						shop.item[nextSlot].value=200000;
+						nextSlot++;
+					}
+			}
+			
 			if (Fargowiltas.instance.spiritLoaded)
 			{
 				if(SpiritDownedOverseer)
@@ -1352,7 +1588,17 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=200000;
 						nextSlot++;
 				}
-			}		
+			}	
+			
+			if(Fargowiltas.instance.ancientsLoaded)
+			{
+				if(AncientsDownedWorms)
+				{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("EchoesoftheAncients").ItemType("Wyrm_Rune"));
+						shop.item[nextSlot].value=1000000;
+						nextSlot++;
+				}
+			}
 			
 			if (Fargowiltas.instance.tremorLoaded)
 			{
@@ -1362,6 +1608,17 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].value=200000;
 						nextSlot++;
 					}
+			}
+
+			if (ModLoader.GetLoadedMods().Contains("Pumpking"))
+			{
+				if(PumpkingDownedTerraLord)
+				{
+                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Pumpking").ItemType("TerraCore"));
+						shop.item[nextSlot].value=500000;
+						nextSlot++;
+				}
+							
 			}
 			
 			if (Fargowiltas.instance.sacredToolsLoaded)
@@ -1374,29 +1631,12 @@ namespace Fargowiltas.NPCs
 				}
             }
 			
-			if (Fargowiltas.instance.tremorLoaded)
+			if (Fargowiltas.instance.calamityLoaded)
 			{
-					if(TremorDownedDarkEmperor)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("EmperorCrown"));
-						shop.item[nextSlot].value=200000;
-						nextSlot++;
-					}
-			}
-			
-			if(Fargowiltas.instance.ancientsLoaded)
-			{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("EchoesoftheAncients").ItemType("Wyrm_Rune"));
-						shop.item[nextSlot].value=1000000;
-						nextSlot++;
-			}
-			     
-			if (Fargowiltas.instance.joostLoaded)
-			{
-				if(JoostDownedCactuar)
+				if(CalamityModDownedGuardian)
 				{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("JoostMod").ItemType("Cactusofdoom"));
-						shop.item[nextSlot].value=2000000;
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("ProfanedShard"));
+						shop.item[nextSlot].value=3000000;
 						nextSlot++;
 				}
 			}
@@ -1411,26 +1651,16 @@ namespace Fargowiltas.NPCs
 					}
 			}
 			
-			if (Fargowiltas.instance.calamityLoaded)
+			if (Fargowiltas.instance.joostLoaded)
 			{
-				if(CalamityModDownedGuardian)
+				if(JoostDownedCactuar)
 				{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("ProfanedShard"));
-						shop.item[nextSlot].value=3000000;
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("JoostMod").ItemType("Cactusofdoom"));
+						shop.item[nextSlot].value=2000000;
 						nextSlot++;
 				}
 			}
 			
-			if (Fargowiltas.instance.calamityLoaded)
-			{
-				if(CalamityModDownedProvidence)
-				{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("ProfanedCore"));
-						shop.item[nextSlot].value=4000000;
-						nextSlot++;
-				}
-			}
-			 
 			 if (Fargowiltas.instance.tremorLoaded)
 			{
 					if(TremorDownedTrinity)
@@ -1450,16 +1680,25 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 					}
 			}
-            
-			if (ModLoader.GetLoadedMods().Contains("Pumpking"))
+			
+			if (Fargowiltas.instance.tremorLoaded)
 			{
-				if(PumpkingDownedTerraLord)
+					if(TremorDownedAndas)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("InfernoSkull"));
+						shop.item[nextSlot].value=300000;
+						nextSlot++;
+					}
+			}
+			
+			if (Fargowiltas.instance.calamityLoaded)
+			{
+				if(CalamityModDownedProvidence)
 				{
-                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Pumpking").ItemType("TerraCore"));
-						shop.item[nextSlot].value=500000;
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("ProfanedCore"));
+						shop.item[nextSlot].value=4000000;
 						nextSlot++;
 				}
-							
 			}
 			
 			 if (Fargowiltas.instance.sacredToolsLoaded)
@@ -1472,18 +1711,7 @@ namespace Fargowiltas.NPCs
                 }
 			 }
 			 
-			 	if (Fargowiltas.instance.calamityLoaded)
-				{
-					if(CalamityModDownedDOG)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("CosmicWorm"));
-						shop.item[nextSlot].value=5000000;
-						nextSlot++;
-					}
-				}
-			 
-			
-			 if (Fargowiltas.instance.joostLoaded)
+			  if (Fargowiltas.instance.joostLoaded)
             {
                 if (JoostDownedSAX)
                 {
@@ -1492,7 +1720,6 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 				}
             }
-			
 			
 			 if (Fargowiltas.instance.sacredToolsLoaded)
              {
@@ -1503,16 +1730,16 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
                 }
 			 }
-			
-			if (Fargowiltas.instance.calamityLoaded)
-             {
-				if (CalamityModDownedYharon)
-				{	
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("ChickenEgg"));
-						shop.item[nextSlot].value=8000000;
+			 
+			 if (Fargowiltas.instance.calamityLoaded)
+				{
+					if(CalamityModDownedPolter)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("NecroplasmicBeacon"));
+						shop.item[nextSlot].value=4000000;
 						nextSlot++;
+					}
 				}
-			 }
 			 
 			 if (Fargowiltas.instance.joostLoaded)
 			{
@@ -1524,6 +1751,38 @@ namespace Fargowiltas.NPCs
 				}
 			}
 			
+			 	if (Fargowiltas.instance.calamityLoaded)
+				{
+					if(CalamityModDownedDOG)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("CosmicWorm"));
+						shop.item[nextSlot].value=5000000;
+						nextSlot++;
+					}
+				}
+				
+			//spirit of purity 
+			 
+			if (Fargowiltas.instance.calamityLoaded)
+				{
+					if(CalamityModDownedBirb)
+					{
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("BirbPheromones"));
+						shop.item[nextSlot].value=5000000;
+						nextSlot++;
+					}
+				}
+			
+			if (Fargowiltas.instance.calamityLoaded)
+             {
+				if (CalamityModDownedYharon)
+				{	
+						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("ChickenEgg"));
+						shop.item[nextSlot].value=8000000;
+						nextSlot++;
+				}
+			 }
+			
 			if (Fargowiltas.instance.calamityLoaded)
              {
 				if (CalamityModDownedSCal)
@@ -1533,8 +1792,8 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 				}
 			 }
-			
-			//spirit of purity 
+			 
+			 //spirit of chaos
 			
 			 if ((NPC.downedBoss1 == true) && (NPC.downedBoss2 == true) && (NPC.downedBoss3 == true) && (Main.hardMode == true) && (NPC.downedQueenBee == true) && (NPC.downedSlimeKing == true) && (NPC.downedMechBoss1 == true) && (NPC.downedMechBoss2 == true) && (NPC.downedMechBoss3 == true) && (NPC.downedGolemBoss == true) && (NPC.downedPlantBoss == true) && (NPC.downedFishron == true) && (NPC.downedMoonlord == true))
 			{	

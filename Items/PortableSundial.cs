@@ -29,6 +29,14 @@ namespace Fargowiltas.Items
 			item.useStyle = 4;
 			item.consumable = false;
 			item.mana = 50;
+			item.UseSound = SoundID.Item44;
+		}
+		public override string Texture
+		{
+			get
+			{
+				return "Fargowiltas/Items/Placeholder";
+			}
 		}
 		
 		public override bool AltFunctionUse(Player player)
@@ -41,14 +49,33 @@ namespace Fargowiltas.Items
 			if (player.altFunctionUse == 2) //right click
 			{
 				Main.sundialCooldown = 0;
-				Main.Sundialing();
+				
+				//Main.FastForewardTime = true;
+				if(Main.netMode == 2)
+				{
+					NetMessage.SendData(7);
+				}
 				Main.PlaySound(SoundID.Item4, player.position);
 				
 			}
 			
 			else //left click
 			{
-				Main.dayTime = !Main.dayTime;
+				if (Main.netMode != 1)
+				{
+					if (Main.dayTime)
+					{
+						Main.time = 54000;
+					}
+					else
+					{
+						Main.time = 32400;
+					}
+					if (Main.netMode == 2)
+					{
+						NetMessage.SendData(MessageID.WorldData);
+					}
+				}
 			}
 			
 			return true;

@@ -87,6 +87,7 @@ namespace Fargowiltas
 		public bool rangedEffect = false;
 		public bool miniRangedEffect = false;
 		public bool builderEffect = false;
+		public bool builderMode = false;
 		public bool universeEffect = false;
 		public bool speedEffect = false;
 		public bool damageSoul = false;
@@ -182,6 +183,7 @@ namespace Fargowiltas
 			rangedEffect = false;
 			miniRangedEffect = false;
 			builderEffect = false;
+			builderMode = false;
 			universeEffect = false;
 			speedEffect = false;
 			damageSoul = false;
@@ -194,23 +196,10 @@ namespace Fargowiltas
 			
 		}
 		
-		public override void Kill (double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
-		{
-			Fargowiltas.instance.multiSlime = false;
-			Fargowiltas.slime100 = 0;
-			Fargowiltas.instance.multiEye = false;
-			Fargowiltas.eye100 = 0;
-			Fargowiltas.instance.multiWorm = false;
-			Fargowiltas.worm100 = 0;
-			Fargowiltas.instance.multiBrain = false;
-			Fargowiltas.brain100 = 0;
-			Fargowiltas.instance.multiSkele = false;
-			Fargowiltas.skele100 = 0;
-			Fargowiltas.instance.multiBee = false;
-			Fargowiltas.bee100 = 0;
-			Fargowiltas.instance.multiFish = false;
-			Fargowiltas.fish100 = 0;
-		}
+		//public override void Kill (double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+		//{
+
+		//}
 
 		public override void SetupStartInventory(IList<Item> items)
 		{
@@ -344,12 +333,12 @@ namespace Fargowiltas
 				}
 				else if(vortexCrit >= 100 && proj.type != ProjectileID.CrystalLeafShot && proj.type != mod.ProjectileType("HallowSword"))
 				{
-					player.statLife += (damage / 20);
-					player.HealEffect(damage / 20);
+					player.statLife += (damage / 25);
+					player.HealEffect(damage / 25);
 				}
 			}
 			
-			if(palladEnchant && Main.rand.Next(25) == 0)
+			if(palladEnchant && Main.rand.Next(50) == 0)
 			{
 				player.statLife += (damage / 3);
 				player.HealEffect(damage / 3);
@@ -453,6 +442,11 @@ namespace Fargowiltas
 					return false;
 				}
 			}
+			
+			/*if(universeEffect)
+			{
+				return false;
+			}*/
 			return true;
 		}
 		

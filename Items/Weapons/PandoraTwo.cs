@@ -27,14 +27,12 @@ namespace Fargowiltas.Items.Weapons
             item.noMelee = true;
             item.knockBack = 2;        
             item.value = 1000;
-            item.rare = 10;//
+            item.rare = 10;
             item.mana = 12;  //           
             item.UseSound = SoundID.Item21;    //
             item.autoReuse = true;
             item.shoot = 1;
-            item.shootSpeed = 18f;    //projectile speed when shoot
-			
-			
+            item.shootSpeed = 18f;   
 		}
 		
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

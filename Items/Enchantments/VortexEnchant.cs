@@ -25,11 +25,6 @@ namespace Fargowiltas.Items.Enchantments
 			item.value = 400000; 
 		}
 		
-		public void blueMagnet(Player player)
-		{
-				player.GetModPlayer<ThoriumMod.ThoriumPlayer>(ModLoader.GetMod("ThoriumMod")).radiantBoost += 1f;
-		}
-		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
 			player.rangedDamage+= .15f;
@@ -41,13 +36,6 @@ namespace Fargowiltas.Items.Enchantments
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			modPlayer.vortexEnchant = true;
 			player.rangedCrit = FargoPlayer.vortexCrit;
-			
-			 try {
-		   	if(Fargowiltas.instance.thoriumLoaded)
-			{
-				//blueMagnet(player);
-			}
-			} catch (Exception e) {ErrorLogger.ClearLog(); ErrorLogger.Log(e.ToString()); ErrorLogger.Log(Fargowiltas.instance.blueMagicLoaded.ToString()); throw; }
 			
 			/*if ((player.controlDown && player.releaseDown))
             {

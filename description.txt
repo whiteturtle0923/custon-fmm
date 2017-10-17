@@ -1,37 +1,23 @@
-NEW UPDATE - v .11.2
--Added Guardian Angel's Soul (Thorium only) kinda
--changed how the multi lures works
--Infinity Relic does not work on blocks anymore, no more infinte ore 
--nerfed Palladium Enchantment healing
--added Elysian Tracers effects for Calamity
+NEW UPDATE - v .13.2
+-added a 'Builder Mode' effect to the World Shaper Soul and by extension Soul of Dimensions, use vanity to toggle it off!
+-fixed some Mutant typos
 
-NEW UPDATE - v .11.1
--Fixed Superspeed bug on Soul of Dimensions
--Calamity Effects on Souls and slight recipe changes
+NEW UPDATE - v .13.1
+-added more Calamity, Spirit, and Tremor items to the Mutant
+-added bool support for Crystilium and Echoes of the Ancients and added Exodus Mod support
+-fixed Slime Rain having a recipe
+-fixed Guardian's Angel Soul tooltip typo
+-also reduced the size of the mod
 
-NEW UPDATE - v .11.0
--Added the Overloader, Swarm Crown, Eyemalgamtion, Overstuffed Larva, 
-	Skull Chain Necklace, and Truffle Worm Clump
--Added instant summons for Golem, Fishron, Moon Lord
--Added Bake Sale, Portable Sundial, Battle Cry, 
-	Super Rod Attatchment, Infinity Relic
--Added a toggle list for many effects on the souls
--Added Beyond the Forogtten Ages support and more Bluemagics
--Most Mutant shop prices increased
--Inferno effect actually works
--Adamantite enchantment effect is now a more even spread
--Vortex, Shroomite, Mythril, Orichalcum Enchantment and Soul of Terraria nerfed
--Present slimes appear less 
--Bunch of typos and other small fixes
-
-NEW UPDATE - v .10.3
--Added the 5 Forces and the Soul of Terraria, a third addition to the OP soul family
--fixed the Abominationn's shop
-
-NEW UPDATE - v .10.2
--Added 7 more enchantments, made recipes much nicer, made some pre-hardmode
--Waifus removed from souls temporarily!
--bugs fixed 
+NEW UPDATE - v .13.0
+-Added Dicer, Seismic Actuator, Slime Rain (wip), Energizers for all swarms (most are useless still :D)
+-Huge revamp to all swarms, report any problems please
+-Added several more banner recipes for almost every drop
+-Trophy weapons are now just boss drops
+-Suspicious Skull now spawns Dungeon Guardian if used during the day
+-Soul of the Universe makes crits deal 8x damage now (:
+-Leash of Cthulhu no longer clips on blocks all the time
+-Fixed the Siren's Pearl for Calamity and Tremor breaking the Mutant's shop
 
 This mod adds:
 

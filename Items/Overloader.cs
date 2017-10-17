@@ -13,7 +13,9 @@ namespace Fargowiltas.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Overloader");
-			Tooltip.SetDefault("'It holds an ominous power'");
+			Tooltip.SetDefault("Used to craft swarm summons\n" + 
+								"When used, all summons in the stack will be consumed\n" + 
+								"The more consumed, the more bosses spawned");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
 		}
 		public override void SetDefaults()

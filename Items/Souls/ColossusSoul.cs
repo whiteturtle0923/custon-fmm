@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Souls
 		{
 			DisplayName.SetDefault("Colossus Soul");
 			
-			String tooltip = "'Nothing can stop you' \n20% damage reduction \nIncreases life regeneration by 8 \nIncreases HP by 100 \nReflect 50% of damage back to attackers \nGrants immunity to knockback and most debuffs \nEnemies are more likely to target you";
+			String tooltip = "'Nothing can stop you' \n20% damage reduction \n15% increased defense \nIncreases life regeneration by 8 \nIncreases HP by 100 \nReflect 50% of damage back to attackers \nGrants immunity to knockback and most debuffs \nEnemies are more likely to target you";
 			
 			if(Fargowiltas.instance.calamityLoaded)
 			{
@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Souls
 			item.width = 20;
 			item.height = 20;
 			item.accessory = true;
-			item.defense = 15;
+			item.defense = 10;
 			item.value = 750000;
 			item.expert = true;
 			item.rare = -12;
@@ -78,6 +78,8 @@ namespace Fargowiltas.Items.Souls
 		   player.aggro += 50;
 		   player.statLifeMax2 += 100;
 		   player.hasPaladinShield = true;
+		   
+		   player.statDefense = (int)(player.statDefense * 1.15);
 		   
 		   //ankh shield
 		    player.buffImmune[46] = true;

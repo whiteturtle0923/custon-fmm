@@ -35,7 +35,6 @@ namespace Fargowiltas.Items.Summons
 			if (ModLoader.GetLoadedMods().Contains("CalamityMod"))
              {
 				NPC.NewNPC((int)player.position.X, (int)player.position.Y - 220, ModLoader.GetMod("CalamityMod").NPCType("Siren"));
-				NPC.NewNPC((int)player.position.X, (int)player.position.Y - 220, ModLoader.GetMod("CalamityMod").NPCType("Leviathan"));
 			 }
 			
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);

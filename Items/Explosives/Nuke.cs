@@ -9,7 +9,8 @@ namespace Fargowiltas.Items.Explosives
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Galactic Reformer");
-			Tooltip.SetDefault("rip");
+			Tooltip.SetDefault("Destroys a massive area\n" +
+								"Use at your own risk");
 		}
         public override void SetDefaults()
         {
@@ -32,10 +33,7 @@ namespace Fargowiltas.Items.Explosives
         public override void AddRecipes()   //
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Dynamite, 15);  
-			recipe.AddIngredient(ItemID.DesertFossil, 45); 
-			recipe.AddIngredient(ItemID.RopeCoil);  
-			recipe.AddIngredient(ItemID.Torch);  
+            recipe.AddIngredient(ItemID.Dynamite, 999);   
 			
 			recipe.AddTile(TileID.Anvils); 
 			recipe.SetResult(this);   

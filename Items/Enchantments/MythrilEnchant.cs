@@ -13,7 +13,9 @@ namespace Fargowiltas.Items.Enchantments
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mythril Enchantment");
-			Tooltip.SetDefault("'You feel knowledge of your weapons seep into yor mind' \n25% increased ranged weapon use speed \n10% increased ranged critical strike chance");
+			Tooltip.SetDefault("'You feel knowledge of your weapons seep into yor mind' \n" +
+								"20% increased ranged weapon use speed \n" +
+								"10% increased ranged critical strike chance");
 		}
 		public override void SetDefaults()
 		{
@@ -33,7 +35,7 @@ namespace Fargowiltas.Items.Enchantments
 			//modPlayer.mythrilEnchant = true;
 			
 			
-			modPlayer.firingSpeed += .25f;
+			modPlayer.firingSpeed += .20f;
 			
 			/*if (player.whoAmI == Main.myPlayer)
             {

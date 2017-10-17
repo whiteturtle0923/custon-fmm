@@ -13,7 +13,10 @@ namespace Fargowiltas.Items.Enchantments
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spectre Enchantment");
-			Tooltip.SetDefault("'Their lifeforce will be their own undoing' \n12% increased magic damage \nMagic damage has a chance to spawn damaging orbs \nSummons a Wisp to provide light, turn vanity off to despawn it");
+			Tooltip.SetDefault("'Their lifeforce will be their own undoing' \n" + 
+								"12% increased magic damage \n" +
+								"Magic damage has a chance to spawn damaging orbs \n" + 
+								"Summons a Wisp to provide light, turn vanity off to despawn it");
 		}
 		public override void SetDefaults()
 		{

@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Forbidden Enchantment");
-			Tooltip.SetDefault("'Walk like an Egyptian' \n10% increased magic and minion damage \nIncreases your max number of minions by 2 \nDouble tap down to call an ancient storm to the cursor location");
+			Tooltip.SetDefault("'Walk like an Egyptian' \n10% increased magic and minion damage \nIncreases your max number of minions by 1 \nDouble tap down to call an ancient storm to the cursor location");
 		}
 		public override void SetDefaults()
 		{
@@ -29,7 +29,7 @@ namespace Fargowiltas.Items.Enchantments
         {
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
-			player.maxMinions += 2;
+			player.maxMinions += 1;
 			player.minionDamage += 0.1f;
 			player.magicDamage += 0.1f;
 			if(soulcheck.forbidden == true)

@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Souls
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flight Mastery Soul");
-			Tooltip.SetDefault("'Ascend' \nActs as wings \nAllows for long lasting flight \nReleases bees when damaged" );
+			Tooltip.SetDefault("'Ascend' \nActs as wings \nAllows for very long lasting flight \nReleases bees when damaged" );
 		}
 		public override void SetDefaults()
 		{
@@ -37,7 +37,6 @@ namespace Fargowiltas.Items.Souls
             return true;
         }
 		
-		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
 		((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).utilitySoul = true;
@@ -50,7 +49,6 @@ namespace Fargowiltas.Items.Souls
 		player.jumpBoost = true;
 		player.bee = true;
 		
-
         }
 		
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
@@ -96,12 +94,9 @@ namespace Fargowiltas.Items.Souls
 			wings.AddIngredient(ItemID.WingsNebula);
 			wings.AddIngredient(ItemID.WingsSolar);
 			
-			
-			
 			wings.AddTile(null, "CrucibleCosmosSheet");
             wings.SetResult(this);
             wings.AddRecipe();
 			}
 		}
-	
 }

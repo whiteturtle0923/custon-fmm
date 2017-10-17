@@ -45,16 +45,5 @@ namespace Fargowiltas.Items
 		 //dash
         }
 		
-		public override void AddRecipes()
-		{	
-			ModRecipe recipe = new ModRecipe(mod);
-			
-			recipe.AddIngredient(ItemID.QueenBeeTrophy);
-			
-			recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-		}
-		
 	}
 }

@@ -20,7 +20,7 @@ namespace Fargowiltas.Items.Summons
 		{
 			item.width = 20;
 			item.height = 20;
-			item.maxStack = 20;
+			item.maxStack = 100;
 			item.value = 1000;
 			item.rare = 1;
 			item.useAnimation = 30;
@@ -31,13 +31,35 @@ namespace Fargowiltas.Items.Summons
 
 		public override bool UseItem(Player player)
 		{
-			Fargowiltas.instance.multiFish = true;
-			Fargowiltas.fish100 = 0;
+			Fargowiltas.fishNum = 10 * player.inventory[player.selectedItem].stack;
 			
-			for(int i = 0; i < 10; i++)
+			player.inventory[player.selectedItem].stack = 0;
+			
+			Fargowiltas.fishKills = 0;
+			
+			if(Fargowiltas.fishNum <= 20)
+			{
+				Fargowiltas.fishSpawned = Fargowiltas.fishNum;
+			}
+			else if(Fargowiltas.fishNum <= 100)
+			{
+				Fargowiltas.fishSpawned = 20;
+				Fargowiltas.instance.multiFish = true;
+			}
+			else if(Fargowiltas.fishNum != 1000)
+			{
+				Fargowiltas.fishSpawned = 50;
+				Fargowiltas.instance.multiFish = true;
+			}
+			else
+			{
+				Fargowiltas.fishSpawned = 100;
+				Fargowiltas.instance.multiFish = true;
+			}
+			
+			for(int i = 0; i < Fargowiltas.fishSpawned; i++)
 			{
 				NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.DukeFishron);
-				Main.NewText("Duke Fishron has awoken!", 175, 75, 255);
 			}
 			
 			Main.NewText("The ocean swells with ferocious pigs!", 175, 75, 255);
@@ -48,18 +70,14 @@ namespace Fargowiltas.Items.Summons
 		
 		public override void AddRecipes()
 		{	
-			if(NPC.downedMoonlord)
-			{
 				ModRecipe recipe = new ModRecipe(mod);
 			
 				recipe.AddIngredient(null, "TruffleWorm2");
 				recipe.AddIngredient(null, "Overloader");
-			
+				
 				recipe.AddTile(TileID.DemonAltar);
 				recipe.SetResult(this);
 				recipe.AddRecipe();
-			}
-			
 		}
 	}
 }

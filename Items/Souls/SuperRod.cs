@@ -9,7 +9,7 @@ namespace Fargowiltas.Items.Souls
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Super Rod Attatchment");
+			DisplayName.SetDefault("Super Rod Attachment");
 			Tooltip.SetDefault("'As long as they aren't all shoes, you can go home happily' \n" +
 								"Increases fishing skill\n" +
 								"All fishing rods will have 4 extra lures" );
@@ -22,13 +22,19 @@ namespace Fargowiltas.Items.Souls
 			item.value = 100000; 
 			item.rare = 5; 
 		}
+		public override string Texture
+		{
+			get
+			{
+				return "Fargowiltas/Items/Placeholder";
+			}
+		}
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
 		  ((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).fishSoul1 = true;
 		   
 		  player.fishingSkill += 10;
-		 
         }
 		
 		public override void AddRecipes()

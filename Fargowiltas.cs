@@ -45,32 +45,77 @@ namespace Fargowiltas
 		internal bool btfaLoaded;
 		//multi summon
 		internal bool multiSlime;
-		internal static int slime100;
+		internal static int slimeKills;
+		internal static int slimeNum;
+		internal static int slimeSpawned;
+		
 		internal bool multiEye;
-		internal static int eye100;
+		internal static int eyeKills;
+		internal static int eyeNum;
+		internal static int eyeSpawned;
+		
 		internal bool multiWorm;
-		internal static int worm100;
+		internal static int wormKills;
+		internal static int wormNum;
+		internal static int wormSpawned;
+		
 		internal bool multiBrain;
-		internal static int brain100;
+		internal static int brainKills;
+		internal static int brainNum;
+		internal static int brainSpawned;
+		
 		internal bool multiSkele;
-		internal static int skele100;
+		internal static int skeleKills;
+		internal static int skeleNum;
+		internal static int skeleSpawned;
+		
 		internal bool multiBee;
-		internal static int bee100;
+		internal static int beeKills;
+		internal static int beeNum;
+		internal static int beeSpawned;
 		
 		internal bool multiTwins;
-		internal static int twins100;
+		internal static int retKills;
+		internal static int spazKills;
+		internal static int twinsNum;
+		internal static int twinsSpawned;
+		
 		internal bool multiPrime;
-		internal static int prime100;
+		internal static int primeKills;
+		internal static int primeNum;
+		internal static int primeSpawned;
+		
 		internal bool multiDestroy;
-		internal static int destroy100;
+		internal static int destroyKills;
+		internal static int destroyNum;
+		internal static int destroySpawned;
+		
+		internal bool multiPlant;
+		internal static int plantKills;
+		internal static int plantNum;
+		internal static int plantSpawned;
+		
+		internal bool multiGolem;
+		internal static int golemKills;
+		internal static int golemNum;
+		internal static int golemSpawned;
 		
 		internal bool multiFish;
-		internal static int fish100;
+		internal static int fishKills;
+		internal static int fishNum;
+		internal static int fishSpawned;
 		
-
+		internal bool multiMoon;
+		internal static int moonKills;
+		internal static int moonNum;
+		internal static int moonSpawned;
 		
-	
-		static internal Fargowiltas instance; 
+		internal bool multiDG;
+		internal static int DGNum;
+		internal static int DGKills;
+		internal static int DGSpawned;
+		
+		internal static Fargowiltas instance; 
 
 		public Fargowiltas()
 		{
@@ -145,29 +190,75 @@ namespace Fargowiltas
 				
 				//multi summons
 				multiSlime = false;
-				slime100 = 0;
+				slimeNum = 0;
+				slimeKills = 0;
+				slimeSpawned = 0;
+				
 				multiEye = false;
-				eye100 = 0;
+				eyeNum = 0;
+				eyeKills = 0;
+				eyeSpawned = 0;
+				
 				multiWorm = false;
-				worm100 = 0;
+				wormNum = 0;
+				wormKills = 0;
+				wormSpawned = 0;
+				
 				multiBrain = false;
-				brain100 = 0;
+				brainNum = 0;
+				brainKills = 0;
+				brainSpawned = 0;
+				
 				multiSkele = false;
-				skele100 = 0;
+				skeleNum = 0;
+				skeleKills = 0;
+				skeleSpawned = 0;
+				
 				multiBee = false;
-				bee100 = 0;
+				beeNum = 0;
+				beeKills = 0;
+				beeSpawned = 0;
 				
 				multiTwins = false;
-				twins100 = 0;
+				retKills = 0;
+				spazKills = 0;
+				twinsNum = 0;
+				twinsSpawned = 0;
+				
 				multiPrime = false;
-				prime100 = 0;
+				primeNum = 0;
+				primeKills = 0;
+				primeSpawned = 0;
+				
 				multiDestroy = false;
-				destroy100 = 0;
+				destroyNum = 0;
+				destroyKills = 0;
+				destroySpawned = 0;
+				
+				multiPlant = false;
+				plantNum = 0;
+				plantKills = 0;
+				plantSpawned = 0;
+				
+				multiGolem = false;
+				golemNum = 0;
+				golemKills = 0;
+				golemSpawned = 0;
 				
 				multiFish = false;
-				fish100 = 0;
+				fishNum = 0;
+				fishKills = 0;
+				fishSpawned = 0;
 				
+				multiMoon = false;
+				moonNum = 0;
+				moonKills = 0;
+				moonSpawned = 0;
 				
+				multiDG = false;
+				DGNum = 0;
+				DGKills = 0;
+				DGSpawned = 0;
 				
             }
             catch (Exception e)
@@ -283,6 +374,54 @@ namespace Fargowiltas
 	        recipe.SetResult(ItemID.CelestialSigil);
 	        recipe.AddRecipe();
 			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "MechEye");
+			recipe.AddTile(TileID.WorkBenches);
+	        recipe.SetResult(ItemID.MechanicalEye);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "MechWorm");
+			recipe.AddTile(TileID.WorkBenches);
+	        recipe.SetResult(ItemID.MechanicalWorm);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "MechSkull");
+			recipe.AddTile(TileID.WorkBenches);
+	        recipe.SetResult(ItemID.MechanicalSkull);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "GoreySpine");
+			recipe.AddTile(TileID.WorkBenches);
+	        recipe.SetResult(ItemID.BloodySpine);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "SlimyCrown");
+			recipe.AddTile(TileID.WorkBenches);
+	        recipe.SetResult(ItemID.SlimeCrown);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "Abeemination2");
+			recipe.AddTile(TileID.WorkBenches);
+	        recipe.SetResult(ItemID.Abeemination);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "WormyFood");
+			recipe.AddTile(TileID.WorkBenches);
+	        recipe.SetResult(ItemID.WormFood);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "SuspiciousEye");
+			recipe.AddTile(TileID.WorkBenches);
+	        recipe.SetResult(ItemID.SuspiciousLookingEye);
+	        recipe.AddRecipe();
+			
 			
 			recipe = new ModRecipe(this);
 			recipe.AddIngredient(ItemID.CopperPickaxe);
@@ -300,8 +439,778 @@ namespace Fargowiltas
 	        recipe.SetResult(ItemID.MagicalPumpkinSeed);
 	        recipe.AddRecipe();
 			
+			//BANNER recipes
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.AngryBonesBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.TallyCounter);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.AnomuraFungusBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.GlowingMushroom, 100);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.AntlionBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.AntlionMandible, 40);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.WalkingAntlionBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.AntlionClaw);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.FlyingAntlionBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.AntlionMandible, 80);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GreenSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 50);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 100);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.RedSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 150);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.PurpleSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 200);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.YellowSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 200);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.BlackSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 200);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.MotherSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 400);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.PinkyBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.PinkGel, 999);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.UmbrellaSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.UmbrellaHat);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.IceSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 120);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SpikedIceSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 300);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.JungleSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 120);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SpikedJungleSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 300);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SandSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 120);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DungeonSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.GoldenKey, 100);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.LavaSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Cascade);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ToxicSludgeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Bezoar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CorruptSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Blindfold);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SlimerBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 300);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CrimslimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 300);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GastropodBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 500);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.IlluminantSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 300);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.RainbowSlimeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Gel, 5000);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.BloodCrawlerBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Vertebrae, 25);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.JellyfishBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Glowstick, 200);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.PinkJellyfishBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.JellyfishNecklace);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GreenJellyfishBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Megaphone);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.BatBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.ChainKnife);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.JungleBatBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.DepthMeter);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CrawdadBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Rally);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CrimeraBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Vertebrae, 25);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CursedSkullBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Nazar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SkeletonMageBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Bone, 500);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DemonBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.DemonScythe);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DevourerBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.WormTooth, 500);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ZombieBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.ZombieArm);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.RaincoatZombieBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.RainHat);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ZombieEskimoBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.EskimoHood);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.BloodZombieBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.SharkToothNecklace);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.EaterofSoulsBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.RottenChunk, 25);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.FaceMonsterBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Vertebrae, 25);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.FireImpBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.ObsidianRose);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GiantShellyBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Rally);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.WormBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.WhoopieCushion);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GraniteFlyerBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.NightVisionHelmet);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.HarpyBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.GiantHarpyFeather);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.HellbatBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.MagmaStone);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GreekSkeletonBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.GladiatorHelmet);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DemonEyeBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.BlackLens);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.HornetBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.TatteredBeeWing);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.IceBatBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.DepthMeter);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.PiranhaBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.RobotHat);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SalamanderBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Rally);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SharkBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.DivingHelmet);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SkeletonBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.BoneSword);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SnowFlinxBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Compass);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.UndeadMinerBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.BonePickaxe);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.UndeadVikingBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.VikingHelmet);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.AnglerFishBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.AdhesiveBandage);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.AngryTrapperBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Uzi);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ArmoredSkeletonBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.ArmorPolish);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ArmoredSkeletonBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.BeamSword);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ArmoredVikingBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.IceSickle);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DesertBasiliskBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.AncientHorn);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.BlackRecluseBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.PoisonStaff);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CorruptorBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Vitamins);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.FloatyGrossBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Vitamins);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DesertDjinnBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.DjinnLamp);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GiantBatBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.TrifoldMap);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.MummyBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.MummyMask);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.WerewolfBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.MoonCharm);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.VampireBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.BrokenBatWing);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DiablolistBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.InfernoFork);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.NecromancerBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.ShadowbeamStaff);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.RaggedCasterBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.SpectreStaff);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.WraithBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.FastClock);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DarkMummyBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Blindfold);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DungeonSpiritBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Ectoplasm, 200);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.TortoiseBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.TurtleShell, 3);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.IcyMermanBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.FrostStaff);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.IceTortoiseBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.FrozenTurtleShell);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.LihzahrdBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.LizardEgg);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.MedusaBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.MedusaHead);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SkeletonArcherBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.MagicQuiver);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SkeletonArcherBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Marrow);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.UnicornBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.BlessedApple);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.AngryNimbusBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.NimbusRod);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ClownBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Bananarang, 3);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DripplerBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.MoneyTrough);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GoblinArcherBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Harpoon);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ButcherBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.ButchersChainsaw);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CreatureFromTheDeepBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.NeptunesShell);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DeadlySphereBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.DeadlySphereStaff);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DrManFlyBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.ToxicFlask);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.MothronBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.MothronWings);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.PsychoBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.PsychoKnife);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.ReaperBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.DeathSickle);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.MartianScutlixGunnerBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.BrainScrambler);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.RedDevilBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.UnholyTrident);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.RedDevilBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.FireFeather);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.LavaBatBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.HelFire);
+	        recipe.AddRecipe();
+
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.WolfBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Amarok);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.JungleCreeperBanner);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.Yelets);
+	        recipe.AddRecipe();
+
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.IceElementalBanner);
+			recipe.AddIngredient(ItemID.GoldenKey, 50);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.FrozenKey);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DerplingBanner);
+			recipe.AddIngredient(ItemID.GoldenKey, 50);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.JungleKey);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CrimsonAxeBanner);
+			recipe.AddIngredient(ItemID.GoldenKey, 50);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.CrimsonKey);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CursedHammerBanner);
+			recipe.AddIngredient(ItemID.GoldenKey, 50);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.CorruptionKey);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.EnchantedSwordBanner);
+			recipe.AddIngredient(ItemID.GoldenKey, 50);
+			recipe.AddTile(TileID.Solidifier);
+	        recipe.SetResult(ItemID.HallowedKey);
+	        recipe.AddRecipe();
 			
 			
+
+			
+			
+			//conversion
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CopperBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.TinBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.TinBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.CopperBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SilverBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.TungstenBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.TungstenBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.SilverBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.GoldBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.PlatinumBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.PlatinumBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.GoldBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CobaltBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.PalladiumBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.PalladiumBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.CobaltBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.MythrilBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.OrichalcumBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.OrichalcumBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.MythrilBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.AdamantiteBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.TitaniumBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.TitaniumBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.AdamantiteBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.DemoniteBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.CrimtaneBar);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.CrimtaneBar);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.DemoniteBar);
+	        recipe.AddRecipe();
 		}
 		
 		public override void AddRecipeGroups()

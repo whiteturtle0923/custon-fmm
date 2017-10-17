@@ -35,35 +35,5 @@ namespace Fargowiltas.Items.Weapons
 			item.shootSpeed = 20f; 
 			item.noUseGraphic = true;
 		}
-		
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            float spread = 45f * 0.0174f;
-            double startAngle = Math.Atan2(speedX, speedY)- spread/2;
-            double deltaAngle = spread/8f;
-            double offsetAngle;
-            int i;
-			
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("Hungry"), damage, knockBack, player.whoAmI, 0f, 0f);
-				}
-			
-            return false;
-        }
-		
-		public override void AddRecipes()
-		{	
-			ModRecipe recipe = new ModRecipe(mod);
-			
-			recipe.AddIngredient(ItemID.WallofFleshTrophy);
-			
-			recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-		}
-		
-		
 	}
 }

@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Leash of Cthulhu");
-			Tooltip.SetDefault("'The mutilated carcass of a defeated foe'");
+			Tooltip.SetDefault("'The mutilated carcass of a defeated foe..'");
 		}
         public override void SetDefaults()
         {
@@ -27,22 +27,13 @@ namespace Fargowiltas.Items.Weapons
             item.useAnimation = 40; 
             item.useTime = 40; 
             item.knockBack = 7.5F;
-            item.damage = 14;
+            item.damage = 16;
             item.scale = 2F;
             item.noUseGraphic = true; 
             item.shoot = mod.ProjectileType("LeashFlail");
             item.shootSpeed = 15.1F;
             item.UseSound = SoundID.Item1;
             item.melee = true; 
-        }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.EyeofCthulhuTrophy);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
- 
+        } 
     }
 }

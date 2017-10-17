@@ -27,8 +27,6 @@ namespace Fargowiltas.Items.Summons
 			return true;
 		}
 
-	
-		
 		public override void RightClick(Player player)
 		{
 			

@@ -18,7 +18,7 @@ namespace Fargowiltas.Projectiles
             projectile.width = 58;
             projectile.height = 52;
             projectile.friendly = true;
-            projectile.penetrate = -1; // Penetrates NPCs infinitely.
+            projectile.penetrate = -1; 
             projectile.melee = true; 
         }
 		
@@ -27,8 +27,7 @@ namespace Fargowiltas.Projectiles
 				if(projectile.timeLeft == 120)
 				{
 					projectile.ai[0] = 1f;
-				}
-		
+				}		
 		
 				if (Main.player[projectile.owner].dead)
 				{
@@ -131,8 +130,17 @@ namespace Fargowiltas.Projectiles
 			projectile.ai[0] = 1f;
 		}
 		
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        {
+            width = 30;
+            height = 30;
+            return true;
+        }
+		
 		public override bool OnTileCollide (Vector2 oldVelocity)
 		{
+			//projectile.tileCollide = false;
+			//projectile.timeLeft = 20;
 			projectile.ai[0] = 1f;
 			return false;
 		}
@@ -141,6 +149,7 @@ namespace Fargowiltas.Projectiles
         // chain voodoo
         public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
         {
+			
             Texture2D texture = ModLoader.GetTexture("Fargowiltas/Projectiles/LeashFlailChain");
  
             Vector2 position = projectile.Center;

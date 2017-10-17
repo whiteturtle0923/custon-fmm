@@ -24,8 +24,9 @@ namespace Fargowiltas.Items.Souls
 								"35% increased melee speed \n" +
 								"35% increased throwing velocity \n"+
 								"25% increased all critical chance \n" +
-								"Increases your maximum mana by 150 \nIncreases your max number of minions by 8 \nIncreases your max number of sentries by 6 \nIncreased pickup range for mana stars and hearts"
-			+ 					"\nIncreases all knockback \nGrants all the effects of the Yoyo Bag \nAll attacks inflict many debuffs");
+								"Crits deal 8x damage\n" +
+								"Increases your maximum mana by 150 \nIncreases your max number of minions by 8 \nIncreases your max number of sentries by 6 \nIncreased pickup range for mana stars and hearts\n"
+			+ 					"Increases all knockback \nGrants all the effects of the Yoyo Bag \nAll attacks inflict many debuffs");
 		}	
 		public override void SetDefaults()
 		{

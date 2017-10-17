@@ -7,7 +7,7 @@ namespace Fargowiltas.Buffs
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("SpookyCD");
+			DisplayName.SetDefault("Scythe Cooldown");
 			Description.SetDefault("No Scythes for a bit");
 			Main.buffNoSave[Type] = true;
 			canBeCleared = false;

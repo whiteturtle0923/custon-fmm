@@ -33,7 +33,7 @@ namespace Fargowiltas.Items.Souls
             else 
             {
                 Tooltip.SetDefault("'Divine Intervention' \n" +
-                                   "Enemies are less likely to target you" +
+                                   "Enemies are less likely to target you\n" +
                                    "You and nearby allies will take 10% reduced damage\n" +
                                    "-Enable Thorium for the souls' full potential-");
             }

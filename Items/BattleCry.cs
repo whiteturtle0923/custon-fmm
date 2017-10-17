@@ -29,6 +29,13 @@ namespace Fargowiltas.Items
 			item.useStyle = 4;
 			item.consumable = false;
 		}
+		public override string Texture
+		{
+			get
+			{
+				return "Fargowiltas/Items/Placeholder";
+			}
+		}
 
 		public override bool UseItem(Player player)
 		{

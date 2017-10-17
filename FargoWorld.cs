@@ -20,6 +20,8 @@ namespace Fargowiltas
 		public static bool movedLumberjack = false;
 		public static bool downedBetsy = false;
 		
+		
+		
 		//town npcs
 		public static bool guide = false;
 		public static bool merch = false;
@@ -105,6 +107,8 @@ namespace Fargowiltas
 			if (pirate) downed.Add("pirate");
 			if (steam) downed.Add("steam");
 			if (borg) downed.Add("borg");
+			
+			//if (soulcheck.bee) downed.Add("bee");
 
 			return new TagCompound {
                 {"downed", downed},
@@ -139,6 +143,13 @@ namespace Fargowiltas
 			pirate = downed.Contains("pirate");
 			steam = downed.Contains("steam");
 			borg = downed.Contains("borg");
+			
+			//soulcheck.bee = downed.Contains("bee");
+			//if(!soulcheck.bee)
+			//{
+			//	UICheckbox movie = ;
+			//	UICheckbox.Selected = !UICheckbox.Selected;
+			//}
 		}
 		
 		public override void LoadLegacy(BinaryReader reader)

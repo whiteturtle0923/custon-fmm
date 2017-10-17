@@ -10,7 +10,7 @@ namespace Fargowiltas.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mind Break");
-			Tooltip.SetDefault("Summons a mini Brain of Cthulhu to fight for you\nTakes up 2 minion slots");
+			Tooltip.SetDefault("'An old foe beaten into submission..'\n Needs 2 minion slots");
 		}
 		public override void SetDefaults()
 		{
@@ -33,13 +33,5 @@ namespace Fargowiltas.Items.Weapons
 			item.autoReuse = true;
 		}
 		
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.BrainofCthulhuTrophy);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
 	}
 }

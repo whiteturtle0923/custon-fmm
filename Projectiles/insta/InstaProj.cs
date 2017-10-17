@@ -23,25 +23,47 @@ namespace Fargowiltas.Projectiles.insta
             projectile.penetrate = -1; 
             projectile.timeLeft = 170; 
         }
+		
+		public override bool OnTileCollide (Vector2 oldVelocity)
+		{
+			projectile.Kill();
+			return true;
+		}
  
         public override void Kill(int timeLeft)
         {			
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
-            int radius = 4;     //size
-            for (int x = -radius; x <= (radius); x++)
+			//4 across
+            for (int x = -3; x <= 3; x++)
             {
-                for (int y = 0; y <= (325*radius); y++)
+                for (int y = 1; y <= (Main.maxTilesY - 40); y++)
                 {
                     int xPosition = (int)(x + position.X / 16.0f);
                     int yPosition = (int)(y + position.Y / 16.0f);
  
-                    if ((x * y) <= radius)   //rectangle
-                    {
-                        WorldGen.KillTile(xPosition, yPosition, false, false, false);  //tile destroy
-                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color(), 1f); 
-						//Projectile.NewProjectile(player.Center.X, player.Center.Y, -0.75f, 0.75f, 145, 0, 0, Main.myPlayer, 0f, 0f);
-                    }
+                    WorldGen.KillTile(xPosition, yPosition, false, false, false);  //tile destroy
+					WorldGen.KillWall(xPosition, yPosition);
+                    Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color(), 1f); 
+					
+					WorldGen.PlaceWall(xPosition, yPosition, 1);
+					
+					if((x == -3) || (x == 3))
+					{
+						WorldGen.PlaceTile(xPosition, yPosition, 38);
+					}
+					
+					if((x == -2 || x == 2) && (y % 10 == 0))
+					{
+						WorldGen.PlaceTile(xPosition, yPosition, 4);
+					}
+					
+					if(x == 0)
+					{
+						WorldGen.PlaceTile(xPosition, yPosition, 213);
+					}
+					//Projectile.NewProjectile(player.Center.X, player.Center.Y, -0.75f, 0.75f, 145, 0, 0, Main.myPlayer, 0f, 0f);
+                    
                 }
             }
         }

@@ -93,16 +93,5 @@ namespace Fargowiltas.Items.Weapons
 		{
 			target.AddBuff(BuffID.Slimed, 120);
 		}
-		
-		public override void AddRecipes()
-		{	
-			ModRecipe recipe = new ModRecipe(mod);
-			
-			recipe.AddIngredient(ItemID.EaterofWorldsTrophy);
-			
-			recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-		}
 	}
 }

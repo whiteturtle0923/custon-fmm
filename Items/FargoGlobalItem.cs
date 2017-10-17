@@ -10,10 +10,6 @@ namespace Fargowiltas.Items
 {
 	public class FargoGlobalItem : GlobalItem
 	{
-		
-	//public int originalTime;
-	//public int originalAnimation;
-	//public int originalBoost;
 	
 	public class UseSpeed : GlobalItem
 	{
@@ -22,7 +18,6 @@ namespace Fargowiltas.Items
 		public override float UseTimeMultiplier(Item item, Player player)
 		{
 			FargoPlayer p = (FargoPlayer)player.GetModPlayer(mod, "FargoPlayer");
-			//IInfo i = (IInfo)item.GetModInfo(mod, "IInfo");
 			if (item.ranged && item.damage > 0 && item.useTime > 1 && item.useAnimation > 1)
 			{
 				return 1f + p.firingSpeed;
@@ -119,27 +114,22 @@ namespace Fargowiltas.Items
 				{
 					item.toolTip = "Summons a Puppy\nShoutout to Browny and Paca";
 				}*/
+				if(item.maxStack == 999 ||item.maxStack == 99)
+				{
+					item.maxStack = item.maxStack * 10 + 9;
+				}
+				else if(item.maxStack > 10 && item.maxStack != 100 && item.type != 71 && item.type != 72 && item.type != 73 && item.type != 74)
+				{
+					item.maxStack = 99;
+				}
 		}
 		
-		public override void PickAmmo (Item item, Player player, ref int type, ref float speed, ref int damage, ref float knockback)
+		//pouch divers
+		/*public override void PickAmmo (Item item, Player player, ref int type, ref float speed, ref int damage, ref float knockback)
 		{
 			
 					type = mod.ProjectileType("Hungry");
-			
-					float spread = 2f * 0.1250f;
-					float baseSpeed = (float)Math.Sqrt(speed * speed + speed * speed);
-					double baseAngle = Math.Atan2(speed, speed);
-					double randomAngle = baseAngle + 1f * spread;
-					double randomAngle2 = baseAngle + 0f * spread;
-					double randomAngle3 = baseAngle - 1f * spread;
-					float randomSpeed = Main.rand.NextFloat() * 0.2f + 0.95f;
-					speed = baseSpeed * randomSpeed * (float)Math.Sin(randomAngle);
-					speed = baseSpeed * randomSpeed * (float)Math.Cos(randomAngle);
-					
-					Projectile.NewProjectile(player.Center.X, player.Center.X, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle), type, damage, knockback, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(player.Center.X, player.Center.X, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle3), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle3), type, damage, knockback, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(player.Center.X, player.Center.X, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle2), type, damage, knockback, player.whoAmI, 0f, 0f);
-		}
+		}*/
 		
 		public override bool ConsumeItem (Item item, Player player)
 		{
@@ -149,7 +139,112 @@ namespace Fargowiltas.Items
 			{
 				return false;
 			}
+			
+			if(p.builderEffect && item.createTile != -1)
+			{
+				return false;
+			}
 			return true;
+		}
+		
+		public override void OpenVanillaBag (string context, Player player, int arg)
+		{
+			if(arg == ItemID.KingSlimeBossBag)
+			{
+				if(Main.rand.Next(50) == 0)
+				{
+					player.QuickSpawnItem(ItemID.SlimeStaff);
+				}
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("SlimeKingsSlasher"));
+				}
+			}
+			if(arg == ItemID.EyeOfCthulhuBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("EyeFlail"));
+				}
+			}
+			if(arg == ItemID.EaterOfWorldsBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("EaterStaff"));
+				}
+			}
+			if(arg == ItemID.BrainOfCthulhuBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("BrainStaff"));
+				}
+			}
+			if(arg == ItemID.SkeletronBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("BoneZone"));
+				}
+			}
+			if(arg == ItemID.QueenBeeBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("QueenStinger"));
+				}
+			}
+			if(arg == ItemID.DestroyerBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("Probe"));
+				}
+			}
+			if(arg == ItemID.TwinsBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("TwinBoomerangs"));
+				}
+			}
+			if(arg == ItemID.SkeletronPrimeBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("PrimeStaff"));
+				}
+			}
+			if(arg == ItemID.PlanteraBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("Dicer"));
+				}
+			}
+			if(arg == ItemID.GolemBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("GolemStaff"));
+				}
+			}
+			if(arg == ItemID.FishronBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("FishStick"));
+				}
+			}
+			if(arg == ItemID.MoonLordBossBag)
+			{
+				if(Main.rand.Next(10) == 0)
+				{
+					player.QuickSpawnItem(mod.ItemType("HentaiSpear"));
+				}
+			}
+
 		}
 		
 	}

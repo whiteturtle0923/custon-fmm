@@ -249,31 +249,59 @@ namespace Fargowiltas.Projectiles
 			}*/
 		}
 		
+		/*public override bool Colliding (Rectangle projHitbox, Rectangle targetHitbox)
+		{
+			if(projectile.projHitbox == mod.ProjectileType("DualSaberProj").projHitbox)
+			{
+				stuff
+			}
+		}*/
+		
 		public override void ModifyHitPlayer (Projectile projectile, Player target, ref int damage, ref bool crit)
 		{
 			Player player = Main.player[Main.myPlayer];
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
-			//reflect proj
-			if (modPlayer.hallowEnchant && projectile.active && !projectile.friendly && projectile.hostile && damage > 0 && Main.rand.Next(8) == 0)
+			int chance = 0;
+			if (modPlayer.hallowEnchant)
 			{
-				projectile.hostile = false;
-				target.statLife += damage;
-				
-    			//target.HealEffect(damage);
-				Projectile.NewProjectile(player.Center.X, player.Center.Y, -projectile.velocity.X, -projectile.velocity.Y, mod.ProjectileType("HallowSword"), damage, 2f, Main.myPlayer, 0f, 0f);
-				damage = 0;
-				
+				chance = 8;
+			}
+			else if(modPlayer.terrariaSoul)
+			{
+				chance = 2;
 			}
 			
-			if (modPlayer.terrariaSoul && projectile.active && !projectile.friendly && projectile.hostile && damage > 0 && Main.rand.Next(2) == 0)
+			//reflect proj
+			if (chance != 0 && projectile.active && !projectile.friendly && projectile.hostile && damage > 0 && Main.rand.Next(chance) == 0)
 			{
-				projectile.hostile = false;
 				target.statLife += damage;
 				
-    			//target.HealEffect(damage);
-				Projectile.NewProjectile(player.Center.X, player.Center.Y, -projectile.velocity.X, -projectile.velocity.Y, mod.ProjectileType("HallowSword"), damage * 2, 2f, Main.myPlayer, 0f, 0f);
-				damage = 0;
+				//Projectile.NewProjectile(player.Center.X, player.Center.Y, -projectile.velocity.X, -projectile.velocity.Y, mod.ProjectileType("HallowSword"), damage, 2f, Main.myPlayer, 0f, 0f);
+				
+				// Set ownership
+				projectile.hostile = false;
+				projectile.friendly = true;
+				projectile.owner = player.whoAmI;
+	
+				// Turn around
+				projectile.velocity *= -1f;
+				projectile.penetrate = 1;
+	
+				// Flip sprite
+				if (projectile.Center.X > player.Center.X * 0.5f)
+				{
+					projectile.direction = 1;
+					projectile.spriteDirection = 1;
+				}
+				else
+				{
+					projectile.direction = -1;
+					projectile.spriteDirection = -1;
+				}
+	
+				// Don't know if this will help but here it is
+				projectile.netUpdate = true;
 				
 			}
 		}
