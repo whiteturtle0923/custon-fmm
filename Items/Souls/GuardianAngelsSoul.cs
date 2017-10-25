@@ -49,18 +49,8 @@ namespace Fargowiltas.Items.Souls
             item.rare = -12;
         }
 
-        public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            ((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul = true;
 
             if (Fargowiltas.instance.thoriumLoaded)
             {

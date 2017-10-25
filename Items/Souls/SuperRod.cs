@@ -9,7 +9,7 @@ namespace Fargowiltas.Items.Souls
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Super Rod Attachment");
+			DisplayName.SetDefault("Angler Enchantment");
 			Tooltip.SetDefault("'As long as they aren't all shoes, you can go home happily' \n" +
 								"Increases fishing skill\n" +
 								"All fishing rods will have 4 extra lures" );
@@ -39,25 +39,26 @@ namespace Fargowiltas.Items.Souls
 		
 		public override void AddRecipes()
         {
-			//too much hmm
             ModRecipe recipe = new ModRecipe(mod);
+			
+			recipe.AddIngredient(ItemID.AnglerHat);
+			recipe.AddIngredient(ItemID.AnglerVest);
+			recipe.AddIngredient(ItemID.AnglerPants);
+
 			recipe.AddIngredient(ItemID.WoodFishingPole);
+			recipe.AddIngredient(ItemID.ReinforcedFishingPole);
 			recipe.AddIngredient(ItemID.FiberglassFishingPole);
-			recipe.AddIngredient(ItemID.ArmoredCavefish);
-			recipe.AddIngredient(ItemID.DoubleCod);
-			recipe.AddIngredient(ItemID.FrostMinnow);
-			recipe.AddIngredient(ItemID.Honeyfin);
-			recipe.AddIngredient(ItemID.Salmon);
-			recipe.AddIngredient(ItemID.GoldenCarp);
-			recipe.AddIngredient(ItemID.Prismite);
+			
 			recipe.AddIngredient(ItemID.Rockfish);
 			recipe.AddIngredient(ItemID.SawtoothShark);
 			recipe.AddIngredient(ItemID.ReaverShark);
-			recipe.AddTile(TileID.CookingPots);
+			
+			recipe.AddIngredient(ItemID.OldShoe, 5);
+			
+			recipe.AddTile(TileID.CrystalBall);
             recipe.SetResult(this);
             recipe.AddRecipe();
 		}
-		
 	}
 }
 

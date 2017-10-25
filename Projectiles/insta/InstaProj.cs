@@ -48,6 +48,19 @@ namespace Fargowiltas.Projectiles.insta
 					
 					WorldGen.PlaceWall(xPosition, yPosition, 1);
 					
+					Tile tile = Main.tile[xPosition, yPosition];
+					
+					if(tile != null)
+					{
+						tile.liquid = 0;
+						tile.lava(false);
+						tile.honey(false);
+						if (Main.netMode == 2)
+						{
+							NetMessage.sendWater(xPosition, yPosition);
+						}
+					}
+					
 					if((x == -3) || (x == 3))
 					{
 						WorldGen.PlaceTile(xPosition, yPosition, 38);

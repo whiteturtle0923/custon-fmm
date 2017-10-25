@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Souls
 		{
 			DisplayName.SetDefault("Colossus Soul");
 			
-			String tooltip = "'Nothing can stop you' \n20% damage reduction \n15% increased defense \nIncreases life regeneration by 8 \nIncreases HP by 100 \nReflect 50% of damage back to attackers \nGrants immunity to knockback and most debuffs \nEnemies are more likely to target you";
+			String tooltip = "'Nothing can stop you' \n20% chance to instantly heal back 50% of any damage taken\n20% damage reduction \n15% increased defense \nIncreases life regeneration by 8 \nIncreases HP by 100 \nGrants immunity to knockback and most debuffs \nEnemies are more likely to target you";
 			
 			if(Fargowiltas.instance.calamityLoaded)
 			{
@@ -39,24 +39,17 @@ namespace Fargowiltas.Items.Souls
 			item.width = 20;
 			item.height = 20;
 			item.accessory = true;
-			item.defense = 10;
+			item.defense = 8;
 			item.value = 750000;
 			item.expert = true;
 			item.rare = -12;
 		}
 		
-		public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).dimensionSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-		
-		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
+			
+			((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).tankEffect = true;
+			
 			//thorium
 			if(Fargowiltas.instance.thoriumLoaded)
 			{
@@ -74,7 +67,6 @@ namespace Fargowiltas.Items.Souls
 			
            player.endurance += 0.20f;
 		   player.lifeRegen += 8;
-		   player.thorns += 0.5f; 
 		   player.aggro += 50;
 		   player.statLifeMax2 += 100;
 		   player.hasPaladinShield = true;
@@ -121,7 +113,6 @@ namespace Fargowiltas.Items.Souls
 				
 		    // shiny stone
 		    player.shinyStone = true;
-			
 			
 			// sweet vengeance or star veil
 			if(Fargowiltas.instance.thoriumLoaded)

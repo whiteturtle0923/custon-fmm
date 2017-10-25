@@ -32,6 +32,8 @@ namespace Fargowiltas.Items.Enchantments
         {
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
+			//heal on hit
+			
 			player.aggro += 50;
 			player.thorns = 1f;
 			player.turtleThorns = true;

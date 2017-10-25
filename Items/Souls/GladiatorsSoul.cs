@@ -10,11 +10,11 @@ namespace Fargowiltas.Items.Souls
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Gladiator's Soul");
-			Tooltip.SetDefault("'None shall live to tell the tale' \n40% increased melee damage \n50% increased melee speed \n20% increased melee crit chance \nIncreased melee knockback \nMelee attacks inflict cursed flames \nGrants the effects of the Yoyo Bag" );
+			Tooltip.SetDefault("'None shall live to tell the tale' \n30% increased melee damage \n25% increased melee speed \n20% increased melee crit chance \nIncreased melee knockback \nMelee attacks inflict excessive bleeding \nSword swings have a chance to cut an enemy in two \nGrants the effects of the Yoyo Bag" );
 			
 			if(Fargowiltas.instance.calamityLoaded)
 			{
-				Tooltip.SetDefault("'None shall live to tell the tale' \n40% increased melee damage \n50% increased melee speed \n20% increased melee crit chance \nIncreased melee knockback \nGrants the effects of the Yoyo Bag and Elemental Gauntlet" );
+				Tooltip.SetDefault("'None shall live to tell the tale' \n30% increased melee damage \n25% increased melee speed \n20% increased melee crit chance \nIncreased melee knockback \nGrants the effects of the Yoyo Bag and Elemental Gauntlet" );
 			}
 			
 		}
@@ -29,30 +29,20 @@ namespace Fargowiltas.Items.Souls
 			item.expert = true;
 		}
 		
-		public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-		   ((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul = true;
 		   ((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).meleeEffect = true;
 		   
 		   if(soulcheck.brawl == false)
 		   {
-			   player.meleeSpeed += .2f;
+			   player.meleeSpeed += .1f;
 		   }
 		   else
 		   {
-			   player.meleeSpeed += .5f;
+			   player.meleeSpeed += .25f;
 		   }
            
-		   player.meleeDamage+= .4f;
+		   player.meleeDamage+= .3f;
 		   player.meleeCrit += 20;
 		   player.kbGlove = true;
 		   

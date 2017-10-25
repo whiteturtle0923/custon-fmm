@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spider Enchantment");
-			Tooltip.SetDefault("'Arachniphobia is punishable by death... by arachnids' \n10% increased minion damage \nSummons a super buffed spider minion at no cost");
+			Tooltip.SetDefault("'Arachniphobia is punishable by arachnid induced death' \n10% increased minion damage \nSummon damage causes venom and has a chance to spawn additional spiders");
 		}
 		public override void SetDefaults()
 		{
@@ -27,36 +27,12 @@ namespace Fargowiltas.Items.Enchantments
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
+			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
+			modPlayer.spiderEnchant = true;
 			
 			player.minionDamage += 0.1f;
 			
-			//spider minion
-			if (player.whoAmI == Main.myPlayer)
-            {
-				if(soulcheck.spid == true)
-				{
-					//no one can know
-					player.maxMinions += 1;
-					((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).spiderEnchant = true;
-					
-					if(player.FindBuffIndex(133) == -1)
-					{
-						if (player.ownedProjectileCounts[390] < 1 && player.ownedProjectileCounts[391] < 1 && player.ownedProjectileCounts[392] < 1)
-						{
-							int i = Main.rand.Next(390, 393);
-							Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, i, 50, 3f, Main.myPlayer, 0f, 0f);
-						}
-					}
-					else
-					{
-						Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, 392, 50, 3f, Main.myPlayer, 0f, 0f);
-					}
-				}
-				else
-				{
-					((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).spiderEnchant = false;
-				}
-            }
+			
         }
 		
 		public override void AddRecipes()

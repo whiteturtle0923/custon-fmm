@@ -439,6 +439,18 @@ namespace Fargowiltas
 	        recipe.SetResult(ItemID.MagicalPumpkinSeed);
 	        recipe.AddRecipe();
 			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.Bladetongue);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.Toxikarp);
+	        recipe.AddRecipe();
+			
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.Toxikarp);
+			recipe.AddTile(TileID.AlchemyTable);
+	        recipe.SetResult(ItemID.Bladetongue);
+	        recipe.AddRecipe();
+			
 			//BANNER recipes
 			recipe = new ModRecipe(this);
 			recipe.AddIngredient(ItemID.AngryBonesBanner);
@@ -1302,14 +1314,6 @@ namespace Fargowiltas
                 ItemID.Shadewood, 
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
-			
-			//evilfishing
-			group = new RecipeGroup(() => Lang.misc[37] + " Evil Fished Weapon" , new int[]
-            {
-                ItemID.Toxikarp, 
-                ItemID.Bladetongue, 
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilFished", group);
 			
 			//evilbow
 			group = new RecipeGroup(() => Lang.misc[37] + " Evil Bow" , new int[]

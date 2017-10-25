@@ -41,9 +41,9 @@ namespace Fargowiltas.Items.Explosives
             double deltaAngle = spread/8f;
             double offsetAngle;
             int i;
-			int j = Main.rand.Next(20);
+			int j = Main.rand.Next(100);
 			
-			if((j >= 0) && (j <= 6))
+			if(j < 25)
 			{
 				for (i = 0; i < 1; i++ )
 				{
@@ -51,17 +51,7 @@ namespace Fargowiltas.Items.Explosives
 					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Bomb, damage, knockBack, player.whoAmI, 0f, 0f);
 				}
 			}
-			
-			if((j == 7))
-			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("TrollbombProj"), damage, knockBack, player.whoAmI, 0f, 0f);
-				}
-			}
-			
-			if((j >= 8) && (j <= 11))
+			else if(j < 40)
 			{
 				for (i = 0; i < 1; i++ )
 				{
@@ -69,8 +59,7 @@ namespace Fargowiltas.Items.Explosives
 					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BouncyBomb, damage, knockBack, player.whoAmI, 0f, 0f);
 				}
 			}
-			
-			if((j >= 12) && (j <= 15))
+			else if(j < 55)
 			{
 				for (i = 0; i < 1; i++ )
 				{
@@ -78,8 +67,7 @@ namespace Fargowiltas.Items.Explosives
 					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.StickyBomb, damage, knockBack, player.whoAmI, 0f, 0f);
 				}
 			}
-			
-			if((j >= 16) && (j <= 17))
+			else if(j < 60)
 			{
 				for (i = 0; i < 1; i++ )
 				{
@@ -87,13 +75,36 @@ namespace Fargowiltas.Items.Explosives
 					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.SmokeBomb, damage, knockBack, player.whoAmI, 0f, 0f);
 				}
 			}
-			
-			if((j >= 18) && (j <= 19))
+			else if(j < 75)
 			{
 				for (i = 0; i < 1; i++ )
 				{
 					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
 					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Dynamite, damage, knockBack, player.whoAmI, 0f, 0f);
+				}
+			}
+			else if(j < 90)
+			{
+				for (i = 0; i < 1; i++ )
+				{
+					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
+					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Grenade, damage, knockBack, player.whoAmI, 0f, 0f);
+				}
+			}
+			else if(j < 98)
+			{
+				for (i = 0; i < 1; i++ )
+				{
+					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
+					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BouncyDynamite, damage, knockBack, player.whoAmI, 0f, 0f);
+				}
+			}
+			else
+			{
+				for (i = 0; i < 1; i++ )
+				{
+					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
+					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("TrollbombProj"), damage, knockBack, player.whoAmI, 0f, 0f);
 				}
 			}
             return false;

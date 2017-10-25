@@ -48,20 +48,8 @@ namespace Fargowiltas.Items.Souls
 		}
 		
 		
-		
-		public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-		
-		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-			((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul = true;
 			
             player.maxMinions += 4;
             player.minionDamage += 0.4f;

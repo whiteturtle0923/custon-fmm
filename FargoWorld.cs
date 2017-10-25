@@ -19,9 +19,8 @@ namespace Fargowiltas
 	{
 		public static bool movedLumberjack = false;
 		public static bool downedBetsy = false;
-		
-		
-		
+		public static bool downedBoss = false;
+	
 		//town npcs
 		public static bool guide = false;
 		public static bool merch = false;
@@ -46,11 +45,14 @@ namespace Fargowiltas
 		public static bool steam = false;
 		public static bool borg = false;
 		
+		//thorium npcs
+		
 		
 		public override void Initialize()
 		{
 			movedLumberjack = false;
 			downedBetsy = false;
+			downedBoss = false;
 			
 			//town npcs
 			guide = false;
@@ -83,6 +85,7 @@ namespace Fargowiltas
 			var downed = new List<string>();
 			if (movedLumberjack) downed.Add("lumberjack");
 			if (downedBetsy) downed.Add("betsy");
+			if (downedBoss) downed.Add("boss");
 			
 			//town npcs
 			if (guide) downed.Add("guide");
@@ -120,6 +123,7 @@ namespace Fargowiltas
 			var downed = tag.GetList<string>("downed");
 			movedLumberjack = downed.Contains("lumberjack");
 			downedBetsy = downed.Contains("betsy");
+			downedBoss = downed.Contains("boss");
 			
 			guide = downed.Contains("guide");
 			merch = downed.Contains("merch");
@@ -157,19 +161,22 @@ namespace Fargowiltas
 			int loadVersion = reader.ReadInt32();
 			
 			BitsByte flags = reader.ReadByte();
-			FargoWorld.downedBetsy = flags[0];			
+			FargoWorld.downedBetsy = flags[0];
+			FargoWorld.downedBoss = flags[1];						
 		}
 
 		public override void NetReceive(BinaryReader reader)
 		{
 			BitsByte flags = reader.ReadByte();
-			FargoWorld.downedBetsy = flags[0];			
+			FargoWorld.downedBetsy = flags[0];		
+			FargoWorld.downedBoss = flags[1];		
 		}
 		
 		public override void NetSend(BinaryWriter writer)
 		{
 			BitsByte flags = new BitsByte();
 			flags[0] = downedBetsy;
+			flags[1] = downedBoss;
 			writer.Write(flags);			
 		}
 	}

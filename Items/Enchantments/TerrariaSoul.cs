@@ -140,9 +140,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.crimsonRegen = true;
 			
 			//bee + spider 
-			
 			player.strongBees = true;
-			
 			
 			if(soulcheck.spelunk == true)
 			{
@@ -156,50 +154,6 @@ namespace Fargowiltas.Items.Enchantments
 			{
 				player.dangerSense = true;
 			}
-					//no one can know
-			if(soulcheck.bee == true)
-			{
-				modPlayer.beeEnchant = true;
-				player.maxMinions += 1;
-			}
-			if(soulcheck.spid == true)
-			{
-				modPlayer.spiderEnchant = true;
-				player.maxMinions += 1;
-			}
-			
-			//bee minion
-			if (player.whoAmI == Main.myPlayer)
-			{
-				if(player.FindBuffIndex(125) == -1 && soulcheck.bee == true)
-				{
-					if (player.ownedProjectileCounts[373] < 1)
-					{
-						Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, 373, 100, 2f, Main.myPlayer, 0f, 0f);
-					}
-				}
-				
-				else if(soulcheck.bee == true)
-				{
-					Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, 373, 100, 2f, Main.myPlayer, 0f, 0f);
-				}
-				
-				//spider minion
-				if(player.FindBuffIndex(133) == -1 && soulcheck.spid == true)
-				{
-					if (player.ownedProjectileCounts[390] < 1 && player.ownedProjectileCounts[391] < 1 && player.ownedProjectileCounts[392] < 1)
-					{
-						int i = Main.rand.Next(390, 393);
-						Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, i, 200, 3f, Main.myPlayer, 0f, 0f);
-					}
-				}
-				
-				else if (soulcheck.spid == true)
-				{
-					Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, 392, 200, 3f, Main.myPlayer, 0f, 0f);
-				}
-			}
-			
 			
 			//beetle + turtle
 				player.aggro += 50;

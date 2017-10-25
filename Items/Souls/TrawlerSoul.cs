@@ -12,7 +12,7 @@ namespace Fargowiltas.Items.Souls
 			DisplayName.SetDefault("Trawler Soul");
 			Tooltip.SetDefault("'The fish catch themselves' \n" +
 								"Increases fishing skill substantially \n" +
-								"All fishing rods will have 9 extra lures \n" +
+								"All fishing rods will have 10 extra lures \n" +
 								"Fishing line will never break \n" +
 								"Decreases chance of bait consumption \n" +
 								"Permanent Sonar and Crate Buffs \n" +
@@ -28,18 +28,8 @@ namespace Fargowiltas.Items.Souls
 			item.expert = true;
 		}
 		
-			public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).dimensionSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-          ((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).utilitySoul = true;
 		  ((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).fishSoul2 = true;
 		   
 		  player.sonarPotion = true;
@@ -68,12 +58,10 @@ namespace Fargowiltas.Items.Souls
         {
             ModRecipe fishing = new ModRecipe(mod);
 			
-			fishing.AddIngredient(ItemID.OldShoe, 5);
-			fishing.AddIngredient(ItemID.AnglerHat);
-			fishing.AddIngredient(ItemID.AnglerVest);
-			fishing.AddIngredient(ItemID.AnglerPants);
-			fishing.AddIngredient(ItemID.AnglerTackleBag);
 			fishing.AddIngredient(null, "SuperRod");
+			fishing.AddIngredient(ItemID.AnglerTackleBag);
+			fishing.AddIngredient(ItemID.MechanicsRod);
+			fishing.AddIngredient(ItemID.SittingDucksFishingRod);			
 			
 			if(Fargowiltas.instance.thoriumLoaded)
 			{
@@ -84,22 +72,22 @@ namespace Fargowiltas.Items.Souls
 			else
 			{
 			fishing.AddIngredient(ItemID.GoldenFishingRod);	
-			fishing.AddIngredient(ItemID.FinWings);
 			}
 
 			fishing.AddIngredient(ItemID.FrogLeg);
 			fishing.AddIngredient(ItemID.BalloonHorseshoeSharkron);
-            fishing.AddIngredient(ItemID.ObsidianSwordfish);
-			fishing.AddRecipeGroup("Fargowiltas:AnyEvilFished");
+			fishing.AddIngredient(ItemID.FinWings);
+           
+			fishing.AddIngredient(ItemID.Toxikarp);
+			fishing.AddIngredient(ItemID.Bladetongue);
 			fishing.AddIngredient(ItemID.CrystalSerpent);
+			fishing.AddIngredient(ItemID.ObsidianSwordfish);
+			
 			fishing.AddIngredient(ItemID.SporeSac);
            
 			fishing.AddTile(null, "CrucibleCosmosSheet");
             fishing.SetResult(this);
             fishing.AddRecipe();
 		}
-		
 	}
 }
-
-

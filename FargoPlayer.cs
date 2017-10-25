@@ -90,8 +90,7 @@ namespace Fargowiltas
 		public bool builderMode = false;
 		public bool universeEffect = false;
 		public bool speedEffect = false;
-		public bool damageSoul = false;
-		public bool utilitySoul = false;
+		public bool tankEffect = false;
 		public bool fishSoul1 = false;
 		public bool fishSoul2 = false;
 		public bool dimensionSoul = false;
@@ -114,6 +113,7 @@ namespace Fargowiltas
 		}
 		public override void ResetEffects()
 		{
+			
 			wood = false;
 			eater = false;
 			mWorm = false;
@@ -186,8 +186,7 @@ namespace Fargowiltas
 			builderMode = false;
 			universeEffect = false;
 			speedEffect = false;
-			damageSoul = false;
-		    utilitySoul = false;
+			tankEffect = false;
 			fishSoul1 = false;
 			fishSoul2 = false;
 			dimensionSoul = false;
@@ -229,18 +228,28 @@ namespace Fargowiltas
 		public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
 			
+			if(terrariaSoul)
+			{
+				target.AddBuff(BuffID.Venom, 240, true);  
+			}
+			
 			if (queenStinger)
             {
-				  target.AddBuff(BuffID.Poisoned, 240, true);  
+				  target.AddBuff(BuffID.Poisoned, 120, true);  
+			}  
+
+			if (spiderEnchant && proj.minion)
+            {
+				  target.AddBuff(BuffID.Venom, 120, true);  
 			}   
 			
-			if (meleeEffect)
+			/*if (meleeEffect)
             {
                if(proj.melee)
 			   {
 				  target.AddBuff(BuffID.CursedInferno, 240, true);
 			   }  
-			}   
+			}   */
 			
 			if (throwingEffect)
             {
@@ -362,17 +371,27 @@ namespace Fargowiltas
 		
 		public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
 		{
+			if(terrariaSoul)
+			{
+				target.AddBuff(BuffID.Venom, 240, true);  
+			}
 			
 			if (queenStinger)
             {
-				  target.AddBuff(BuffID.Poisoned, 240, true);  
+				  target.AddBuff(BuffID.Poisoned, 120, true);  
+			}   
+			
+			if (spiderEnchant && item.summon)
+            {
+				  target.AddBuff(BuffID.Venom, 120, true);  
 			}   
 			
 			if (meleeEffect)
             {
                if(item.melee)
 			   {
-				  target.AddBuff(BuffID.CursedInferno, 240, true);
+				 // target.AddBuff(BuffID.CursedInferno, 240, true);
+				  target.AddBuff(mod.BuffType("SuperBleed"), 240, true);
 				  
 			   }  
 			}   
@@ -430,7 +449,7 @@ namespace Fargowiltas
 		
 		public override void MeleeEffects(Item item, Rectangle hitbox)
 		{
-			 
+			
 		}
 
 		public override bool CanBeHitByProjectile(Projectile proj)
@@ -443,7 +462,8 @@ namespace Fargowiltas
 				}
 			}
 			
-			/*if(universeEffect)
+			//ninja?
+			/*if(tankEffect/* && Main.rand.Next(10) == 0)
 			{
 				return false;
 			}*/
@@ -522,6 +542,18 @@ namespace Fargowiltas
 			if((vortexEnchant || terrariaSoul) && vortexCrit > 4)
 			{
 				vortexCrit /= 2;
+			}
+			
+			if(tankEffect && Main.rand.Next(5) == 0)
+			{
+				player.statLife += (Convert.ToInt32(damage * .5));
+				player.HealEffect(Convert.ToInt32(damage * .5));
+			}
+			
+			if(dimensionSoul && Main.rand.Next(3) == 0)
+			{
+				player.statLife += (Convert.ToInt32(damage * .75));
+				player.HealEffect(Convert.ToInt32(damage * .75));
 			}
 			
 		}
@@ -610,90 +642,56 @@ namespace Fargowiltas
 				}
 			}
 			
-			if(item.type == 1553)
-			{
-				Main.NewText("The swarm has been defeated!", 175, 75, 255);
-			}
-			
 			if(fishSoul2 && item.fishingPole > 0)
 			{
-					float spread = 2f * 0.1250f;
-					float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
-					double baseAngle = Math.Atan2(speedX, speedY);
-					double randomAngle = baseAngle + 1f * spread;
-					double randomAngle2 = baseAngle + 0f * spread;
-					double randomAngle3 = baseAngle - 1f * spread;
-					double randomAngle4 = baseAngle + .5f * spread;
-					double randomAngle5 = baseAngle - .5f * spread;
-					double randomAngle6 = baseAngle + 1.5f * spread;
-					double randomAngle7 = baseAngle - 1.5f * spread;
-					double randomAngle8 = baseAngle + 2f * spread;
-					double randomAngle9 = baseAngle - 2f * spread;
-					//double randomAngle10 = baseAngle + 0f * spread;
-					
-					float randomSpeed = Main.rand.NextFloat() * 0.2f + 0.95f;
-					speedX = baseSpeed * randomSpeed * (float)Math.Sin(randomAngle);
-					speedY = baseSpeed * randomSpeed * (float)Math.Cos(randomAngle);
-					
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle3), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle2), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle3), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle4), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle5), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle6), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle7), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle8), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle9), type, damage, knockBack, player.whoAmI, 0f, 0f);
-            
-					return true;
+				float spread = 45f * 0.0174f;
+				float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
+				double startAngle = Math.Atan2(speedX, speedY)- spread/2;
+				double deltaAngle = spread/20f;
+				double offsetAngle;
+				int i;
+				for (i = 0; i < 10;i++ )
+				{
+					offsetAngle = startAngle + deltaAngle * i;
+					Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, player.whoAmI);
+				}
+				
+				return true;
 			}
 			
 			if(fishSoul1 && item.fishingPole > 0)
 			{
-					float spread = 2f * 0.1250f;
-					float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
-					double baseAngle = Math.Atan2(speedX, speedY);
-					double randomAngle = baseAngle + .5f * spread;
-					double randomAngle2 = baseAngle + 1f * spread;
-					double randomAngle3 = baseAngle - .5f * spread;
-					double randomAngle4 = baseAngle - 1f * spread;
+				float spread = 45f * 0.0174f;
+				float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
+				double startAngle = Math.Atan2(speedX, speedY)- spread/2;
+				double deltaAngle = spread/20f;
+				double offsetAngle;
+				int i;
+				
+				for (i = 0; i < 4;i++ )
+				{
+					offsetAngle = startAngle + deltaAngle * i;
+					Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, player.whoAmI);
+				}
+				
+				return true;
 
-					//double randomAngle10 = baseAngle + 0f * spread;
-					
-					float randomSpeed = Main.rand.NextFloat() * 0.2f + 0.95f;
-					speedX = baseSpeed * randomSpeed * (float)Math.Sin(randomAngle);
-					speedY = baseSpeed * randomSpeed * (float)Math.Cos(randomAngle);
-					
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle3), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle2), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle3), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle4), type, damage, knockBack, player.whoAmI, 0f, 0f);
-
-            
-					return true;
 			}
 			
-			if(terrariaSoul && Main.rand.Next(2) == 0 && soulcheck.splitter)
+			if(terrariaSoul && Main.rand.Next(2) == 0 && soulcheck.splitter && !item.summon)
 			{
 					float spread = 2f * 0.1250f;
 					float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
 					double baseAngle = Math.Atan2(speedX, speedY);
-					double randomAngle = baseAngle + 1f * spread;
-					double randomAngle2 = baseAngle + 0f * spread;
-					double randomAngle3 = baseAngle - 1f * spread;
-					float randomSpeed = Main.rand.NextFloat() * 0.2f + 0.95f;
-					speedX = baseSpeed * randomSpeed * (float)Math.Sin(randomAngle);
-					speedY = baseSpeed * randomSpeed * (float)Math.Cos(randomAngle);
+					double offsetAngle;
 					
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle3), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle3), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle2), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					
-					/*Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle), item.shoot, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle3), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle3), item.shoot, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle2), item.shoot, damage, knockBack, player.whoAmI, 0f, 0f);*/
+					for (float i = -1f; i <= 1f; i++ )
+					{
+						offsetAngle = baseAngle + i * spread;
+						Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, player.whoAmI, 0f, 0f);
+					}
             
-					return true;
+					return false;					
 			}
 			
 			if(adamantiteEnchant && item.magic)
@@ -704,19 +702,16 @@ namespace Fargowiltas
 					float spread = 2f * 0.1250f;
 					float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
 					double baseAngle = Math.Atan2(speedX, speedY);
-					double randomAngle = baseAngle + 1f * spread;
-					double randomAngle2 = baseAngle + 0f * spread;
-					double randomAngle3 = baseAngle - 1f * spread;
-					float randomSpeed = Main.rand.NextFloat() * 0.2f + 0.95f;
-					speedX = baseSpeed * randomSpeed * (float)Math.Sin(randomAngle);
-					speedY = baseSpeed * randomSpeed * (float)Math.Cos(randomAngle);
+					double offsetAngle;
 					
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle3), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle3), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					Projectile.NewProjectile(position.X, position.Y, baseSpeed * randomSpeed * (float)Math.Sin(randomAngle2), baseSpeed * randomSpeed * (float)Math.Cos(randomAngle2), type, damage, knockBack, player.whoAmI, 0f, 0f);
-					return true;
+					for (float i = -1f; i <= 1f; i++ )
+					{
+						offsetAngle = baseAngle + i * spread;
+						Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, player.whoAmI, 0f, 0f);
+					}
+            
+					return false;					
 				}
-				
 				else if(Main.rand.Next(20) == 0)
 				{
 					float spread = 45f * 0.0174f;
@@ -731,7 +726,7 @@ namespace Fargowiltas
 					do
 					{
 						r = Main.rand.Next(714);
-					}while(r != 15 && r != 20 && r != 27 && r != 45 && r != 88 && r != 95 && r != 114 && r != 253 && r != 261 && r != 280 && r != 316 && r != 409 && r != 438 && r != 459 && r != 504 && r != 510 && r != 521 && r != 634 && r != 635 && r != 660 && r != 711 && r != 704 && !((r >= 76) && (r <= 78)) && !((r >= 121) && (r <= 126)) && !((r >= 294) && (r <= 295)));
+					}while(r != 15 && r != 20 && r != 27 && r != 45 && r != 88 && r != 95 && r != 114 && r != 253 && r != 261 && r != 280 && r != 316 && r != 409 && r != 459 && r != 504 && r != 510 && r != 521 && r != 634 && r != 635 && r != 660 && r != 711 && r != 704 && !((r >= 76) && (r <= 78)) && !((r >= 121) && (r <= 126)) && !((r >= 294) && (r <= 295)));
 					
 					for (i = 0; i < 1; i++ )
 					{

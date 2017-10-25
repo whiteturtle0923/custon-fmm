@@ -28,18 +28,9 @@ namespace Fargowiltas.Items.Souls
 			item.rare = -12;
 		}
 		
-		public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).dimensionSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-		((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).utilitySoul = true;
+		((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).builderEffect = true;
 		
 		player.tileSpeed += 0.25f;
 		player.wallSpeed += 0.25f;
@@ -61,8 +52,6 @@ namespace Fargowiltas.Items.Souls
 		}
 		//presserator
 		player.autoActuator = true;
-		
-		((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).builderEffect = true;
 		
 		if(!hideVisual)
 		{

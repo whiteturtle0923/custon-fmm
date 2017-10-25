@@ -31,7 +31,12 @@ namespace Fargowiltas.Items.Summons
 
 		public override bool CanUseItem(Player player)
 		{
-		return Main.dayTime != true;
+			return Main.dayTime != true;
+		}
+		
+		public bool SacredToolsDownedLunarians
+		{
+			get { return SacredTools.ModdedWorld.downedLunarians; }
 		}
 
 		public override bool UseItem(Player player)
@@ -43,7 +48,19 @@ namespace Fargowiltas.Items.Summons
 				 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("HarpyBoss")); 
 				 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("ArmoredHarpy")); 
 				 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("ShadowWrath")); 
-				 Projectile.NewProjectile(player.Center.X,player.Center.Y-220,0f,0f, ModLoader.GetMod("SacredTools").ProjectileType("BossPortal"),0,0,Main.myPlayer,0f,0f);
+				 
+				 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("StardustLunarian"));
+				 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("VortexLunarian"));
+                 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("SolarLunarian"));
+				 
+                 if(SacredToolsDownedLunarians)
+                 {
+                     NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("NebulaLunarian"));
+                 }
+                 else
+                 {
+                     NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("ShadowLunarian"));
+                 }
 			 }
 
 			

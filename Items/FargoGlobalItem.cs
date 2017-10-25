@@ -124,6 +124,16 @@ namespace Fargowiltas.Items
 				}
 		}
 		
+		public override void UpdateAccessory (Item item, Player player, bool hideVisual)
+		{
+			if(player.manaCost <= 0f)
+			{
+				player.manaCost = 0f;
+			}
+		}
+		
+		
+		
 		//pouch divers
 		/*public override void PickAmmo (Item item, Player player, ref int type, ref float speed, ref int damage, ref float knockback)
 		{

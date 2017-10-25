@@ -33,19 +33,9 @@ namespace Fargowiltas.Items.Souls
 			item.rare = -12;
 			item.expert = true;
 		}
-		
-		public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-			((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul = true;
 		 
 			player.manaCost -= .33f;
 			player.magicDamage+= .4f;

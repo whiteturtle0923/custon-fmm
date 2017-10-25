@@ -30,23 +30,11 @@ namespace Fargowiltas.Items.Souls
 			item.value = 750000;
 			item.expert = true;
 			item.rare = -12;
-		}
-		
-		public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).dimensionSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-		
+		}		
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-		((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).utilitySoul = true;
 		
-			
 		//arctic diving gear
 		player.arcticDivingGear = true;
 		player.accFlipper = true;

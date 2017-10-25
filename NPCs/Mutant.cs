@@ -525,7 +525,7 @@ namespace Fargowiltas.NPCs
 		
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if ((NPC.downedBoss1 == true) || (NPC.downedSlimeKing == true) || (NPC.downedBoss2 == true) || (NPC.downedQueenBee == true) || (NPC.downedBoss3 == true) || (Main.hardMode == true))
+            if (FargoWorld.downedBoss || NPC.downedBoss1 == true || NPC.downedSlimeKing == true)
             {
                 return true;
             }    

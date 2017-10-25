@@ -40,15 +40,6 @@ namespace Fargowiltas.Items.Souls
 			ItemID.Sets.ItemNoGravity[item.type] = true;
 		}
 		
-		public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-		
 		/*public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             TooltipLine line = new TooltipLine(mod, "universe", "Damage Soul");
@@ -58,7 +49,6 @@ namespace Fargowiltas.Items.Souls
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-		((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).damageSoul = true;
 			 
 			//mage
 		   player.manaCost -= .5f;

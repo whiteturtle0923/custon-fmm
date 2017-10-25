@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mythril Enchantment");
-			Tooltip.SetDefault("'You feel knowledge of your weapons seep into yor mind' \n" +
+			Tooltip.SetDefault("'You feel the knowledge of your weapons seep into your mind' \n" +
 								"20% increased ranged weapon use speed \n" +
 								"10% increased ranged critical strike chance");
 		}

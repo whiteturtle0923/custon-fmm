@@ -57,10 +57,19 @@ namespace Fargowiltas.Projectiles
                     {
                         WorldGen.KillTile(xPosition, yPosition, false, false, false);  //tile ded
 						WorldGen.KillWall(xPosition, yPosition);
-						//Main.tile[xPosition, yPosition].ClearEverthing();
-						//Tile tile = Framing.GetTileSafely(xPosition, yPosition);
-						//tile.ClearEverything();
-                        //Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color(), 1f);  
+						
+						Tile tile = Main.tile[xPosition, yPosition];
+					
+						if(tile != null)
+						{
+							tile.liquid = 0;
+							tile.lava(false);
+							tile.honey(false);
+							if (Main.netMode == 2)
+							{
+								NetMessage.sendWater(xPosition, yPosition);
+							}
+						}
                     }
                 }
             }

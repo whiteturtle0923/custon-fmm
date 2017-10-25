@@ -21,10 +21,10 @@ namespace Fargowiltas
 		public UICheckbox inferno;
 		public static bool yellow = true;
 		public UICheckbox shield;
-		public static bool bee = true;
-		public UICheckbox movie;
-		public static bool spid = true;
-		public UICheckbox spooder;
+		public static bool splitEnemy = true;
+		public UICheckbox splitEnemyBox;
+		public static bool seasonalSpawns = true;
+		public UICheckbox seasonalSpawnsBox;
 		public static bool beet = true;
 		public UICheckbox beetl;
 		public static bool chloro = true;
@@ -97,21 +97,21 @@ namespace Fargowiltas
 			checklistPanel.Append(shield);
 			checklistPanel.Append(inferno);
 			
-			movie = new UICheckbox("Bee minion", "",new Color(242, 201, 21), new Color(173, 94, 171), true, 1f, false);
-			movie.Top.Set(50f, 0f);
-			movie.OnSelectedChanged += (object o, EventArgs e) =>
+			splitEnemyBox = new UICheckbox("Split enemies", "",new Color(242, 201, 21), new Color(173, 94, 171), true, 1f, false);
+			splitEnemyBox.Top.Set(50f, 0f);
+			splitEnemyBox.OnSelectedChanged += (object o, EventArgs e) =>
 			{
-				bee = !bee;
+				splitEnemy = !splitEnemy;
 			};
-			checklistPanel.Append(movie);
+			checklistPanel.Append(splitEnemyBox);
 			
-			spooder = new UICheckbox("Spider minion", "",new Color(114, 74, 25), new Color(173, 94, 171), true, 1f, false);
-			spooder.Top.Set(75f, 0f);
-			spooder.OnSelectedChanged += (object o, EventArgs e) =>
+			seasonalSpawnsBox = new UICheckbox("Seasonal Enemy Spawns", "",new Color(114, 74, 25), new Color(173, 94, 171), true, 1f, false);
+			seasonalSpawnsBox.Top.Set(75f, 0f);
+			seasonalSpawnsBox.OnSelectedChanged += (object o, EventArgs e) =>
 			{
-				spid = !spid;
+				seasonalSpawns = !seasonalSpawns;
 			};
-			checklistPanel.Append(spooder);
+			checklistPanel.Append(seasonalSpawnsBox);
 			
 			beetl = new UICheckbox("Beetles", "",new Color(88, 89, 153), new Color(173, 94, 171), true, 1f, false);
 			beetl.Top.Set(100f, 0f);

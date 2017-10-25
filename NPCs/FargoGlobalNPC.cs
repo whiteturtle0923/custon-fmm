@@ -11,10 +11,56 @@ namespace Fargowiltas.NPCs
 {
 	public class FargoGlobalNPC : GlobalNPC
 	{
+		public override bool InstancePerEntity
+		{
+			get
+			{
+				return true;
+			}
+		}
+		public bool sBleed = false;
+		
+		public override void ResetEffects(NPC npc)
+		{
+			sBleed = false;
+		}
+		
 		public override void SetDefaults (NPC npc)
 		{
 			if(Fargowiltas.instance.multiSlime && npc.type == NPCID.KingSlime)
 			{
+				
+			}
+		}
+		
+		public override void UpdateLifeRegen(NPC npc, ref int damage)
+		{
+			if (sBleed)
+			{
+				if (npc.lifeRegen > 0)
+				{
+					npc.lifeRegen = 0;
+				}
+				npc.lifeRegen -= 40;
+				if (damage < 10)
+				{
+					damage = 10;
+				}
+				
+				if(Main.rand.Next(4) == 0)
+				{
+					int dmg;
+					if(npc.lifeMax < 2000)
+					{
+						dmg = 20;
+					}
+					else
+					{
+						dmg = npc.lifeMax / 100;
+					}
+					
+					Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 40, 0f + Main.rand.Next(-5, 5), -5f, mod.ProjectileType("SuperBlood"), dmg, 0f, Main.myPlayer, 0f, 0f);
+				}
 				
 			}
 		}
@@ -42,52 +88,50 @@ namespace Fargowiltas.NPCs
 			int y = spawnInfo.spawnTileY;
 			bool Cavern = (y >= (Main.maxTilesY * 0.4f) && y <= (Main.maxTilesY * 0.8f)); 
 			//season enemies
-			if(Main.hardMode)
+			if(soulcheck.seasonalSpawns)
 			{
-				if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
+				if(Main.hardMode)
 				{
-					pool[NPCID.HoppinJack] = .04f;
-				}
-			
-				if(Fargowiltas.NormalSpawn(spawnInfo) && Cavern && Fargowiltas.NoBiome(spawnInfo))
-				{
-					pool[NPCID.Ghost] = .04f;
+					if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
+					{
+						pool[NPCID.HoppinJack] = .04f;
+					}
+				
+					if(Fargowiltas.NormalSpawn(spawnInfo) && Cavern && Fargowiltas.NoBiome(spawnInfo))
+					{
+						pool[NPCID.Ghost] = .04f;
+					}
+					
+					if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
+					{
+						pool[NPCID.Raven] = .015f;
+					}
 				}
 				
-				if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
+				else
 				{
-					pool[NPCID.Raven] = .015f;
+					if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
+					{
+						pool[NPCID.Raven] = .04f;
+					}
 				}
-			}
-			
-			else
-			{
-				if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
+				
+				if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
 				{
-					pool[NPCID.Raven] = .04f;
+						pool[NPCID.SlimeRibbonWhite] = .01f;
 				}
-			}
-			
-			if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
-			{
-					pool[NPCID.SlimeRibbonWhite] = .01f;
-			}
-			if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
-			{
-					pool[NPCID.SlimeRibbonYellow] = .01f;
-			}
-			if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
-			{
-					pool[NPCID.SlimeRibbonGreen] = .01f;
-			}
-			if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
-			{
-					pool[NPCID.SlimeRibbonRed] = .01f;
-			}
-			
-			if(Fargowiltas.instance.multiSlime)
-            {
-				pool[NPCID.KingSlime] = 10f;
+				if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
+				{
+						pool[NPCID.SlimeRibbonYellow] = .01f;
+				}
+				if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
+				{
+						pool[NPCID.SlimeRibbonGreen] = .01f;
+				}
+				if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
+				{
+						pool[NPCID.SlimeRibbonRed] = .01f;
+				}
 			}
 			
 		
@@ -730,7 +774,7 @@ namespace Fargowiltas.NPCs
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Heart, 1);
 			}
 			
-			//elemental
+			//SoT
 			if(modPlayer.terrariaSoul && Main.rand.Next(3) == 0)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Heart, 1);
@@ -887,6 +931,11 @@ namespace Fargowiltas.NPCs
 				 FargoWorld.downedBetsy = true;
             }
 			
+			if(npc.boss)
+            {
+				 FargoWorld.downedBoss = true;
+            }
+			
             return true;
 		}
 		
@@ -908,6 +957,11 @@ namespace Fargowiltas.NPCs
 				}
 			}
 			
+			if(projectile.type == ProjectileID.RottenEgg && npc.townNPC)
+			{
+				damage *= 20;
+			}
+			
 			
 		}
 		public override bool StrikeNPC (NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
@@ -925,6 +979,17 @@ namespace Fargowiltas.NPCs
 			}
 			//normal damage calc
 			return true;
+		}
+		
+		public override void OnHitByItem (NPC npc, Player player, Item item, int damage, float knockback, bool crit)
+		{
+			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
+			
+			
+			if((soulcheck.splitEnemy && modPlayer.meleeEffect || modPlayer.universeEffect) && !npc.boss && Main.rand.Next(5) == 0)
+			{
+				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, npc.type);
+			}
 		}
 		
 		public override void DrawEffects(NPC npc, ref Color drawColor)

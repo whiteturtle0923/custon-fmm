@@ -24,24 +24,6 @@ namespace Fargowiltas.Projectiles
 			Player player = Main.player[Main.myPlayer];
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
-			if(projectile.type == 373)
-			{
-				if ((!modPlayer.beeEnchant) && (player.FindBuffIndex(125) == -1))
-				{
-					projectile.Kill();
-					return;
-				}
-			}
-			
-			if(projectile.type == 391 || projectile.type == 392 || projectile.type == 390)
-			{
-				if (!modPlayer.spiderEnchant && (player.FindBuffIndex(133) == -1))
-				{
-					projectile.Kill();
-					return;
-				}
-			}
-			
 			if(projectile.type == 623)
 			{
 				if (!modPlayer.stardustEnchant && (player.FindBuffIndex(187) == -1))
@@ -215,19 +197,33 @@ namespace Fargowiltas.Projectiles
 				Main.projectile[fireball].melee = false;
 			}
 			
-			if (projectile.minion)
+			if(modPlayer.beeEnchant && projectile.minion && Main.rand.Next(5) == 0)
 			{
-				if (modPlayer.universeEffect)
-				{
-					target.AddBuff(BuffID.Ichor, 240, true);
-					target.AddBuff(BuffID.CursedInferno, 240, true);
-					target.AddBuff(BuffID.Confused, 120, true);
-					target.AddBuff(BuffID.Venom, 240, true);
-					target.AddBuff(BuffID.ShadowFlame, 240, true);
-					target.AddBuff(BuffID.OnFire, 240, true);
-					target.AddBuff(BuffID.Frostburn, 240, true);
-					target.AddBuff(BuffID.Daybreak, 240, true);	
-				}
+				Projectile.NewProjectile(projectile.Center.X + Main.rand.Next(-40, 40), projectile.Center.Y + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-5, 5), -5f, 181, projectile.damage / 3, 0f, projectile.owner, 0f, 0f);
+			}
+			
+			if(modPlayer.spiderEnchant && projectile.minion && Main.rand.Next(5) == 0)
+			{
+				Projectile.NewProjectile(projectile.Center.X + Main.rand.Next(-40, 40), projectile.Center.Y + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-5, 5), -5f, 379, projectile.damage / 2, 0f, projectile.owner, 0f, 0f);
+			}
+			
+			if(modPlayer.terrariaSoul && Main.rand.Next(4) == 0)
+			{
+				Projectile.NewProjectile(projectile.Center.X + Main.rand.Next(-40, 40), projectile.Center.Y + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-5, 5), -5f, 181, projectile.damage / 3, 0f, projectile.owner, 0f, 0f);
+				
+				Projectile.NewProjectile(projectile.Center.X + Main.rand.Next(-40, 40), projectile.Center.Y + Main.rand.Next(-40, 40), 0f + Main.rand.Next(-5, 5), -5f, 379, projectile.damage / 2, 0f, projectile.owner, 0f, 0f);
+			}
+			
+			if (projectile.minion && modPlayer.universeEffect)
+			{
+				target.AddBuff(BuffID.Ichor, 240, true);
+				target.AddBuff(BuffID.CursedInferno, 240, true);
+				target.AddBuff(BuffID.Confused, 120, true);
+				target.AddBuff(BuffID.Venom, 240, true);
+				target.AddBuff(BuffID.ShadowFlame, 240, true);
+				target.AddBuff(BuffID.OnFire, 240, true);
+				target.AddBuff(BuffID.Frostburn, 240, true);
+				target.AddBuff(BuffID.Daybreak, 240, true);	
 			}
 		}
 		

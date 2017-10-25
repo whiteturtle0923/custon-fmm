@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bee Enchantment");
-			Tooltip.SetDefault("'According to all known laws of aviation, there is no way a bee should be able to fly' \n5% increased minion damage \nIncreases the strength of friendly bees \nSummons a buffed hornet minion at no cost, turn off vanity to despawn it");
+			Tooltip.SetDefault("'According to all known laws of aviation, there is no way a bee should be able to fly' \n5% increased minion damage \nIncreases the strength of friendly bees \nSummon damage has a chance to spawn additional bees");
 		}
 		public override void SetDefaults()
 		{
@@ -27,38 +27,11 @@ namespace Fargowiltas.Items.Enchantments
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
+			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
+			modPlayer.beeEnchant = true;
+			
 			player.minionDamage += 0.05f;
-			player.strongBees = true;
-			
-			
-			//bee minion
-			if (player.whoAmI == Main.myPlayer)
-            {
-				if(soulcheck.bee == true)
-				{
-					((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).beeEnchant = true;
-					//no one can know
-					player.maxMinions += 1;
-					
-					if(player.FindBuffIndex(125) == -1)
-					{
-						if (player.ownedProjectileCounts[373] < 1)
-						{
-							Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, 373, 30, 2f, Main.myPlayer, 0f, 0f);
-						}
-					}
-					else
-					{
-						Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, 373, 30, 2f, Main.myPlayer, 0f, 0f);
-					}
-				}
-				else
-				{
-					((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).beeEnchant = false;
-				}
-			}
-                
-				
+			player.strongBees = true;  	
         }
 		
 		public override void AddRecipes()

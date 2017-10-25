@@ -1,3 +1,20 @@
+NEW UPDATE - v .13.3
+-removed thorns effect from Colossus Soul and added healing on hit and 15% increased defense but lower flat defense
+-similar changes to Soul of Dimensions
+-Gladiator's Soul now can split enemies in 2 (aka spawn more) and causes excessive bleeding
+-added toggles for seasonal enemies and splitting enemies 
+-changed amount of extra lures on fishing items, made them work better, and altered recipes
+-all Souls and Essences can be stacked now
+-minions can no longer be 'shot in a spread' with Soul of Terraria
+-changed effects of Bee and Spider Enchantments
+-Troll Bomb has a lower chance of being bad
+-The Mutant can arrive on modded boss kills
+-Instavator and Galactic Reformer now eviscerate water
+-Rotten Eggs now deal 20x damage to town npcs
+-you can no longer have negative mana costs
+-fixed Adamantite Enchantment killing you
+-fixed Sacred Tools Ancient Seal issue
+
 NEW UPDATE - v .13.2
 -added a 'Builder Mode' effect to the World Shaper Soul and by extension Soul of Dimensions, use vanity to toggle it off!
 -fixed some Mutant typos

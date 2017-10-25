@@ -21,6 +21,7 @@ namespace Fargowiltas.Items.Souls
 			
 			Tooltip.SetDefault("'The dimensions of Terraria are at your fingertips'"
 				+ "\nDoes various things");
+				//33% chance to instantly heal back 75% of any damage taken
                /* + "\nActs as wings \nAllows for infinite flight"
                 + "\n30% damage reduction \nIncreases life regeneration by 15 \nIncreases HP by 500 \nReflect 100% of damage back to attackers \nEffects of the Star Veil, Paladin's Shield, and Frozen Turtle Shell \nGrants immunity to even more debuffs"
                 + "\n25% increased movement speed \nAllows supersonic fast running, and extra mobility on ice \nAllows the player to dash into the enemy"
@@ -43,21 +44,12 @@ namespace Fargowiltas.Items.Souls
 			item.width = 32;
 			item.height = 32;
 			item.accessory = true;
-			item.defense = 25;
+			item.defense = 12;
 			ItemID.Sets.ItemNoGravity[item.type] = true;
 			item.value = 1500000;
 			item.rare = -12;
 			item.expert = true;
 		}		
-		public override bool CanEquipAccessory(Player player, int slot)
-        {
-            if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).utilitySoul == true)
-            {
-                return false;
-            }
-            return true;
-        }
-		
 			
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -69,6 +61,7 @@ namespace Fargowiltas.Items.Souls
 			player.thorns += 1f; 
 			player.aggro += 100;
 			player.statLifeMax2 += 500;
+			player.statDefense = (int)(player.statDefense * 1.25);
 		   
 		//ankh shield
 			player.buffImmune[46] = true; //chilled
