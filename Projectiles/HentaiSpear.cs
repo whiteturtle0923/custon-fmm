@@ -18,8 +18,13 @@ namespace Fargowiltas.Projectiles
 
 		public override void SetDefaults()
 		{
+<<<<<<< HEAD
 			projectile.width = 116;
 			projectile.height = 116;
+=======
+			projectile.width = 18;
+			projectile.height = 18;
+>>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
 			projectile.aiStyle = 19;
 			projectile.friendly = true;
 			projectile.penetrate = -1;
@@ -42,12 +47,15 @@ namespace Fargowiltas.Projectiles
 
 		public override void AI()
 		{
+<<<<<<< HEAD
 			//dust!
 			int DustID = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width / 2, projectile.height + 5, 15, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
 			Main.dust[DustID].noGravity = true;
 			int DustID3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width / 2, projectile.height + 5, 15, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
 			Main.dust[DustID3].noGravity = true;
 			
+=======
+>>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
 			// Since we access the owner player instance so much, it's useful to create a helper local variable for this
 			// Sadly, Projectile/ModProjectile does not have its own
 			Player projOwner = Main.player[projectile.owner];

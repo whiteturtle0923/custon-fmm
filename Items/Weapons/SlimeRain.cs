@@ -42,7 +42,11 @@ namespace Fargowiltas.Items.Weapons
 		
 		  public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+<<<<<<< HEAD
             int numberProjectiles = 10;  //This defines how many projectiles to shot
+=======
+            int numberProjectiles = 10;//4 + Main.rand.Next(4);  //This defines how many projectiles to shot
+>>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
             for (int index = 0; index < numberProjectiles; ++index)
             {
                 Vector2 vector2_1 = new Vector2((float)((double)player.position.X + (double)player.width * 0.5 + (double)(Main.rand.Next(201) * -player.direction) + ((double)Main.mouseX + (double)Main.screenPosition.X - (double)player.position.X)), (float)((double)player.position.Y + (double)player.height * 0.5 - 600.0));   //this defines the projectile width, direction and position
