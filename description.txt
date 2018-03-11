@@ -1,0 +1,64 @@
+-reduced EoC spawn rate in half
+
+NEW UPDATE - v .16
+-Masochist Mode has MANY more features now see wiki for a list
+-fixed spawning of seasonal enemies spawning in the sky
+-Chlorophyte Enchantment now has an extra effect 
+-Bone Zone shoots Shadowflame Skulls instead of normal ones
+-Void Soul's void doesn't suck in DD2 event portals or crystal
+-Abominationn line change to 2019 (:
+
+NEW UPDATE - v .15.4
+-Reworked the Gold Enchantment damage calculation
+-fixed a bug with collecting gold coins
+-removed Sharpshooter Soul's sniper scope effect
+
+This mod adds:
+
+Mutant NPC - sells boss summons as you kill them.
+Mutant Vanity Set - crafted from boss masks
+
+Current mods supported:
+	Thorium
+	Calamity
+	Sacred Tools
+	Pumpking's
+	Crystilium
+	Tremor
+	Ersion
+	Joost
+	BlueMagic
+	WaterBiome
+	Shrooms
+	Spirit
+
+LumberJack NPC - sells wood.
+	
+SUMMONS
+	Suspicious Skull - summons Skeletron without killing the Clothier
+	Fleshy doll- summons the wall of flesh only in the underworld
+	Death Bringer Fairy - summons all pre-hardmode bosses
+	Mechanical Amalgam - summons the 3 mechanical bosses
+	Plantera's Bulb - summons Plantera
+	Runic Power Cell - summons the Golem without an altar
+	Mutant Voodoo Doll - summons every vanilla boss
+	Last Seal - summons every boss including certain modded 
+
+SOULS (expert only end game accessories)
+	Conjurist's Soul
+	Gladiator's Soul
+	Arch Wizard's Soul
+	Sharpshooter's Soul
+	Olympian's Soul
+	Colossus Soul
+	Trawler's Soul
+	Flight Mastery Soul
+	Supersonic Soul
+	World Shaper Soul
+	All Souls combine into the Soul of the Universe (MOst OP accessory ever seen)
+
+WEAPONS
+	Void Bow
+	Boom Shuriken
+
+
