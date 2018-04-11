@@ -21,6 +21,7 @@ namespace Fargowiltas.Buffs
 
             if(type == BuffID.Slimed)
             {
+                Main.buffNoTimeDisplay[type] = false;
                 modPlayer.slimed = true;
             }
 

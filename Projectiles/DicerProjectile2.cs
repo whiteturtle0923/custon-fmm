@@ -28,7 +28,6 @@ namespace Fargowiltas.Projectiles
 			{
 				projectile.scale += .1f;
 				projectile.rotation += 0.2f;
-
 			}
 			
 			counter++;
@@ -46,16 +45,6 @@ namespace Fargowiltas.Projectiles
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -4f, -4f, proj2, (int)(projectile.damage * 0.5f), 2, Main.myPlayer, 0f, 0f);
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 4f, -4f, proj2, (int)(projectile.damage * 0.5f), 2, Main.myPlayer, 0f, 0f);
 				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -4f, 4f, proj2, (int)(projectile.damage * 0.5f), 2, Main.myPlayer, 0f, 0f);
-		}
-		
-		public override void PostAI()
-		{
-			/*if (Main.rand.Next(2) == 0)
-			{
-				int dustIndex = Dust.NewDust(projectile.position, projectile.width, projectile.height, 16, 0f, 0f, 0, default(Color), 1f);
-				Main.dust[dustIndex].noGravity = true;
-				Main.dust[dustIndex].scale = 1.6f;
-			}*/
 		}
 	}
 }

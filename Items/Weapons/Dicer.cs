@@ -28,9 +28,9 @@ namespace Fargowiltas.Items.Weapons
 			item.shootSpeed = 16f;
 
 			item.knockBack = 2.5f;
-			item.damage = 124;
+			item.damage = 84;
 			item.value = Item.sellPrice(0, 30, 0, 0);
-			item.rare = 0;
+			item.rare = 8;
 		}
 	}
 }

@@ -32,6 +32,17 @@ namespace Fargowiltas.Buffs
 		   player.onFrostBurn = true;
 		   player.burned = true;
 		   player.ichor = true;
+           player.venom = true;
         }
-	}
+
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.onFire = true;
+            npc.onFire2 = true;
+            npc.shadowFlame = true;
+            npc.onFrostBurn = true;
+            npc.ichor = true;
+            npc.venom = true;
+        }
+    }
 }

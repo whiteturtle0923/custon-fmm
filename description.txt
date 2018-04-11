@@ -1,18 +1,41 @@
-<<<<<<< HEAD
+-Tavernkeep can now be caught
+-Skeleton Merchant and Travelling MErchant can be caught
+removed skeleton and travelloing mervhsnt spawns from pandoras box and made it only usable at night again
+-Infinity Relic down side changed, no longer reduces damage or regen, damages you when you attack instead
+-fixed bug with bone zone not dropping from treasure bag
+fernium mod support
+
+
+NEW UPDATE - v .16.2
+-Fleshy Doll wont be consumed if there is already a WoF
+-nerfed Slime Slinging Slasher and Dicer damage
+-fixed dicer projectiles not damaging and wrong rarity
+-World Shaper Soul's Builder mode will now not consume walls
+
+Masomode
+-reduced Leech spawn rate
+-increased pillar debuff range
+-invincible NPCs don't regen
+-lowered Servant of Cthulhu 'ss Hexed debuff length
+
+NEW UPDATE - v .16.1
+
+Masomode Fixes 
+-fixed insane regen in multiplayer
+-segmented bosses now stop regenning when any part of them is hit (worms, WoF)
+-Slimed debuff has a timer now
+-reduce boss spawn chance if one is already alive
 -reduced EoC spawn rate in half
+-lowered BoC and EoW spawn in hard mode
+-lower spawn rate in prehardmode
+-slower crawdad bubbles
+-lower granite enemy stoned chance
 
-NEW UPDATE - v .16
--Masochist Mode has MANY more features now see wiki for a list
--fixed spawning of seasonal enemies spawning in the sky
--Chlorophyte Enchantment now has an extra effect 
--Bone Zone shoots Shadowflame Skulls instead of normal ones
--Void Soul's void doesn't suck in DD2 event portals or crystal
--Abominationn line change to 2019 (:
-
-NEW UPDATE - v .15.4
--Reworked the Gold Enchantment damage calculation
--fixed a bug with collecting gold coins
--removed Sharpshooter Soul's sniper scope effect
+Other Fixes
+-Forgotten Claw can be used anytime now
+-fixed SoU having ninja gear effects when it shouldn't and not having throw split effect
+-SoU inflicts Flames of the Universe instead of a bunch of debuffs
+-removed recipe for Slime Kings Slasher
 
 This mod adds:
 
@@ -63,92 +86,3 @@ WEAPONS
 	Boom Shuriken
 
 
-=======
-NEW UPDATE - v .13.3
--removed thorns effect from Colossus Soul and added healing on hit and 15% increased defense but lower flat defense
--similar changes to Soul of Dimensions
--Gladiator's Soul now can split enemies in 2 (aka spawn more) and causes excessive bleeding
--added toggles for seasonal enemies and splitting enemies 
--changed amount of extra lures on fishing items, made them work better, and altered recipes
--all Souls and Essences can be stacked now
--minions can no longer be 'shot in a spread' with Soul of Terraria
--changed effects of Bee and Spider Enchantments
--Troll Bomb has a lower chance of being bad
--The Mutant can arrive on modded boss kills
--Instavator and Galactic Reformer now eviscerate water
--Rotten Eggs now deal 20x damage to town npcs
--you can no longer have negative mana costs
--fixed Adamantite Enchantment killing you
--fixed Sacred Tools Ancient Seal issue
-
-NEW UPDATE - v .13.2
--added a 'Builder Mode' effect to the World Shaper Soul and by extension Soul of Dimensions, use vanity to toggle it off!
--fixed some Mutant typos
-
-NEW UPDATE - v .13.1
--added more Calamity, Spirit, and Tremor items to the Mutant
--added bool support for Crystilium and Echoes of the Ancients and added Exodus Mod support
--fixed Slime Rain having a recipe
--fixed Guardian's Angel Soul tooltip typo
--also reduced the size of the mod
-
-NEW UPDATE - v .13.0
--Added Dicer, Seismic Actuator, Slime Rain (wip), Energizers for all swarms (most are useless still :D)
--Huge revamp to all swarms, report any problems please
--Added several more banner recipes for almost every drop
--Trophy weapons are now just boss drops
--Suspicious Skull now spawns Dungeon Guardian if used during the day
--Soul of the Universe makes crits deal 8x damage now (:
--Leash of Cthulhu no longer clips on blocks all the time
--Fixed the Siren's Pearl for Calamity and Tremor breaking the Mutant's shop
-
-This mod adds:
-
-Mutant NPC - sells boss summons as you kill them.
-Mutant Vanity Set - crafted from boss masks
-
-Current mods supported:
-	Thorium
-	Calamity
-	Sacred Tools
-	Pumpking's
-	Crystilium
-	Tremor
-	Ersion
-	Joost
-	BlueMagic
-	WaterBiome
-	Shrooms
-	Spirit
-
-LumberJack NPC - sells wood.
-	
-SUMMONS
-	Suspicious Skull - summons Skeletron without killing the Clothier
-	Fleshy doll- summons the wall of flesh only in the underworld
-	Death Bringer Fairy - summons all pre-hardmode bosses
-	Mechanical Amalgam - summons the 3 mechanical bosses
-	Plantera's Bulb - summons Plantera
-	Runic Power Cell - summons the Golem without an altar
-	Mutant Voodoo Doll - summons every vanilla boss
-	Last Seal - summons every boss including certain modded 
-
-SOULS (expert only end game accessories)
-	Conjurist's Soul
-	Gladiator's Soul
-	Arch Wizard's Soul
-	Sharpshooter's Soul
-	Olympian's Soul
-	Colossus Soul
-	Trawler's Soul
-	Flight Mastery Soul
-	Supersonic Soul
-	World Shaper Soul
-	All Souls combine into the Soul of the Universe (MOst OP accessory ever seen)
-
-WEAPONS
-	Void Bow
-	Boom Shuriken
-
-
->>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f

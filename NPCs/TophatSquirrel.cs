@@ -42,6 +42,7 @@ namespace Fargowiltas.NPCs
             return spawnInfo.spawnTileY < Main.rockLayer && !spawnInfo.invasion && !spawnInfo.sky && !Main.eclipse && !spawnInfo.player.ZoneDesert && !spawnInfo.player.ZoneJungle ? 0.05f : 0f;
         }
 		
+		// lazy gore
 		public override void HitEffect(int hitDirection, double damage)
         {
 			if (npc.life <= 0)

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -174,7 +173,7 @@ namespace Fargowiltas.NPCs
             if (npc.type == NPCID.DD2Bartender)
             {
                 Main.npcCatchable[npc.type] = true;
-                npc.catchItem = (short)mod.ItemType("DD2Bartender");
+                npc.catchItem = (short)mod.ItemType("Tavernkeep");
             }
             if (npc.type == NPCID.ArmsDealer)
             {
@@ -251,11 +250,22 @@ namespace Fargowiltas.NPCs
                 Main.npcCatchable[npc.type] = true;
                 npc.catchItem = (short)mod.ItemType("Cyborg");
             }
+            if (npc.type == NPCID.TravellingMerchant)
+            {
+                Main.npcCatchable[npc.type] = true;
+                npc.catchItem = (short)mod.ItemType("TravellingMerchant");
+            }
+            if (npc.type == NPCID.SkeletonMerchant)
+            {
+                Main.npcCatchable[npc.type] = true;
+                npc.catchItem = (short)mod.ItemType("SkeletonMerchant");
+            }
 
         }
 
         public override void AI(NPC npc)
         {
+
             if (FargoWorld.masochistMode)
             {
 
@@ -478,7 +488,7 @@ namespace Fargowiltas.NPCs
                     Player player = Main.player[npc.FindClosestPlayer()];
                     if (npc.Distance(player.Center) < 800)
                     {
-                        Vector2 velocity = Vector2.Normalize(player.Center - npc.Center) * 14;
+                        Vector2 velocity = Vector2.Normalize(player.Center - npc.Center) * 10;
                         int bubble = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, NPCID.DetonatingBubble);
                         Main.npc[bubble].velocity = velocity;
                         Main.npc[bubble].damage = npc.damage / 2;
@@ -521,7 +531,7 @@ namespace Fargowiltas.NPCs
                 {
                     foreach (Player p in Main.player)
                     {
-                        if (npc.Distance(p.Center) < 4000)
+                        if (npc.Distance(p.Center) < 5000)
                         {
                             p.AddBuff(mod.BuffType("Atrophied"), 2);
                             p.AddBuff(mod.BuffType("Jammed"), 2);
@@ -535,7 +545,7 @@ namespace Fargowiltas.NPCs
                 {
                     foreach (Player p in Main.player)
                     {
-                        if (npc.Distance(p.Center) < 4000)
+                        if (npc.Distance(p.Center) < 5000)
                         {
                             p.buffImmune[BuffID.Silenced] = false;
                             p.AddBuff(BuffID.Silenced, 2);
@@ -550,7 +560,7 @@ namespace Fargowiltas.NPCs
                 {
                     foreach (Player p in Main.player)
                     {
-                        if (npc.Distance(p.Center) < 4000)
+                        if (npc.Distance(p.Center) < 5000)
                         {
                             p.AddBuff(mod.BuffType("Atrophied"), 2);
                             p.AddBuff(mod.BuffType("Jammed"), 2);
@@ -565,7 +575,7 @@ namespace Fargowiltas.NPCs
                 {
                     foreach (Player p in Main.player)
                     {
-                        if (npc.Distance(p.Center) < 4000)
+                        if (npc.Distance(p.Center) < 5000)
                         {
                             p.AddBuff(mod.BuffType("Atrophied"), 2);
                             p.buffImmune[BuffID.Silenced] = false;
@@ -691,12 +701,12 @@ namespace Fargowiltas.NPCs
             if (npc.boss)
             {
                 //5 sec
-                regenTimer = 300;
+                npc.GetGlobalNPC<FargoGlobalNPC>().regenTimer = 300;
             }
             else
             {
                 //10 sec
-                regenTimer = 600;
+                npc.GetGlobalNPC<FargoGlobalNPC>().regenTimer = 600;
             }
         }
 		
@@ -706,7 +716,7 @@ namespace Fargowiltas.NPCs
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			int dmg;
 
-            if (FargoWorld.masochistMode && regenTimer <= 0)
+            if (FargoWorld.masochistMode && !npc.dontTakeDamage && regenTimer <= 0)
             {
                 npc.lifeRegen += 1 + npc.lifeMax / 25;
             }
@@ -774,10 +784,21 @@ namespace Fargowiltas.NPCs
 			
             if(FargoWorld.masochistMode)
             {
-                //2x spawn rate
-                spawnRate = (int)((double)spawnRate * 0.5);
-                //3x max spawn
-                maxSpawns = (int)((float)maxSpawns * 3f);
+                if(!Main.hardMode)
+                {
+                    //1.3x spawn rate
+                    spawnRate = (int)((double)spawnRate * 0.75);
+                    //2x max spawn
+                    maxSpawns = (int)((float)maxSpawns * 2f);
+                }
+                else
+                {
+                    //2x spawn rate
+                    spawnRate = (int)((double)spawnRate * 0.5);
+                    //3x max spawn
+                    maxSpawns = (int)((float)maxSpawns * 3f);
+                }
+                
             }
 
             if (modPlayer.bloodthirst)
@@ -889,7 +910,7 @@ namespace Fargowiltas.NPCs
             //season enemies
             if (soulcheck.seasonalSpawns)
 			{
-				if(Main.hardMode)
+				/*if(Main.hardMode)
 				{
 					if(NoBiome && Surface && Night)
 					{
@@ -921,7 +942,7 @@ namespace Fargowiltas.NPCs
 						pool[NPCID.SlimeRibbonYellow] = .01f;
 						pool[NPCID.SlimeRibbonGreen] = .01f;
 						pool[NPCID.SlimeRibbonRed] = .01f;
-				}
+				}*/
 			}
 			
 			
@@ -935,28 +956,63 @@ namespace Fargowiltas.NPCs
                     //bosses
 					if(Surface && Day && NPC.downedSlimeKing && NPC.downedBoss2 && Main.slimeRain)
 					{
-						pool[NPCID.KingSlime] = .04f;
+                        if(!NPC.AnyNPCs(NPCID.KingSlime))
+                        {
+                            pool[NPCID.KingSlime] = .04f;
+                        }
+                        else
+                        {
+                            pool[NPCID.KingSlime] = .01f;
+                        }
 					}
 					
 					if(Fargowiltas.NormalSpawn(spawnInfo) && Surface && Night && NPC.downedBoss1 && NPC.downedBoss3)
 					{
-						pool[NPCID.EyeofCthulhu] = .004f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.EyeofCthulhu))
+                        {
+                            pool[NPCID.EyeofCthulhu] = .004f;
+                        }
+                        else
+                        {
+                            pool[NPCID.EyeofCthulhu] = .001f;
+                        }
+                    }
 					
 					if(Surface && Night && NPC.downedBoss1 && NPC.downedBoss3 && Main.bloodMoon)
 					{
-						pool[NPCID.EyeofCthulhu] = .01f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.EyeofCthulhu))
+                        {
+                            pool[NPCID.EyeofCthulhu] = .01f;
+                        }
+                        else
+                        {
+                            pool[NPCID.EyeofCthulhu] = .0025f;
+                        }
+                    }
 					
 					if(Fargowiltas.NormalSpawn(spawnInfo) && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Corruption && !Underworld)
 					{
-						pool[NPCID.EaterofWorldsHead] = .005f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.EaterofWorldsHead))
+                        {
+                            pool[NPCID.EaterofWorldsHead] = .005f;
+                        }
+                        else
+                        {
+                            pool[NPCID.EaterofWorldsHead] = .00125f;
+                        }
+                    }
 					
 					if(Fargowiltas.NormalSpawn(spawnInfo) && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Crimson && !Underworld)
 					{
-						pool[NPCID.BrainofCthulhu] = .005f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.BrainofCthulhu))
+                        {
+                            pool[NPCID.BrainofCthulhu] = .005f;
+                        }
+                        else
+                        {
+                            pool[NPCID.BrainofCthulhu] = .00125f;
+                        }
+                    }
 
                     //random
                     if(NoBiome && Cavern && NPC.downedBoss3)
@@ -1016,7 +1072,7 @@ namespace Fargowiltas.NPCs
 
                     if(Underworld)
                     {
-                        pool[NPCID.LeechHead] = .1f;
+                        pool[NPCID.LeechHead] = .05f;
                     }
 
                     if(Corruption && NPC.downedBoss2)
@@ -1042,65 +1098,136 @@ namespace Fargowiltas.NPCs
                     //bosses
 					if(Fargowiltas.NormalSpawn(spawnInfo) && Surface && Day && Main.slimeRain)
 					{
-						pool[NPCID.KingSlime] = .1f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.KingSlime))
+                        {
+                            pool[NPCID.KingSlime] = .1f;
+                        }
+                        else
+                        {
+                            pool[NPCID.KingSlime] = .025f;
+                        }
+                    }
 				
 					if(Surface && Day && NoBiome)
 					{
-						pool[NPCID.KingSlime] = .04f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.KingSlime))
+                        {
+                            pool[NPCID.KingSlime] = .04f;
+                        }
+                        else
+                        {
+                            pool[NPCID.KingSlime] = .01f;
+                        }
+                    }
 					
 					if(Surface && Night && Fargowiltas.NormalSpawn(spawnInfo))
 					{
-						pool[NPCID.EyeofCthulhu] = .02f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.EyeofCthulhu))
+                        {
+                            pool[NPCID.EyeofCthulhu] = .02f;
+                        }
+                        else
+                        {
+                            pool[NPCID.EyeofCthulhu] = .005f;
+                        }
+                    }
 					
 					if(Surface && Night && Main.bloodMoon)
 					{
-						pool[NPCID.EyeofCthulhu] = .05f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.EyeofCthulhu))
+                        {
+                            pool[NPCID.EyeofCthulhu] = .05f;
+                        }
+                        else
+                        {
+                            pool[NPCID.EyeofCthulhu] = .0125f;
+                        }
+                    }
 					
 					if(Fargowiltas.NormalSpawn(spawnInfo) && Corruption && !Underworld)
 					{
-						pool[NPCID.EaterofWorldsHead] = .02f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.EaterofWorldsHead))
+                        {
+                            pool[NPCID.EaterofWorldsHead] = .01f;
+                        }
+                        else
+                        {
+                            pool[NPCID.EaterofWorldsHead] = .0025f;
+                        }
+                    }
 					
 					if(Fargowiltas.NormalSpawn(spawnInfo) && Crimson && !Underworld)
 					{
-						pool[NPCID.BrainofCthulhu] = .02f;
-					}			
+                        if (!NPC.AnyNPCs(NPCID.BrainofCthulhu))
+                        {
+                            pool[NPCID.BrainofCthulhu] = .01f;
+                        }
+                        else
+                        {
+                            pool[NPCID.BrainofCthulhu] = .0025f;
+                        }
+                    }			
 					
 					if(Fargowiltas.NormalSpawn(spawnInfo) && Night && spawnInfo.player.ZoneDungeon && NPC.downedMechBossAny)
 					{
-						pool[NPCID.SkeletronHead] = .005f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.SkeletronHead))
+                        {
+                            pool[NPCID.SkeletronHead] = .005f;
+                        }
+                        else
+                        {
+                            pool[NPCID.SkeletronHead] = .00125f;
+                        }
+                    }
 					
 					if(Fargowiltas.NormalSpawn(spawnInfo) && Day && spawnInfo.player.ZoneJungle && NPC.downedMechBossAny)
 					{
-						pool[NPCID.QueenBee] = .005f;
-					}
-					
-					if(Fargowiltas.NormalSpawn(spawnInfo) && Underworld && NPC.downedMechBossAny)
-					{
-						pool[NPCID.WallofFlesh] = .005f;	
-					}
+                        if (!NPC.AnyNPCs(NPCID.QueenBee))
+                        {
+                            pool[NPCID.QueenBee] = .005f;
+                        }
+                        else
+                        {
+                            pool[NPCID.QueenBee] = .00125f;
+                        }
+                    }
 				
 					//all the hard mode bosses
 					if(Fargowiltas.NormalSpawn(spawnInfo) && Surface && Night && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && Main.bloodMoon)
 					{
-						pool[NPCID.Retinazer] = .005f;	
-						pool[NPCID.Spazmatism] = .005f;
-						pool[NPCID.TheDestroyer] = .005f;	
-						pool[NPCID.SkeletronPrime] = .005f;	
-					}
+                        if (!NPC.AnyNPCs(NPCID.Retinazer) || !NPC.AnyNPCs(NPCID.Spazmatism) || !NPC.AnyNPCs(NPCID.SkeletronPrime) || !NPC.AnyNPCs(NPCID.TheDestroyer))
+                        {
+                            pool[NPCID.Retinazer] = .005f;
+                            pool[NPCID.Spazmatism] = .005f;
+                            pool[NPCID.TheDestroyer] = .005f;
+                            pool[NPCID.SkeletronPrime] = .005f;
+                        }
+                        else
+                        {
+                            pool[NPCID.Retinazer] = .0025f;
+                            pool[NPCID.Spazmatism] = .0025f;
+                            pool[NPCID.TheDestroyer] = .0025f;
+                            pool[NPCID.SkeletronPrime] = .0025f;
+                        }
+                    }
 					
 					if(Surface && Night && NPC.downedPlantBoss && Main.bloodMoon)
 					{
-						pool[NPCID.Retinazer] = .05f;	
-						pool[NPCID.Spazmatism] = .05f;
-						pool[NPCID.TheDestroyer] = .05f;
-						pool[NPCID.SkeletronPrime] = .05f;
-					}
+                        if (!NPC.AnyNPCs(NPCID.Retinazer) || !NPC.AnyNPCs(NPCID.Spazmatism) || !NPC.AnyNPCs(NPCID.SkeletronPrime) || !NPC.AnyNPCs(NPCID.TheDestroyer))
+                        {
+                            pool[NPCID.Retinazer] = .05f;
+                            pool[NPCID.Spazmatism] = .05f;
+                            pool[NPCID.TheDestroyer] = .05f;
+                            pool[NPCID.SkeletronPrime] = .05f;
+                        }
+                        else
+                        {
+                            pool[NPCID.Retinazer] = .025f;
+                            pool[NPCID.Spazmatism] = .025f;
+                            pool[NPCID.TheDestroyer] = .025f;
+                            pool[NPCID.SkeletronPrime] = .025f;
+                        }
+                    }
 
                     //random
                     if(Surface && Day && NPC.downedMechBossAny)
@@ -1778,7 +1905,7 @@ namespace Fargowiltas.NPCs
 			}		
 			
 			//halloween and xmas
-			if((npc.type == NPCID.Ghost) || (npc.type == NPCID.HoppinJack) || (npc.type == NPCID.Raven))
+			/*if((npc.type == NPCID.Ghost) || (npc.type == NPCID.HoppinJack) || (npc.type == NPCID.Raven))
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GoodieBag, 1);
 			}
@@ -1786,7 +1913,7 @@ namespace Fargowiltas.NPCs
 			if((npc.type == NPCID.SlimeRibbonGreen) || (npc.type == NPCID.SlimeRibbonRed) || (npc.type == NPCID.SlimeRibbonWhite) || (npc.type == NPCID.SlimeRibbonYellow))
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Present, 1);
-			}
+			}*/
 			
 			//bonus drops
 			if(((npc.type == NPCID.BloodZombie) || (npc.type == NPCID.Drippler)) && Main.rand.Next(75) == 0)
@@ -2209,7 +2336,7 @@ namespace Fargowiltas.NPCs
 
 
             return true;
-		}
+		}  
 
         public override void HitEffect(NPC npc, int hitDirection, double damage)
         {
@@ -2228,8 +2355,6 @@ namespace Fargowiltas.NPCs
         {
             if (FargoWorld.masochistMode)
             {
-                ResetRegenTimer(npc);
-
                 if(npc.type == NPCID.Salamander || npc.type == NPCID.Salamander2 || npc.type == NPCID.Salamander3 || npc.type == NPCID.Salamander4 || npc.type == NPCID.Salamander5 || npc.type == NPCID.Salamander6 || npc.type == NPCID.Salamander7 || npc.type == NPCID.Salamander8 || npc.type == NPCID.Salamander9)
                 {
                     npc.Opacity *= 25;
@@ -2246,8 +2371,6 @@ namespace Fargowiltas.NPCs
 		{
             if (FargoWorld.masochistMode)
             {
-                ResetRegenTimer(npc);
-
                 if (npc.type == NPCID.Salamander || npc.type == NPCID.Salamander2 || npc.type == NPCID.Salamander3 || npc.type == NPCID.Salamander4 || npc.type == NPCID.Salamander5 || npc.type == NPCID.Salamander6 || npc.type == NPCID.Salamander7 || npc.type == NPCID.Salamander8 || npc.type == NPCID.Salamander9)
                 {
                     npc.Opacity *= 25;
@@ -2422,7 +2545,7 @@ namespace Fargowiltas.NPCs
 
                 if (npc.type == NPCID.ServantofCthulhu)
                 {
-                    target.AddBuff(mod.BuffType("Hexed"), 480);
+                    target.AddBuff(mod.BuffType("Hexed"), 300);
                 }
 
                 if (npc.type == NPCID.QueenBee)
@@ -2604,12 +2727,17 @@ namespace Fargowiltas.NPCs
                     target.AddBuff(BuffID.Electrified, 240);
                 }
 
-                if ((npc.type == NPCID.GraniteGolem || npc.type == NPCID.GraniteFlyer) && Main.rand.Next(2) == 0)
+                if (npc.type == NPCID.GraniteFlyer && Main.rand.Next(10) == 0 && !target.HasBuff(BuffID.Stoned))
                 {
                     target.AddBuff(BuffID.Stoned, 120);
                 }
 
-                if(npc.type == NPCID.GoblinScout && NPC.downedGoblins && Main.rand.Next(4) == 0)
+                if (npc.type == NPCID.GraniteGolem && Main.rand.Next(2) == 0 && !target.HasBuff(BuffID.Stoned))
+                {
+                    target.AddBuff(BuffID.Stoned, 120);
+                }
+
+                if (npc.type == NPCID.GoblinScout && NPC.downedGoblins && Main.rand.Next(4) == 0)
                 {
                     //goblins
                     Main.StartInvasion(1);
@@ -2727,6 +2855,18 @@ namespace Fargowiltas.NPCs
 		{
 			Player player = Main.player[Main.myPlayer];
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
+			
+			if (FargoWorld.masochistMode)
+            {
+                NPC damagedNPC = npc;
+                //basically, is this a segment?
+                if (npc.realLife >= 0)
+                {
+                    damagedNPC = Main.npc[damagedNPC.realLife];
+                }
+
+                ResetRegenTimer(damagedNPC);
+			}
 
 			if(modPlayer.universeEffect)
 			{
@@ -2776,1006 +2916,4 @@ namespace Fargowiltas.NPCs
 		}
 
 	}
-=======
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System;
-using Terraria.Localization;
-
-
-namespace Fargowiltas.NPCs
-{
-	public class FargoGlobalNPC : GlobalNPC
-	{
-		public override bool InstancePerEntity
-		{
-			get
-			{
-				return true;
-			}
-		}
-		public bool sBleed = false;
-		
-		public override void ResetEffects(NPC npc)
-		{
-			sBleed = false;
-		}
-		
-		public override void SetDefaults (NPC npc)
-		{
-			if(Fargowiltas.instance.multiSlime && npc.type == NPCID.KingSlime)
-			{
-				
-			}
-		}
-		
-		public override void UpdateLifeRegen(NPC npc, ref int damage)
-		{
-			if (sBleed)
-			{
-				if (npc.lifeRegen > 0)
-				{
-					npc.lifeRegen = 0;
-				}
-				npc.lifeRegen -= 40;
-				if (damage < 10)
-				{
-					damage = 10;
-				}
-				
-				if(Main.rand.Next(4) == 0)
-				{
-					int dmg;
-					if(npc.lifeMax < 2000)
-					{
-						dmg = 20;
-					}
-					else
-					{
-						dmg = npc.lifeMax / 100;
-					}
-					
-					Projectile.NewProjectile(npc.Center.X, npc.Center.Y - 40, 0f + Main.rand.Next(-5, 5), -5f, mod.ProjectileType("SuperBlood"), dmg, 0f, Main.myPlayer, 0f, 0f);
-				}
-				
-			}
-		}
-		
-		public override void EditSpawnRate (Player player, ref int spawnRate, ref int maxSpawns)
-		{
-			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			
-			if(modPlayer.builderMode)
-			{
-				//spawnRate = (int)((double)spawnRate * 0.1);
-				maxSpawns = (int)((float)maxSpawns * 0f);
-			}
-			
-			if(modPlayer.npcBoost)
-			{
-				spawnRate = (int)((double)spawnRate * 0.1);
-				maxSpawns = (int)((float)maxSpawns * 10f);
-			}
-			
-		}
-		
-		public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
-		{
-			int y = spawnInfo.spawnTileY;
-			bool Cavern = (y >= (Main.maxTilesY * 0.4f) && y <= (Main.maxTilesY * 0.8f)); 
-			//season enemies
-			if(soulcheck.seasonalSpawns)
-			{
-				if(Main.hardMode)
-				{
-					if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
-					{
-						pool[NPCID.HoppinJack] = .04f;
-					}
-				
-					if(Fargowiltas.NormalSpawn(spawnInfo) && Cavern && Fargowiltas.NoBiome(spawnInfo))
-					{
-						pool[NPCID.Ghost] = .04f;
-					}
-					
-					if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
-					{
-						pool[NPCID.Raven] = .015f;
-					}
-				}
-				
-				else
-				{
-					if(Fargowiltas.NormalSpawn(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && !Main.dayTime)
-					{
-						pool[NPCID.Raven] = .04f;
-					}
-				}
-				
-				if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
-				{
-						pool[NPCID.SlimeRibbonWhite] = .01f;
-				}
-				if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
-				{
-						pool[NPCID.SlimeRibbonYellow] = .01f;
-				}
-				if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
-				{
-						pool[NPCID.SlimeRibbonGreen] = .01f;
-				}
-				if(Fargowiltas.NormalSpawn(spawnInfo) && Fargowiltas.NoBiome(spawnInfo) && spawnInfo.spawnTileY < Main.worldSurface && Main.dayTime)
-				{
-						pool[NPCID.SlimeRibbonRed] = .01f;
-				}
-			}
-			
-		
-		}
-		
-		public override bool PreNPCLoot (NPC npc)
-		{
-			//slime multi
-			if(npc.type == NPCID.KingSlime && Fargowiltas.instance.multiSlime)
-            {
-				Fargowiltas.slimeKills++;
-				
-				if(Fargowiltas.slimeKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerSlime"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.slimeKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.slimeNum.ToString(), 206, 12, 15);
-				if(Fargowiltas.slimeKills <= Fargowiltas.slimeNum - Fargowiltas.slimeSpawned) 
-				{
-					int count = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.KingSlime)
-						{
-							count++;
-						}
-					}
-					int count2 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.BlueSlime || Main.npc[i].type == NPCID.SlimeSpiked)
-						{
-							Main.npc[i].StrikeNPC(Main.npc[i].lifeMax, 0f, 0);
-							NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-800, -400), NPCID.KingSlime);
-							count2++;
-							if((count2 == Fargowiltas.slimeSpawned - count) || (count > Fargowiltas.slimeSpawned))
-							{
-								break;
-							}
-						}
-					}
-				}
-				else if(Fargowiltas.slimeKills >= Fargowiltas.slimeNum )
-				{					
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.KingSlimeBossBag, Fargowiltas.slimeNum);
-					Fargowiltas.instance.multiSlime = false;
-				}
-				else
-				{
-					int count = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.KingSlime)
-						{
-							count++;
-						}
-					}
-					if(count < Fargowiltas.slimeNum - Fargowiltas.slimeKills)
-					{
-						for(int i = 0; i < Fargowiltas.slimeSpawned; i++)
-						{
-							NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-800, -400), NPCID.KingSlime);
-						}
-					}
-				}
-				return false;
-			}
-			if(Fargowiltas.instance.multiSlime && npc.type == NPCID.BlueSlime)
-			{
-				return false;
-			}
-			//eye multi
-			if(npc.type == NPCID.EyeofCthulhu && Fargowiltas.instance.multiEye)
-			{
-				Fargowiltas.eyeKills++;
-				
-				if(Fargowiltas.eyeKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerEye"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.eyeKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.eyeNum.ToString(), 206, 12, 15);
-				if(Fargowiltas.eyeKills <= Fargowiltas.eyeNum - Fargowiltas.eyeSpawned)
-				{
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-600, -200), NPCID.EyeofCthulhu);
-				}
-				else if(Fargowiltas.eyeKills == Fargowiltas.eyeNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.EyeOfCthulhuBossBag, Fargowiltas.eyeNum);
-					Fargowiltas.instance.multiEye = false;
-				}
-				return false;
-			}
-			//worm multi
-			if(npc.type == NPCID.EaterofWorldsHead && Fargowiltas.instance.multiWorm)
-			{
-				Fargowiltas.wormKills++;
-				
-				if(Fargowiltas.wormKills % 1000 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerWorm"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.wormKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.wormNum.ToString(), 206, 12, 15);
-				if(Fargowiltas.wormKills <= Fargowiltas.wormNum - Fargowiltas.wormSpawned)
-				{
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(300, 600), NPCID.EaterofWorldsHead);
-				}
-				else if(Fargowiltas.wormKills >= Fargowiltas.wormNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.EaterOfWorldsBossBag, Fargowiltas.wormNum);
-					Fargowiltas.instance.multiWorm = false;
-				}
-				else
-				{
-					int count = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.EaterofWorldsHead)
-						{
-							count++;
-						}
-					}
-					if(count < Fargowiltas.wormNum - Fargowiltas.wormKills)
-					{
-						for(int i = 0; i < Fargowiltas.wormSpawned; i++)
-						{
-							NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(300, 600), NPCID.EaterofWorldsHead);
-						}
-					}
-				}
-				return false;
-			}
-			if(Fargowiltas.instance.multiWorm && (npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsTail))
-			{
-				return false;
-			}
-			//brain multi
-			if(npc.type == NPCID.BrainofCthulhu && Fargowiltas.instance.multiBrain)
-			{
-				Fargowiltas.brainKills++;
-				
-				if(Fargowiltas.brainKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerBrain"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.brainKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.brainNum.ToString(), 206, 12, 15);
-				if(Fargowiltas.brainKills <= Fargowiltas.brainNum - Fargowiltas.brainSpawned)
-				{
-					int count = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.BrainofCthulhu)
-						{
-							count++;
-						}
-					}
-					int count2 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.Creeper)
-						{
-							Main.npc[i].StrikeNPC(Main.npc[i].lifeMax, 0f, 0);
-							NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-800, -400), NPCID.BrainofCthulhu);
-							count2++;
-							if((count2 == Fargowiltas.brainSpawned - count) || (count > Fargowiltas.brainSpawned))
-							{
-								break;
-							}
-						}
-					}
-				}
-				else if(Fargowiltas.brainKills == Fargowiltas.brainNum)
-				{	
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.BrainOfCthulhuBossBag, Fargowiltas.brainNum);
-					Fargowiltas.instance.multiBrain = false;
-				}
-				return false;
-			}
-			if(Fargowiltas.instance.multiBrain && npc.type == NPCID.Creeper)
-			{
-				return false;
-			}
-			//skele multi
-			if(npc.type == NPCID.SkeletronHead && Fargowiltas.instance.multiSkele)
-			{
-				Fargowiltas.skeleKills++;
-				
-				if(Fargowiltas.skeleKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerSkele"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.skeleKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.skeleNum.ToString(), 206, 12, 15);
-				if(Fargowiltas.skeleKills <= Fargowiltas.skeleNum - Fargowiltas.skeleSpawned)
-				{
-					int count = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.SkeletronHead)
-						{
-							count++;
-						}
-					}
-					int count2 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-							NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-500, -100), NPCID.SkeletronHead);
-							count2++;
-							if((count2 == Fargowiltas.skeleSpawned - count) || (count > Fargowiltas.skeleSpawned))
-							{
-								break;
-							}
-					}
-				}
-				else if(Fargowiltas.skeleKills >= Fargowiltas.skeleNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SkeletronBossBag, Fargowiltas.skeleNum);
-					Fargowiltas.instance.multiSkele = false;
-				}
-				else
-				{
-					int count = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.SkeletronHead)
-						{
-							count++;
-						}
-					}
-					if(count < Fargowiltas.skeleNum - Fargowiltas.skeleKills)
-					{
-						for(int i = 0; i < Fargowiltas.skeleNum - Fargowiltas.skeleKills - count; i++)
-						{
-							NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-500, -100), NPCID.SkeletronHead);
-						}
-					}
-				}
-				return false;
-			}
-			//bee multi
-			if(npc.type == NPCID.QueenBee && Fargowiltas.instance.multiBee)
-			{
-				Fargowiltas.beeKills++;
-				
-				if(Fargowiltas.beeKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerBee"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.beeKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.beeNum.ToString(), 206, 12, 15);
-				if(Fargowiltas.beeKills <= Fargowiltas.beeNum - Fargowiltas.beeSpawned)
-				{
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-800, -400), NPCID.QueenBee);
-				}
-				else if(Fargowiltas.beeKills == Fargowiltas.beeNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.QueenBeeBossBag, Fargowiltas.beeNum);
-					Fargowiltas.instance.multiBee = false;
-				}
-				return false;
-			}
-			//Wall Multi???
-			//destroyer multi
-			if(npc.type == NPCID.TheDestroyer && Fargowiltas.instance.multiDestroy)
-			{
-				Fargowiltas.destroyKills++;
-				
-				if(Fargowiltas.destroyKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerDestroy"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.destroyKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.destroyNum.ToString(), 206, 12, 15);
-				if(Fargowiltas.destroyKills <= Fargowiltas.destroyNum - Fargowiltas.destroySpawned)
-				{
-					int count = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.TheDestroyer)
-						{
-							count++;
-						}
-					}
-					int count2 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.TheDestroyerBody)
-						{
-							Main.npc[i].StrikeNPC(Main.npc[i].lifeMax, 0f, 0);
-							NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(400, 800), NPCID.TheDestroyer);
-							count2++;
-							if((count2 == Fargowiltas.destroySpawned - count) || (count > Fargowiltas.destroySpawned))
-							{
-								break;
-							}
-						}
-					}
-				}
-				else if(Fargowiltas.destroyKills == Fargowiltas.destroyNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.DestroyerBossBag, Fargowiltas.destroyNum);
-					Fargowiltas.instance.multiDestroy = false;
-				}
-				return false;
-			}
-			//twins multi
-			if(Fargowiltas.instance.multiTwins)
-			{
-				if(npc.type == NPCID.Spazmatism)
-				{
-					Fargowiltas.spazKills++;
-				
-					if(Fargowiltas.spazKills % 100 == 0)
-					{
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerTwin"), 1);
-					}
-					Main.NewText("Killed: " + ((Fargowiltas.spazKills + Fargowiltas.retKills) / 2).ToString(), 206, 12, 15);
-					Main.NewText("Total: " + Fargowiltas.twinsNum.ToString(), 206, 12, 15);					
-					if(Fargowiltas.spazKills <= Fargowiltas.twinsNum - Fargowiltas.twinsSpawned || Fargowiltas.retKills <= Fargowiltas.twinsNum - Fargowiltas.twinsSpawned)
-					{
-						NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-800, -400), NPCID.Spazmatism);
-					}
-					if((Fargowiltas.spazKills + Fargowiltas.retKills) / 2 >= Fargowiltas.twinsNum)
-					{
-						if (Main.netMode == 2) 
-						{
-							NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-						}
-						else
-						{
-							Main.NewText("The swarm has been defeated!", 206, 12, 15);
-						}
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.TwinsBossBag, Fargowiltas.twinsNum);
-						Fargowiltas.instance.multiTwins = false;
-					}
-					return false;
-				}
-				if(npc.type == NPCID.Retinazer)
-				{
-					Fargowiltas.retKills++;
-					
-					if(Fargowiltas.retKills <= Fargowiltas.twinsNum - Fargowiltas.twinsSpawned || Fargowiltas.spazKills <= Fargowiltas.twinsNum - Fargowiltas.twinsSpawned)
-					{
-						NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-800, -400), NPCID.Retinazer);
-					}
-					return false;
-				}
-			}
-			//prime multi
-			if(npc.type == NPCID.SkeletronPrime && Fargowiltas.instance.multiPrime)
-			{
-				Fargowiltas.primeKills++;
-				
-				if(Fargowiltas.primeKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerPrime"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.primeKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.primeNum.ToString(), 206, 12, 15);
-				int count3 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.SkeletronPrime)
-						{
-							count3++;
-						}
-					}
-				Main.NewText("Primes Active: " + count3.ToString(), 206, 12, 15);
-				if(Fargowiltas.primeKills <= Fargowiltas.primeNum - Fargowiltas.primeSpawned)
-				{
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-600, -300), NPCID.SkeletronPrime);
-				}
-				else if(Fargowiltas.primeKills == Fargowiltas.primeNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SkeletronPrimeBossBag, Fargowiltas.primeNum);
-					Fargowiltas.instance.multiPrime = false;
-				}
-				return false;
-			}
-			//plantera multi
-			if(npc.type == NPCID.Plantera && Fargowiltas.instance.multiPlant)
-			{
-				Fargowiltas.plantKills++;
-				
-				if(Fargowiltas.plantKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerPlant"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.plantKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.plantNum.ToString(), 206, 12, 15);
-				if(Fargowiltas.plantKills <= Fargowiltas.plantNum - Fargowiltas.plantSpawned)
-				{
-					int count = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.Plantera)
-						{
-							count++;
-						}
-					}
-					int count2 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.PlanterasHook || Main.npc[i].type == NPCID.PlanterasTentacle)
-						{
-							Main.npc[i].StrikeNPC(Main.npc[i].lifeMax, 0f, 0);
-							NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(400, 800), NPCID.Plantera);
-							count2++;
-							if((count2 == Fargowiltas.plantSpawned - count) || (count > Fargowiltas.plantSpawned))
-							{
-								break;
-							}
-						}
-					}
-				}
-				else if(Fargowiltas.plantKills == Fargowiltas.plantNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.PlanteraBossBag, Fargowiltas.plantNum);
-					Fargowiltas.instance.multiPlant = false;
-				}
-				return false;
-			}
-			//golem multi
-			if(npc.type == NPCID.Golem && Fargowiltas.instance.multiGolem)
-			{
-				Fargowiltas.golemKills++;
-				
-				if(Fargowiltas.golemKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerGolem"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.golemKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.golemNum.ToString(), 206, 12, 15);
-				int count3 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.Golem)
-						{
-							count3++;
-						}
-					}
-				Main.NewText("Golems Active: " + count3.ToString(), 206, 12, 15);
-				if(Fargowiltas.golemKills <= Fargowiltas.golemNum - Fargowiltas.golemSpawned)
-				{
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(400, 800), NPCID.GolemHead);
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(400, 800), NPCID.GolemFistLeft);
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(400, 800), NPCID.GolemFistRight);
-				}
-				else if(Fargowiltas.golemKills == Fargowiltas.golemNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GolemBossBag, Fargowiltas.golemNum);
-					Fargowiltas.instance.multiGolem = false;
-				}
-				return false;
-			}
-			//fishron multi
-			if(npc.type == NPCID.DukeFishron && Fargowiltas.instance.multiFish)
-			{
-				Fargowiltas.fishKills++;
-				
-				if(Fargowiltas.fishKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerFish"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.fishKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.fishNum.ToString(), 206, 12, 15);
-				int count3 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.DukeFishron)
-						{
-							count3++;
-						}
-					}
-				Main.NewText("Dukes Active: " + count3.ToString(), 206, 12, 15);
-				if(Fargowiltas.fishKills <= Fargowiltas.fishNum - Fargowiltas.fishSpawned)
-				{
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-800, -400), NPCID.DukeFishron);
-				}
-				else if(Fargowiltas.fishKills == Fargowiltas.fishNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.FishronBossBag, Fargowiltas.fishNum);
-					Fargowiltas.instance.multiFish = false;
-				}
-				return false;
-			}
-			//moon lord multi
-			if(npc.type == NPCID.MoonLordCore && Fargowiltas.instance.multiMoon)
-			{
-				Fargowiltas.moonKills++;
-				
-				if(Fargowiltas.moonKills % 100 == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EnergizerMoon"), 1);
-				}
-				Main.NewText("Killed: " + Fargowiltas.moonKills.ToString(), 206, 12, 15);
-				Main.NewText("Total: " + Fargowiltas.moonNum.ToString(), 206, 12, 15);
-				int count3 = 0;
-					for(int i = 0; i < 200; i++)
-					{
-						if(Main.npc[i].type == NPCID.MoonLordCore)
-						{
-							count3++;
-						}
-					}
-				Main.NewText("Moons Active: " + count3.ToString(), 206, 12, 15);
-				if(Fargowiltas.moonKills <= Fargowiltas.moonNum - Fargowiltas.moonSpawned)
-				{
-					NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-800, -400), NPCID.MoonLordCore);
-				}
-				else if(Fargowiltas.moonKills == Fargowiltas.moonNum)
-				{
-					if (Main.netMode == 2) 
-					{
-						NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
-					}
-					else
-					{
-						Main.NewText("The swarm has been defeated!", 206, 12, 15);
-					}
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MoonLordBossBag, Fargowiltas.moonNum);
-					Fargowiltas.instance.multiMoon = false;
-				}
-				return false;
-			}
-			//DG multi
-			//cultist
-			//betsy
-			//saucer
-			//dutchman
-			//ogre
-			//mourning wood
-			//pumpking
-			//everscream
-			//santa tank
-			//frost queen
-
-			return true;
-		}
-
-		public override void NPCLoot(NPC npc)
-		{
-			Player player = Main.player[Main.myPlayer];
-			
-			//crimson enchant
-			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			if(modPlayer.crimsonEnchant && Main.rand.Next(8) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Heart, 1);
-			}
-			
-			//SoT
-			if(modPlayer.terrariaSoul && Main.rand.Next(3) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Heart, 1);
-			}
-			
-			//lumber jaxe
-			if(npc.FindBuffIndex(mod.BuffType("WoodDrop")) != -1)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wood, Main.rand.Next(10, 30));
-			}		
-			
-			//halloween and xmas
-			if((npc.type == NPCID.Ghost) || (npc.type == NPCID.HoppinJack) || (npc.type == NPCID.Raven))
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GoodieBag, 1);
-			}
-			
-			if((npc.type == NPCID.SlimeRibbonGreen) || (npc.type == NPCID.SlimeRibbonRed) || (npc.type == NPCID.SlimeRibbonWhite) || (npc.type == NPCID.SlimeRibbonYellow))
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Present, 1);
-			}
-			
-			if(((npc.type == NPCID.BloodZombie) || (npc.type == NPCID.Drippler)) && Main.rand.Next(75) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.BloodyMachete, 1);
-			}
-			
-			if(((npc.type == NPCID.BloodZombie) || (npc.type == NPCID.Drippler)) && Main.rand.Next(75) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.BladedGlove, 1);
-			}
-
-			
-			//TOWN NPCS
-			if(npc.type == NPCID.Guide)
-            {
-				FargoWorld.guide = true;
-			}
-			if(npc.type == NPCID.Merchant)
-            {
-				if(Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MiningShirt);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MiningPants);
-				}
-				
-				FargoWorld.merch = true;
-			}
-			if(npc.type == NPCID.Nurse)
-            {
-				FargoWorld.nurse = true;
-			}
-			if(npc.type == NPCID.Demolitionist)
-            {
-				FargoWorld.demo = true;
-			}
-			if(npc.type == NPCID.DyeTrader)
-            {
-				FargoWorld.dye = true;
-			}
-			if(npc.type == NPCID.Dryad)
-            {
-				FargoWorld.dryad = true;
-			}
-			if(npc.type == NPCID.DD2Bartender)
-            {
-				FargoWorld.keep = true;
-			}
-			if(npc.type == NPCID.ArmsDealer)
-            {
-				FargoWorld.dealer = true;
-			}
-			if(npc.type == NPCID.Stylist)
-            {
-				FargoWorld.style = true;
-			}
-			if(npc.type == NPCID.Painter)
-            {
-				FargoWorld.paint = true;
-			}
-			if(npc.type == NPCID.Angler)
-            {
-				FargoWorld.angler = true;
-			}
-			if(npc.type == NPCID.GoblinTinkerer)
-            {
-				FargoWorld.goblin = true;
-			}
-			if(npc.type == NPCID.WitchDoctor)
-            {
-				FargoWorld.doc = true;
-			}
-			if(npc.type == NPCID.Clothier)
-            {
-				FargoWorld.cloth = true;
-			}
-			if(npc.type == NPCID.Mechanic)
-            {
-				FargoWorld.mech = true;
-			}
-			if(npc.type == NPCID.PartyGirl)
-            {
-				FargoWorld.party = true;
-			}
-			if(npc.type == NPCID.Wizard)
-            {
-				FargoWorld.wiz = true;
-			}
-			if(npc.type == NPCID.TaxCollector)
-            {
-				FargoWorld.tax = true;
-			}
-			if(npc.type == NPCID.Truffle)
-            {
-				FargoWorld.truf = true;
-			}
-			if(npc.type == NPCID.Pirate)
-            {
-				FargoWorld.pirate = true;
-			}
-			if(npc.type == NPCID.Steampunker)
-            {
-				FargoWorld.steam = true;
-			}
-			if(npc.type == NPCID.Cyborg)
-            {
-				FargoWorld.borg = true;
-			}
-			
-		}
-		
-		public override bool CheckDead(NPC npc)
-		{
-			Player player = Main.player[Main.myPlayer];
-			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			
-			if (modPlayer.cobaltEnchant && !npc.friendly && (npc.damage > 0 || npc.lifeMax > 5))
-			{
-				Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 27);
-			                                        
-				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 5f, 90, 50/*dmg*/, 2, Main.myPlayer, 0f, 0f);
-				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5f, 0f, 90, 50, 2, Main.myPlayer, 0f, 0f);
-				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, -5f, 90, 50, 2, Main.myPlayer, 0f, 0f);
-				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -5f, 0f, 90, 50, 2, Main.myPlayer, 0f, 0f);
-				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 4f, 4f, 90, 50, 2, Main.myPlayer, 0f, 0f);
-				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -4f, -4f, 90, 50, 2, Main.myPlayer, 0f, 0f);
-				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 4f, -4f, 90, 50, 2, Main.myPlayer, 0f, 0f);
-				Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -4f, 4f, 90, 50, 2, Main.myPlayer, 0f, 0f);
-			}
-			
-            if(npc.type == NPCID.DD2Betsy)
-            {
-                 Main.NewText("Betsy has been defeated!", 175, 75, 255);
-				 FargoWorld.downedBetsy = true;
-            }
-			
-			if(npc.boss)
-            {
-				 FargoWorld.downedBoss = true;
-            }
-			
-            return true;
-		}
-		
-		public override void ModifyHitNPC (NPC npc, NPC target, ref int damage, ref float knockback, ref bool crit)
-		{
-			
-			
-			
-		}
-		
-		public override void ModifyHitByProjectile (NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-		{
-			if(projectile.type == mod.ProjectileType("FishNuke"))
-			{
-				damage = npc.lifeMax / 10;
-				if(damage < 50)
-				{
-					damage = 50;
-				}
-			}
-			
-			if(projectile.type == ProjectileID.RottenEgg && npc.townNPC)
-			{
-				damage *= 20;
-			}
-			
-			
-		}
-		public override bool StrikeNPC (NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-		{
-			Player player = Main.player[Main.myPlayer];
-			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			if(modPlayer.universeEffect)
-			{
-				if(crit)
-				{
-					damage *= 4;
-					return false;
-				}
-				
-			}
-			//normal damage calc
-			return true;
-		}
-		
-		public override void OnHitByItem (NPC npc, Player player, Item item, int damage, float knockback, bool crit)
-		{
-			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			
-			
-			if((soulcheck.splitEnemy && modPlayer.meleeEffect || modPlayer.universeEffect) && !npc.boss && Main.rand.Next(5) == 0)
-			{
-				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, npc.type);
-			}
-		}
-		
-		public override void DrawEffects(NPC npc, ref Color drawColor)
-		{
-			
-		}
-
-	}
->>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
 }

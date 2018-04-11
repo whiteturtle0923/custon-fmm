@@ -46,7 +46,7 @@ namespace Fargowiltas.Projectiles
 			{
 				int proj2 = mod.ProjectileType<Projectiles.DicerProjectile2>();//484;//374;
 				
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, proj2, 0, 0, Main.myPlayer, 0f, 0f);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, proj2, projectile.damage, 0, Main.myPlayer, 0f, 0f);
 				
 				//Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 5f, proj2, (int)(projectile.damage * 0.5f), 2/*kb*/, Main.myPlayer, 0f, 0f);
 				/*Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 5f, 0f, proj2, (int)(projectile.damage * 0.5f), 2, Main.myPlayer, 0f, 0f);

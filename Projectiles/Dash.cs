@@ -8,11 +8,6 @@ namespace Fargowiltas.Projectiles
 {
     public class Dash : ModProjectile
     {
-<<<<<<< HEAD
-=======
-        public override bool Autoload(ref string name) { return true; }//TESTING4BREAK
-
->>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
         public override void SetDefaults()
         {
             projectile.melee = true;
@@ -38,11 +33,7 @@ namespace Fargowiltas.Projectiles
                 return;
             }
 
-<<<<<<< HEAD
             // Get dash location
-=======
-            // Get dash location need this
->>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
             if (UpdateCount == 0)
             {
                 for (int i = 0; i < dashStepCount * 8; i++)
@@ -62,13 +53,9 @@ namespace Fargowiltas.Projectiles
             // Dash towards location
             if (UpdateCount >= dashStepDelay)
             {
-<<<<<<< HEAD
 				//spawn along path
 				Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, mod.ProjectileType("PhantasmalSphere"), (int)(projectile.damage * 0.5f), 0/*kb*/, Main.myPlayer, 0f, 0f);
 				
-=======
-				Projectile.NewProjectile(player.Center.X, player.Center.Y, 0, 0, 263, (int)(projectile.damage * 0.5f), 0/*kb*/, Main.myPlayer, 0f, 0f);
->>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
                 if (UpdateCount == dashStepDelay)
                 {
                     dashStep = (projectile.Center - player.Center) / dashStepCount;
@@ -105,20 +92,6 @@ namespace Fargowiltas.Projectiles
                 {
                     projectile.timeLeft = 0;
                 }
-<<<<<<< HEAD
-=======
-
-               // Vector2 pos = player.Center - new Vector2(4, 4);
-               /* for (int i = 0; i < 10; i++)
-                {
-                    pos -= dashStep * (i / 20f);
-                    Dust d = Main.dust[Dust.NewDust(pos, 0, 0,
-                        257, projectile.velocity.X, projectile.velocity.Y,
-                            0, default(Color), 1.3f)];
-                    d.noGravity = true;
-                    d.velocity *= 0.1f;
-                }*/
->>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
             }
             else
             {

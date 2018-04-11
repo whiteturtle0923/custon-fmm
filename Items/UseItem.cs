@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -32,39 +31,4 @@ namespace Fargowiltas.Items
 			return true;
 		}
 	}
-=======
-using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace Fargowiltas.Items
-{
-	public class UseItem : GlobalItem
-	{
-		public override bool ConsumeItem(Item item, Player player)
-		{
-			
-				
-			if (((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).universeEffect == true)
-			{
-				if (item.thrown)
-				{
-					if (Main.rand.Next(100) < 99)
-					{
-						return false;
-					}
-				}
-				else
-				{
-					return true;
-				}
-			}
-			return true;
-		}
-	}
->>>>>>> 66ed39caf4938fca8e7009752b635e42f8a8a58f
 }

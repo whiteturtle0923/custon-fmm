@@ -20,13 +20,78 @@ if (Main.rand.NextFloat() < 1f)
 }
 
 
-fix universe soul not having throw split
-
 NOT IMPLEMENTED
 **********************************************************************************************************
 -scale projectiles
 
 -all pirates steal some of your money on hit
+
+- The Destroyer cannot be damaged when probes are out
+- The Twins must be killed within five seconds of each other or the previously defeated one will respawn at full health
+- Skeletron Prime cannot be damaged until all his arms are kille
+
+More masomode changes
+-Retinazer phase 2 can fire a phantasmal deathray at low hp
+-Getting hit by a land shark or pigron post plantera can summon duke fishron
+-Solar fragments shot out by solar pillow go through blocks and slightly home in on players
+-Crawltipede can shoot a stream of fire from its tail
+-Storm diver shoots chlorophyte bullet
+
+Some Masochist mode ideas
+- Fallen Stars can hurt you while falling
+- Using the Nurse too much can cripple you, dealing damage and weakening you...and you must wait the debuff out
+- Falling from heights will give you Confusion and Dazed...even if you have a horseshoe. Only prevented by wings
+- The Eater of Worlds will insta-kill you if the head hits while you're under 150 hp
+- Skeletron's hands can grab you for a moment, dealing damage every second
+- The Evil Biome will now give the player Sadness, which is the opposite stats for Happiness
+- Pirahnas will hop out the top of water if you are directly above it
+- The WoF will occasionally lick you and pull you towards it throughout the fight
+- Going into space will suffocate yo
+- Going to hell normally will set you on fire
+- Paladin's Hammers will slightly home onto you
+- Every 10 seconds during the ML fight, he will inflict any debuff...modded or not
+- The twins spawn in phase two
+- Spazmatism will do EoC's special dash at half health and spit Cursed Flames while doing so
+- Retinazer's laser inflict On Fire and will home onto you
+- Prime's bombs can break tiles
+- Prime's skull will grant Broken Armor, Withered Armor, Confused, and Ichor
+- The Destroyer's Probes will keep spawning...even after all his lights are out
+- Plantera is already in phase two
+- Plantera's normal seeds inflict Poison and her Poison Seeds inflict Venom
+- Lunatic Cultist's dragon has a 10% chance to One Hit Kil
+
+- nailhead spikes stick to player and deal dot
+- baby star cells don’t count for pillar counter
+- Red Devils have a 5% chance to spawn post wof, drop nothing
+- moss hornets spawn in packs
+- crawltepides vore player when under 100 hp
+- gradual speed reduction depending on items carried
+- cursed flames and ichor have no time limit on ending, only end when in water or honey
+- plantera 5% chance to spawn from killing jungle mobs after it is killed
+
+-baby mothrons grow to even more adult mothrons over time
+-dr manflys flask inflict a wide variety of debuffs
+-lethargic is inflicted if you jump into honey
+-mechanical servants of cthulhu spawn during the twins fight
+-golems fists have an aoe attack after stretching out
+-duke fishron now shoots out razorblade typhoon spheres in phase 3
+-martian saucers deathray goes through blocks
+-sand elementals shoot sand balls when not casting ancient storms
+-eternia crystal takes twice as much damage
+
+masochist mode ideas:
+- Top hat squirrels dont pierce/reduced top hat squirrel damage by a ton
+- Phantasm Wyverns spawn during pillars and moon lord fight every 20-60 seconds
+- King Slime shoots Slimy Balls that go through walls occasionally
+
+-using rod of discord during chaos state also inflicts 5sec berserked and unstable
+-lava charm effect runs out faster
+-player starts drowning faster in water
+-all items are slower to use in water unless flippers, neptune's shell or similar movement effects
+-hoplite javelins are faster
+-more enemies can spawn in hordes like zombie, e.g. hoplites or red devils
+-demon sickles inflict shadowflame
+-prime saw shoots shadowflamethrower like world feeder's cursed flamethrower
 
 -wyverns spawn literally fucking anywhere until post Golem, then phantasmal dragons spawn instead
 -wyverns inflict purified, phantasmal dragons inflict flames of the universe
@@ -137,21 +202,16 @@ NOT IMPLEMENTED
 
 -all worm enemies in the game have 7% chance to inflict god eater for 7 seconds
 
-
 anomura fungus - spore debuff or someshit? attacking it makes spores poof out 
 
 eater of souls shoot vile spit and inflict rotting
 
 anything from goblin invasion has a chance to inflict living wasteland 
 
-
 corites spawning in meteorite post golem tbh
 and strollers because they are both part minerals
 
-
 -imps and lava slimes should appear when lava is on screen now
-
-
 
 -angler fish invisible with light, appears in ocean always bleed
 -angry trapper eats your ass
@@ -172,10 +232,6 @@ crimson axe, cursed hammer, holy sword - auras?
 mummys - webbed, ..
 derpling - wing clip, aura of lethargic?
 desert spirit - cursed, shadow flames
-
-
-
-
 
 -plantera spawns in underground jungle
 -let fishron spawn at ocean
@@ -199,8 +255,6 @@ More Money Earned in masochist mode
 -implement jungle mimics in hardmode
 -add ancient visions and phantasm dragons to every lunar pillar's spawn table
 
-
-
 -regular pumpkin moon enemies as night purity spawns in hm, regular frost moon enemies as tundra/underground tundra spawns in hm
 -weather-dependent enemies like ice golem, sand shark family, sand elementals spawning without their weather 
 
@@ -214,11 +268,8 @@ More Money Earned in masochist mode
 
 -crawltipedes, flow invaders, alien queens, nebula floaters as random space spawns in hardmode 
 
-
-
 Maso-mode: While being in the underworld, give it a chance to give you the debuff that kills you if you leave, for like 5 minutes
 The wof debuff
-
 
 -all moon lord attacks always inflict mutant nibble for 14 seconds (before doubling in expert), also flames of universe for 7sec and chance for 1sec unstable
 -mech trio inflict clipped wings for 2 ticks ;)
@@ -228,8 +279,6 @@ The wof debuff
 -post-plantera physical skeletons (hell armored bones and cousins) all inflict bloodthirsty for 2 seconds on contact
 -paladins and the post-plantera mages inflict lethargic with all attacks for 4 seconds
 
-
-
 -major pumpkin moon enemies inflict rotting for 5 seconds
 -plantera and all attacks inflict infested for 5 seconds
 -major frost moon enemies inflict squeaky toy for 2 seconds
@@ -237,7 +286,6 @@ The wof debuff
 -crawltipedes also inflict stoned lel
 -goblin invasion enemies (in hardmode), pirate invasion, martian madness enemies have ~20% chance of inflicting living wasteland for 5 seconds, guaranteed for the minibosses and their attacks
 -eye/servants of cthulhu inflict kneecapped for 5 seconds
-
 
 -golem literally never stops regenerating ever, also physical contact with any of his parts inflicts 5sec marked for death
 
@@ -254,6 +302,12 @@ The wof debuff
 -everything nebula inflicts silenced for 4 seconds, chance for 2sec hexed
 -reduce lightning rod randomness a lil and make it account for the player's velocity when spawning the lightning portals
 
+spiky balls flme wheels do more dmg but can be killed
+
+certain enemy only damagable when hexed
+
+flesh eat life steal zombies
+bosses regen faster at lower hp slower at high
 
 -plantera spawns in underground jungle
 -let fishron spawn at ocean
@@ -270,8 +324,6 @@ The wof debuff
 -a solid chance for a pumpkin or frost moon event to start on its own every night
 -a chance for the four pillars to just spawn in every morning
 
-
--white cultist archers as surface enemies at any time from game start
 -implement jungle mimics in hardmode
 -add ancient visions and phantasm dragons to every lunar pillar's spawn table
 -leeches as natural spawns in hell
