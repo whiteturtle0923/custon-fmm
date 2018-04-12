@@ -40,7 +40,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pet
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(Soulcheck.dinoPet)
+				if(Soulcheck.GetValue("Baby Dino Pet"))
 				{
 					modPlayer.dinoPet = true;
 					

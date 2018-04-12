@@ -46,7 +46,7 @@ namespace Fargowiltas.Items.Souls
 			Lighting.AddLight(player.Center, 0.8f, 0.8f, 0f);
 		
 		//frostspark
-		if(Soulcheck.sanic == true)
+		if(Soulcheck.GetValue("Super Speed") == true)
 		{
 			((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).speedEffect = true;
 			player.accRunSpeed = 2.00f;

@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pet
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(Soulcheck.spiderPet)
+				if(Soulcheck.GetValue("Spider Pet"))
 				{
 					modPlayer.spiderPet = true;
 					

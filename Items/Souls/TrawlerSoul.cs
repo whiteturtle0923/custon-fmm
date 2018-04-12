@@ -45,7 +45,7 @@ namespace Fargowiltas.Items.Souls
 		  player.autoJump = true;
 	      player.jumpSpeedBoost += 2.4f;
 		  		
-		if(Soulcheck.spore == true)
+		if(Soulcheck.GetValue("Spore Sac") == true)
 		{
 		  //spore sac
 		 player.SporeSac();

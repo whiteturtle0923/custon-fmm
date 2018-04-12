@@ -27,7 +27,7 @@ namespace Fargowiltas.Items.Enchantments
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
-			if(Soulcheck.junkle == true)
+			if(Soulcheck.GetValue("Spore Explosion") == true)
 			{
 			((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).jungleEnchant = true;
 			}

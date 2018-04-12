@@ -46,7 +46,7 @@ namespace Fargowiltas.Items.Souls
 		player.pickSpeed -= 0.50f; 	
 		
 		//mining helmet
-		if(Soulcheck.light == false)
+		if(Soulcheck.GetValue("Shine Buff") == false)
 		{
 			Lighting.AddLight(player.Center, 0.8f, 0.8f, 0f);
 		}

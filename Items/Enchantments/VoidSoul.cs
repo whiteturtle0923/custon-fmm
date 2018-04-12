@@ -144,7 +144,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pets
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(Soulcheck.penguinPet)
+				if(Soulcheck.GetValue("Baby Penguin Pet"))
 				{
 					modPlayer.penguinPet = true;
 					
@@ -161,7 +161,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.penguinPet = false;
 				}
 				
-				if(Soulcheck.skullPet)
+				if(Soulcheck.GetValue("Baby Skeletron Pet"))
 				{
 					modPlayer.skullPet = true;
 					
@@ -178,7 +178,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.skullPet = false;
 				}
 				
-				if(Soulcheck.snowmanPet)
+				if(Soulcheck.GetValue("Baby Snowman Pet"))
 				{
 					modPlayer.snowmanPet = true;
 					
@@ -195,7 +195,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.snowmanPet = false;
 				}
 				
-				if(Soulcheck.fishPet)
+				if(Soulcheck.GetValue("Zephyr Fish Pet"))
 				{
 					modPlayer.fishPet = true;
 					
@@ -212,7 +212,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.fishPet = false;
 				}
 				
-				if(Soulcheck.cubePet)
+				if(Soulcheck.GetValue("Companion Cube Pet"))
 				{
 					modPlayer.cubePet = true;
 					
@@ -229,7 +229,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.cubePet = false;
 				}
 				
-				if(Soulcheck.grinchPet)
+				if(Soulcheck.GetValue("Baby Grinch Pet"))
 				{
 					modPlayer.grinchPet = true;
 					
@@ -246,7 +246,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.grinchPet = false;
 				}
 				
-				if(Soulcheck.lizPet)
+				if(Soulcheck.GetValue("Lizard Pet"))
 				{
 					modPlayer.lizPet = true;
 					
@@ -263,7 +263,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.lizPet = false;
 				}
 				
-				if(Soulcheck.suspiciousEyePet)
+				if(Soulcheck.GetValue("Suspicious Looking Eye Pet"))
 				{
 					modPlayer.suspiciousEyePet = true;
 					

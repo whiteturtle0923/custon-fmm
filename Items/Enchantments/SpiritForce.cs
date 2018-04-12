@@ -94,7 +94,7 @@ namespace Fargowiltas.Items.Enchantments
 			//forbidden
 			player.buffImmune[194] = true;
 			
-			if(Soulcheck.forbidden == true)
+			if(Soulcheck.GetValue("Forbidden Storm") == true)
 			{
 			player.setForbidden = true;
 			player.UpdateForbiddenSetLock();
@@ -104,7 +104,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.noKnockback = true;
 			
 				//shield and sword
-				if(Soulcheck.yellow == true)
+				if(Soulcheck.GetValue("Hallowed Shield") == true)
 			{
 				modPlayer.hallowEnchant = true;
 				if (player.whoAmI == Main.myPlayer)
@@ -129,7 +129,7 @@ namespace Fargowiltas.Items.Enchantments
 			}
 			
 			//spooky
-			if(Soulcheck.spoopy == true)
+			if(Soulcheck.GetValue("Spooky Scythes") == true)
 			{
 				modPlayer.spookyEnchant = true;
 			}
@@ -137,7 +137,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pets
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(Soulcheck.eaterPet)
+				if(Soulcheck.GetValue("Baby Eater Pet"))
 				{
 					modPlayer.shadowPet = true;
 					
@@ -154,7 +154,7 @@ namespace Fargowiltas.Items.Enchantments
 						modPlayer.shadowPet = false;
 				}
 				
-				if(Soulcheck.saplingPet)
+				if(Soulcheck.GetValue("Cursed Sapling Pet"))
 				{
 					modPlayer.saplingPet = true;
 					
@@ -171,7 +171,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.saplingPet = false;
 				}
 				
-				if(Soulcheck.wispPet)
+				if(Soulcheck.GetValue("Wisp Pet"))
 				{
 					modPlayer.spectrePet = true;
 					
@@ -188,7 +188,7 @@ namespace Fargowiltas.Items.Enchantments
 						modPlayer.spectrePet = false;
 				}
 				
-				//if(soulcheck.eaterPet)
+				//if(Soulcheck.GetValue("Baby Eater Pet"))
 				//{
 					modPlayer.shadowPet2 = true;
 					

@@ -230,10 +230,10 @@ namespace Fargowiltas.NPCs
 		}
 		
 		//gabe has won bools
-		public bool GabeModDownedMurk
-		{
-			get { return GabeHasWonsMod.GabeWorld.downedMurk; }
-		}
+		//public bool GabeModDownedMurk
+		//{
+		//	get { return GabeHasWonsMod.GabeWorld.downedMurk; }
+		//}
 		
 		//grealm bools
 		public bool GRealmDownedFolivine
@@ -705,15 +705,15 @@ namespace Fargowiltas.NPCs
 					}
 				}
 				
-				if(Fargowiltas.instance.gabeLoaded)
-				{
-					if(GabeModDownedMurk)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("GabeHasWonsMod").ItemType("MudGel"));
-						shop.item[nextSlot].value=30000;
-						nextSlot++;
-					}
-				}
+				// if(Fargowiltas.instance.gabeLoaded)
+				// {
+				// 	if(GabeModDownedMurk)
+				// 	{
+				// 		shop.item[nextSlot].SetDefaults(ModLoader.GetMod("GabeHasWonsMod").ItemType("MudGel"));
+				// 		shop.item[nextSlot].value=30000;
+				// 		nextSlot++;
+				// 	}
+				// }
 			
 				if (Fargowiltas.instance.calamityLoaded)
 				{

@@ -43,7 +43,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.crimsonRegen = true;
 			
 			//bee + spider 
-			if(Soulcheck.bees)
+			if(Soulcheck.GetValue("Bees on Hit"))
 			{
 				modPlayer.beeEnchant = true;
 			}
@@ -56,7 +56,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.thorns = 1f;
 			player.turtleThorns = true;
 			player.statDefense = (int)(player.statDefense * 1.25);
-			if(Soulcheck.beet == true)
+			if(Soulcheck.GetValue("Beetles") == true)
 			{
 				player.beetleDefense = true;
 				player.beetleCounter += 1f;
@@ -150,7 +150,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pets
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(Soulcheck.facePet)
+				if(Soulcheck.GetValue("Baby Face Monster Pet"))
 				{
 					modPlayer.crimsonPet = true;
 					
@@ -170,7 +170,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(Soulcheck.turtlePet)
+				if(Soulcheck.GetValue("Turtle Pet"))
 				{
 					modPlayer.turtlePet = true;
 					
@@ -187,7 +187,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.turtlePet = false;
 				}
 				
-				if(Soulcheck.beePet)
+				if(Soulcheck.GetValue("Baby Hornet Pet"))
 				{
 					modPlayer.beePet = true;
 					
@@ -204,7 +204,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.beePet = false;
 				}
 				
-				if(Soulcheck.spiderPet)
+				if(Soulcheck.GetValue("Spider Pet"))
 				{
 					modPlayer.spiderPet = true;
 					
@@ -221,7 +221,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.spiderPet = false;
 				}
 				
-				//if(soulcheck.eaterPet)
+				//if(Soulcheck.GetValue("Baby Eater Pet"))
 				//{
 					modPlayer.crimsonPet2 = true;
 					

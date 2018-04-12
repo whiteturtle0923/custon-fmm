@@ -146,7 +146,7 @@ namespace Fargowiltas.Items.Souls
 		
 	
 		//frostspark
-		if(Soulcheck.sanic == true)
+		if(Soulcheck.GetValue("Super Speed") == true)
 		{
 			((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).speedEffect = true;
 			player.accRunSpeed = 2.00f;
@@ -213,7 +213,7 @@ namespace Fargowiltas.Items.Souls
 	
 		
 		//mining helmet
-		if(Soulcheck.light == true)
+		if(Soulcheck.GetValue("Shine Buff") == true)
 		{
 		Lighting.AddLight(player.Center, 0.8f, 0.8f, 0f);
 		}
@@ -229,7 +229,7 @@ namespace Fargowiltas.Items.Souls
 		 player.autoJump = true;
 	     player.jumpSpeedBoost += 2.5f;
 		  
-		 if(Soulcheck.spore == true)
+		 if(Soulcheck.GetValue("Spore Sac") == true)
 		{
 		  //spore sac
 		 player.SporeSac();
@@ -241,11 +241,11 @@ namespace Fargowiltas.Items.Souls
 		//dread eye
 		if(Fargowiltas.instance.thoriumLoaded)
 		{
-			if(Soulcheck.danger == true)
+			if(Soulcheck.GetValue("Dangersense Buff") == true)
 			{
 			player.dangerSense = true;
 			}
-			if(Soulcheck.hunt == true)
+			if(Soulcheck.GetValue("Hunter Buff") == true)
 			{
 			player.detectCreature = true;
 			}

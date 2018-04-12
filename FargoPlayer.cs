@@ -1333,7 +1333,7 @@ namespace Fargowiltas
 
 			}
 			
-			if(terrariaSoul && Main.rand.Next(2) == 0 && Soulcheck.splitter && !item.summon)
+			if(terrariaSoul && Main.rand.Next(2) == 0 && Soulcheck.GetValue("Splitting Projectiles") && !item.summon)
 			{
 					float spread = 2f * 0.1250f;
 					float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);

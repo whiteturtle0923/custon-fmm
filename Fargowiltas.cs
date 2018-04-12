@@ -12,6 +12,10 @@ using Fargowiltas.Projectiles;
 using System.Linq;
 using System.Collections.Generic;
 
+// why
+using Terraria.IO;
+using System.IO;
+
 namespace Fargowiltas
 {
     class Fargowiltas : Mod

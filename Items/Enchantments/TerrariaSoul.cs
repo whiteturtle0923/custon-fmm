@@ -36,13 +36,13 @@ namespace Fargowiltas.Items.Enchantments
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
 			modPlayer.terrariaSoul = true;
-			if(Soulcheck.junkle == true)
+			if(Soulcheck.GetValue("Spore Explosion") == true)
 			{
 				modPlayer.jungleEnchant = true;
 			}
 			//miner
 			player.pickSpeed -= 0.3f; 
-			if(Soulcheck.light == true)
+			if(Soulcheck.GetValue("Shine Buff") == true)
 			{
 			Lighting.AddLight(player.Center, 0.8f, 0.8f, 0f);
 			}
@@ -53,7 +53,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.onHitRegen = true;
 
 			//mythril	
-			if(Soulcheck.useSpeed)
+			if(Soulcheck.GetValue("Increase Use Speed"))
 			{
 				modPlayer.firingSpeed += .5f;
 				modPlayer.castingSpeed += .5f;
@@ -67,7 +67,7 @@ namespace Fargowiltas.Items.Enchantments
 			}	
 			
 			//orichalcum
-			if(Soulcheck.ori == true)
+			if(Soulcheck.GetValue("Orichalcum Fireball") == true)
 			{
 				player.onHitPetal = true;
 				modPlayer.oriEnchant = true;
@@ -86,7 +86,7 @@ namespace Fargowiltas.Items.Enchantments
 			}
 			
 			//molten
-			if(Soulcheck.no == true)
+			if(Soulcheck.GetValue("Inferno Buff") == true)
 			{
 				player.inferno = true;
 				Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), 0.65f, 0.4f, 0.1f);
@@ -116,7 +116,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.lavaImmune = true;
 			
 			//chloro
-			if(Soulcheck.chloro == true)
+			if(Soulcheck.GetValue("Leaf Crystal") == true)
 			{
 				modPlayer.chloroEnchant = true;
 				
@@ -130,7 +130,7 @@ namespace Fargowiltas.Items.Enchantments
 			}
 			
 			//shroomite
-			if(Soulcheck.shrooms == true)
+			if(Soulcheck.GetValue("Shroomite Stealth") == true)
 			{
 				player.shroomiteStealth = true;
 				modPlayer.shroomEnchant = true;
@@ -141,21 +141,21 @@ namespace Fargowiltas.Items.Enchantments
 			
 			//bee + spider 
 			player.strongBees = true;
-			if(Soulcheck.bees)
+			if(Soulcheck.GetValue("Bees on Hit"))
 			{
 				modPlayer.beeEnchant = true;
 			}
 			modPlayer.spiderEnchant = true;
 			
-			if(Soulcheck.spelunk == true)
+			if(Soulcheck.GetValue("Spelunker Buff") == true)
 			{
 				player.findTreasure = true;
 			}
-			if(Soulcheck.hunt == true)
+			if(Soulcheck.GetValue("Hunter Buff") == true)
 			{
 				player.detectCreature = true;
 			}
-			if(Soulcheck.danger == true)
+			if(Soulcheck.GetValue("Dangersense Buff") == true)
 			{
 				player.dangerSense = true;
 			}
@@ -166,7 +166,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.thorns = 1f;
 			player.turtleThorns = true;
 			player.statDefense = (int)(player.statDefense * 1.25);
-			if(Soulcheck.beet == true)
+			if(Soulcheck.GetValue("Beetles") == true)
 			{
 			player.beetleDefense = true;
 			player.beetleCounter += 1f;
@@ -310,7 +310,7 @@ namespace Fargowiltas.Items.Enchantments
 			//forbidden
 			player.buffImmune[194] = true;
 			
-			if(Soulcheck.forbidden == true)
+			if(Soulcheck.GetValue("Forbidden Storm") == true)
 			{
 				player.setForbidden = true;
 				player.UpdateForbiddenSetLock();
@@ -321,7 +321,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.noKnockback = true;
 			
 				//shield and sword
-				if(Soulcheck.yellow == true)
+				if(Soulcheck.GetValue("Hallowed Shield") == true)
 				{
 				modPlayer.hallowEnchant = true;
 			if (player.whoAmI == Main.myPlayer)
@@ -339,14 +339,14 @@ namespace Fargowiltas.Items.Enchantments
 			player.ghostHurt = true;	
 			
 			//spooky
-			if(Soulcheck.spoopy == true)
+			if(Soulcheck.GetValue("Spooky Scythes") == true)
 			{
 			modPlayer.spookyEnchant = true;
 			}
 			modPlayer.meteorEnchant = true;
 		
 		//solar
-			if(Soulcheck.solar == true)
+			if(Soulcheck.GetValue("Solar Shield") == true)
 			{
 			player.AddBuff(172, 5, false);
 			player.setSolar = true;
@@ -418,7 +418,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.setNebula = true;
 			
 			//stardust
-			if(Soulcheck.stardust == true)
+			if(Soulcheck.GetValue("Stardust Guardian") == true)
 			{
 				modPlayer.stardustEnchant = true;
 				player.setStardust = true;
@@ -438,7 +438,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pets
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(Soulcheck.facePet)
+				if(Soulcheck.GetValue("Baby Face Monster Pet"))
 				{
 					modPlayer.crimsonPet = true;
 					
@@ -458,7 +458,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(Soulcheck.turtlePet)
+				if(Soulcheck.GetValue("Turtle Pet"))
 				{
 					modPlayer.turtlePet = true;
 					
@@ -475,7 +475,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.turtlePet = false;
 				}
 				
-				if(Soulcheck.beePet)
+				if(Soulcheck.GetValue("Baby Hornet Pet"))
 				{
 					modPlayer.beePet = true;
 					
@@ -492,7 +492,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.beePet = false;
 				}
 				
-				if(Soulcheck.spiderPet)
+				if(Soulcheck.GetValue("Spider Pet"))
 				{
 					modPlayer.spiderPet = true;
 					
@@ -509,7 +509,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.spiderPet = false;
 				}
 				
-				if(Soulcheck.dinoPet)
+				if(Soulcheck.GetValue("Baby Dino Pet"))
 				{
 					modPlayer.dinoPet = true;
 					
@@ -526,7 +526,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.dinoPet = false;
 				}
 				
-				if(Soulcheck.eaterPet)
+				if(Soulcheck.GetValue("Baby Eater Pet"))
 				{
 					modPlayer.shadowPet = true;
 					
@@ -543,7 +543,7 @@ namespace Fargowiltas.Items.Enchantments
 						modPlayer.shadowPet = false;
 				}
 				
-				if(Soulcheck.saplingPet)
+				if(Soulcheck.GetValue("Cursed Sapling Pet"))
 				{
 					modPlayer.saplingPet = true;
 					
@@ -560,7 +560,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.saplingPet = false;
 				}
 				
-				if(Soulcheck.wispPet)
+				if(Soulcheck.GetValue("Wisp Pet"))
 				{
 					modPlayer.spectrePet = true;
 					
@@ -577,7 +577,7 @@ namespace Fargowiltas.Items.Enchantments
 						modPlayer.spectrePet = false;
 				}
 				
-				//if(soulcheck.eaterPet)
+				//if(Soulcheck.GetValue("Baby Eater Pet"))
 				//{
 					modPlayer.shadowPet2 = true;
 					
@@ -594,7 +594,7 @@ namespace Fargowiltas.Items.Enchantments
 				//		modPlayer.shadowPet2 = false;
 				//}
 				
-				//if(soulcheck.eaterPet)
+				//if(Soulcheck.GetValue("Baby Eater Pet"))
 				//{
 					modPlayer.crimsonPet2 = true;
 					
@@ -611,7 +611,7 @@ namespace Fargowiltas.Items.Enchantments
 				//		modPlayer.crimsonPet2 = false;
 				//}
 				
-				//if(soulcheck.facePet)
+				//if(Soulcheck.GetValue("Baby Face Monster Pet"))
 				//{
 					modPlayer.lanternPet = true;
 					
