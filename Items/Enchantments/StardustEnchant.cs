@@ -29,7 +29,7 @@ namespace Fargowiltas.Items.Enchantments
         {
 			player.maxMinions += 2;
 			player.minionDamage += 0.15f;
-			if(soulcheck.stardust == true)
+			if(Soulcheck.stardust == true)
 			{
 			player.setStardust = true;
 			if (player.whoAmI == Main.myPlayer)

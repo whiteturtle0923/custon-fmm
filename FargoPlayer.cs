@@ -163,13 +163,13 @@ namespace Fargowiltas
 		{
 			if (Fargowiltas.CheckListKey.JustPressed)
 			{
-				if(soulcheck.visible == false)
+				if(Soulcheck.visible == false)
 				{
-					soulcheck.visible = true;
+					Soulcheck.visible = true;
 				}
 				else
 				{
-					soulcheck.visible = false;
+					Soulcheck.visible = false;
 				}
 			}
 			
@@ -1333,7 +1333,7 @@ namespace Fargowiltas
 
 			}
 			
-			if(terrariaSoul && Main.rand.Next(2) == 0 && soulcheck.splitter && !item.summon)
+			if(terrariaSoul && Main.rand.Next(2) == 0 && Soulcheck.splitter && !item.summon)
 			{
 					float spread = 2f * 0.1250f;
 					float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);

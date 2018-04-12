@@ -33,7 +33,7 @@ namespace Fargowiltas.Items.Enchantments
         {
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
-			if(soulcheck.bees)
+			if(Soulcheck.bees)
 			{
 				modPlayer.beeEnchant = true;
 			}
@@ -44,7 +44,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pet
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.beePet)
+				if(Soulcheck.beePet)
 				{
 					modPlayer.beePet = true;
 					

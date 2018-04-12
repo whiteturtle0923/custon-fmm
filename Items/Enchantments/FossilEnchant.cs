@@ -40,7 +40,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pet
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.dinoPet)
+				if(Soulcheck.dinoPet)
 				{
 					modPlayer.dinoPet = true;
 					

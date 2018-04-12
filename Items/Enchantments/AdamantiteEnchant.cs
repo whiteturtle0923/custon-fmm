@@ -28,7 +28,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			if(soulcheck.splitter)
+			if(Soulcheck.splitter)
 			{
 				modPlayer.adamantiteEnchant = true;
 			}

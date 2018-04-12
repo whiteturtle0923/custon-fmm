@@ -34,19 +34,19 @@ namespace Fargowiltas.Items.Enchantments
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
 			player.pickSpeed -= 0.3f;
-			if(soulcheck.light == true)
+			if(Soulcheck.light == true)
 			{
 				Lighting.AddLight(player.Center, 0.8f, 0.8f, 0f);
 			}
-			if(soulcheck.spelunk == true)
+			if(Soulcheck.spelunk == true)
 			{
 				player.findTreasure = true;
 			}
-			if(soulcheck.hunt == true)
+			if(Soulcheck.hunt == true)
 			{
 				player.detectCreature = true;
 			}
-			if(soulcheck.danger == true)
+			if(Soulcheck.danger == true)
 			{
 				player.dangerSense = true;
 			}

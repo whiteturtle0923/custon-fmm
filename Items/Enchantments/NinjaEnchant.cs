@@ -43,7 +43,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pet
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.catPet)
+				if(Soulcheck.catPet)
 				{
 					modPlayer.catPet = true;
 					

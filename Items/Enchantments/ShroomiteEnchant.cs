@@ -36,7 +36,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			
 			player.rangedDamage+= .12f;
-			if(soulcheck.shrooms == true)
+			if(Soulcheck.shrooms == true)
 			{
 				player.shroomiteStealth = true;
 				((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).shroomEnchant = true;

@@ -43,7 +43,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.crimsonRegen = true;
 			
 			//bee + spider 
-			if(soulcheck.bees)
+			if(Soulcheck.bees)
 			{
 				modPlayer.beeEnchant = true;
 			}
@@ -56,7 +56,7 @@ namespace Fargowiltas.Items.Enchantments
 			player.thorns = 1f;
 			player.turtleThorns = true;
 			player.statDefense = (int)(player.statDefense * 1.25);
-			if(soulcheck.beet == true)
+			if(Soulcheck.beet == true)
 			{
 				player.beetleDefense = true;
 				player.beetleCounter += 1f;
@@ -150,7 +150,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pets
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.facePet)
+				if(Soulcheck.facePet)
 				{
 					modPlayer.crimsonPet = true;
 					
@@ -170,7 +170,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.turtlePet)
+				if(Soulcheck.turtlePet)
 				{
 					modPlayer.turtlePet = true;
 					
@@ -187,7 +187,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.turtlePet = false;
 				}
 				
-				if(soulcheck.beePet)
+				if(Soulcheck.beePet)
 				{
 					modPlayer.beePet = true;
 					
@@ -204,7 +204,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.beePet = false;
 				}
 				
-				if(soulcheck.spiderPet)
+				if(Soulcheck.spiderPet)
 				{
 					modPlayer.spiderPet = true;
 					

@@ -61,7 +61,7 @@ namespace Fargowiltas.Items.Souls
 		   player.manaFlower = true;
 			
 			//warrior
-			if(soulcheck.brawl == true)
+			if(Soulcheck.brawl == true)
 			{
 		   player.meleeSpeed += .35f;
 			}

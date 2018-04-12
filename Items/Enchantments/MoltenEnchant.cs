@@ -28,7 +28,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
 			player.meleeDamage+= .1f;
-			if(soulcheck.no == true)
+			if(Soulcheck.no == true)
 			{
 				player.inferno = true;
 				Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), 0.65f, 0.4f, 0.1f);

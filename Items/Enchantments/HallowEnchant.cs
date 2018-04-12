@@ -28,7 +28,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
 			player.noKnockback = true;
-			if(soulcheck.yellow == true)
+			if(Soulcheck.yellow == true)
 			{
 			((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).hallowEnchant = true;
 			//shield and sword

@@ -37,7 +37,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.facePet)
+				if(Soulcheck.facePet)
 				{
 					modPlayer.crimsonPet = true;
 					

@@ -33,7 +33,7 @@ namespace Fargowiltas.Items.Enchantments
 				player.statDefense = (int)(player.statDefense * 1.2);
 		
 		
-		if(soulcheck.beet == true)
+		if(Soulcheck.beet == true)
 		{
 				player.beetleDefense = true;
 				player.beetleCounter += 1f;

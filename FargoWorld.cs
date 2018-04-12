@@ -334,7 +334,7 @@ namespace Fargowiltas
 		
 		public override void PostUpdate ()
 		{
-            if (soulcheck.seasonalSpawns)
+            if (Soulcheck.seasonalSpawns)
             {
                 Main.xMas = true;
                 Main.halloween = true;

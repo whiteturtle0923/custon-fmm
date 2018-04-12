@@ -42,19 +42,19 @@ namespace Fargowiltas.Items.Enchantments
 			
 			//miner
 			player.pickSpeed -= 0.3f; 
-			if(soulcheck.light == true)
+			if(Soulcheck.light == true)
 			{
 			Lighting.AddLight(player.Center, 0.8f, 0.8f, 0f);
 			}
-			if(soulcheck.spelunk == true)
+			if(Soulcheck.spelunk == true)
 			{
 				player.findTreasure = true;
 			}
-			if(soulcheck.hunt == true)
+			if(Soulcheck.hunt == true)
 			{
 				player.detectCreature = true;
 			}
-			if(soulcheck.danger == true)
+			if(Soulcheck.danger == true)
 			{
 				player.dangerSense = true;
 			}
@@ -66,7 +66,7 @@ namespace Fargowiltas.Items.Enchantments
 			modPlayer.palladEnchant = true;
 
 			//mythril	
-			if(soulcheck.useSpeed)
+			if(Soulcheck.useSpeed)
 			{
 				modPlayer.firingSpeed += .3f;
 				modPlayer.castingSpeed += .3f;
@@ -80,13 +80,13 @@ namespace Fargowiltas.Items.Enchantments
 			}
 			
 			//orichalcum
-			if(soulcheck.ori == true)
+			if(Soulcheck.ori == true)
 			{
 			player.onHitPetal = true;
 			modPlayer.oriEnchant = true;
 			}
 			//adamantite
-			if(soulcheck.splitter)
+			if(Soulcheck.splitter)
 			{
 				modPlayer.adamantiteEnchant = true;
 			}

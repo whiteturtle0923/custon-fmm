@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace Fargowiltas
 {
-	class soulcheck : UIState
+	class Soulcheck : UIState
 	{
 		public UIPanel checklistPanel;
 		public static bool visible = false;

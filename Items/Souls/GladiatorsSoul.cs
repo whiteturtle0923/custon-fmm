@@ -33,7 +33,7 @@ namespace Fargowiltas.Items.Souls
         {
 		   ((FargoPlayer)player.GetModPlayer(mod, "FargoPlayer")).meleeEffect = true;
 		   
-		   if(soulcheck.brawl == false)
+		   if(Soulcheck.brawl == false)
 		   {
 			   player.meleeSpeed += .1f;
 		   }

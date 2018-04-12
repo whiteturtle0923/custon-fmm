@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.eaterPet)
+				if(Soulcheck.eaterPet)
 				{
 					modPlayer.shadowPet = true;
 					
