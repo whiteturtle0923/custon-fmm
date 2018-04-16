@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using Terraria.GameInput;
 using Fargowiltas;
 using System.Linq;
+using Terraria.ModLoader.IO;
 
 namespace Fargowiltas
 {
@@ -157,6 +158,30 @@ namespace Fargowiltas
 
 
 
+        public override TagCompound Save()
+        {
+            TagCompound tagCompound = new TagCompound();
+            foreach (KeyValuePair<String, Boolean> entry in Soulcheck.toggleDict)
+            {
+                tagCompound.Add(entry.Key, entry.Value);
+            }
+            return tagCompound;
+            // return base.Save();
+        }
+        public override void Load(TagCompound tag)
+        {
+            foreach(KeyValuePair<String, Object> entry in tag)
+            {
+                if (Soulcheck.toggleDict.ContainsKey(entry.Key))
+                {
+                    Soulcheck.toggleDict[entry.Key] = (bool) entry.Value;
+                } else
+                {
+                    Soulcheck.toggleDict.Add(entry.Key, (bool)entry.Value);
+                }
+            }
+            base.Load(tag);
+        }
 
 
         public override void ProcessTriggers(TriggersSet triggersSet)
