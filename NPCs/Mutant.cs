@@ -452,6 +452,52 @@ namespace Fargowiltas.NPCs
 		}
 
         //W1K
+        public static bool downedKutKu = false;
+        public static bool downedArdorix = false;
+        public static bool downedArborix = false;
+        public static bool downedAquatix = false;
+        public static bool downedIvy = false;
+        public static bool downedDeath = false;
+        public static bool downedRathalos = false;
+        public static bool downedRidley = false;
+        public static bool downedOkiku = false;
+
+        public bool W1KDownedKutku
+        {
+            get { return W1KModRedux.MWorld.downedKutKu; }
+        }
+        public bool W1KDownedArdorix
+        {
+            get { return W1KModRedux.MWorld.downedArdorix; }
+        }
+        public bool W1KDownedArborix
+        {
+            get { return W1KModRedux.MWorld.downedArborix; }
+        }
+        public bool W1KDownedAquatix
+        {
+            get { return W1KModRedux.MWorld.downedAquatix; }
+        }
+        public bool W1KDownedIvy
+        {
+            get { return W1KModRedux.MWorld.downedIvy; }
+        }
+        public bool W1KDownedDeath
+        {
+            get { return W1KModRedux.MWorld.downedDeath; }
+        }
+        public bool W1KDownedRathalos
+        {
+            get { return W1KModRedux.MWorld.downedRathalos; }
+        }
+        public bool W1KDownedRidley
+        {
+            get { return W1KModRedux.MWorld.downedRidley; }
+        }
+        public bool W1KDownedOkiku
+        {
+            get { return W1KModRedux.MWorld.downedOkiku; }
+        }
 
         //fernium
         public bool FerniumDownedMargrama
@@ -501,10 +547,12 @@ namespace Fargowiltas.NPCs
 
 		public override string GetChat()
 		{
-			int nurse = NPC.FindFirstNPC(NPCID.Nurse);
-			int witchDoctor = NPC.FindFirstNPC(NPCID.WitchDoctor);
-			
-			if(Main.bloodMoon == true)
+            if (NPC.downedMoonlord && Main.rand.Next(28) == 0)
+            {
+               return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials! ;)";
+            }
+            
+            if (Main.bloodMoon == true)
 			{
 				switch (Main.rand.Next(1))
 				{
@@ -519,24 +567,56 @@ namespace Fargowiltas.NPCs
 			{
 				return "I don't know what everyone's so happy about, but as long as nobody mistakes me for a Pigronata, I'm happy too.";
 			}
-			
-			if (nurse >= 0 && Main.rand.Next(19) == 0)
+
+            //specific other npc quotes
+            int nurse = NPC.FindFirstNPC(NPCID.Nurse);
+            int witchDoctor = NPC.FindFirstNPC(NPCID.WitchDoctor);
+            int dryad = NPC.FindFirstNPC(NPCID.Dryad);
+            int stylist = NPC.FindFirstNPC(NPCID.Stylist);
+            int guide = NPC.FindFirstNPC(NPCID.Guide);
+            int tax = NPC.FindFirstNPC(NPCID.TaxCollector);
+            int truffle = NPC.FindFirstNPC(NPCID.Truffle);
+            int cyborg = NPC.FindFirstNPC(NPCID.Cyborg);
+
+            if (nurse >= 0 && Main.rand.Next(27) == 0)
 			{
 				return "Whenever we're alone, " + Main.npc[nurse].GivenName + " keeps throwing syringes at me, no matter how many times I tell her to stop!";
 			}
-			
-			if (witchDoctor >= 0 && Main.rand.Next(18) == 0)
+			if (witchDoctor >= 0 && Main.rand.Next(26) == 0)
 			{
 				return "Please go tell " + Main.npc[witchDoctor].GivenName + " to drop the 'mystical' shtick, I mean, come on! I get it, you make tainted water or something.";
 			}
-			
-			if(Main.dayTime != true && Main.rand.Next(8) == 0)
+            if(dryad >= 0 && Main.rand.Next(25) == 0)
+            {
+                return "Why does " + Main.npc[dryad].GivenName + "'s outfit make my wings flutter?";
+            }
+            if (stylist >= 0 && Main.rand.Next(24) == 0)
+            {
+                return Main.npc[stylist].GivenName + " once gave me a wig... I look hideous with long hair.";
+            }
+            if (truffle >= 0 && Main.rand.Next(23) == 0)
+            {
+                return "That mutated mushroom seems like my type of fella.";
+            }
+            if (tax >= 0 && Main.rand.Next(22) == 0)
+            { 
+                return Main.npc[tax].GivenName + " keeps asking me for money, but he won't accept my spawners!";
+            }
+            if (guide >= 0 && Main.rand.Next(21) == 0)
+            {
+                return "Any idea why " + Main.npc[guide].GivenName + "is always cowering in fear when I get near him?";
+            }
+            if(truffle >= 0 && witchDoctor >= 0 && cyborg >= 0 && Main.rand.Next(20) == 0)
+            {
+                return "If any of us could play instruments, I'd totally start a band with " + Main.npc[witchDoctor].GivenName + ", " + Main.npc[truffle].GivenName + ", and " + Main.npc[cyborg].GivenName + ".";
+            }
+
+            if (Main.dayTime != true && Main.rand.Next(10) == 0)
 			{
 				return "I'd follow and help, but I'd much rather sit around right now.";
 			}
 			
-			
-			switch (Main.rand.Next(16))
+			switch (Main.rand.Next(19))
 			{
 				case 0:
 					return "Savagery, barbarism, bloodthirst, that's what I like seeing in people.";
@@ -549,7 +629,7 @@ namespace Fargowiltas.NPCs
 				case 4:
 					return "The only way to get stronger is to keep buying from me and in bulk too!";
 				case 5:
-					return "What's that? You want to fight me? ...you're not worthy.";
+					return "What's that? You want to fight me? ...you're not worthy you rat.";
 				case 6:
 					return "Don't bother with anyone else, all you'll ever need is right here.";
 				case 7:
@@ -565,16 +645,37 @@ namespace Fargowiltas.NPCs
 				case 12:
 					return "Violence for violence is the law of the beast.";
 				case 13:
-					return "Those guys really need to get more creative. All their first bosses are desert themed!";
+					return "Those guys really need to get more creative. All of their first bosses are desert themed!";
 				case 14:	
-					return "I am proud to be known as the Mutant, but thank Fargo I'm no Abomination";
-				default:
+					return "I am proud to be known as the Mutant, but thank Fargo I'm no Abominationn";
+                case 15:
+                    return "I'm all you need for a calamity.";
+                case 16:
+                    return "Everything shall bow before me! ...after you make this purchase.";
+                case 17:
+                    return "It's clear that I'm helping you out, but uh.. what's in this for me? A house you say? I eat zombies for breakfast.";
+                default:
 					return "Cthulhu's got nothing on me!";
 			}
-			
 		}
-		
-		public override void SetChatButtons(ref string button, ref string button2)
+
+/*
+I heard you liked fighting sealed bosses(reference to the ancient seal)
+
+"I really don't trust [Chef]... I don't know, I'm just saying."
+
+ //will he ever sell souls ? idk
+
+oh is that a soul of the universe? Fascinating I'll get all mine from the back
+
+Oh wow is that a speed soul. I coulda sold you one man
+
+//all souls need one
+
+"I know, I know, these souls look really pricy, buy I'm selling them at a loss here! Nobody would buy them otherwise! What a ripoff!"
+*/
+
+        public override void SetChatButtons(ref string button, ref string button2)
 		{
 			
 			if(shopnum == 1)
@@ -730,17 +831,19 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].SetDefaults(mod.ItemType("SuspiciousEye"));
 						shop.item[nextSlot].value=50000;
 						nextSlot++;
-					
-					if(Fargowiltas.instance.w1kLoaded)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("GoldenFeather"));
-						shop.item[nextSlot].value=50000;
-						nextSlot++;
-					}
-					
 				}
-				
-				if (ModLoader.GetLoadedMods().Contains("Exodus"))
+
+                if (Fargowiltas.instance.w1kLoaded)
+                {
+                    if (W1KDownedKutku)
+                    {
+                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("GoldenFeather"));
+                        shop.item[nextSlot].value = 50000;
+                        nextSlot++;
+                    }
+                }
+
+                if (ModLoader.GetLoadedMods().Contains("Exodus"))
 				{
 					if(ExodusDownedColoss)
 					{
@@ -948,9 +1051,37 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 				}
 
-                //LunarFlame
-                //2 gold
-                //post EoW
+                if (Fargowiltas.instance.w1kLoaded)
+                {
+                    if (W1KDownedIvy)
+                    {
+                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("CursedFlower"));
+                        shop.item[nextSlot].value = 150000;
+                        nextSlot++;
+                    }
+
+                    if (W1KDownedArdorix)
+                    {
+                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("FieryEgg"));
+                        shop.item[nextSlot].value = 150000;
+                        nextSlot++;
+                    }
+
+                    if (W1KDownedArborix)
+                    {
+                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("GrassyEgg"));
+                        shop.item[nextSlot].value = 150000;
+                        nextSlot++;
+                    }
+
+                    if (W1KDownedAquatix)
+                    {
+                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("WateryEgg"));
+                        shop.item[nextSlot].value = 150000;
+                        nextSlot++;
+                    }
+                }
+
                 if (ModLoader.GetLoadedMods().Contains("Fernium"))
                 {
                     if (FerniumDownedMargrama)
@@ -1048,24 +1179,6 @@ namespace Fargowiltas.NPCs
 						}
 				}
 				
-				if(Fargowiltas.instance.w1kLoaded)
-				{
-					if(Main.hardMode)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("FieryEgg"));
-						shop.item[nextSlot].value=150000;
-						nextSlot++;
-						
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("GrassyEgg"));
-						shop.item[nextSlot].value=150000;
-						nextSlot++;
-						
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("WateryEgg"));
-						shop.item[nextSlot].value=150000;
-						nextSlot++;
-					}
-				}
-				
 				if(Main.hardMode)
 				{
 						shop.item[nextSlot].SetDefaults(mod.ItemType("FleshyDoll"));
@@ -1155,8 +1268,25 @@ namespace Fargowiltas.NPCs
 					nextSlot++;
 					}
 				}
-			
-			 if (NPC.downedMechBossAny)
+
+                if (Fargowiltas.instance.w1kLoaded)
+                {
+                    if (W1KDownedRathalos)
+                    {
+                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("MysteryTicket"));
+                        shop.item[nextSlot].value = 380000;
+                        nextSlot++;
+                    }
+
+                    if (W1KDownedRidley)
+                    {
+                        shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("MetroidCapsule"));
+                        shop.item[nextSlot].value = 380000;
+                        nextSlot++;
+                    }
+                }
+
+                if (NPC.downedMechBossAny)
                 {				
 					if (Fargowiltas.instance.ersionLoaded)
 					{
@@ -1167,18 +1297,7 @@ namespace Fargowiltas.NPCs
 						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Ersion").ItemType("SuspiciousLookingChip"));
 						shop.item[nextSlot].value=120000;
 						nextSlot++;
-					}
-					
-					if(Fargowiltas.instance.w1kLoaded)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("CursedFlower"));
-						shop.item[nextSlot].value=210000;
-						nextSlot++;
-						
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("BloodySkull"));
-						shop.item[nextSlot].value=380000;
-						nextSlot++;
-					}					
+					}		
 				}
 				
 				if(Fargowiltas.instance.btfaLoaded)
@@ -1226,22 +1345,7 @@ namespace Fargowiltas.NPCs
 			{	
 						shop.item[nextSlot].SetDefaults(mod.ItemType("MechanicalAmalgam"));
 						shop.item[nextSlot].value=200000;
-						nextSlot++;
-				
-				if(Fargowiltas.instance.w1kLoaded)
-				{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("MysteryTicket"));
-						shop.item[nextSlot].value=380000;
-						nextSlot++;
-						
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("MetroidCapsule"));
-						shop.item[nextSlot].value=380000;
-						nextSlot++;
-						
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("OminousMask"));
-						shop.item[nextSlot].value=400000;
-						nextSlot++;
-				}	
+						nextSlot++;	
 			}
 			
 			if (Fargowiltas.instance.spiritLoaded)
@@ -1320,8 +1424,18 @@ namespace Fargowiltas.NPCs
 						nextSlot++;
 				}
 			}
-			
-			if (NPC.downedPlantBoss == true)
+
+            if (Fargowiltas.instance.w1kLoaded)
+            {
+                if (W1KDownedOkiku)
+                {
+                    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("OminousMask"));
+                    shop.item[nextSlot].value = 400000;
+                    nextSlot++;
+                }
+            }
+
+            if (NPC.downedPlantBoss == true)
 			{	
 						shop.item[nextSlot].SetDefaults(mod.ItemType("Plantera"));
 						shop.item[nextSlot].value=150000;
@@ -1413,61 +1527,69 @@ namespace Fargowiltas.NPCs
 			
 			if (Fargowiltas.instance.thoriumLoaded == true)
 			{
-					if(ThoriumModDownedAbyssion)
-					{
-						shop.item[nextSlot].SetDefaults(mod.ItemType("AbyssionSummon"));
-						shop.item[nextSlot].value=150000;
-						nextSlot++;
-					}
+				if(ThoriumModDownedAbyssion)
+				{
+					shop.item[nextSlot].SetDefaults(mod.ItemType("AbyssionSummon"));
+					shop.item[nextSlot].value=150000;
+					nextSlot++;
+				}
 			}
 			
 			if (Fargowiltas.instance.calamityLoaded)
-				{	
-					if(CalamityModDownedPlaguebringer)	
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("Abomination"));
-						shop.item[nextSlot].value=2000000;
-						nextSlot++;
-					}
+			{	
+				if(CalamityModDownedPlaguebringer)	
+				{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("Abomination"));
+					shop.item[nextSlot].value=2000000;
+					nextSlot++;
 				}
+			}
 			
 			if (Fargowiltas.instance.tremorLoaded)
 			{
-					if(TremorDownedCyberKing)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("AdvancedCircuit"));
-						shop.item[nextSlot].value=150000;
-						nextSlot++;
-					}
+				if(TremorDownedCyberKing)
+				{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("AdvancedCircuit"));
+					shop.item[nextSlot].value=150000;
+					nextSlot++;
+				}
 			}
 			
 			if (ModLoader.GetLoadedMods().Contains("CrystiliumMod"))
+			{
+				if(CrystiliumDownedKing)
 				{
-					if(CrystiliumDownedKing)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CrystiliumMod").ItemType("CrypticCrystal"));
-						shop.item[nextSlot].value=120000;
-						nextSlot++;
-					}
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CrystiliumMod").ItemType("CrypticCrystal"));
+					shop.item[nextSlot].value=120000;
+					nextSlot++;
 				}
+			}
 				
-				if (Fargowiltas.instance.calamityLoaded)
-				{	
-					if(CalamityModDownedRavager)
-					{
-						shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("AncientMedallion"));
-						shop.item[nextSlot].value=2200000;
-						nextSlot++;
-					}
+			if (Fargowiltas.instance.calamityLoaded)
+			{	
+				if(CalamityModDownedRavager)
+				{
+					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CalamityMod").ItemType("AncientMedallion"));
+					shop.item[nextSlot].value=2200000;
+					nextSlot++;
 				}
-			
-			if (NPC.downedFishron == true)
+			}
+
+            if (Fargowiltas.instance.w1kLoaded)
+            {
+                if (W1KDownedDeath)
+                {
+                    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("W1KModRedux").ItemType("DungeonMasterGuide"));
+                    shop.item[nextSlot].value = 500000;
+                    nextSlot++;
+                }
+            }
+
+            if (NPC.downedFishron == true)
 			{	
 						shop.item[nextSlot].SetDefaults(mod.ItemType("TruffleWorm2"));
 						shop.item[nextSlot].value=150000;
 						nextSlot++;
-			
-				
 			
 				if (ModLoader.GetLoadedMods().Contains("WaterBiomeMod"))
 				{
@@ -1833,61 +1955,8 @@ namespace Fargowiltas.NPCs
 		
 		public override void NPCLoot()
         {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MutantGrabBag")); //fernium w1k void sprite
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MutantGrabBag"));
         }
 	}	
 }
-
-
-/*
-
-
-"You try talking to [Guide] without him cowering in fear. I dare you."
-
-I heard you liked fighting sealed bosses(reference to the ancient seal)
-
-you want to fight me you say? You're not worthy you rat 
-
-now that you defeated the big guy I'd say it's time to start collecting those materials;)
-
-"You did all of this before, so make sure you don't fail."
-
-it's clear I'm helping you out but uh what's in this for me? A house you say? I eat zombies for breakfast.  Something something something
-
-"I really don't trust [Chef]... I don't know, I'm just saying."
-
-I'm all you need for a calamity
-
-oh is that a soul of the universe? Fascinating I'll get all mine from the back
-
-Oh wow is that a speed soul. I coulda sold you one man
-
-//all souls need one
-
-"I know, I know, these souls look really pricy, buy I'm selling them at a loss here! Nobody would buy them otherwise! What a ripoff!"
-
-Why does that cyborg guy even exist
-
-You Are not my master guide is
-
-The truffle guy said i could call him truffles... That reminds me of some guy i used to know
-
-why does the dryads outfit make my wings flutter
-
-"everything shall bow before me!... after you make this purchase"
-
-[Stylist] once gave me a wig... I look hideous with long hair"
-
-That mutated mushroom seems like my type of fella
-
-That [tax collector name here] keeps asking me for money but he dosen't acept my spawners
-
-"You are satan"
-"You arent worthy,you fuckn rat"
-
-"If any of us could play any instruments, I'd totally make a band with [Witch Docotoro], [Truffle] and [Cyborg]."
-
-'The guide puts me off.. His exterior seems demonic.'
-
-*/
 

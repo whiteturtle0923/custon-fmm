@@ -25,6 +25,8 @@ namespace Fargowiltas.NPCs
         public bool shock = false;
         public bool rotting = false;
 
+        public bool pillarSpawn = true;
+
         //masochist doom
         public bool transform = false;
         public int regenTimer;
@@ -1245,6 +1247,11 @@ namespace Fargowiltas.NPCs
 		public override bool PreNPCLoot (NPC npc)
 		{
             if((npc.type == NPCID.Medusa || npc.type == NPCID.IchorSticker || npc.type == NPCID.SeekerHead || npc.type == NPCID.Mimic) && !Main.hardMode)
+            {
+                return false;
+            }
+
+            if(npc.type == NPCID.CultistBoss && !pillarSpawn)
             {
                 return false;
             }

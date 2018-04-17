@@ -35,7 +35,7 @@ namespace Fargowiltas.Items.Summons
 			{
 				for (int j = 0; j < 50; j++)
 				{
-					if(player.inventory[j] != null && player.inventory[j].maxStack > 10)
+					if(player.inventory[j] != null && player.inventory[j].maxStack > 10 && player.inventory[j].type != mod.ItemType("MutantGrabBag"))
 					{
 						player.QuickSpawnItem(player.inventory[j].type, 5);
 					}
@@ -57,14 +57,14 @@ namespace Fargowiltas.Items.Summons
 				player.QuickSpawnItem(ItemID.SuspiciousLookingEye);
 				player.QuickSpawnItem(ItemID.WormFood);
 				player.QuickSpawnItem(ItemID.BloodySpine);
-				player.QuickSpawnItem(mod.ItemType("skull"));
+				player.QuickSpawnItem(mod.ItemType("SuspiciousSkull"));
 				player.QuickSpawnItem(ItemID.Abeemination);
-				player.QuickSpawnItem(mod.ItemType("fleshydoll"));
+				player.QuickSpawnItem(mod.ItemType("FleshyDoll"));
 				}
 				
 				if(j == 2)
 				{
-				player.QuickSpawnItem(mod.ItemType("deathbringerfairy"), 5);
+				player.QuickSpawnItem(mod.ItemType("DeathBringerFairy"), 5);
 				}
 				
 				if(j == 4)
@@ -81,7 +81,7 @@ namespace Fargowiltas.Items.Summons
 				
 				if(j == 8)
 				{
-				player.QuickSpawnItem(mod.ItemType("grabbag"), 2);	
+				player.QuickSpawnItem(mod.ItemType("MutantGrabBag"), 2);	
 				}	
 			}
 			

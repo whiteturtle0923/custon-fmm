@@ -7,38 +7,30 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Projectiles
 {
-    public class FusionBomb : ModProjectile
-    {
+	public class Explosion : ModProjectile
+	{
         public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Fuse Bomb");
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-        }
-        public override void SetDefaults()
-        {
-            projectile.width = 100;
-            projectile.height = 100;
-            projectile.aiStyle = 0;
-            projectile.friendly = false;
-            projectile.hostile = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 10;
-            projectile.tileCollide = false;
-            projectile.light = 0.75f;
-            projectile.ignoreWater = true;
-            projectile.extraUpdates = 1;
-            aiType = ProjectileID.Bullet;
-        }
-
-        public override string Texture
-        {
-            get
-            {
-                return "Fargowiltas/Projectiles/Explosion";
-            }
-        }
-
+		{
+			DisplayName.SetDefault("Explosion");
+        	ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+		}
+		public override void SetDefaults()
+		{
+			projectile.width = 1000;
+			projectile.height = 1000;
+			projectile.aiStyle = 0;
+			projectile.friendly = true;
+			projectile.thrown = true;
+			projectile.penetrate = -1;
+			projectile.timeLeft = 10;
+			projectile.tileCollide = false;
+			projectile.light = 0.75f;
+			projectile.ignoreWater = true;
+			projectile.extraUpdates = 1;
+			aiType = ProjectileID.Bullet;
+		}
+        
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
@@ -95,5 +87,5 @@ namespace Fargowiltas.Projectiles
             }
 
         }
-    }
+	}
 }

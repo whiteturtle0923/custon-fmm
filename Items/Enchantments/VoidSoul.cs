@@ -78,8 +78,24 @@ namespace Fargowiltas.Items.Enchantments
 
 			return true;
 		}
-		
-		public override void UpdateAccessory(Player player, bool hideVisual)
+
+        public override void UpdateInventory(Player player)
+        {
+            player.accWatch = 3;
+            player.accDepthMeter = 1;
+            player.accCompass = 1;
+            player.accFishFinder = true;
+            player.accWeatherRadio = true;
+            player.accCalendar = true;
+            player.accThirdEye = true;
+            player.accJarOfSouls = true;
+            player.accCritterGuide = true;
+            player.accStopwatch = true;
+            player.accOreFinder = true;
+            player.accDreamCatcher = true;
+        }
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
@@ -121,9 +137,9 @@ namespace Fargowiltas.Items.Enchantments
 					{
 						player.Teleport(vector32, 1, 0);
 						NetMessage.SendData(65, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+                        cd = 120;
 					}
 				}
-				cd = 120;
             }
 			cd--;
 			voidTimer--;

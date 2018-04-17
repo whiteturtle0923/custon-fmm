@@ -28,6 +28,11 @@ namespace Fargowiltas.Items.Enchantments
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
 			player.meleeDamage+= .1f;
+            
+            //explode on death
+            FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
+            modPlayer.moltenEnchant = true;
+            
 			if(soulcheck.no == true)
 			{
 				player.inferno = true;
@@ -55,7 +60,8 @@ namespace Fargowiltas.Items.Enchantments
 					}
 				}
 			}
-			player.lavaMax += 420;
+            
+			//player.lavaMax += 420;
         }
 		
 		public override void AddRecipes()
@@ -64,7 +70,7 @@ namespace Fargowiltas.Items.Enchantments
 			recipe.AddIngredient(ItemID.MoltenHelmet);
             recipe.AddIngredient(ItemID.MoltenBreastplate);
 			recipe.AddIngredient(ItemID.MoltenGreaves);
-			recipe.AddIngredient(ItemID.ObsidianRose);
+			//recipe.AddIngredient(ItemID.ObsidianRose);
 			recipe.AddIngredient(ItemID.Sunfury);
 			recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);

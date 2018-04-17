@@ -67,6 +67,7 @@ namespace Fargowiltas
 		public bool meteorEnchant = false;
 		private int meteorTimer = 120;
 		private int meteorCD = 0;
+        public bool moltenEnchant = false;
 		
 		
 		public bool copperEnchant = false;
@@ -174,7 +175,7 @@ namespace Fargowiltas
 			}
 			
 			//may need cooldown?
-			if (Fargowiltas.HomeKey.JustPressed)
+			if (voidSoul && Fargowiltas.HomeKey.JustPressed)
 			{
 				if (Main.rand.Next(2) == 0)
 					Dust.NewDust(player.position, player.width, player.height, 15, 0.0f, 0.0f, 150, Color.White, 1.1f);
@@ -240,6 +241,7 @@ namespace Fargowiltas
 			palladEnchant = false;
 			oriEnchant = false;
 			meteorEnchant = false;
+            moltenEnchant = false;
 			copperEnchant = false;
 			ninjaEnchant = false;
 			firstStrike = false;
@@ -323,6 +325,13 @@ namespace Fargowiltas
 		
 		public override void Kill (double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
 		{
+            if(moltenEnchant)
+            {
+                Projectile boom =Projectile.NewProjectileDirect(player.Center, new Vector2(0, 0), mod.ProjectileType("Explosion"), (int)(50 * player.meleeDamage), 0f, Main.myPlayer);
+                //boom.width *= 5;
+                //boom.height *= 5;
+            }
+            
 			if(voidSoul)
 			{
 				player.respawnTimer = (int)(player.respawnTimer * .5);
