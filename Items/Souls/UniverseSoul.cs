@@ -28,7 +28,10 @@ namespace Fargowiltas.Items.Souls
 								"Increases your maximum mana by 150 \nIncreases your max number of minions by 8 \nIncreases your max number of sentries by 6 \nIncreased pickup range for mana stars and hearts\n" +
 			 					"Increases all knockback \nGrants all the effects of the Yoyo Bag \nAll attacks inflict many debuffs\n" +
 								"All other effects of material souls");
+                                
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(12, 5));
 		}	
+        
 		public override void SetDefaults()
 		{
 			item.width = 20;
