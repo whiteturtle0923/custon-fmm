@@ -33,7 +33,7 @@ namespace Fargowiltas.Items.Enchantments
         {
 			
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			if(soulcheck.chloro == true)
+			if(Soulcheck.GetValue("Leaf Crystal") == true)
 			{
 			modPlayer.chloroEnchant = true;
 			

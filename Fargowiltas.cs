@@ -12,13 +12,17 @@ using Fargowiltas.Projectiles;
 using System.Linq;
 using System.Collections.Generic;
 
+// why
+using Terraria.IO;
+using System.IO;
+
 namespace Fargowiltas
 {
     class Fargowiltas : Mod
     {
         internal static ModHotKey CheckListKey;
         internal static ModHotKey HomeKey;
-        internal soulcheck SoulCheck;
+        internal Soulcheck SoulCheck;
         public UserInterface customResources;
 
         //loaded
@@ -147,8 +151,8 @@ namespace Fargowiltas
             {
 
                 customResources = new UserInterface();
-                SoulCheck = new soulcheck();
-                soulcheck.visible = false;
+                SoulCheck = new Soulcheck();
+                Soulcheck.visible = false;
                 customResources.SetState(SoulCheck);
             }
         }
@@ -159,7 +163,7 @@ namespace Fargowiltas
             "CustomBars: Custom Resource Bar",
             delegate
             {
-                if (soulcheck.visible)
+                if (Soulcheck.visible)
                 {
                         //Update CustomBars
                         customResources.Update(Main._drawInterfaceGameTime);

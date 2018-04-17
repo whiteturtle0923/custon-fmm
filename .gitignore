@@ -1,3 +1,4 @@
 
 *.cs
 Buffs/BrainMinion.cs
+obj/Debug/*.cache

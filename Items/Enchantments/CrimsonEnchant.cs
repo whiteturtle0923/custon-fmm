@@ -37,7 +37,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.facePet)
+				if(Soulcheck.GetValue("Baby Face Monster Pet"))
 				{
 					modPlayer.crimsonPet = true;
 					
@@ -54,7 +54,7 @@ namespace Fargowiltas.Items.Enchantments
 					modPlayer.crimsonPet = false;
 				}
 				
-				//if(soulcheck.eaterPet)
+				//if(Soulcheck.GetValue("Baby Eater Pet"))
 				//{
 					modPlayer.crimsonPet2 = true;
 					

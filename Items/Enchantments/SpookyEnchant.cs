@@ -32,7 +32,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			if(soulcheck.spoopy == true)
+			if(Soulcheck.GetValue("Spooky Scythes") == true)
 			{
 			modPlayer.spookyEnchant = true;
 			}
@@ -41,7 +41,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.saplingPet)
+				if(Soulcheck.GetValue("Cursed Sapling Pet"))
 				{
 					modPlayer.saplingPet = true;
 					

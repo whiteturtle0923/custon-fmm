@@ -42,19 +42,19 @@ namespace Fargowiltas.Items.Enchantments
 			
 			//miner
 			player.pickSpeed -= 0.3f; 
-			if(soulcheck.light == true)
+			if(Soulcheck.GetValue("Shine Buff") == true)
 			{
 			Lighting.AddLight(player.Center, 0.8f, 0.8f, 0f);
 			}
-			if(soulcheck.spelunk == true)
+			if(Soulcheck.GetValue("Spelunker Buff") == true)
 			{
 				player.findTreasure = true;
 			}
-			if(soulcheck.hunt == true)
+			if(Soulcheck.GetValue("Hunter Buff") == true)
 			{
 				player.detectCreature = true;
 			}
-			if(soulcheck.danger == true)
+			if(Soulcheck.GetValue("Dangersense Buff") == true)
 			{
 				player.dangerSense = true;
 			}
@@ -66,7 +66,7 @@ namespace Fargowiltas.Items.Enchantments
 			modPlayer.palladEnchant = true;
 
 			//mythril	
-			if(soulcheck.useSpeed)
+			if(Soulcheck.GetValue("Increase Use Speed"))
 			{
 				modPlayer.firingSpeed += .3f;
 				modPlayer.castingSpeed += .3f;
@@ -80,13 +80,13 @@ namespace Fargowiltas.Items.Enchantments
 			}
 			
 			//orichalcum
-			if(soulcheck.ori == true)
+			if(Soulcheck.GetValue("Orichalcum Fireball") == true)
 			{
 			player.onHitPetal = true;
 			modPlayer.oriEnchant = true;
 			}
 			//adamantite
-			if(soulcheck.splitter)
+			if(Soulcheck.GetValue("Splitting Projectiles"))
 			{
 				modPlayer.adamantiteEnchant = true;
 			}
@@ -114,7 +114,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				//if(soulcheck.facePet)
+				//if(Soulcheck.GetValue("Baby Face Monster Pet"))
 				//{
 					modPlayer.lanternPet = true;
 					

@@ -334,7 +334,7 @@ namespace Fargowiltas
 		
 		public override void PostUpdate ()
 		{
-            if (soulcheck.seasonalSpawns)
+            if (Soulcheck.GetValue("Seasonal Enemies"))
             {
                 Main.xMas = true;
                 Main.halloween = true;

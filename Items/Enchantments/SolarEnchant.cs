@@ -28,7 +28,7 @@ namespace Fargowiltas.Items.Enchantments
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {			
 				player.meleeDamage+= .15f;
-				if(soulcheck.solar == true)
+				if(Soulcheck.GetValue("Solar Shield") == true)
 				{
 				player.AddBuff(172, 5, false);
 				player.setSolar = true;

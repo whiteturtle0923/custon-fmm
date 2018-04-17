@@ -46,7 +46,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.wispPet)
+				if(Soulcheck.GetValue("Wisp Pet"))
 				{
 					modPlayer.spectrePet = true;
 					

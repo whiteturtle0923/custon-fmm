@@ -44,6 +44,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Terraria">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
+    </Reference>
     <Reference Include="Terrariamod">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terrariamod.exe</HintPath>
     </Reference>
@@ -391,7 +394,7 @@
     <Compile Include="Projectiles\VoidArrow.cs" />
     <Compile Include="Projectiles\VoidPortal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="soulcheck.cs" />
+    <Compile Include="Soulcheck.cs" />
     <Compile Include="Tiles\FargoGlobalTile.cs" />
     <Compile Include="Tiles\HouseBlock.cs" />
     <Compile Include="UICheckbox.cs" />

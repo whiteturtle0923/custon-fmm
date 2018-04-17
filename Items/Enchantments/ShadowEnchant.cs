@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.eaterPet)
+				if(Soulcheck.GetValue("Baby Eater Pet"))
 				{
 					modPlayer.shadowPet = true;
 					
@@ -56,7 +56,7 @@ namespace Fargowiltas.Items.Enchantments
 						modPlayer.shadowPet = false;
 				}
 				
-				//if(soulcheck.eaterPet)
+				//if(Soulcheck.GetValue("Baby Eater Pet"))
 				//{
 					modPlayer.shadowPet2 = true;
 					

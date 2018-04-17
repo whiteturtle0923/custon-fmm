@@ -45,7 +45,7 @@ namespace Fargowiltas.Items.Enchantments
 			modPlayer.meteorEnchant = true;
 		
 		//solar
-		if(soulcheck.solar == true)
+		if(Soulcheck.GetValue("Solar Shield") == true)
 		{
 				player.AddBuff(172, 5, false);
 				player.setSolar = true;
@@ -118,7 +118,7 @@ namespace Fargowiltas.Items.Enchantments
 				player.setNebula = true;
 				
 				//stardust
-				if(soulcheck.stardust == true)
+				if(Soulcheck.GetValue("Stardust Guardian") == true)
 				{
 				modPlayer.stardustEnchant = true;
 				player.setStardust = true;

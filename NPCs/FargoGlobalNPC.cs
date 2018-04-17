@@ -910,7 +910,7 @@ namespace Fargowiltas.NPCs
 
 
             //season enemies
-            if (soulcheck.seasonalSpawns)
+            if (Soulcheck.GetValue("Seasonal Enemies"))
 			{
 				/*if(Main.hardMode)
 				{
@@ -2911,7 +2911,7 @@ namespace Fargowiltas.NPCs
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
 			
-			if((soulcheck.splitEnemy && modPlayer.meleeEffect || modPlayer.universeEffect) && !npc.boss && Main.rand.Next(5) == 0)
+			if((Soulcheck.GetValue("Split Enemies") && modPlayer.meleeEffect || modPlayer.universeEffect) && !npc.boss && Main.rand.Next(5) == 0)
 			{
 				NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, npc.type);
 			}

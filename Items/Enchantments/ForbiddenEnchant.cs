@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			player.buffImmune[194] = true; //mighty wind
 			
-			if(soulcheck.forbidden == true)
+			if(Soulcheck.GetValue("Forbidden Storm") == true)
 			{
 				player.setForbidden = true;
 				player.UpdateForbiddenSetLock();

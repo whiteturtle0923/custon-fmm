@@ -40,7 +40,7 @@ namespace Fargowiltas.Items.Enchantments
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.turtlePet)
+				if(Soulcheck.GetValue("Turtle Pet"))
 				{
 					modPlayer.turtlePet = true;
 					

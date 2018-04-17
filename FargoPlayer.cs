@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using Terraria.GameInput;
 using Fargowiltas;
 using System.Linq;
+using Terraria.ModLoader.IO;
 
 namespace Fargowiltas
 {
@@ -158,19 +159,43 @@ namespace Fargowiltas
 
 
 
+        public override TagCompound Save()
+        {
+            TagCompound tagCompound = new TagCompound();
+            foreach (KeyValuePair<String, Boolean> entry in Soulcheck.toggleDict)
+            {
+                tagCompound.Add(entry.Key, entry.Value);
+            }
+            return tagCompound;
+            // return base.Save();
+        }
+        public override void Load(TagCompound tag)
+        {
+            foreach(KeyValuePair<String, Object> entry in tag)
+            {
+                if (Soulcheck.toggleDict.ContainsKey(entry.Key))
+                {
+                    Soulcheck.toggleDict[entry.Key] = (bool) entry.Value;
+                } else
+                {
+                    Soulcheck.toggleDict.Add(entry.Key, (bool)entry.Value);
+                }
+            }
+            base.Load(tag);
+        }
 
 
         public override void ProcessTriggers(TriggersSet triggersSet)
 		{
 			if (Fargowiltas.CheckListKey.JustPressed)
 			{
-				if(soulcheck.visible == false)
+				if(Soulcheck.visible == false)
 				{
-					soulcheck.visible = true;
+					Soulcheck.visible = true;
 				}
 				else
 				{
-					soulcheck.visible = false;
+					Soulcheck.visible = false;
 				}
 			}
 			
@@ -1342,7 +1367,7 @@ namespace Fargowiltas
 
 			}
 			
-			if(terrariaSoul && Main.rand.Next(2) == 0 && soulcheck.splitter && !item.summon)
+			if(terrariaSoul && Main.rand.Next(2) == 0 && Soulcheck.GetValue("Splitting Projectiles") && !item.summon)
 			{
 					float spread = 2f * 0.1250f;
 					float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);

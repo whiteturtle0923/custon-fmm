@@ -40,7 +40,7 @@ namespace Fargowiltas.Items.Enchantments
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
 			//jungle
-			if(soulcheck.junkle == true)
+			if(Soulcheck.GetValue("Spore Explosion") == true)
 			{
 			modPlayer.jungleEnchant = true;
 			}
@@ -48,7 +48,7 @@ namespace Fargowiltas.Items.Enchantments
 			modPlayer.fossilEnchant = true;
 			
 			//molten
-			if(soulcheck.no == true)
+			if(Soulcheck.GetValue("Inferno Buff") == true)
 			{
 				player.inferno = true;
 				Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), 0.65f, 0.4f, 0.1f);
@@ -84,9 +84,9 @@ namespace Fargowiltas.Items.Enchantments
 			player.buffImmune[47] = true; //frozen
 			player.buffImmune[20] = true; //Poisoned
 			player.buffImmune[70] = true; //Venom
-			
-			//chloro
-			if(soulcheck.chloro == true)
+
+            //chloro
+			if(Soulcheck.GetValue("Leaf Crystal") == true)
 			{
 				modPlayer.chloroEnchant = true;
 				
@@ -100,7 +100,7 @@ namespace Fargowiltas.Items.Enchantments
 			}
 			
 			//shroomite
-			if(soulcheck.shrooms == true)
+			if(Soulcheck.GetValue("Shroomite Stealth") == true)
 			{
 				player.shroomiteStealth = true;
 				modPlayer.shroomEnchant = true;
@@ -109,7 +109,7 @@ namespace Fargowiltas.Items.Enchantments
 			//pets
 			if (player.whoAmI == Main.myPlayer)
             {
-				if(soulcheck.dinoPet)
+				if(Soulcheck.GetValue("Baby Dino Pet"))
 				{
 					modPlayer.dinoPet = true;
 					

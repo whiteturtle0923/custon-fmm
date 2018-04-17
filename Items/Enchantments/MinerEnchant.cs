@@ -34,26 +34,26 @@ namespace Fargowiltas.Items.Enchantments
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
 			
 			player.pickSpeed -= 0.3f;
-			if(soulcheck.light == true)
+			if(Soulcheck.GetValue("Shine Buff") == true)
 			{
 				Lighting.AddLight(player.Center, 0.8f, 0.8f, 0f);
 			}
-			if(soulcheck.spelunk == true)
+			if(Soulcheck.GetValue("Spelunker Buff") == true)
 			{
 				player.findTreasure = true;
 			}
-			if(soulcheck.hunt == true)
+			if(Soulcheck.GetValue("Hunter Buff") == true)
 			{
 				player.detectCreature = true;
 			}
-			if(soulcheck.danger == true)
+			if(Soulcheck.GetValue("Dangersense Buff") == true)
 			{
 				player.dangerSense = true;
 			}
 			
 			if (player.whoAmI == Main.myPlayer)
             {
-				//if(soulcheck.facePet)
+				//if(Soulcheck.GetValue("Baby Face Monster Pet"))
 				//{
 					modPlayer.lanternPet = true;
 					
