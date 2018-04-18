@@ -172,13 +172,18 @@ namespace Fargowiltas
         {
             foreach(KeyValuePair<String, Object> entry in tag)
             {
-                if (Soulcheck.toggleDict.ContainsKey(entry.Key))
+                try
                 {
-                    Soulcheck.toggleDict[entry.Key] = (bool) entry.Value;
-                } else
-                {
-                    Soulcheck.toggleDict.Add(entry.Key, (bool)entry.Value);
+                    if (Soulcheck.toggleDict.ContainsKey(entry.Key))
+                    {
+                        Soulcheck.toggleDict[entry.Key] = (bool)entry.Value;
+                    }
+                    else
+                    {
+                        Soulcheck.toggleDict.Add(entry.Key, (bool)entry.Value);
+                    }
                 }
+                catch (Exception e) { }
             }
             base.Load(tag);
         }
