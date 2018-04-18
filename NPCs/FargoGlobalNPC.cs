@@ -1251,10 +1251,10 @@ namespace Fargowiltas.NPCs
                 return false;
             }
 
-            if(npc.type == NPCID.CultistBoss && !pillarSpawn)
+            /*if(npc.type == NPCID.CultistBoss && !pillarSpawn)
             {
                 return false;
-            }
+            }*/
 
 			//make a damn method for swarms
 			//slime multi

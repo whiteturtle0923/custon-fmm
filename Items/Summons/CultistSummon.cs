@@ -9,7 +9,7 @@ namespace Fargowiltas.Items.Summons
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cultist Summon");
+			DisplayName.SetDefault("Lunar Idol");
 			Tooltip.SetDefault("Summons the Lunatic Cultist");
 		}
 		public override void SetDefaults()

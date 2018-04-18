@@ -8,7 +8,7 @@ namespace Fargowiltas.Items.Summons
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pillar Summon");
+			DisplayName.SetDefault("Celestial Medallion");
 			Tooltip.SetDefault("Summons the Celestial Pillars");
 		}
 		public override void SetDefaults()
@@ -44,8 +44,6 @@ namespace Fargowiltas.Items.Summons
 			
 			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
 			return true;
-
-            //make not spawn moonlord?
 		}
 	}
 }
