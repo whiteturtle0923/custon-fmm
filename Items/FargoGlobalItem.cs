@@ -163,7 +163,7 @@ namespace Fargowiltas.Items
 		{
 			FargoPlayer p = (FargoPlayer)player.GetModPlayer(mod, "FargoPlayer");
 			
-			if(p.infinity && item.createTile == -1)
+			if(p.infinity && item.createTile == -1 && item.type != ItemID.LifeFruit)
 			{
 				return false;
 			}

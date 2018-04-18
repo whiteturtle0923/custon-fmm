@@ -1,9 +1,28 @@
 -Tavernkeep can now be caught
--Skeleton Merchant and Travelling MErchant can be caught
+-Skeleton Merchant and Travelling Merchant can be caught
 removed skeleton and travelloing mervhsnt spawns from pandoras box and made it only usable at night again
 -Infinity Relic down side changed, no longer reduces damage or regen, damages you when you attack instead
 -fixed bug with bone zone not dropping from treasure bag
-fernium mod support
+fernium mod support better w1k support
+void sprite
+
+infinity relic doesnt work with life fruits
+void soul telport does not go on cooldown if it fails
+can no longer tele home all the time... smh
+Mutant grab bag will not duplicate itself
+mutant grab bags drops fixed.. old names fail
+mutant grab bag actually drops now
+added a ton of new quotes to the mutant
+void soul cell phone effects work while its in inventory
+
+removed lava immune from molten and recipe change
+explode on death
+
+cultist, pillar, ogre summons
+
+//later
+add tooltips and new effects to upgrades
+lava immune now on obsidian enchantment
 
 
 NEW UPDATE - v .16.2

@@ -70,7 +70,5 @@ namespace Fargowiltas.Items.Weapons
 			
             return false;
         }
-		
-		
 	}
 }

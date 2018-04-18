@@ -8,17 +8,18 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Weapons
  {
-public class BoomShuriken : ModItem
+public class BoomGlaive : ModItem
 {
-	public override void SetStaticDefaults()
-	{
-		DisplayName.SetDefault("Boom Shuriken");
-		Tooltip.SetDefault("KABEWM");
-	}
-	public override void SetDefaults()
+    public override void SetStaticDefaults()
+    {
+        DisplayName.SetDefault("Boom Glaive");
+        Tooltip.SetDefault("");
+    }
+
+    public override void SetDefaults()
 	{
 		item.width = 11;  //The width of the .png file in pixels divided by 2.
-		item.damage = 15;  
+		item.damage = 16;  
 		item.thrown = true;  
 		item.noMelee = true;
 		item.consumable = true; 
@@ -30,11 +31,11 @@ public class BoomShuriken : ModItem
 		item.useTime = 13; 
 		item.knockBack = 3f;  //Ranges from 1 to 9.
 		item.UseSound = SoundID.Item1; //?
-		item.autoReuse = false;  
+		item.autoReuse = true;  
 		item.height = 11;  //The height of the .png file in pixels divided by 2.
 		item.maxStack = 999;
 		item.rare = 1;  
-		item.shoot = mod.ProjectileType("BoomShuriken");
+		item.shoot = mod.ProjectileType("GlaiveProj");
 		item.shootSpeed = 11f; // ?
 	}
 	
