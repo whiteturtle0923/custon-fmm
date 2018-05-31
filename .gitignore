@@ -2,3 +2,7 @@
 *.cs
 Buffs/BrainMinion.cs
 obj/Debug/*.cache
+.vs/Fargowiltas/v15/Server/sqlite3/storage.ide
+.vs/Fargowiltas/v15/Server/sqlite3/storage.ide-shm
+.vs/Fargowiltas/v15/Server/sqlite3/storage.ide-wal
+obj/Debug/Fargowiltas.csproj.CoreCompileInputs.cache

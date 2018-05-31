@@ -11,13 +11,7 @@ namespace Fargowiltas.NPCs
 {
     public class FargoGlobalNPC : GlobalNPC
     {
-        public override bool InstancePerEntity
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool InstancePerEntity => true;
 
         public bool pillarSpawn = true;
         public bool swarmActive = false;
