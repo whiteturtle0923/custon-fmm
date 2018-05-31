@@ -5,26 +5,26 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-	public class OverloadFish : ModItem
-	{		
-	    public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Truffle Worm Clump");
-			Tooltip.SetDefault("Summons several Duke Fishrons");
-		}
+    public class OverloadFish : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Truffle Worm Clump");
+            Tooltip.SetDefault("Summons several Duke Fishrons");
+        }
 
-		public override void SetDefaults()
-		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 100;
-			item.value = 1000;
-			item.rare = 4;
-			item.useAnimation = 30;
-			item.useTime = 30;
-			item.useStyle = 4;
-			item.consumable = true;
-		}
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 20;
+            item.maxStack = 100;
+            item.value = 1000;
+            item.rare = 4;
+            item.useAnimation = 30;
+            item.useTime = 30;
+            item.useStyle = 4;
+            item.consumable = true;
+        }
 
         public override bool CanUseItem(Player player)
         {
@@ -64,18 +64,18 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             }
 
             Main.NewText("The ocean swells with ferocious pigs!", 175, 75, 255);
-			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-			return true;
-		}
-		
-		public override void AddRecipes()
-		{	
-				ModRecipe recipe = new ModRecipe(mod);
-				recipe.AddIngredient(null, "TruffleWorm2");
-				recipe.AddIngredient(null, "Overloader");
-				recipe.AddTile(TileID.DemonAltar);
-				recipe.SetResult(this);
-				recipe.AddRecipe();
-		}
-	}
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "TruffleWorm2");
+            recipe.AddIngredient(null, "Overloader");
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

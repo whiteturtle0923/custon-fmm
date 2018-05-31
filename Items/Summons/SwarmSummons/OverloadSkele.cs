@@ -5,35 +5,35 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-	public class OverloadSkele : ModItem
-	{		
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Skull Chain Necklace");
-			Tooltip.SetDefault(@"Summons several Skeletrons during the night
+    public class OverloadSkele : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Skull Chain Necklace");
+            Tooltip.SetDefault(@"Summons several Skeletrons during the night
                                  Summons several Dungeon Guardians during the day");
-		}
+        }
 
-		public override void SetDefaults()
-		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 100;
-			item.value = 1000;
-			item.rare = 1;
-			item.useAnimation = 30;
-			item.useTime = 30;
-			item.useStyle = 4;
-			item.consumable = true;
-		}
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 20;
+            item.maxStack = 100;
+            item.value = 1000;
+            item.rare = 1;
+            item.useAnimation = 30;
+            item.useTime = 30;
+            item.useStyle = 4;
+            item.consumable = true;
+        }
 
         public override bool CanUseItem(Player player)
         {
             return !Fargowiltas.swarmActive;
         }
 
-		public override bool UseItem(Player player)
-		{
+        public override bool UseItem(Player player)
+        {
             Fargowiltas.swarmActive = true;
             Fargowiltas.swarmTotal = 10 * player.inventory[player.selectedItem].stack;
             Fargowiltas.swarmKills = 0;
@@ -60,7 +60,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
             int npc;
 
-            if(Main.dayTime)
+            if (Main.dayTime)
             {
                 npc = NPCID.DungeonGuardian;
             }
@@ -76,18 +76,18 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             }
 
             Main.NewText("A great clammering of bones rises from the dungeon!", 175, 75, 255);
-			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-			return true;
-		}
-		
-		public override void AddRecipes()
-		{	
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "SuspiciousSkull");
-			recipe.AddIngredient(null, "Overloader");
-			recipe.AddTile(TileID.DemonAltar);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-	}
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "SuspiciousSkull");
+            recipe.AddIngredient(null, "Overloader");
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

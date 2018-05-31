@@ -10,8 +10,8 @@ namespace Fargowiltas.Items.Weapons.Thrown
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Code 1 Thrown");
-
         }
+
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Code1);
@@ -40,7 +40,6 @@ namespace Fargowiltas.Items.Weapons.Thrown
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-
             int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
             Main.projectile[proj].thrown = true;
             Main.projectile[proj].melee = false;

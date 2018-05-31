@@ -5,20 +5,20 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-	public class DaybreakThrown : ModItem
-	{
+    public class DaybreakThrown : ModItem
+    {
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("'Rend your foes asunder with a spear of light!'");
         }
 
         public override void SetDefaults()
-		{
-			item.CloneDefaults(ItemID.DayBreak);
+        {
+            item.CloneDefaults(ItemID.DayBreak);
             item.shoot = ProjectileID.Daybreak;
-			item.melee = false;
-			item.thrown = true;
-		}
+            item.melee = false;
+            item.thrown = true;
+        }
 
         public override string Texture
         {
@@ -40,10 +40,10 @@ namespace Fargowiltas.Items.Weapons.Thrown
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
-			Main.projectile[proj].thrown = true;
-			Main.projectile[proj].melee = false;
+            int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
+            Main.projectile[proj].thrown = true;
+            Main.projectile[proj].melee = false;
             return false;
         }
-	}
+    }
 }

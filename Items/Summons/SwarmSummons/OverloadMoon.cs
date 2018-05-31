@@ -5,26 +5,26 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-	public class OverloadMoon : ModItem
-	{		
-	    public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Runic Inscription ");
-			Tooltip.SetDefault("Summons several Moon Lords");
-		}
+    public class OverloadMoon : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Runic Inscription ");
+            Tooltip.SetDefault("Summons several Moon Lords");
+        }
 
-		public override void SetDefaults()
-		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 100;
-			item.value = 1000;
-			item.rare = 11; 
-			item.useAnimation = 30;
-			item.useTime = 30;
-			item.useStyle = 4;
-			item.consumable = true;
-		}
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 20;
+            item.maxStack = 100;
+            item.value = 1000;
+            item.rare = 11;
+            item.useAnimation = 30;
+            item.useTime = 30;
+            item.useStyle = 4;
+            item.consumable = true;
+        }
 
         public override bool CanUseItem(Player player)
         {
@@ -64,18 +64,18 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             }
 
             Main.NewText("The wind whispers of death's approach!", 175, 75, 255);
-			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-			return true;
-		}
-		
-		public override void AddRecipes()
-		{	
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "CelestialSigil2");
-			recipe.AddIngredient(null, "Overloader");
-			recipe.AddTile(TileID.DemonAltar);
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "CelestialSigil2");
+            recipe.AddIngredient(null, "Overloader");
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
-		}
-	}
+        }
+    }
 }

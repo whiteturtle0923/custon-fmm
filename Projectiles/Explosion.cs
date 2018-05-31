@@ -1,36 +1,35 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Projectiles
 {
-	public class Explosion : ModProjectile
-	{
+    public class Explosion : ModProjectile
+    {
         public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Explosion");
-        	ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-		}
-		public override void SetDefaults()
-		{
-			projectile.width = 100;
-			projectile.height = 100;
-			projectile.aiStyle = 0;
-			projectile.friendly = true;
-			projectile.thrown = true;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 10;
-			projectile.tileCollide = false;
-			projectile.light = 0.75f;
-			projectile.ignoreWater = true;
-			projectile.extraUpdates = 1;
-			aiType = ProjectileID.Bullet;
-		}
-        
+        {
+            DisplayName.SetDefault("Explosion");
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 100;
+            projectile.height = 100;
+            projectile.aiStyle = 0;
+            projectile.friendly = true;
+            projectile.thrown = true;
+            projectile.penetrate = -1;
+            projectile.timeLeft = 10;
+            projectile.tileCollide = false;
+            projectile.light = 0.75f;
+            projectile.ignoreWater = true;
+            projectile.extraUpdates = 1;
+            aiType = ProjectileID.Bullet;
+        }
+
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
@@ -85,7 +84,6 @@ namespace Fargowiltas.Projectiles
                 Gore gore104 = Main.gore[num620];
                 gore104.velocity.Y = gore104.velocity.Y - 1f;
             }
-
         }
-	}
+    }
 }

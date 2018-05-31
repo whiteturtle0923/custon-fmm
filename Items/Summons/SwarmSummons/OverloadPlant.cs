@@ -5,26 +5,26 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-	public class OverloadPlant : ModItem
-	{		
-	    public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Heart of the Jungle");
-			Tooltip.SetDefault("Summons several Planteras");
-		}
+    public class OverloadPlant : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Heart of the Jungle");
+            Tooltip.SetDefault("Summons several Planteras");
+        }
 
-		public override void SetDefaults()
-		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 100;
-			item.value = 1000;
-			item.rare = 5;
-			item.useAnimation = 30;
-			item.useTime = 30;
-			item.useStyle = 4;
-			item.consumable = true;
-		}
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 20;
+            item.maxStack = 100;
+            item.value = 1000;
+            item.rare = 5;
+            item.useAnimation = 30;
+            item.useTime = 30;
+            item.useStyle = 4;
+            item.consumable = true;
+        }
 
         public override bool CanUseItem(Player player)
         {
@@ -64,18 +64,18 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             }
 
             Main.NewText("The jungle beats as one!", 175, 75, 255);
-			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-			return true;
-		}
-		
-		public override void AddRecipes()
-		{	
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "Plantera");
-			recipe.AddIngredient(null, "Overloader");
-			recipe.AddTile(TileID.DemonAltar);
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Plantera");
+            recipe.AddIngredient(null, "Overloader");
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
-		}
-	}
+        }
+    }
 }
