@@ -29,13 +29,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 			item.makeNPC = NPCID.DyeTrader;
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 25));
 		}
-		
-		public override string Texture
-		{
-			get
-			{
-				return "Terraria/NPC_207";
-			}
-		}
-	}
+
+        public override string Texture => "Terraria/NPC_207";
+    }
 }
