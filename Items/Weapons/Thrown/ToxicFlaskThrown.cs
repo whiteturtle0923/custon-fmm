@@ -16,13 +16,7 @@ namespace Fargowiltas.Items.Weapons.Thrown
             item.mana = 0;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Terraria/Item_3105";
-            }
-        }
+        public override string Texture => "Terraria/Item_3105";
 
         public override bool CanRightClick()
         {

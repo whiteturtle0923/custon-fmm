@@ -18,12 +18,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
             item.rare = 1;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Fargowiltas/Items/Placeholder";
-            }
-        }
+        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 }

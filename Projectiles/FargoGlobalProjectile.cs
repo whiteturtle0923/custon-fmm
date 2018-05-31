@@ -6,13 +6,7 @@ namespace Fargowiltas.Projectiles
 {
     public class FargoGlobalProjectile : GlobalProjectile
     {
-        public override bool InstancePerEntity
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool InstancePerEntity => true;
 
         public override void SetDefaults(Projectile projectile)
         {

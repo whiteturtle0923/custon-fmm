@@ -25,13 +25,7 @@ namespace Fargowiltas.Items.Summons
             item.consumable = true;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Terraria/Item_1133";
-            }
-        }
+        public override string Texture => "Terraria/Item_1133";
 
         public override bool UseItem(Player player)
         {

@@ -23,13 +23,7 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 170;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Fargowiltas/Items/Misc/PurityRenewal";
-            }
-        }
+        public override string Texture => "Fargowiltas/Items/Misc/PurityRenewal";
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
