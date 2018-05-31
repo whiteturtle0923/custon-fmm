@@ -29,7 +29,13 @@ namespace Fargowiltas.Items.CaughtNPCs
 			item.makeNPC = NPCID.Nurse;
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 23));
 		}
-
-        public override string Texture => "Terraria/NPC_18";
-    }
+		
+		public override string Texture
+		{
+			get
+			{
+				return "Terraria/NPC_18";
+			}
+		}
+	}
 }

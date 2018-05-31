@@ -29,7 +29,13 @@ namespace Fargowiltas.Items.CaughtNPCs
 			item.makeNPC = NPCID.Dryad;
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 21));
 		}
-
-        public override string Texture => "Terraria/NPC_20";
-    }
+		
+		public override string Texture
+		{
+			get
+			{
+				return "Terraria/NPC_20";
+			}
+		}
+	}
 }
