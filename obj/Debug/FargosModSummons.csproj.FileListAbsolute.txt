@@ -1,0 +1,2 @@
+C:\Users\Liam\Documents\My Games\Terraria\ModLoader\Mod Sources\FargosModSummons\obj\Debug\FargosModSummons.csprojResolveAssemblyReference.cache
+C:\Users\Liam\Documents\My Games\Terraria\ModLoader\Mod Sources\FargosModSummons\obj\Debug\FargosModSummons.csproj.CoreCompileInputs.cache

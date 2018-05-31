@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,16 +8,38 @@ namespace Fargowiltas.Items.Weapons.Thrown
 {
 	public class VampireKnivesThrown : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("Rapidly throw life stealing daggers");
+        }
+
+        public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.VampireKnives);
 			item.shoot = ProjectileID.VampireKnife;
 			item.melee = false;
 			item.thrown = true;
-			item.damage = 33;
 		}
-		
-		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+
+        public override string Texture
+        {
+            get
+            {
+                return "Terraria/Item_1569";
+            }
+        }
+
+        public override bool CanRightClick()
+        {
+            return true;
+        }
+
+        public override void RightClick(Player player)
+        {
+            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.VampireKnives, 1, false, (int)item.prefix);
+        }
+
+        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			int i = Main.myPlayer;
 			float num72 = item.shootSpeed;
@@ -81,21 +101,12 @@ namespace Fargowiltas.Items.Weapons.Thrown
 				float x4 = vector2.X;
 				float y4 = vector2.Y;
 				
-				int proj = Projectile.NewProjectile(x4, y4, num148, num149, ProjectileID.VampireKnife, num73, num74, i, 0f, 0f);
+				int proj = Projectile.NewProjectile(x4, y4, num148, num149, ProjectileID.VampireKnife, num73, num74, i);
 				Main.projectile[proj].thrown = true;
 				Main.projectile[proj].melee = false;
-				
 			}
+
 			return false;
-	}
-		
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.VampireKnives);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
+	    }
 	}
 }

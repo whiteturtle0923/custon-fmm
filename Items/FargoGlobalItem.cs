@@ -1,178 +1,80 @@
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
-using System.IO;
-using Terraria.ModLoader.IO;
-using Terraria.DataStructures;
 
 namespace Fargowiltas.Items
 {
 	public class FargoGlobalItem : GlobalItem
 	{
-	
-		public class UseSpeed : GlobalItem
+        static int[] thrown = { ItemID.Bananarang, ItemID.BloodyMachete, ItemID.DayBreak, ItemID.EnchantedBoomerang, ItemID.Flamarang, ItemID.FruitcakeChakram, ItemID.IceBoomerang, ItemID.LightDisc, ItemID.MagicDagger, ItemID.PaladinsHammer, ItemID.PossessedHatchet, ItemID.ShadowFlameKnife, ItemID.ThornChakram, ItemID.ToxicFlask, ItemID.VampireKnives, ItemID.WoodenBoomerang, ItemID.WoodYoyo, ItemID.Rally, ItemID.CorruptYoyo, ItemID.CrimsonYoyo, ItemID.JungleYoyo, ItemID.Code1, ItemID.Valor, ItemID.Cascade, ItemID.FormatC, ItemID.Gradient, ItemID.Chik, ItemID.HelFire, ItemID.Amarok, ItemID.Code2, ItemID.Yelets, ItemID.RedsYoyo, ItemID.ValkyrieYoyo, ItemID.Kraken, ItemID.TheEyeOfCthulhu, ItemID.Terrarian, ItemID.FlyingKnife, ItemID.BallOHurt, ItemID.TheMeatball, ItemID.BlueMoon, ItemID.Sunfury, ItemID.DaoofPow, ItemID.FlowerPow, ItemID.ScourgeoftheCorruptor };
+
+        
+
+        public override void ModifyTooltips (Item item, List< TooltipLine > tooltips)
 		{
-			
-			
-			public override float UseTimeMultiplier(Item item, Player player)
-			{
-				FargoPlayer p = (FargoPlayer)player.GetModPlayer(mod, "FargoPlayer");
-				if (item.ranged && item.damage > 0 && item.useTime > 5 && item.useAnimation > 5)
-				{
-					return 1f + p.firingSpeed;
-				}
-				if (item.magic && item.width != 25 && item.damage > 0 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.castingSpeed;
-				}
-				if ((item.thrown && item.damage > 0 && item.useTime > 1 && item.useAnimation > 1) || (item.ranged && item.width == 29 && item.damage > 0 && item.useTime > 1 && item.useAnimation > 1))
-				{
-					return 1f + p.throwingSpeed;
-				}
-				if (item.width == 27 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.radiantSpeed;
-				}
-				if (item.width == 25 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.symphonicSpeed;
-				}
-				if (item.magic && item.damage < 1 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.healingSpeed;
-				}
-				if (item.axe >= 1 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.axeSpeed;
-				}
-				if (item.hammer >= 1 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.hammerSpeed;
-				}
-				if (item.pick >= 1 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.pickSpeed;
-				}
-				return 1f;
-			}
-			
-			public override float MeleeSpeedMultiplier(Item item, Player player)
-			{
-				FargoPlayer p = (FargoPlayer)player.GetModPlayer(mod, "FargoPlayer");
-				if (item.ranged && item.damage > 0 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.firingSpeed;
-				}
-				if (item.magic && item.width != 25 && item.damage > 0 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.castingSpeed;
-				}
-				if ((item.thrown && item.damage > 0 && item.useTime > 1 && item.useAnimation > 1) || (item.ranged && item.width == 29 && item.damage > 0 && item.useTime > 1 && item.useAnimation > 1))
-				{
-					return 1f + p.throwingSpeed;
-				}
-				if (item.width == 27 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.radiantSpeed;
-				}
-				if (item.width == 25 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.symphonicSpeed;
-				}
-				if (item.magic && item.damage < 1 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.healingSpeed;
-				}
-				if (item.axe >= 1 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.axeSpeed;
-				}
-				if (item.hammer >= 1 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.hammerSpeed;
-				}
-				if (item.pick >= 1 && item.useTime > 1 && item.useAnimation > 1)
-				{
-					return 1f + p.pickSpeed;
-				}
-				return 1f;
-			}
-			
-			
-		}
-		
-		public override void ModifyTooltips (Item item, List< TooltipLine > tooltips)
-		{
-			if(item.type == ItemID.CrystalBall)
-			{
-				TooltipLine line = new TooltipLine(mod, "fun", "Functions as a Demon altar as well");
-				//line.overrideColor = Color.LimeGreen;
-				tooltips.Add(line);
-			}
-			
-			if(item.type == ItemID.DogWhistle)
-			{
-				TooltipLine line = new TooltipLine(mod, "fun", "Shoutout to Browny and Paca");
-				tooltips.Add(line);
-			}
-		}
-		
-		public override void SetDefaults (Item item)
-		{
-			if(item.maxStack == 999 || item.maxStack == 99)
-			{
-				item.maxStack = item.maxStack * 10 + 9;
-			}
-			else if(item.maxStack > 10 && item.maxStack != 100 && item.type != 71 && item.type != 72 && item.type != 73 && item.type != 74)
-			{
-				item.maxStack = 99;
-			}
-		}
-		
-		public override void UpdateAccessory (Item item, Player player, bool hideVisual)
-		{
-			if(player.manaCost <= 0f)
-			{
-				player.manaCost = 0f;
-			}
-		}
-		
-		public override void GrabRange(Item item, Player player, ref int grabRange)
-		{
-			FargoPlayer p = (FargoPlayer)player.GetModPlayer(mod, "FargoPlayer");
-			//ignore money, hearts, mana stars
-			if(p.ironEnchant && item.type != 71 && item.type != 72 && item.type != 73 && item.type != 74 && item.type != 54 && item.type != 1734 && item.type != 1735 && item.type != 184)
-			{
-				grabRange += 300;
-			}
-		}
-		
-		public override void PickAmmo (Item item, Player player, ref int type, ref float speed, ref int damage, ref float knockback)
-		{
-            FargoPlayer modPlayer = (FargoPlayer)player.GetModPlayer(mod, "FargoPlayer");
-            if (modPlayer.jammed)
+            int[] yoyos = { mod.ItemType("CascadeThrown"), mod.ItemType("ChikThrown"), mod.ItemType("Code1Thrown"), mod.ItemType("Code2Thrown"), mod.ItemType("FormatCThrown"), mod.ItemType("GradientThrown"), mod.ItemType("KrakenThrown"), mod.ItemType("RallyThrown"), mod.ItemType("TerrarianThrown"), mod.ItemType("ValorThrown"), mod.ItemType("YeletsThrown") };
+
+            if (Array.IndexOf(yoyos, item.type) > -1)
             {
-                type = ProjectileID.ConfettiGun;
+                TooltipLine line = new TooltipLine(mod, "OneDrop", "");
+                tooltips.Add(line);
             }
+
+            if (item.type == ItemID.CrystalBall)
+			{
+				TooltipLine line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
+				tooltips.Add(line);
+			}
 		}
 
-        public override bool ConsumeItem (Item item, Player player)
+        public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
+        {
+            if (line.Name == "OneDrop")
+            {
+                float num28 = 1f;
+                int num29 = (int)((float)Main.mouseTextColor * num28);
+                Color black = Color.Black;
+                for (int l = 0; l < 5; l++)
+                {
+                    int num30 = 0;
+                    int num31 = yOffset;
+                    if (l == 4)
+                    {
+                        black = new Color(num29, num29, num29, num29);
+                    }
+                    if (l == 0)
+                    {
+                        num30--;
+                    }
+                    else if (l == 1)
+                    {
+                        num30++;
+                    }
+                    else if (l == 2)
+                    {
+                        num31--;
+                    }
+                    else if (l == 3)
+                    {
+                        num31++;
+                    }
+                    Main.spriteBatch.Draw(Main.oneDropLogo, new Vector2((float)(num30 + line.X), (float)(num31 + line.Y)), null, black, 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+                }
+            }
+
+            return true;
+        }
+
+        public override void SetDefaults (Item item)
 		{
-			FargoPlayer p = (FargoPlayer)player.GetModPlayer(mod, "FargoPlayer");
-			
-			if(p.infinity && item.createTile == -1 && item.type != ItemID.LifeFruit)
+			if(item.maxStack > 10 && item.maxStack != 100 && item.type != ItemID.CopperCoin && item.type != ItemID.SilverCoin && item.type != ItemID.GoldCoin && item.type != ItemID.PlatinumCoin)
 			{
-				return false;
+				item.maxStack = 9999;
 			}
-			
-			if(p.builderMode && (item.createTile != -1 || item.createWall != -1))
-			{
-				return false;
-			}
-			return true;
 		}
 		
 		public override void OpenVanillaBag (string context, Player player, int arg)
@@ -183,168 +85,57 @@ namespace Fargowiltas.Items
 				{
 					player.QuickSpawnItem(ItemID.SlimeStaff);
 				}
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("SlimeKingsSlasher"));
-				}
-			}
-			if(arg == ItemID.EyeOfCthulhuBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("EyeFlail"));
-				}
-			}
-			if(arg == ItemID.EaterOfWorldsBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("EaterStaff"));
-				}
-			}
-			if(arg == ItemID.BrainOfCthulhuBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("BrainStaff"));
-				}
-			}
-			if(arg == ItemID.SkeletronBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("Bonezone"));
-				}
-			}
-			if(arg == ItemID.QueenBeeBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("QueenStinger"));
-				}
-			}
-			if(arg == ItemID.DestroyerBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("Probe"));
-				}
-			}
-			if(arg == ItemID.TwinsBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("TwinBoomerangs"));
-				}
-			}
-			if(arg == ItemID.SkeletronPrimeBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("PrimeStaff"));
-				}
-			}
-			if(arg == ItemID.PlanteraBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("Dicer"));
-				}
-			}
-			if(arg == ItemID.GolemBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("GolemStaff"));
-				}
-			}
-			if(arg == ItemID.FishronBossBag)
-			{
-				if(Main.rand.Next(10) == 0)
-				{
-					player.QuickSpawnItem(mod.ItemType("FishStick"));
-				}
 			}
 
-		}
-		
-		public override bool OnPickup (Item item, Player player)
-		{
-			bool returnVal = true;
-			FargoPlayer p = (FargoPlayer)player.GetModPlayer(mod, "FargoPlayer");
-
-            if(p.chloroEnchant && (item.type == ItemID.Daybloom || item.type == ItemID.Blinkroot || item.type == ItemID.Deathweed || item.type == ItemID.Fireblossom || item.type == ItemID.Moonglow || item.type == ItemID.Shiverthorn || item.type == ItemID.Waterleaf || item.type == ItemID.Mushroom || item.type == ItemID.VileMushroom || item.type == ItemID.ViciousMushroom || item.type == ItemID.GlowingMushroom))
+            if(arg == ItemID.WoodenCrate)
             {
-                item.stack *= 2;
+                if (Main.rand.Next(45) == 0)
+                {
+                    int[] drops = { ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang };
+                    player.QuickSpawnItem(drops[Main.rand.Next(drops.Length)]);
+                }
             }
-			
-			if(p.goldEnchant)
-			{
-				if(item.type == ItemID.CopperCoin)
-				{
-					for (int i = 0; i < 3; i++)
-					{
-						float randX, randY;
-						
-						do
-						{
-							randX = (float)Main.rand.Next(-10, 10);
-						} while(randX <= 4f && randX >= -4f);
-						
-						do
-						{
-							randY = (float)Main.rand.Next(-10, 10);
-						} while(randY <= 4f && randY >= -4f);
-						
-						Projectile.NewProjectile(player.Center.X, player.Center.Y, randX, randY, ProjectileID.CopperCoin, 25, 2, Main.myPlayer, 0f, 0f);
-					}
-					
-					returnVal = false;
-				}
-				
-				if(item.type == ItemID.SilverCoin)
-				{
-					for (int i = 0; i < 8; i++)
-					{
-						float randX, randY;
-						
-						do
-						{
-							randX = (float)Main.rand.Next(-10, 10);
-						} while(randX <= 4f && randX >= -4f);
-						
-						do
-						{
-							randY = (float)Main.rand.Next(-10, 10);
-						} while(randY <= 4f && randY >= -4f);
-						
-						Projectile.NewProjectile(player.Center.X, player.Center.Y, randX, randY, ProjectileID.SilverCoin, 50, 2, Main.myPlayer, 0f, 0f);
-					}
-					
-					returnVal = false;
-				}
-				if(item.type == ItemID.GoldCoin)
-				{
-					int x = Main.rand.Next(2);
-					
-					switch(x)
-					{
-						case 0:
-							player.AddBuff(BuffID.Regeneration, 600);
-							break;
-						default:
-							player.AddBuff(BuffID.Swiftness, 600);
-							break;
-					}
-					
-					//item.stack = 2;
-					
-				}
-			}
-				
-			
-			return returnVal;
-		}
-		
-	}
+
+            if (arg == ItemID.GoldenCrate)
+            {
+                if (Main.rand.Next(25) == 0)
+                {
+                    int[] drops = { ItemID.BandofRegeneration, ItemID.MagicMirror, ItemID.CloudinaBottle, ItemID.EnchantedBoomerang, ItemID.ShoeSpikes, ItemID.FlareGun, ItemID.HermesBoots, ItemID.LavaCharm, ItemID.SandstorminaBottle, ItemID.FlyingCarpet };
+                    player.QuickSpawnItem(drops[Main.rand.Next(drops.Length)]);
+                }
+            }
+
+            if(context == "lockBox")
+            {
+                if(Main.rand.Next(7) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Valor);
+                }
+            }
+        }
+
+        public override bool CanRightClick(Item item)
+        {
+            if(Array.IndexOf(thrown, item.type) > -1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public override void RightClick(Item item, Player player)
+        {
+            if(Array.IndexOf(thrown, item.type) > -1)
+            {
+                Main.NewText(item.Name, 175, 75, 255);
+                NewThrown(item, player, item.Name.Replace(" ", "").Replace("'", "").Replace("-", "").Replace(":", ""));
+            }
+        }
+
+        void NewThrown(Item item, Player player, string thrown)
+        {
+            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType(thrown + "Thrown"), 1, false, (int)item.prefix);
+        }
+    }
 }

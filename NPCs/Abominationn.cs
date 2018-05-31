@@ -1,33 +1,20 @@
-using System;
-using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.Events;
-using System.Linq;
-using Fargowiltas.NPCs;
-using Fargowiltas;
 
 namespace Fargowiltas.NPCs
 {
 	[AutoloadHead]
 	public class Abominationn : ModNPC
-	{
-		public override string Texture
-		{
-			get
-			{
-				return "Fargowiltas/NPCs/Abominationn";
-			}
-		}	
+	{	
 	
 		public override bool Autoload(ref string name)
 		{
 			name = "Abominationn";
 			return mod.Properties.Autoload;
 		}
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Abominationn");
@@ -56,18 +43,26 @@ namespace Fargowiltas.NPCs
 			animationType = NPCID.Guide;
 		}
 		
-		public bool GRealmDownedZombies
+		public bool GRealmInvasion
 		{
 			get { return GRealm.MWorld.downedZombieInvasion; }
 		}
+        public bool BtfaInvasion
+        {
+            get { return ForgottenMemories.TGEMWorld.downedForestInvasion; }
+        }
+        public bool SpiritInvasion
+        {
+            get { return SpiritMod.MyWorld.downedAncientFlier; }
+        }
+        public bool TremorInvasion
+        {
+            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan]; }
+        }
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
-			 if (NPC.downedGoblins == true)
-            {
-                return true;
-            }    
-			return false;
+            return NPC.downedGoblins;
 		}
 		
 		public override string TownNPCName()
@@ -89,15 +84,15 @@ namespace Fargowiltas.NPCs
 
 		public override string GetChat()
 		{
-			
 			int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
+
 			if (mutant >= 0 && Main.rand.Next(7) == 0)
 			{
 				return "That one guy, " + Main.npc[mutant].GivenName + ", he is my brother... I've fought more bosses than him.";
 			}
+
 			switch (Main.rand.Next(6))
 			{
-				
 				case 0:
 					return "I have defeated everything in this land... nothing can beat me.";
 				case 1:
@@ -116,8 +111,6 @@ namespace Fargowiltas.NPCs
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
 			button = Lang.inter[28].Value;
-			
-			//button2 = "Trade Trophy";
 		}
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -126,120 +119,96 @@ namespace Fargowiltas.NPCs
 			{
 				shop = true;
 			}
-			
 		}
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
+        void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
+        {
+            if (check)
+            {
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
+                shop.item[nextSlot].value = price;
+                nextSlot++;
+            }
+        }
+
+        public override void SetupShop(Chest shop, ref int nextSlot)
 		{
 			//EVENTS
-	
-			if (ModLoader.GetLoadedMods().Contains("ThoriumMod"))
+			if (Fargowiltas.instance.thoriumLoaded)
             {
-				if (NPC.downedBoss1 == true)
-                {
-                    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("ThoriumMod").ItemType("BloodMoonMedallion"));
-                    shop.item[nextSlot].value=20000;
-                    nextSlot++;
-               }
+                AddItem(NPC.downedBoss1, "ThoriumMod", "BloodMoonMedallion", 20000, ref shop, ref nextSlot);
 		    }
 			 
-			if (ModLoader.GetLoadedMods().Contains("SacredTools"))
+			if (Fargowiltas.instance.sacredToolsLoaded)
              {
-				if (NPC.downedBoss1 == true)
-				{
-                    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SacredTools").ItemType("SandstormMedallion"));
-                    shop.item[nextSlot].value=20000;
-                    nextSlot++;
-				}
+                AddItem(NPC.downedBoss1, "SacredTools", "SandstormMedallion", 20000, ref shop, ref nextSlot);
 			 }
 			 
-			if (ModLoader.GetLoadedMods().Contains("GRealm"))
+			if (Fargowiltas.instance.grealmLoaded)
 			{
-				if (GRealmDownedZombies)
-				{
-					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("GRealm").ItemType("HordeStaff"));
-					shop.item[nextSlot].value = 30000;
-					nextSlot++;
-				}
+                AddItem(GRealmInvasion, "GRealm", "HordeStaff", 30000, ref shop, ref nextSlot);
 			}
 	
-			shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
-			shop.item[nextSlot].value=50000;
-	     	nextSlot++;
+			    shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
+			    shop.item[nextSlot].value=50000;
+	     	    nextSlot++;
 			
 			if (Fargowiltas.instance.tremorLoaded)
 			{
-				if(NPC.downedBoss2)
-				{
-					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("ScrollofUndead"));
-					shop.item[nextSlot].value=50000;
-					nextSlot++;
-				}
+                AddItem(NPC.downedBoss2, "Tremor", "ScrollofUndead", 50000, ref shop, ref nextSlot);
 			}
-			
-			 
-			/*if (ModLoader.GetLoadedMods().Contains("SpiritMod"))
-			{
-				if (SpiritMod.MyWorld.downedAncientFlier)
-				{
-					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SpiritMod").ItemType("BlackPearl"));
-					shop.item[nextSlot].value = 60000;
-					nextSlot++;
-				}
-			}*/
 
-			if (Main.hardMode == true)
+            if (Fargowiltas.instance.spiritLoaded)
 			{
-			shop.item[nextSlot].SetDefaults(ItemID.SnowGlobe);
-			shop.item[nextSlot].value=80000;
-			nextSlot++;
+                AddItem(SpiritInvasion, "SpiritMod", "BlackPearl", 60000, ref shop, ref nextSlot);
 			}
-			
-			if (NPC.downedPirates == true)
-			{	
-			shop.item[nextSlot].SetDefaults(ItemID.PirateMap);
-			shop.item[nextSlot].value=100000;
-			nextSlot++;
-			}
-			
-			if (NPC.downedGolemBoss == true)
-			{	
-			shop.item[nextSlot].SetDefaults(ItemID.SolarTablet);
-			shop.item[nextSlot].value=100000;
-			nextSlot++;
-			}
-		
-			if (NPC.downedMartians == true)
+
+            if (Fargowiltas.instance.btfaLoaded)
             {
-                    shop.item[nextSlot].SetDefaults(mod.ItemType("RunawayProbe"));
-                    shop.item[nextSlot].value=100000;
-                    nextSlot++;
+                AddItem(BtfaInvasion, "ForgottenMemories", "AncientLog", 50000, ref shop, ref nextSlot);
             }
-			
-			if (NPC.downedHalloweenKing == true)
-			{	
-			shop.item[nextSlot].SetDefaults(ItemID.PumpkinMoonMedallion);
-			shop.item[nextSlot].value=150000;
-			nextSlot++;
+
+            if (Main.hardMode)
+			{
+			    shop.item[nextSlot].SetDefaults(ItemID.SnowGlobe);
+			    shop.item[nextSlot].value=80000;
+			    nextSlot++;
 			}
 			
-			if (NPC.downedChristmasIceQueen == true)
+			if (NPC.downedPirates)
 			{	
-			shop.item[nextSlot].SetDefaults(ItemID.NaughtyPresent);
-			shop.item[nextSlot].value=150000;
-			nextSlot++;
+			    shop.item[nextSlot].SetDefaults(ItemID.PirateMap);
+			    shop.item[nextSlot].value=100000;
+			    nextSlot++;
+			}
+			
+			if (NPC.downedGolemBoss)
+			{	
+			    shop.item[nextSlot].SetDefaults(ItemID.SolarTablet);
+			    shop.item[nextSlot].value=100000;
+			    nextSlot++;
+			}
+
+                AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 100000, ref shop, ref nextSlot);
+			
+			if (NPC.downedHalloweenKing)
+			{	
+			    shop.item[nextSlot].SetDefaults(ItemID.PumpkinMoonMedallion);
+			    shop.item[nextSlot].value=150000;
+			    nextSlot++;
+			}
+			
+			if (NPC.downedChristmasIceQueen)
+			{	
+			    shop.item[nextSlot].SetDefaults(ItemID.NaughtyPresent);
+			    shop.item[nextSlot].value=150000;
+			    nextSlot++;
 			}
 			
 			if (Fargowiltas.instance.tremorLoaded)
 			{
-				if(NPC.downedMoonlord == true)
-				{
-					shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("AncientWatch"));
-					shop.item[nextSlot].value=200000;
-					nextSlot++;
-				}
+                AddItem(TremorInvasion, "Tremor", "AncientWatch", 200000, ref shop, ref nextSlot);
 			}
-		
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -265,5 +234,39 @@ namespace Fargowiltas.NPCs
 			multiplier = 12f;
 			randomOffset = 2f;
 		}
-	}
+
+        //gore
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.life <= 0)
+            {
+                for (int k = 0; k < 8; k++)
+                {
+                    Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.8f);
+                }
+                for (int k = 0; k < 1; k++)
+                {
+                    Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore3"), 1f);
+                }
+                for (int k = 0; k < 1; k++)
+                {
+                    Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore2"), 1f);
+                }
+                for (int k = 0; k < 1; k++)
+                {
+                    Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore1"), 1f);
+                }
+            }
+            else
+            {
+                for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+                {
+                    Dust.NewDust(npc.position, npc.width, npc.height, 5, (float)hitDirection, -1f, 0, default(Color), 0.6f);
+                }
+            }
+        }
+    }
 }

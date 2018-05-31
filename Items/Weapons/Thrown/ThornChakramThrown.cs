@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,38 +13,33 @@ namespace Fargowiltas.Items.Weapons.Thrown
 			item.shoot = ProjectileID.ThornChakram;
 			item.melee = false;
 			item.thrown = true;
-			item.damage = 28;
 		}
-		
-		public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once
+
+        public override string Texture
         {
-            for (int i = 0; i < 1000; ++i)
+            get
             {
-                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == item.shoot)
-                {
-                    return false;
-                }
+                return "Terraria/Item_191";
             }
+        }
+
+        public override bool CanRightClick()
+        {
             return true;
+        }
+
+        public override void RightClick(Player player)
+        {
+            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.ThornChakram, 1, false, (int)item.prefix);
         }
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 
-			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, 0f);
+			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
 			Main.projectile[proj].thrown = true;
 			Main.projectile[proj].melee = false;
-			
             return false;
         }
-		
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.ThornChakram);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
 	}
 }

@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,33 +7,44 @@ namespace Fargowiltas.Items.Weapons.Thrown
 {
 	public class MagicDaggerThrown : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("A magical returning dagger");
+        }
+
+        public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.MagicDagger);
 			item.shoot = ProjectileID.MagicDagger;
 			item.magic = false;
 			item.thrown = true;
 			item.mana = 0;
-			item.damage = 45;
 		}
-		
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
 
-			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, 0f);
+        public override string Texture
+        {
+            get
+            {
+                return "Terraria/Item_517";
+            }
+        }
+
+        public override bool CanRightClick()
+        {
+            return true;
+        }
+
+        public override void RightClick(Player player)
+        {
+            Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.MagicDagger, 1, false, (int)item.prefix);
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
 			Main.projectile[proj].thrown = true;
 			Main.projectile[proj].melee = false;
-			
             return false;
         }
-		
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.MagicDagger);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
 	}
 }

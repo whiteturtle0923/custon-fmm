@@ -1,6 +1,4 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,16 +12,16 @@ namespace Fargowiltas.Items.Explosives
 			DisplayName.SetDefault("Troll Bomb");
 			Tooltip.SetDefault("'What could go wrong?' \nOnly Snek knows");
 		}
+
         public override void SetDefaults()
-        {
-            item.damage = 1;     		
+        {   		
             item.width = 10;    
             item.height = 32;   
             item.maxStack = 1;   
             item.consumable = false;  
             item.useStyle = 5;   
 			item.mana = 10;
-            item.rare = 1;    
+            item.rare = 2;    
             item.UseSound = SoundID.Item18; 
 			item.autoReuse = true;
             item.useAnimation = 20;  
@@ -36,80 +34,45 @@ namespace Fargowiltas.Items.Explosives
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            float spread = 45f * 0.0174f;
-            double startAngle = Math.Atan2(speedX, speedY)- spread/2;
-            double deltaAngle = spread/8f;
-            double offsetAngle;
-            int i;
 			int j = Main.rand.Next(100);
-			
-			if(j < 25)
+
+            if (j < 25)
 			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Bomb, damage, knockBack, player.whoAmI, 0f, 0f);
-				}
+                type = ProjectileID.Bomb;	
 			}
 			else if(j < 40)
 			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BouncyBomb, damage, knockBack, player.whoAmI, 0f, 0f);
-				}
+                type = ProjectileID.BouncyBomb;
 			}
 			else if(j < 55)
 			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.StickyBomb, damage, knockBack, player.whoAmI, 0f, 0f);
-				}
+				type = ProjectileID.StickyBomb;
 			}
 			else if(j < 60)
 			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.SmokeBomb, damage, knockBack, player.whoAmI, 0f, 0f);
-				}
+                type = ProjectileID.SmokeBomb;
 			}
 			else if(j < 75)
 			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Dynamite, damage, knockBack, player.whoAmI, 0f, 0f);
-				}
+                type = ProjectileID.Dynamite;
 			}
 			else if(j < 90)
 			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Grenade, damage, knockBack, player.whoAmI, 0f, 0f);
-				}
+                type = ProjectileID.Grenade;
 			}
 			else if(j < 98)
 			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BouncyDynamite, damage, knockBack, player.whoAmI, 0f, 0f);
-				}
+                type = ProjectileID.BouncyDynamite;
 			}
 			else
 			{
-				for (i = 0; i < 1; i++ )
-				{
-					offsetAngle = (startAngle + deltaAngle * (i + i*i) / 2f) + 32f * i;
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("TrollbombProj"), damage, knockBack, player.whoAmI, 0f, 0f);
-				}
+                type = mod.ProjectileType("TrollbombProj");
 			}
+
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack);
+
             return false;
         }
-		
 		
         public override void AddRecipes()  
         {
@@ -119,7 +82,6 @@ namespace Fargowiltas.Items.Explosives
 			recipe.AddIngredient(ItemID.BouncyBomb, 10);
 			recipe.AddIngredient(ItemID.Dynamite, 10);
 			recipe.AddIngredient(ItemID.ManaCrystal);
-			
             recipe.AddTile(TileID.Anvils);  
             recipe.SetResult(this);  
             recipe.AddRecipe();

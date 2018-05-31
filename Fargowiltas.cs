@@ -1,132 +1,45 @@
 ﻿using System;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.UI;
 using Terraria.ModLoader;
-using Fargowiltas.Items;
-using Fargowiltas.NPCs;
-using Fargowiltas.Projectiles;
-using System.Linq;
-using System.Collections.Generic;
-
-// why
-using Terraria.IO;
-using System.IO;
 
 namespace Fargowiltas
 {
     class Fargowiltas : Mod
     {
-        internal static ModHotKey CheckListKey;
         internal static ModHotKey HomeKey;
-        internal Soulcheck SoulCheck;
-        public UserInterface customResources;
 
-        //loaded
+        #region mod loaded bools
         internal bool blueMagicLoaded;
         internal bool calamityLoaded;
         internal bool cookieLoaded;
         internal bool crystiliumLoaded;
-        internal bool ersionLoaded;
-        internal bool gabeLoaded;
         internal bool grealmLoaded;
         internal bool joostLoaded;
         internal bool nightmaresLoaded;
         internal bool pumpkingLoaded;
         internal bool sacredToolsLoaded;
-        internal bool shroomsLoaded;
         internal bool spiritLoaded;
         internal bool terraCompLoaded;
         internal bool thoriumLoaded;
         internal bool tremorLoaded;
-        internal bool xervosLoaded;
         internal bool w1kLoaded;
-        internal bool waterBiomeLoaded;
         internal bool ancientsLoaded;
         internal bool btfaLoaded;
-        internal bool FKTModSettingsLoaded;
+        internal bool disarrayLoaded;
+        internal bool elementsLoaded;
+        internal bool enigmaLoaded;
+        internal bool exodusLoaded;
+        internal bool splitLoaded;
+        internal bool ferniumLoaded;
+        internal bool antiarisLoaded;
+        #endregion
 
-        //multi summon
-        internal bool multiSlime;
-        internal static int slimeKills;
-        internal static int slimeNum;
-        internal static int slimeSpawned;
-
-        internal bool multiEye;
-        internal static int eyeKills;
-        internal static int eyeNum;
-        internal static int eyeSpawned;
-
-        internal bool multiWorm;
-        internal static int wormKills;
-        internal static int wormNum;
-        internal static int wormSpawned;
-
-        internal bool multiBrain;
-        internal static int brainKills;
-        internal static int brainNum;
-        internal static int brainSpawned;
-
-        internal bool multiSkele;
-        internal static int skeleKills;
-        internal static int skeleNum;
-        internal static int skeleSpawned;
-
-        internal bool multiBee;
-        internal static int beeKills;
-        internal static int beeNum;
-        internal static int beeSpawned;
-
-        internal bool multiTwins;
-        internal static int retKills;
-        internal static int spazKills;
-        internal static int twinsNum;
-        internal static int twinsSpawned;
-
-        internal bool multiPrime;
-        internal static int primeKills;
-        internal static int primeNum;
-        internal static int primeSpawned;
-
-        internal bool multiDestroy;
-        internal static int destroyKills;
-        internal static int destroyNum;
-        internal static int destroySpawned;
-
-        internal bool multiPlant;
-        internal static int plantKills;
-        internal static int plantNum;
-        internal static int plantSpawned;
-
-        internal bool multiGolem;
-        internal static int golemKills;
-        internal static int golemNum;
-        internal static int golemSpawned;
-
-        internal bool multiFish;
-        internal static int fishKills;
-        internal static int fishNum;
-        internal static int fishSpawned;
-
-        internal bool multiMoon;
-        internal static int moonKills;
-        internal static int moonNum;
-        internal static int moonSpawned;
-
-        internal bool multiDG;
-        internal static int DGNum;
-        internal static int DGKills;
-        internal static int DGSpawned;
-
-        //stoned (ID 156) is placeholder for modded debuffs
-        //add more 156s after the currently existing ones (not at the actual end of array) and then overwrite them in PostSetupContent when adding buffs
-        internal int[] debuffIDs =
-        {156, 156, 156, 156, 156, 156, 156, 156, 156, 156, 156, 156, 156, 156, 156, 156, 156
-        , 20, 21, 22, 23, 24, 30, 31, 32, 33, 35, 36, 37, 39, 44, 46, 67, 68, 69, 70, 80, 94, 103, 120, 137, 144, 145, 148, 153, 156, 160, 163, 164, 195, 196, 197
-        };
+        //swarms
+        internal static bool swarmActive;
+        internal static int swarmKills;
+        internal static int swarmTotal;
+        internal static int swarmSpawned;
 
         internal static Fargowiltas instance;
 
@@ -138,43 +51,15 @@ namespace Fargowiltas
                 AutoloadGores = true,
                 AutoloadSounds = true
             };
-
         }
 
         public override void Load()
         {
             instance = this;
-            CheckListKey = RegisterHotKey("Soul Toggles", "L");
             HomeKey = RegisterHotKey("Teleport Home", "+");
-
-            if (!Main.dedServ)
-            {
-
-                customResources = new UserInterface();
-                SoulCheck = new Soulcheck();
-                Soulcheck.visible = false;
-                customResources.SetState(SoulCheck);
-            }
-        }
-        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-        {
-            int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
-            layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-            "CustomBars: Custom Resource Bar",
-            delegate
-            {
-                if (Soulcheck.visible)
-                {
-                        //Update CustomBars
-                        customResources.Update(Main._drawInterfaceGameTime);
-                    SoulCheck.Draw(Main.spriteBatch);
-                }
-                return true;
-            },
-            InterfaceScaleType.UI)
-            );
         }
 
+        #region mod loaded bools
         //bool sheet
         public override void PostSetupContent()
         {
@@ -184,222 +69,38 @@ namespace Fargowiltas
                 calamityLoaded = ModLoader.GetMod("CalamityMod") != null;
                 cookieLoaded = ModLoader.GetMod("CookieMod") != null;
                 crystiliumLoaded = ModLoader.GetMod("CrystiliumMod") != null;
-                ersionLoaded = ModLoader.GetMod("Ersion") != null;
-                gabeLoaded = ModLoader.GetMod("GabeHasWonsMod") != null;
                 grealmLoaded = ModLoader.GetMod("GRealm") != null;
                 joostLoaded = ModLoader.GetMod("JoostMod") != null;
                 nightmaresLoaded = ModLoader.GetMod("TrueEater") != null;
                 pumpkingLoaded = ModLoader.GetMod("Pumpking") != null;
                 sacredToolsLoaded = ModLoader.GetMod("SacredTools") != null;
-                shroomsLoaded = ModLoader.GetMod("Shrooms") != null;
                 spiritLoaded = ModLoader.GetMod("SpiritMod") != null;
                 terraCompLoaded = ModLoader.GetMod("TerraCompilation") != null;
                 thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
                 tremorLoaded = ModLoader.GetMod("Tremor") != null;
-                xervosLoaded = ModLoader.GetMod("XervosMod") != null;
                 w1kLoaded = ModLoader.GetMod("W1KModRedux") != null;
-                waterBiomeLoaded = ModLoader.GetMod("WaterBiomeMod") != null;
                 ancientsLoaded = ModLoader.GetMod("EchoesoftheAncients") != null;
                 btfaLoaded = ModLoader.GetMod("ForgottenMemories") != null;
-
-                FKTModSettingsLoaded = ModLoader.GetMod("FKTModSettings") != null;
-
-                //multi summons
-                multiSlime = false;
-                slimeNum = 0;
-                slimeKills = 0;
-                slimeSpawned = 0;
-
-                multiEye = false;
-                eyeNum = 0;
-                eyeKills = 0;
-                eyeSpawned = 0;
-
-                multiWorm = false;
-                wormNum = 0;
-                wormKills = 0;
-                wormSpawned = 0;
-
-                multiBrain = false;
-                brainNum = 0;
-                brainKills = 0;
-                brainSpawned = 0;
-
-                multiSkele = false;
-                skeleNum = 0;
-                skeleKills = 0;
-                skeleSpawned = 0;
-
-                multiBee = false;
-                beeNum = 0;
-                beeKills = 0;
-                beeSpawned = 0;
-
-                multiTwins = false;
-                retKills = 0;
-                spazKills = 0;
-                twinsNum = 0;
-                twinsSpawned = 0;
-
-                multiPrime = false;
-                primeNum = 0;
-                primeKills = 0;
-                primeSpawned = 0;
-
-                multiDestroy = false;
-                destroyNum = 0;
-                destroyKills = 0;
-                destroySpawned = 0;
-
-                multiPlant = false;
-                plantNum = 0;
-                plantKills = 0;
-                plantSpawned = 0;
-
-                multiGolem = false;
-                golemNum = 0;
-                golemKills = 0;
-                golemSpawned = 0;
-
-                multiFish = false;
-                fishNum = 0;
-                fishKills = 0;
-                fishSpawned = 0;
-
-                multiMoon = false;
-                moonNum = 0;
-                moonKills = 0;
-                moonSpawned = 0;
-
-                multiDG = false;
-                DGNum = 0;
-                DGKills = 0;
-                DGSpawned = 0;
-
-                debuffIDs[0] = this.BuffType("GodEater");
-                debuffIDs[1] = this.BuffType("FlamesoftheUniverse");
-                debuffIDs[2] = this.BuffType("MutantNibble");
-                debuffIDs[3] = this.BuffType("Asocial");
-                debuffIDs[4] = this.BuffType("Bloodthirsty"); //bloodthirsty currently does nothing fyi :v
-                debuffIDs[5] = this.BuffType("ClippedWings");
-                debuffIDs[6] = this.BuffType("Kneecapped");
-                debuffIDs[7] = this.BuffType("Defenseless");
-                debuffIDs[8] = this.BuffType("Lethargic");
-                debuffIDs[9] = this.BuffType("Purified");
-                debuffIDs[10] = this.BuffType("Berserked");
-                debuffIDs[11] = this.BuffType("Infested");
-                debuffIDs[12] = this.BuffType("MarkedforDeath");
-                debuffIDs[13] = this.BuffType("LivingWasteland");
-                debuffIDs[14] = this.BuffType("Rotting");
-                debuffIDs[15] = this.BuffType("LightningRod");
-                debuffIDs[16] = this.BuffType("SqueakyToy");
-
-    }
+                disarrayLoaded = ModLoader.GetMod("Disarray") != null;
+                elementsLoaded = ModLoader.GetMod("ElementsAwoken") != null;
+                enigmaLoaded = ModLoader.GetMod("Laugicality") != null; //why
+                exodusLoaded = ModLoader.GetMod("Exodus") != null;
+                splitLoaded = ModLoader.GetMod("Split") != null;
+                ferniumLoaded = ModLoader.GetMod("Fernium") != null;
+                antiarisLoaded = ModLoader.GetMod("Antiaris") != null;
+            }
             catch (Exception e)
             {
                 ErrorLogger.Log("Fargowiltas PostSetupContent Error: " + e.StackTrace + e.Message);
             }
-
         }
+        #endregion
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "BananarangThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.Bananarang);
-            recipe.AddRecipe();
 
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "BloodyMacheteThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.BloodyMachete);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "DaybreakThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.DayBreak);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "EnchantedBoomerangThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.EnchantedBoomerang);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "FlamarangThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.Flamarang);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "FruitcakeChakramThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.FruitcakeChakram);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "IceBoomerangThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.IceBoomerang);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "LightDiscThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.LightDisc);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "MagicDaggerThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.MagicDagger);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "PaladinsHammerThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.PaladinsHammer);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "PossessedHatchetThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.PossessedHatchet);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "ShadowflameKnifeThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.ShadowFlameKnife);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "ThornChakramThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.ThornChakram);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "VampireKnivesThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.VampireKnives);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "WoodenBoomerangThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.WoodenBoomerang);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(null, "ToxicFlaskThrown");
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.ToxicFlask);
-            recipe.AddRecipe();
-
+            #region summon conversions
             recipe = new ModRecipe(this);
             recipe.AddIngredient(null, "FleshyDoll");
             recipe.AddTile(TileID.WorkBenches);
@@ -472,35 +173,206 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.SuspiciousLookingEye);
             recipe.AddRecipe();
 
+            #endregion
+
+            #region crimson/corruption conversions
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CopperPickaxe);
-            recipe.AddIngredient(ItemID.WoodenHammer);
-            recipe.AddIngredient(ItemID.Wrench);
-            recipe.AddIngredient(ItemID.WireCutter);
-            recipe.AddIngredient(ItemID.EmptyBucket);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(ItemID.Toolbox);
+            recipe.AddIngredient(ItemID.Ichor);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.CursedFlame);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.Bubble);
-            recipe.AddIngredient(ItemID.RedHusk);
-            recipe.AddIngredient(ItemID.WhiteString);
-            recipe.AddTile(TileID.SkyMill);
-            recipe.SetResult(ItemID.ShinyRedBalloon);
+            recipe.AddIngredient(ItemID.CursedFlame);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Ichor);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.IceBlade);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(ItemID.EnchantedSword);
+            recipe.AddIngredient(ItemID.FleshKnuckles);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.PutridScent);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.Pumpkin, 500);
-            recipe.AddTile(TileID.LivingLoom);
-            recipe.SetResult(ItemID.MagicalPumpkinSeed);
+            recipe.AddIngredient(ItemID.PutridScent);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.FleshKnuckles);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DartPistol);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.DartRifle);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DartRifle);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.DartPistol);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.WormHook);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.TendonHook);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.TendonHook);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.WormHook);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ChainGuillotines);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.FetidBaghnakhs);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.FetidBaghnakhs);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.ChainGuillotines);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ClingerStaff);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.SoulDrain);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SoulDrain);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.ClingerStaff);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ShadowOrb);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.CrimsonHeart);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CrimsonHeart);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.ShadowOrb);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Musket);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.TheUndertaker);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.TheUndertaker);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Musket);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PanicNecklace);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.BandofStarpower);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.BandofStarpower);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.PanicNecklace);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.BallOHurt);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.TheRottedFork);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.TheRottedFork);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.BallOHurt);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CrimsonRod);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Vilethorn);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Vilethorn);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.CrimsonRod);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CrimstoneBlock);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.EbonstoneBlock);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.EbonstoneBlock);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.CrimstoneBlock);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Shadewood);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Ebonwood);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Ebonwood);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Shadewood);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.VileMushroom);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.ViciousMushroom);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ViciousMushroom);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.VileMushroom);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Ebonkoi);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.CrimsonTigerfish);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Ebonkoi);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Hemopiranha);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CrimsonTigerfish);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Ebonkoi);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Hemopiranha);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Ebonkoi);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ViciousMushroom);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.VileMushroom);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -515,23 +387,25 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.Bladetongue);
             recipe.AddRecipe();
 
-            //BANNER recipes
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.VampireKnives);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.ScourgeoftheCorruptor);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ScourgeoftheCorruptor);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.VampireKnives);
+            recipe.AddRecipe();
+
+            #endregion
+
+            #region banner recipes
             recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.AngryBonesBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.TallyCounter);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.AnomuraFungusBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.GlowingMushroom, 100);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.AntlionBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.AntlionMandible, 40);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -541,51 +415,9 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.FlyingAntlionBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.AntlionMandible, 80);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.GreenSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 50);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.SlimeBanner);
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 100);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.RedSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 150);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.PurpleSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.Gel, 200);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.YellowSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 200);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.BlackSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 200);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.MotherSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 400);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -598,42 +430,6 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.UmbrellaSlimeBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.UmbrellaHat);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.IceSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 120);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.SpikedIceSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 300);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.JungleSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 120);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.SpikedJungleSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 300);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.SandSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 120);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.DungeonSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.GoldenKey, 100);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -655,55 +451,13 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.SlimerBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 300);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CrimslimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 300);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.GastropodBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 500);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.IlluminantSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 300);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.RainbowSlimeBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Gel, 5000);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.BloodCrawlerBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Vertebrae, 25);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.JellyfishBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Glowstick, 200);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.PinkJellyfishBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.JellyfishNecklace);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.GreenJellyfishBanner);
+            recipe.AddIngredient(ItemID.PixieBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.Megaphone);
             recipe.AddRecipe();
@@ -721,39 +475,15 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CrawdadBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Rally);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CrimeraBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Vertebrae, 25);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.CursedSkullBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.Nazar);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.SkeletonMageBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Bone, 500);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.DemonBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.DemonScythe);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.DevourerBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.WormTooth, 500);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -781,18 +511,6 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.EaterofSoulsBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.RottenChunk, 25);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.FaceMonsterBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Vertebrae, 25);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.FireImpBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.ObsidianRose);
@@ -800,6 +518,18 @@ namespace Fargowiltas
 
             recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.GiantShellyBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Rally);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CrawdadBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Rally);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SalamanderBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.Rally);
             recipe.AddRecipe();
@@ -829,12 +559,6 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.GreekSkeletonBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.GladiatorHelmet);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.DemonEyeBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.BlackLens);
@@ -859,12 +583,6 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.SalamanderBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Rally);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.SharkBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.DivingHelmet);
@@ -879,7 +597,7 @@ namespace Fargowiltas
             recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.SnowFlinxBanner);
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Compass);
+            recipe.SetResult(ItemID.SnowballLauncher);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -1009,18 +727,6 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.DungeonSpiritBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Ectoplasm, 200);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.TortoiseBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Seaweed);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.IcyMermanBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.FrostStaff);
@@ -1066,12 +772,6 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.AngryNimbusBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.NimbusRod);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.ClownBanner);
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Bananarang, 3);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -1165,49 +865,116 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.IceElementalBanner);
-            recipe.AddIngredient(ItemID.GoldenKey, 50);
+            recipe.AddIngredient(ItemID.ZombieElfBanner);
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.FrozenKey);
+            recipe.SetResult(ItemID.ElfHat);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.DerplingBanner);
-            recipe.AddIngredient(ItemID.GoldenKey, 50);
+            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.JungleKey);
+            recipe.SetResult(ItemID.Keybrand);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CrimsonAxeBanner);
-            recipe.AddIngredient(ItemID.GoldenKey, 50);
+            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.CrimsonKey);
+            recipe.SetResult(ItemID.MagnetSphere);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CursedHammerBanner);
-            recipe.AddIngredient(ItemID.GoldenKey, 50);
+            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.CorruptionKey);
+            recipe.SetResult(ItemID.WispinaBottle);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.EnchantedSwordBanner);
-            recipe.AddIngredient(ItemID.GoldenKey, 50);
+            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.HallowedKey);
+            recipe.SetResult(ItemID.BoneFeather);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CorruptPenguinBanner);
+            recipe.AddIngredient(ItemID.DesertLamiaBanner);
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Fish);
+            recipe.SetResult(ItemID.LamiaHat);
             recipe.AddRecipe();
 
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.FloatyGrossBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MeatGrinder);
+            recipe.AddRecipe();
 
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SkeletonMageBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BoneWand);
+            recipe.AddRecipe();
 
-            //statues
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateCaptainBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Cutlass);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateCaptainBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Cutlass);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateCaptainBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.GoldRing);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateCaptainBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PirateStaff);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateCaptainBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DiscountCard);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateCaptainBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LuckyCoin);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateCaptainBanner, 5);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.CoinGun);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ChaosElementalBanner, 5);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.RodofDiscord);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SkeletonCommandoBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.RocketLauncher);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SkeletonSniperBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SniperScope);
+            recipe.AddRecipe();
+
+            #endregion
+
+            #region statue recipes
             recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.BatBanner);
             recipe.AddIngredient(ItemID.StoneBlock, 50);
@@ -1378,8 +1145,9 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.QueenStatue);
             recipe.AddRecipe();
 
+            #endregion
 
-            //conversion
+            #region ore conversions
             recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.CopperBar);
             recipe.AddTile(TileID.AlchemyTable);
@@ -1475,6 +1243,235 @@ namespace Fargowiltas
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(ItemID.ShadowScale);
             recipe.AddRecipe();
+
+            #endregion
+
+            #region water chest loot
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Spear);
+            recipe.AddIngredient(ItemID.Coral, 5);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(ItemID.Trident);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PalmWood, 20);
+            recipe.AddTile(TileID.Sawmill);
+            recipe.SetResult(ItemID.BreathingReed);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Silk, 20);
+            recipe.AddIngredient(ItemID.Seashell, 5);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.Flipper);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.HermesBoots);
+            recipe.AddIngredient(ItemID.Starfish, 5);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(ItemID.WaterWalkingBoots);
+            recipe.AddRecipe();
+
+            #endregion
+
+            #region  ice chest loot
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CloudinaBottle);
+            recipe.AddIngredient(ItemID.SnowBlock, 100);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.BlizzardinaBottle);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.WoodenBoomerang);
+            recipe.AddIngredient(ItemID.IceBlock, 100);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.IceBoomerang);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.IronBroadsword);
+            recipe.AddIngredient(ItemID.IceBlock, 100);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.IceBlade);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.HermesBoots);
+            recipe.AddIngredient(ItemID.IceBlock, 100);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.IceSkates);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.WaterGun);
+            recipe.AddIngredient(ItemID.IceBlock, 100);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.SnowballCannon);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.HermesBoots);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.FlurryBoots);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.MagicMirror);
+            recipe.AddIngredient(ItemID.IceBlock, 100);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.IceMirror);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.AtlanticCod, 5);
+            recipe.AddTile(TileID.LivingLoom);
+            recipe.SetResult(ItemID.Fish);
+            recipe.AddRecipe();
+
+            #endregion
+
+            #region shadow chest loot
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Trident);
+            recipe.AddIngredient(ItemID.SoulofNight);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.DarkLance);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.MagicMissile);
+            recipe.AddIngredient(ItemID.LivingFireBlock);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Flamelash);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Fireblossom);
+            recipe.AddIngredient(ItemID.LivingFireBlock);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.FlowerofFire);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.BlueMoon);
+            recipe.AddIngredient(ItemID.LivingFireBlock);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.Sunfury);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.BeesKnees);
+            recipe.AddIngredient(ItemID.LivingFireBlock);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.HellwingBow);
+            recipe.AddRecipe();
+
+            #endregion
+
+            #region biome chest loot
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CrimsonKey);
+            recipe.AddIngredient(ItemID.Ectoplasm, 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(ItemID.VampireKnives);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CorruptionKey);
+            recipe.AddIngredient(ItemID.Ectoplasm, 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(ItemID.ScourgeoftheCorruptor);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.JungleKey);
+            recipe.AddIngredient(ItemID.Ectoplasm, 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(ItemID.PiranhaGun);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.FrozenKey);
+            recipe.AddIngredient(ItemID.Ectoplasm, 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(ItemID.StaffoftheFrostHydra);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.HallowedKey);
+            recipe.AddIngredient(ItemID.Ectoplasm, 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(ItemID.RainbowGun);
+            recipe.AddRecipe();
+
+            #endregion
+
+            #region misc recipes
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.CopperPickaxe);
+            recipe.AddIngredient(ItemID.WoodenHammer);
+            recipe.AddIngredient(ItemID.Wrench);
+            recipe.AddIngredient(ItemID.WireCutter);
+            recipe.AddIngredient(ItemID.EmptyBucket);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(ItemID.Toolbox);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Bubble);
+            recipe.AddIngredient(ItemID.RedHusk);
+            recipe.AddIngredient(ItemID.WhiteString);
+            recipe.AddTile(TileID.SkyMill);
+            recipe.SetResult(ItemID.ShinyRedBalloon);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.IceBlade);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.EnchantedSword);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.EnchantedSword, 2);
+            recipe.AddIngredient(ItemID.SoulofLight, 5);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.Arkhalis);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Pumpkin, 500);
+            recipe.AddTile(TileID.LivingLoom);
+            recipe.SetResult(ItemID.MagicalPumpkinSeed);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.FishingSeaweed, 10);
+            recipe.AddTile(TileID.LivingLoom);
+            recipe.SetResult(ItemID.Seaweed);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.HermesBoots);
+            recipe.AddIngredient(ItemID.Daybloom);
+            recipe.AddIngredient(ItemID.Blinkroot);
+            recipe.AddIngredient(ItemID.Shiverthorn);
+            recipe.AddIngredient(ItemID.Moonglow);
+            recipe.AddIngredient(ItemID.Waterleaf);
+            recipe.AddIngredient(ItemID.Deathweed);
+            recipe.AddIngredient(ItemID.Fireblossom);
+            recipe.AddTile(TileID.LivingLoom);
+            recipe.SetResult(ItemID.FlowerBoots);
+            recipe.AddRecipe();
+
+            #endregion
         }
 
         public override void AddRecipeGroups()
@@ -1486,6 +1483,8 @@ namespace Fargowiltas
                 ItemID.PickaxeAxe,
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDrax", group);
+
+            #region terraComp support (does this mod even exist anymore? lol)
 
             if (Fargowiltas.instance.terraCompLoaded)
             {
@@ -1522,9 +1521,10 @@ namespace Fargowiltas
                 RecipeGroup.RegisterGroup("Fargowiltas:AnyAdamantiteRepeater", group);
             }
 
+            #endregion
+
             else
             {
-
                 //cobalt
                 group = new RecipeGroup(() => Lang.misc[37] + " Cobalt Repeater", new int[]
                 {
@@ -1550,15 +1550,6 @@ namespace Fargowiltas
                 RecipeGroup.RegisterGroup("Fargowiltas:AnyAdamantiteRepeater", group);
             }
 
-            //evil chest
-            group = new RecipeGroup(() => Lang.misc[37] + " Evil Chest", new int[]
-            {
-                ItemID.VampireKnives,
-                ItemType("VampireKnivesThrown"),
-                ItemID.ScourgeoftheCorruptor,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilChest", group);
-
             //evil wood
             group = new RecipeGroup(() => Lang.misc[37] + " Evil Wood", new int[]
             {
@@ -1566,82 +1557,6 @@ namespace Fargowiltas
                 ItemID.Shadewood,
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
-
-            //evilbow
-            group = new RecipeGroup(() => Lang.misc[37] + " Evil Bow", new int[]
-            {
-                ItemID.DemonBow,
-                ItemID.TendonBow,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilBow", group);
-
-            //evilgun
-            group = new RecipeGroup(() => Lang.misc[37] + " Evil Gun", new int[]
-            {
-                ItemID.Musket,
-                ItemID.TheUndertaker,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilGun", group);
-
-            //silverstaff
-            group = new RecipeGroup(() => Lang.misc[37] + " Silver Staff", new int[]
-            {
-                ItemID.SapphireStaff,
-                ItemID.EmeraldStaff,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnySilverStaff", group);
-
-            //goldstaff
-            group = new RecipeGroup(() => Lang.misc[37] + " Gold Staff", new int[]
-            {
-                ItemID.RubyStaff,
-                ItemID.DiamondStaff,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyGoldStaff", group);
-
-            //evilmagic
-            group = new RecipeGroup(() => Lang.misc[37] + " Evil Magic Weapon", new int[]
-            {
-                ItemID.Vilethorn,
-                ItemID.CrimsonRod,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilMagic", group);
-
-            //expertevil
-            group = new RecipeGroup(() => Lang.misc[37] + " Evil Expert Drop", new int[]
-            {
-                ItemID.WormScarf,
-                ItemID.BrainOfConfusion,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilExpert", group);
-
-            //evilmimic acc
-            group = new RecipeGroup(() => Lang.misc[37] + " Evil Mimic Accessory", new int[]
-            {
-                ItemID.FleshKnuckles,
-                ItemID.PutridScent,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilMimic", group);
-
-            //tier 1 sentry
-            group = new RecipeGroup(() => Lang.misc[37] + " Tier 1 Sentry", new int[]
-            {
-                ItemID.DD2LightningAuraT1Popper,
-                ItemID.DD2FlameburstTowerT1Popper,
-                ItemID.DD2ExplosiveTrapT1Popper,
-                ItemID.DD2BallistraTowerT1Popper,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnySentry1", group);
-
-            //tier 3 sentry
-            group = new RecipeGroup(() => Lang.misc[37] + " Tier 3 Sentry", new int[]
-            {
-                ItemID.DD2LightningAuraT3Popper,
-                ItemID.DD2FlameburstTowerT3Popper,
-                ItemID.DD2ExplosiveTrapT3Popper,
-                ItemID.DD2BallistraTowerT3Popper,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnySentry", group);
 
             //anvil HM
             group = new RecipeGroup(() => Lang.misc[37] + " Mythril Anvil", new int[]
@@ -1659,106 +1574,6 @@ namespace Fargowiltas
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyForge", group);
 
-            //any adamantite
-            group = new RecipeGroup(() => Lang.misc[37] + " Adamantite Bar", new int[]
-            {
-                ItemID.AdamantiteBar,
-                ItemID.TitaniumBar,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyAdamantite", group);
-
-            //shroomite head
-            group = new RecipeGroup(() => Lang.misc[37] + " Shroomite Head Piece", new int[]
-            {
-                ItemID.ShroomiteHeadgear,
-                ItemID.ShroomiteMask,
-                ItemID.ShroomiteHelmet,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyShroomHead", group);
-
-            //orichalcum head
-            group = new RecipeGroup(() => Lang.misc[37] + " Orichalcum Head Piece", new int[]
-            {
-                ItemID.OrichalcumHeadgear,
-                ItemID.OrichalcumMask,
-                ItemID.OrichalcumHelmet,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyOriHead", group);
-
-            //palladium head
-            group = new RecipeGroup(() => Lang.misc[37] + " Palladium Head Piece", new int[]
-            {
-                ItemID.PalladiumHeadgear,
-                ItemID.PalladiumMask,
-                ItemID.PalladiumHelmet,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyPallaHead", group);
-
-            //cobalt head
-            group = new RecipeGroup(() => Lang.misc[37] + " Cobalt Head Piece", new int[]
-            {
-                ItemID.CobaltHelmet,
-                ItemID.CobaltHat,
-                ItemID.CobaltMask,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyCobaltHead", group);
-
-            //mythril head
-            group = new RecipeGroup(() => Lang.misc[37] + " Mythril Head Piece", new int[]
-            {
-                ItemID.MythrilHat,
-                ItemID.MythrilHelmet,
-                ItemID.MythrilHood,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyMythrilHead", group);
-
-            //titanium head
-            group = new RecipeGroup(() => Lang.misc[37] + " Titanium Head Piece", new int[]
-            {
-                ItemID.TitaniumHeadgear,
-                ItemID.TitaniumMask,
-                ItemID.TitaniumHelmet,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyTitaHead", group);
-
-            //hallowed head
-            group = new RecipeGroup(() => Lang.misc[37] + " Hallowed Head Piece", new int[]
-            {
-                ItemID.HallowedMask,
-                ItemID.HallowedHeadgear,
-                ItemID.HallowedHelmet,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyHallowHead", group);
-
-            //adamantite head
-            group = new RecipeGroup(() => Lang.misc[37] + " Adamantite Head Piece", new int[]
-            {
-                ItemID.AdamantiteHelmet,
-                ItemID.AdamantiteMask,
-                ItemID.AdamantiteHeadgear,
-
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyAdamHead", group);
-
-            //chloro head
-            group = new RecipeGroup(() => Lang.misc[37] + " Chlorophyte Head Piece", new int[]
-            {
-                ItemID.ChlorophyteMask,
-                ItemID.ChlorophyteHelmet,
-                ItemID.ChlorophyteHeadgear,
-
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyChloroHead", group);
-
-            //spectre head
-            group = new RecipeGroup(() => Lang.misc[37] + " Spectre Head Piece", new int[]
-            {
-                ItemID.SpectreHood,
-                ItemID.SpectreMask,
-
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnySpectreHead", group);
-
             //book cases
             group = new RecipeGroup(() => Lang.misc[37] + " Wooden Bookcase", new int[]
             {
@@ -1772,28 +1587,14 @@ namespace Fargowiltas
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyBookcase", group);
 
-            //beetle body
-            group = new RecipeGroup(() => Lang.misc[37] + " Beetle Body", new int[]
+            //book cases
+            group = new RecipeGroup(() => Lang.misc[37] + " Armored Bones Banner", new int[]
             {
-                ItemID.BeetleShell,
-                ItemID.BeetleScaleMail,
-
+                ItemID.BlueArmoredBonesBanner,
+                ItemID.HellArmoredBonesBanner,
+                ItemID.RustyArmoredBonesBanner,
             });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyBeetle", group);
-
-            //phasesabers
-            group = new RecipeGroup(() => Lang.misc[37] + " Phasesaber", new int[]
-            {
-                ItemID.RedPhasesaber,
-                ItemID.BluePhasesaber,
-                ItemID.GreenPhasesaber,
-                ItemID.PurplePhasesaber,
-                ItemID.WhitePhasesaber,
-                ItemID.YellowPhasesaber,
-
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyPhasesaber", group);
-
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyArmoredBones", group);
         }
 
         public static bool NoInvasion(NPCSpawnInfo spawnInfo)
@@ -1836,6 +1637,5 @@ namespace Fargowiltas
         {
             return NormalSpawn(spawnInfo) && NoBiome(spawnInfo) && NoZone(spawnInfo);
         }
-
     }
 }

@@ -11,6 +11,7 @@ namespace Fargowiltas.Items.Explosives
 			DisplayName.SetDefault("Instavator");
 			Tooltip.SetDefault("Creates a hellevator instantly \nDo not use if any important building is below");
 		}
+
         public override void SetDefaults()
         {
             item.damage = 50;     
@@ -19,7 +20,7 @@ namespace Fargowiltas.Items.Explosives
             item.maxStack = 99;   
             item.consumable = true;  
             item.useStyle = 1;   
-            item.rare = 1;     
+            item.rare = 2;     
             item.UseSound = SoundID.Item1; 
             item.useAnimation = 20;  
             item.useTime = 20;   
@@ -29,6 +30,7 @@ namespace Fargowiltas.Items.Explosives
             item.shoot = mod.ProjectileType("InstaProj"); 
             item.shootSpeed = 5f; 
         }
+
         public override void AddRecipes()   
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -36,7 +38,6 @@ namespace Fargowiltas.Items.Explosives
             recipe.AddIngredient(ItemID.Dynamite, 15);  
 			recipe.AddIngredient(ItemID.RopeCoil, 10);  
 			recipe.AddIngredient(ItemID.Torch, 99);  
-			
 			recipe.AddTile(TileID.Anvils); 
 			recipe.SetResult(this);   
             recipe.AddRecipe();
