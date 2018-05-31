@@ -29,13 +29,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 			item.makeNPC = NPCID.Cyborg;
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 26));
 		}
-		
-		public override string Texture
-		{
-			get
-			{
-				return "Terraria/NPC_209";
-			}
-		}
-	}
+
+        public override string Texture => "Terraria/NPC_209";
+    }
 }
