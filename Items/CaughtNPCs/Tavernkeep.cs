@@ -29,13 +29,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 			item.makeNPC = NPCID.DD2Bartender;
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 25));
 		}
-		
-		public override string Texture
-		{
-			get
-			{
-				return "Terraria/NPC_550";
-			}
-		}
-	}
+
+        public override string Texture => "Terraria/NPC_550";
+    }
 }
