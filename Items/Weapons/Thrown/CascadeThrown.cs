@@ -15,13 +15,7 @@ namespace Fargowiltas.Items.Weapons.Thrown
             item.thrown = true;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Terraria/Item_3282";
-            }
-        }
+        public override string Texture => "Terraria/Item_3282";
 
         public override bool CanRightClick()
         {
@@ -35,7 +29,6 @@ namespace Fargowiltas.Items.Weapons.Thrown
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-
             int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
             Main.projectile[proj].thrown = true;
             Main.projectile[proj].melee = false;

@@ -5,28 +5,22 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-	public class ShadowflameKnifeThrown : ModItem
-	{
+    public class ShadowflameKnifeThrown : ModItem
+    {
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Inflicts Shadowflame on hit");
         }
 
         public override void SetDefaults()
-		{
-			item.CloneDefaults(ItemID.ShadowFlameKnife);
-			item.shoot = ProjectileID.ShadowFlameKnife;
-			item.melee = false;
-			item.thrown = true;
-		}
-
-        public override string Texture
         {
-            get
-            {
-                return "Terraria/Item_3054";
-            }
+            item.CloneDefaults(ItemID.ShadowFlameKnife);
+            item.shoot = ProjectileID.ShadowFlameKnife;
+            item.melee = false;
+            item.thrown = true;
         }
+
+        public override string Texture => "Terraria/Item_3054";
 
         public override bool CanRightClick()
         {
@@ -40,10 +34,10 @@ namespace Fargowiltas.Items.Weapons.Thrown
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
-			Main.projectile[proj].thrown = true;
-			Main.projectile[proj].melee = false;
+            int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
+            Main.projectile[proj].thrown = true;
+            Main.projectile[proj].melee = false;
             return false;
         }
-	}
+    }
 }

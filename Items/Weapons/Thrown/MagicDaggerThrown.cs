@@ -5,29 +5,23 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-	public class MagicDaggerThrown : ModItem
-	{
+    public class MagicDaggerThrown : ModItem
+    {
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("A magical returning dagger");
         }
 
         public override void SetDefaults()
-		{
-			item.CloneDefaults(ItemID.MagicDagger);
-			item.shoot = ProjectileID.MagicDagger;
-			item.magic = false;
-			item.thrown = true;
-			item.mana = 0;
-		}
-
-        public override string Texture
         {
-            get
-            {
-                return "Terraria/Item_517";
-            }
+            item.CloneDefaults(ItemID.MagicDagger);
+            item.shoot = ProjectileID.MagicDagger;
+            item.magic = false;
+            item.thrown = true;
+            item.mana = 0;
         }
+
+        public override string Texture => "Terraria/Item_517";
 
         public override bool CanRightClick()
         {
@@ -41,10 +35,10 @@ namespace Fargowiltas.Items.Weapons.Thrown
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
-			Main.projectile[proj].thrown = true;
-			Main.projectile[proj].melee = false;
+            int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
+            Main.projectile[proj].thrown = true;
+            Main.projectile[proj].melee = false;
             return false;
         }
-	}
+    }
 }

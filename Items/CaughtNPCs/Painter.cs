@@ -30,12 +30,6 @@ namespace Fargowiltas.Items.CaughtNPCs
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 25));
 		}
 		
-		public override string Texture
-		{
-			get
-			{
-				return "Terraria/NPC_227";
-			}
-		}
+		public override string Texture => "Terraria/NPC_227";
 	}
 }

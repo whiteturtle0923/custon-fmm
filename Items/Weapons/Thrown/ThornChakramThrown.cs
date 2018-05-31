@@ -5,23 +5,17 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-	public class ThornChakramThrown : ModItem
-	{
-		public override void SetDefaults()
-		{
-			item.CloneDefaults(ItemID.ThornChakram);
-			item.shoot = ProjectileID.ThornChakram;
-			item.melee = false;
-			item.thrown = true;
-		}
-
-        public override string Texture
+    public class ThornChakramThrown : ModItem
+    {
+        public override void SetDefaults()
         {
-            get
-            {
-                return "Terraria/Item_191";
-            }
+            item.CloneDefaults(ItemID.ThornChakram);
+            item.shoot = ProjectileID.ThornChakram;
+            item.melee = false;
+            item.thrown = true;
         }
+
+        public override string Texture => "Terraria/Item_191";
 
         public override bool CanRightClick()
         {
@@ -32,14 +26,13 @@ namespace Fargowiltas.Items.Weapons.Thrown
         {
             Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.ThornChakram, 1, false, (int)item.prefix);
         }
-		
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
 
-			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
-			Main.projectile[proj].thrown = true;
-			Main.projectile[proj].melee = false;
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
+            Main.projectile[proj].thrown = true;
+            Main.projectile[proj].melee = false;
             return false;
         }
-	}
+    }
 }

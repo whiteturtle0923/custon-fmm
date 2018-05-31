@@ -5,8 +5,8 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-	public class PaladinsHammerThrown : ModItem
-	{
+    public class PaladinsHammerThrown : ModItem
+    {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Paladin's Hammer Thrown");
@@ -14,20 +14,14 @@ namespace Fargowiltas.Items.Weapons.Thrown
         }
 
         public override void SetDefaults()
-		{
-			item.CloneDefaults(ItemID.PaladinsHammer);
-			item.shoot = ProjectileID.PaladinsHammerFriendly;
-			item.melee = false;
-			item.thrown = true;
-		}
-
-        public override string Texture
         {
-            get
-            {
-                return "Terraria/Item_1513";
-            }
+            item.CloneDefaults(ItemID.PaladinsHammer);
+            item.shoot = ProjectileID.PaladinsHammerFriendly;
+            item.melee = false;
+            item.thrown = true;
         }
+
+        public override string Texture => "Terraria/Item_1513";
 
         public override bool CanRightClick()
         {
@@ -41,10 +35,10 @@ namespace Fargowiltas.Items.Weapons.Thrown
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
-			Main.projectile[proj].thrown = true;
-			Main.projectile[proj].melee = false;
+            int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
+            Main.projectile[proj].thrown = true;
+            Main.projectile[proj].melee = false;
             return false;
         }
-	}
+    }
 }

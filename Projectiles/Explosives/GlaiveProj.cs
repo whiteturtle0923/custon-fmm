@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,10 +7,10 @@ namespace Fargowiltas.Projectiles.Explosives
 {
     public class GlaiveProj : ModProjectile
     {
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Glaive");
-		}
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Glaive");
+        }
 
         public override void SetDefaults()
         {
@@ -25,17 +24,17 @@ namespace Fargowiltas.Projectiles.Explosives
             aiType = 48;
         }
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			projectile.Kill();
-		}
-		
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            projectile.Kill();
+        }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
             return false;
         }
-        
+
         public override void Kill(int timeLeft)
         {
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("Explosion"), 0, projectile.knockBack, projectile.owner);
@@ -43,7 +42,7 @@ namespace Fargowiltas.Projectiles.Explosives
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
             int radius = 20;     //bigger = boomer
- 
+
             for (int x = -radius; x <= (radius); x++)
             {
                 for (int y = -radius; y <= (radius); y++)
@@ -67,8 +66,8 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     if ((x * x + y * y) <= radius)   //circle
                     {
-                        WorldGen.KillTile(xPosition, yPosition); 
-                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color()); 
+                        WorldGen.KillTile(xPosition, yPosition);
+                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color());
                     }
                 }
             }

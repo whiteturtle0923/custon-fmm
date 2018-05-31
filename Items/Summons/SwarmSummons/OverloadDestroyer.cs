@@ -5,34 +5,28 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-	public class OverloadDestroyer : ModItem
-	{		
-	    public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Seismic Actuator");
-			Tooltip.SetDefault("Summons several Destroyers");
-		}
+    public class OverloadDestroyer : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Seismic Actuator");
+            Tooltip.SetDefault("Summons several Destroyers");
+        }
 
-		public override void SetDefaults()
-		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 100;
-			item.value = 1000;
-			item.rare = 4;
-			item.useAnimation = 30;
-			item.useTime = 30;
-			item.useStyle = 4;
-			item.consumable = true;
-		}
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 20;
+            item.maxStack = 100;
+            item.value = 1000;
+            item.rare = 4;
+            item.useAnimation = 30;
+            item.useTime = 30;
+            item.useStyle = 4;
+            item.consumable = true;
+        }
 
-		public override string Texture
-		{
-			get
-			{
-				return "Fargowiltas/Items/Placeholder";
-			}
-		}
+        public override string Texture => "Fargowiltas/Items/Placeholder";
 
         public override bool CanUseItem(Player player)
         {
@@ -68,18 +62,18 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             }
 
             Main.NewText("The planet trembles from the core!", 175, 75, 255);
-			Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-			return true;
-		}
-		
-		public override void AddRecipes()
-		{	
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "MechWorm");
-			recipe.AddIngredient(null, "Overloader");
-			recipe.AddTile(TileID.DemonAltar);
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "MechWorm");
+            recipe.AddIngredient(null, "Overloader");
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
-		}
-	}
+        }
+    }
 }

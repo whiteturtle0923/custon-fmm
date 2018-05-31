@@ -8,14 +8,12 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items
 {
-	public class FargoGlobalItem : GlobalItem
-	{
-        static int[] thrown = { ItemID.Bananarang, ItemID.BloodyMachete, ItemID.DayBreak, ItemID.EnchantedBoomerang, ItemID.Flamarang, ItemID.FruitcakeChakram, ItemID.IceBoomerang, ItemID.LightDisc, ItemID.MagicDagger, ItemID.PaladinsHammer, ItemID.PossessedHatchet, ItemID.ShadowFlameKnife, ItemID.ThornChakram, ItemID.ToxicFlask, ItemID.VampireKnives, ItemID.WoodenBoomerang, ItemID.WoodYoyo, ItemID.Rally, ItemID.CorruptYoyo, ItemID.CrimsonYoyo, ItemID.JungleYoyo, ItemID.Code1, ItemID.Valor, ItemID.Cascade, ItemID.FormatC, ItemID.Gradient, ItemID.Chik, ItemID.HelFire, ItemID.Amarok, ItemID.Code2, ItemID.Yelets, ItemID.RedsYoyo, ItemID.ValkyrieYoyo, ItemID.Kraken, ItemID.TheEyeOfCthulhu, ItemID.Terrarian, ItemID.FlyingKnife, ItemID.BallOHurt, ItemID.TheMeatball, ItemID.BlueMoon, ItemID.Sunfury, ItemID.DaoofPow, ItemID.FlowerPow, ItemID.ScourgeoftheCorruptor };
+    public class FargoGlobalItem : GlobalItem
+    {
+        private static int[] thrown = { ItemID.Bananarang, ItemID.BloodyMachete, ItemID.DayBreak, ItemID.EnchantedBoomerang, ItemID.Flamarang, ItemID.FruitcakeChakram, ItemID.IceBoomerang, ItemID.LightDisc, ItemID.MagicDagger, ItemID.PaladinsHammer, ItemID.PossessedHatchet, ItemID.ShadowFlameKnife, ItemID.ThornChakram, ItemID.ToxicFlask, ItemID.VampireKnives, ItemID.WoodenBoomerang, ItemID.WoodYoyo, ItemID.Rally, ItemID.CorruptYoyo, ItemID.CrimsonYoyo, ItemID.JungleYoyo, ItemID.Code1, ItemID.Valor, ItemID.Cascade, ItemID.FormatC, ItemID.Gradient, ItemID.Chik, ItemID.HelFire, ItemID.Amarok, ItemID.Code2, ItemID.Yelets, ItemID.RedsYoyo, ItemID.ValkyrieYoyo, ItemID.Kraken, ItemID.TheEyeOfCthulhu, ItemID.Terrarian, ItemID.FlyingKnife, ItemID.BallOHurt, ItemID.TheMeatball, ItemID.BlueMoon, ItemID.Sunfury, ItemID.DaoofPow, ItemID.FlowerPow, ItemID.ScourgeoftheCorruptor };
 
-        
-
-        public override void ModifyTooltips (Item item, List< TooltipLine > tooltips)
-		{
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
             int[] yoyos = { mod.ItemType("CascadeThrown"), mod.ItemType("ChikThrown"), mod.ItemType("Code1Thrown"), mod.ItemType("Code2Thrown"), mod.ItemType("FormatCThrown"), mod.ItemType("GradientThrown"), mod.ItemType("KrakenThrown"), mod.ItemType("RallyThrown"), mod.ItemType("TerrarianThrown"), mod.ItemType("ValorThrown"), mod.ItemType("YeletsThrown") };
 
             if (Array.IndexOf(yoyos, item.type) > -1)
@@ -25,11 +23,11 @@ namespace Fargowiltas.Items
             }
 
             if (item.type == ItemID.CrystalBall)
-			{
-				TooltipLine line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
-				tooltips.Add(line);
-			}
-		}
+            {
+                TooltipLine line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
+                tooltips.Add(line);
+            }
+        }
 
         public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
         {
@@ -69,25 +67,25 @@ namespace Fargowiltas.Items
             return true;
         }
 
-        public override void SetDefaults (Item item)
-		{
-			if(item.maxStack > 10 && item.maxStack != 100 && item.type != ItemID.CopperCoin && item.type != ItemID.SilverCoin && item.type != ItemID.GoldCoin && item.type != ItemID.PlatinumCoin)
-			{
-				item.maxStack = 9999;
-			}
-		}
-		
-		public override void OpenVanillaBag (string context, Player player, int arg)
-		{
-			if(arg == ItemID.KingSlimeBossBag)
-			{
-				if(Main.rand.Next(50) == 0)
-				{
-					player.QuickSpawnItem(ItemID.SlimeStaff);
-				}
-			}
+        public override void SetDefaults(Item item)
+        {
+            if (item.maxStack > 10 && item.maxStack != 100 && item.type != ItemID.CopperCoin && item.type != ItemID.SilverCoin && item.type != ItemID.GoldCoin && item.type != ItemID.PlatinumCoin)
+            {
+                item.maxStack = 9999;
+            }
+        }
 
-            if(arg == ItemID.WoodenCrate)
+        public override void OpenVanillaBag(string context, Player player, int arg)
+        {
+            if (arg == ItemID.KingSlimeBossBag)
+            {
+                if (Main.rand.Next(50) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.SlimeStaff);
+                }
+            }
+
+            if (arg == ItemID.WoodenCrate)
             {
                 if (Main.rand.Next(45) == 0)
                 {
@@ -105,9 +103,9 @@ namespace Fargowiltas.Items
                 }
             }
 
-            if(context == "lockBox")
+            if (context == "lockBox")
             {
-                if(Main.rand.Next(7) == 0)
+                if (Main.rand.Next(7) == 0)
                 {
                     player.QuickSpawnItem(ItemID.Valor);
                 }
@@ -116,7 +114,7 @@ namespace Fargowiltas.Items
 
         public override bool CanRightClick(Item item)
         {
-            if(Array.IndexOf(thrown, item.type) > -1)
+            if (Array.IndexOf(thrown, item.type) > -1)
             {
                 return true;
             }
@@ -126,14 +124,14 @@ namespace Fargowiltas.Items
 
         public override void RightClick(Item item, Player player)
         {
-            if(Array.IndexOf(thrown, item.type) > -1)
+            if (Array.IndexOf(thrown, item.type) > -1)
             {
                 Main.NewText(item.Name, 175, 75, 255);
                 NewThrown(item, player, item.Name.Replace(" ", "").Replace("'", "").Replace("-", "").Replace(":", ""));
             }
         }
 
-        void NewThrown(Item item, Player player, string thrown)
+        private void NewThrown(Item item, Player player, string thrown)
         {
             Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType(thrown + "Thrown"), 1, false, (int)item.prefix);
         }
