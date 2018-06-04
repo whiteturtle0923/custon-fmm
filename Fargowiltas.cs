@@ -10,6 +10,8 @@ namespace Fargowiltas
         internal static ModHotKey HomeKey;
 
         #region mod loaded bools
+        internal bool fargoLoaded;
+
         internal bool blueMagicLoaded;
         internal bool calamityLoaded;
         internal bool cookieLoaded;
@@ -65,6 +67,7 @@ namespace Fargowiltas
         {
             try
             {
+                fargoLoaded = ModLoader.GetMod("FargowiltasSouls") != null;
                 blueMagicLoaded = ModLoader.GetMod("Bluemagic") != null;
                 calamityLoaded = ModLoader.GetMod("CalamityMod") != null;
                 cookieLoaded = ModLoader.GetMod("CookieMod") != null;

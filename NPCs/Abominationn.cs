@@ -27,6 +27,7 @@ namespace Fargowiltas.NPCs
 			NPCID.Sets.AttackAverageChance[npc.type] = 30;
 			NPCID.Sets.HatOffsetY[npc.type] = 2;
 		}
+
 		public override void SetDefaults()
 		{
 			npc.townNPC = true;

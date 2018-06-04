@@ -55,6 +55,11 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
+            if(FargoWorld.movedLumberjack)
+            {
+                return true;
+            }
+
             for (int k = 0; k < 255; k++)
             {
                 Player player = Main.player[k];
@@ -62,20 +67,27 @@ namespace Fargowiltas.NPCs
                 {
                     for (int j = 0; j < player.inventory.Length; j++)
                     {
-                        if ((player.inventory[j].type == mod.ItemType("WoodenToken")) || (FargoWorld.movedLumberjack == true))
+                        if (player.inventory[j].type == mod.ItemType("WoodenToken"))
                         {
                             return true;
                         }
                     }
                 }
             }
+
             return false;
         }
 
         public override void AI()
         {
-            if (!Main.dayTime) nightOver = true;
-            if (Main.dayTime) dayOver = true;
+            if (!Main.dayTime)
+            {
+                nightOver = true;
+            }
+            if (Main.dayTime)
+            {
+                dayOver = true;
+            }
         }
 
         public override string TownNPCName()
@@ -84,16 +96,12 @@ namespace Fargowiltas.NPCs
             {
                 case 0:
                     return "Griff";
-
                 case 1:
                     return "Jack";
-
                 case 2:
                     return "Bruce";
-
                 case 3:
                     return "Larry";
-
                 default:
                     return "Paul";
             }
@@ -112,28 +120,20 @@ namespace Fargowiltas.NPCs
             {
                 case 0:
                     return "Dynasty wood? Between you and me, that stuff ain't real wood!";
-
                 case 1:
                     return "Sure cactus isn't wood, but I can still chop it with me trusty axe.";
-
                 case 2:
                     return "You wouldn't by chance have any fantasies about me... right?";
-
                 case 3:
                     return "I eat a bowl of woodchips for breakfast... without any milk.";
-
                 case 4:
                     return "TIIIIIIIIIMMMBEEEEEEEERRR!";
-
                 case 5:
                     return "I'm a lumberjack and I'm okay, I sleep all night and I work all day!";
-
                 case 6:
                     return "You won't ever need an axe again with me around.";
-
                 case 7:
                     return "I have heard of people cutting trees with fish, who does that?";
-
                 default:
                     return "It's always flannel season.";
             }
@@ -154,19 +154,22 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
             }
+
             if (!firstButton)
             {
-                if (dayOver & nightOver)
+                if (dayOver && nightOver)
                 {
                     Main.npcChatText = "Here you go. I'm glad my wood put such a big smile on your face.";
-                    if (NPC.downedBoss1 == true)
+
+                    if (NPC.downedBoss1)
                     {
-                        woodAmount = 250;
+                        woodAmount = 200;
                     }
                     if (Main.hardMode)
                     {
-                        woodAmount = 600;
+                        woodAmount = 500;
                     }
+
                     player.QuickSpawnItem(ItemID.Wood, woodAmount);
                     dayOver = false;
                     nightOver = false;
@@ -211,27 +214,14 @@ namespace Fargowiltas.NPCs
                 nextSlot++;
             }
 
-            if (ModLoader.GetLoadedMods().Contains("CrystiliumMod"))
+            if (Fargowiltas.instance.crystiliumLoaded)
             {
-                for (int k = 0; k < 255; k++)
-                {
-                    Player player = Main.player[k];
-                    if (player.active)
-                    {
-                        for (int j = 0; j < player.inventory.Length; j++)
-                        {
-                            if (player.inventory[j].type == (ModLoader.GetMod("CrystiliumMod").ItemType("CrystalBlock")))
-                            {
-                                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CrystiliumMod").ItemType("CrystalWood"));
-                                shop.item[nextSlot].value = 20;
-                                nextSlot++;
-                            }
-                        }
-                    }
-                }
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CrystiliumMod").ItemType("CrystalWood"));
+                shop.item[nextSlot].value = 20;
+                nextSlot++;
             }
 
-            if (ModLoader.GetLoadedMods().Contains("CosmeticVariety") && (NPC.downedBoss2 == true))
+            if (ModLoader.GetLoadedMods().Contains("CosmeticVariety") && (NPC.downedBoss2))
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CosmeticVariety").ItemType("Starwood"));
                 shop.item[nextSlot].value = 20;
@@ -242,28 +232,11 @@ namespace Fargowiltas.NPCs
             shop.item[nextSlot].value = 20;
             nextSlot++;
 
-            if (ModLoader.GetLoadedMods().Contains("Ersion"))
-            {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Ersion").ItemType("ReinforcedWood"));
-                shop.item[nextSlot].value = 30;
-                nextSlot++;
-            }
-
-            if (NPC.downedHalloweenKing == true)
+            if (NPC.downedHalloweenKing)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.SpookyWood);
                 shop.item[nextSlot].value = 50;
                 nextSlot++;
-            }
-
-            if (ModLoader.GetLoadedMods().Contains("EpicnessModRemastered"))
-            {
-                if (Main.hardMode == true)
-                {
-                    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("EpicnessModRemastered").ItemType("SuperWood"));
-                    shop.item[nextSlot].value = 800;
-                    nextSlot++;
-                }
             }
 
             if (Fargowiltas.instance.sacredToolsLoaded)
@@ -280,7 +253,7 @@ namespace Fargowiltas.NPCs
             shop.item[nextSlot].value = 10;
             nextSlot++;
 
-            shop.item[nextSlot].SetDefaults(mod.ItemType("axe"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("LumberJaxe"));
             shop.item[nextSlot].value = 10000;
             nextSlot++;
         }
@@ -299,7 +272,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.PossessedHatchet;
+            projType = mod.ProjectileType("LumberJaxe");
             attackDelay = 1;
         }
 
