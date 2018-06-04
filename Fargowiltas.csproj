@@ -44,6 +44,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Terraria">
+      <HintPath>..\..\..\..\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
+    </Reference>
     <Reference Include="Terrariamod">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terrariamod.exe</HintPath>
     </Reference>
@@ -80,6 +83,7 @@
     <Compile Include="Items\Ammos\Bullets\VenomPouch.cs" />
     <Compile Include="Items\CaughtNPCs\Angler.cs" />
     <Compile Include="Items\CaughtNPCs\ArmsDealer.cs" />
+    <Compile Include="Items\CaughtNPCs\CaughtNPC.cs" />
     <Compile Include="Items\CaughtNPCs\Clothier.cs" />
     <Compile Include="Items\CaughtNPCs\Cyborg.cs" />
     <Compile Include="Items\CaughtNPCs\Demolitionist.cs" />
