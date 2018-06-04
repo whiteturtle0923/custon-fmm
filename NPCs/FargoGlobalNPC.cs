@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.Events;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using System;

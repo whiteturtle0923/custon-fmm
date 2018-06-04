@@ -170,8 +170,8 @@
     <Compile Include="Items\Tiles\HouseBlock.cs" />
     <Compile Include="Items\Tiles\WoodenToken.cs" />
     <Compile Include="Items\Tiles\WoodenTokenSheet.cs" />
-    <Compile Include="Items\Vanity\mutantbody.cs" />
-    <Compile Include="Items\Vanity\mutantmask.cs" />
+    <Compile Include="Items\Vanity\MutantBody.cs" />
+    <Compile Include="Items\Vanity\MutantMask.cs" />
     <Compile Include="Items\Vanity\mutantpants.cs" />
     <Compile Include="Items\Explosives\BoomGlaive.cs" />
     <Compile Include="Items\Weapons\BoomShuriken.cs" />

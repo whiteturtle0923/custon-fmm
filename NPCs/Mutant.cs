@@ -64,8 +64,11 @@ namespace Fargowiltas.NPCs
             npc.knockBackResist = 0.5f;
             animationType = NPCID.Guide;
 
-            Main.npcCatchable[npc.type] = true;
-            npc.catchItem = (short)mod.ItemType("Masochist");
+            if(ModLoader.GetMod("FargowiltasSouls") != null)
+            {
+                Main.npcCatchable[npc.type] = true;
+                npc.catchItem = (short)ModLoader.GetMod("FargowiltasSouls").ItemType("Masochist");
+            }
         }
 
         #region other mod bools
@@ -770,6 +773,11 @@ namespace Fargowiltas.NPCs
             get { return Laugicality.LaugicalityWorld.downedTrueEtheria; }
         }
 
+        public bool EnigmaDownedDio
+        {
+            get { return Laugicality.LaugicalityWorld.downedAnDio; }
+        }
+
         #endregion other mod bools
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
@@ -812,7 +820,7 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (NPC.downedMoonlord && Main.rand.Next(28) == 0)
+            if (NPC.downedMoonlord && Fargowiltas.instance.fargoLoaded && Main.rand.Next(28) == 0)
             {
                 return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials! ;)";
             }
@@ -886,74 +894,50 @@ namespace Fargowiltas.NPCs
             {
                 case 0:
                     return "Savagery, barbarism, bloodthirst, that's what I like seeing in people.";
-
                 case 1:
                     return "The stronger you get, the more stuff I sell. Makes sense, right?";
-
                 case 2:
                     return "There's something all of you have that I don't... Death perception, I think it's called?";
-
                 case 3:
                     return "It would be pretty cool if I could sell a summon for myself...";
-
                 case 4:
                     return "The only way to get stronger is to keep buying from me and in bulk too!";
-
                 case 5:
                     return "What's that? You want to fight me? ...you're not worthy you rat.";
-
                 case 6:
                     return "Don't bother with anyone else, all you'll ever need is right here.";
-
                 case 7:
                     return "You're lucky I'm on your side.";
-
                 case 8:
                     return "Thanks for the house, I guess.";
-
                 case 9:
                     return "Why yes I would love a ham and swiss sandwich.";
-
                 case 10:
                     return "Should I start wearing clothes? ...Nah.";
-
                 case 11:
                     return "It's not like I can actually use all the gold you're spending.";
-
                 case 12:
                     return "Violence for violence is the law of the beast.";
-
                 case 13:
                     return "Those guys really need to get more creative. All of their first bosses are desert themed!";
-
                 case 14:
                     return "I am proud to be known as the Mutant, but thank Fargo I'm no Abominationn";
-
                 case 15:
                     return "I'm all you need for a calamity.";
-
                 case 16:
                     return "Everything shall bow before me! ...after you make this purchase.";
-
                 case 17:
                     return "It's clear that I'm helping you out, but uh.. what's in this for me? A house you say? I eat zombies for breakfast.";
-
                 default:
                     return "Cthulhu's got nothing on me!";
             }
         }
 
         /*
-        I heard you liked fighting sealed bosses(reference to the ancient seal)
-
         //will he ever sell souls ? idk
-
-        oh is that a soul of the universe? Fascinating I'll get all mine from the back
-
-        Oh wow is that a speed soul. I coulda sold you one man
-
-        //all souls need one
-
+        -oh is that a soul of the universe? Fascinating I'll get all mine from the back
+        -Oh wow is that a speed soul. I coulda sold you one man
+        -all souls need one
         "I know, I know, these souls look really pricy, buy I'm selling them at a loss here! Nobody would buy them otherwise! What a ripoff!"
         */
 
@@ -1043,7 +1027,10 @@ namespace Fargowiltas.NPCs
             {
                 AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
 
-                //AddItem(true, mod.ItemType("PandorasBox"), 200000, shop, nextSlot);
+                if(Fargowiltas.instance.fargoLoaded)
+                {
+                    AddItem(true, "FargowiltasSouls", "PandorasBox", 200000, ref shop, ref nextSlot);
+                }
 
                 //goblin king - true eater
 
@@ -1294,6 +1281,11 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     AddItem(ThoriumDownedChamp, "ThoriumMod", "AncientBlade", 80000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.enigmaLoaded)
+                {
+                    AddItem(EnigmaDownedDio, "Laugicality", "AncientAwakener", 50000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
@@ -1648,7 +1640,7 @@ namespace Fargowiltas.NPCs
                     AddItem(ElementsDownedVoid, "ElementsAwoken", "VoidLeviathanSummon", 750000, ref shop, ref nextSlot);
                 }
 
-                //abomination rematch - bluw
+                //abomination rematch - blue
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
@@ -1778,12 +1770,11 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            if (NPC.downedMoonlord == true)
+            if (NPC.downedMoonlord)
             {
                 cooldown = 1;
-                //randExtraCooldown = 1;
             }
-            else if (Main.hardMode == true)
+            else if (Main.hardMode)
             {
                 cooldown = 20;
                 randExtraCooldown = 25;
@@ -1797,21 +1788,20 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            if (NPC.downedMoonlord == true)
+            if (NPC.downedMoonlord)
             {
                 projType = mod.ProjectileType("PhantasmalEyeProjectile");
-                attackDelay = 1;
             }
-            else if (Main.hardMode == true)
+            else if (Main.hardMode)
             {
                 projType = mod.ProjectileType("MechEyeProjectile");
-                attackDelay = 1;
             }
             else
             {
                 projType = mod.ProjectileType("EyeProjectile");
-                attackDelay = 1;
             }
+
+            attackDelay = 1;
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)

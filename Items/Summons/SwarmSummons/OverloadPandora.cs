@@ -42,7 +42,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override bool UseItem(Player player)
         {
             Fargowiltas.swarmActive = true;
-            Fargowiltas.swarmTotal = 500;
+            Fargowiltas.swarmTotal = 200;
             Fargowiltas.swarmKills = 0;
             Fargowiltas.swarmSpawned = 40;
 

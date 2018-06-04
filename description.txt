@@ -3,7 +3,27 @@ PATCH NOTES
 
 NEW UPDATE - v 1.0
 
--Removed Souls, Enchantments, Boss Weapons, Masochist Mode and a few other things
+-Removed Souls, Enchantments, most Weapons, Masochist Mode and a few other things
+
+NPCs
+-Mutant now sells more boss summons from Calamity, GRealm, BTFA, W1K, and Cookie Mod
+-Mutant has new support for Fernium, Elements Awoken, Antiaris, Disarray, and Enigma 
+-Mutant has a bunch of new quotes
+-Overloader is now in every shop
+-Mutant prices slightly adjusted
+-Mutant will actually drop the Mutant Grab Bag now
+-Mutant shop cycling bugs fixed
+-Abominationn now sells event summons from Spirit and BTFA
+-LumberJack now attacks with explosive Lumber Jaxes
+-Removed some dead mod support from NPCs
+-Added Gore to all town NPCs
+
+-All vanilla and Fargo town NPCs can be caught in a bug net (DO FARGOS)
+
+
+
+
+
 
 -Added cultist, pillar, ogre summons
 -Renamed Bloody Spine to Red Stained Spine
@@ -18,38 +38,16 @@ NEW UPDATE - v 1.0
 -Added several more thrown versions of weapons such as yoyos and flails
 -Thrown versions are now accessed by right clicking
 -Travelling Merchant, skeleton merchant, and tavernkeep can be caught now
--Mutant Grab Bag actually drops now
+
 -Mutant Grab Bags drops fixed
--added a bunch of new quotes to the Mutant
+
 -Portable Sundial sprite added
 -Fernium mod support, better W1K support
 -max stacks are now all 9999
 
 -Refactored a lot of code
 
-FORUM NOTES
- 
-Adds: A Bee In My Nation, Celestially Sigil, Red Stained Spine, Lihzahrdy Power Cell, Some Kind of Metallic Eye, Some Kind of Metallic Skull,
-Some Kind of Metallic Skull, Slimy Crown, Eye That Could Be Seen As Suspicious, Truffly Worm, Wormy Food
-Adds Forgotten Claw
-Siren's Pearl 
-Battered Club, Lunar Idol, Celestial Medallion 
-Death Bringer Fairy
-Mechanical Amalgam
-Fleshy Doll
-Mutant Voodoo Doll 
-Plantera's Bulb 
-Suspicious Skull 
-Runaway Probe
-All vanilla town npcs can be caught with a net and released
-All arrows and bullets can be crafted into infinite versions
-Troll Bomb, Galactic Reformer, Instavator
-Mutant Vanity
-Thrown versions of several weapons
-Boom Shuriken and Boom Glaive
-Lumber Jaxe, Wooden Token
 
-Crucible of the Cosmos
 
 GIT NOTES
 -Removed duplicate sprites of summons and thrown weapons
