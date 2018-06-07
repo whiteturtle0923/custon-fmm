@@ -63,12 +63,14 @@ namespace Fargowiltas.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
             animationType = NPCID.Guide;
+            Main.npcCatchable[npc.type] = true;
+            npc.catchItem = (short)mod.ItemType("Mutant");
 
-            if(ModLoader.GetMod("FargowiltasSouls") != null)
+            /*if(ModLoader.GetMod("FargowiltasSouls") != null)
             {
                 Main.npcCatchable[npc.type] = true;
                 npc.catchItem = (short)ModLoader.GetMod("FargowiltasSouls").ItemType("Masochist");
-            }
+            }*/
         }
 
         #region other mod bools

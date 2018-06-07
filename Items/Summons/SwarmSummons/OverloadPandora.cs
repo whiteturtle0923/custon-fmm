@@ -10,7 +10,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Pandora's Tesseract");
-            Tooltip.SetDefault("Swarms you in swarms!");
+            Tooltip.SetDefault("The ultimate swarm");
         }
 
         public override void SetDefaults()
@@ -42,7 +42,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override bool UseItem(Player player)
         {
             Fargowiltas.swarmActive = true;
-            Fargowiltas.swarmTotal = 200;
+            Fargowiltas.swarmTotal = 500;
             Fargowiltas.swarmKills = 0;
             Fargowiltas.swarmSpawned = 40;
 

@@ -23,7 +23,7 @@ namespace Fargowiltas.Items.Tiles
             AddMapEntry(new Color(200, 200, 200), name);
             disableSmartCursor = true;
             //counts as
-            adjTiles = new int[] { TileID.WorkBenches, TileID.Anvils, TileID.Furnaces, TileID.DemonAltar, TileID.Hellforge, TileID.Loom, TileID.Kegs, TileID.CookingPots, TileID.Bookcases, TileID.Sawmill, TileID.TinkerersWorkbench, TileID.CrystalBall, TileID.AdamantiteForge, TileID.MythrilAnvil, TileID.Campfire, TileID.Blendomatic, TileID.MeatGrinder, TileID.Autohammer, TileID.HeavyWorkBench, TileID.AlchemyTable, TileID.LunarCraftingStation, TileID.Bottles, TileID.Sinks };
+            adjTiles = new int[] { TileID.WorkBenches, TileID.HeavyWorkBench, TileID.Anvils, TileID.MythrilAnvil, TileID.Furnaces, TileID.Hellforge, TileID.AdamantiteForge, TileID.Bottles, TileID.AlchemyTable, TileID.Sawmill, TileID.Loom, TileID.CookingPots, TileID.Solidifier, TileID.DyeVat, TileID.TinkerersWorkbench, TileID.DemonAltar, TileID.Bookcases,  TileID.CrystalBall, TileID.Autohammer,  TileID.LunarCraftingStation, TileID.Campfire, TileID.Sinks, TileID.ImbuingStation, TileID.Kegs };
 
             if (ModLoader.GetLoadedMods().Contains("ThoriumMod"))
             {

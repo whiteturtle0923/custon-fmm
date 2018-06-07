@@ -21,5 +21,10 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 600;
             aiType = ProjectileID.Bullet;
         }
+
+        public override void Kill(int timeLeft)
+        {
+            
+        }
     }
 }

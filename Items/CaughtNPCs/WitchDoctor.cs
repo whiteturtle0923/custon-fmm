@@ -6,6 +6,11 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class WitchDoctor : CaughtNPC
     {
+        public override bool Autoload(ref string name)
+        {
+            return true;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Witch Doctor");
@@ -13,8 +18,8 @@ namespace Fargowiltas.Items.CaughtNPCs
         }
 
         public override void SetDefaults()
-        {\s\s\s
-base.SetDefaults();
+        {
+            base.SetDefaults();
             item.makeNPC = NPCID.WitchDoctor;
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 26));
         }

@@ -29,18 +29,18 @@ namespace Fargowiltas.Items.Tiles
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.WorkBench);
             recipe.AddIngredient(ItemID.HeavyWorkBench);
-            recipe.AddIngredient(ItemID.CookingPot);
-            recipe.AddIngredient(ItemID.Loom);
-            recipe.AddIngredient(ItemID.Sawmill);
-            recipe.AddRecipeGroup("Fargowiltas:AnyBookcase");
-            recipe.AddIngredient(ItemID.TinkerersWorkshop);
-            recipe.AddIngredient(ItemID.AlchemyTable);
-            recipe.AddIngredient(ItemID.CrystalBall);
-            recipe.AddRecipeGroup("Fargowiltas:AnyAnvil");
             recipe.AddRecipeGroup("Fargowiltas:AnyForge");
-            recipe.AddIngredient(ItemID.BlendOMatic);
+            recipe.AddRecipeGroup("Fargowiltas:AnyAnvil");
+            recipe.AddIngredient(ItemID.AlchemyTable);
+            recipe.AddIngredient(ItemID.Sawmill);
+            recipe.AddIngredient(ItemID.Loom);
+            recipe.AddIngredient(ItemID.CookingPot);
+            recipe.AddIngredient(ItemID.Solidifier);
+            recipe.AddIngredient(ItemID.DyeVat);
+            recipe.AddIngredient(ItemID.TinkerersWorkshop);
+            recipe.AddRecipeGroup("Fargowiltas:AnyBookcase");
+            recipe.AddIngredient(ItemID.CrystalBall);
             recipe.AddIngredient(ItemID.Autohammer);
             recipe.AddIngredient(ItemID.LunarCraftingStation);
             recipe.AddTile(TileID.DemonAltar);

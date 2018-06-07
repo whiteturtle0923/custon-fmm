@@ -58,7 +58,7 @@ namespace Fargowiltas
         public override void Load()
         {
             instance = this;
-            HomeKey = RegisterHotKey("Teleport Home", "+");
+            HomeKey = RegisterHotKey("Teleport Home", "P");
         }
 
         #region mod loaded bools
@@ -68,6 +68,7 @@ namespace Fargowiltas
             try
             {
                 fargoLoaded = ModLoader.GetMod("FargowiltasSouls") != null;
+
                 blueMagicLoaded = ModLoader.GetMod("Bluemagic") != null;
                 calamityLoaded = ModLoader.GetMod("CalamityMod") != null;
                 cookieLoaded = ModLoader.GetMod("CookieMod") != null;
@@ -874,6 +875,12 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.BunnyBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BunnyHood);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.Keybrand);
@@ -1419,16 +1426,6 @@ namespace Fargowiltas
             #region misc recipes
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CopperPickaxe);
-            recipe.AddIngredient(ItemID.WoodenHammer);
-            recipe.AddIngredient(ItemID.Wrench);
-            recipe.AddIngredient(ItemID.WireCutter);
-            recipe.AddIngredient(ItemID.EmptyBucket);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(ItemID.Toolbox);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.Bubble);
             recipe.AddIngredient(ItemID.RedHusk);
             recipe.AddIngredient(ItemID.WhiteString);
@@ -1479,82 +1476,8 @@ namespace Fargowiltas
 
         public override void AddRecipeGroups()
         {
-            //drax
-            RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " Drax", new int[]
-            {
-                ItemID.Drax,
-                ItemID.PickaxeAxe,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyDrax", group);
-
-            #region terraComp support (does this mod even exist anymore? lol)
-
-            if (Fargowiltas.instance.terraCompLoaded)
-            {
-                //cobalt
-                group = new RecipeGroup(() => Lang.misc[37] + " Cobalt Repeater", new int[]
-                {
-                ItemID.CobaltRepeater,
-                ItemID.PalladiumRepeater,
-                ModLoader.GetMod("TerraCompilation").ItemType("CobaltComp"),
-                ModLoader.GetMod("TerraCompilation").ItemType("PaladiumComp"),
-
-                });
-                RecipeGroup.RegisterGroup("Fargowiltas:AnyCobaltRepeater", group);
-
-                //mythril
-                group = new RecipeGroup(() => Lang.misc[37] + " Mythril Repeater", new int[]
-                {
-                ItemID.MythrilRepeater,
-                ItemID.OrichalcumRepeater,
-                ModLoader.GetMod("TerraCompilation").ItemType("MythrilComp"),
-                ModLoader.GetMod("TerraCompilation").ItemType("OrichalcumComp"),
-                });
-                RecipeGroup.RegisterGroup("Fargowiltas:AnyMythrilRepeater", group);
-
-                //adamantite
-                group = new RecipeGroup(() => Lang.misc[37] + " Adamantite Repeater", new int[]
-                {
-                ItemID.AdamantiteRepeater,
-                ItemID.TitaniumRepeater,
-                ModLoader.GetMod("TerraCompilation").ItemType("AdamantiteComp"),
-                ModLoader.GetMod("TerraCompilation").ItemType("TitaniumComp"),
-
-                });
-                RecipeGroup.RegisterGroup("Fargowiltas:AnyAdamantiteRepeater", group);
-            }
-
-            #endregion
-
-            else
-            {
-                //cobalt
-                group = new RecipeGroup(() => Lang.misc[37] + " Cobalt Repeater", new int[]
-                {
-                ItemID.CobaltRepeater,
-                ItemID.PalladiumRepeater,
-                });
-                RecipeGroup.RegisterGroup("Fargowiltas:AnyCobaltRepeater", group);
-
-                //mythril
-                group = new RecipeGroup(() => Lang.misc[37] + " Mythril Repeater", new int[]
-                {
-                ItemID.MythrilRepeater,
-                ItemID.OrichalcumRepeater,
-               });
-                RecipeGroup.RegisterGroup("Fargowiltas:AnyMythrilRepeater", group);
-
-                //adamantite
-                group = new RecipeGroup(() => Lang.misc[37] + " Adamantite Repeater", new int[]
-                {
-                ItemID.AdamantiteRepeater,
-                ItemID.TitaniumRepeater,
-                });
-                RecipeGroup.RegisterGroup("Fargowiltas:AnyAdamantiteRepeater", group);
-            }
-
             //evil wood
-            group = new RecipeGroup(() => Lang.misc[37] + " Evil Wood", new int[]
+            RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " Evil Wood", new int[]
             {
                 ItemID.Ebonwood,
                 ItemID.Shadewood,
@@ -1598,47 +1521,6 @@ namespace Fargowiltas
                 ItemID.RustyArmoredBonesBanner,
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyArmoredBones", group);
-        }
-
-        public static bool NoInvasion(NPCSpawnInfo spawnInfo)
-        {
-            return !spawnInfo.invasion && ((!Main.pumpkinMoon && !Main.snowMoon) || spawnInfo.spawnTileY > Main.worldSurface || Main.dayTime) && (!Main.eclipse || spawnInfo.spawnTileY > Main.worldSurface || !Main.dayTime);
-        }
-
-        public static bool NoBiome(NPCSpawnInfo spawnInfo)
-        {
-            Player player = spawnInfo.player;
-            return !player.ZoneJungle && !player.ZoneDungeon && !player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneHoly && !player.ZoneSnow && !player.ZoneUndergroundDesert;
-        }
-
-        public static bool NoZoneAllowWater(NPCSpawnInfo spawnInfo)
-        {
-            return !spawnInfo.sky && !spawnInfo.player.ZoneMeteor && !spawnInfo.spiderCave;
-        }
-
-        public static bool NoZone(NPCSpawnInfo spawnInfo)
-        {
-            return NoZoneAllowWater(spawnInfo) && !spawnInfo.water;
-        }
-
-        public static bool NormalSpawn(NPCSpawnInfo spawnInfo)
-        {
-            return !spawnInfo.playerInTown && NoInvasion(spawnInfo);
-        }
-
-        public static bool NoZoneNormalSpawn(NPCSpawnInfo spawnInfo)
-        {
-            return NormalSpawn(spawnInfo) && NoZone(spawnInfo);
-        }
-
-        public static bool NoZoneNormalSpawnAllowWater(NPCSpawnInfo spawnInfo)
-        {
-            return NormalSpawn(spawnInfo) && NoZoneAllowWater(spawnInfo);
-        }
-
-        public static bool NoBiomeNormalSpawn(NPCSpawnInfo spawnInfo)
-        {
-            return NormalSpawn(spawnInfo) && NoBiome(spawnInfo) && NoZone(spawnInfo);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +16,7 @@ namespace Fargowiltas.NPCs
         public bool pandoraActive = false;
         public bool noLoot = false;
 
-        public static int[] bosses = { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.EaterofWorldsHead, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, NPCID.MartianSaucerCore, NPCID.Pumpking, NPCID.IceQueen, NPCID.DD2Betsy };
+        public static int[] bosses = { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, NPCID.MartianSaucerCore, NPCID.Pumpking, NPCID.IceQueen, NPCID.DD2Betsy, NPCID.DD2OgreT3, NPCID.IceGolem, NPCID.SandElemental, NPCID.Paladin, NPCID.Everscream, NPCID.MourningWood, NPCID.SantaNK1, NPCID.HeadlessHorseman, NPCID.PirateShip };
 
         public override void SetDefaults(NPC npc)
         {
@@ -121,6 +120,10 @@ namespace Fargowiltas.NPCs
                     Main.npcCatchable[npc.type] = true;
                     npc.catchItem = (short)mod.ItemType("SkeletonMerchant");
                     break;
+                case NPCID.SantaClaus:
+                    Main.npcCatchable[npc.type] = true;
+                    npc.catchItem = (short)mod.ItemType("SantaClaus");
+                    break;
                 default:
                     break;
             }
@@ -221,61 +224,6 @@ namespace Fargowiltas.NPCs
                 maxSpawns = (int)((float)maxSpawns * 10f);
             }
 		}
-		
-		public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
-		{
-            //layers
-			int y = spawnInfo.spawnTileY;
-			bool Cavern = (y >= (Main.maxTilesY * 0.4f) && y <= (Main.maxTilesY * 0.8f));
-            bool Underground = y > Main.worldSurface && y <= (Main.maxTilesY * 0.4f);
-            bool Underground2 = spawnInfo.player.ZoneDirtLayerHeight;
-            bool Surface = y < Main.worldSurface;
-            bool Sky = spawnInfo.sky;
-
-            //times
-            bool Night = !Main.dayTime;
-            bool Day = Main.dayTime;
-
-            //biomes
-            bool NoBiome = Fargowiltas.NoBiomeNormalSpawn(spawnInfo);
-
-            //season enemies
-            //if (Soulcheck.GetValue("Seasonal Enemies"))
-			//{
-				if(Main.hardMode)
-				{
-					if(NoBiome && Surface && Night)
-					{
-						pool[NPCID.HoppinJack] = .04f;
-					}
-				
-					if(NoBiome && Cavern)
-					{
-						pool[NPCID.Ghost] = .04f;
-					}
-					
-					if(NoBiome && Surface && Night)
-					{
-						pool[NPCID.Raven] = .01f;
-					}
-				}
-				else
-				{
-					if(NoBiome && Surface && Night)
-					{
-						pool[NPCID.Raven] = .04f;
-					}
-				}
-				
-				if(NoBiome && Surface && Day)
-				{
-						pool[NPCID.SlimeRibbonWhite] = .01f;
-						pool[NPCID.SlimeRibbonYellow] = .01f;
-						pool[NPCID.SlimeRibbonGreen] = .01f;
-						pool[NPCID.SlimeRibbonRed] = .01f;
-				}
-			//}
-		}
 
         void SpawnBoss(NPC npc, int boss)
         {
@@ -286,7 +234,14 @@ namespace Fargowiltas.NPCs
             }
             else //pandora
             {
-                int spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), bosses[Main.rand.Next(bosses.Length)]);
+                int rando;
+
+                do
+                {
+                    rando = bosses[Main.rand.Next(bosses.Length)];
+                } while (NPC.CountNPCS(rando) >= 4);
+
+                int spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), rando);
                 Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().pandoraActive = true;
             }
         }
@@ -376,7 +331,7 @@ namespace Fargowiltas.NPCs
                     if (Main.npc[i].active)
                     {
                         Main.npc[i].GetGlobalNPC<FargoGlobalNPC>().noLoot = true;
-                        Main.npc[i].StrikeNPC(9999999, 0f, 0, false, true);
+                        Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
                     }
                 }
 
@@ -390,12 +345,10 @@ namespace Fargowiltas.NPCs
             //make sure theres enough left to beat it
             else
             {
-                Main.NewText("count: " + count.ToString(), 206, 12, 15);
-
                 //spawn more if needed
-                if (count < Fargowiltas.swarmTotal - Fargowiltas.swarmKills)
+                if (count < Fargowiltas.swarmSpawned)//Fargowiltas.swarmTotal - Fargowiltas.swarmKills)
                 {
-                    for (int i = 0; i < missing; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         SpawnBoss(npc, boss);
                     }
@@ -417,7 +370,7 @@ namespace Fargowiltas.NPCs
                 return false;
             }
 
-            if(Fargowiltas.swarmActive && (npc.type == NPCID.BlueSlime || npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsTail || npc.type == NPCID.Creeper))
+            if(Fargowiltas.swarmActive /*|| Fargowiltas.pandoraActive*/ && (npc.type == NPCID.BlueSlime || npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsTail || npc.type == NPCID.Creeper || npc.type == NPCID.PirateCorsair || npc.type == NPCID.PirateDeadeye || npc.type == NPCID.PirateCrossbower))
             {
                 return false;
             }
@@ -470,7 +423,7 @@ namespace Fargowiltas.NPCs
                 }
                 if (npc.type == NPCID.Golem) 
                 {
-                    Swarm(npc, NPCID.Golem, NPCID.GolemHead, ItemID.GolemBossBag, "EnergizerGolem");
+                    Swarm(npc, NPCID.Golem, NPCID.GolemHeadFree, ItemID.GolemBossBag, "EnergizerGolem");
                 }
                 if (npc.type == NPCID.DukeFishron)
                 {
@@ -533,7 +486,7 @@ namespace Fargowiltas.NPCs
 
             if(pandoraActive)
             {
-                Swarm(npc, bosses[Main.rand.Next(bosses.Length)], -1, -1, "");
+                Swarm(npc, 0, -1, -1, "");
 
                 return false;
             }
@@ -551,31 +504,7 @@ namespace Fargowiltas.NPCs
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wood, Main.rand.Next(10, 30));
 			}		
 			
-			//halloween and xmas
-			if((npc.type == NPCID.Ghost) || (npc.type == NPCID.HoppinJack) || (npc.type == NPCID.Raven))
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GoodieBag, 1);
-			}
-			
-			if((npc.type == NPCID.SlimeRibbonGreen) || (npc.type == NPCID.SlimeRibbonRed) || (npc.type == NPCID.SlimeRibbonWhite) || (npc.type == NPCID.SlimeRibbonYellow))
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Present, 1);
-			}
-			
 			//bonus drops
-			if(((npc.type == NPCID.BloodZombie) || (npc.type == NPCID.Drippler)) && Main.rand.Next(75) == 0)
-			{
-                if(Main.rand.Next(75) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.BloodyMachete, 1);
-                }
-				
-                if(Main.rand.Next(75) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.BladedGlove, 1);
-                }
-			}
-			
 			if((npc.type == NPCID.GreekSkeleton) && Main.rand.Next(15) == 0)
 			{
 				int i = Main.rand.Next(3);
@@ -602,8 +531,6 @@ namespace Fargowiltas.NPCs
 			//TOWN NPCS
 			if(npc.type == NPCID.Guide)
             {
-				//drops green cap
-				
 				FargoWorld.guide = true;
 			}
 			if(npc.type == NPCID.Merchant)
@@ -618,13 +545,6 @@ namespace Fargowiltas.NPCs
 			}
 			if(npc.type == NPCID.Nurse)
             {
-				if(Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.NurseHat);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.NurseShirt);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.NursePants);
-				}
-				
 				if(Main.rand.Next(5) == 0)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.LifeCrystal);
@@ -634,7 +554,7 @@ namespace Fargowiltas.NPCs
 			}
 			if(npc.type == NPCID.Demolitionist)
             {
-				if(Main.rand.Next(5) == 0)
+				if(Main.rand.Next(2) == 0)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Dynamite, 5);
 				}
@@ -643,42 +563,31 @@ namespace Fargowiltas.NPCs
 			}
 			if(npc.type == NPCID.DyeTrader)
             {
-				//drops scimitar
-				
-				if(Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.DyeTraderRobe);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.DyeTraderTurban);
-				}
-				
-				FargoWorld.dye = true;
+                FargoWorld.dye = true;
 			}
 			if(npc.type == NPCID.Dryad)
             {
-				if(Main.rand.Next(10) == 0)
+				if(Main.rand.Next(3) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.DryadCoverings);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.DryadLoincloth);
-				}
-				
-				if(Main.rand.Next(8) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.FlowerBoots);
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.HerbBag);
 				}
 				
 				FargoWorld.dryad = true;
 			}
 			if(npc.type == NPCID.DD2Bartender)
             {
-				//drops ale tosser
-				
-				FargoWorld.keep = true;
+                if (Main.rand.Next(2) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Ale, 4);
+                }
+
+                FargoWorld.keep = true;
 			}
 			if(npc.type == NPCID.ArmsDealer)
             {
-				if(Main.rand.Next(8) == 0)
+				if(Main.rand.Next(4) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.RedRyder);
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CrystalBullet, 30);
 				}
 				
 				FargoWorld.dealer = true;
@@ -709,27 +618,14 @@ namespace Fargowiltas.NPCs
 			}
 			if(npc.type == NPCID.GoblinTinkerer)
             {
-				//drop a thing
-				
 				FargoWorld.goblin = true;
 			}
 			if(npc.type == NPCID.WitchDoctor)
             {				
-				if(Main.rand.Next(8) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Cauldron);
-				}
-				
 				FargoWorld.doc = true;
 			}
 			if(npc.type == NPCID.Clothier)
             {
-				if(Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.ClothierJacket);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.ClothierPants);
-				}
-				
 				if(Main.rand.Next(20) == 0)
 				{
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Skull);
@@ -738,10 +634,13 @@ namespace Fargowiltas.NPCs
 				FargoWorld.cloth = true;
 			}
 			if(npc.type == NPCID.Mechanic)
-            {				
-				//drop a thing
-				
-				FargoWorld.mech = true;
+            {
+                if (Main.rand.Next(5) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wire, 40);
+                }
+
+                FargoWorld.mech = true;
 			}
 			if(npc.type == NPCID.PartyGirl)
             {
@@ -749,21 +648,19 @@ namespace Fargowiltas.NPCs
 			}
 			if(npc.type == NPCID.Wizard)
             {
-				if(Main.rand.Next(10) == 0)
+				if(Main.rand.Next(5) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.WizardsHat);
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.FallenStar, 5);
 				}
 				
 				FargoWorld.wiz = true;
 			}
 			if(npc.type == NPCID.TaxCollector)
             {
-				if(Main.rand.Next(10) == 0)
+				if(Main.rand.Next(8) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.TaxCollectorHat);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.TaxCollectorSuit);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.TaxCollectorPants);
-				}
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GoldCoin, 10);
+                }
 				
 				FargoWorld.tax = true;
 			}
@@ -778,37 +675,20 @@ namespace Fargowiltas.NPCs
 			}
 			if(npc.type == NPCID.Pirate)
             {
-				if(Main.rand.Next(8) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.BunnyHood);
-				}
-				
 				FargoWorld.pirate = true;
 			}
 			if(npc.type == NPCID.Steampunker)
             {
-				if(Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SteampunkGoggles);
-				}
-				
 				FargoWorld.steam = true;
 			}
 			if(npc.type == NPCID.Cyborg)
             {
-				if(Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CyborgHelmet);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CyborgShirt);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CyborgPants);
-				}
-				
 				FargoWorld.borg = true;
 			}
-			//santa?
-			//trav merch pulse bow in hardmode, revolver in pre
-			//skel merch?
-			
+            if(npc.type == NPCID.SantaClaus && FargoWorld.xmas)
+            {
+                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, NPCID.SantaClaus);
+            }
 		}
 		
 		public override bool CheckDead(NPC npc)

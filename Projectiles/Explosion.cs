@@ -16,7 +16,7 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 100;
+            projectile.width = 100; //////////////
             projectile.height = 100;
             projectile.aiStyle = 0;
             projectile.friendly = true;

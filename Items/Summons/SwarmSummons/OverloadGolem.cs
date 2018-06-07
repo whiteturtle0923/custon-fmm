@@ -59,11 +59,11 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
             for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
             {
-                int golem = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.MartianSaucerCore);
+                int golem = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.Golem);
                 Main.npc[golem].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("", 175, 75, 255);
+            Main.NewText("Ancient automatons come crashing down!", 175, 75, 255);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

@@ -6,6 +6,11 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class Clothier : CaughtNPC
     {
+        public override bool Autoload(ref string name)
+        {
+            return true;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Clothier");

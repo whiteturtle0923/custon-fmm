@@ -12,6 +12,9 @@ namespace Fargowiltas
 		public static bool downedBetsy = false;
 		public static bool downedBoss = false;
 
+        public static bool halloween = true;
+        public static bool xmas = true;
+
         //town npcs
         public static bool guide = false;
 		public static bool merch = false;
@@ -41,6 +44,9 @@ namespace Fargowiltas
 			movedLumberjack = false;
 			downedBetsy = false;
 			downedBoss = false;
+
+            halloween = true;
+            xmas = true;
 
             //town npcs
             guide = false;
@@ -74,8 +80,11 @@ namespace Fargowiltas
 			if (downedBetsy) downed.Add("betsy");
 			if (downedBoss) downed.Add("boss");
 
-			//town npcs
-			if (guide) downed.Add("guide");
+            if (halloween) downed.Add("halloween");
+            if (xmas) downed.Add("xmas");
+
+            //town npcs
+            if (guide) downed.Add("guide");
 			if (merch) downed.Add("merch");
 			if (nurse) downed.Add("nurse");
 			if (demo) downed.Add("demo");
@@ -109,6 +118,9 @@ namespace Fargowiltas
 			movedLumberjack = downed.Contains("lumberjack");
 			downedBetsy = downed.Contains("betsy");
 			downedBoss = downed.Contains("boss");
+
+            halloween = downed.Contains("halloween");
+            xmas = downed.Contains("xmas");
 			
 			guide = downed.Contains("guide");
 			merch = downed.Contains("merch");
@@ -165,6 +177,10 @@ namespace Fargowiltas
             pirate = flags3[5];
             steam = flags3[6];
             borg = flags3[7];
+
+            BitsByte flags4 = reader.ReadByte();
+            halloween = flags4[0];
+            xmas = flags4[1];
         }
 		
 		public override void NetSend(BinaryWriter writer)
@@ -199,33 +215,49 @@ namespace Fargowiltas
             flags3[6] = steam;
             flags3[7] = borg;
 
+            BitsByte flags4 = new BitsByte();
+            flags4[0] = halloween;
+            flags4[1] = xmas;
+
             writer.Write(flags);
             writer.Write(flags2);
             writer.Write(flags3);
+            writer.Write(flags4);
         }
-		
-		public override void PostUpdate ()
+
+        public override void PostUpdate ()
 		{
+            //seasonals
+            if (halloween)
+            {
+                Main.halloween = true;
+            }
+            else
+            {
+                Main.halloween = false;
+            }
+
+            if (xmas)
+            {
+                Main.xMas = true;
+            }
+            else
+            {
+                Main.xMas = false;
+            }
+
             //swarm reset in case something goes wrong
-            if(NoBosses())
+            if (NoBosses())
             {
                 Fargowiltas.swarmActive = false;
             }
-
-            //if (blah)
-            //{
-                Main.xMas = true;
-                Main.halloween = true;
-            //}
-
-            Player player = Main.player[Main.myPlayer];	
 		}
 
         bool NoBosses()
         {
             for (int i = 0; i < 200; i++)
             {
-                if (Main.npc[i].boss)
+                if (Main.npc[i].active && Main.npc[i].boss)
                 {
                     return false;
                 }

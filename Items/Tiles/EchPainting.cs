@@ -6,7 +6,7 @@ namespace Fargowiltas.Items.Tiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ech Painting");
+            DisplayName.SetDefault("Ech Painting");
         }
 
         public override void SetDefaults()

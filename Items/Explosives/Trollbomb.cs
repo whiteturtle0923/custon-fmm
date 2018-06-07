@@ -69,7 +69,7 @@ namespace Fargowiltas.Items.Explosives
                 type = mod.ProjectileType("TrollbombProj");
             }
 
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, Main.myPlayer);
 
             return false;
         }

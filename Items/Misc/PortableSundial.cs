@@ -25,7 +25,7 @@ namespace Fargowiltas.Items.Misc
             item.useStyle = 4;
             item.consumable = false;
             item.mana = 50;
-            item.UseSound = SoundID.Item44;
+            item.UseSound = SoundID.Item4;
         }
 
         public override bool AltFunctionUse(Player player)
@@ -66,7 +66,6 @@ namespace Fargowiltas.Items.Misc
                 }
             }
 
-            Main.PlaySound(SoundID.Item4, player.position);
             return true;
         }
 

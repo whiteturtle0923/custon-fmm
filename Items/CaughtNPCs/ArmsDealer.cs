@@ -6,6 +6,11 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class ArmsDealer : CaughtNPC
     {
+        public override bool Autoload(ref string name)
+        {
+            return true;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Arms Dealer");
@@ -14,7 +19,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public override void SetDefaults()
         {
-            base.SetDefaults()
+            base.SetDefaults();
 
             item.makeNPC = NPCID.ArmsDealer;
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 25));

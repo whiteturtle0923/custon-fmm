@@ -6,6 +6,11 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class DyeTrader : CaughtNPC
     {
+        public override bool Autoload(ref string name)
+        {
+            return true;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Dye Trader");

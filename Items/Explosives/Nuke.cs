@@ -36,7 +36,7 @@ namespace Fargowiltas.Items.Explosives
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Dynamite, 999);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.Hellforge);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

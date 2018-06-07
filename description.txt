@@ -12,17 +12,54 @@ NPCs
 -Overloader is now in every shop
 -Mutant prices slightly adjusted
 -Mutant will actually drop the Mutant Grab Bag now
+-Mutant Grab Bag drops fixed
 -Mutant shop cycling bugs fixed
+-Mutant sprite sheet fix
 -Abominationn now sells event summons from Spirit and BTFA
 -LumberJack now attacks with explosive Lumber Jaxes
 -Removed some dead mod support from NPCs
 -Added Gore to all town NPCs
 
--All vanilla and Fargo town NPCs can be caught in a bug net (DO FARGOS)
+-Travelling Merchant, Skeleton Merchant, Tavernkeep, Santa Claus, and Fargo NPCs can now be caught in a net
+-Clothier sells Pharoah vanity, Angler Armor
+-Merchant sells a variety of angler quest rewards
 
+-Removed NPCs dropping their costumes, extra enemy drops, and recipes due to seasonal event changes
 
+-Hoplites drop their armor more often
+-Clowns always drop a Bananarang
+-Merchant drops Mining Shirt and Pants
+-Nurse drops Life Crystals
+-Demolitionist drops Dynamite
+-Dryad drops Herb Bag
+-Tavernkeep drops Ale
+-Arms Dealer drops Crystal Bullets
+-Painter drops Ech Painting
+-Angler can drop Fishing accessories
+-Clothier drops Skull
+-Mechanic drops Wires
+-Wizard drops Fallen Stars
+-Tax Collector drops Gold
+-Truffle drops Mushroom Statue
 
+-Rotten Eggs deal 20x damage to town NPCs
 
+-throwing the guide item into lava spawns WoF
+
+ITEMS
+-Infinite Ammos for all vanilla bullets and arrows
+
+-Added Abominationn and LumberJack head vanity
+
+-reverted damage increases on thrown weapons, added several more thrown versions including yoyos and flails, you now right click to convert back and forth
+
+-Crystal Balls also function as Demon Altar
+-Max Stacks for everything is increased to 9999
+
+-Halloween and Christmas seasons are always active to start, using a Goodie Bag or Present will deactivate them
+-King Slime's treasure bag has a decent chance at containing a sLime Staff
+-Wooden and Golden Crates have more drops to ensure all chest loot is not missable
+-lockbox can drop Valor now
 
 
 -Added cultist, pillar, ogre summons
@@ -33,17 +70,47 @@ NPCs
 -fixed bugs with Deathbringer Fairy, Mutant Voodoo Doll, and Ancient Seal (BoC and EoW spawning incorrectly)
 -Mutant Voodoo Doll and Ancient Seal will now summon the Ancient Cultist who does not spawn pillars
 -Removed Supreme Calamitas from Ancient Seal
--Fleshy Doll spawns WoF if thrown in lava as well
--reverted damage increases on thrown weapons
--Added several more thrown versions of weapons such as yoyos and flails
--Thrown versions are now accessed by right clicking
--Travelling Merchant, skeleton merchant, and tavernkeep can be caught now
+-Fleshy Doll spawns WoF if thrown in lava 
 
--Mutant Grab Bags drops fixed
+-All useless Energizers removed for now
+-Swarms in general revamped, they will not break nearly as often
+-Added Golem, Dungeon Guardian, and Pandora Swarms
 
--Portable Sundial sprite added
--Fernium mod support, better W1K support
--max stacks are now all 9999
+RECIPES
+-converting between ore
+-converting between corruption and crimson items
+-banner recipes for essentially every rare drop 
+-recipes for all functional statues
+-recipes for water chest loot, (and ice chest and shadow chest ??), and biome chest items, and some other misc things
+
+Hotkey that teleports you home when you have a magic mirror,ice mirror, or cell phone in inventorry (2 sec cooldown)
+
+-Added more Renewals for each solution type
+-Added new sound effect to Battle Cry
+-Fixed up Portable Sundial
+
+-Added Ech Painting
+-altered Crucible recipe and it functions as a few more stations
+
+
+-Added Boom Glaive, Auto House, Horizator
+-Bombs no longer destroy things they shouldn't like dungeon or temple until certain bosses are killed (except the nuke lel)
+-reformer now crafted at Hellforge
+-fixed Troll Bomb bug where bombs wouldnt explode
+
+-Bone Javelins and Javelins actually count as thrown projectiles
+
+
+-several missing sprites added!!
+
+
+
+
+
+
+
+
+
 
 -Refactored a lot of code
 

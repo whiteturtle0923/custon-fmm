@@ -13,7 +13,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nukem");
+            DisplayName.SetDefault("Nuke");
         }
 
         public override void SetDefaults()

@@ -73,6 +73,51 @@ namespace Fargowiltas.Items
             {
                 item.maxStack = 9999;
             }
+
+            if (item.type == ItemID.GoodieBag || item.type == ItemID.Present)
+            {
+                item.consumable = false;
+                item.useAnimation = 30;
+                item.useTime = 30;
+                item.useStyle = 4;
+                item.UseSound = SoundID.Item44;
+            }
+        }
+
+        public override bool UseItem(Item item, Player player)
+        {
+            if(item.type == ItemID.GoodieBag)
+            {
+                FargoWorld.halloween = !FargoWorld.halloween;
+
+                if (FargoWorld.halloween)
+                {
+                    Main.NewText("Halloween has begun!", 175, 75, 255);
+                }
+                else
+                {
+                    Main.NewText("Halloween has ended!", 175, 75, 255);
+                }
+
+                return true;
+            }
+            else if(item.type == ItemID.Present)
+            {
+                FargoWorld.xmas = !FargoWorld.xmas;
+
+                if (FargoWorld.xmas)
+                {
+                    Main.NewText("Christmas has begun!", 175, 75, 255);
+                }
+                else
+                {
+                    Main.NewText("Christmas has ended!", 175, 75, 255);
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         public override void OpenVanillaBag(string context, Player player, int arg)

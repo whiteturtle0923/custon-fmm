@@ -46,6 +46,8 @@ namespace Fargowiltas.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
             animationType = NPCID.Guide;
+            Main.npcCatchable[npc.type] = true;
+            npc.catchItem = (short)mod.ItemType("LumberJack");
         }
 
         public bool SacredToolsDownedSerpent

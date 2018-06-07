@@ -13,13 +13,11 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.damage = 0;
-            projectile.width = 10;   //This defines the hitbox width
-            projectile.height = 32;    //This defines the hitbox height
-            projectile.aiStyle = 16;  //How the projectile works, 16 is the aistyle Used for: Grenades, Dynamite, Bombs, Sticky Bomb.
-            projectile.friendly = false; //Tells the game whether it is friendly to players/friendly npcs or not
-            projectile.penetrate = -1; //Tells the game how many enemies it can hit before being destroyed
-            projectile.timeLeft = 150; //The amount of time the projectile is alive for
+            projectile.width = 22; 
+            projectile.height = 30;   
+            projectile.aiStyle = 16;  //explosives AI
+            projectile.penetrate = -1; 
+            projectile.timeLeft = 150;
         }
 
         public override void Kill(int timeLeft)
