@@ -6,11 +6,6 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class GoblinTinkerer : CaughtNPC
     {
-        public override bool Autoload(ref string name)
-        {
-            return true;
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Goblin Tinkerer");

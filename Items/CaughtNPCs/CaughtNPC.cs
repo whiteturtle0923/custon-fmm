@@ -1,15 +1,12 @@
-﻿using Terraria.ID;
+﻿using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.CaughtNPCs
 {
-    public class CaughtNPC : ModItem
+    public abstract class CaughtNPC : ModItem
     {
-        public override bool Autoload(ref string name)
-        {
-            return false;
-        }
-
         public override void SetDefaults()
         {
             item.width = 20;
@@ -24,7 +21,5 @@ namespace Fargowiltas.Items.CaughtNPCs
             item.noUseGraphic = true;
             item.UseSound = SoundID.Item44;
         }
-
-        public override string Texture => "Terraria/NPC_369";
     }
 }

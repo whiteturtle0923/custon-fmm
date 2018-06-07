@@ -6,11 +6,6 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class Guide : CaughtNPC
     {
-        public override bool Autoload(ref string name)
-        {
-            return true;
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Guide");

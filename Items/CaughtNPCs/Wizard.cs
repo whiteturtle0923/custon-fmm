@@ -1,16 +1,12 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.ModLoader.IO;
 
 namespace Fargowiltas.Items.CaughtNPCs
 {
     public class Wizard : CaughtNPC
     {
-        public override bool Autoload(ref string name)
-        {
-            return true;
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Wizard");
