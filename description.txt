@@ -1,4 +1,3 @@
-
 PATCH NOTES
 
 NEW UPDATE - v 1.0
@@ -104,7 +103,10 @@ Hotkey that teleports you home when you have a magic mirror,ice mirror, or cell 
 -several missing sprites added!!
 
 
+-added kill dust to mutants attack projectiles
 
+
+-fixed npc poofing in multiplayer after using any fargo summons
 
 
 

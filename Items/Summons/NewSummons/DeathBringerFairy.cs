@@ -34,19 +34,24 @@ namespace Fargowiltas.Items.Summons.NewSummons
         {
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.EyeofCthulhu);
             Main.NewText("Eye of Cthulhu has awoken!", 175, 75, 255);
+            NetMessage.SendData(23, -1, -1, null, NPCID.EyeofCthulhu, 0f, 0f, 0f, 0);
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.KingSlime);
+            NetMessage.SendData(23, -1, -1, null, NPCID.KingSlime, 0f, 0f, 0f, 0);
 
             if (player.ZoneCorrupt || player.ZoneCrimson)
             {
                 NPC.SpawnOnPlayer(player.whoAmI, NPCID.EaterofWorldsHead);
                 NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.BrainofCthulhu);
                 Main.NewText("Brain of Cthulhu has awoken!", 175, 75, 255);
+                NetMessage.SendData(23, -1, -1, null, NPCID.BrainofCthulhu, 0f, 0f, 0f, 0);
             }
 
             NPC.NewNPC((int)player.position.X, (int)player.position.Y - 220, NPCID.SkeletronHead);
             Main.NewText("Skeletron has awoken!", 175, 75, 255);
+            NetMessage.SendData(23, -1, -1, null, NPCID.SkeletronHead, 0f, 0f, 0f, 0);
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.QueenBee);
             Main.NewText("Queen Bee has awoken!", 175, 75, 255);
+            NetMessage.SendData(23, -1, -1, null, NPCID.QueenBee, 0f, 0f, 0f, 0);
             NPC.SpawnWOF(player.Center);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

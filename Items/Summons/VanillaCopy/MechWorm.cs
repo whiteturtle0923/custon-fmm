@@ -36,6 +36,7 @@ namespace Fargowiltas.Items.Summons
         {
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(250, 1000), NPCID.TheDestroyer);
             Main.NewText("The Destroyer has awoken!", 175, 75, 255);
+            NetMessage.SendData(23, -1, -1, null, NPCID.TheDestroyer, 0f, 0f, 0f, 0);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
