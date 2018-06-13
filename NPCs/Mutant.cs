@@ -76,709 +76,298 @@ namespace Fargowiltas.NPCs
         #region other mod bools
 
         //thorium bools
-        public bool ThoriumDownedBird
-        {
-            get { return ThoriumMod.ThoriumWorld.downedThunderBird; }
-        }
+        public bool ThoriumDownedBird => ThoriumMod.ThoriumWorld.downedThunderBird;
 
-        public bool ThoriumDownedJelly
-        {
-            get { return ThoriumMod.ThoriumWorld.downedJelly; }
-        }
+        public bool ThoriumDownedJelly => ThoriumMod.ThoriumWorld.downedJelly;
 
-        public bool ThoriumDownedStorm
-        {
-            get { return ThoriumMod.ThoriumWorld.downedStorm; }
-        }
+        public bool ThoriumDownedStorm => ThoriumMod.ThoriumWorld.downedStorm;
 
-        public bool ThoriumDownedChamp
-        {
-            get { return ThoriumMod.ThoriumWorld.downedChampion; }
-        }
+        public bool ThoriumDownedChamp => ThoriumMod.ThoriumWorld.downedChampion;
 
-        public bool ThoriumDownedScout
-        {
-            get { return ThoriumMod.ThoriumWorld.downedScout; }
-        }
+        public bool ThoriumDownedScout => ThoriumMod.ThoriumWorld.downedScout;
 
-        public bool ThoriumDownedStrider
-        {
-            get { return ThoriumMod.ThoriumWorld.downedStrider; }
-        }
+        public bool ThoriumDownedStrider => ThoriumMod.ThoriumWorld.downedStrider;
 
-        public bool ThoriumDownedBeholder
-        {
-            get { return ThoriumMod.ThoriumWorld.downedFallenBeholder; }
-        }
+        public bool ThoriumDownedBeholder => ThoriumMod.ThoriumWorld.downedFallenBeholder;
 
-        public bool ThoriumDownedLich
-        {
-            get { return ThoriumMod.ThoriumWorld.downedLich; }
-        }
+        public bool ThoriumDownedLich => ThoriumMod.ThoriumWorld.downedLich;
 
-        public bool ThoriumDownedAbyss
-        {
-            get { return ThoriumMod.ThoriumWorld.downedDepthBoss; }
-        }
+        public bool ThoriumDownedAbyss => ThoriumMod.ThoriumWorld.downedDepthBoss;
 
-        public bool ThoriumDownedRag
-        {
-            get { return ThoriumMod.ThoriumWorld.downedRealityBreaker; }
-        }
+        public bool ThoriumDownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
 
         //calamity bools
-        public bool CalamityDownedScourge
-        {
-            get { return CalamityMod.CalamityWorld.downedDesertScourge; }
-        }
+        public bool CalamityDownedScourge => CalamityMod.CalamityWorld.downedDesertScourge;
 
-        public bool CalamityDownedHive
-        {
-            get { return CalamityMod.CalamityWorld.downedHiveMind; }
-        }
+        public bool CalamityDownedHive => CalamityMod.CalamityWorld.downedHiveMind;
 
-        public bool CalamityDownedPerfor
-        {
-            get { return CalamityMod.CalamityWorld.downedPerforator; }
-        }
+        public bool CalamityDownedPerfor => CalamityMod.CalamityWorld.downedPerforator;
 
-        public bool CalamityDownedSlime
-        {
-            get { return CalamityMod.CalamityWorld.downedSlimeGod; }
-        }
+        public bool CalamityDownedSlime => CalamityMod.CalamityWorld.downedSlimeGod;
 
-        public bool CalamityDownedCryo
-        {
-            get { return CalamityMod.CalamityWorld.downedCryogen; }
-        }
+        public bool CalamityDownedCryo => CalamityMod.CalamityWorld.downedCryogen;
 
-        public bool CalamityDownedBrim
-        {
-            get { return CalamityMod.CalamityWorld.downedBrimstoneElemental; }
-        }
+        public bool CalamityDownedBrim => CalamityMod.CalamityWorld.downedBrimstoneElemental;
 
-        public bool CalamityDownedCalamitas
-        {
-            get { return CalamityMod.CalamityWorld.downedCalamitas; }
-        }
+        public bool CalamityDownedCalamitas => CalamityMod.CalamityWorld.downedCalamitas;
 
-        public bool CalamityDownedLevi
-        {
-            get { return CalamityMod.CalamityWorld.downedLeviathan; }
-        }
+        public bool CalamityDownedLevi => CalamityMod.CalamityWorld.downedLeviathan;
 
-        public bool CalamityDownedPlague
-        {
-            get { return CalamityMod.CalamityWorld.downedPlaguebringer; }
-        }
+        public bool CalamityDownedPlague => CalamityMod.CalamityWorld.downedPlaguebringer;
 
-        public bool CalamityDownedGuardian
-        {
-            get { return CalamityMod.CalamityWorld.downedGuardians; }
-        }
+        public bool CalamityDownedGuardian => CalamityMod.CalamityWorld.downedGuardians;
 
-        public bool CalamityDownedProv
-        {
-            get { return CalamityMod.CalamityWorld.downedProvidence; }
-        }
+        public bool CalamityDownedProv => CalamityMod.CalamityWorld.downedProvidence;
 
-        public bool CalamityDownedDOG
-        {
-            get { return CalamityMod.CalamityWorld.downedDoG; }
-        }
+        public bool CalamityDownedDOG => CalamityMod.CalamityWorld.downedDoG;
 
-        public bool CalamityDownedYharon
-        {
-            get { return CalamityMod.CalamityWorld.downedYharon; }
-        }
+        public bool CalamityDownedYharon => CalamityMod.CalamityWorld.downedYharon;
 
-        public bool CalamityDownedSCAL
-        {
-            get { return CalamityMod.CalamityWorld.downedSCal; }
-        }
+        public bool CalamityDownedSCAL => CalamityMod.CalamityWorld.downedSCal;
 
-        public bool CalamityDownedRav
-        {
-            get { return CalamityMod.CalamityWorld.downedScavenger; }
-        }
+        public bool CalamityDownedRav => CalamityMod.CalamityWorld.downedScavenger;
 
-        public bool CalamityDownedCrab
-        {
-            get { return CalamityMod.CalamityWorld.downedCrabulon; }
-        }
+        public bool CalamityDownedCrab => CalamityMod.CalamityWorld.downedCrabulon;
 
-        public bool CalamityDownedAstrum
-        {
-            get { return CalamityMod.CalamityWorld.downedStarGod; }
-        }
+        public bool CalamityDownedAstrum => CalamityMod.CalamityWorld.downedStarGod;
 
-        public bool CalamityDownedBirb
-        {
-            get { return CalamityMod.CalamityWorld.downedBumble; }
-        }
+        public bool CalamityDownedBirb => CalamityMod.CalamityWorld.downedBumble;
 
-        public bool CalamityDownedPolter
-        {
-            get { return CalamityMod.CalamityWorld.downedPolterghast; }
-        }
+        public bool CalamityDownedPolter => CalamityMod.CalamityWorld.downedPolterghast;
 
-        public bool CalamityDownedAquatic
-        {
-            get { return CalamityMod.CalamityWorld.downedAquaticScourge; }
-        }
+        public bool CalamityDownedAquatic => CalamityMod.CalamityWorld.downedAquaticScourge;
 
-        public bool CalamityDownedAstragel
-        {
-            get { return CalamityMod.CalamityWorld.downedAstrageldon; }
-        }
+        public bool CalamityDownedAstragel => CalamityMod.CalamityWorld.downedAstrageldon;
 
         //sacred tools bools
-        public bool SacredDownedHarpy
-        {
-            get { return SacredTools.ModdedWorld.downedHarpy; }
-        }
+        public bool SacredDownedHarpy => SacredTools.ModdedWorld.downedHarpy;
 
-        public bool SacredDownedHarpy2
-        {
-            get { return SacredTools.ModdedWorld.downedRaynare; }
-        }
+        public bool SacredDownedHarpy2 => SacredTools.ModdedWorld.downedRaynare;
 
-        public bool SacredDownedAbbadon
-        {
-            get { return SacredTools.ModdedWorld.OblivionSpawns; }
-        }
+        public bool SacredDownedAbbadon => SacredTools.ModdedWorld.OblivionSpawns;
 
-        public bool SacredDownedSerpent
-        {
-            get { return SacredTools.ModdedWorld.FlariumSpawns; }
-        }
+        public bool SacredDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
 
-        public bool SacredDownedLunar
-        {
-            get { return SacredTools.ModdedWorld.downedLunarians; }
-        }
+        public bool SacredDownedLunar => SacredTools.ModdedWorld.downedLunarians;
 
-        public bool SacredDownedPump
-        {
-            get { return SacredTools.ModdedWorld.downedPumpboi; }
-        }
+        public bool SacredDownedPump => SacredTools.ModdedWorld.downedPumpboi;
 
         //grealm bools
-        public bool GRealmDownedFolivine
-        {
-            get { return GRealm.MWorld.downedFolivine; }
-        }
+        public bool GRealmDownedFolivine => GRealm.MWorld.downedFolivine;
 
-        public bool GRealmDownedMantid
-        {
-            get { return GRealm.MWorld.downedMatriarch; }
-        }
+        public bool GRealmDownedMantid => GRealm.MWorld.downedMatriarch;
 
         //pumpking
-        public bool PumpkingDownedHorse
-        {
-            get { return Pumpking.PumpkingWorld.downedPumpkingHorseman; }
-        }
+        public bool PumpkingDownedHorse => Pumpking.PumpkingWorld.downedPumpkingHorseman;
 
-        public bool PumpkingDownedTerra
-        {
-            get { return Pumpking.PumpkingWorld.downedTerraLord; }
-        }
+        public bool PumpkingDownedTerra => Pumpking.PumpkingWorld.downedTerraLord;
 
         //joost
-        public bool JoostDownedCactuar
-        {
-            get { return JoostMod.JoostWorld.downedJumboCactuar; }
-        }
+        public bool JoostDownedCactuar => JoostMod.JoostWorld.downedJumboCactuar;
 
-        public bool JoostDownedSAX
-        {
-            get { return JoostMod.JoostWorld.downedSAX; }
-        }
+        public bool JoostDownedSAX => JoostMod.JoostWorld.downedSAX;
 
-        public bool JoostDownedGilga
-        {
-            get { return JoostMod.JoostWorld.downedGilgamesh; }
-        }
+        public bool JoostDownedGilga => JoostMod.JoostWorld.downedGilgamesh;
 
         //tremor
-        public bool TremorDownedCorn
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.EvilCorn]; }
-        }
+        public bool TremorDownedCorn => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.EvilCorn];
 
-        public bool TremorDownedRukh
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Rukh]; }
-        }
+        public bool TremorDownedRukh => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Rukh];
 
-        public bool TremorDownedFungus
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.FungusBeetle]; }
-        }
+        public bool TremorDownedFungus => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.FungusBeetle];
 
-        public bool TremorDownedWhale
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.SpaceWhale]; }
-        }
+        public bool TremorDownedWhale => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.SpaceWhale];
 
-        public bool TremorDownedTrinity
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Trinity]; }
-        }
+        public bool TremorDownedTrinity => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Trinity];
 
-        public bool TremorDownedTotem
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.TikiTotem]; }
-        }
+        public bool TremorDownedTotem => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.TikiTotem];
 
-        public bool TremorDownedJelly
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.StormJellyfish]; }
-        }
+        public bool TremorDownedJelly => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.StormJellyfish];
 
-        public bool TremorDownedCyber
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.CyberKing]; }
-        }
+        public bool TremorDownedCyber => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.CyberKing];
 
-        public bool TremorDownedHeater
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.HeaterofWorlds]; }
-        }
+        public bool TremorDownedHeater => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.HeaterofWorlds];
 
-        public bool TremorDownedFrost
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.FrostKing]; }
-        }
+        public bool TremorDownedFrost => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.FrostKing];
 
-        public bool TremorDownedEmperor
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.DarkEmperor]; }
-        }
+        public bool TremorDownedEmperor => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.DarkEmperor];
 
-        public bool TremorDownedPixie
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.PixieQueen]; }
-        }
+        public bool TremorDownedPixie => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.PixieQueen];
 
-        public bool TremorDownedAlchemaster
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Alchemaster]; }
-        }
+        public bool TremorDownedAlchemaster => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Alchemaster];
 
-        public bool TremorDownedBrutallisk
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Brutallisk]; }
-        }
+        public bool TremorDownedBrutallisk => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Brutallisk];
 
-        public bool TremorDownedCog
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.CogLord]; }
-        }
+        public bool TremorDownedCog => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.CogLord];
 
-        public bool TremorDownedWall
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.WallOfShadow]; }
-        }
+        public bool TremorDownedWall => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.WallOfShadow];
 
-        public bool TremorDownedMotherboard
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Motherboard]; }
-        }
+        public bool TremorDownedMotherboard => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Motherboard];
 
-        public bool TremorDownedDragon
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.AncientDragon]; }
-        }
+        public bool TremorDownedDragon => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.AncientDragon];
 
-        public bool TremorDownedAndas
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Andas]; }
-        }
+        public bool TremorDownedAndas => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Andas];
 
         //spirit
-        public bool SpiritDownedScarab
-        {
-            get { return SpiritMod.MyWorld.downedScarabeus; }
-        }
+        public bool SpiritDownedScarab => SpiritMod.MyWorld.downedScarabeus;
 
-        public bool SpiritDownedFlier
-        {
-            get { return SpiritMod.MyWorld.downedAncientFlier; }
-        }
+        public bool SpiritDownedFlier => SpiritMod.MyWorld.downedAncientFlier;
 
-        public bool SpiritDownedRaider
-        {
-            get { return SpiritMod.MyWorld.downedRaider; }
-        }
+        public bool SpiritDownedRaider => SpiritMod.MyWorld.downedRaider;
 
-        public bool SpiritDownedInfer
-        {
-            get { return SpiritMod.MyWorld.downedInfernon; }
-        }
+        public bool SpiritDownedInfer => SpiritMod.MyWorld.downedInfernon;
 
-        public bool SpiritDownedDusking
-        {
-            get { return SpiritMod.MyWorld.downedDusking; }
-        }
+        public bool SpiritDownedDusking => SpiritMod.MyWorld.downedDusking;
 
-        public bool SpiritDownedIlluminant
-        {
-            get { return SpiritMod.MyWorld.downedIlluminantMaster; }
-        }
+        public bool SpiritDownedIlluminant => SpiritMod.MyWorld.downedIlluminantMaster;
 
-        public bool SpiritDownedAtlas
-        {
-            get { return SpiritMod.MyWorld.downedAtlas; }
-        }
+        public bool SpiritDownedAtlas => SpiritMod.MyWorld.downedAtlas;
 
-        public bool SpiritDownedOverseer
-        {
-            get { return SpiritMod.MyWorld.downedOverseer; }
-        }
+        public bool SpiritDownedOverseer => SpiritMod.MyWorld.downedOverseer;
 
-        public bool SpiritDownedVine
-        {
-            get { return SpiritMod.MyWorld.downedReachBoss; }
-        }
+        public bool SpiritDownedVine => SpiritMod.MyWorld.downedReachBoss;
 
-        public bool SpiritDownedUmbra
-        {
-            get { return SpiritMod.MyWorld.downedSpiritCore; }
-        }
+        public bool SpiritDownedUmbra => SpiritMod.MyWorld.downedSpiritCore;
 
         //BTFA
-        public bool BtfaTitan
-        {
-            get { return ForgottenMemories.TGEMWorld.downedTitanRock; }
-        }
+        public bool BtfaTitan => ForgottenMemories.TGEMWorld.downedTitanRock;
 
-        public bool BtfaAcheron
-        {
-            get { return ForgottenMemories.TGEMWorld.downedAcheron; }
-        }
+        public bool BtfaAcheron => ForgottenMemories.TGEMWorld.downedAcheron;
 
-        public bool BtfaArtery
-        {
-            get { return ForgottenMemories.TGEMWorld.downedArterius; }
-        }
+        public bool BtfaArtery => ForgottenMemories.TGEMWorld.downedArterius;
 
-        public bool BtfaGhastly
-        {
-            get { return ForgottenMemories.TGEMWorld.downedGhastlyEnt; }
-        }
+        public bool BtfaGhastly => ForgottenMemories.TGEMWorld.downedGhastlyEnt;
 
         //Bluemagics
-        public bool BlueDownedPhantom
-        {
-            get { return Bluemagic.BluemagicWorld.downedPhantom; }
-        }
+        public bool BlueDownedPhantom => Bluemagic.BluemagicWorld.downedPhantom;
 
-        public bool BlueDownedAbom
-        {
-            get { return Bluemagic.BluemagicWorld.downedAbomination; }
-        }
+        public bool BlueDownedAbom => Bluemagic.BluemagicWorld.downedAbomination;
 
         //Eota
-        public bool AncientsDownedWorms
-        {
-            get { return EchoesoftheAncients.AncientWorld.downedWyrms; }
-        }
+        public bool AncientsDownedWorms => EchoesoftheAncients.AncientWorld.downedWyrms;
 
         //Crystilium
-        public bool CrystiliumDownedKing
-        {
-            get { return CrystiliumMod.CrystalWorld.downedCrystalKing; }
-        }
+        public bool CrystiliumDownedKing => CrystiliumMod.CrystalWorld.downedCrystalKing;
 
         //exodus
-        public bool ExodusDownedAbom
-        {
-            get { return Exodus.ExodusWorld.downedExodusAbomination; }
-        }
+        public bool ExodusDownedAbom => Exodus.ExodusWorld.downedExodusAbomination;
 
-        public bool ExodusDownedBlob
-        {
-            get { return Exodus.ExodusWorld.downedExodusEvilBlob; }
-        }
+        public bool ExodusDownedBlob => Exodus.ExodusWorld.downedExodusEvilBlob;
 
-        public bool ExodusDownedColoss
-        {
-            get { return Exodus.ExodusWorld.downedExodusColossus; }
-        }
+        public bool ExodusDownedColoss => Exodus.ExodusWorld.downedExodusColossus;
 
-        public bool ExodusDownedEmperor
-        {
-            get { return Exodus.ExodusWorld.downedExodusDesertEmperor; }
-        }
+        public bool ExodusDownedEmperor => Exodus.ExodusWorld.downedExodusDesertEmperor;
 
-        public bool ExodusDownedHive
-        {
-            get { return Exodus.ExodusWorld.downedExodusHivemind; }
-        }
+        public bool ExodusDownedHive => Exodus.ExodusWorld.downedExodusHivemind;
 
-        public bool ExodusDownedMaster
-        {
-            get { return Exodus.ExodusWorld.downedExodusMaster; }
-        }
+        public bool ExodusDownedMaster => Exodus.ExodusWorld.downedExodusMaster;
 
-        public bool ExodusDownedHeart
-        {
-            get { return Exodus.ExodusWorld.downedExodusSludgeheart; }
-        }
+        public bool ExodusDownedHeart => Exodus.ExodusWorld.downedExodusSludgeheart;
 
         //W1K
-        public bool W1KDownedKutku
-        {
-            get { return W1KModRedux.MWorld.downedKutKu; }
-        }
+        public bool W1KDownedKutku => W1KModRedux.MWorld.downedKutKu;
 
-        public bool W1KDownedArdorix
-        {
-            get { return W1KModRedux.MWorld.downedArdorix; }
-        }
+        public bool W1KDownedArdorix => W1KModRedux.MWorld.downedArdorix;
 
-        public bool W1KDownedArborix
-        {
-            get { return W1KModRedux.MWorld.downedArborix; }
-        }
+        public bool W1KDownedArborix => W1KModRedux.MWorld.downedArborix;
 
-        public bool W1KDownedAquatix
-        {
-            get { return W1KModRedux.MWorld.downedAquatix; }
-        }
+        public bool W1KDownedAquatix => W1KModRedux.MWorld.downedAquatix;
 
-        public bool W1KDownedIvy
-        {
-            get { return W1KModRedux.MWorld.downedIvy; }
-        }
+        public bool W1KDownedIvy => W1KModRedux.MWorld.downedIvy;
 
-        public bool W1KDownedDeath
-        {
-            get { return W1KModRedux.MWorld.downedDeath; }
-        }
+        public bool W1KDownedDeath => W1KModRedux.MWorld.downedDeath;
 
-        public bool W1KDownedRathalos
-        {
-            get { return W1KModRedux.MWorld.downedRathalos; }
-        }
+        public bool W1KDownedRathalos => W1KModRedux.MWorld.downedRathalos;
 
-        public bool W1KDownedRidley
-        {
-            get { return W1KModRedux.MWorld.downedRidley; }
-        }
+        public bool W1KDownedRidley => W1KModRedux.MWorld.downedRidley;
 
-        public bool W1KDownedOkiku
-        {
-            get { return W1KModRedux.MWorld.downedOkiku; }
-        }
+        public bool W1KDownedOkiku => W1KModRedux.MWorld.downedOkiku;
 
         //fernium
-        public bool FerniumDownedMargrama
-        {
-            get { return Fernium.world.downedMargrama; }
-        }
+        public bool FerniumDownedMargrama => Fernium.world.downedMargrama;
 
-        public bool FerniumDownedLunarRex
-        {
-            get { return Fernium.world.downedLunarRex; }
-        }
+        public bool FerniumDownedLunarRex => Fernium.world.downedLunarRex;
 
         //elements awoken
-        public bool ElementsDownedWaste
-        {
-            get { return ElementsAwoken.MyWorld.downedWasteland; }
-        }
+        public bool ElementsDownedWaste => ElementsAwoken.MyWorld.downedWasteland;
 
-        public bool ElementsDownedInfern
-        {
-            get { return ElementsAwoken.MyWorld.downedInfernace; }
-        }
+        public bool ElementsDownedInfern => ElementsAwoken.MyWorld.downedInfernace;
 
-        public bool ElementsDownedScourge
-        {
-            get { return ElementsAwoken.MyWorld.downedScourgeFighter; }
-        }
+        public bool ElementsDownedScourge => ElementsAwoken.MyWorld.downedScourgeFighter;
 
-        public bool ElementsDownedReg
-        {
-            get { return ElementsAwoken.MyWorld.downedRegaroth; }
-        }
+        public bool ElementsDownedReg => ElementsAwoken.MyWorld.downedRegaroth;
 
-        public bool ElementsDownedCelestial
-        {
-            get { return ElementsAwoken.MyWorld.downedCelestial; }
-        }
+        public bool ElementsDownedCelestial => ElementsAwoken.MyWorld.downedCelestial;
 
-        public bool ElementsDownedObsid
-        {
-            get { return ElementsAwoken.MyWorld.downedObsidious; }
-        }
+        public bool ElementsDownedObsid => ElementsAwoken.MyWorld.downedObsidious;
 
-        public bool ElementsDownedPerma
-        {
-            get { return ElementsAwoken.MyWorld.downedPermafrost; }
-        }
+        public bool ElementsDownedPerma => ElementsAwoken.MyWorld.downedPermafrost;
 
-        public bool ElementsDownedAque
-        {
-            get { return ElementsAwoken.MyWorld.downedAqueous; }
-        }
+        public bool ElementsDownedAque => ElementsAwoken.MyWorld.downedAqueous;
 
-        public bool ElementsDownedEye
-        {
-            get { return ElementsAwoken.MyWorld.downedEye; }
-        }
+        public bool ElementsDownedEye => ElementsAwoken.MyWorld.downedEye;
 
-        public bool ElementsDownedDragon
-        {
-            get { return ElementsAwoken.MyWorld.downedAncientDragon; }
-        }
+        public bool ElementsDownedDragon => ElementsAwoken.MyWorld.downedAncientDragon;
 
-        public bool ElementsDownedGuardian
-        {
-            get { return ElementsAwoken.MyWorld.downedGuardian; }
-        }
+        public bool ElementsDownedGuardian => ElementsAwoken.MyWorld.downedGuardian;
 
-        public bool ElementsDownedVoid
-        {
-            get { return ElementsAwoken.MyWorld.downedVoidLeviathan; }
-        }
+        public bool ElementsDownedVoid => ElementsAwoken.MyWorld.downedVoidLeviathan;
 
         //antiaris
-        public bool AntiarisDownedAntlion
-        {
-            get { return Antiaris.AntiarisWorld.DownedAntlionQueen; }
-        }
+        public bool AntiarisDownedAntlion => Antiaris.AntiarisWorld.DownedAntlionQueen;
 
         //disarray
-        public bool DisarrayDownedPlant
-        {
-            get { return Disarray.DisarrayWorld.downedPlantKing; }
-        }
+        public bool DisarrayDownedPlant => Disarray.DisarrayWorld.downedPlantKing;
 
-        public bool DisarrayDownedCrusher
-        {
-            get { return Disarray.DisarrayWorld.downedDesertCrusher; }
-        }
+        public bool DisarrayDownedCrusher => Disarray.DisarrayWorld.downedDesertCrusher;
 
-        public bool DisarrayDownedProbe
-        {
-            get { return Disarray.DisarrayWorld.downedProbeMother; }
-        }
+        public bool DisarrayDownedProbe => Disarray.DisarrayWorld.downedProbeMother;
 
-        public bool DisarrayDownedGeneral
-        {
-            get { return Disarray.DisarrayWorld.downedTheGeneral; }
-        }
+        public bool DisarrayDownedGeneral => Disarray.DisarrayWorld.downedTheGeneral;
 
-        public bool DisarrayDownedSerpent
-        {
-            get { return Disarray.DisarrayWorld.downedLunarSerpent; }
-        }
+        public bool DisarrayDownedSerpent => Disarray.DisarrayWorld.downedLunarSerpent;
 
-        public bool DisarrayDownedCold
-        {
-            get { return Disarray.DisarrayWorld.downedColdBoss; }
-        }
+        public bool DisarrayDownedCold => Disarray.DisarrayWorld.downedColdBoss;
 
-        public bool DisarrayDownedShadows
-        {
-            get { return Disarray.DisarrayWorld.downedShadows; }
-        }
+        public bool DisarrayDownedShadows => Disarray.DisarrayWorld.downedShadows;
 
-        public bool DisarrayDownedLuna
-        {
-            get { return Disarray.DisarrayWorld.downedLuna; }
-        }
+        public bool DisarrayDownedLuna => Disarray.DisarrayWorld.downedLuna;
 
-        public bool DisarrayDownedBell
-        {
-            get { return Disarray.DisarrayWorld.downedBell; }
-        }
+        public bool DisarrayDownedBell => Disarray.DisarrayWorld.downedBell;
 
-        public bool DisarrayDownedMech
-        {
-            get { return Disarray.DisarrayWorld.downedMech; }
-        }
+        public bool DisarrayDownedMech => Disarray.DisarrayWorld.downedMech;
 
-        public bool DisarrayDownedSludge
-        {
-            get { return Disarray.DisarrayWorld.downedCosmicSludge; }
-        }
+        public bool DisarrayDownedSludge => Disarray.DisarrayWorld.downedCosmicSludge;
 
-        public bool DisarrayDownedDeva
-        {
-            get { return Disarray.DisarrayWorld.downedCoreOfTheDevastator; }
-        }
+        public bool DisarrayDownedDeva => Disarray.DisarrayWorld.downedCoreOfTheDevastator;
 
-        public bool DisarrayDownedMeteor
-        {
-            get { return Disarray.DisarrayWorld.downedMeteorzoid; }
-        }
+        public bool DisarrayDownedMeteor => Disarray.DisarrayWorld.downedMeteorzoid;
 
-        public bool DisarrayDownedDungeon
-        {
-            get { return Disarray.DisarrayWorld.downedDungeon; }
-        }
+        public bool DisarrayDownedDungeon => Disarray.DisarrayWorld.downedDungeon;
 
         //cookie
-        public bool CookieDownedCookie
-        {
-            get { return CookieMod.CookieModWorld.downedCookieBoss; }
-        }
+        public bool CookieDownedCookie => CookieMod.CookieModWorld.downedCookieBoss;
 
-        public bool CookieDownedBunny
-        {
-            get { return CookieMod.CookieModWorld.downedBunny; }
-        }
+        public bool CookieDownedBunny => CookieMod.CookieModWorld.downedBunny;
 
         //enigma
-        public bool EnigmaDownedAnnih
-        {
-            get { return Laugicality.LaugicalityWorld.downedAnnihilator; }
-        }
+        public bool EnigmaDownedAnnih => Laugicality.LaugicalityWorld.downedAnnihilator;
 
-        public bool EnigmaDownedSlyber
-        {
-            get { return Laugicality.LaugicalityWorld.downedSlybertron; }
-        }
+        public bool EnigmaDownedSlyber => Laugicality.LaugicalityWorld.downedSlybertron;
 
-        public bool EnigmaDownedTrain
-        {
-            get { return Laugicality.LaugicalityWorld.downedSteamTrain; }
-        }
+        public bool EnigmaDownedTrain => Laugicality.LaugicalityWorld.downedSteamTrain;
 
-        public bool EnigmaDownedShark
-        {
-            get { return Laugicality.LaugicalityWorld.downedDuneSharkron; }
-        }
+        public bool EnigmaDownedShark => Laugicality.LaugicalityWorld.downedDuneSharkron;
 
-        public bool EnigmaDownedHypo
-        {
-            get { return Laugicality.LaugicalityWorld.downedHypothema; }
-        }
+        public bool EnigmaDownedHypo => Laugicality.LaugicalityWorld.downedHypothema;
 
-        public bool EnigmaDownedRagnar
-        {
-            get { return Laugicality.LaugicalityWorld.downedRagnar; }
-        }
+        public bool EnigmaDownedRagnar => Laugicality.LaugicalityWorld.downedRagnar;
 
-        public bool EnigmaDownedRocks
-        {
-            get { return Laugicality.LaugicalityWorld.downedRocks; }
-        }
+        public bool EnigmaDownedRocks => Laugicality.LaugicalityWorld.downedRocks;
 
-        public bool EnigmaDownedEther
-        {
-            get { return Laugicality.LaugicalityWorld.downedTrueEtheria; }
-        }
+        public bool EnigmaDownedEther => Laugicality.LaugicalityWorld.downedTrueEtheria;
 
-        public bool EnigmaDownedDio
-        {
-            get { return Laugicality.LaugicalityWorld.downedAnDio; }
-        }
+        public bool EnigmaDownedDio => Laugicality.LaugicalityWorld.downedAnDio;
 
         #endregion other mod bools
 

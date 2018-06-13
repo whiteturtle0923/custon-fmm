@@ -50,10 +50,7 @@ namespace Fargowiltas.NPCs
             npc.catchItem = (short)mod.ItemType("LumberJack");
         }
 
-        public bool SacredToolsDownedSerpent
-        {
-            get { return SacredTools.ModdedWorld.FlariumSpawns; }
-        }
+        public bool SacredToolsDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {

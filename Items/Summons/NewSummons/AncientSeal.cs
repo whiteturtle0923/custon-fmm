@@ -32,10 +32,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             return Main.dayTime != true;
         }
 
-        public bool SacredToolsDownedLunarians
-        {
-            get { return SacredTools.ModdedWorld.downedLunarians; }
-        }
+        public bool SacredToolsDownedLunarians => SacredTools.ModdedWorld.downedLunarians;
 
         public override bool UseItem(Player player)
         {
