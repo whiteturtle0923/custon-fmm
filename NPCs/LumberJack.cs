@@ -52,29 +52,9 @@ namespace Fargowiltas.NPCs
 
         public bool SacredToolsDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            if(FargoWorld.movedLumberjack)
-            {
-                return true;
-            }
-
-            for (int k = 0; k < 255; k++)
-            {
-                Player player = Main.player[k];
-                if (player.active)
-                {
-                    for (int j = 0; j < player.inventory.Length; j++)
-                    {
-                        if (player.inventory[j].type == mod.ItemType("WoodenToken"))
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-
-            return false;
+            return fargoworld.movedlumberjack || Main.player.Where(player => player.active).Any(player => player.inventory.Any(t => t.type == mod.ItemType("WoodenToken")));
         }
 
         public override void AI()
@@ -154,29 +134,27 @@ namespace Fargowiltas.NPCs
                 shop = true;
             }
 
-            if (!firstButton)
+            if (firstButton) return;
+            if (dayOver && nightOver)
             {
-                if (dayOver && nightOver)
-                {
-                    Main.npcChatText = "Here you go. I'm glad my wood put such a big smile on your face.";
+                Main.npcChatText = "Here you go. I'm glad my wood put such a big smile on your face.";
 
-                    if (NPC.downedBoss1)
-                    {
-                        woodAmount = 200;
-                    }
-                    if (Main.hardMode)
-                    {
-                        woodAmount = 500;
-                    }
-
-                    player.QuickSpawnItem(ItemID.Wood, woodAmount);
-                    dayOver = false;
-                    nightOver = false;
-                }
-                else
+                if (NPC.downedBoss1)
                 {
-                    Main.npcChatText = "The trees need time to regrow, come back later for more wood.";
+                    woodAmount = 200;
                 }
+                if (Main.hardMode)
+                {
+                    woodAmount = 500;
+                }
+
+                player.QuickSpawnItem(ItemID.Wood, woodAmount);
+                dayOver = false;
+                nightOver = false;
+            }
+            else
+            {
+                Main.npcChatText = "The trees need time to regrow, come back later for more wood.";
             }
         }
 
@@ -298,17 +276,17 @@ namespace Fargowiltas.NPCs
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore3"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore3"));
                 }
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore2"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore2"));
                 }
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore1"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore1"));
                 }
             }
             else

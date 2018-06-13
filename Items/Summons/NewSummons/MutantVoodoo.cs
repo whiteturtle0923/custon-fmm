@@ -34,20 +34,20 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override bool UseItem(Player player)
         {
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.EyeofCthulhu);
-            Main.NewText("Eye of Cthulhu has awoken!", 175, 75, 255);
+            Main.NewText("Eye of Cthulhu has awoken!", 175, 75);
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.KingSlime);
 
             if (player.ZoneCorrupt || player.ZoneCrimson)
             {
                 NPC.SpawnOnPlayer(player.whoAmI, NPCID.EaterofWorldsHead);
                 NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.BrainofCthulhu);
-                Main.NewText("Brain of Cthulhu has awoken!", 175, 75, 255);
+                Main.NewText("Brain of Cthulhu has awoken!", 175, 75);
             }
 
             NPC.NewNPC((int)player.position.X, (int)player.position.Y - 220, NPCID.SkeletronHead);
-            Main.NewText("Skeletron has awoken!", 175, 75, 255);
+            Main.NewText("Skeletron has awoken!", 175, 75);
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.QueenBee);
-            Main.NewText("Queen Bee has awoken!", 175, 75, 255);
+            Main.NewText("Queen Bee has awoken!", 175, 75);
             NPC.SpawnWOF(player.Center);
 
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.TheDestroyer);
@@ -56,19 +56,19 @@ namespace Fargowiltas.Items.Summons.NewSummons
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.Spazmatism);
 
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(250, 1000), NPCID.Plantera);
-            Main.NewText("Plantera has awoken!", 175, 75, 255);
+            Main.NewText("Plantera has awoken!", 175, 75);
             NPC.NewNPC((int)player.position.X, (int)player.position.Y - 300, NPCID.Golem);
-            Main.NewText("Golem has awoken!", 175, 75, 255);
+            Main.NewText("Golem has awoken!", 175, 75);
             NPC.NewNPC((int)player.position.X, (int)player.position.Y - 400, NPCID.DukeFishron);
-            Main.NewText("Duke Fishron has awoken!", 175, 75, 255);
+            Main.NewText("Duke Fishron has awoken!", 175, 75);
 
             int cultist = NPC.NewNPC((int)player.position.X, (int)player.position.Y - 300, NPCID.CultistBoss);
             //so pillars wont spawn when he dies
             Main.npc[cultist].GetGlobalNPC<FargoGlobalNPC>().pillarSpawn = false;
-            Main.NewText("Lunatic Cultist has awoken!", 175, 75, 255);
+            Main.NewText("Lunatic Cultist has awoken!", 175, 75);
 
             NPC.NewNPC((int)player.position.X, (int)player.position.Y - 220, NPCID.MoonLordCore);
-            Main.NewText("The Moon Lord has awoken!", 175, 75, 255);
+            Main.NewText("The Moon Lord has awoken!", 175, 75);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

@@ -24,8 +24,8 @@ namespace Fargowiltas.Projectiles
         {
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 43);
 
-            NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y - 10, NPCID.DungeonGuardian, 0, projectile.whoAmI, 0, 0);
-            Main.NewText("RUN YOU SCRUB", 175, 75, 255);
+            NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y - 10, NPCID.DungeonGuardian, 0, projectile.whoAmI);
+            Main.NewText("RUN YOU SCRUB", 175, 75);
         }
     }
 }

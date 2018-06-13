@@ -44,11 +44,11 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     if ((x * y) <= radius)   //rectangle
                     {
-                        WorldGen.KillTile(xdiaPosition, ydiaPosition, false, false, false);  //tile destroy
-                        WorldGen.KillTile(ydiadow, yodiadow, false, false, false);  //tile destroy
-                        WorldGen.KillTile(xadiaPosition, yadiaPosition, false, false, false);  //tile destroy
-                        WorldGen.KillTile(yadiadow, yoadiadow, false, false, false);  //tile destroy
-                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color(), 1f);
+                        WorldGen.KillTile(xdiaPosition, ydiaPosition);  //tile destroy
+                        WorldGen.KillTile(ydiadow, yodiadow);  //tile destroy
+                        WorldGen.KillTile(xadiaPosition, yadiaPosition);  //tile destroy
+                        WorldGen.KillTile(yadiadow, yoadiadow);  //tile destroy
+                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
                     }
                     ye = y * -1;
                 }

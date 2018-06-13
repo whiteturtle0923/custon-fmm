@@ -137,7 +137,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             if (!NPC.AnyNPCs(type))
             {
                 NPC.NewNPC((int)player.position.X + Main.rand.Next(-200, 200), (int)player.position.Y - 50, type);
-                Main.NewText("The " + npc.TypeName + " has arrived!", 175, 75, 255);
+                Main.NewText("The " + npc.TypeName + " has arrived!", 175, 75);
             }
         }
 

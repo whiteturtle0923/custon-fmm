@@ -1,5 +1,6 @@
 using Fargowiltas.NPCs;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,6 +35,90 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public bool SacredToolsDownedLunarians => SacredTools.ModdedWorld.downedLunarians;
 
+        private readonly string[] SacredToolsBosses = 
+        {
+            "HarpyBoss",
+            "ArmoredHarpy",
+            "ShadowWrath",
+            "StardustLunarian",
+            "VortexLunarian",
+            "SolarLunarian"
+            
+        };
+
+        private readonly string[] EpicnessModBossees = 
+        {
+            "RedGoblinKing",
+            "PixieLord",
+            "MeteoriteGuardian",
+            "MegaTitanHead",
+            "MegaTitanHand1",
+            "MegaTitanHand2",
+            "MegaTitanHand3",
+            "MegaTitanHand4",
+            "Derpatron",
+            "DarkNebulaPhase1",
+            "ArgothTheDemonLord",
+        };
+
+        private readonly string[] ThoriumBosses =
+        {
+            "TheGrandThunderBird",
+            "QueenJellyDiverless",
+            "GraniteEnergyStorm",
+            "TheBuriedWarrior",
+            "ThePrimeScouter",
+            "BoreanStrider",
+            "FallenDeathBeholder",
+            "Lich",
+            "Abyssion",
+            "Aquaius",
+            "Omnicide",
+            "SlagFury",
+        };
+
+        private readonly string[] CalamityBosses =
+        {
+            "HiveMind",
+            "PerforatorHive",
+            "SlimeGod",
+            "SlimeGodRun",
+            "SlimeGodCore",
+            "Cryogen",
+            "BrimstoneElemental",
+            "Calamitas",
+            "Siren",
+            "Leviathan",
+            "PlaguebringerGoliath",
+            "ProfanedGuardianBoss",
+            "ProfanedGuardianBoss2",
+            "ProfanedGuardianBoss3",
+            "Providence",
+            "CeaselessVoid",
+            "CosmicWraith",
+            "Bumblefuck",
+            "Yharon",
+        };
+
+        private readonly string[] SpiritBosses =
+        {
+            "Scarabeus",
+            "AncientFlyer",
+            "Infernon",
+            "Dusking",
+            "IlluminantMaster",
+            "Scarabeus",
+            "Atlas",
+            "Overseer",
+        };
+
+        private readonly string[] PumpkingBosses =
+        {
+            "PumpkingHorseman",
+            "TerraLord",
+            "TerraGuard",
+        };
+        
         public override bool UseItem(Player player)
         {
             // NPC npc = new NPC();
@@ -49,44 +134,27 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
             if (Fargowiltas.instance.sacredToolsLoaded)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("HarpyBoss"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("ArmoredHarpy"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("ShadowWrath"));
-
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("StardustLunarian"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("VortexLunarian"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("SolarLunarian"));
-
-                if (SacredToolsDownedLunarians)
+                foreach (string i in SacredToolsBosses)
                 {
-                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("NebulaLunarian"));
+                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType(i));
                 }
-                else
-                {
-                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SacredTools").NPCType("ShadowLunarian"));
-                }
+                NPC.SpawnOnPlayer(player.whoAmI,
+                    SacredToolsDownedLunarians
+                        ? ModLoader.GetMod("SacredTools").NPCType("NebulaLunarian")
+                        : ModLoader.GetMod("SacredTools").NPCType("ShadowLunarian"));
             }
 
             if (ModLoader.GetLoadedMods().Contains("EpicnessModRemastered"))
             {
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("RedGoblinKing"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("PixieLord"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("MeteoriteGuardian"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("MegaTitanHead"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("MegaTitanHand1"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("MegaTitanHand2"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("MegaTitanHand3"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("MegaTitanHand4"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("Derpatron"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("DarkNebulaPhase1"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType("ArgothTheDemonLord"));
+                foreach(string i in EpicnessModBossees)
+                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType(i));
             }
 
             if (Fargowiltas.instance.pumpkingLoaded)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("Pumpking").NPCType("PumpkingHorseman"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("Pumpking").NPCType("TerraLord"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("Pumpking").NPCType("TerraGuard"));
+                foreach(string i in PumpkingBosses)
+                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("Pumpking").NPCType(i));
+                
             }
 
             if (Fargowiltas.instance.crystiliumLoaded)
@@ -96,19 +164,9 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
             if (Fargowiltas.instance.thoriumLoaded)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("TheGrandThunderBird"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("QueenJellyDiverless"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("GraniteEnergyStorm"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("TheBuriedWarrior"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("ThePrimeScouter"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("BoreanStrider"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("FallenDeathBeholder"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("Lich"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("Abyssion"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("Aquaius"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("Omnicide"));
+                foreach(string i in ThoriumBosses)
+                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType(i));
                 player.AddBuff(ModLoader.GetMod("ThoriumMod").BuffType("TouchOfOmnicide"), 14400);
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("SlagFury"));
             }
 
             if (ModLoader.GetLoadedMods().Contains("Ersion"))
@@ -120,54 +178,27 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
             if (Fargowiltas.instance.calamityLoaded)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("HiveMind"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("PerforatorHive"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("SlimeGod"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("SlimeGodRun"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("SlimeGodCore"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Cryogen"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("BrimstoneElemental"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Calamitas"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Siren"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Leviathan"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("PlaguebringerGoliath"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("ProfanedGuardianBoss"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("ProfanedGuardianBoss2"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("ProfanedGuardianBoss3"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Providence"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("CeaselessVoid"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("CosmicWraith"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Bumblefuck"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Yharon"));
+                foreach(string i in CalamityBosses)
+                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType(i));
             }
 
             if (Fargowiltas.instance.spiritLoaded)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType("Scarabeus"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType("AncientFlyer"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType("Infernon"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType("Dusking"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType("IlluminantMaster"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType("Scarabeus"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType("Atlas"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType("Overseer"));
+                foreach(string i in SpiritBosses)
+                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType(i));
             }
 
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.EyeofCthulhu);
-            Main.NewText("Eye of Cthulhu has awoken!", 175, 75, 255);
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.KingSlime);
+            SpawnBoss(player, NPCID.EyeofCthulhu, "Eye of Cthulhu");
+            SpawnBoss(player, NPCID.KingSlime, "King Slime");
 
             if (player.ZoneCorrupt || player.ZoneCrimson)
             {
                 NPC.SpawnOnPlayer(player.whoAmI, NPCID.EaterofWorldsHead);
-                NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.BrainofCthulhu);
-                Main.NewText("Brain of Cthulhu has awoken!", 175, 75, 255);
+                SpawnBoss(player, NPCID.BrainofCthulhu, "Brain of Cthulhu");
             }
 
-            NPC.NewNPC((int)player.position.X, (int)player.position.Y - 220, NPCID.SkeletronHead);
-            Main.NewText("Skeletron has awoken!", 175, 75, 255);
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.QueenBee);
-            Main.NewText("Queen Bee has awoken!", 175, 75, 255);
+            SpawnBoss(player, NPCID.SkeletronHand, "Skeletron");
+            SpawnBoss(player, NPCID.QueenBee, "Queen Bee");
             NPC.SpawnWOF(player.Center);
 
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.TheDestroyer);
@@ -175,23 +206,25 @@ namespace Fargowiltas.Items.Summons.NewSummons
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.Retinazer);
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.Spazmatism);
 
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(250, 1000), NPCID.Plantera);
-            Main.NewText("Plantera has awoken!", 175, 75, 255);
-            NPC.NewNPC((int)player.position.X, (int)player.position.Y - 300, NPCID.Golem);
-            Main.NewText("Golem has awoken!", 175, 75, 255);
-            NPC.NewNPC((int)player.position.X, (int)player.position.Y - 400, NPCID.DukeFishron);
-            Main.NewText("Duke Fishron has awoken!", 175, 75, 255);
+            SpawnBoss(player, NPCID.Plantera, "Plantera");
+            SpawnBoss(player, NPCID.Golem, "Golem");
+            SpawnBoss(player, NPCID.DukeFishron, "Duke Fishron");
 
-            int cultist = NPC.NewNPC((int)player.position.X, (int)player.position.Y - 300, NPCID.CultistBoss);
+            int cultist = SpawnBoss(player, NPCID.CultistBoss, "'Lunatic Cultist");
             //so pillars wont spawn when he dies
             Main.npc[cultist].GetGlobalNPC<FargoGlobalNPC>().pillarSpawn = false;
-            Main.NewText("Lunatic Cultist has awoken!", 175, 75, 255);
 
-            NPC.NewNPC((int)player.position.X, (int)player.position.Y - 220, NPCID.MoonLordCore);
-            Main.NewText("The Moon Lord has awoken!", 175, 75, 255);
+            SpawnBoss(player, NPCID.MoonLordCore, "The Moon Lord");
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
+        }
+
+        public int SpawnBoss(Player player, int NPCID, string name)
+        {
+            int i = NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID);
+            Main.NewText($"{name} has awoken!", 175, 75);
+            return i;
         }
     }
 }

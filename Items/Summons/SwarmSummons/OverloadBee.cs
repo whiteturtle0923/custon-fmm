@@ -63,7 +63,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[bee].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("A deafening buzz pierces through you!", 175, 75, 255);
+            Main.NewText("A deafening buzz pierces through you!", 175, 75);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

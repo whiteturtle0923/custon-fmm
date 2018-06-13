@@ -1,5 +1,6 @@
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -8,36 +9,36 @@ namespace Fargowiltas
 {
 	public class FargoWorld : ModWorld
 	{
-		public static bool movedLumberjack = false;
-		public static bool downedBetsy = false;
-		public static bool downedBoss = false;
+		public static bool movedLumberjack;
+		public static bool downedBetsy;
+		public static bool downedBoss;
 
         public static bool halloween = true;
         public static bool xmas = true;
 
         //town npcs
-        public static bool guide = false;
-		public static bool merch = false;
-		public static bool nurse = false;
-		public static bool demo = false;
-		public static bool dye = false;
-		public static bool dryad = false;
-		public static bool keep = false;
-		public static bool dealer = false;
-		public static bool style = false;
-		public static bool paint = false;
-		public static bool angler = false;	
-		public static bool goblin = false;
-		public static bool doc = false;
-		public static bool cloth = false;
-		public static bool mech = false;
-		public static bool party = false;
-		public static bool wiz = false;
-		public static bool tax = false;
-		public static bool truf = false;
-		public static bool pirate = false;
-		public static bool steam = false;
-		public static bool borg = false;		
+        public static bool guide;
+		public static bool merch;
+		public static bool nurse;
+		public static bool demo;
+		public static bool dye;
+		public static bool dryad;
+		public static bool keep;
+		public static bool dealer;
+		public static bool style;
+		public static bool paint;
+		public static bool angler;	
+		public static bool goblin;
+		public static bool doc;
+		public static bool cloth;
+		public static bool mech;
+		public static bool party;
+		public static bool wiz;
+		public static bool tax;
+		public static bool truf;
+		public static bool pirate;
+		public static bool steam;
+		public static bool borg;		
 		
 		public override void Initialize()
 		{
@@ -75,7 +76,7 @@ namespace Fargowiltas
 
 		public override TagCompound Save()
 		{
-            var downed = new List<string>();
+            List<string> downed = new List<string>();
 			if (movedLumberjack) downed.Add("lumberjack");
 			if (downedBetsy) downed.Add("betsy");
 			if (downedBoss) downed.Add("boss");
@@ -114,7 +115,7 @@ namespace Fargowiltas
 		
 		public override void Load(TagCompound tag)
 		{
-            var downed = tag.GetList<string>("downed");
+            IList<string> downed = tag.GetList<string>("downed");
 			movedLumberjack = downed.Contains("lumberjack");
 			downedBetsy = downed.Contains("betsy");
 			downedBoss = downed.Contains("boss");
@@ -185,41 +186,49 @@ namespace Fargowiltas
 		
 		public override void NetSend(BinaryWriter writer)
 		{
-            BitsByte flags = new BitsByte();
-			flags[0] = downedBetsy;
-			flags[1] = downedBoss;
-            flags[2] = guide;
-            flags[3] = merch;
-            flags[4] = nurse;
-            flags[5] = demo;
-            flags[6] = dye;
-            flags[7] = dryad;
+			BitsByte flags = new BitsByte
+			{
+				[0] = downedBetsy,
+				[1] = downedBoss,
+				[2] = guide,
+				[3] = merch,
+				[4] = nurse,
+				[5] = demo,
+				[6] = dye,
+				[7] = dryad
+			};
 
-            BitsByte flags2 = new BitsByte();  
-            flags2[0] = keep;
-            flags2[1] = dealer;
-            flags2[2] = style;
-            flags2[3] = paint;
-            flags2[4] = angler;
-            flags2[5] = goblin;
-            flags2[6] = doc;
-            flags2[7] = cloth;
+			BitsByte flags2 = new BitsByte
+			{
+				[0] = keep,
+				[1] = dealer,
+				[2] = style,
+				[3] = paint,
+				[4] = angler,
+				[5] = goblin,
+				[6] = doc,
+				[7] = cloth
+			};
 
-            BitsByte flags3 = new BitsByte();
-            flags3[0] = mech;
-            flags3[1] = party;
-            flags3[2] = wiz;
-            flags3[3] = tax;
-            flags3[4] = truf;
-            flags3[5] = pirate;
-            flags3[6] = steam;
-            flags3[7] = borg;
+			BitsByte flags3 = new BitsByte
+			{
+				[0] = mech,
+				[1] = party,
+				[2] = wiz,
+				[3] = tax,
+				[4] = truf,
+				[5] = pirate,
+				[6] = steam,
+				[7] = borg
+			};
 
-            BitsByte flags4 = new BitsByte();
-            flags4[0] = halloween;
-            flags4[1] = xmas;
+			BitsByte flags4 = new BitsByte
+			{
+				[0] = halloween,
+				[1] = xmas
+			};
 
-            writer.Write(flags);
+			writer.Write(flags);
             writer.Write(flags2);
             writer.Write(flags3);
             writer.Write(flags4);
@@ -228,23 +237,9 @@ namespace Fargowiltas
         public override void PostUpdate ()
 		{
             //seasonals
-            if (halloween)
-            {
-                Main.halloween = true;
-            }
-            else
-            {
-                Main.halloween = false;
-            }
+            Main.halloween = halloween;
 
-            if (xmas)
-            {
-                Main.xMas = true;
-            }
-            else
-            {
-                Main.xMas = false;
-            }
+            Main.xMas = xmas;
 
             //swarm reset in case something goes wrong
             if (NoBosses())
@@ -253,18 +248,7 @@ namespace Fargowiltas
             }
 		}
 
-        bool NoBosses()
-        {
-            for (int i = 0; i < 200; i++)
-            {
-                if (Main.npc[i].active && Main.npc[i].boss)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
+		private bool NoBosses() => Main.npc.All(i => !i.active || !i.boss);
 	}
 }
 		

@@ -59,7 +59,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[brain].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("You feel dumb among so many brains!", 175, 75, 255);
+            Main.NewText("You feel dumb among so many brains!", 175, 75);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

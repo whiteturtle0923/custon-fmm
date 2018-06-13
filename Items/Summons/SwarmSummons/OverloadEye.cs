@@ -63,7 +63,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[eye].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("Countless eyes pierce the veil staring in your direction!", 175, 75, 255);
+            Main.NewText("Countless eyes pierce the veil staring in your direction!", 175, 75);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

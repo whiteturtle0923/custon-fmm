@@ -74,7 +74,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[skele].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("A great clammering of bones rises from the dungeon!", 175, 75, 255);
+            Main.NewText("A great clammering of bones rises from the dungeon!", 175, 75);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

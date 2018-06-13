@@ -7,10 +7,10 @@ namespace Fargowiltas.Projectiles.Explosives
 {
     public class ateway : ModProjectile
     {
-        private int yo = 0;
+        private int yo;
         private int xo = -4;
-        private int ye = 0;
-        private int xe = 0;
+        private int ye;
+        private int xe;
 
         public override void SetStaticDefaults()
         {
@@ -56,19 +56,19 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     if ((x * y) <= radius)   //rectangle
                     {
-                        WorldGen.KillTile(xPosition, yPosition, false, false, false);  //tile destroy
-                        WorldGen.KillTile(xdow, yPosition, false, false, false);  //tile destroy
-                        WorldGen.KillTile(xoPosition, yoPosition, false, false, false);  //tile destroy
-                        WorldGen.KillTile(xoPosition, yodow, false, false, false);  //tile destroy
-                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color(), 1f);
+                        WorldGen.KillTile(xPosition, yPosition);  //tile destroy
+                        WorldGen.KillTile(xdow, yPosition);  //tile destroy
+                        WorldGen.KillTile(xoPosition, yoPosition);  //tile destroy
+                        WorldGen.KillTile(xoPosition, yodow);  //tile destroy
+                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
                     }
                     if ((x * y) <= 2 * radius)
                     {
-                        WorldGen.KillTile(xdiaPosition, ydiaPosition, false, false, false);  //tile destroy
-                        WorldGen.KillTile(ydiadow, yodiadow, false, false, false);  //tile destroy
-                        WorldGen.KillTile(xadiaPosition, yadiaPosition, false, false, false);  //tile destroy
-                        WorldGen.KillTile(yadiadow, yoadiadow, false, false, false);  //tile destroy
-                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color(), 1f);
+                        WorldGen.KillTile(xdiaPosition, ydiaPosition);  //tile destroy
+                        WorldGen.KillTile(ydiadow, yodiadow);  //tile destroy
+                        WorldGen.KillTile(xadiaPosition, yadiaPosition);  //tile destroy
+                        WorldGen.KillTile(yadiadow, yoadiadow);  //tile destroy
+                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
                     }
                     xe = x * -1;
                     ye = yo * -1;

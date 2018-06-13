@@ -9,9 +9,9 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Mutant : ModNPC
     {
-        public static bool shop1 = false;
-        public static bool shop2 = false;
-        public static bool shop3 = false;
+        public static bool shop1;
+        public static bool shop2;
+        public static bool shop3;
         public static int shopnum = 1;
 
         public override bool Autoload(ref string name)
@@ -41,23 +41,9 @@ namespace Fargowiltas.NPCs
             npc.aiStyle = 7;
             npc.damage = 10;
 
-            if (NPC.downedMoonlord)
-            {
-                npc.defense = 50;
-            }
-            else
-            {
-                npc.defense = 15;
-            }
+            npc.defense = NPC.downedMoonlord ? 50 : 15;
 
-            if (NPC.downedMoonlord)
-            {
-                npc.lifeMax = 5000;
-            }
-            else
-            {
-                npc.lifeMax = 250;
-            }
+            npc.lifeMax = NPC.downedMoonlord ? 5000 : 250;
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
@@ -371,10 +357,7 @@ namespace Fargowiltas.NPCs
 
         #endregion other mod bools
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-        {
-            return FargoWorld.downedBoss;
-        }
+        public override bool CanTownNPCSpawn(int numTownNpcs, int money) => FargoWorld.downedBoss;
 
         public override string TownNPCName()
         {
@@ -416,7 +399,7 @@ namespace Fargowiltas.NPCs
                 return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials! ;)";
             }
 
-            if (Main.bloodMoon == true)
+            if (Main.bloodMoon)
             {
                 switch (Main.rand.Next(1))
                 {
@@ -428,7 +411,7 @@ namespace Fargowiltas.NPCs
                 }
             }
 
-            if (BirthdayParty.PartyIsUp == true)
+            if (BirthdayParty.PartyIsUp)
             {
                 return "I don't know what everyone's so happy about, but as long as nobody mistakes me for a Pigronata, I'm happy too.";
             }
@@ -534,17 +517,17 @@ namespace Fargowiltas.NPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            if (shopnum == 1)
+            switch (shopnum)
             {
-                button = "Pre Hardmode";
-            }
-            else if (shopnum == 2)
-            {
-                button = "Hardmode";
-            }
-            else
-            {
-                button = "Post Moon Lord";
+                case 1:
+                    button = "Pre Hardmode";
+                    break;
+                case 2:
+                    button = "Hardmode";
+                    break;
+                default:
+                    button = "Post Moon Lord";
+                    break;
             }
 
             if (Main.hardMode)
@@ -574,23 +557,23 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
 
-                if (shopnum == 1)
+                switch (shopnum)
                 {
-                    shop1 = true;
-                    shop2 = false;
-                    shop3 = false;
-                }
-                else if (shopnum == 2)
-                {
-                    shop2 = true;
-                    shop1 = false;
-                    shop3 = false;
-                }
-                else
-                {
-                    shop3 = true;
-                    shop1 = false;
-                    shop2 = false;
+                    case 1:
+                        shop1 = true;
+                        shop2 = false;
+                        shop3 = false;
+                        break;
+                    case 2:
+                        shop2 = true;
+                        shop1 = false;
+                        shop3 = false;
+                        break;
+                    default:
+                        shop3 = true;
+                        shop1 = false;
+                        shop2 = false;
+                        break;
                 }
             }
 
@@ -602,12 +585,10 @@ namespace Fargowiltas.NPCs
 
         private void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
         {
-            if (check)
-            {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
-                shop.item[nextSlot].value = price;
-                nextSlot++;
-            }
+            if (!check) return;
+            shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
+            shop.item[nextSlot].value = price;
+            nextSlot++;
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot)
@@ -1421,17 +1402,17 @@ namespace Fargowiltas.NPCs
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/MutantGore3"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/MutantGore3"));
                 }
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/MutantGore2"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/MutantGore2"));
                 }
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/MutantGore1"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/MutantGore1"));
                 }
             }
             else

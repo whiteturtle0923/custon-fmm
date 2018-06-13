@@ -34,7 +34,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
                 NPC.NewNPC((int)player.position.X + (400 * i) - 600, (int)player.position.Y - 200, pillars[i]);
             }
 
-            Main.NewText("The Celestial Pillars have awoken!", 175, 75, 255);
+            Main.NewText("The Celestial Pillars have awoken!", 175, 75);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
