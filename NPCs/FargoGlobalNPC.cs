@@ -231,6 +231,7 @@ namespace Fargowiltas.NPCs
             {
                 int spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), boss);
                 Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
+                NetMessage.SendData(23, -1, -1, null, boss, 0f, 0f, 0f, 0);
             }
             else //pandora
             {
@@ -243,6 +244,7 @@ namespace Fargowiltas.NPCs
 
                 int spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), rando);
                 Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().pandoraActive = true;
+                NetMessage.SendData(23, -1, -1, null, rando, 0f, 0f, 0f, 0);
             }
         }
 
@@ -455,8 +457,6 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.DungeonGuardian, -1, -1, "");
                         break;
                 }
-
-                //PANDORA SWARM
 
                 return false;
             }

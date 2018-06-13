@@ -81,6 +81,7 @@
     <Compile Include="Items\Ammos\Bullets\SilverPouch.cs" />
     <Compile Include="Items\Ammos\Bullets\VelocityPouch.cs" />
     <Compile Include="Items\Ammos\Bullets\VenomPouch.cs" />
+    <Compile Include="Items\CaughtNPCs\Abominationn.cs" />
     <Compile Include="Items\CaughtNPCs\Angler.cs" />
     <Compile Include="Items\CaughtNPCs\ArmsDealer.cs" />
     <Compile Include="Items\CaughtNPCs\CaughtNPC.cs" />
@@ -91,12 +92,15 @@
     <Compile Include="Items\CaughtNPCs\DyeTrader.cs" />
     <Compile Include="Items\CaughtNPCs\GoblinTinkerer.cs" />
     <Compile Include="Items\CaughtNPCs\Guide.cs" />
+    <Compile Include="Items\CaughtNPCs\LumberJack.cs" />
     <Compile Include="Items\CaughtNPCs\Mechanic.cs" />
     <Compile Include="Items\CaughtNPCs\Merchant.cs" />
+    <Compile Include="Items\CaughtNPCs\Mutant.cs" />
     <Compile Include="Items\CaughtNPCs\Nurse.cs" />
     <Compile Include="Items\CaughtNPCs\Painter.cs" />
     <Compile Include="Items\CaughtNPCs\PartyGirl.cs" />
     <Compile Include="Items\CaughtNPCs\Pirate.cs" />
+    <Compile Include="Items\CaughtNPCs\SantaClaus.cs" />
     <Compile Include="Items\CaughtNPCs\SkeletonMerchant.cs" />
     <Compile Include="Items\CaughtNPCs\Steampunker.cs" />
     <Compile Include="Items\CaughtNPCs\Stylist.cs" />
@@ -106,6 +110,8 @@
     <Compile Include="Items\CaughtNPCs\Truffle.cs" />
     <Compile Include="Items\CaughtNPCs\WitchDoctor.cs" />
     <Compile Include="Items\CaughtNPCs\Wizard.cs" />
+    <Compile Include="Items\Explosives\Horizator.cs" />
+    <Compile Include="Items\Explosives\AutoHouse.cs" />
     <Compile Include="Items\Explosives\Instavator.cs" />
     <Compile Include="Items\Explosives\Nuke.cs" />
     <Compile Include="Items\Explosives\Trollbomb.cs" />
@@ -148,7 +154,9 @@
     <Compile Include="Items\Summons\SwarmSummons\Overloader.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadEye.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadFish.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\OverloadGolem.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadMoon.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\OverloadPandora.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadPlant.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadPrime.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadSkele.cs" />
@@ -171,7 +179,7 @@
     <Compile Include="Items\Tiles\EchPainting.cs" />
     <Compile Include="Items\Tiles\EchPaintingSheet.cs" />
     <Compile Include="Items\Tiles\FargoGlobalTile.cs" />
-    <Compile Include="Items\Tiles\HouseBlock.cs" />
+    <Compile Include="Projectiles\AutoHouseProj.cs" />
     <Compile Include="Items\Tiles\WoodenToken.cs" />
     <Compile Include="Items\Tiles\WoodenTokenSheet.cs" />
     <Compile Include="Items\Vanity\MutantBody.cs" />
@@ -233,7 +241,6 @@
     <Compile Include="Projectiles\FargoGlobalProjectile.cs" />
     <Compile Include="Projectiles\Explosives\GlaiveProj.cs" />
     <Compile Include="Projectiles\Explosives\ateway.cs" />
-    <Compile Include="Projectiles\Explosives\cross.cs" />
     <Compile Include="Projectiles\Explosives\dia.cs" />
     <Compile Include="Projectiles\Explosives\InstaProj.cs" />
     <Compile Include="Projectiles\Explosives\leftright.cs" />
@@ -274,15 +281,11 @@
     <Content Include="Items\Ammos\Bullets\SilverPouch.png" />
     <Content Include="Items\Ammos\Bullets\VelocityPouch.png" />
     <Content Include="Items\Ammos\Bullets\VenomPouch.png" />
-    <Content Include="Items\Explosives\cross.png" />
-    <Content Include="Items\Explosives\dia.png" />
-    <Content Include="Items\Explosives\eightway.png" />
     <Content Include="Items\Explosives\Horizator.png" />
-    <Content Include="Items\Explosives\house.png" />
+    <Content Include="Items\Explosives\AutoHouse.png" />
     <Content Include="Items\Explosives\Instavator.png" />
     <Content Include="Items\Explosives\Nuke.png" />
     <Content Include="Items\Explosives\Trollbomb.png" />
-    <Content Include="Items\Explosives\updown.png" />
     <Content Include="Items\Misc\BattleCry.png" />
     <Content Include="Items\Misc\PortableSundial.png" />
     <Content Include="Items\Misc\PurityRenewal.png" />
@@ -319,7 +322,7 @@
     <Content Include="Items\Tiles\CrucibleCosmosSheet3.png" />
     <Content Include="Items\Tiles\EchPainting.png" />
     <Content Include="Items\Tiles\EchPaintingSheet.png" />
-    <Content Include="Items\Tiles\HouseBlock.png" />
+    <Content Include="Projectiles\AutoHouseProj.png" />
     <Content Include="Items\Tiles\WoodenToken.png" />
     <Content Include="Items\Tiles\WoodenTokenSheet.png" />
     <Content Include="Items\Vanity\mutantbody.png" />

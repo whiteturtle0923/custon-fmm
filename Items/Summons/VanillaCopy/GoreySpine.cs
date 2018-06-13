@@ -40,7 +40,8 @@ namespace Fargowiltas.Items.Summons
         public override bool UseItem(Player player)
         {
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.BrainofCthulhu);
-            Main.NewText("Brain of Cthulhu has awoken!", 175, 75);
+            Main.NewText("Brain of Cthulhu has awoken!", 175, 75, 255);
+            NetMessage.SendData(23, -1, -1, null, NPCID.BrainofCthulhu, 0f, 0f, 0f, 0);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

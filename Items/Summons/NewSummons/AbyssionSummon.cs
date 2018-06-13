@@ -42,9 +42,6 @@ namespace Fargowiltas.Items.Summons.NewSummons
                 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("Abyssion"));
             }
 
-            //NPC.NewNPC((int)player.position.X, (int)player.position.Y - 220, NPCID.SkeletronHead);
-            //Main.NewText("Abyssion has awoken!", 175, 75, 255);
-
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

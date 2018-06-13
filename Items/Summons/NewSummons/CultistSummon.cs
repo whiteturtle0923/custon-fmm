@@ -34,6 +34,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             Main.npc[cultist].GetGlobalNPC<FargoGlobalNPC>().pillarSpawn = false;
 
             Main.NewText("Lunatic Cultist has awoken!", 175, 75);
+            NetMessage.SendData(23, -1, -1, null, NPCID.CultistBoss, 0f, 0f, 0f, 0);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

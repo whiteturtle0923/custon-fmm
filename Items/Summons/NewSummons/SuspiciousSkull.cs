@@ -31,12 +31,14 @@ namespace Fargowiltas.Items.Summons.NewSummons
             if (!Main.dayTime)
             {
                 NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.SkeletronHead);
-                Main.NewText("Skeletron has awoken!", 175, 75);
+                Main.NewText("Skeletron has awoken!", 175, 75, 255);
+                NetMessage.SendData(23, -1, -1, null, NPCID.SkeletronHead, 0f, 0f, 0f, 0);
             }
             else
             {
                 NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.DungeonGuardian);
-                Main.NewText("Dungeon Guardian has awoken!", 175, 75);
+                Main.NewText("Dungeon Guardian has awoken!", 175, 75, 255);
+                NetMessage.SendData(23, -1, -1, null, NPCID.DungeonGuardian, 0f, 0f, 0f, 0);
             }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
