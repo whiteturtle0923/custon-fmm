@@ -197,7 +197,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
                 SpawnBoss(player, NPCID.BrainofCthulhu, "Brain of Cthulhu");
             }
 
-            SpawnBoss(player, NPCID.SkeletronHand, "Skeletron");
+            SpawnBossAtOffset(player, NPCID.SkeletronHand, "Skeletron", -220);
             SpawnBoss(player, NPCID.QueenBee, "Queen Bee");
             NPC.SpawnWOF(player.Center);
 
@@ -207,14 +207,14 @@ namespace Fargowiltas.Items.Summons.NewSummons
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.Spazmatism);
 
             SpawnBoss(player, NPCID.Plantera, "Plantera");
-            SpawnBoss(player, NPCID.Golem, "Golem");
-            SpawnBoss(player, NPCID.DukeFishron, "Duke Fishron");
+            SpawnBossAtOffset(player, NPCID.Golem, "Golem", -300);
+            SpawnBossAtOffset(player, NPCID.DukeFishron, "Duke Fishron", -400);
 
-            int cultist = SpawnBoss(player, NPCID.CultistBoss, "'Lunatic Cultist");
+            int cultist = SpawnBossAtOffset(player, NPCID.CultistBoss, "'Lunatic Cultist", -300);
             //so pillars wont spawn when he dies
             Main.npc[cultist].GetGlobalNPC<FargoGlobalNPC>().pillarSpawn = false;
 
-            SpawnBoss(player, NPCID.MoonLordCore, "The Moon Lord");
+            SpawnBossAtOffset(player, NPCID.MoonLordCore, "The Moon Lord", -220);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
@@ -223,6 +223,13 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public int SpawnBoss(Player player, int NPCID, string name)
         {
             int i = NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID);
+            Main.NewText($"{name} has awoken!", 175, 75);
+            return i;
+        }
+        
+        public int SpawnBossAtOffset(Player player, int NPCID, string name, int offset)
+        {
+            int i = NPC.NewNPC((int)player.position.X, (int)player.position.Y + offset, NPCID);
             Main.NewText($"{name} has awoken!", 175, 75);
             return i;
         }

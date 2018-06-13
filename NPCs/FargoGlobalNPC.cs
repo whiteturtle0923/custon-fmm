@@ -479,169 +479,196 @@ namespace Fargowiltas.NPCs
 			}
 
 			// ReSharper disable once SwitchStatementMissingSomeCases
-			switch (npc.type)
-		    {
-		        //bonus drops
-		        case NPCID.GreekSkeleton when Main.rand.Next(15) == 0:
-		            int i = Main.rand.Next(3);
-				
-		            switch(i)
-		            {
-		                case 0:
-		                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GladiatorHelmet);
-		                    break;
-		                case 1:
-		                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GladiatorBreastplate);
-		                    break;
-		                default:
-		                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GladiatorLeggings);
-		                    break;
-		            }
+			if (npc.type == NPCID.GreekSkeleton && Main.rand.Next(15) == 0)
+			{
+				int i = Main.rand.Next(3);
 
-		            break;
-		        case NPCID.Clown:
-		            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Bananarang);
-		            break;
-		        //TOWN NPCS
-		        case NPCID.Guide:
-		            FargoWorld.guide = true;
-		            break;
-		        case NPCID.Merchant:
-		            if(Main.rand.Next(8) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MiningShirt);
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MiningPants);
-		            }
-				
-		            FargoWorld.merch = true;
-		            break;
-		        case NPCID.Nurse:
-		            if(Main.rand.Next(5) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.LifeCrystal);
-		            }
-				
-		            FargoWorld.nurse = true;
-		            break;
-		        case NPCID.Demolitionist:
-		            if(Main.rand.Next(2) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Dynamite, 5);
-		            }
-				
-		            FargoWorld.demo = true;
-		            break;
-		        case NPCID.DyeTrader:
-		            FargoWorld.dye = true;
-		            break;
-		        case NPCID.Dryad:
-		            if(Main.rand.Next(3) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.HerbBag);
-		            }
-				
-		            FargoWorld.dryad = true;
-		            break;
-		        case NPCID.DD2Bartender:
-		            if (Main.rand.Next(2) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Ale, 4);
-		            }
+				switch (i)
+				{
+					case 0:
+						Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+							ItemID.GladiatorHelmet);
+						break;
+					case 1:
+						Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+							ItemID.GladiatorBreastplate);
+						break;
+					default:
+						Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+							ItemID.GladiatorLeggings);
+						break;
+				}
+			}
+			else if (npc.type == NPCID.Clown)
+			{
+				Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Bananarang);
+			}
+			else if (npc.type == NPCID.Guide)
+			{
+				FargoWorld.guide = true;
+			}
+			else if (npc.type == NPCID.Merchant)
+			{
+				if (Main.rand.Next(8) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.MiningShirt);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.MiningPants);
+				}
 
-		            FargoWorld.keep = true;
-		            break;
-		        case NPCID.ArmsDealer:
-		            if(Main.rand.Next(4) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CrystalBullet, 30);
-		            }
-				
-		            FargoWorld.dealer = true;
-		            break;
-		        case NPCID.Stylist:
-		            FargoWorld.style = true;
-		            break;
-		        case NPCID.Painter:
-		            FargoWorld.paint = true;
+				FargoWorld.merch = true;
+			}
+			else if (npc.type == NPCID.Nurse)
+			{
+				if (Main.rand.Next(5) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.LifeCrystal);
+				}
 
-		            if (NPC.AnyNPCs(NPCID.MoonLordCore))
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType    ("EchPainting"));
-		            }
+				FargoWorld.nurse = true;
+			}
+			else if (npc.type == NPCID.Demolitionist)
+			{
+				if (Main.rand.Next(2) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Dynamite, 5);
+				}
 
-		            break;
-		        case NPCID.Angler:
-		            if(Main.rand.Next(4) == 0)
-		            {
-		                int[] drops = { ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio };
+				FargoWorld.demo = true;
+			}
+			else if (npc.type == NPCID.DyeTrader)
+			{
+				FargoWorld.dye = true;
+			}
+			else if (npc.type == NPCID.Dryad)
+			{
+				if (Main.rand.Next(3) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.HerbBag);
+				}
 
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, drops[Main.rand.Next(drops.Length)]);
-		            }
-				
-		            FargoWorld.angler = true;
-		            break;
-		        case NPCID.GoblinTinkerer:
-		            FargoWorld.goblin = true;
-		            break;
-		        case NPCID.WitchDoctor:
-		            FargoWorld.doc = true;
-		            break;
-		        case NPCID.Clothier:
-		            if(Main.rand.Next(20) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Skull);
-		            }
-				
-		            FargoWorld.cloth = true;
-		            break;
-		        case NPCID.Mechanic:
-		            if (Main.rand.Next(5) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wire, 40);
-		            }
+				FargoWorld.dryad = true;
+			}
+			else if (npc.type == NPCID.DD2Bartender)
+			{
+				if (Main.rand.Next(2) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Ale, 4);
+				}
 
-		            FargoWorld.mech = true;
-		            break;
-		        case NPCID.PartyGirl:
-		            FargoWorld.party = true;
-		            break;
-		        case NPCID.Wizard:
-		            if(Main.rand.Next(5) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.FallenStar, 5);
-		            }
-				
-		            FargoWorld.wiz = true;
-		            break;
-		        case NPCID.TaxCollector:
-		            if(Main.rand.Next(8) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GoldCoin, 10);
-		            }
-				
-		            FargoWorld.tax = true;
-		            break;
-		        case NPCID.Truffle:
-		            if(Main.rand.Next(8) == 0)
-		            {
-		                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MushroomStatue);
-		            }
+				FargoWorld.keep = true;
+			}
+			else if (npc.type == NPCID.ArmsDealer)
+			{
+				if (Main.rand.Next(4) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+						ItemID.CrystalBullet, 30);
+				}
 
-		            FargoWorld.truf = true;
-		            break;
-		        case NPCID.Pirate:
-		            FargoWorld.pirate = true;
-		            break;
-		        case NPCID.Steampunker:
-		            FargoWorld.steam = true;
-		            break;
-		        case NPCID.Cyborg:
-		            FargoWorld.borg = true;
-		            break;
-		        case NPCID.SantaClaus when FargoWorld.xmas:
-		            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, NPCID.SantaClaus);
-		            break;
-		    }
+				FargoWorld.dealer = true;
+			}
+			else if (npc.type == NPCID.Stylist)
+			{
+				FargoWorld.style = true;
+			}
+			else if (npc.type == NPCID.Painter)
+			{
+				FargoWorld.paint = true;
+
+				if (NPC.AnyNPCs(NPCID.MoonLordCore))
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+						mod.ItemType("EchPainting"));
+				}
+			}
+			else if (npc.type == NPCID.Angler)
+			{
+				if (Main.rand.Next(4) == 0)
+				{
+					int[] drops = {ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio};
+
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+						drops[Main.rand.Next(drops.Length)]);
+				}
+
+				FargoWorld.angler = true;
+			}
+			else if (npc.type == NPCID.GoblinTinkerer)
+			{
+				FargoWorld.goblin = true;
+			}
+			else if (npc.type == NPCID.WitchDoctor)
+			{
+				FargoWorld.doc = true;
+			}
+			else if (npc.type == NPCID.Clothier)
+			{
+				if (Main.rand.Next(20) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Skull);
+				}
+
+				FargoWorld.cloth = true;
+			}
+			else if (npc.type == NPCID.Mechanic)
+			{
+				if (Main.rand.Next(5) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Wire, 40);
+				}
+
+				FargoWorld.mech = true;
+			}
+			else if (npc.type == NPCID.PartyGirl)
+			{
+				FargoWorld.party = true;
+			}
+			else if (npc.type == NPCID.Wizard)
+			{
+				if (Main.rand.Next(5) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.FallenStar,
+						5);
+				}
+
+				FargoWorld.wiz = true;
+			}
+			else if (npc.type == NPCID.TaxCollector)
+			{
+				if (Main.rand.Next(8) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.GoldCoin,
+						10);
+				}
+
+				FargoWorld.tax = true;
+			}
+			else if (npc.type == NPCID.Truffle)
+			{
+				if (Main.rand.Next(8) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+						ItemID.MushroomStatue);
+				}
+
+				FargoWorld.truf = true;
+			}
+			else if (npc.type == NPCID.Pirate)
+			{
+				FargoWorld.pirate = true;
+			}
+			else if (npc.type == NPCID.Steampunker)
+			{
+				FargoWorld.steam = true;
+			}
+			else if (npc.type == NPCID.Cyborg)
+			{
+				FargoWorld.borg = true;
+			}
+			else if (npc.type == NPCID.SantaClaus && FargoWorld.xmas)
+			{
+				NPC.NewNPC((int) npc.position.X, (int) npc.position.Y, NPCID.SantaClaus);
+			}
 		}
 		
 		public override bool CheckDead(NPC npc)

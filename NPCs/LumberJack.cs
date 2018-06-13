@@ -54,7 +54,7 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            return fargoworld.movedlumberjack || Main.player.Where(player => player.active).Any(player => player.inventory.Any(t => t.type == mod.ItemType("WoodenToken")));
+            return FargoWorld.movedLumberjack || Main.player.Where(player => player.active).Any(player => player.inventory.Any(t => t.type == mod.ItemType("WoodenToken")));
         }
 
         public override void AI()
