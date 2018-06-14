@@ -66,7 +66,7 @@ namespace Fargowiltas.Projectiles
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC n = Main.npc[i];
-                if (n.CanBeChasedBy(projectile, false) && (!n.wet || HOMING_CAN_AIM_AT_WET_ENEMIES))
+                if (n.CanBeChasedBy(projectile) && (!n.wet || HOMING_CAN_AIM_AT_WET_ENEMIES))
                 {
                     float distance = projectile.Distance(n.Center);
                     if (distance <= HOMING_MAXIMUM_RANGE_IN_PIXELS &&

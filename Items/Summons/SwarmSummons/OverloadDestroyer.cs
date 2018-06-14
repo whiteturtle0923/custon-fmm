@@ -61,7 +61,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[worm].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("The planet trembles from the core!", 175, 75, 255);
+            Main.NewText("The planet trembles from the core!", 175, 75);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

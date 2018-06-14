@@ -28,9 +28,8 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override bool UseItem(Player player)
         {
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.DD2OgreT3);
-            Main.NewText("Ogre has awoken!", 175, 75, 255);
+            Main.NewText("Ogre has awoken!", 175, 75);
             NetMessage.SendData(23, -1, -1, null, NPCID.DD2OgreT3, 0f, 0f, 0f, 0);
-
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

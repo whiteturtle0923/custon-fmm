@@ -54,9 +54,9 @@ namespace Fargowiltas.Projectiles.Explosives
                     }
 
                     //tile destroy
-                    WorldGen.KillTile(xPosition, y, false, false, false);
+                    WorldGen.KillTile(xPosition, y);
                     WorldGen.KillWall(xPosition, y);
-                    Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color(), 1f);
+                    Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
 
                     //kill liquids
                     if (tile != null)

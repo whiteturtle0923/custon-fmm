@@ -35,7 +35,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
                 NetMessage.SendData(23, -1, -1, null, pillars[i], 0f, 0f, 0f, 0);
             }
 
-            Main.NewText("The Celestial Pillars have awoken!", 175, 75, 255);
+            Main.NewText("The Celestial Pillars have awoken!", 175, 75);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

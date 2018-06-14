@@ -66,7 +66,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     if (Math.Sqrt(x * x + y * y) <= radius + 0.5)   //change the shape
                     {
-                        WorldGen.KillTile(xPosition, yPosition, false, false, false);  //tile ded
+                        WorldGen.KillTile(xPosition, yPosition);  //tile ded
                         WorldGen.KillWall(xPosition, yPosition);
 
                         Tile tile = Main.tile[xPosition, yPosition];

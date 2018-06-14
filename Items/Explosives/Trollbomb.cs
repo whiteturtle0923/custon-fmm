@@ -26,7 +26,7 @@ namespace Fargowiltas.Items.Explosives
             item.autoReuse = true;
             item.useAnimation = 20;
             item.useTime = 20;
-            item.value = Item.buyPrice(0, 0, 3, 0);
+            item.value = Item.buyPrice(0, 0, 3);
             item.noMelee = true;
             item.shoot = 1;
             item.shootSpeed = 5f;

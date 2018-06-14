@@ -63,7 +63,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[lord].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("The wind whispers of death's approach!", 175, 75, 255);
+            Main.NewText("The wind whispers of death's approach!", 175, 75);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

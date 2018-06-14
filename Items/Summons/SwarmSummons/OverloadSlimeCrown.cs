@@ -63,7 +63,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[slime].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("Welcome to the true slime rain!", 175, 75, 255);
+            Main.NewText("Welcome to the true slime rain!", 175, 75);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

@@ -34,12 +34,12 @@ namespace Fargowiltas.Items.Misc
 
             if (modPlayer.npcBoost)
             {
-                Main.NewText("Spawn rates increased!", 175, 75, 255);
+                Main.NewText("Spawn rates increased!", 175, 75);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Horn").WithVolume(1f).WithPitchVariance(.5f), (int)player.position.X, (int)player.position.Y);
             }
             else
             {
-                Main.NewText("Spawn rates decreased!", 175, 75, 255);
+                Main.NewText("Spawn rates decreased!", 175, 75);
             }
 
             return true;

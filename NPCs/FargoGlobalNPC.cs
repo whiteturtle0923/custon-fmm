@@ -12,9 +12,9 @@ namespace Fargowiltas.NPCs
         public override bool InstancePerEntity => true;
 
         public bool pillarSpawn = true;
-        public bool swarmActive = false;
-        public bool pandoraActive = false;
-        public bool noLoot = false;
+        public bool swarmActive;
+        public bool pandoraActive;
+        public bool noLoot;
 
         public static int[] bosses = { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, NPCID.MartianSaucerCore, NPCID.Pumpking, NPCID.IceQueen, NPCID.DD2Betsy, NPCID.DD2OgreT3, NPCID.IceGolem, NPCID.SandElemental, NPCID.Paladin, NPCID.Everscream, NPCID.MourningWood, NPCID.SantaNK1, NPCID.HeadlessHorseman, NPCID.PirateShip };
 
@@ -135,97 +135,97 @@ namespace Fargowiltas.NPCs
         {
             Player player = Main.player[Main.myPlayer];
 
-            if (type == NPCID.Clothier)
+            switch (type)
             {
-                shop.item[nextSlot].SetDefaults(ItemID.PharaohsMask);
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.PharaohsRobe);
-                nextSlot++;
-
-                if (player.anglerQuestsFinished >= 10)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.AnglerHat);
-                    nextSlot++;
-                }
-
-                if (player.anglerQuestsFinished >= 15)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.AnglerVest);
-                    nextSlot++;
-                }
-
-                if (player.anglerQuestsFinished >= 20)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.AnglerPants);
-                    nextSlot++;
-                }
-            }
-
-            if(type == NPCID.Merchant)
-            {
-                if (player.anglerQuestsFinished >= 5)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.FuzzyCarrot);
-                    nextSlot++;
-                }
-
-                if (player.anglerQuestsFinished >= 10)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.AnglerEarring);
+                case NPCID.Clothier:
+                    shop.item[nextSlot].SetDefaults(ItemID.PharaohsMask);
                     nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.HighTestFishingLine);
+                    shop.item[nextSlot].SetDefaults(ItemID.PharaohsRobe);
                     nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.TackleBox);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.GoldenBugNet);
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.FishHook);
-                    nextSlot++;
-
-                    if(Main.hardMode)
+                    if (player.anglerQuestsFinished >= 10)
                     {
-                        shop.item[nextSlot].SetDefaults(ItemID.FinWings);
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.SuperAbsorbantSponge);
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.BottomlessBucket);
+                        shop.item[nextSlot].SetDefaults(ItemID.AnglerHat);
                         nextSlot++;
                     }
-                }
 
-                if (player.anglerQuestsFinished >= 25 && Main.hardMode)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.HotlineFishingHook);
-                    nextSlot++;
-                }
+                    if (player.anglerQuestsFinished >= 15)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.AnglerVest);
+                        nextSlot++;
+                    }
 
-                if (player.anglerQuestsFinished >= 30)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.GoldenFishingRod);
-                    nextSlot++;
-                }
+                    if (player.anglerQuestsFinished >= 20)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.AnglerPants);
+                        nextSlot++;
+                    }
+
+                    break;
+                case NPCID.Merchant:
+                    if (player.anglerQuestsFinished >= 5)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.FuzzyCarrot);
+                        nextSlot++;
+                    }
+
+                    if (player.anglerQuestsFinished >= 10)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.AnglerEarring);
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.HighTestFishingLine);
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.TackleBox);
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.GoldenBugNet);
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.FishHook);
+                        nextSlot++;
+
+                        if(Main.hardMode)
+                        {
+                            shop.item[nextSlot].SetDefaults(ItemID.FinWings);
+                            nextSlot++;
+
+                            shop.item[nextSlot].SetDefaults(ItemID.SuperAbsorbantSponge);
+                            nextSlot++;
+
+                            shop.item[nextSlot].SetDefaults(ItemID.BottomlessBucket);
+                            nextSlot++;
+                        }
+                    }
+
+                    if (player.anglerQuestsFinished >= 25 && Main.hardMode)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.HotlineFishingHook);
+                        nextSlot++;
+                    }
+
+                    if (player.anglerQuestsFinished >= 30)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.GoldenFishingRod);
+                        nextSlot++;
+                    }
+
+                    break;
             }
         }
 
         public override void EditSpawnRate (Player player, ref int spawnRate, ref int maxSpawns)
 		{
 			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-			
-            if (modPlayer.npcBoost)
-            {
-                spawnRate = (int)((double)spawnRate * 0.1);
-                maxSpawns = (int)((float)maxSpawns * 10f);
-            }
+
+		    if (!modPlayer.npcBoost) return;
+		    spawnRate = (int)(spawnRate * 0.1);
+		    maxSpawns = (int)(maxSpawns * 10f);
 		}
 
-        void SpawnBoss(NPC npc, int boss)
+        private void SpawnBoss(NPC npc, int boss)
         {
             if(swarmActive)
             {
@@ -248,7 +248,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        void Swarm(NPC npc, int boss, int minion, int bossbag, string reward)
+        private void Swarm(NPC npc, int boss, int minion, int bossbag, string reward)
         {
             int count = 0;
 
@@ -274,11 +274,11 @@ namespace Fargowiltas.NPCs
             //drop swarm reward every 100 kills
             if (Fargowiltas.swarmKills % 100 == 0 && reward != "")
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(reward), 1);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(reward));
             }
 
-            Main.NewText("Killed: " + Fargowiltas.swarmKills.ToString(), 206, 12, 15);
-            Main.NewText("Total: " + Fargowiltas.swarmTotal.ToString(), 206, 12, 15);
+            Main.NewText("Killed: " + Fargowiltas.swarmKills, 206, 12, 15);
+            Main.NewText("Total: " + Fargowiltas.swarmTotal, 206, 12, 15);
 
             //if theres still more to spawn
             if (Fargowiltas.swarmKills <= Fargowiltas.swarmTotal - Fargowiltas.swarmSpawned)
@@ -348,12 +348,10 @@ namespace Fargowiltas.NPCs
             else
             {
                 //spawn more if needed
-                if (count < Fargowiltas.swarmSpawned)//Fargowiltas.swarmTotal - Fargowiltas.swarmKills)
+                if (count >= Fargowiltas.swarmSpawned) return;
+                for (int i = 0; i < 5; i++)
                 {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        SpawnBoss(npc, boss);
-                    }
+                    SpawnBoss(npc, boss);
                 }
             }
         }
@@ -368,7 +366,7 @@ namespace Fargowiltas.NPCs
             //avoid lunar event with cultist summon
             if(npc.type == NPCID.CultistBoss && !pillarSpawn)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CultistBossBag, 1);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CultistBossBag);
                 return false;
             }
 
@@ -379,119 +377,95 @@ namespace Fargowiltas.NPCs
 
             if(swarmActive)
             {
-                if (npc.type == NPCID.KingSlime)
+                // ReSharper disable once SwitchStatementMissingSomeCases
+                switch (npc.type)
                 {
-                    Swarm(npc, NPCID.KingSlime, NPCID.BlueSlime, ItemID.KingSlimeBossBag, "EnergizerSlime");
-                }
-                if (npc.type == NPCID.EyeofCthulhu)
-                {
-                    Swarm(npc, NPCID.EyeofCthulhu, NPCID.ServantofCthulhu, ItemID.EyeOfCthulhuBossBag, "EnergizerEye");
-                }
-                if (npc.type == NPCID.EaterofWorldsHead)
-                {
-                    Swarm(npc, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail, ItemID.EaterOfWorldsBossBag, "EnergizerWorm");
-                }
-                if (npc.type == NPCID.BrainofCthulhu)
-                {
-                    Swarm(npc, NPCID.BrainofCthulhu, NPCID.Creeper, ItemID.BrainOfCthulhuBossBag, "EnergizerBrain");
-                }
-                if (npc.type == NPCID.QueenBee)
-                {
-                    Swarm(npc, NPCID.QueenBee, NPCID.BeeSmall, ItemID.QueenBeeBossBag, "EnergizerBee");
-                }
-                if (npc.type == NPCID.SkeletronHead)
-                {
-                    Swarm(npc, NPCID.SkeletronHead, -1, ItemID.SkeletronBossBag, "EnergizerSkele");
-                }
-                if (npc.type == NPCID.TheDestroyer)
-                {
-                    Swarm(npc, NPCID.TheDestroyer, NPCID.TheDestroyerTail, ItemID.DestroyerBossBag, "EnergizerDestroy");
-                }
-                if (npc.type == NPCID.Retinazer)
-                {
-                    Swarm(npc, NPCID.Retinazer, -1, ItemID.TwinsBossBag, "EnergizerTwins");
-                }
-                if (npc.type == NPCID.Spazmatism)
-                {
-                    Swarm(npc, NPCID.Spazmatism, -1, -1, "");
-                }
-                if (npc.type == NPCID.SkeletronPrime)
-                {
-                    Swarm(npc, NPCID.SkeletronPrime, -1, ItemID.SkeletronPrimeBossBag, "EnergizerPrime");
-                }
-                if (npc.type == NPCID.Plantera)
-                {
-                    Swarm(npc, NPCID.Plantera, NPCID.PlanterasHook, ItemID.PlanteraBossBag, "EnergizerPlant");
-                }
-                if (npc.type == NPCID.Golem) 
-                {
-                    Swarm(npc, NPCID.Golem, NPCID.GolemHeadFree, ItemID.GolemBossBag, "EnergizerGolem");
-                }
-                if (npc.type == NPCID.DukeFishron)
-                {
-                    Swarm(npc, NPCID.DukeFishron, NPCID.Sharkron, ItemID.FishronBossBag, "EnergizerFish");
-                }
-                if (npc.type == NPCID.CultistBoss) //needs item
-                {
-                    Swarm(npc, NPCID.CultistBoss, -1, ItemID.CultistBossBag, "");
-                }
-                if (npc.type == NPCID.MoonLordCore)
-                {
-                    Swarm(npc, NPCID.MoonLordCore, NPCID.MoonLordFreeEye, ItemID.MoonLordBossBag, "EnergizerMoon");
-                }
-
-                if (npc.type == NPCID.MourningWood) //needs item
-                {
-                    Swarm(npc, NPCID.MourningWood, -1, -1, "");
-                }
-                if (npc.type == NPCID.Pumpking) //needs item
-                {
-                    Swarm(npc, NPCID.Pumpking, -1, -1, "");
-                }
-                if (npc.type == NPCID.Everscream) //needs item
-                {
-                    Swarm(npc, NPCID.Everscream, -1, -1, "");
-                }
-                if (npc.type == NPCID.SantaNK1) //needs item
-                {
-                    Swarm(npc, NPCID.SantaNK1, -1, -1, "");
-                }
-                if (npc.type == NPCID.IceQueen) //needs item
-                {
-                    Swarm(npc, NPCID.IceQueen, -1, -1, "");
-                }
-                if (npc.type == NPCID.DD2Betsy) //needs item
-                {
-                    Swarm(npc, NPCID.DD2Betsy, -1, -1, "");
-                }
-                if (npc.type == NPCID.DD2OgreT3) //needs item
-                {
-                    Swarm(npc, NPCID.DD2OgreT3, -1, -1, "");
-                }
-                if (npc.type == NPCID.PirateShip) //needs item
-                {
-                    Swarm(npc, NPCID.PirateShip, -1, -1, "");
-                }
-                if (npc.type == NPCID.MartianSaucerCore) //needs item
-                {
-                    Swarm(npc, NPCID.MartianSaucerCore, -1, -1, "");
-                }
-                if (npc.type == NPCID.DungeonGuardian)
-                {
-                    Swarm(npc, NPCID.DungeonGuardian, -1, -1, "");
+                    case NPCID.KingSlime:
+                        Swarm(npc, NPCID.KingSlime, NPCID.BlueSlime, ItemID.KingSlimeBossBag, "EnergizerSlime");
+                        break;
+                    case NPCID.EyeofCthulhu:
+                        Swarm(npc, NPCID.EyeofCthulhu, NPCID.ServantofCthulhu, ItemID.EyeOfCthulhuBossBag, "EnergizerEye");
+                        break;
+                    case NPCID.EaterofWorldsHead:
+                        Swarm(npc, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail, ItemID.EaterOfWorldsBossBag,
+                            "EnergizerWorm");
+                        break;
+                    case NPCID.BrainofCthulhu:
+                        Swarm(npc, NPCID.BrainofCthulhu, NPCID.Creeper, ItemID.BrainOfCthulhuBossBag, "EnergizerBrain");
+                        break;
+                    case NPCID.QueenBee:
+                        Swarm(npc, NPCID.QueenBee, NPCID.BeeSmall, ItemID.QueenBeeBossBag, "EnergizerBee");
+                        break;
+                    case NPCID.SkeletronHead:
+                        Swarm(npc, NPCID.SkeletronHead, -1, ItemID.SkeletronBossBag, "EnergizerSkele");
+                        break;
+                    case NPCID.TheDestroyer:
+                        Swarm(npc, NPCID.TheDestroyer, NPCID.TheDestroyerTail, ItemID.DestroyerBossBag, "EnergizerDestroy");
+                        break;
+                    case NPCID.Retinazer:
+                        Swarm(npc, NPCID.Retinazer, -1, ItemID.TwinsBossBag, "EnergizerTwins");
+                        break;
+                    case NPCID.Spazmatism:
+                        Swarm(npc, NPCID.Spazmatism, -1, -1, "");
+                        break;
+                    case NPCID.SkeletronPrime:
+                        Swarm(npc, NPCID.SkeletronPrime, -1, ItemID.SkeletronPrimeBossBag, "EnergizerPrime");
+                        break;
+                    case NPCID.Plantera:
+                        Swarm(npc, NPCID.Plantera, NPCID.PlanterasHook, ItemID.PlanteraBossBag, "EnergizerPlant");
+                        break;
+                    case NPCID.Golem:
+                        Swarm(npc, NPCID.Golem, NPCID.GolemHeadFree, ItemID.GolemBossBag, "EnergizerGolem");
+                        break;
+                    case NPCID.DukeFishron:
+                        Swarm(npc, NPCID.DukeFishron, NPCID.Sharkron, ItemID.FishronBossBag, "EnergizerFish");
+                        break;
+                    case NPCID.CultistBoss:
+                        Swarm(npc, NPCID.CultistBoss, -1, ItemID.CultistBossBag, "");
+                        break;
+                    case NPCID.MoonLordCore:
+                        Swarm(npc, NPCID.MoonLordCore, NPCID.MoonLordFreeEye, ItemID.MoonLordBossBag, "EnergizerMoon");
+                        break;
+                    case NPCID.MourningWood:
+                        Swarm(npc, NPCID.MourningWood, -1, -1, "");
+                        break;
+                    case NPCID.Pumpking:
+                        Swarm(npc, NPCID.Pumpking, -1, -1, "");
+                        break;
+                    case NPCID.Everscream:
+                        Swarm(npc, NPCID.Everscream, -1, -1, "");
+                        break;
+                    case NPCID.SantaNK1:
+                        Swarm(npc, NPCID.SantaNK1, -1, -1, "");
+                        break;
+                    case NPCID.IceQueen:
+                        Swarm(npc, NPCID.IceQueen, -1, -1, "");
+                        break;
+                    case NPCID.DD2Betsy:
+                        Swarm(npc, NPCID.DD2Betsy, -1, -1, "");
+                        break;
+                    case NPCID.DD2OgreT3:
+                        Swarm(npc, NPCID.DD2OgreT3, -1, -1, "");
+                        break;
+                    case NPCID.PirateShip:
+                        Swarm(npc, NPCID.PirateShip, -1, -1, "");
+                        break;
+                    case NPCID.MartianSaucerCore:
+                        Swarm(npc, NPCID.MartianSaucerCore, -1, -1, "");
+                        break;
+                    case NPCID.DungeonGuardian:
+                        Swarm(npc, NPCID.DungeonGuardian, -1, -1, "");
+                        break;
                 }
 
                 return false;
             }
 
-            if(pandoraActive)
-            {
-                Swarm(npc, 0, -1, -1, "");
+		    if (!pandoraActive) return true;
+		    Swarm(npc, 0, -1, -1, "");
 
-                return false;
-            }
+		    return false;
 
-            return true;
 		}
 
 		public override void NPCLoot(NPC npc)
@@ -502,193 +476,199 @@ namespace Fargowiltas.NPCs
 			if(npc.FindBuffIndex(mod.BuffType("WoodDrop")) != -1)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wood, Main.rand.Next(10, 30));
-			}		
-			
-			//bonus drops
-			if((npc.type == NPCID.GreekSkeleton) && Main.rand.Next(15) == 0)
+			}
+
+			// ReSharper disable once SwitchStatementMissingSomeCases
+			if (npc.type == NPCID.GreekSkeleton && Main.rand.Next(15) == 0)
 			{
 				int i = Main.rand.Next(3);
-				
-				switch(i)
+
+				switch (i)
 				{
 					case 0:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GladiatorHelmet, 1);
+						Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+							ItemID.GladiatorHelmet);
 						break;
 					case 1:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GladiatorBreastplate, 1);
+						Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+							ItemID.GladiatorBreastplate);
 						break;
 					default:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GladiatorLeggings, 1);
+						Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+							ItemID.GladiatorLeggings);
 						break;
 				}
 			}
-
-            if(npc.type == NPCID.Clown)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Bananarang, 1);
-            }
-
-			//TOWN NPCS
-			if(npc.type == NPCID.Guide)
-            {
+			else if (npc.type == NPCID.Clown)
+			{
+				Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Bananarang);
+			}
+			else if (npc.type == NPCID.Guide)
+			{
 				FargoWorld.guide = true;
 			}
-			if(npc.type == NPCID.Merchant)
-            {
-				if(Main.rand.Next(8) == 0)
+			else if (npc.type == NPCID.Merchant)
+			{
+				if (Main.rand.Next(8) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MiningShirt);
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MiningPants);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.MiningShirt);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.MiningPants);
 				}
-				
+
 				FargoWorld.merch = true;
 			}
-			if(npc.type == NPCID.Nurse)
-            {
-				if(Main.rand.Next(5) == 0)
+			else if (npc.type == NPCID.Nurse)
+			{
+				if (Main.rand.Next(5) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.LifeCrystal);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.LifeCrystal);
 				}
-				
+
 				FargoWorld.nurse = true;
 			}
-			if(npc.type == NPCID.Demolitionist)
-            {
-				if(Main.rand.Next(2) == 0)
+			else if (npc.type == NPCID.Demolitionist)
+			{
+				if (Main.rand.Next(2) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Dynamite, 5);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Dynamite, 5);
 				}
-				
+
 				FargoWorld.demo = true;
 			}
-			if(npc.type == NPCID.DyeTrader)
-            {
-                FargoWorld.dye = true;
+			else if (npc.type == NPCID.DyeTrader)
+			{
+				FargoWorld.dye = true;
 			}
-			if(npc.type == NPCID.Dryad)
-            {
-				if(Main.rand.Next(3) == 0)
+			else if (npc.type == NPCID.Dryad)
+			{
+				if (Main.rand.Next(3) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.HerbBag);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.HerbBag);
 				}
-				
+
 				FargoWorld.dryad = true;
 			}
-			if(npc.type == NPCID.DD2Bartender)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Ale, 4);
-                }
-
-                FargoWorld.keep = true;
-			}
-			if(npc.type == NPCID.ArmsDealer)
-            {
-				if(Main.rand.Next(4) == 0)
+			else if (npc.type == NPCID.DD2Bartender)
+			{
+				if (Main.rand.Next(2) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CrystalBullet, 30);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Ale, 4);
 				}
-				
+
+				FargoWorld.keep = true;
+			}
+			else if (npc.type == NPCID.ArmsDealer)
+			{
+				if (Main.rand.Next(4) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+						ItemID.CrystalBullet, 30);
+				}
+
 				FargoWorld.dealer = true;
 			}
-			if(npc.type == NPCID.Stylist)
-            {				
+			else if (npc.type == NPCID.Stylist)
+			{
 				FargoWorld.style = true;
 			}
-			if(npc.type == NPCID.Painter)
-            {
+			else if (npc.type == NPCID.Painter)
+			{
 				FargoWorld.paint = true;
 
-                if (NPC.AnyNPCs(NPCID.MoonLordCore))
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType    ("EchPainting"));
-                }
-            }
-			if(npc.type == NPCID.Angler)
-            {
-				if(Main.rand.Next(4) == 0)
+				if (NPC.AnyNPCs(NPCID.MoonLordCore))
 				{
-                    int[] drops = { ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio };
-
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, drops[Main.rand.Next(drops.Length)]);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+						mod.ItemType("EchPainting"));
 				}
-				
+			}
+			else if (npc.type == NPCID.Angler)
+			{
+				if (Main.rand.Next(4) == 0)
+				{
+					int[] drops = {ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio};
+
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+						drops[Main.rand.Next(drops.Length)]);
+				}
+
 				FargoWorld.angler = true;
 			}
-			if(npc.type == NPCID.GoblinTinkerer)
-            {
+			else if (npc.type == NPCID.GoblinTinkerer)
+			{
 				FargoWorld.goblin = true;
 			}
-			if(npc.type == NPCID.WitchDoctor)
-            {				
+			else if (npc.type == NPCID.WitchDoctor)
+			{
 				FargoWorld.doc = true;
 			}
-			if(npc.type == NPCID.Clothier)
-            {
-				if(Main.rand.Next(20) == 0)
+			else if (npc.type == NPCID.Clothier)
+			{
+				if (Main.rand.Next(20) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Skull);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Skull);
 				}
-				
+
 				FargoWorld.cloth = true;
 			}
-			if(npc.type == NPCID.Mechanic)
-            {
-                if (Main.rand.Next(5) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wire, 40);
-                }
+			else if (npc.type == NPCID.Mechanic)
+			{
+				if (Main.rand.Next(5) == 0)
+				{
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Wire, 40);
+				}
 
-                FargoWorld.mech = true;
+				FargoWorld.mech = true;
 			}
-			if(npc.type == NPCID.PartyGirl)
-            {
+			else if (npc.type == NPCID.PartyGirl)
+			{
 				FargoWorld.party = true;
 			}
-			if(npc.type == NPCID.Wizard)
-            {
-				if(Main.rand.Next(5) == 0)
+			else if (npc.type == NPCID.Wizard)
+			{
+				if (Main.rand.Next(5) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.FallenStar, 5);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.FallenStar,
+						5);
 				}
-				
+
 				FargoWorld.wiz = true;
 			}
-			if(npc.type == NPCID.TaxCollector)
-            {
-				if(Main.rand.Next(8) == 0)
+			else if (npc.type == NPCID.TaxCollector)
+			{
+				if (Main.rand.Next(8) == 0)
 				{
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GoldCoin, 10);
-                }
-				
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.GoldCoin,
+						10);
+				}
+
 				FargoWorld.tax = true;
 			}
-			if(npc.type == NPCID.Truffle)
-            {
-				if(Main.rand.Next(8) == 0)
+			else if (npc.type == NPCID.Truffle)
+			{
+				if (Main.rand.Next(8) == 0)
 				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MushroomStatue);
+					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
+						ItemID.MushroomStatue);
 				}
 
 				FargoWorld.truf = true;
 			}
-			if(npc.type == NPCID.Pirate)
-            {
+			else if (npc.type == NPCID.Pirate)
+			{
 				FargoWorld.pirate = true;
 			}
-			if(npc.type == NPCID.Steampunker)
-            {
+			else if (npc.type == NPCID.Steampunker)
+			{
 				FargoWorld.steam = true;
 			}
-			if(npc.type == NPCID.Cyborg)
-            {
+			else if (npc.type == NPCID.Cyborg)
+			{
 				FargoWorld.borg = true;
 			}
-            if(npc.type == NPCID.SantaClaus && FargoWorld.xmas)
-            {
-                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, NPCID.SantaClaus);
-            }
+			else if (npc.type == NPCID.SantaClaus && FargoWorld.xmas)
+			{
+				NPC.NewNPC((int) npc.position.X, (int) npc.position.Y, NPCID.SantaClaus);
+			}
 		}
 		
 		public override bool CheckDead(NPC npc)
@@ -698,7 +678,7 @@ namespace Fargowiltas.NPCs
 
             if(npc.type == NPCID.DD2Betsy && !pandoraActive)
             {
-                 Main.NewText("Betsy has been defeated!", 175, 75, 255);
+                 Main.NewText("Betsy has been defeated!", 175, 75);
 				 FargoWorld.downedBetsy = true;
             }
 			

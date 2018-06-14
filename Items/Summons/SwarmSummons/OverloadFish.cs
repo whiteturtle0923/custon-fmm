@@ -63,7 +63,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[fish].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("The ocean swells with ferocious pigs!", 175, 75, 255);
+            Main.NewText("The ocean swells with ferocious pigs!", 175, 75);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

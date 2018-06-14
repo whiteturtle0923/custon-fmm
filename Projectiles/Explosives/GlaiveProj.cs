@@ -67,7 +67,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     if ((x * x + y * y) <= radius)   //circle
                     {
                         WorldGen.KillTile(xPosition, yPosition);
-                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120, new Color());
+                        Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
                     }
                 }
             }

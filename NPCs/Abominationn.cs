@@ -46,24 +46,15 @@ namespace Fargowiltas.NPCs
             npc.catchItem = (short)mod.ItemType("Abominationn");
         }
 		
-		public bool GRealmInvasion
-		{
-			get { return GRealm.MWorld.downedZombieInvasion; }
-		}
-        public bool BtfaInvasion
-        {
-            get { return ForgottenMemories.TGEMWorld.downedForestInvasion; }
-        }
-        public bool SpiritInvasion
-        {
-            get { return SpiritMod.MyWorld.downedAncientFlier; }
-        }
-        public bool TremorInvasion
-        {
-            get { return Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan]; }
-        }
+		public bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+		public bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
+
+		public bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
+
+		public bool TremorInvasion => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan];
+
+		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
             return NPC.downedGoblins;
 		}
@@ -126,12 +117,10 @@ namespace Fargowiltas.NPCs
 
         void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
         {
-            if (check)
-            {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
-                shop.item[nextSlot].value = price;
-                nextSlot++;
-            }
+	        if (!check) return;
+	        shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
+	        shop.item[nextSlot].value = price;
+	        nextSlot++;
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot)
@@ -245,29 +234,29 @@ namespace Fargowiltas.NPCs
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.8f);
+                    Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * hitDirection, -2.5f, 0, default(Color), 0.8f);
                 }
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore3"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore3"));
                 }
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore2"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore2"));
                 }
                 for (int k = 0; k < 1; k++)
                 {
                     Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore1"), 1f);
+                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore1"));
                 }
             }
             else
             {
                 for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, 5, (float)hitDirection, -1f, 0, default(Color), 0.6f);
+                    Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f, 0, default(Color), 0.6f);
                 }
             }
         }
