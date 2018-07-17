@@ -1072,6 +1072,7 @@ namespace Fargowiltas.NPCs
                 }
 
                 AddItem(NPC.downedGolemBoss, "Fargowiltas", "LihzahrdPowerCell2", 180000, ref shop, ref nextSlot);
+                AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 150000, ref shop, ref nextSlot);
                 AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 160000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.elementsLoaded)

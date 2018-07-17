@@ -8,13 +8,13 @@ namespace Fargowiltas
 {
     public class FargoPlayer : ModPlayer
     {
-        public bool hasMirror;
+        private bool hasMirror;
+        private int mirrorCD;
+        internal int rodCD;
         public bool npcBoost;
-        public int mirrorCD;
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            //may need cooldown?
             if (!hasMirror || mirrorCD != 0 || !Fargowiltas.HomeKey.JustPressed) return;
             if (Main.rand.Next(2) == 0)
                 Dust.NewDust(player.position, player.width, player.height, 15, 0.0f, 0.0f, 150, Color.White, 1.1f);

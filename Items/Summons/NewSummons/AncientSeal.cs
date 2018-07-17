@@ -1,6 +1,4 @@
 using Fargowiltas.NPCs;
-using System.Linq;
-using System.Runtime.InteropServices;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -43,22 +41,6 @@ namespace Fargowiltas.Items.Summons.NewSummons
             "StardustLunarian",
             "VortexLunarian",
             "SolarLunarian"
-            
-        };
-
-        private readonly string[] EpicnessModBossees = 
-        {
-            "RedGoblinKing",
-            "PixieLord",
-            "MeteoriteGuardian",
-            "MegaTitanHead",
-            "MegaTitanHand1",
-            "MegaTitanHand2",
-            "MegaTitanHand3",
-            "MegaTitanHand4",
-            "Derpatron",
-            "DarkNebulaPhase1",
-            "ArgothTheDemonLord",
         };
 
         private readonly string[] ThoriumBosses =
@@ -144,12 +126,6 @@ namespace Fargowiltas.Items.Summons.NewSummons
                         : ModLoader.GetMod("SacredTools").NPCType("ShadowLunarian"));
             }
 
-            if (ModLoader.GetLoadedMods().Contains("EpicnessModRemastered"))
-            {
-                foreach(string i in EpicnessModBossees)
-                    NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("EpicnessModRemastered").NPCType(i));
-            }
-
             if (Fargowiltas.instance.pumpkingLoaded)
             {
                 foreach(string i in PumpkingBosses)
@@ -167,13 +143,6 @@ namespace Fargowiltas.Items.Summons.NewSummons
                 foreach(string i in ThoriumBosses)
                     NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType(i));
                 player.AddBuff(ModLoader.GetMod("ThoriumMod").BuffType("TouchOfOmnicide"), 14400);
-            }
-
-            if (ModLoader.GetLoadedMods().Contains("Ersion"))
-            {
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("Ersion").NPCType("GiantSlime"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("Ersion").NPCType("GoldenSlime"));
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("Ersion").NPCType("BionicBrain"));
             }
 
             if (Fargowiltas.instance.calamityLoaded)

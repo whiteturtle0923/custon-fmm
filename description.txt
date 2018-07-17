@@ -140,6 +140,10 @@ Mutant, major refactor
 -added more cookie, 
 
 ////////////////////
+-changed boom shuriken to be an actual explosive
+
+-press E to teleport with Rod of discord in your inventory
+
 make mutant sell new sumomns reeee - rmeoved non conumable calmaity
 
 Mutant Grab Bag

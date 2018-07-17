@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -103,6 +104,60 @@ namespace Fargowiltas.Items
             }
 
             return false;
+        }
+
+        public override void UpdateInventory(Item item, Player player)
+        {
+            if(item.type == ItemID.RodofDiscord)
+            {
+                FargoPlayer p = player.GetModPlayer<FargoPlayer>(mod);
+                //.5 second cd
+                if (player.controlHook && p.rodCD <= 0 && Main.myPlayer == player.whoAmI)
+                {
+                    Vector2 vector32;
+                    vector32.X = (float)Main.mouseX + Main.screenPosition.X;
+                    if (player.gravDir == 1f)
+                    {
+                        vector32.Y = (float)Main.mouseY + Main.screenPosition.Y - (float)player.height;
+                    }
+                    else
+                    {
+                        vector32.Y = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY;
+                    }
+                    vector32.X -= (float)(player.width / 2);
+                    if (vector32.X > 50f && vector32.X < (float)(Main.maxTilesX * 16 - 50) && vector32.Y > 50f && vector32.Y < (float)(Main.maxTilesY * 16 - 50))
+                    {
+                        int num246 = (int)(vector32.X / 16f);
+                        int num247 = (int)(vector32.Y / 16f);
+                        if ((Main.tile[num246, num247].wall != 87 || (double)num247 <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(vector32, player.width, player.height))
+                        {
+                            player.Teleport(vector32, 1, 0);
+                            NetMessage.SendData(65, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
+
+                            if (player.chaosState)
+                            {
+                                player.statLife -= player.statLifeMax2 / 7;
+
+                                PlayerDeathReason damageSource = PlayerDeathReason.ByOther(13);
+                                if (Main.rand.Next(2) == 0)
+                                {
+                                    damageSource = PlayerDeathReason.ByOther(player.Male ? 14 : 15);
+                                }
+                                if (player.statLife <= 0)
+                                {
+                                    player.KillMe(damageSource, 1.0, 0, false);
+                                }
+
+                                player.lifeRegenCount = 0;
+                                player.lifeRegenTime = 0;
+                            }
+                            player.AddBuff(88, 360, true);
+                            p.rodCD = 30;
+                        }
+                    }
+                }
+                p.rodCD--;
+            }
         }
 
         public override void OpenVanillaBag(string context, Player player, int arg)
