@@ -213,6 +213,20 @@ namespace Fargowiltas.NPCs
                     }
 
                     break;
+                case NPCID.Painter:
+                    if (player.ZoneDungeon)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.TheGuardiansGaze);
+                        nextSlot++;
+                    }
+
+                    if (player.ZoneUnderworldHeight)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.DemonsEye);
+                        nextSlot++;
+                    }
+
+                    break;
             }
         }
 

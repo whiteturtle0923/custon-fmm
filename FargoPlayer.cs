@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.ID;
@@ -12,6 +13,13 @@ namespace Fargowiltas
         private int mirrorCD;
         internal int rodCD;
         public bool npcBoost;
+
+        public override void SetupStartInventory(IList<Item> items)
+        {
+            Item item = new Item();
+            item.SetDefaults(mod.ItemType("Stats"));
+            items.Add(item);
+        }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {

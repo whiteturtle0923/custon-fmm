@@ -16,6 +16,7 @@ namespace Fargowiltas.Items.CaughtNPCs
         {
             base.SetDefaults();
             item.makeNPC = NPCID.Angler;
+            item.bait = 15;
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 23));
         }
 

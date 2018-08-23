@@ -274,6 +274,8 @@ namespace Fargowiltas.NPCs
 
         public bool FerniumDownedLunarRex => Fernium.world.downedLunarRex;
 
+        public bool FerniumFernite => Fernium.world.downedFerniteTheUnpleasant;
+
         //elements awoken
         public bool ElementsDownedWaste => ElementsAwoken.MyWorld.downedWasteland;
 
@@ -892,6 +894,11 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     AddItem(ThoriumDownedStrider, "ThoriumMod", "StriderTear", 100000, ref shop, ref nextSlot);
+                }
+
+                if(Fargowiltas.instance.ferniumLoaded)
+                {
+                    AddItem(FerniumFernite, "Fernium", "FerniumCore ", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.btfaLoaded)

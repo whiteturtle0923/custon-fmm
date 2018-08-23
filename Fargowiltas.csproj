@@ -110,6 +110,8 @@
     <Compile Include="Items\CaughtNPCs\Truffle.cs" />
     <Compile Include="Items\CaughtNPCs\WitchDoctor.cs" />
     <Compile Include="Items\CaughtNPCs\Wizard.cs" />
+    <Compile Include="Items\Misc\MapViewer.cs" />
+    <Compile Include="Items\Misc\Stats.cs" />
     <Compile Include="Items\Tiles\AutoHouse.cs" />
     <Compile Include="Items\Explosives\Instavator.cs" />
     <Compile Include="Items\Explosives\Nuke.cs" />
