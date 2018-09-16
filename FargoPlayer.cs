@@ -64,5 +64,21 @@ namespace Fargowiltas
                 mirrorCD--;
             }
         }
+
+        public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
+        {
+            //crate chance
+            if (Main.rand.Next(100) < (10 + (player.cratePotion ? 10 : 0)))
+            {
+                if(liquidType == 0 && player.ZoneSnow)
+                {
+                    caughtType = mod.ItemType("IceCrate");
+                }
+                else if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
+                {
+                    caughtType = mod.ItemType("ShadowCrate");
+                }
+            }
+        }
     }
 }

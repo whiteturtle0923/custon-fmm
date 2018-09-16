@@ -112,7 +112,7 @@ namespace Fargowiltas.Items
             {
                 FargoPlayer p = player.GetModPlayer<FargoPlayer>(mod);
                 //.5 second cd
-                if (player.controlHook && p.rodCD <= 0 && Main.myPlayer == player.whoAmI)
+                if (player.controlHook && p.rodCD == 0 && Main.myPlayer == player.whoAmI)
                 {
                     Vector2 vector32;
                     vector32.X = (float)Main.mouseX + Main.screenPosition.X;
@@ -156,13 +156,17 @@ namespace Fargowiltas.Items
                         }
                     }
                 }
-                p.rodCD--;
+                
+                if(p.rodCD != 0)
+                {
+                    p.rodCD--;
+                }
+                
             }
         }
 
         public override void OpenVanillaBag(string context, Player player, int arg)
         {
-            // ReSharper disable once SwitchStatementMissingSomeCases
             switch (arg)
             {
                 case ItemID.KingSlimeBossBag:
@@ -200,7 +204,7 @@ namespace Fargowiltas.Items
         public override bool CanRightClick(Item item) => Array.IndexOf(thrown, item.type) > -1;
 
         public override void RightClick(Item item, Player player)
-        {
+        {      
             if (Array.IndexOf(thrown, item.type) <= -1) return;
             Main.NewText(item.Name, 175, 75);
             NewThrown(item, player, item.Name.Replace(" ", "").Replace("'", "").Replace("-", "").Replace(":", ""));

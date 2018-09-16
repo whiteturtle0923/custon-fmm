@@ -26,14 +26,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             item.consumable = true;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Fargowiltas/Items/Placeholder";
-            }
-        }
-
         public override bool CanUseItem(Player player)
         {
             return !Fargowiltas.swarmActive && !Main.dayTime;

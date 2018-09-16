@@ -35,6 +35,8 @@ namespace Fargowiltas
         internal bool splitLoaded;
         internal bool ferniumLoaded;
         internal bool antiarisLoaded;
+        internal bool aaLoaded;
+        internal bool trelamiumLoaded;
         #endregion
 
         //swarms
@@ -92,6 +94,8 @@ namespace Fargowiltas
                 splitLoaded = ModLoader.GetMod("Split") != null;
                 ferniumLoaded = ModLoader.GetMod("Fernium") != null;
                 antiarisLoaded = ModLoader.GetMod("Antiaris") != null;
+                aaLoaded = ModLoader.GetMod("AAMod") != null;
+                trelamiumLoaded = ModLoader.GetMod("TrelamiumMod") != null;
             }
             catch (Exception e)
             {
@@ -1283,103 +1287,6 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.Starfish, 5);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(ItemID.WaterWalkingBoots);
-            recipe.AddRecipe();
-
-            #endregion
-
-            #region  ice chest loot
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.CloudinaBottle);
-            recipe.AddIngredient(ItemID.SnowBlock, 100);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.BlizzardinaBottle);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.WoodenBoomerang);
-            recipe.AddIngredient(ItemID.IceBlock, 100);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.IceBoomerang);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.IronBroadsword);
-            recipe.AddIngredient(ItemID.IceBlock, 100);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.IceBlade);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.HermesBoots);
-            recipe.AddIngredient(ItemID.IceBlock, 100);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.IceSkates);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.WaterGun);
-            recipe.AddIngredient(ItemID.IceBlock, 100);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.SnowballCannon);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.HermesBoots);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(ItemID.FlurryBoots);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.MagicMirror);
-            recipe.AddIngredient(ItemID.IceBlock, 100);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.IceMirror);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.AtlanticCod, 5);
-            recipe.AddTile(TileID.LivingLoom);
-            recipe.SetResult(ItemID.Fish);
-            recipe.AddRecipe();
-
-            #endregion
-
-            #region shadow chest loot
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.Trident);
-            recipe.AddIngredient(ItemID.SoulofNight);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.DarkLance);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.MagicMissile);
-            recipe.AddIngredient(ItemID.LivingFireBlock);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.Flamelash);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.Fireblossom);
-            recipe.AddIngredient(ItemID.LivingFireBlock);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.FlowerofFire);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.BlueMoon);
-            recipe.AddIngredient(ItemID.LivingFireBlock);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.Sunfury);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.BeesKnees);
-            recipe.AddIngredient(ItemID.LivingFireBlock);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.HellwingBow);
             recipe.AddRecipe();
 
             #endregion

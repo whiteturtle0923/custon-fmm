@@ -110,8 +110,12 @@
     <Compile Include="Items\CaughtNPCs\Truffle.cs" />
     <Compile Include="Items\CaughtNPCs\WitchDoctor.cs" />
     <Compile Include="Items\CaughtNPCs\Wizard.cs" />
+    <Compile Include="Items\Tiles\IceCrate.cs" />
     <Compile Include="Items\Misc\MapViewer.cs" />
+    <Compile Include="Items\Tiles\IceCrateSheet.cs" />
+    <Compile Include="Items\Tiles\ShadowCrate.cs" />
     <Compile Include="Items\Misc\Stats.cs" />
+    <Compile Include="Items\Misc\SuperDummy.cs" />
     <Compile Include="Items\Tiles\AutoHouse.cs" />
     <Compile Include="Items\Explosives\Instavator.cs" />
     <Compile Include="Items\Explosives\Nuke.cs" />
@@ -123,7 +127,7 @@
     <Compile Include="Items\Summons\MutantGrabBag.cs" />
     <Compile Include="Items\Summons\NewSummons\AbyssionSummon.cs" />
     <Compile Include="Items\Summons\NewSummons\AncientSeal.cs" />
-    <Compile Include="Items\Summons\NewSummons\BakeSale.cs" />
+    <Compile Include="Items\Tiles\BakeSale.cs" />
     <Compile Include="Items\Summons\NewSummons\BatteredClub.cs" />
     <Compile Include="Items\Summons\NewSummons\BetsyEgg.cs" />
     <Compile Include="Items\Summons\NewSummons\CultistSummon.cs" />
@@ -181,8 +185,11 @@
     <Compile Include="Items\Tiles\EchPainting.cs" />
     <Compile Include="Items\Tiles\EchPaintingSheet.cs" />
     <Compile Include="Items\Tiles\FargoGlobalTile.cs" />
+    <Compile Include="Items\Tiles\ShadowCrateSheet.cs" />
+    <Compile Include="Items\Tiles\ShadowLockBox.cs" />
     <Compile Include="Items\Tiles\WoodenToken.cs" />
     <Compile Include="Items\Tiles\WoodenTokenSheet.cs" />
+    <Compile Include="NPCs\SuperDummy.cs" />
     <Compile Include="Projectiles\AutoHouseProj.cs" />
     <Compile Include="Items\Vanity\MutantBody.cs" />
     <Compile Include="Items\Vanity\MutantMask.cs" />
@@ -281,6 +288,7 @@
     <Content Include="Items\Ammos\Bullets\SilverPouch.png" />
     <Content Include="Items\Ammos\Bullets\VelocityPouch.png" />
     <Content Include="Items\Ammos\Bullets\VenomPouch.png" />
+    <Content Include="Items\Misc\SuperDummy.png" />
     <Content Include="Items\Tiles\AutoHouse.png" />
     <Content Include="Items\Explosives\Instavator.png" />
     <Content Include="Items\Explosives\Nuke.png" />
@@ -292,7 +300,6 @@
     <Content Include="Items\Summons\MutantGrabBag.png" />
     <Content Include="Items\Summons\NewSummons\AbyssionSummon.png" />
     <Content Include="Items\Summons\NewSummons\AncientSeal.png" />
-    <Content Include="Items\Summons\NewSummons\BakeSale.png" />
     <Content Include="Items\Summons\NewSummons\BatteredClub.png" />
     <Content Include="Items\Summons\NewSummons\BetsyEgg.png" />
     <Content Include="Items\Summons\NewSummons\DeathBringerFairy.png" />
@@ -324,6 +331,7 @@
     <Content Include="Items\Tiles\EchPaintingSheet.png" />
     <Content Include="Items\Tiles\WoodenToken.png" />
     <Content Include="Items\Tiles\WoodenTokenSheet.png" />
+    <Content Include="NPCs\SuperDummy.png" />
     <Content Include="Projectiles\AutoHouseProj.png" />
     <Content Include="Items\Vanity\mutantbody.png" />
     <Content Include="Items\Vanity\mutantbody_Arms.png" />

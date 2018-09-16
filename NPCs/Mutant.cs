@@ -63,170 +63,101 @@ namespace Fargowiltas.NPCs
 
         //thorium bools
         public bool ThoriumDownedBird => ThoriumMod.ThoriumWorld.downedThunderBird;
-
         public bool ThoriumDownedJelly => ThoriumMod.ThoriumWorld.downedJelly;
-
         public bool ThoriumDownedStorm => ThoriumMod.ThoriumWorld.downedStorm;
-
         public bool ThoriumDownedChamp => ThoriumMod.ThoriumWorld.downedChampion;
-
         public bool ThoriumDownedScout => ThoriumMod.ThoriumWorld.downedScout;
-
         public bool ThoriumDownedStrider => ThoriumMod.ThoriumWorld.downedStrider;
-
         public bool ThoriumDownedBeholder => ThoriumMod.ThoriumWorld.downedFallenBeholder;
-
         public bool ThoriumDownedLich => ThoriumMod.ThoriumWorld.downedLich;
-
         public bool ThoriumDownedAbyss => ThoriumMod.ThoriumWorld.downedDepthBoss;
-
         public bool ThoriumDownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
 
         //calamity bools
         public bool CalamityDownedScourge => CalamityMod.CalamityWorld.downedDesertScourge;
-
         public bool CalamityDownedHive => CalamityMod.CalamityWorld.downedHiveMind;
-
         public bool CalamityDownedPerfor => CalamityMod.CalamityWorld.downedPerforator;
-
         public bool CalamityDownedSlime => CalamityMod.CalamityWorld.downedSlimeGod;
-
         public bool CalamityDownedCryo => CalamityMod.CalamityWorld.downedCryogen;
-
         public bool CalamityDownedBrim => CalamityMod.CalamityWorld.downedBrimstoneElemental;
-
         public bool CalamityDownedCalamitas => CalamityMod.CalamityWorld.downedCalamitas;
-
         public bool CalamityDownedLevi => CalamityMod.CalamityWorld.downedLeviathan;
-
         public bool CalamityDownedPlague => CalamityMod.CalamityWorld.downedPlaguebringer;
-
         public bool CalamityDownedGuardian => CalamityMod.CalamityWorld.downedGuardians;
-
         public bool CalamityDownedProv => CalamityMod.CalamityWorld.downedProvidence;
-
         public bool CalamityDownedDOG => CalamityMod.CalamityWorld.downedDoG;
-
         public bool CalamityDownedYharon => CalamityMod.CalamityWorld.downedYharon;
-
         public bool CalamityDownedSCAL => CalamityMod.CalamityWorld.downedSCal;
-
         public bool CalamityDownedRav => CalamityMod.CalamityWorld.downedScavenger;
-
         public bool CalamityDownedCrab => CalamityMod.CalamityWorld.downedCrabulon;
-
         public bool CalamityDownedAstrum => CalamityMod.CalamityWorld.downedStarGod;
-
         public bool CalamityDownedBirb => CalamityMod.CalamityWorld.downedBumble;
-
         public bool CalamityDownedPolter => CalamityMod.CalamityWorld.downedPolterghast;
-
         public bool CalamityDownedAquatic => CalamityMod.CalamityWorld.downedAquaticScourge;
-
         public bool CalamityDownedAstragel => CalamityMod.CalamityWorld.downedAstrageldon;
 
         //sacred tools bools
         public bool SacredDownedHarpy => SacredTools.ModdedWorld.downedHarpy;
-
         public bool SacredDownedHarpy2 => SacredTools.ModdedWorld.downedRaynare;
-
         public bool SacredDownedAbbadon => SacredTools.ModdedWorld.OblivionSpawns;
-
         public bool SacredDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
-
         public bool SacredDownedLunar => SacredTools.ModdedWorld.downedLunarians;
-
         public bool SacredDownedPump => SacredTools.ModdedWorld.downedPumpboi;
 
         //grealm bools
         public bool GRealmDownedFolivine => GRealm.MWorld.downedFolivine;
-
         public bool GRealmDownedMantid => GRealm.MWorld.downedMatriarch;
 
         //pumpking
         public bool PumpkingDownedHorse => Pumpking.PumpkingWorld.downedPumpkingHorseman;
-
         public bool PumpkingDownedTerra => Pumpking.PumpkingWorld.downedTerraLord;
 
         //joost
         public bool JoostDownedCactuar => JoostMod.JoostWorld.downedJumboCactuar;
-
         public bool JoostDownedSAX => JoostMod.JoostWorld.downedSAX;
-
         public bool JoostDownedGilga => JoostMod.JoostWorld.downedGilgamesh;
 
         //tremor
         public bool TremorDownedCorn => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.EvilCorn];
-
         public bool TremorDownedRukh => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Rukh];
-
         public bool TremorDownedFungus => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.FungusBeetle];
-
         public bool TremorDownedWhale => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.SpaceWhale];
-
         public bool TremorDownedTrinity => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Trinity];
-
         public bool TremorDownedTotem => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.TikiTotem];
-
         public bool TremorDownedJelly => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.StormJellyfish];
-
         public bool TremorDownedCyber => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.CyberKing];
-
         public bool TremorDownedHeater => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.HeaterofWorlds];
-
         public bool TremorDownedFrost => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.FrostKing];
-
         public bool TremorDownedEmperor => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.DarkEmperor];
-
         public bool TremorDownedPixie => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.PixieQueen];
-
         public bool TremorDownedAlchemaster => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Alchemaster];
-
         public bool TremorDownedBrutallisk => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Brutallisk];
-
         public bool TremorDownedCog => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.CogLord];
-
         public bool TremorDownedWall => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.WallOfShadow];
-
         public bool TremorDownedMotherboard => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Motherboard];
-
         public bool TremorDownedDragon => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.AncientDragon];
-
         public bool TremorDownedAndas => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.Andas];
 
         //spirit
         public bool SpiritDownedScarab => SpiritMod.MyWorld.downedScarabeus;
-
         public bool SpiritDownedFlier => SpiritMod.MyWorld.downedAncientFlier;
-
         public bool SpiritDownedRaider => SpiritMod.MyWorld.downedRaider;
-
         public bool SpiritDownedInfer => SpiritMod.MyWorld.downedInfernon;
-
         public bool SpiritDownedDusking => SpiritMod.MyWorld.downedDusking;
-
         public bool SpiritDownedIlluminant => SpiritMod.MyWorld.downedIlluminantMaster;
-
         public bool SpiritDownedAtlas => SpiritMod.MyWorld.downedAtlas;
-
         public bool SpiritDownedOverseer => SpiritMod.MyWorld.downedOverseer;
-
         public bool SpiritDownedVine => SpiritMod.MyWorld.downedReachBoss;
-
         public bool SpiritDownedUmbra => SpiritMod.MyWorld.downedSpiritCore;
 
         //BTFA
         public bool BtfaTitan => ForgottenMemories.TGEMWorld.downedTitanRock;
-
         public bool BtfaAcheron => ForgottenMemories.TGEMWorld.downedAcheron;
-
         public bool BtfaArtery => ForgottenMemories.TGEMWorld.downedArterius;
-
         public bool BtfaGhastly => ForgottenMemories.TGEMWorld.downedGhastlyEnt;
 
         //Bluemagics
         public bool BlueDownedPhantom => Bluemagic.BluemagicWorld.downedPhantom;
-
         public bool BlueDownedAbom => Bluemagic.BluemagicWorld.downedAbomination;
 
         //Eota
@@ -237,125 +168,99 @@ namespace Fargowiltas.NPCs
 
         //exodus
         public bool ExodusDownedAbom => Exodus.ExodusWorld.downedExodusAbomination;
-
         public bool ExodusDownedBlob => Exodus.ExodusWorld.downedExodusEvilBlob;
-
         public bool ExodusDownedColoss => Exodus.ExodusWorld.downedExodusColossus;
-
         public bool ExodusDownedEmperor => Exodus.ExodusWorld.downedExodusDesertEmperor;
-
         public bool ExodusDownedHive => Exodus.ExodusWorld.downedExodusHivemind;
-
         public bool ExodusDownedMaster => Exodus.ExodusWorld.downedExodusMaster;
-
         public bool ExodusDownedHeart => Exodus.ExodusWorld.downedExodusSludgeheart;
 
         //W1K
         public bool W1KDownedKutku => W1KModRedux.MWorld.downedKutKu;
-
         public bool W1KDownedArdorix => W1KModRedux.MWorld.downedArdorix;
-
         public bool W1KDownedArborix => W1KModRedux.MWorld.downedArborix;
-
         public bool W1KDownedAquatix => W1KModRedux.MWorld.downedAquatix;
-
         public bool W1KDownedIvy => W1KModRedux.MWorld.downedIvy;
-
         public bool W1KDownedDeath => W1KModRedux.MWorld.downedDeath;
-
         public bool W1KDownedRathalos => W1KModRedux.MWorld.downedRathalos;
-
         public bool W1KDownedRidley => W1KModRedux.MWorld.downedRidley;
-
         public bool W1KDownedOkiku => W1KModRedux.MWorld.downedOkiku;
 
         //fernium
         public bool FerniumDownedMargrama => Fernium.world.downedMargrama;
-
         public bool FerniumDownedLunarRex => Fernium.world.downedLunarRex;
-
         public bool FerniumFernite => Fernium.world.downedFerniteTheUnpleasant;
 
         //elements awoken
         public bool ElementsDownedWaste => ElementsAwoken.MyWorld.downedWasteland;
-
         public bool ElementsDownedInfern => ElementsAwoken.MyWorld.downedInfernace;
-
         public bool ElementsDownedScourge => ElementsAwoken.MyWorld.downedScourgeFighter;
-
         public bool ElementsDownedReg => ElementsAwoken.MyWorld.downedRegaroth;
-
         public bool ElementsDownedCelestial => ElementsAwoken.MyWorld.downedCelestial;
-
         public bool ElementsDownedObsid => ElementsAwoken.MyWorld.downedObsidious;
-
         public bool ElementsDownedPerma => ElementsAwoken.MyWorld.downedPermafrost;
-
         public bool ElementsDownedAque => ElementsAwoken.MyWorld.downedAqueous;
-
         public bool ElementsDownedEye => ElementsAwoken.MyWorld.downedEye;
-
         public bool ElementsDownedDragon => ElementsAwoken.MyWorld.downedAncientDragon;
-
         public bool ElementsDownedGuardian => ElementsAwoken.MyWorld.downedGuardian;
-
         public bool ElementsDownedVoid => ElementsAwoken.MyWorld.downedVoidLeviathan;
 
         //antiaris
         public bool AntiarisDownedAntlion => Antiaris.AntiarisWorld.DownedAntlionQueen;
+        public bool AntiarisDownedKeeper => Antiaris.AntiarisWorld.DownedTowerKeeper;
 
         //disarray
         public bool DisarrayDownedPlant => Disarray.DisarrayWorld.downedPlantKing;
-
         public bool DisarrayDownedCrusher => Disarray.DisarrayWorld.downedDesertCrusher;
-
         public bool DisarrayDownedProbe => Disarray.DisarrayWorld.downedProbeMother;
-
         public bool DisarrayDownedGeneral => Disarray.DisarrayWorld.downedTheGeneral;
-
         public bool DisarrayDownedSerpent => Disarray.DisarrayWorld.downedLunarSerpent;
-
         public bool DisarrayDownedCold => Disarray.DisarrayWorld.downedColdBoss;
-
         public bool DisarrayDownedShadows => Disarray.DisarrayWorld.downedShadows;
-
         public bool DisarrayDownedLuna => Disarray.DisarrayWorld.downedLuna;
-
         public bool DisarrayDownedBell => Disarray.DisarrayWorld.downedBell;
-
         public bool DisarrayDownedMech => Disarray.DisarrayWorld.downedMech;
-
         public bool DisarrayDownedSludge => Disarray.DisarrayWorld.downedCosmicSludge;
-
         public bool DisarrayDownedDeva => Disarray.DisarrayWorld.downedCoreOfTheDevastator;
-
         public bool DisarrayDownedMeteor => Disarray.DisarrayWorld.downedMeteorzoid;
-
         public bool DisarrayDownedDungeon => Disarray.DisarrayWorld.downedDungeon;
 
         //cookie
         public bool CookieDownedCookie => CookieMod.CookieModWorld.downedCookieBoss;
-
         public bool CookieDownedBunny => CookieMod.CookieModWorld.downedBunny;
 
         //enigma
         public bool EnigmaDownedAnnih => Laugicality.LaugicalityWorld.downedAnnihilator;
-
         public bool EnigmaDownedSlyber => Laugicality.LaugicalityWorld.downedSlybertron;
-
         public bool EnigmaDownedTrain => Laugicality.LaugicalityWorld.downedSteamTrain;
-
         public bool EnigmaDownedShark => Laugicality.LaugicalityWorld.downedDuneSharkron;
-
         public bool EnigmaDownedHypo => Laugicality.LaugicalityWorld.downedHypothema;
-
         public bool EnigmaDownedRagnar => Laugicality.LaugicalityWorld.downedRagnar;
-
         public bool EnigmaDownedRocks => Laugicality.LaugicalityWorld.downedRocks;
-
         public bool EnigmaDownedEther => Laugicality.LaugicalityWorld.downedTrueEtheria;
-
         public bool EnigmaDownedDio => Laugicality.LaugicalityWorld.downedAnDio;
+
+        //trelamium 
+        public bool TrelamiumAzolinth => TrelamiumMod.TrelamiumModWorld.downedAzolinth;
+        public bool TrelamiumSerpent => TrelamiumMod.TrelamiumModWorld.downedCrystallineSerpent;
+        public bool TrelamiumCumulor => TrelamiumMod.TrelamiumModWorld.downedCumulor;
+        public bool TrelamiumParadox => TrelamiumMod.TrelamiumModWorld.downedParadoxHive;
+        public bool TrelamiumPermafrost => TrelamiumMod.TrelamiumModWorld.downedPermafrost;
+        public bool TrelamiumGoliath => TrelamiumMod.TrelamiumModWorld.downedPholiotaGoliath;
+        public bool TrelamiumPyron => TrelamiumMod.TrelamiumModWorld.downedPyron;
+        public bool TrelamiumSymphony => TrelamiumMod.TrelamiumModWorld.downedSymphony;
+
+        //AA
+        public bool AAGrips = AAMod.AAWorld.downedGrips;
+        public bool AARetriever = AAMod.AAWorld.downedRetriever;
+        public bool AAEquinox = AAMod.AAWorld.downedEquinox;
+        public bool AAZero = AAMod.AAWorld.downedZero;
+
+        //pinky
+        /*public bool PinkySlime = pinkymod.Pinkyworld.downedMythrilSlime;
+        public bool PinkyValdaris = pinkymod.Pinkyworld.downedValdaris;
+        public bool PinkySunlight = pinkymod.Pinkyworld.downedSunlightTrader;
+        public bool PinkyAbyssmal = pinkymod.Pinkyworld.downedAbyssmalDuo;*/
 
         #endregion other mod bools
 
@@ -623,6 +528,11 @@ namespace Fargowiltas.NPCs
                     AddItem(DisarrayDownedPlant, "Disarray", "YoungSapling", 10000, ref shop, ref nextSlot);
                 }
 
+                if(Fargowiltas.instance.trelamiumLoaded)
+                {
+                    AddItem(TrelamiumGoliath, "TrelamiumMod", "MycelialCluster", 10000, ref shop, ref nextSlot);
+                }
+
                 //antlion queen - true eater
 
                 if (Fargowiltas.instance.thoriumLoaded)
@@ -643,6 +553,12 @@ namespace Fargowiltas.NPCs
                 }
 
                 AddItem(NPC.downedBoss1, "Fargowiltas", "SuspiciousEye", 50000, ref shop, ref nextSlot);
+
+                if(Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AAGrips, "AAMod", "CuriousClaw", 50000, ref shop, ref nextSlot);
+                    AddItem(AAGrips, "AAMod", "InterestingClaw", 50000, ref shop, ref nextSlot);
+                }
 
                 if (Fargowiltas.instance.w1kLoaded)
                 {
@@ -699,6 +615,11 @@ namespace Fargowiltas.NPCs
                 {
                     AddItem(CookieDownedCookie, "CookieMod", "BloodyCookie", 60000, ref shop, ref nextSlot);
                     AddItem(CookieDownedCookie, "CookieMod", "CursedCookie", 60000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.trelamiumLoaded)
+                {
+                    AddItem(TrelamiumCumulor, "TrelamiumMod", "StormyCloud", 50000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.thoriumLoaded)
@@ -795,6 +716,11 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.cookieLoaded)
                 {
                     AddItem(CookieDownedBunny, "CookieMod", "BunnyCrown ", 150000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.trelamiumLoaded)
+                {
+                    AddItem(TrelamiumSymphony, "TrelamiumMod", "LamentedPearl", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.w1kLoaded)
@@ -901,9 +827,19 @@ namespace Fargowiltas.NPCs
                     AddItem(FerniumFernite, "Fernium", "FerniumCore ", 100000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.trelamiumLoaded)
+                {
+                    AddItem(TrelamiumPyron, "TrelamiumMod", "SolarMandibleTotem", 100000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.btfaLoaded)
                 {
                     AddItem(BtfaArtery, "ForgottenMemories", "BloodClot", 110000, ref shop, ref nextSlot);
+                }
+
+                if(Fargowiltas.instance.antiarisLoaded)
+                {
+                    AddItem(AntiarisDownedKeeper, "Antiaris", "PocketCursedMirror", 10000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
@@ -949,10 +885,20 @@ namespace Fargowiltas.NPCs
                     AddItem(W1KDownedRidley, "W1KModRedux", "MetroidCapsule", 380000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AARetriever, "AAMod", "CyberneticClaw", 100000, ref shop, ref nextSlot);
+                }
+
                 AddItem(NPC.downedMechBoss1, "Fargowiltas", "MechWorm", 150000, ref shop, ref nextSlot);
                 AddItem(NPC.downedMechBoss2, "Fargowiltas", "MechEye", 150000, ref shop, ref nextSlot);
                 AddItem(NPC.downedMechBoss3, "Fargowiltas", "MechSkull", 150000, ref shop, ref nextSlot);
                 AddItem((NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3), "Fargowiltas", "MechanicalAmalgam", 350000, ref shop, ref nextSlot);
+
+                if (Fargowiltas.instance.trelamiumLoaded)
+                {
+                    AddItem(TrelamiumPermafrost, "TrelamiumMod", "TemporalLens", 120000, ref shop, ref nextSlot);
+                }
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
@@ -1154,6 +1100,11 @@ namespace Fargowiltas.NPCs
                     AddItem(SpiritDownedAtlas, "SpiritMod", "StoneSkin", 150000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AAEquinox, "AAMod", "EquinoxWorm", 150000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     AddItem(CalamityDownedRav, "CalamityMod", "AncientMedallion", 500000, ref shop, ref nextSlot);
@@ -1195,9 +1146,19 @@ namespace Fargowiltas.NPCs
             {
                 AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
 
+                if (Fargowiltas.instance.trelamiumLoaded)
+                {
+                    AddItem(TrelamiumAzolinth, "TrelamiumMod", "PlanetaryBeacon", 250000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
                     AddItem(DisarrayDownedSludge, "Disarray", "VileSlimeBall", 500000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AAZero, "AAMod", "ZeroTesseract", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
@@ -1213,6 +1174,11 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     AddItem(TremorDownedEmperor, "Tremor", "EmperorCrown", 200000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.trelamiumLoaded)
+                {
+                    AddItem(TrelamiumParadox, "TrelamiumMod", "WarpedMirror", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)

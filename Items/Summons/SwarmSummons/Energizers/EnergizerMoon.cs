@@ -17,7 +17,5 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
             item.maxStack = 999;
             item.rare = 1;
         }
-
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 }

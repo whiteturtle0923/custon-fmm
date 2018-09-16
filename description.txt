@@ -5,7 +5,7 @@ NEW UPDATE - v 1.0
 
 NPCs
 -Mutant now sells more boss summons from Calamity, GRealm, BTFA, W1K, and Cookie Mod
--Mutant has new support for Fernium, Elements Awoken, Antiaris, Disarray, and Enigma
+-Mutant has new support for Fernium, Elements Awoken, Antiaris, Disarray, and Enigma, Tralamium Remastered, Pinky Mod, Ancients Awakened
 -Mutant has a bunch of new quotes
 -Overloader is now in all of the Mutant's shops
 -Mutant prices slightly adjusted
@@ -45,7 +45,7 @@ ITEMS
 -Added Zealot's Possession, Outsider's Portal, Battered Club
 -Added Runic Power Cell and Pandora's Tesseract
 -Added more Renewals for each solution type
--Added Ech Painting, Auto House, Stat Sheet, The Ancient Master's Map of the Lost King's Great Ancestors
+-Added Ech Painting, Auto House, Stat Sheet, The Ancient Master's Map of the Lost King's Great Ancestors, Super Dummy completely stolen from Terry, Ice Crate, Shadow Crate, Shadow Lockbox
 -Added several more thrown variants including yoyos and flails
 -Reverted damage increases on thrown weapons and you now right click to convert back and forth
 -Added several missing sprites
