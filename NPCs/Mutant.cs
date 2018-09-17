@@ -257,10 +257,10 @@ namespace Fargowiltas.NPCs
         public bool AAZero = AAMod.AAWorld.downedZero;
 
         //pinky
-        /*public bool PinkySlime = pinkymod.Pinkyworld.downedMythrilSlime;
-        public bool PinkyValdaris = pinkymod.Pinkyworld.downedValdaris;
-        public bool PinkySunlight = pinkymod.Pinkyworld.downedSunlightTrader;
-        public bool PinkyAbyssmal = pinkymod.Pinkyworld.downedAbyssmalDuo;*/
+        public bool PinkySlime = pinkymod.pinkyworld.downedMythrilSlime;
+        public bool PinkyValdaris = pinkymod.pinkyworld.downedValdaris;
+        public bool PinkySunlight = pinkymod.pinkyworld.downedSunlightTrader;
+        public bool PinkyAbyssmal = pinkymod.pinkyworld.downedAbyssmalDuo;
 
         #endregion other mod bools
 
@@ -722,6 +722,11 @@ namespace Fargowiltas.NPCs
                 {
                     AddItem(TrelamiumSymphony, "TrelamiumMod", "LamentedPearl", 100000, ref shop, ref nextSlot);
                 }
+                
+                if(Fargowiltas.instance.pinkyLoaded)
+                {
+                    AddItem(PinkySunlight, "pinkymod", "STItem", 250000, ref shop, ref nextSlot);
+                }
 
                 if (Fargowiltas.instance.w1kLoaded)
                 {
@@ -895,6 +900,11 @@ namespace Fargowiltas.NPCs
                 AddItem(NPC.downedMechBoss3, "Fargowiltas", "MechSkull", 150000, ref shop, ref nextSlot);
                 AddItem((NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3), "Fargowiltas", "MechanicalAmalgam", 350000, ref shop, ref nextSlot);
 
+                if(Fargowiltas.instance.pinkyLoaded)
+                {
+                    AddItem(PinkySlime, "pinkymod", "MythrilGel", 350000, ref shop, ref nextSlot);
+                }
+                
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
                     AddItem(TrelamiumPermafrost, "TrelamiumMod", "TemporalLens", 120000, ref shop, ref nextSlot);
@@ -992,6 +1002,11 @@ namespace Fargowiltas.NPCs
                 }
 
                 AddItem(NPC.downedPlantBoss, "Fargowiltas", "Plantera", 160000, ref shop, ref nextSlot);
+                
+                if(Fargowiltas.instance.pinkyLoaded)
+                {
+                    AddItem(PinkyValdaris, "pinkymod", "ValdarisItem", 400000, ref shop, ref nextSlot);
+                }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
@@ -1027,6 +1042,11 @@ namespace Fargowiltas.NPCs
                 AddItem(NPC.downedGolemBoss, "Fargowiltas", "LihzahrdPowerCell2", 180000, ref shop, ref nextSlot);
                 AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 150000, ref shop, ref nextSlot);
                 AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 160000, ref shop, ref nextSlot);
+                
+                if(Fargowiltas.instance.pinkyLoaded)
+                {
+                    AddItem(PinkyAbyssmal, "pinkymod", "MindGodItem", 600000, ref shop, ref nextSlot);
+                }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
