@@ -1417,6 +1417,7 @@ namespace Fargowiltas
                 ItemID.ShadewoodBookcase,
                 ItemID.PalmWoodBookcase,
                 ItemID.BorealWoodBookcase,
+                ItemID.DynastyBookcase
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyBookcase", group);
 
