@@ -1,11 +1,11 @@
 NEW UPDATE - v 1.0
 
--Removed Souls, Enchantments, most Weapons, Masochist Mode and all useless Energizers
+-Removed Souls, Enchantments, most Weapons, Masochist Mode, all useless Energizers, and anything else that is totally unbalanced
 -Removed NPCs dropping their costumes, extra enemy drops, and some recipes due to seasonal event changes
 
 NPCs
 -Mutant now sells more boss summons from Calamity, GRealm, BTFA, W1K, and Cookie Mod
--Mutant has new support for Fernium, Elements Awoken, Antiaris, Disarray, and Enigma, Tralamium Remastered, Pinky Mod, Ancients Awakened
+-Mutant has new support for Fernium, Elements Awoken, Antiaris, Disarray, Enigma, Tralamium Remastered, Pinky Mod, and Ancients Awakened
 -Mutant has a bunch of new quotes
 -Overloader is now in all of the Mutant's shops
 -Mutant prices slightly adjusted
@@ -14,24 +14,24 @@ NPCs
 -Mutant shop cycling bugs fixed
 -Mutant sprite sheet fixed
 -Abominationn now sells event summons from Spirit and BTFA
--LumberJack now attacks with explosive Lumber Jaxes instead of Possessed Hatchets
+-LumberJack now attacks with explosive Lumber Jaxes instead of meme Possessed Hatchets
 -LumberJack will spawn if you place the Wooden Token in addition to having it in your inventory
 -Removed some dead mod support from NPCs
 -Added Gore to all town NPCs
 
 -Travelling Merchant, Skeleton Merchant, Tavernkeep, Santa Claus, and Fargo NPCs can now be caught in a bug net
--throwing the Guide item into lava spawns the Wall of Flesh
+-throwing the Guide item into lava will also spawn the Wall of Flesh
 -Angler item is also bait
 -Clothier sells Pharoah vanity and Angler Armor
 -Merchant sells a variety of Angler quest rewards 
--Painter sells a painting in Dungeon and Underworld
+-Painter sells specific paintings in the Dungeon and the Underworld
 -Merchant drops Mining Shirt and Pants
 -Nurse drops Life Crystals
 -Demolitionist drops Dynamite
--Dryad drops Herb Bag
+-Dryad drops Herb Bags
 -Tavernkeep drops Ale
 -Arms Dealer drops Crystal Bullets
--Painter drops the Ech Painting
+-Painter drops the Ech Painting at a very specific time/place
 -Angler can drop Fishing accessories
 -Clothier drops a Skull
 -Mechanic drops Wires
@@ -42,10 +42,10 @@ NPCs
 
 ITEMS
 -Added Abominationn and LumberJack head vanity
--Added Zealot's Possession, Outsider's Portal, Battered Club
+-Added Zealot's Possession, Outsider's Portal, and Battered Club
 -Added Runic Power Cell and Pandora's Tesseract
 -Added more Renewals for each solution type
--Added Ech Painting, Auto House, Stat Sheet, The Ancient Master's Map of the Lost King's Great Ancestors, Super Dummy completely stolen from Terry, Ice Crate, Shadow Crate, Shadow Lockbox, Regal Statue
+-Added Ech Painting, Auto House, Stat Sheet, The Ancient Master's Map of the Lost King's Great Ancestors, Super Dummy completely stolen from Terry, Ice Crate, Shadow Crate, Shadow Lockbox, and Regal Statue (which replaces Bake Sale)
 -Added several more thrown variants including yoyos and flails
 -Reverted damage increases on thrown weapons and you now right click to convert back and forth
 -Added several missing sprites
@@ -53,7 +53,7 @@ ITEMS
 
 -Skull Chain Necklace can spawn a Dungeon Guardian swarm during the day
 -Fleshy Doll spawns WoF if thrown in lava 
--Mutant Voodoo Doll and Ancient Seal will now summon the Ancient Cultist who does not spawn pillars
+-Mutant Voodoo Doll and Ancient Seal will now summon the Lunatic Cultist who does not spawn pillars
 -Forgotten Claw and Siren's Pearl now don't exist without their respective mods
 -Added a new sound effect to Battle Cry
 -Altered Crucible of the Cosmos recipe and it functions as a few more crafting stations
@@ -69,12 +69,12 @@ ITEMS
 -Fixed Troll Bomb bug where bombs wouldn't explode
 
 MISC
--Added a Hotkey that teleports you home when you have a magic mirror, ice mirror, or a cell phone in your inventorry
+-Added a Hotkey that teleports you home when you have a magic mirror, ice mirror, or a cell phone in your inventory
 -Press the grappling hook hotkey to teleport with Rod of discord in your inventory
--Halloween and Christmas seasons are always active to start, using a Goodie Bag or Present will deactivate them
+-Halloween and Christmas seasons are always active to start, using a Goodie Bag or Present will toggle them
 -Wooden and Golden Crates have more drops to ensure all chest loot is not missable
 -Golden Lockbox can drop Valor now
--Added recipes for water, ice, shadow, and biome chest items
+-Added recipes for Water and Biome chest items
 -Bone Javelins and Javelins actually count as thrown projectiles
 -Added kill dust to Mutant's attack projectiles
 -Fixed NPC poofing in multiplayer after using any Fargo summons
