@@ -23,7 +23,6 @@ namespace Fargowiltas.Items
                 tooltips.Add(line);
             }
 
-            // ReSharper disable once InvertIf
             if (item.type == ItemID.CrystalBall)
             {
                 TooltipLine line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
@@ -41,7 +40,7 @@ namespace Fargowiltas.Items
             {
                 int num30 = 0;
                 int num31 = yOffset;
-                // ReSharper disable once SwitchStatementMissingSomeCases
+                
                 switch (l)
                 {
                     case 4:
@@ -86,20 +85,15 @@ namespace Fargowiltas.Items
 
         public override bool UseItem(Item item, Player player)
         {
-            // ReSharper disable once SwitchStatementMissingSomeCases
             switch (item.type)
             {
                 case ItemID.GoodieBag:
                     FargoWorld.halloween = !FargoWorld.halloween;
-
                     Main.NewText(FargoWorld.halloween ? "Halloween has begun!" : "Halloween has ended!", 175, 75);
-
                     return true;
                 case ItemID.Present:
                     FargoWorld.xmas = !FargoWorld.xmas;
-
                     Main.NewText(FargoWorld.xmas ? "Christmas has begun!" : "Christmas has ended!", 175, 75);
-
                     return true;
             }
 
@@ -160,8 +154,7 @@ namespace Fargowiltas.Items
                 if(p.rodCD != 0)
                 {
                     p.rodCD--;
-                }
-                
+                }  
             }
         }
 
