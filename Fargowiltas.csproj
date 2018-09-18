@@ -113,6 +113,7 @@
     <Compile Include="Items\Tiles\IceCrate.cs" />
     <Compile Include="Items\Misc\MapViewer.cs" />
     <Compile Include="Items\Tiles\IceCrateSheet.cs" />
+    <Compile Include="Items\Tiles\RegalStatueSheet.cs" />
     <Compile Include="Items\Tiles\ShadowCrate.cs" />
     <Compile Include="Items\Misc\Stats.cs" />
     <Compile Include="Items\Misc\SuperDummy.cs" />
@@ -127,7 +128,7 @@
     <Compile Include="Items\Summons\MutantGrabBag.cs" />
     <Compile Include="Items\Summons\NewSummons\AbyssionSummon.cs" />
     <Compile Include="Items\Summons\NewSummons\AncientSeal.cs" />
-    <Compile Include="Items\Tiles\BakeSale.cs" />
+    <Compile Include="Items\Tiles\RegalStatue.cs" />
     <Compile Include="Items\Summons\NewSummons\BatteredClub.cs" />
     <Compile Include="Items\Summons\NewSummons\BetsyEgg.cs" />
     <Compile Include="Items\Summons\NewSummons\CultistSummon.cs" />

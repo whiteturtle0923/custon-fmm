@@ -45,7 +45,7 @@ ITEMS
 -Added Zealot's Possession, Outsider's Portal, Battered Club
 -Added Runic Power Cell and Pandora's Tesseract
 -Added more Renewals for each solution type
--Added Ech Painting, Auto House, Stat Sheet, The Ancient Master's Map of the Lost King's Great Ancestors, Super Dummy completely stolen from Terry, Ice Crate, Shadow Crate, Shadow Lockbox
+-Added Ech Painting, Auto House, Stat Sheet, The Ancient Master's Map of the Lost King's Great Ancestors, Super Dummy completely stolen from Terry, Ice Crate, Shadow Crate, Shadow Lockbox, Regal Statue
 -Added several more thrown variants including yoyos and flails
 -Reverted damage increases on thrown weapons and you now right click to convert back and forth
 -Added several missing sprites

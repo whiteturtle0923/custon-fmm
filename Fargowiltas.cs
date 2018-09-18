@@ -37,6 +37,7 @@ namespace Fargowiltas
         internal bool antiarisLoaded;
         internal bool aaLoaded;
         internal bool trelamiumLoaded;
+        internal bool pinkyLoaded;
         #endregion
 
         //swarms
@@ -96,6 +97,7 @@ namespace Fargowiltas
                 antiarisLoaded = ModLoader.GetMod("Antiaris") != null;
                 aaLoaded = ModLoader.GetMod("AAMod") != null;
                 trelamiumLoaded = ModLoader.GetMod("TrelamiumMod") != null;
+                pinkyLoaded = ModLoader.GetMod("pinkymod") != null;
             }
             catch (Exception e)
             {

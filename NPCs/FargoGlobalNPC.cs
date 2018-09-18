@@ -391,7 +391,6 @@ namespace Fargowiltas.NPCs
 
             if(swarmActive)
             {
-                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch (npc.type)
                 {
                     case NPCID.KingSlime:
@@ -517,10 +516,6 @@ namespace Fargowiltas.NPCs
 			{
 				Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Bananarang);
 			}
-			else if (npc.type == NPCID.Guide)
-			{
-				FargoWorld.guide = true;
-			}
 			else if (npc.type == NPCID.Merchant)
 			{
 				if (Main.rand.Next(8) == 0)
@@ -528,8 +523,6 @@ namespace Fargowiltas.NPCs
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.MiningShirt);
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.MiningPants);
 				}
-
-				FargoWorld.merch = true;
 			}
 			else if (npc.type == NPCID.Nurse)
 			{
@@ -537,8 +530,6 @@ namespace Fargowiltas.NPCs
 				{
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.LifeCrystal);
 				}
-
-				FargoWorld.nurse = true;
 			}
 			else if (npc.type == NPCID.Demolitionist)
 			{
@@ -546,12 +537,6 @@ namespace Fargowiltas.NPCs
 				{
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Dynamite, 5);
 				}
-
-				FargoWorld.demo = true;
-			}
-			else if (npc.type == NPCID.DyeTrader)
-			{
-				FargoWorld.dye = true;
 			}
 			else if (npc.type == NPCID.Dryad)
 			{
@@ -559,8 +544,6 @@ namespace Fargowiltas.NPCs
 				{
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.HerbBag);
 				}
-
-				FargoWorld.dryad = true;
 			}
 			else if (npc.type == NPCID.DD2Bartender)
 			{
@@ -568,8 +551,6 @@ namespace Fargowiltas.NPCs
 				{
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Ale, 4);
 				}
-
-				FargoWorld.keep = true;
 			}
 			else if (npc.type == NPCID.ArmsDealer)
 			{
@@ -578,17 +559,9 @@ namespace Fargowiltas.NPCs
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
 						ItemID.CrystalBullet, 30);
 				}
-
-				FargoWorld.dealer = true;
-			}
-			else if (npc.type == NPCID.Stylist)
-			{
-				FargoWorld.style = true;
 			}
 			else if (npc.type == NPCID.Painter)
 			{
-				FargoWorld.paint = true;
-
 				if (NPC.AnyNPCs(NPCID.MoonLordCore))
 				{
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
@@ -604,16 +577,6 @@ namespace Fargowiltas.NPCs
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
 						drops[Main.rand.Next(drops.Length)]);
 				}
-
-				FargoWorld.angler = true;
-			}
-			else if (npc.type == NPCID.GoblinTinkerer)
-			{
-				FargoWorld.goblin = true;
-			}
-			else if (npc.type == NPCID.WitchDoctor)
-			{
-				FargoWorld.doc = true;
 			}
 			else if (npc.type == NPCID.Clothier)
 			{
@@ -621,8 +584,6 @@ namespace Fargowiltas.NPCs
 				{
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Skull);
 				}
-
-				FargoWorld.cloth = true;
 			}
 			else if (npc.type == NPCID.Mechanic)
 			{
@@ -630,12 +591,6 @@ namespace Fargowiltas.NPCs
 				{
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.Wire, 40);
 				}
-
-				FargoWorld.mech = true;
-			}
-			else if (npc.type == NPCID.PartyGirl)
-			{
-				FargoWorld.party = true;
 			}
 			else if (npc.type == NPCID.Wizard)
 			{
@@ -644,8 +599,6 @@ namespace Fargowiltas.NPCs
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.FallenStar,
 						5);
 				}
-
-				FargoWorld.wiz = true;
 			}
 			else if (npc.type == NPCID.TaxCollector)
 			{
@@ -654,8 +607,6 @@ namespace Fargowiltas.NPCs
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height, ItemID.GoldCoin,
 						10);
 				}
-
-				FargoWorld.tax = true;
 			}
 			else if (npc.type == NPCID.Truffle)
 			{
@@ -664,20 +615,6 @@ namespace Fargowiltas.NPCs
 					Item.NewItem((int) npc.position.X, (int) npc.position.Y, npc.width, npc.height,
 						ItemID.MushroomStatue);
 				}
-
-				FargoWorld.truf = true;
-			}
-			else if (npc.type == NPCID.Pirate)
-			{
-				FargoWorld.pirate = true;
-			}
-			else if (npc.type == NPCID.Steampunker)
-			{
-				FargoWorld.steam = true;
-			}
-			else if (npc.type == NPCID.Cyborg)
-			{
-				FargoWorld.borg = true;
 			}
 			else if (npc.type == NPCID.SantaClaus && FargoWorld.xmas)
 			{
