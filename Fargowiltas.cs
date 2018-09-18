@@ -380,12 +380,6 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.ViciousMushroom);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(ItemID.VileMushroom);
-            recipe.AddRecipe();
-
-            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.Bladetongue);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(ItemID.Toxikarp);
