@@ -28,20 +28,7 @@ namespace Fargowiltas.Items.Summons
 
         public override void RightClick(Player player)
         {
-            //FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
-
-            /*if(modPlayer.voidSoul)
-			{
-				for (int j = 0; j < 50; j++)
-				{
-					if(player.inventory[j] != null && player.inventory[j].maxStack > 10 && player.inventory[j].type != mod.ItemType("MutantGrabBag"))
-					{
-						player.QuickSpawnItem(player.inventory[j].type, 5);
-					}
-				}
-			}
-			else
-			{*/
+				
             int j = Main.rand.Next(10);
 
             if (j == 0)
@@ -80,9 +67,15 @@ namespace Fargowiltas.Items.Summons
 
             if (j == 8)
             {
-                player.QuickSpawnItem(mod.ItemType("MutantGrabBag"), 2);
+                for (int j = 0; j < 50; j++)
+		{
+			if(player.inventory[j] != null && player.inventory[j].maxStack > 10 && player.inventory[j].type != mod.ItemType("MutantGrabBag"))
+			{
+				player.QuickSpawnItem(player.inventory[j].type, 5);
+			}
+		}
+
             }
-            //}
         }
     }
 }
