@@ -257,10 +257,10 @@ namespace Fargowiltas.NPCs
         public bool AAZero = AAMod.AAWorld.downedZero;
 
         //pinky
-        /*public bool PinkySlime = pinkymod.PinkyWorld.downedMythrilSlime;
-        public bool PinkyValdaris = pinkymod.pinkyworld.downedValdaris;
-        public bool PinkySunlight = pinkymod.pinkyworld.downedSunlightTrader;
-        public bool PinkyAbyssmal = pinkymod.pinkyworld.downedAbyssmalDuo;*/
+        public bool PinkySlime = pinkymod.Global.Pinkyworld.downedMythrilSlime;
+        public bool PinkyValdaris = pinkymod.Global.Pinkyworld.downedValdaris;
+        public bool PinkySunlight = pinkymod.Global.Pinkyworld.downedSunlightTrader;
+        public bool PinkyAbyssmal = pinkymod.Global.Pinkyworld.downedAbyssmalDuo;
 
         #endregion other mod bools
 
@@ -725,7 +725,7 @@ namespace Fargowiltas.NPCs
                 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
-                    //AddItem(PinkySunlight, "pinkymod", "STItem", 250000, ref shop, ref nextSlot);
+                    AddItem(PinkySunlight, "pinkymod", "STItem", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.w1kLoaded)
@@ -902,7 +902,7 @@ namespace Fargowiltas.NPCs
 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
-                    //AddItem(PinkySlime, "pinkymod", "MythrilGel", 350000, ref shop, ref nextSlot);
+                    AddItem(PinkySlime, "pinkymod", "MythrilGel", 350000, ref shop, ref nextSlot);
                 }
                 
                 if (Fargowiltas.instance.trelamiumLoaded)
@@ -1005,7 +1005,7 @@ namespace Fargowiltas.NPCs
                 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
-                    //AddItem(PinkyValdaris, "pinkymod", "ValdarisItem", 400000, ref shop, ref nextSlot);
+                    AddItem(PinkyValdaris, "pinkymod", "ValdarisItem", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
@@ -1045,7 +1045,7 @@ namespace Fargowiltas.NPCs
                 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
-                    //AddItem(PinkyAbyssmal, "pinkymod", "MindGodItem", 600000, ref shop, ref nextSlot);
+                    AddItem(PinkyAbyssmal, "pinkymod", "MindGodItem", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
