@@ -251,16 +251,16 @@ namespace Fargowiltas.NPCs
         public bool TrelamiumSymphony => TrelamiumMod.TrelamiumModWorld.downedSymphony;
 
         //AA
-        public bool AAGrips = AAMod.AAWorld.downedGrips;
-        public bool AARetriever = AAMod.AAWorld.downedRetriever;
-        public bool AAEquinox = AAMod.AAWorld.downedEquinox;
-        public bool AAZero = AAMod.AAWorld.downedZero;
+        public bool AAGrips => AAMod.AAWorld.downedGrips;
+        public bool AARetriever => AAMod.AAWorld.downedRetriever;
+        public bool AAEquinox => AAMod.AAWorld.downedEquinox;
+        public bool AAZero => AAMod.AAWorld.downedZero;
 
         //pinky
-        public bool PinkySlime = pinkymod.Global.Pinkyworld.downedMythrilSlime;
-        public bool PinkyValdaris = pinkymod.Global.Pinkyworld.downedValdaris;
-        public bool PinkySunlight = pinkymod.Global.Pinkyworld.downedSunlightTrader;
-        public bool PinkyAbyssmal = pinkymod.Global.Pinkyworld.downedAbyssmalDuo;
+        public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
+        public bool PinkyValdaris => pinkymod.Global.Pinkyworld.downedValdaris;
+        public bool PinkySunlight => pinkymod.Global.Pinkyworld.downedSunlightTrader;
+        public bool PinkyAbyssmal => pinkymod.Global.Pinkyworld.downedAbyssmalDuo;
 
         #endregion other mod bools
 

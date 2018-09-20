@@ -67,11 +67,11 @@ namespace Fargowiltas.Items.Summons
 
             if (j == 8)
             {
-                for (int j = 0; j < 50; j++)
+                for (int i = 0; i < 50; i++)
 		{
-			if(player.inventory[j] != null && player.inventory[j].maxStack > 10 && player.inventory[j].type != mod.ItemType("MutantGrabBag"))
+			if(player.inventory[i] != null && player.inventory[i].maxStack > 10 && player.inventory[i].type != mod.ItemType("MutantGrabBag"))
 			{
-				player.QuickSpawnItem(player.inventory[j].type, 5);
+				player.QuickSpawnItem(player.inventory[i].type, 5);
 			}
 		}
 
