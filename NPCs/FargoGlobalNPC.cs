@@ -344,7 +344,7 @@ namespace Fargowiltas.NPCs
 
                 for (int i = 0; i < 200; i++)
                 {
-                    if (Main.npc[i].active)
+                    if (Main.npc[i].active && !Main.npc[i].friendly)
                     {
                         Main.npc[i].GetGlobalNPC<FargoGlobalNPC>().noLoot = true;
                         Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);

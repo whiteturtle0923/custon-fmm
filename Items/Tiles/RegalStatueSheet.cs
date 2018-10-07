@@ -30,8 +30,8 @@ namespace Fargowiltas.Items.Tiles
         {
             if (Main.netMode != 1)
             {
-                //usually 9 so should make it 5x as fast
-                Main.checkForSpawns += 36;
+                //usually 9 so should make it 10x as fast
+                Main.checkForSpawns += 81;
             }
         }
     }
