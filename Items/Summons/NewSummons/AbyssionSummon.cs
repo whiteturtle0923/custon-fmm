@@ -14,12 +14,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public override bool Autoload(ref string name)
         {
-            if (!ModLoader.GetLoadedMods().Contains("ThoriumMod"))
-            {
-                return false;
-            }
-
-            return true;
+            return ModLoader.GetLoadedMods().Contains("ThoriumMod");
         }
 
         public override void SetDefaults()
