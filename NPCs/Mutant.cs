@@ -278,15 +278,14 @@ namespace Fargowiltas.NPCs
 
 
         //Redemption
-        public bool RedeChicken => Redemption.Global.RedeWorld.downedKingChicken;
-        public bool RedeKeeper => Redemption.Global.RedeWorld.downedTheKeeper;
-        public bool RedeXeno => Redemption.Global.RedeWorld.downedXenomiteCrystal;
-        public bool RedeEye => Redemption.Global.RedeWorld.downedInfectedEye;
-        public bool RedePortal => Redemption.Global.RedeWorld.downedStrangePortal;
-        public bool RedeGigipede=> Redemption.Global.RedeWorld.downedVlitch2;
-        public bool RedeCleaver => Redemption.Global.RedeWorld.downedVlitch1;
-        public bool RedeSlime => Redemption.Global.RedeWorld.downedDarkSlime;
-        public bool RedeSlayer => Redemption.Global.RedeWorld.downedSlayer;
+        public bool RedeChicken => Redemption.RedeWorld.downedKingChicken;
+        public bool RedeKeeper => Redemption.RedeWorld.downedTheKeeper;
+        public bool RedeXeno => Redemption.RedeWorld.downedXenomiteCrystal;
+        public bool RedeEye => Redemption.RedeWorld.downedInfectedEye;
+        public bool RedePortal => Redemption.RedeWorld.downedStrangePortal;
+        public bool RedeGigipede=> Redemption.RedeWorld.downedVlitch2;
+        public bool RedeCleaver => Redemption.RedeWorld.downedVlitch1;
+        public bool RedeSlayer => Redemption.RedeWorld.downedSlayer;
 
         #endregion other mod bools
 
