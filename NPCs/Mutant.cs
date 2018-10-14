@@ -252,9 +252,23 @@ namespace Fargowiltas.NPCs
 
         //AA
         public bool AAGrips => AAMod.AAWorld.downedGrips;
+        public bool AABrood => AAMod.AAWorld.downedBrood;
+        //public bool AAHydra => AAMod.AAWorld.downedHydra;
         public bool AARetriever => AAMod.AAWorld.downedRetriever;
+        public bool AARaider => AAMod.AAWorld.downedRaider;
+        //public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
+        //public bool AAPantheon => AAMod.AAWorld.downedPantheon;
         public bool AAEquinox => AAMod.AAWorld.downedEquinox;
+        //public bool AAYamata => AAMod.AAWorld.downedYamata;
+        //public bool AAYamataA => AAMod.AAWorld.downedYamataA;
+        //public bool AAAkuma => AAMod.AAWorld.downedAkuma;
+        //public bool AAAkumaA => AAMod.AAWorld.downedAAAkumaA;
         public bool AAZero => AAMod.AAWorld.downedZero;
+        public bool AAZeroA => AAMod.AAWorld.downedZeroA;
+        //public bool AAAkumata => AAMod.AAWorld.downedAkumata;
+        //public bool AAAkumataA => AAMod.AAWorld.downedAkumataA;
+      
+
 
         //pinky
         public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
