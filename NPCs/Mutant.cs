@@ -250,7 +250,7 @@ namespace Fargowiltas.NPCs
         public bool TrelamiumPyron => TrelamiumMod.TrelamiumModWorld.downedPyron;
         public bool TrelamiumSymphony => TrelamiumMod.TrelamiumModWorld.downedSymphony;
 
-        //AA
+        //Ancients Awakened
         public bool AAGrips => AAMod.AAWorld.downedGrips;
         public bool AABrood => AAMod.AAWorld.downedBrood;
         //public bool AAHydra => AAMod.AAWorld.downedHydra;
@@ -275,6 +275,18 @@ namespace Fargowiltas.NPCs
         public bool PinkyValdaris => pinkymod.Global.Pinkyworld.downedValdaris;
         public bool PinkySunlight => pinkymod.Global.Pinkyworld.downedSunlightTrader;
         public bool PinkyAbyssmal => pinkymod.Global.Pinkyworld.downedAbyssmalDuo;
+
+
+        //Redemption
+        public bool RedeChicken => Redemption.Global.RedeWorld.downedKingChicken;
+        public bool RedeKeeper => Redemption.Global.RedeWorld.downedTheKeeper;
+        public bool RedeXeno => Redemption.Global.RedeWorld.downedXenomiteCrystal;
+        public bool RedeEye => Redemption.Global.RedeWorld.downedInfectedEye;
+        public bool RedePortal => Redemption.Global.RedeWorld.downedStrangePortal;
+        public bool RedeGigipede=> Redemption.Global.RedeWorld.downedVlitch2;
+        public bool RedeCleaver => Redemption.Global.RedeWorld.downedVlitch1;
+        public bool RedeSlime => Redemption.Global.RedeWorld.downedDarkSlime;
+        public bool RedeSlayer => Redemption.Global.RedeWorld.downedSlayer;
 
         #endregion other mod bools
 
@@ -541,6 +553,12 @@ namespace Fargowiltas.NPCs
 
                 //goblin king - true eater
 
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    //The Mighty King Chicken
+                    AddItem(RedeChicken, "Redemption", "EggCrown", 2000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.exodusLoaded)
                 {
                     AddItem(ExodusDownedAbom, "Exodus", "ZombieMeat", 20000, ref shop, ref nextSlot);
@@ -590,6 +608,19 @@ namespace Fargowiltas.NPCs
                     //Grips of Chaos
                     AddItem(AAGrips, "AAMod", "CuriousClaw", 50000, ref shop, ref nextSlot);
                     AddItem(AAGrips, "AAMod", "InterestingClaw", 50000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    //Keeper
+                    if (WorldGen.crimson == true)
+                    {
+                        AddItem(RedeKeeper, "Redemption", "MysteriousTabletCrimson", 50000, ref shop, ref nextSlot);
+                    }
+                    else
+                    {
+                        AddItem(RedeKeeper, "Redemption", "MysteriousTabletCorrupt", 50000, ref shop, ref nextSlot);
+                    }
                 }
 
                 if (Fargowiltas.instance.w1kLoaded)
@@ -652,6 +683,13 @@ namespace Fargowiltas.NPCs
                     AddItem(AABrood, "AAMod", "DragonBell", 60000, ref shop, ref nextSlot);
                     //Hydra
                     //AddItem(AAHydra, "AAMod", "HydraChow", 60000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    //Strange Portal
+                    AddItem(RedePortal, "Redemption", "UnstableCrystal", 60000, ref shop, ref nextSlot);
+                    AddItem(RedePortal, "Redemption", "GeigerCounter", 60000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.cookieLoaded)
@@ -882,6 +920,11 @@ namespace Fargowiltas.NPCs
             {
                 AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
 
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    AddItem(RedeEye, "Redemption", "XenoEye", 100000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Borean Strider
@@ -1086,8 +1129,13 @@ namespace Fargowiltas.NPCs
                 }
                 //Plantera
                 AddItem(NPC.downedPlantBoss, "Fargowiltas", "Plantera", 160000, ref shop, ref nextSlot);
-                
-                if(Fargowiltas.instance.pinkyLoaded)
+
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    AddItem(RedeSlayer, "Redemption", "KingSummon", 100000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.pinkyLoaded)
                 {
                     AddItem(PinkyValdaris, "pinkymod", "ValdarisItem", 400000, ref shop, ref nextSlot);
                 }
@@ -1246,6 +1294,12 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.elementsLoaded)
                 {
                     AddItem(ElementsDownedDragon, "ElementsAwoken", "AncientDragonSummon", 150000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    AddItem(RedeCleaver, "Redemption", "CorruptedHeroSword", 2000000, ref shop, ref nextSlot);
+                    AddItem(RedeGigipede, "Redemption", "CorruptedWormMedallion", 3000000, ref shop, ref nextSlot);
                 }
                 //Lunar Pillars
                 AddItem(NPC.downedTowers, "Fargowiltas", "PillarSummon", 200000, ref shop, ref nextSlot);
