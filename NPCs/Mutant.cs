@@ -982,7 +982,7 @@ namespace Fargowiltas.NPCs
                 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
-                    AddItem(TrelamiumPermafrost, "TrelamiumMod", "TemporalLens", 120000, ref shop, ref nextSlot);
+                    AddItem(TrelamiumPermafrost, "TrelamiumMod", "TemporalLens", 120000, shop: ref shop, nextSlot: ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
@@ -1134,7 +1134,7 @@ namespace Fargowiltas.NPCs
                 //Betsy
                 AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 160000, ref shop, ref nextSlot);
 
-                (Fargowiltas.instance.aaLoaded)
+                if (Fargowiltas.instance.aaLoaded)
                 {
                     //Pantheon
                     //AddItem(AAPantheon, "AAMod", "Observatory", 170000, ref shop, ref nextSlot);
