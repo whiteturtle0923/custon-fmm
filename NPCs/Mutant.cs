@@ -379,14 +379,14 @@ namespace Fargowiltas.NPCs
             {
                 return "If any of us could play instruments, I'd totally start a band with " + Main.npc[witchDoctor].GivenName + ", " + Main.npc[truffle].GivenName + ", and " + Main.npc[cyborg].GivenName + ".";
             }
-            if (Fargowiltas.instance.aaLoaded && Main.rand.Next(28) == 0 && AAZero == true)
+            /* (Fargowiltas.instance.aaLoaded && Main.rand.Next(28) == 0 && AAZero == true)
             {
-                return "I'm not gonna lie, that Zero thing kinda freaks me out."
+                return "I'm not gonna lie, that Zero thing kinda freaks me out.";
             }
             if (Fargowiltas.instance.aaLoaded && Main.rand.Next(29) == 0 && AAZeroA == true)
             {
-                return "I know my bosses, but that...thing that came out of Zero...I've never seen anything like it before. Good job killin' it though."
-            }
+                return "I know my bosses, but that...thing that came out of Zero...I've never seen anything like it before. Good job killin' it though.";
+            }*/
 
             if (Main.dayTime != true && Main.rand.Next(10) == 0)
             {
