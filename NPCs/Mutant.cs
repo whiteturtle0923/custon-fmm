@@ -434,6 +434,13 @@ namespace Fargowiltas.NPCs
         -Oh wow is that a speed soul. I coulda sold you one man
         -all souls need one
         "I know, I know, these souls look really pricy, buy I'm selling them at a loss here! Nobody would buy them otherwise! What a ripoff!"
+
+
+Ancients Awakened will have a lot of bosses. May need it’s own tab all together. Mutant should be annoyed by this. 
+-Eliza
+
+“Damn fish, making me add another page to my store...”
+fish = Alphakip
         */
 
         public override void SetChatButtons(ref string button, ref string button2)
@@ -624,6 +631,12 @@ namespace Fargowiltas.NPCs
 
                 AddItem(NPC.downedBoss2, "Fargowiltas", "WormyFood", 60000, ref shop, ref nextSlot);
                 AddItem(NPC.downedBoss2, "Fargowiltas", "GoreySpine", 60000, ref shop, ref nextSlot);
+
+if(Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AABrood, "AAMod", "DragonBell", 60000, ref shop, ref nextSlot);
+                    //AddItem(AAHydra, "AAMod", "HydraChow", 60000, ref shop, ref nextSlot);
+                }
 
                 if (Fargowiltas.instance.cookieLoaded)
                 {
