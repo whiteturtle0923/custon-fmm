@@ -1282,7 +1282,6 @@ namespace Fargowiltas.NPCs
                     //AddItem(AAZeroA, "AAMod", "DreadRune", 400000, ref shop, ref nextSlot);
                 }
                 
-                }
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
                     AddItem(TrelamiumAzolinth, "TrelamiumMod", "PlanetaryBeacon", 250000, ref shop, ref nextSlot);
