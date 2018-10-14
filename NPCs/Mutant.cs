@@ -920,6 +920,12 @@ if(Fargowiltas.instance.aaLoaded)
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     AddItem(AARetriever, "AAMod", "CyberneticClaw", 100000, ref shop, ref nextSlot);
+
+AddItem(AARaider, "AAMod", "CyberneticBell", 100000, ref shop, ref nextSlot);
+
+//AddItem(AAOrthrus, "AAMod", "CyberneticChow", 100000, ref shop, ref nextSlot);
+
+
                 }
 
                 AddItem(NPC.downedMechBoss1, "Fargowiltas", "MechWorm", 150000, ref shop, ref nextSlot);
@@ -1067,8 +1073,17 @@ if(Fargowiltas.instance.aaLoaded)
                 }
 
                 AddItem(NPC.downedGolemBoss, "Fargowiltas", "LihzahrdPowerCell2", 180000, ref shop, ref nextSlot);
-                AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 150000, ref shop, ref nextSlot);
+
+AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 150000, ref shop, ref nextSlot);
                 AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 160000, ref shop, ref nextSlot);
+
+(Fargowiltas.instance.aaLoaded)
+                {
+
+//AddItem(AAPantheon, "AAMod", "Observatory", 170000, ref shop, ref nextSlot);
+
+
+                }
                 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
@@ -1147,10 +1162,7 @@ if(Fargowiltas.instance.aaLoaded)
                     AddItem(SpiritDownedAtlas, "SpiritMod", "StoneSkin", 150000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.instance.aaLoaded)
-                {
-                    AddItem(AAEquinox, "AAMod", "EquinoxWorm", 150000, ref shop, ref nextSlot);
-                }
+               
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
@@ -1193,6 +1205,14 @@ if(Fargowiltas.instance.aaLoaded)
             {
                 AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
 
+
+if (Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AAEquinox, "AAMod", "EquinoxWorm", 150000, ref shop, ref nextSlot);
+                }
+
+
+                }
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
                     AddItem(TrelamiumAzolinth, "TrelamiumMod", "PlanetaryBeacon", 250000, ref shop, ref nextSlot);
@@ -1207,6 +1227,13 @@ if(Fargowiltas.instance.aaLoaded)
                 {
                     AddItem(AAZero, "AAMod", "ZeroTesseract", 250000, ref shop, ref nextSlot);
                 }
+
+if (Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AAZeroA, "AAMod", "ZeroRune", 400000, ref shop, ref nextSlot);
+                }
+
+
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
