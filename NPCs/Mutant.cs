@@ -268,14 +268,11 @@ namespace Fargowiltas.NPCs
         //public bool AAAkumata => AAMod.AAWorld.downedAkumata;
         //public bool AAAkumataA => AAMod.AAWorld.downedAkumataA;
       
-
-
         //pinky
         public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
         public bool PinkyValdaris => pinkymod.Global.Pinkyworld.downedValdaris;
         public bool PinkySunlight => pinkymod.Global.Pinkyworld.downedSunlightTrader;
         public bool PinkyAbyssmal => pinkymod.Global.Pinkyworld.downedAbyssmalDuo;
-
 
         //Redemption
         public bool RedeChicken => Redemption.RedeWorld.downedKingChicken;
@@ -547,7 +544,7 @@ namespace Fargowiltas.NPCs
 
                 if(Fargowiltas.instance.fargoLoaded)
                 {
-                    AddItem(true, "FargowiltasSouls", "PandorasBox", 200000, ref shop, ref nextSlot);
+                    AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
                 }
 
                 //goblin king - true eater
@@ -555,7 +552,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //The Mighty King Chicken
-                    AddItem(RedeChicken, "Redemption", "EggCrown", 2000, ref shop, ref nextSlot);
+                    AddItem(RedeChicken, "Redemption", "EggCrown", 20000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
@@ -566,17 +563,17 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.spiritLoaded)
                 {
                     //Scarabeus
-                    AddItem(SpiritDownedScarab, "SpiritMod", "ScarabIdol", 10000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedScarab, "SpiritMod", "ScarabIdol", 20000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedPlant, "Disarray", "YoungSapling", 10000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedPlant, "Disarray", "YoungSapling", 20000, ref shop, ref nextSlot);
                 }
 
                 if(Fargowiltas.instance.trelamiumLoaded)
                 {
-                    AddItem(TrelamiumGoliath, "TrelamiumMod", "MycelialCluster", 10000, ref shop, ref nextSlot);
+                    AddItem(TrelamiumGoliath, "TrelamiumMod", "MycelialCluster", 20000, ref shop, ref nextSlot);
                 }
 
                 //antlion queen - true eater
@@ -584,78 +581,80 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Grand Thunderbird
-                    AddItem(ThoriumDownedBird, "ThoriumMod", "StormFlare", 20000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedBird, "ThoriumMod", "StormFlare", 50000, ref shop, ref nextSlot);
                 }
+                
                 //Slime King
-                AddItem(NPC.downedSlimeKing, "Fargowiltas", "SlimyCrown", 30000, ref shop, ref nextSlot);
+                AddItem(NPC.downedSlimeKing, "Fargowiltas", "SlimyCrown", 60000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedCrusher, "Disarray", "ScorpionIdol", 20000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedCrusher, "Disarray", "ScorpionIdol", 60000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Desert Scourge
-                    AddItem(CalamityDownedScourge, "CalamityMod", "DriedSeafood", 20000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedScourge, "CalamityMod", "DriedSeafood", 60000, ref shop, ref nextSlot);
                 }
+                
                 //Eye of Cthulhu
-                AddItem(NPC.downedBoss1, "Fargowiltas", "SuspiciousEye", 50000, ref shop, ref nextSlot);
+                AddItem(NPC.downedBoss1, "Fargowiltas", "SuspiciousEye", 80000, ref shop, ref nextSlot);
 
                 if(Fargowiltas.instance.aaLoaded)
                 {
                     //Grips of Chaos
-                    AddItem(AAGrips, "AAMod", "CuriousClaw", 50000, ref shop, ref nextSlot);
-                    AddItem(AAGrips, "AAMod", "InterestingClaw", 50000, ref shop, ref nextSlot);
+                    AddItem(AAGrips, "AAMod", "CuriousClaw", 80000, ref shop, ref nextSlot);
+                    AddItem(AAGrips, "AAMod", "InterestingClaw", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //Keeper
-                    if (WorldGen.crimson == true)
+                    if (WorldGen.crimson)
                     {
-                        AddItem(RedeKeeper, "Redemption", "MysteriousTabletCrimson", 50000, ref shop, ref nextSlot);
+                        AddItem(RedeKeeper, "Redemption", "MysteriousTabletCrimson", 80000, ref shop, ref nextSlot);
                     }
                     else
                     {
-                        AddItem(RedeKeeper, "Redemption", "MysteriousTabletCorrupt", 50000, ref shop, ref nextSlot);
+                        AddItem(RedeKeeper, "Redemption", "MysteriousTabletCorrupt", 80000, ref shop, ref nextSlot);
                     }
                 }
 
                 if (Fargowiltas.instance.w1kLoaded)
                 {
-                    AddItem(W1KDownedKutku, "W1KModRedux", "GoldenFeather", 50000, ref shop, ref nextSlot);
+                    AddItem(W1KDownedKutku, "W1KModRedux", "GoldenFeather", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
-                    AddItem(EnigmaDownedShark, "Laugicality", "TastyMorsel", 50000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedShark, "Laugicality", "TastyMorsel", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
                 {
-                    AddItem(ExodusDownedColoss, "Exodus", "GraniteAnomaly", 40000, ref shop, ref nextSlot);
-                    AddItem(ExodusDownedBlob, "Exodus", "DisgustingJelly", 30000, ref shop, ref nextSlot);
+                    AddItem(ExodusDownedColoss, "Exodus", "GraniteAnomaly", 80000, ref shop, ref nextSlot);
+                    AddItem(ExodusDownedBlob, "Exodus", "DisgustingJelly", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
-                    AddItem(EnigmaDownedHypo, "Laugicality", "ChilledMesh", 60000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedHypo, "Laugicality", "ChilledMesh", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedProbe, "Disarray", "ProbeCaller", 30000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedProbe, "Disarray", "ProbeCaller", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
-                    AddItem(EnigmaDownedRagnar, "Laugicality", "MoltenMess", 60000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedRagnar, "Laugicality", "MoltenMess", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedWaste, "ElementsAwoken", "WastelandSummon", 70000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedWaste, "ElementsAwoken", "WastelandSummon", 80000, ref shop, ref nextSlot);
                 }
 
                 //The Spirit - Split
@@ -663,55 +662,56 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Rukh
-                    AddItem(TremorDownedRukh, "Tremor", "DesertCrown", 50000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedRukh, "Tremor", "DesertCrown", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Crabulon
-                    AddItem(CalamityDownedCrab, "CalamityMod", "DecapoditaSprout", 40000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCrab, "CalamityMod", "DecapoditaSprout", 80000, ref shop, ref nextSlot);
                 }
+                
                 //Eater of Worlds
-                AddItem(NPC.downedBoss2, "Fargowiltas", "WormyFood", 60000, ref shop, ref nextSlot);
+                AddItem(NPC.downedBoss2, "Fargowiltas", "WormyFood", 100000, ref shop, ref nextSlot);
                 //Brain of Cthulhu
-                AddItem(NPC.downedBoss2, "Fargowiltas", "GoreySpine", 60000, ref shop, ref nextSlot);
+                AddItem(NPC.downedBoss2, "Fargowiltas", "GoreySpine", 100000, ref shop, ref nextSlot);
 
                 if(Fargowiltas.instance.aaLoaded)
                 {
                     //Broodmother
-                    AddItem(AABrood, "AAMod", "DragonBell", 60000, ref shop, ref nextSlot);
+                    AddItem(AABrood, "AAMod", "DragonBell", 100000, ref shop, ref nextSlot);
                     //Hydra
-                    //AddItem(AAHydra, "AAMod", "HydraChow", 60000, ref shop, ref nextSlot);
+                    //AddItem(AAHydra, "AAMod", "HydraChow", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //Strange Portal
-                    AddItem(RedePortal, "Redemption", "UnstableCrystal", 60000, ref shop, ref nextSlot);
-                    AddItem(RedePortal, "Redemption", "GeigerCounter", 60000, ref shop, ref nextSlot);
+                    AddItem(RedePortal, "Redemption", "UnstableCrystal", 100000, ref shop, ref nextSlot);
+                    AddItem(RedePortal, "Redemption", "GeigerCounter", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.cookieLoaded)
                 {
-                    AddItem(CookieDownedCookie, "CookieMod", "BloodyCookie", 60000, ref shop, ref nextSlot);
-                    AddItem(CookieDownedCookie, "CookieMod", "CursedCookie", 60000, ref shop, ref nextSlot);
+                    AddItem(CookieDownedCookie, "CookieMod", "BloodyCookie", 100000, ref shop, ref nextSlot);
+                    AddItem(CookieDownedCookie, "CookieMod", "CursedCookie", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
-                    AddItem(TrelamiumCumulor, "TrelamiumMod", "StormyCloud", 50000, ref shop, ref nextSlot);
+                    AddItem(TrelamiumCumulor, "TrelamiumMod", "StormyCloud", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Queen Jellyfish
-                    AddItem(ThoriumDownedJelly, "ThoriumMod", "JellyfishResonator", 60000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedJelly, "ThoriumMod", "JellyfishResonator", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Tiki Totem
-                    AddItem(TremorDownedTotem, "Tremor", "MysteriousDrum", 50000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedTotem, "Tremor", "MysteriousDrum", 100000, ref shop, ref nextSlot);
                 }
 
                 //One Shot -Split
@@ -719,17 +719,17 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Evil Corn
-                    AddItem(TremorDownedCorn, "Tremor", "CursedPopcorn", 50000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedCorn, "Tremor", "CursedPopcorn", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.ferniumLoaded)
                 {
-                    AddItem(FerniumDownedMargrama, "Fernium", "LunarFlame", 20000, ref shop, ref nextSlot);
+                    AddItem(FerniumDownedMargrama, "Fernium", "LunarFlame", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedGeneral, "Disarray", "TornBattleArmor", 50000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedGeneral, "Disarray", "TornBattleArmor", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
@@ -743,64 +743,64 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.grealmLoaded)
                 {
                     //Folvine
-                    AddItem(GRealmDownedFolivine, "GRealm", "JungleBait", 70000, ref shop, ref nextSlot);
+                    AddItem(GRealmDownedFolivine, "GRealm", "JungleBait", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Storm Jellyfish
-                    AddItem(TremorDownedJelly, "Tremor", "StormJelly", 60000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedJelly, "Tremor", "StormJelly", 100000, ref shop, ref nextSlot);
                 }
 
                 //Clampula - True Eater
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
-                    AddItem(SpiritDownedVine, "SpiritMod", "ReachBossSummon", 70000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedVine, "SpiritMod", "ReachBossSummon", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Ancient Dragon
-                    AddItem(TremorDownedDragon, "Tremor", "RustyLantern", 70000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedDragon, "Tremor", "RustyLantern", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
                 {
-                    AddItem(ExodusDownedEmperor, "Exodus", "AncientArtifact", 40000, ref shop, ref nextSlot);
+                    AddItem(ExodusDownedEmperor, "Exodus", "AncientArtifact", 100000, ref shop, ref nextSlot);
                 }
                 //Queen Bee
-                AddItem(NPC.downedQueenBee, "Fargowiltas", "Abeemination2", 100000, ref shop, ref nextSlot);
+                AddItem(NPC.downedQueenBee, "Fargowiltas", "Abeemination2", 150000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedSerpent, "Disarray", "MoonStone", 80000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedSerpent, "Disarray", "MoonStone", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.nightmaresLoaded)
                 {
-                    AddItem(NPC.downedBoss3, "TrueEater", "SpitterSpawner", 70000, ref shop, ref nextSlot);
+                    AddItem(NPC.downedBoss3, "TrueEater", "SpitterSpawner", 150000, ref shop, ref nextSlot);
                 }
 
                 //magnoliac - btfa ?
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
-                    AddItem(SpiritDownedFlier, "SpiritMod", "JewelCrown", 70000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedFlier, "SpiritMod", "JewelCrown", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.antiarisLoaded)
                 {
-                    AddItem(AntiarisDownedAntlion, "Antiaris", "AntlionDoll", 70000, ref shop, ref nextSlot);
+                    AddItem(AntiarisDownedAntlion, "Antiaris", "AntlionDoll", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.sacredToolsLoaded)
                 {
                     //Flaming Pumpkin
-                    AddItem(SacredDownedPump, "SacredTools", "PumpkinLantern", 70000, ref shop, ref nextSlot);
+                    AddItem(SacredDownedPump, "SacredTools", "PumpkinLantern", 150000, ref shop, ref nextSlot);
                 }
                 //Skeletron
-                AddItem(NPC.downedBoss3, "Fargowiltas", "SuspiciousSkull", 80000, ref shop, ref nextSlot);
+                AddItem(NPC.downedBoss3, "Fargowiltas", "SuspiciousSkull", 150000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.cookieLoaded)
                 {
@@ -809,12 +809,12 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
-                    AddItem(TrelamiumSymphony, "TrelamiumMod", "LamentedPearl", 100000, ref shop, ref nextSlot);
+                    AddItem(TrelamiumSymphony, "TrelamiumMod", "LamentedPearl", 150000, ref shop, ref nextSlot);
                 }
                 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
-                    AddItem(PinkySunlight, "pinkymod", "STItem", 250000, ref shop, ref nextSlot);
+                    AddItem(PinkySunlight, "pinkymod", "STItem", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.w1kLoaded)
@@ -828,7 +828,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.spiritLoaded)
                 {
                     //Starplate Raider
-                    AddItem(SpiritDownedRaider, "SpiritMod", "StarWormSummon", 80000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedRaider, "SpiritMod", "StarWormSummon", 150000, ref shop, ref nextSlot);
                 }
 
                 //the cluster -peculiarity
@@ -836,22 +836,22 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Granite Core
-                    AddItem(ThoriumDownedStorm, "ThoriumMod", "UnstableCore", 80000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedStorm, "ThoriumMod", "UnstableCore", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.ferniumLoaded)
                 {
-                    AddItem(FerniumDownedMargrama, "Fernium", "HardenedSludge", 30000, ref shop, ref nextSlot);
+                    AddItem(FerniumDownedMargrama, "Fernium", "HardenedSludge", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedInfern, "ElementsAwoken", "InfernaceSummon", 100000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedInfern, "ElementsAwoken", "InfernaceSummon", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedCold, "Disarray", "PermaFreeze", 100000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedCold, "Disarray", "PermaFreeze", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
@@ -862,53 +862,54 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.btfaLoaded)
                 {
-                    AddItem(BtfaAcheron, "ForgottenMemories", "Unstable_Wisp", 100000, ref shop, ref nextSlot);
+                    AddItem(BtfaAcheron, "ForgottenMemories", "Unstable_Wisp", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Heater of Worlds
-                    AddItem(TremorDownedHeater, "Tremor", "MoltenHeart", 80000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedHeater, "Tremor", "MoltenHeart", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.sacredToolsLoaded)
                 {
-                    AddItem(SacredDownedHarpy, "SacredTools", "HarpySummon", 60000, ref shop, ref nextSlot);
+                    AddItem(SacredDownedHarpy, "SacredTools", "HarpySummon", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Buried Champion
-                    AddItem(ThoriumDownedChamp, "ThoriumMod", "AncientBlade", 80000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedChamp, "ThoriumMod", "AncientBlade", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
-                    AddItem(EnigmaDownedDio, "Laugicality", "AncientAwakener", 50000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedDio, "Laugicality", "AncientAwakener", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Fungus Beetle
-                    AddItem(TremorDownedFungus, "Tremor", "MushroomCrystal", 70000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedFungus, "Tremor", "MushroomCrystal", 150000, ref shop, ref nextSlot);
                 }
 
                 //alpha cactus worm - joost
 
                 if (Fargowiltas.instance.exodusLoaded)
                 {
-                    AddItem(ExodusDownedHive, "Exodus", "VineSerpent", 80000, ref shop, ref nextSlot);
+                    AddItem(ExodusDownedHive, "Exodus", "VineSerpent", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Star Scouter
-                    AddItem(ThoriumDownedScout, "ThoriumMod", "StarCaller", 80000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedScout, "ThoriumMod", "StarCaller", 150000, ref shop, ref nextSlot);
                 }
+                
                 //Wall of Flesh
-                AddItem(Main.hardMode, "Fargowiltas", "FleshyDoll", 120000, ref shop, ref nextSlot);
+                AddItem(Main.hardMode, "Fargowiltas", "FleshyDoll", 250000, ref shop, ref nextSlot);
                 //All Pre-HM bosses
-                AddItem(Main.hardMode, "Fargowiltas", "DeathBringerFairy", 160000, ref shop, ref nextSlot);
+                AddItem(Main.hardMode, "Fargowiltas", "DeathBringerFairy", 500000, ref shop, ref nextSlot);
             }
 
             #endregion PREHARDMODE BOSSES
@@ -921,61 +922,61 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
-                    AddItem(RedeEye, "Redemption", "XenoEye", 100000, ref shop, ref nextSlot);
+                    AddItem(RedeEye, "Redemption", "XenoEye", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Borean Strider
-                    AddItem(ThoriumDownedStrider, "ThoriumMod", "StriderTear", 100000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedStrider, "ThoriumMod", "StriderTear", 250000, ref shop, ref nextSlot);
                 }
 
                 if(Fargowiltas.instance.ferniumLoaded)
                 {
-                    AddItem(FerniumFernite, "Fernium", "FerniumCore ", 100000, ref shop, ref nextSlot);
+                    AddItem(FerniumFernite, "Fernium", "FerniumCore ", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
-                    AddItem(TrelamiumPyron, "TrelamiumMod", "SolarMandibleTotem", 100000, ref shop, ref nextSlot);
+                    AddItem(TrelamiumPyron, "TrelamiumMod", "SolarMandibleTotem", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.btfaLoaded)
                 {
-                    AddItem(BtfaArtery, "ForgottenMemories", "BloodClot", 110000, ref shop, ref nextSlot);
+                    AddItem(BtfaArtery, "ForgottenMemories", "BloodClot", 250000, ref shop, ref nextSlot);
                 }
 
                 if(Fargowiltas.instance.antiarisLoaded)
                 {
-                    AddItem(AntiarisDownedKeeper, "Antiaris", "PocketCursedMirror", 10000, ref shop, ref nextSlot);
+                    AddItem(AntiarisDownedKeeper, "Antiaris", "PocketCursedMirror", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Alchemaster
-                    AddItem(TremorDownedAlchemaster, "Tremor", "AncientMosaic", 120000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedAlchemaster, "Tremor", "AncientMosaic", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
                     //Infernon
-                    AddItem(SpiritDownedInfer, "SpiritMod", "CursedCloth", 90000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedInfer, "SpiritMod", "CursedCloth", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Cryogen
-                    AddItem(CalamityDownedCryo, "CalamityMod", "CryoKey", 150000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCryo, "CalamityMod", "CryoKey", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedShadows, "Disarray", "EnhancedShadowFragment", 120000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedShadows, "Disarray", "EnhancedShadowFragment", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
                 {
-                    AddItem(ExodusDownedMaster, "Exodus", "GlowingSkull", 100000, ref shop, ref nextSlot);
+                    AddItem(ExodusDownedMaster, "Exodus", "GlowingSkull", 250000, ref shop, ref nextSlot);
                 }
 
                 //ichor blaster/ grasper - true eater
@@ -983,208 +984,213 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Coznix
-                    AddItem(ThoriumDownedBeholder, "ThoriumMod", "VoidLens", 150000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedBeholder, "ThoriumMod", "VoidLens", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.btfaLoaded)
                 {
-                    AddItem(BtfaTitan, "ForgottenMemories", "anomalydetector", 140000, ref shop, ref nextSlot);
+                    AddItem(BtfaTitan, "ForgottenMemories", "anomalydetector", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.w1kLoaded)
                 {
-                    AddItem(W1KDownedRathalos, "W1KModRedux", "MysteryTicket", 380000, ref shop, ref nextSlot);
-                    AddItem(W1KDownedRidley, "W1KModRedux", "MetroidCapsule", 380000, ref shop, ref nextSlot);
+                    AddItem(W1KDownedRathalos, "W1KModRedux", "MysteryTicket", 250000, ref shop, ref nextSlot);
+                    AddItem(W1KDownedRidley, "W1KModRedux", "MetroidCapsule", 250000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Retriever
-                    AddItem(AARetriever, "AAMod", "CyberneticClaw", 100000, ref shop, ref nextSlot);
+                    AddItem(AARetriever, "AAMod", "CyberneticClaw", 250000, ref shop, ref nextSlot);
                     //Raider Ultima
-                    AddItem(AARaider, "AAMod", "CyberneticBell", 100000, ref shop, ref nextSlot);
+                    AddItem(AARaider, "AAMod", "CyberneticBell", 250000, ref shop, ref nextSlot);
                     //Orthrus X
-                    //AddItem(AAOrthrus, "AAMod", "CyberneticChow", 100000, ref shop, ref nextSlot);
+                    //AddItem(AAOrthrus, "AAMod", "CyberneticChow", 250000, ref shop, ref nextSlot);
                     //All Storm bosses
-                    //AddItem((AARetriever && AARaider && AAOrthrus), "Fargowiltas", "CyberneticAmalgam", 350000, ref shop, ref nextSlot);
+                    //AddItem((AARetriever && AARaider && AAOrthrus), "Fargowiltas", "CyberneticAmalgam", 600000, ref shop, ref nextSlot);
                 }
+                
                 //Destroyer
-                AddItem(NPC.downedMechBoss1, "Fargowiltas", "MechWorm", 150000, ref shop, ref nextSlot);
+                AddItem(NPC.downedMechBoss1, "Fargowiltas", "MechWorm", 400000, ref shop, ref nextSlot);
                 //Twins
-                AddItem(NPC.downedMechBoss2, "Fargowiltas", "MechEye", 150000, ref shop, ref nextSlot);
+                AddItem(NPC.downedMechBoss2, "Fargowiltas", "MechEye", 400000, ref shop, ref nextSlot);
                 //Skeletron Prime
-                AddItem(NPC.downedMechBoss3, "Fargowiltas", "MechSkull", 150000, ref shop, ref nextSlot);
+                AddItem(NPC.downedMechBoss3, "Fargowiltas", "MechSkull", 400000, ref shop, ref nextSlot);
                 //All Mechs
-                AddItem((NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3), "Fargowiltas", "MechanicalAmalgam", 350000, ref shop, ref nextSlot);
+                AddItem((NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3), "Fargowiltas", "MechanicalAmalgam", 1000000, ref shop, ref nextSlot);
+                
+                //Ogre
+                AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 400000, ref shop, ref nextSlot);
 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
-                    AddItem(PinkySlime, "pinkymod", "MythrilGel", 350000, ref shop, ref nextSlot);
+                    AddItem(PinkySlime, "pinkymod", "MythrilGel", 400000, ref shop, ref nextSlot);
                 }
                 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
-                    AddItem(TrelamiumPermafrost, "TrelamiumMod", "TemporalLens", 120000, shop: ref shop, nextSlot: ref nextSlot);
+                    AddItem(TrelamiumPermafrost, "TrelamiumMod", "TemporalLens", 400000, shop: ref shop, nextSlot: ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
                     //Dusking
-                    AddItem(SpiritDownedDusking, "SpiritMod", "DuskCrown", 100000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedDusking, "SpiritMod", "DuskCrown", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedLuna, "Disarray", "MastersPresent", 150000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedLuna, "Disarray", "MastersPresent", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Brimstone Elemental
-                    AddItem(CalamityDownedBrim, "CalamityMod", "CharredIdol", 200000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedBrim, "CalamityMod", "CharredIdol", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
                     //Etheral Umbra
-                    AddItem(SpiritDownedUmbra, "SpiritMod", "UmbraSummon", 100000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedUmbra, "SpiritMod", "UmbraSummon", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Motherboard
-                    AddItem(TremorDownedMotherboard, "Tremor", "MechanicalBrain", 120000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedMotherboard, "Tremor", "MechanicalBrain", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedBell, "Disarray", "ABell", 150000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedBell, "Disarray", "ABell", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Aquatic Scourge
-                    AddItem(CalamityDownedAquatic, "CalamityMod", "Seafood", 200000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedAquatic, "CalamityMod", "Seafood", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
-                    AddItem(EnigmaDownedAnnih, "Laugicality", "MechanicalMonitor", 120000, ref shop, ref nextSlot);
-                    AddItem(EnigmaDownedSlyber, "Laugicality", "SteamCrown ", 120000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedAnnih, "Laugicality", "MechanicalMonitor", 400000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedSlyber, "Laugicality", "SteamCrown ", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedScourge, "ElementsAwoken", "ScourgeFighterSummon", 150000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedScourge, "ElementsAwoken", "ScourgeFighterSummon", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedReg, "ElementsAwoken", "RegarothSummon", 170000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedReg, "ElementsAwoken", "RegarothSummon", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
-                    AddItem(EnigmaDownedTrain, "Laugicality", "SuspiciousTrainWhistle", 150000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedTrain, "Laugicality", "SuspiciousTrainWhistle", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedMech, "Disarray", "MechPrism", 250000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedMech, "Disarray", "MechPrism", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.sacredToolsLoaded)
                 {
-                    AddItem(SacredDownedHarpy2, "SacredTools", "HarpySummon2", 140000, ref shop, ref nextSlot);
+                    AddItem(SacredDownedHarpy2, "SacredTools", "HarpySummon2", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Lich
-                    AddItem(ThoriumDownedLich, "ThoriumMod", "LichCatalyst", 150000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedLich, "ThoriumMod", "LichCatalyst", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Fairy Queen
-                    AddItem(TremorDownedPixie, "Tremor", "PixieinaJar", 120000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedPixie, "Tremor", "PixieinaJar", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Calamitas
-                    AddItem(CalamityDownedCalamitas, "CalamityMod", "BlightedEyeball", 200000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCalamitas, "CalamityMod", "BlightedEyeball", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {  
                     //Illumant Master
-                    AddItem(SpiritDownedIlluminant, "SpiritMod", "ChaosFire", 120000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedIlluminant, "SpiritMod", "ChaosFire", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.w1kLoaded)
                 {
                     AddItem(W1KDownedOkiku, "W1KModRedux", "OminousMask", 400000, ref shop, ref nextSlot);
                 }
+                
                 //Plantera
-                AddItem(NPC.downedPlantBoss, "Fargowiltas", "Plantera", 160000, ref shop, ref nextSlot);
+                AddItem(NPC.downedPlantBoss, "Fargowiltas", "Plantera", 500000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
-                    AddItem(RedeSlayer, "Redemption", "KingSummon", 100000, ref shop, ref nextSlot);
+                    AddItem(RedeSlayer, "Redemption", "KingSummon", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.pinkyLoaded)
                 {
-                    AddItem(PinkyValdaris, "pinkymod", "ValdarisItem", 400000, ref shop, ref nextSlot);
+                    AddItem(PinkyValdaris, "pinkymod", "ValdarisItem", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Leviathan
-                    AddItem(CalamityDownedLevi, "Fargowiltas", "LeviathanSummon", 300000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedLevi, "Fargowiltas", "LeviathanSummon", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
                 {
-                    AddItem(ExodusDownedHeart, "Exodus", "JungleCrown", 120000, ref shop, ref nextSlot);
+                    AddItem(ExodusDownedHeart, "Exodus", "JungleCrown", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
-                    AddItem(EnigmaDownedEther, "Laugicality", "EmblemOfEtheria", 200000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedEther, "Laugicality", "EmblemOfEtheria", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {  
                     //Frost King
-                    AddItem(TremorDownedFrost, "Tremor", "FrostCrown", 120000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedFrost, "Tremor", "FrostCrown", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Astrageldon
-                    AddItem(CalamityDownedAstragel, "CalamityMod", "AstralChunk", 250000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedAstragel, "CalamityMod", "AstralChunk", 500000, ref shop, ref nextSlot);
                     //Astrum Deus
-                    AddItem(CalamityDownedAstrum, "CalamityMod", "Starcore", 300000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedAstrum, "CalamityMod", "Starcore", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Wall of Shadows
-                    AddItem(TremorDownedWall, "Tremor", "ShadowRelic", 120000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedWall, "Tremor", "ShadowRelic", 500000, ref shop, ref nextSlot);
                 }
+                
                 //Golem
-                AddItem(NPC.downedGolemBoss, "Fargowiltas", "LihzahrdPowerCell2", 180000, ref shop, ref nextSlot);
-                //Ogre
-                AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 150000, ref shop, ref nextSlot);
+                AddItem(NPC.downedGolemBoss, "Fargowiltas", "LihzahrdPowerCell2", 600000, ref shop, ref nextSlot);
+                
                 //Betsy
-                AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 160000, ref shop, ref nextSlot);
+                AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 600000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Pantheon
-                    //AddItem(AAPantheon, "AAMod", "Observatory", 170000, ref shop, ref nextSlot);
+                    //AddItem(AAPantheon, "AAMod", "Observatory", 600000, ref shop, ref nextSlot);
                 }
                 
                 if(Fargowiltas.instance.pinkyLoaded)
@@ -1194,36 +1200,36 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedCelestial, "ElementsAwoken", "CelestialSummon", 200000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedCelestial, "ElementsAwoken", "CelestialSummon", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedPerma, "ElementsAwoken", "PermafrostSummon", 250000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedPerma, "ElementsAwoken", "PermafrostSummon", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedObsid, "ElementsAwoken", "ObsidiousSummon", 200000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedObsid, "ElementsAwoken", "ObsidiousSummon", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Abyssion
-                    AddItem(ThoriumDownedAbyss, "Fargowiltas", "AbyssionSummon", 150000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedAbyss, "Fargowiltas", "AbyssionSummon", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Cog Lord
-                    AddItem(TremorDownedCog, "Tremor", "ArtifactEngine", 120000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedCog, "Tremor", "ArtifactEngine", 600000, ref shop, ref nextSlot);
                     //Mothership/Cyber King
-                    AddItem(TremorDownedCyber, "Tremor", "AdvancedCircuit", 150000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedCyber, "Tremor", "AdvancedCircuit", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.nightmaresLoaded)
                 {
-                    AddItem(NPC.downedPlantBoss, "TrueEater", "MimicKey", 150000, ref shop, ref nextSlot);
+                    AddItem(NPC.downedPlantBoss, "TrueEater", "MimicKey", 600000, ref shop, ref nextSlot);
                 }
 
                 //the ancient - exodus
@@ -1231,7 +1237,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Plaguebringer Goliath
-                    AddItem(CalamityDownedPlague, "CalamityMod", "Abomination", 500000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedPlague, "CalamityMod", "Abomination", 600000, ref shop, ref nextSlot);
                 }
 
                 //behemoth - true eater
@@ -1239,78 +1245,78 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.crystiliumLoaded)
                 {
                     //Crystal King
-                    AddItem(CrystiliumDownedKing, "CrystiliumMod", "CrypticCrystal", 140000, ref shop, ref nextSlot);
+                    AddItem(CrystiliumDownedKing, "CrystiliumMod", "CrypticCrystal", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.w1kLoaded)
                 {
-                    AddItem(W1KDownedDeath, "W1KModRedux", "DungeonMasterGuide", 500000, ref shop, ref nextSlot);
+                    AddItem(W1KDownedDeath, "W1KModRedux", "DungeonMasterGuide", 600000, ref shop, ref nextSlot);
                 }
 
-                AddItem(NPC.downedFishron, "Fargowiltas", "TruffleWorm2", 180000, ref shop, ref nextSlot);
+                AddItem(NPC.downedFishron, "Fargowiltas", "TruffleWorm2", 600000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.blueMagicLoaded)
                 {
-                    AddItem(BlueDownedPhantom, "Bluemagic", "PaladinEmblem", 180000, ref shop, ref nextSlot);
+                    AddItem(BlueDownedPhantom, "Bluemagic", "PaladinEmblem", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedAque, "ElementsAwoken", "AqueousSummon", 270000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedAque, "ElementsAwoken", "AqueousSummon", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.pumpkingLoaded)
                 {
-                    AddItem(PumpkingDownedHorse, "Pumpking", "PumpkingSoul", 160000, ref shop, ref nextSlot);
+                    AddItem(PumpkingDownedHorse, "Pumpking", "PumpkingSoul", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {   
                     //Atlas
-                    AddItem(SpiritDownedAtlas, "SpiritMod", "StoneSkin", 150000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedAtlas, "SpiritMod", "StoneSkin", 600000, ref shop, ref nextSlot);
                 }
-
-               
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Ravager
-                    AddItem(CalamityDownedRav, "CalamityMod", "AncientMedallion", 500000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedRav, "CalamityMod", "AncientMedallion", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.blueMagicLoaded)
                 {
-                    AddItem(BlueDownedAbom, "Bluemagic", "FoulOrb", 250000, ref shop, ref nextSlot);
+                    AddItem(BlueDownedAbom, "Bluemagic", "FoulOrb", 600000, ref shop, ref nextSlot);
                 }
                 //Lunatic Cultist
-                AddItem(NPC.downedAncientCultist, "Fargowiltas", "CultistSummon", 50000, ref shop, ref nextSlot);
+                AddItem(NPC.downedAncientCultist, "Fargowiltas", "CultistSummon", 750000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedEye, "ElementsAwoken", "EyeSummon", 150000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedEye, "ElementsAwoken", "EyeSummon", 750000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedDragon, "ElementsAwoken", "AncientDragonSummon", 150000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedDragon, "ElementsAwoken", "AncientDragonSummon", 750000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
-                    AddItem(RedeCleaver, "Redemption", "CorruptedHeroSword", 2000000, ref shop, ref nextSlot);
-                    AddItem(RedeGigipede, "Redemption", "CorruptedWormMedallion", 3000000, ref shop, ref nextSlot);
+                    AddItem(RedeCleaver, "Redemption", "CorruptedHeroSword", 750000, ref shop, ref nextSlot);
+                    AddItem(RedeGigipede, "Redemption", "CorruptedWormMedallion", 750000, ref shop, ref nextSlot);
                 }
+                
                 //Lunar Pillars
-                AddItem(NPC.downedTowers, "Fargowiltas", "PillarSummon", 200000, ref shop, ref nextSlot);
+                AddItem(NPC.downedTowers, "Fargowiltas", "PillarSummon", 750000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedGuardian, "ElementsAwoken", "GuardianSummon", 300000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedGuardian, "ElementsAwoken", "GuardianSummon", 750000, ref shop, ref nextSlot);
                 }
+                
                 //Moon Lord
-                AddItem(NPC.downedMoonlord, "Fargowiltas", "CelestialSigil2", 500000, ref shop, ref nextSlot);
+                AddItem(NPC.downedMoonlord, "Fargowiltas", "CelestialSigil2", 1000000, ref shop, ref nextSlot);
                 //All Vanilla Bosses
-                AddItem(NPC.downedMoonlord, "Fargowiltas", "MutantVoodoo", 1000000, ref shop, ref nextSlot);
+                AddItem(NPC.downedMoonlord, "Fargowiltas", "MutantVoodoo", 2000000, ref shop, ref nextSlot);
             }
 
             #endregion HARDMODE BOSSES
@@ -1324,50 +1330,50 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Equinox Worms
-                    AddItem(AAEquinox, "AAMod", "EquinoxWorm", 150000, ref shop, ref nextSlot);
+                    AddItem(AAEquinox, "AAMod", "EquinoxWorm", 1000000, ref shop, ref nextSlot);
                     //Akuma
-                    //AddItem(AAZero, "AAMod", "SunSigil", 250000, ref shop, ref nextSlot);
+                    //AddItem(AAZero, "AAMod", "SunSigil", 1000000, ref shop, ref nextSlot);
                     //Akuma Awakened
-                    //AddItem(AAZeroA, "AAMod", "DraconianRune", 400000, ref shop, ref nextSlot);
+                    //AddItem(AAZeroA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
                     //Yamata
-                    //AddItem(AAZero, "AAMod", "MoonSigil", 250000, ref shop, ref nextSlot);
+                    //AddItem(AAZero, "AAMod", "MoonSigil", 1000000, ref shop, ref nextSlot);
                     //Yamata Awakened
-                    //AddItem(AAZeroA, "AAMod", "DreadRune", 400000, ref shop, ref nextSlot);
+                    //AddItem(AAZeroA, "AAMod", "DreadRune", 1000000, ref shop, ref nextSlot);
                 }
                 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
-                    AddItem(TrelamiumAzolinth, "TrelamiumMod", "PlanetaryBeacon", 250000, ref shop, ref nextSlot);
+                    AddItem(TrelamiumAzolinth, "TrelamiumMod", "PlanetaryBeacon", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedSludge, "Disarray", "VileSlimeBall", 500000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedSludge, "Disarray", "VileSlimeBall", 1000000, ref shop, ref nextSlot);
                 }
                 if (Fargowiltas.instance.spiritLoaded)
                 {
                     //Overseer
-                    AddItem(SpiritDownedOverseer, "SpiritMod", "SpiritIdol", 200000, ref shop, ref nextSlot);
+                    AddItem(SpiritDownedOverseer, "SpiritMod", "SpiritIdol", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.pumpkingLoaded)
                 {
-                    AddItem(PumpkingDownedTerra, "Pumpking", "TerraCore", 500000, ref shop, ref nextSlot);
+                    AddItem(PumpkingDownedTerra, "Pumpking", "TerraCore", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
-                    AddItem(TremorDownedEmperor, "Tremor", "EmperorCrown", 200000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedEmperor, "Tremor", "EmperorCrown", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
-                    AddItem(TrelamiumParadox, "TrelamiumMod", "WarpedMirror", 400000, ref shop, ref nextSlot);
+                    AddItem(TrelamiumParadox, "TrelamiumMod", "WarpedMirror", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedVoid, "ElementsAwoken", "VoidLeviathanSummon", 750000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedVoid, "ElementsAwoken", "VoidLeviathanSummon", 1000000, ref shop, ref nextSlot);
                 }
 
                 //abomination rematch - blue
@@ -1375,19 +1381,19 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Brutalisk
-                    AddItem(TremorDownedBrutallisk, "Tremor", "RoyalEgg", 200000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedBrutallisk, "Tremor", "RoyalEgg", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.sacredToolsLoaded)
                 {   
                     //Abbadon
-                    AddItem(SacredDownedAbbadon, "SacredTools", "ShadowWrathSummonItem", 200000, ref shop, ref nextSlot);
+                    AddItem(SacredDownedAbbadon, "SacredTools", "ShadowWrathSummonItem", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Profaned Guardians
-                    AddItem(CalamityDownedGuardian, "CalamityMod", "ProfanedShard", 10000000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedGuardian, "CalamityMod", "ProfanedShard", 5000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.joostLoaded)
@@ -1399,35 +1405,35 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Space Whale
-                    AddItem(TremorDownedWhale, "Tremor", "CosmicKrill", 200000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedWhale, "Tremor", "CosmicKrill", 5000000, ref shop, ref nextSlot);
                     //Trinity
-                    AddItem(TremorDownedTrinity, "Tremor", "StoneofKnowledge", 250000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedTrinity, "Tremor", "StoneofKnowledge", 5000000, ref shop, ref nextSlot);
                     //Andas
-                    AddItem(TremorDownedAndas, "Tremor", "InfernoSkull", 300000, ref shop, ref nextSlot);
+                    AddItem(TremorDownedAndas, "Tremor", "InfernoSkull", 5000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedDeva, "Disarray", "EyeOfSouls", 600000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedDeva, "Disarray", "EyeOfSouls", 5000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Providence
-                    AddItem(CalamityDownedProv, "CalamityMod", "ProfanedCore", 15000000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedProv, "CalamityMod", "ProfanedCore", 10000000, ref shop, ref nextSlot);
                 }
 
                 //void marshal -true eater
 
                 if (Fargowiltas.instance.sacredToolsLoaded)
                 {
-                    AddItem(SacredDownedSerpent, "SacredTools", "SerpentSummon", 1000000, ref shop, ref nextSlot);
+                    AddItem(SacredDownedSerpent, "SacredTools", "SerpentSummon", 10000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.grealmLoaded)
                 {
                     //Mantid Matriarch
-                    AddItem(GRealmDownedMantid, "GRealm", "CrownOfMantodea", 700000, ref shop, ref nextSlot);
+                    AddItem(GRealmDownedMantid, "GRealm", "CrownOfMantodea", 10000000, ref shop, ref nextSlot);
                     //Rift Daemon - When he's released
                 }
 
@@ -1438,24 +1444,24 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedMeteor, "Disarray", "RandomSpaceRock", 750000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedMeteor, "Disarray", "RandomSpaceRock", 10000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.sacredToolsLoaded)
                 {
                     //Lunarians
-                    AddItem(SacredDownedLunar, "SacredTools", "MoonEmblem", 2000000, ref shop, ref nextSlot);
+                    AddItem(SacredDownedLunar, "SacredTools", "MoonEmblem", 10000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Ragnorok
-                    AddItem(ThoriumDownedRag, "ThoriumMod", "RagSymbol", 400000, ref shop, ref nextSlot);
+                    AddItem(ThoriumDownedRag, "ThoriumMod", "RagSymbol", 10000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.ancientsLoaded)
                 {
-                    AddItem(AncientsDownedWorms, "EchoesoftheAncients", "Wyrm_Rune", 1000000, ref shop, ref nextSlot);
+                    AddItem(AncientsDownedWorms, "EchoesoftheAncients", "Wyrm_Rune", 10000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.joostLoaded)
@@ -1467,7 +1473,7 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
-                    AddItem(DisarrayDownedDungeon, "Disarray", "DungeonAmalgamation", 1000000, ref shop, ref nextSlot);
+                    AddItem(DisarrayDownedDungeon, "Disarray", "DungeonAmalgamation", 15000000, ref shop, ref nextSlot);
                 }
 
                 //spirit of purity
@@ -1475,9 +1481,9 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Zero
-                    AddItem(AAZero, "AAMod", "ZeroTesseract", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAZero, "AAMod", "ZeroTesseract", 15000000, ref shop, ref nextSlot);
                     //Zero Awakened
-                    AddItem(AAZeroA, "AAMod", "ZeroRune", 2000000, ref shop, ref nextSlot);
+                    AddItem(AAZeroA, "AAMod", "ZeroRune", 15000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
@@ -1498,7 +1504,7 @@ namespace Fargowiltas.NPCs
                     //AddItem(AAZeroA, "AAMod", "ChaosRune", 40000000, ref shop, ref nextSlot);
                 }
                 //Pain
-                AddItem(true, "Fargowiltas", "AncientSeal", 10000000, ref shop, ref nextSlot);
+                AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);
             }
 
             #endregion POST MOONLORD BOSSES
