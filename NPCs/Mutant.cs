@@ -262,8 +262,8 @@ namespace Fargowiltas.NPCs
         public bool AAEquinox => AAMod.AAWorld.downedEquinox;
         //public bool AAYamata => AAMod.AAWorld.downedYamata;
         //public bool AAYamataA => AAMod.AAWorld.downedYamataA;
-        //public bool AAAkuma => AAMod.AAWorld.downedAkuma;
-        //public bool AAAkumaA => AAMod.AAWorld.downedAAAkumaA;
+        public bool AAAkuma => AAMod.AAWorld.downedAkuma;
+        public bool AAAkumaA => AAMod.AAWorld.downedAkumaA;
         public bool AAZero => AAMod.AAWorld.downedZero;
         public bool AAZeroA => AAMod.AAWorld.downedZeroA;
         //public bool AAAkumata => AAMod.AAWorld.downedAkumata;
@@ -556,9 +556,9 @@ namespace Fargowiltas.NPCs
                     AddItem(RedeChicken, "Redemption", "EggCrown", 20000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.instance.AALoaded)
+                if (Fargowiltas.instance.aaLoaded)
                 {
-                    //The Mighty King Chicken
+                    //Mushroom Monarch
                     AddItem(AAMonarch, "AAMod", "IntimidatingMushroom", 2000, ref shop, ref nextSlot);
                 }
 
@@ -1339,9 +1339,9 @@ namespace Fargowiltas.NPCs
                     //Equinox Worms
                     AddItem(AAEquinox, "AAMod", "EquinoxWorm", 1000000, ref shop, ref nextSlot);
                     //Akuma
-                    //AddItem(AAZero, "AAMod", "SunSigil", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAZero, "AAMod", "DraconianSigil", 1000000, ref shop, ref nextSlot);
                     //Akuma Awakened
-                    //AddItem(AAZeroA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAZeroA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
                     //Yamata
                     //AddItem(AAZero, "AAMod", "MoonSigil", 1000000, ref shop, ref nextSlot);
                     //Yamata Awakened
