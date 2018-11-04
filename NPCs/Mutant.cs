@@ -251,6 +251,7 @@ namespace Fargowiltas.NPCs
         public bool TrelamiumSymphony => TrelamiumMod.TrelamiumModWorld.downedSymphony;
 
         //Ancients Awakened
+        public bool AAMonarch => AAMod.AAWorld.downedMonarch;
         public bool AAGrips => AAMod.AAWorld.downedGrips;
         public bool AABrood => AAMod.AAWorld.downedBrood;
         //public bool AAHydra => AAMod.AAWorld.downedHydra;
@@ -556,6 +557,12 @@ namespace Fargowiltas.NPCs
                 {
                     //The Mighty King Chicken
                     AddItem(RedeChicken, "Redemption", "EggCrown", 2000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.AALoaded)
+                {
+                    //The Mighty King Chicken
+                    AddItem(AAMonarch, "AAMod", "IntimidatingMushroom", 2000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
