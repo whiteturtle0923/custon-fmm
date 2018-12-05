@@ -254,14 +254,13 @@ namespace Fargowiltas.NPCs
         public bool AAMonarch => AAMod.AAWorld.downedMonarch;
         public bool AAGrips => AAMod.AAWorld.downedGrips;
         public bool AABrood => AAMod.AAWorld.downedBrood;
-        //public bool AAHydra => AAMod.AAWorld.downedHydra;
+        public bool AAHydra => AAMod.AAWorld.downedHydra;
         public bool AARetriever => AAMod.AAWorld.downedRetriever;
         public bool AARaider => AAMod.AAWorld.downedRaider;
-        //public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
-        //public bool AAPantheon => AAMod.AAWorld.downedPantheon;
+        public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
         public bool AAEquinox => AAMod.AAWorld.downedEquinox;
-        //public bool AAYamata => AAMod.AAWorld.downedYamata;
-        //public bool AAYamataA => AAMod.AAWorld.downedYamataA;
+        public bool AAYamata => AAMod.AAWorld.downedYamata;
+        public bool AAYamataA => AAMod.AAWorld.downedYamataA;
         public bool AAAkuma => AAMod.AAWorld.downedAkuma;
         public bool AAAkumaA => AAMod.AAWorld.downedAkumaA;
         public bool AAZero => AAMod.AAWorld.downedZero;
@@ -553,7 +552,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //The Mighty King Chicken
-                    AddItem(RedeChicken, "Redemption", "EggCrown", 20000, ref shop, ref nextSlot);
+                    AddItem(RedeChicken, "Redemption", "EggCrown", 2000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.aaLoaded)
@@ -688,7 +687,7 @@ namespace Fargowiltas.NPCs
                     //Broodmother
                     AddItem(AABrood, "AAMod", "DragonBell", 100000, ref shop, ref nextSlot);
                     //Hydra
-                    //AddItem(AAHydra, "AAMod", "HydraChow", 100000, ref shop, ref nextSlot);
+                    AddItem(AAHydra, "AAMod", "HydraChow", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.redemptionLoaded)
@@ -1012,7 +1011,7 @@ namespace Fargowiltas.NPCs
                     //Raider Ultima
                     AddItem(AARaider, "AAMod", "CyberneticBell", 250000, ref shop, ref nextSlot);
                     //Orthrus X
-                    //AddItem(AAOrthrus, "AAMod", "CyberneticChow", 250000, ref shop, ref nextSlot);
+                    AddItem(AAOrthrus, "AAMod", "ScrapHeap", 250000, ref shop, ref nextSlot);
                     //All Storm bosses
                     //AddItem((AARetriever && AARaider && AAOrthrus), "Fargowiltas", "CyberneticAmalgam", 600000, ref shop, ref nextSlot);
                 }
@@ -1193,12 +1192,6 @@ namespace Fargowiltas.NPCs
                 
                 //Betsy
                 AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 600000, ref shop, ref nextSlot);
-
-                if (Fargowiltas.instance.aaLoaded)
-                {
-                    //Pantheon
-                    //AddItem(AAPantheon, "AAMod", "Observatory", 600000, ref shop, ref nextSlot);
-                }
                 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
@@ -1343,9 +1336,9 @@ namespace Fargowiltas.NPCs
                     //Akuma Awakened
                     AddItem(AAZeroA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
                     //Yamata
-                    //AddItem(AAZero, "AAMod", "MoonSigil", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAZero, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
                     //Yamata Awakened
-                    //AddItem(AAZeroA, "AAMod", "DreadRune", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAZeroA, "AAMod", "DreadRune", 1000000, ref shop, ref nextSlot);
                 }
                 
                 if (Fargowiltas.instance.trelamiumLoaded)
