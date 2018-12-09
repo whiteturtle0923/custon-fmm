@@ -265,9 +265,10 @@ namespace Fargowiltas.NPCs
         public bool AAAkumaA => AAMod.AAWorld.downedAkumaA;
         public bool AAZero => AAMod.AAWorld.downedZero;
         public bool AAZeroA => AAMod.AAWorld.downedZeroA;
-        //public bool AAAkumata => AAMod.AAWorld.downedAkumata;
-        //public bool AAAkumataA => AAMod.AAWorld.downedAkumataA;
-      
+        public bool AAShen => AAMod.AAWorld.downedShen;
+        public bool AAShenA => AAMod.AAWorld.downedShenA;
+        public bool AAIZ => AAMod.AAWorld.downedIZ;
+
         //pinky
         public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
         public bool PinkyValdaris => pinkymod.Global.Pinkyworld.downedValdaris;
@@ -1498,10 +1499,12 @@ namespace Fargowiltas.NPCs
                 
                 if (Fargowiltas.instance.aaLoaded)
                 {
-                    //Akumata
-                    //AddItem(AAZero, "AAMod", "ChaosSigil", 20000000, ref shop, ref nextSlot);
-                    //Akumata Awakened
-                    //AddItem(AAZeroA, "AAMod", "ChaosRune", 40000000, ref shop, ref nextSlot);
+                    //Shen Doragon
+                    AddItem(AAShen, "AAMod", "ChaosSigil", 20000000, ref shop, ref nextSlot);
+                    //Infinity Zero
+                    AddItem(AAIZ, "AAMod", "InfinityOverloader", 30000000, ref shop, ref nextSlot);
+                    //Shen Doragon Awakened
+                    AddItem(AAShenA, "AAMod", "ChaosRune", 40000000, ref shop, ref nextSlot);
                 }
                 //Pain
                 AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);
