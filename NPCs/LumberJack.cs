@@ -226,6 +226,25 @@ namespace Fargowiltas.NPCs
                 }
             }
 
+            if (Fargowiltas.instance.redemptionLoaded)
+            {
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Redemption").ItemType("AncientWood"));
+                shop.item[nextSlot].value = 20;
+                nextSlot++;
+            }
+
+            if (Fargowiltas.instance.aaLoaded)
+            {
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("Razewood"));
+                shop.item[nextSlot].value = 50;
+                nextSlot++;
+
+                
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("Bogwood"));
+                shop.item[nextSlot].value = 50;
+                nextSlot++;
+            }
+
             shop.item[nextSlot].SetDefaults(ItemID.Cactus);
             shop.item[nextSlot].value = 10;
             nextSlot++;
