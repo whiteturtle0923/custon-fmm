@@ -1,14 +1,14 @@
 NEW UPDATE - v 1.0
 
 -Removed Souls, Enchantments, most Weapons, Masochist Mode, all useless Energizers, and anything else that is totally unbalanced
--Removed NPCs dropping their costumes, extra enemy drops, and some recipes due to seasonal event changes
+-Removed NPCs dropping their costumes, extra enemy drops, and some recipes
 
 NPCs
 -Mutant now sells more boss summons from Calamity, GRealm, BTFA, W1K, and Cookie Mod
 -Mutant has new support for Fernium, Elements Awoken, Antiaris, Disarray, Enigma, Tralamium Remastered, Pinky Mod, and Ancients Awakened
 -Mutant has a bunch of new quotes
 -Overloader is now in all of the Mutant's shops
--Mutant prices slightly adjusted
+-Mutant prices increased across the board
 -Mutant will actually drop the Mutant Grab Bag now
 -Mutant Grab Bag drops fixed
 -Mutant shop cycling bugs fixed
@@ -44,7 +44,7 @@ ITEMS
 -Added Abominationn and LumberJack head vanity
 -Added Zealot's Possession, Outsider's Portal, and Battered Club
 -Added Runic Power Cell and Pandora's Tesseract
--Added more Renewals for each solution type
+-Added Corruption, Crimson, Hallowed, and Mushroom Renewals
 -Added Ech Painting, Auto House, Stat Sheet, The Ancient Master's Map of the Lost King's Great Ancestors, Super Dummy completely stolen from Terry, Ice Crate, Shadow Crate, Shadow Lockbox, and Regal Statue (which replaces Bake Sale)
 -Added several more thrown variants including yoyos and flails
 -Reverted damage increases on thrown weapons and you now right click to convert back and forth
@@ -57,8 +57,7 @@ ITEMS
 -Forgotten Claw and Siren's Pearl now don't exist without their respective mods
 -Added a new sound effect to Battle Cry
 -Altered Crucible of the Cosmos recipe and it functions as a few more crafting stations
--Bombs no longer destroy things they shouldn't like dungeon or temple until certain bosses are killed (except the nuke of course)
--Galactic Reformer now crafted at a Hellforge
+-Bombs no longer destroy things they shouldn't like dungeon or temple until certain bosses are killed
 -Changed Boom Shuriken to be an actual explosive
 
 -Renamed Bloody Spine to Red Stained Spine
@@ -69,7 +68,7 @@ ITEMS
 -Fixed Troll Bomb bug where bombs wouldn't explode
 
 MISC
--Added a Hotkey that teleports you home when you have a magic mirror, ice mirror, or a cell phone in your inventory
+-Added a Hotkey that teleports you home when you have a Magic Mirror, Ice Mirror, or a Cell Phone in your inventory
 -Press the grappling hook hotkey to teleport with Rod of discord in your inventory
 -Halloween and Christmas seasons are always active to start, using a Goodie Bag or Present will toggle them
 -Wooden and Golden Crates have more drops to ensure all chest loot is not missable

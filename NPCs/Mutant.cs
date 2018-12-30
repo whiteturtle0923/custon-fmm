@@ -260,13 +260,13 @@ namespace Fargowiltas.NPCs
         public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
         public bool AAEquinox => AAMod.AAWorld.downedEquinox;
         public bool AAYamata => AAMod.AAWorld.downedYamata;
-        public bool AAYamataA => AAMod.AAWorld.downedYamataA;
+        //public bool AAYamataA => AAMod.AAWorld.downedYamataA;
         public bool AAAkuma => AAMod.AAWorld.downedAkuma;
-        public bool AAAkumaA => AAMod.AAWorld.downedAkumaA;
+        //public bool AAAkumaA => AAMod.AAWorld.downedAkumaA;
         public bool AAZero => AAMod.AAWorld.downedZero;
-        public bool AAZeroA => AAMod.AAWorld.downedZeroA;
+        //public bool AAZeroA => AAMod.AAWorld.downedZeroA;
         public bool AAShen => AAMod.AAWorld.downedShen;
-        public bool AAShenA => AAMod.AAWorld.downedShenA;
+        //public bool AAShenA => AAMod.AAWorld.downedShenA;
         public bool AAIZ => AAMod.AAWorld.downedIZ;
 
         //pinky
@@ -1335,11 +1335,11 @@ namespace Fargowiltas.NPCs
                     //Akuma
                     AddItem(AAZero, "AAMod", "DraconianSigil", 1000000, ref shop, ref nextSlot);
                     //Akuma Awakened
-                    AddItem(AAZeroA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
+                    //AddItem(AAZeroA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
                     //Yamata
                     AddItem(AAZero, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
                     //Yamata Awakened
-                    AddItem(AAZeroA, "AAMod", "DreadRune", 1000000, ref shop, ref nextSlot);
+                    //AddItem(AAZeroA, "AAMod", "DreadRune", 1000000, ref shop, ref nextSlot);
                 }
                 
                 if (Fargowiltas.instance.trelamiumLoaded)
@@ -1484,7 +1484,7 @@ namespace Fargowiltas.NPCs
                     //Zero
                     AddItem(AAZero, "AAMod", "ZeroTesseract", 15000000, ref shop, ref nextSlot);
                     //Zero Awakened
-                    AddItem(AAZeroA, "AAMod", "ZeroRune", 15000000, ref shop, ref nextSlot);
+                    //AddItem(AAZeroA, "AAMod", "ZeroRune", 15000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
@@ -1504,7 +1504,7 @@ namespace Fargowiltas.NPCs
                     //Infinity Zero
                     AddItem(AAIZ, "AAMod", "InfinityOverloader", 30000000, ref shop, ref nextSlot);
                     //Shen Doragon Awakened
-                    AddItem(AAShenA, "AAMod", "ChaosRune", 40000000, ref shop, ref nextSlot);
+                    //AddItem(AAShenA, "AAMod", "ChaosRune", 40000000, ref shop, ref nextSlot);
                 }
                 //Pain
                 AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);

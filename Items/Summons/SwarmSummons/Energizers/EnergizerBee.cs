@@ -4,12 +4,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
 {
     public class EnergizerBee : ModItem
     {
-        //until it has a use
-        public override bool Autoload(ref string name)
-        {
-            return false;
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Buzzy Energizer");
