@@ -467,7 +467,7 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.MartianSaucerCore, -1, -1, "");
                         break;
                     case NPCID.DungeonGuardian:
-                        Swarm(npc, NPCID.DungeonGuardian, -1, -1, "");
+                        Swarm(npc, NPCID.DungeonGuardian, -1, ItemID.BoneKey, "");
                         break;
                 }
 

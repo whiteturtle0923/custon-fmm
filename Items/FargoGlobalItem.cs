@@ -28,6 +28,18 @@ namespace Fargowiltas.Items
                 TooltipLine line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
                 tooltips.Add(line);
             }
+
+            if (item.type == ItemID.GoodieBag)
+            {
+                TooltipLine line = new TooltipLine(mod, "help", "Also use this to toggle the Halloween season");
+                tooltips.Add(line);
+            }
+
+            if (item.type == ItemID.Present)
+            {
+                TooltipLine line = new TooltipLine(mod, "help", "Also use this to toggle the Christmas season");
+                tooltips.Add(line);
+            }
         }
 
         public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)

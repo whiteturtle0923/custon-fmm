@@ -10,7 +10,9 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Skull Chain Necklace");
-            Tooltip.SetDefault(@"Summons several Skeletrons during the night\nSummons several Dungeon Guardians during the day");
+            Tooltip.SetDefault(
+@"Summons several Skeletrons during the night
+Summons several Dungeon Guardians during the day");
         }
 
         public override void SetDefaults()
