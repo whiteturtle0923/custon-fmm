@@ -260,13 +260,13 @@ namespace Fargowiltas.NPCs
         public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
         public bool AAEquinox => AAMod.AAWorld.downedEquinox;
         public bool AAYamata => AAMod.AAWorld.downedYamata;
-        public bool AAYamataA => AAMod.AAWorld.downedYamataA;
+        public bool AAYamataA => AAMod.AAWorld.downedYamata && Main.expertMode;
         public bool AAAkuma => AAMod.AAWorld.downedAkuma;
-        public bool AAAkumaA => AAMod.AAWorld.downedAkumaA;
+        public bool AAAkumaA => AAMod.AAWorld.downedAkuma && Main.expertMode;
         public bool AAZero => AAMod.AAWorld.downedZero;
-        public bool AAZeroA => AAMod.AAWorld.downedZeroA;
+        public bool AAZeroA => AAMod.AAWorld.downedZero && Main.expertMode;
         public bool AAShen => AAMod.AAWorld.downedShen;
-        public bool AAShenA => AAMod.AAWorld.downedShenA;
+        public bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
         public bool AAIZ => AAMod.AAWorld.downedIZ;
 
         //pinky
@@ -1333,13 +1333,13 @@ namespace Fargowiltas.NPCs
                     //Equinox Worms
                     AddItem(AAEquinox, "AAMod", "EquinoxWorm", 1000000, ref shop, ref nextSlot);
                     //Akuma
-                    AddItem(AAZero, "AAMod", "DraconianSigil", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAAkuma, "AAMod", "DraconianSigil", 1000000, ref shop, ref nextSlot);
                     //Akuma Awakened
-                    AddItem(AAZeroA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAAkumaA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
                     //Yamata
-                    AddItem(AAZero, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAYamata, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
                     //Yamata Awakened
-                    AddItem(AAZeroA, "AAMod", "DreadRune", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAYamataA, "AAMod", "DreadRune", 1000000, ref shop, ref nextSlot);
                 }
                 
                 if (Fargowiltas.instance.trelamiumLoaded)
