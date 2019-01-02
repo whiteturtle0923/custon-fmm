@@ -193,7 +193,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
         {
             int i = NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID);
             Main.NewText($"{name} has awoken!", 175, 75);
-            NetMessage.SendData(23, -1, -1, null, NPCID, 0f, 0f, 0f, 0);
+            //NetMessage.SendData(23, -1, -1, null, NPCID, 0f, 0f, 0f, 0);
             return i;
         }
         
@@ -201,7 +201,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
         {
             int i = NPC.NewNPC((int)player.position.X, (int)player.position.Y + offset, NPCID);
             Main.NewText($"{name} has awoken!", 175, 75);
-            NetMessage.SendData(23, -1, -1, null, NPCID, 0f, 0f, 0f, 0);
+            //NetMessage.SendData(23, -1, -1, null, NPCID, 0f, 0f, 0f, 0);
             return i;
         }
     }

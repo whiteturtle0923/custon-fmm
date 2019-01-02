@@ -8,6 +8,7 @@ namespace Fargowiltas
     class Fargowiltas : Mod
     {
         internal static ModHotKey HomeKey;
+        internal static ModHotKey RodKey;
 
         #region mod loaded bools
         internal bool fargoLoaded;
@@ -63,6 +64,7 @@ namespace Fargowiltas
         {
             instance = this;
             HomeKey = RegisterHotKey("Teleport Home", "P");
+            RodKey = RegisterHotKey("Rod of Discord", "E");
         }
 
         #region mod loaded bools
