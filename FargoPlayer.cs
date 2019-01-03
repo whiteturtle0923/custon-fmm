@@ -28,7 +28,7 @@ namespace Fargowiltas
             if (Fargowiltas.RodKey.JustPressed && hasRod)
             {
                 //.5 second cd
-                if (player.controlHook && rodCD == 0 && Main.myPlayer == player.whoAmI)
+                if (rodCD == 0 && Main.myPlayer == player.whoAmI)
                 {
                     Vector2 vector32;
                     vector32.X = Main.mouseX + Main.screenPosition.X;

@@ -1,5 +1,2 @@
-NEW UPDATE - v 1.0.1
--Added Rod of Discord hotkey instead of always being grapple key
--fixed tons of bosses spawning from a single use of a summon in multiplayer
--fixed thrown variants disappearing in multiplayer
--removed text displaying when converting items to their thrown variants
+NEW UPDATE - v 1.0.2
+-Fixed the Rod Hot Key so it actually works, oops
