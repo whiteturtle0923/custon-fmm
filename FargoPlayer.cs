@@ -14,7 +14,6 @@ namespace Fargowiltas
         private int mirrorCD;
         private bool hasRod;
         internal int rodCD;
-        public bool npcBoost;
 
         public override void SetupStartInventory(IList<Item> items)
         {
@@ -118,9 +117,19 @@ namespace Fargowiltas
         {
             for (int j = 0; j < player.inventory.Length; j++)
             {
+                if (hasMirror && hasRod)
+                {
+                    break;
+                }
+
                 Item item = player.inventory[j];
 
                 if (item.type == ItemID.IceMirror || item.type == ItemID.MagicMirror || item.type == ItemID.CellPhone)
+                {
+                    hasMirror = true;
+                }
+
+                if (Fargowiltas.instance.fargoLoaded && item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("WorldShaperSoul"))
                 {
                     hasMirror = true;
                 }

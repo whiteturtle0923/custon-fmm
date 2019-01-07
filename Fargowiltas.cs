@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -1175,6 +1176,18 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.IronBar);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.LeadBar);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.LeadBar);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.IronBar);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.SilverBar);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(ItemID.TungstenBar);
@@ -1376,6 +1389,20 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.Fireblossom);
             recipe.AddTile(TileID.LivingLoom);
             recipe.SetResult(ItemID.FlowerBoots);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Loom);
+            recipe.AddIngredient(ItemID.Vine, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.LivingLoom);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.NaturesGift);
+            recipe.AddIngredient(ItemID.RedHusk);
+            recipe.AddTile(TileID.LivingLoom);
+            recipe.SetResult(ItemID.JungleRose);
             recipe.AddRecipe();
 
             #endregion

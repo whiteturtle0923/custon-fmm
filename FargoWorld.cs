@@ -13,8 +13,9 @@ namespace Fargowiltas
 		public static bool downedBetsy;
 		public static bool downedBoss;
 
-        public static bool halloween = true;
-        public static bool xmas = true;
+        public static bool halloween;
+        public static bool xmas;
+        public static bool battleCry;
 		
 		public override void Initialize()
 		{
@@ -24,6 +25,7 @@ namespace Fargowiltas
 
             halloween = true;
             xmas = true;
+            battleCry = false;
 		}
 
 		public override TagCompound Save()
@@ -78,7 +80,6 @@ namespace Fargowiltas
 		{
             //seasonals
             Main.halloween = halloween;
-
             Main.xMas = xmas;
 
             //swarm reset in case something goes wrong

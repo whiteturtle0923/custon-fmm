@@ -23,6 +23,20 @@ namespace Fargowiltas.Items
                 tooltips.Add(line);
             }
 
+            if (Array.IndexOf(thrown, item.type) > -1)
+            {
+                /*foreach(TooltipLine line in tooltips)
+                {
+                    if (line.Name == "")
+                    {
+
+                    }
+                }*/
+
+                TooltipLine line = new TooltipLine(mod, "help", "Right click to convert");
+                tooltips.Add(line);
+            }
+
             if (item.type == ItemID.CrystalBall)
             {
                 TooltipLine line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");

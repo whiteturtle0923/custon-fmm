@@ -232,9 +232,8 @@ namespace Fargowiltas.NPCs
 
         public override void EditSpawnRate (Player player, ref int spawnRate, ref int maxSpawns)
 		{
-			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
+		    if (!FargoWorld.battleCry) return;
 
-		    if (!modPlayer.npcBoost) return;
 		    spawnRate = (int)(spawnRate * 0.1);
 		    maxSpawns = (int)(maxSpawns * 10f);
 		}
