@@ -40,7 +40,7 @@ namespace Fargowiltas.Items.Misc
             lines[10] = new TooltipLine(mod, "11", "Ranged Crit: " + player.rangedCrit + "%");
             lines[11] = new TooltipLine(mod, "12", "Magic Crit: " + player.magicCrit + "%");
             lines[12] = new TooltipLine(mod, "13", "Throwing Crit: " + player.thrownCrit + "%");
-            lines[13] = new TooltipLine(mod, "14", "Max Speed: " + player.maxRunSpeed * 5 + " mph");
+            lines[13] = new TooltipLine(mod, "14", "Max Speed: " + (player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6 + " mph"); 
             lines[14] = new TooltipLine(mod, "15", "Wing Time: " + player.wingTimeMax / 60 + " seconds");
 
             for (int i = 0; i < lines.Length; i++)

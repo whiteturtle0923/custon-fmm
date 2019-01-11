@@ -4,6 +4,7 @@ using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Fargowiltas.Items.Tiles;
 
 namespace Fargowiltas
 {
@@ -16,8 +17,10 @@ namespace Fargowiltas
         public static bool halloween;
         public static bool xmas;
         public static bool battleCry;
-		
-		public override void Initialize()
+
+        private static bool[] currentSpawnRateTile;
+
+        public override void Initialize()
 		{
 			movedLumberjack = false;
 			downedBetsy = false;
@@ -26,7 +29,9 @@ namespace Fargowiltas
             halloween = true;
             xmas = true;
             battleCry = false;
-		}
+
+            currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
+        }
 
 		public override TagCompound Save()
 		{
@@ -89,6 +94,47 @@ namespace Fargowiltas
             }
 		}
 
-		private bool NoBosses() => Main.npc.All(i => !i.active || !i.boss);
+        public override void TileCountsAvailable(int[] tileCounts)
+        {
+            //if (Main.netMode == 0) return;
+
+            ref bool current = ref currentSpawnRateTile[0];
+            bool oldSpawnRateTile = current;
+            current = tileCounts[mod.TileType<RegalStatueSheet>()] > 0;
+
+            if (Main.netMode == 1 && current != oldSpawnRateTile)
+            {
+                ModPacket packet = Fargowiltas.instance.GetPacket();
+                packet.Write((byte)1);
+                packet.Write(current);
+                packet.Send();
+            }
+        }
+
+        public static void ReceiveCurrentSpawnRateTile(BinaryReader reader, int whoAmI) => currentSpawnRateTile[whoAmI] = reader.ReadBoolean();
+
+        public override void PreUpdate()
+        {
+            bool rate = false;
+            for (int i = 0; i < currentSpawnRateTile.Length; i++)
+            {
+                if (currentSpawnRateTile[i])
+                {
+                    Player p = Main.player[i];
+                    if (p.active)
+                    {
+                        if (!p.dead)
+                            rate = true;
+                    }
+                    else
+                        currentSpawnRateTile[i] = false;
+                }
+            }
+
+            if (rate)
+                Main.checkForSpawns += 81;
+        }
+
+        private bool NoBosses() => Main.npc.All(i => !i.active || !i.boss);
 	}
 }

@@ -187,9 +187,9 @@ namespace Fargowiltas.NPCs
         public bool W1KDownedOkiku => W1KModRedux.MWorld.downedOkiku;
 
         //fernium
-        public bool FerniumDownedMargrama => Fernium.world.downedMargrama;
+        /*public bool FerniumDownedMargrama => Fernium.world.downedMargrama;
         public bool FerniumDownedLunarRex => Fernium.world.downedLunarRex;
-        public bool FerniumFernite => Fernium.world.downedFerniteTheUnpleasant;
+        public bool FerniumFernite => Fernium.world.downedFerniteTheUnpleasant;*/
 
         //elements awoken
         public bool ElementsDownedWaste => ElementsAwoken.MyWorld.downedWasteland;
@@ -729,11 +729,11 @@ namespace Fargowiltas.NPCs
                     AddItem(TremorDownedCorn, "Tremor", "CursedPopcorn", 100000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.instance.ferniumLoaded)
+                /*if (Fargowiltas.instance.ferniumLoaded)
                 {
                     AddItem(FerniumDownedMargrama, "Fernium", "LunarFlame", 100000, ref shop, ref nextSlot);
                 }
-
+                */
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
                     AddItem(DisarrayDownedGeneral, "Disarray", "TornBattleArmor", 100000, ref shop, ref nextSlot);
@@ -846,10 +846,10 @@ namespace Fargowiltas.NPCs
                     AddItem(ThoriumDownedStorm, "ThoriumMod", "UnstableCore", 150000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.instance.ferniumLoaded)
+                /*if (Fargowiltas.instance.ferniumLoaded)
                 {
                     AddItem(FerniumDownedMargrama, "Fernium", "HardenedSludge", 150000, ref shop, ref nextSlot);
-                }
+                }*/
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
@@ -938,10 +938,10 @@ namespace Fargowiltas.NPCs
                     AddItem(ThoriumDownedStrider, "ThoriumMod", "StriderTear", 250000, ref shop, ref nextSlot);
                 }
 
-                if(Fargowiltas.instance.ferniumLoaded)
+                /*if(Fargowiltas.instance.ferniumLoaded)
                 {
                     AddItem(FerniumFernite, "Fernium", "FerniumCore ", 250000, ref shop, ref nextSlot);
-                }
+                }*/
 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {

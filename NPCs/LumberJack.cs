@@ -252,6 +252,10 @@ namespace Fargowiltas.NPCs
             shop.item[nextSlot].SetDefaults(mod.ItemType("LumberJaxe"));
             shop.item[nextSlot].value = 10000;
             nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ItemID.SharpeningStation);
+            shop.item[nextSlot].value = 100000;
+            nextSlot++;
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

@@ -33,37 +33,29 @@ namespace Fargowiltas.Items.Misc
             return true;
         }
 
+        public override bool CanUseItem(Player player)
+        {
+            return !Main.fastForwardTime;
+        }
+
         public override bool UseItem(Player player)
         {
             if (player.altFunctionUse == 2) //right click
             {
+                Main.sundialCooldown = 0;
                 if (Main.netMode == 1)
                 {
-                    NetMessage.SendData(51, -1, -1, null, Main.myPlayer, 3f);
+                    NetMessage.SendData(51, -1, -1, null, Main.myPlayer, 3f, 0f, 0f, 0, 0, 0);
+                    return true;
                 }
-
-                Main.sundialCooldown = 0;
                 Main.fastForwardTime = true;
-                NetMessage.SendData(MessageID.WorldData);
+                NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+                Main.PlaySound(SoundID.Item4, player.position);
             }
             else //left click
             {
-                if (Main.netMode != 1)
-                {
-                    if (Main.dayTime)
-                    {
-                        Main.time = 54000;
-                    }
-                    else
-                    {
-                        Main.time = 32400;
-                    }
-
-                    if (Main.netMode == 2)
-                    {
-                        NetMessage.SendData(MessageID.WorldData);
-                    }
-                }
+                Main.dayTime = !Main.dayTime;
+                Main.time = 0;
             }
 
             return true;

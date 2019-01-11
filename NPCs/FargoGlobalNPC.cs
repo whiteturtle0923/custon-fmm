@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria.GameContent.Events;
 
 namespace Fargowiltas.NPCs
 {
@@ -619,7 +620,41 @@ namespace Fargowiltas.NPCs
 			{
 				NPC.NewNPC((int) npc.position.X, (int) npc.position.Y, NPCID.SantaClaus);
 			}
-		}
+            else if (npc.type == NPCID.DD2OgreT3 && !DD2Event.Ongoing)
+            {
+                //Item.NewItem(npc.position, npc.Size, 3861, 1, false, 0, false, false);
+
+                if (Main.rand.Next(14) == 0)
+                {
+                    Item.NewItem(npc.position, npc.Size, 3865, 1, false, 0, false, false);
+                }
+                if (Main.rand.Next(6) == 0)
+                {
+                    Item.NewItem(npc.position, npc.Size, (int)Utils.SelectRandom<short>(Main.rand, new short[]
+                    {
+                            3809,
+                            3811,
+                            3810,
+                            3812
+                    }), 1, false, 0, false, false);
+                }
+                if (Main.rand.Next(6) == 0)
+                {
+                    Item.NewItem(npc.position, npc.Size, (int)Utils.SelectRandom<short>(Main.rand, new short[]
+                    {
+                            3852,
+                            3854,
+                            3823,
+                            3835,
+                            3836
+                    }), 1, false, 0, false, false);
+                }
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem(npc.position, npc.Size, 3856, 1, false, 0, false, false);
+                }
+            }
+        }
 		
 		public override bool CheckDead(NPC npc)
 		{

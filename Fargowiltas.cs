@@ -35,7 +35,7 @@ namespace Fargowiltas
         internal bool enigmaLoaded;
         internal bool exodusLoaded;
         internal bool splitLoaded;
-        internal bool ferniumLoaded;
+        //internal bool ferniumLoaded;
         internal bool antiarisLoaded;
         internal bool aaLoaded;
         internal bool trelamiumLoaded;
@@ -97,7 +97,7 @@ namespace Fargowiltas
                 enigmaLoaded = ModLoader.GetMod("Laugicality") != null; //why
                 exodusLoaded = ModLoader.GetMod("Exodus") != null;
                 splitLoaded = ModLoader.GetMod("Split") != null;
-                ferniumLoaded = ModLoader.GetMod("Fernium") != null;
+                //ferniumLoaded = ModLoader.GetMod("Fernium") != null;
                 antiarisLoaded = ModLoader.GetMod("Antiaris") != null;
                 aaLoaded = ModLoader.GetMod("AAMod") != null;
                 trelamiumLoaded = ModLoader.GetMod("TrelamiumMod") != null;
@@ -1456,6 +1456,21 @@ namespace Fargowiltas
                 ItemID.RustyArmoredBonesBanner,
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyArmoredBones", group);
+        }
+
+        public override void HandlePacket(BinaryReader reader, int whoAmI)
+        {
+            byte boi = reader.ReadByte();
+
+            switch (boi)
+            {
+                case 1: //regal statue
+                    FargoWorld.ReceiveCurrentSpawnRateTile(reader, whoAmI);
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 }

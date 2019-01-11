@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -26,13 +27,14 @@ namespace Fargowiltas.Items.Tiles
             Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("RegalStatue"));
         }
 
-        public override void NearbyEffects(int i, int j, bool closer)
+        /*public override void NearbyEffects(int i, int j, bool closer)
         {
+            Main.NewText(Main.checkForSpawns);
             if (Main.netMode != 1)
             {
                 //usually 9 so should make it 10x as fast
-                Main.checkForSpawns += 81;
+                //Main.checkForSpawns += 81;
             }
-        }
+        }*/
     }
 }

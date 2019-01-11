@@ -1,5 +1,3 @@
-NEW UPDATE - v 1.0.3
--Added a few more recipes, for Living Loom, Jungle Rose, and Iron/Lead converting
--Made the Return home key work with World Shaper Soul
--Added tooltips telling you about right clicking to get thrown weapons
--Fixed Battle Cry not working right in multiplayer
+NEW UPDATE - v 1.0.5
+-Regal Statue now works in multiplayer
+-Stat Sheet Movement Speed value is now more accurate, not perfect but better
