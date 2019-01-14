@@ -26,8 +26,8 @@ namespace Fargowiltas
 			downedBetsy = false;
 			downedBoss = false;
 
-            halloween = true;
-            xmas = true;
+            halloween = false;
+            xmas = false;
             battleCry = false;
 
             currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];

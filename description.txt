@@ -1,3 +1,4 @@
-NEW UPDATE - v 1.0.5
--Regal Statue now works in multiplayer
--Stat Sheet Movement Speed value is now more accurate, not perfect but better
+NEW UPDATE - v 1.0.6
+-Holidays now start off by default, but you start with one Goodie Bag and Present
+-The Ancient Master's Map of the Lost King's Great Ancestors is now infinite use
+-Fixed a typo in one of the Mutant's quotes

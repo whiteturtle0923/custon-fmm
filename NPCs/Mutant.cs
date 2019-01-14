@@ -382,7 +382,7 @@ namespace Fargowiltas.NPCs
             }
             if (guide >= 0 && Main.rand.Next(21) == 0)
             {
-                return "Any idea why " + Main.npc[guide].GivenName + "is always cowering in fear when I get near him?";
+                return "Any idea why " + Main.npc[guide].GivenName + " is always cowering in fear when I get near him?";
             }
             if (truffle >= 0 && witchDoctor >= 0 && cyborg >= 0 && Main.rand.Next(20) == 0)
             {

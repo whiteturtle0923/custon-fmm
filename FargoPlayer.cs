@@ -20,6 +20,14 @@ namespace Fargowiltas
             Item item = new Item();
             item.SetDefaults(mod.ItemType("Stats"));
             items.Add(item);
+
+            item = new Item();
+            item.SetDefaults(ItemID.GoodieBag);
+            items.Add(item);
+
+            item = new Item();
+            item.SetDefaults(ItemID.Present);
+            items.Add(item); 
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)

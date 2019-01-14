@@ -22,7 +22,7 @@ namespace Fargowiltas.Items.Summons
             item.useAnimation = 30;
             item.useTime = 30;
             item.useStyle = 4;
-            item.consumable = true;
+            item.consumable = false;
         }
 
         public override string Texture => "Terraria/Map_4";
