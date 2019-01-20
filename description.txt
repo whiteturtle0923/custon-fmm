@@ -1,4 +1,8 @@
-NEW UPDATE - v 1.0.6
--Holidays now start off by default, but you start with one Goodie Bag and Present
--The Ancient Master's Map of the Lost King's Great Ancestors is now infinite use
--Fixed a typo in one of the Mutant's quotes
+NEW UPDATE - v 1.0.7.2
+-CRASH FIXED
+-Instavator now works in Multiplayer and should lag less
+-Fixed bug where Instavator and Boom Shuriken would not destroy Chlorophyte even when you're able to
+-The Mutant will sell the Soul of Eternity of a player has already made one
+
+This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
+There are several other items such as infinite ammos, an instant hellevator, and thrown variants

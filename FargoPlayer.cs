@@ -157,6 +157,16 @@ namespace Fargowiltas
             {
                 rodCD--;
             }
+
+            if (!Fargowiltas.instance.fargoLoaded || FargoWorld.eternity) return;
+
+            foreach (Item item in player.armor)
+            {
+                if (item != null && item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("EternitySoul"))
+                {
+                    FargoWorld.eternity = true;
+                }
+            }
         }
 
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)

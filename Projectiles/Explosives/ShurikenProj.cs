@@ -56,7 +56,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
                     bool noDungeon = (tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick || tile.type == TileID.PinkDungeonBrick) && !NPC.downedBoss3;
                     bool noHMOre = (tile.type == TileID.Cobalt || tile.type == TileID.Palladium || tile.type == TileID.Mythril || tile.type == TileID.Orichalcum || tile.type == TileID.Adamantite || tile.type == TileID.Titanium) && !NPC.downedMechBossAny;
-                    bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || NPC.downedMechBoss3);
+                    bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || !NPC.downedMechBoss3);
                     bool noLihzahrd = (tile.type == TileID.LihzahrdBrick && !NPC.downedGolemBoss);
 
                     if (noFossil || noDungeon || noHMOre || noChloro || noLihzahrd)
@@ -69,6 +69,8 @@ namespace Fargowiltas.Projectiles.Explosives
                         WorldGen.KillTile(xPosition, yPosition);
                         Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
                     }
+
+                    //NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
                 }
             }
         }

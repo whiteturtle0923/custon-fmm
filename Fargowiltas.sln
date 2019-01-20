@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fargowiltas", "Fargowiltas.csproj", "{44DD8938-6394-454F-998D-5930902007CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fargowiltas", "Fargowiltas.csproj", "{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Server|x86 = Server|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{44DD8938-6394-454F-998D-5930902007CB}.Client|x86.ActiveCfg = Client|x86
-		{44DD8938-6394-454F-998D-5930902007CB}.Client|x86.Build.0 = Client|x86
-		{44DD8938-6394-454F-998D-5930902007CB}.Server|x86.ActiveCfg = Server|x86
-		{44DD8938-6394-454F-998D-5930902007CB}.Server|x86.Build.0 = Server|x86
+		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Client|x86.ActiveCfg = Client|x86
+		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Client|x86.Build.0 = Client|x86
+		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Server|x86.ActiveCfg = Server|x86
+		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Server|x86.Build.0 = Server|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8C8DA095-5F41-49A0-82F5-CA112CF2B052}
+		SolutionGuid = {31D0E59C-E389-42AC-B7FA-6768BB980E27}
 	EndGlobalSection
 EndGlobal

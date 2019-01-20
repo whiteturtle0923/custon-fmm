@@ -269,6 +269,13 @@ namespace Fargowiltas.NPCs
         public bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
         public bool AAIZ => AAMod.AAWorld.downedIZ;
 
+        public bool AAGripsS => AAMod.AAWorld.downedGripsS;
+        public bool AAToad => AAMod.AAWorld.downedToad;
+        public bool AADjinn => AAMod.AAWorld.downedDjinn;
+        public bool AASoC => AAMod.AAWorld.downedSoC;
+        public bool AASerpent => AAMod.AAWorld.downedSerpent;
+
+
         //pinky
         public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
         public bool PinkyValdaris => pinkymod.Global.Pinkyworld.downedValdaris;
@@ -559,7 +566,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Mushroom Monarch
-                    AddItem(AAMonarch, "AAMod", "IntimidatingMushroom", 2000, ref shop, ref nextSlot);
+                    AddItem(AAMonarch, "AAMod", "IntimidatingMushroom", 20000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
@@ -809,6 +816,12 @@ namespace Fargowiltas.NPCs
                 //Skeletron
                 AddItem(NPC.downedBoss3, "Fargowiltas", "SuspiciousSkull", 150000, ref shop, ref nextSlot);
 
+                if (Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AADjinn, "AAMod", "DjinnLamp ", 150000, ref shop, ref nextSlot);
+                    AddItem(AASerpent, "AAMod", "SubzeroCrystal ", 150000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.cookieLoaded)
                 {
                     AddItem(CookieDownedBunny, "CookieMod", "BunnyCrown ", 150000, ref shop, ref nextSlot);
@@ -936,6 +949,11 @@ namespace Fargowiltas.NPCs
                 {
                     //Borean Strider
                     AddItem(ThoriumDownedStrider, "ThoriumMod", "StriderTear", 250000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AAToad, "AAMod", "Toadstool ", 250000, ref shop, ref nextSlot);
                 }
 
                 /*if(Fargowiltas.instance.ferniumLoaded)
@@ -1328,8 +1346,15 @@ namespace Fargowiltas.NPCs
             {
                 AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
 
+                if (Fargowiltas.instance.fargoLoaded)
+                {
+                    AddItem(FargoWorld.eternity, "FargowiltasSouls", "EternitySoul", 99000000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.aaLoaded)
                 {
+                    AddItem(AAGripsS, "AAMod", "AbyssClaw", 1000000, ref shop, ref nextSlot);
+                    AddItem(AAGripsS, "AAMod", "BlazeClaw", 1000000, ref shop, ref nextSlot);
                     //Equinox Worms
                     AddItem(AAEquinox, "AAMod", "EquinoxWorm", 1000000, ref shop, ref nextSlot);
                     //Akuma
@@ -1481,6 +1506,7 @@ namespace Fargowiltas.NPCs
                 
                 if (Fargowiltas.instance.aaLoaded)
                 {
+                    AddItem(AASoC, "AAMod", "SpatialWheel ", 1500000, ref shop, ref nextSlot);
                     //Zero
                     AddItem(AAZero, "AAMod", "ZeroTesseract", 15000000, ref shop, ref nextSlot);
                     //Zero Awakened

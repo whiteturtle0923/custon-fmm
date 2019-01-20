@@ -1,3 +1,4 @@
+using Fargowiltas.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -33,6 +34,8 @@ namespace Fargowiltas.Projectiles.Explosives
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
 
+            if (Main.netMode == 1) return;
+
             //7 across
             for (int x = -3; x <= 3; x++)
             {
@@ -41,11 +44,13 @@ namespace Fargowiltas.Projectiles.Explosives
                     int xPosition = (int)(x + position.X / 16.0f);
                     Tile tile = Main.tile[xPosition, y];
 
+                    if (tile == null) continue;
+
                     //testing for blocks that should not be destroyed
                     bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
                     bool noDungeon = (tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick || tile.type == TileID.PinkDungeonBrick) && !NPC.downedBoss3;
                     bool noHMOre = (tile.type == TileID.Cobalt || tile.type == TileID.Palladium || tile.type == TileID.Mythril || tile.type == TileID.Orichalcum || tile.type == TileID.Adamantite || tile.type == TileID.Titanium) && !NPC.downedMechBossAny;
-                    bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || NPC.downedMechBoss3);
+                    bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || !NPC.downedMechBoss3);
                     bool noLihzahrd = (tile.type == TileID.LihzahrdBrick && !NPC.downedGolemBoss);
 
                     if (noFossil || noDungeon || noHMOre || noChloro || noLihzahrd)
@@ -53,13 +58,15 @@ namespace Fargowiltas.Projectiles.Explosives
                         continue;
                     }
 
+                    FargoGlobalTile.ClearEverythingWithNet(xPosition, y);
+
                     //tile destroy
-                    WorldGen.KillTile(xPosition, y);
-                    WorldGen.KillWall(xPosition, y);
-                    Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
+                    //WorldGen.KillTile(xPosition, y);
+                    //WorldGen.KillWall(xPosition, y);
+                    //Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
 
                     //kill liquids
-                    if (tile != null)
+                    /*if (tile != null)
                     {
                         tile.liquid = 0;
                         tile.lava(false);
@@ -68,7 +75,7 @@ namespace Fargowiltas.Projectiles.Explosives
                         {
                             NetMessage.sendWater(xPosition, y);
                         }
-                    }
+                    }*/
 
                     //spawn structure
                     WorldGen.PlaceWall(xPosition, y, WallID.Stone);
@@ -87,6 +94,8 @@ namespace Fargowiltas.Projectiles.Explosives
                     {
                         WorldGen.PlaceTile(xPosition, y, TileID.Rope);
                     }
+
+                    NetMessage.SendTileSquare(-1, xPosition, y, 1);
                 }
             }
         }
