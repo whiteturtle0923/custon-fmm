@@ -1,8 +1,12 @@
-NEW UPDATE - v 1.0.7.2
--CRASH FIXED
--Instavator now works in Multiplayer and should lag less
--Fixed bug where Instavator and Boom Shuriken would not destroy Chlorophyte even when you're able to
--The Mutant will sell the Soul of Eternity of a player has already made one
+NEW UPDATE - v 1.1
+-Made EoW and BoC not despawn if you leave Corruption/Crimson and now all summons for them work anywhere
+-Some swarms now spawn less bosses at a time to not go over the NPC limit
+-Added swarm items for most Thorium bosses
+-Made it so the Angler has no cooldown between quests, in Multiplayer all players need to complete the quest for it to change
+-Added message saying download the other half on world enter, if its not already loaded, I'll remove this in like a month
+-Teleport home key will work with Soul of Dimensions and Soul of Eternity now
+-Moved Ogre and Betsy summons to the Abominationn's shop
+-Fixed a bugged summon slot for an Enigma Mod summon
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

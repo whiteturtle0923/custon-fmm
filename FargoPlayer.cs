@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameInput;
@@ -28,6 +29,14 @@ namespace Fargowiltas
             item = new Item();
             item.SetDefaults(ItemID.Present);
             items.Add(item); 
+        }
+
+        public override void OnEnterWorld(Player player)
+        {
+            if (!Fargowiltas.instance.fargoLoaded)
+            {
+                Main.NewText("Hello, Fargo's mod was recently split, if you're wondering about missing items, download Fargo's Soul Mod on the browser.", new Color(97, 115, 237));
+            }
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -137,7 +146,7 @@ namespace Fargowiltas
                     hasMirror = true;
                 }
 
-                if (Fargowiltas.instance.fargoLoaded && item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("WorldShaperSoul"))
+                if (Fargowiltas.instance.fargoLoaded && (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("WorldShaperSoul") || item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("DimensionSoul") || item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("EternitySoul")))
                 {
                     hasMirror = true;
                 }
@@ -158,14 +167,24 @@ namespace Fargowiltas
                 rodCD--;
             }
 
-            if (!Fargowiltas.instance.fargoLoaded || FargoWorld.eternity) return;
-
-            foreach (Item item in player.armor)
+            if (Fargowiltas.instance.fargoLoaded && !FargoWorld.eternity)
             {
-                if (item != null && item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("EternitySoul"))
+                foreach (Item item in player.armor)
                 {
-                    FargoWorld.eternity = true;
+                    if (item != null && item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("EternitySoul"))
+                    {
+                        FargoWorld.eternity = true;
+                    }
                 }
+            }
+
+            if (NPC.AnyNPCs(NPCID.BrainofCthulhu))
+            {
+                player.ZoneCrimson = true;
+            }
+            if (NPC.AnyNPCs(NPCID.EaterofWorldsHead))
+            {
+                player.ZoneCorrupt = true;
             }
         }
 

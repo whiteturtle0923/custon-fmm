@@ -1341,6 +1341,32 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.RainbowGun);
             recipe.AddRecipe();
 
+            if (thoriumLoaded)
+            {
+                Mod thorium = ModLoader.GetMod("ThoriumMod");
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("DesertBiomeKey"));
+                recipe.AddIngredient(ItemID.Ectoplasm, 10);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(thorium.ItemType("PharaohsSlab"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("UnderworldBiomeKey"));
+                recipe.AddIngredient(ItemID.Ectoplasm, 10);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(thorium.ItemType("PheonixStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("AquaticDepthsBiomeKey"));
+                recipe.AddIngredient(ItemID.Ectoplasm, 10);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.SetResult(thorium.ItemType("Fishbone"));
+                recipe.AddRecipe();
+            }
+
             #endregion
 
             #region misc recipes

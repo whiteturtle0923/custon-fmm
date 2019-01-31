@@ -48,13 +48,9 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             {
                 Fargowiltas.swarmSpawned = 20;
             }
-            else if (Fargowiltas.swarmTotal != 1000)
-            {
-                Fargowiltas.swarmSpawned = 50;
-            }
             else
             {
-                Fargowiltas.swarmSpawned = 100;
+                Fargowiltas.swarmSpawned = 50;
             }
 
             for (int i = 0; i < Fargowiltas.swarmSpawned; i++)

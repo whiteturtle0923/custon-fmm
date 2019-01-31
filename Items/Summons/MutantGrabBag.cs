@@ -75,6 +75,11 @@ namespace Fargowiltas.Items.Summons
                     }
                 }
             }
+
+            if (Fargowiltas.instance.fargoLoaded && Main.rand.Next(3) == 0)
+            {
+                player.QuickSpawnItem(ModLoader.GetMod("FargowiltasSouls").ItemType("Masochist"));
+            }
         }
     }
 }

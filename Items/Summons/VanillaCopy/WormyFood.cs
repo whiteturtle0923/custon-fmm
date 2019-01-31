@@ -27,16 +27,6 @@ namespace Fargowiltas.Items.Summons
 
         public override string Texture => "Terraria/Item_70";
 
-        public override bool CanUseItem(Player player)
-        {
-            if (player.ZoneCorrupt || player.ZoneCrimson)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         public override bool UseItem(Player player)
         {
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.EaterofWorldsHead);

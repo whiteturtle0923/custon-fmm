@@ -27,16 +27,6 @@ namespace Fargowiltas.Items.Summons
 
         public override string Texture => "Terraria/Item_1331";
 
-        public override bool CanUseItem(Player player)
-        {
-            if (player.ZoneCorrupt || player.ZoneCrimson)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         public override bool UseItem(Player player)
         {
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.BrainofCthulhu);

@@ -28,7 +28,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.swarmActive && (player.ZoneCorrupt || player.ZoneCrimson);
+            return !Fargowiltas.swarmActive;
         }
 
         public override bool UseItem(Player player)
@@ -44,13 +44,9 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             {
                 Fargowiltas.swarmSpawned = Fargowiltas.swarmTotal;
             }
-            else if (Fargowiltas.swarmTotal <= 100)
-            {
-                Fargowiltas.swarmSpawned = 50;
-            }
             else
             {
-                Fargowiltas.swarmSpawned = 100;
+                Fargowiltas.swarmSpawned = 50;
             }
 
             for (int i = 0; i < Fargowiltas.swarmSpawned; i++)

@@ -72,6 +72,7 @@ namespace Fargowiltas.NPCs
         public bool ThoriumDownedLich => ThoriumMod.ThoriumWorld.downedLich;
         public bool ThoriumDownedAbyss => ThoriumMod.ThoriumWorld.downedDepthBoss;
         public bool ThoriumDownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
+        public bool ThoriumDownedViscount => ThoriumMod.ThoriumWorld.downedBat;
 
         //calamity bools
         public bool CalamityDownedScourge => CalamityMod.CalamityWorld.downedDesertScourge;
@@ -548,8 +549,6 @@ namespace Fargowiltas.NPCs
 
             if (shop1)
             {
-                AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
-
                 if(Fargowiltas.instance.fargoLoaded)
                 {
                     AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
@@ -720,6 +719,8 @@ namespace Fargowiltas.NPCs
                 {
                     //Queen Jellyfish
                     AddItem(ThoriumDownedJelly, "ThoriumMod", "JellyfishResonator", 100000, ref shop, ref nextSlot);
+                    //Viscount
+                    AddItem(ThoriumDownedViscount, "Fargowiltas", "ViscountSummon", 100000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.tremorLoaded)
@@ -1044,9 +1045,6 @@ namespace Fargowiltas.NPCs
                 //All Mechs
                 AddItem((NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3), "Fargowiltas", "MechanicalAmalgam", 1000000, ref shop, ref nextSlot);
                 
-                //Ogre
-                AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 400000, ref shop, ref nextSlot);
-
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
                     AddItem(PinkySlime, "pinkymod", "MythrilGel", 400000, ref shop, ref nextSlot);
@@ -1100,7 +1098,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
                     AddItem(EnigmaDownedAnnih, "Laugicality", "MechanicalMonitor", 400000, ref shop, ref nextSlot);
-                    AddItem(EnigmaDownedSlyber, "Laugicality", "SteamCrown ", 400000, ref shop, ref nextSlot);
+                    AddItem(EnigmaDownedSlyber, "Laugicality", "SteamCrown", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.elementsLoaded)
@@ -1208,9 +1206,6 @@ namespace Fargowiltas.NPCs
                 
                 //Golem
                 AddItem(NPC.downedGolemBoss, "Fargowiltas", "LihzahrdPowerCell2", 600000, ref shop, ref nextSlot);
-                
-                //Betsy
-                AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 600000, ref shop, ref nextSlot);
                 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {

@@ -159,12 +159,9 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
             SpawnBoss(player, NPCID.EyeofCthulhu, "Eye of Cthulhu");
             SpawnBoss(player, NPCID.KingSlime, "King Slime");
-            
-            if (player.ZoneCorrupt || player.ZoneCrimson)
-            {
-                NPC.SpawnOnPlayer(player.whoAmI, NPCID.EaterofWorldsHead);
-                SpawnBoss(player, NPCID.BrainofCthulhu, "Brain of Cthulhu");
-            }
+
+            NPC.SpawnOnPlayer(player.whoAmI, NPCID.EaterofWorldsHead);
+            SpawnBoss(player, NPCID.BrainofCthulhu, "Brain of Cthulhu");
 
             SpawnBossAtOffset(player, NPCID.SkeletronHand, "Skeletron", -220);
             SpawnBoss(player, NPCID.QueenBee, "Queen Bee");

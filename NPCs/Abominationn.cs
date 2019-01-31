@@ -173,15 +173,17 @@ namespace Fargowiltas.NPCs
 			    shop.item[nextSlot].value=100000;
 			    nextSlot++;
 			}
-			
-			if (NPC.downedGolemBoss)
+
+            if (NPC.downedGolemBoss)
 			{	
 			    shop.item[nextSlot].SetDefaults(ItemID.SolarTablet);
 			    shop.item[nextSlot].value=100000;
 			    nextSlot++;
 			}
 
-                AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 100000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 400000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 600000, ref shop, ref nextSlot);
+            AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 100000, ref shop, ref nextSlot);
 			
 			if (NPC.downedHalloweenKing)
 			{	

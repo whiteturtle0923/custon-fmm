@@ -134,6 +134,7 @@
     <Compile Include="Items\Summons\NewSummons\Plantera.cs" />
     <Compile Include="Items\Summons\NewSummons\RunawayProbe.cs" />
     <Compile Include="Items\Summons\NewSummons\SuspiciousSkull.cs" />
+    <Compile Include="Items\Summons\NewSummons\ViscountSummon.cs" />
     <Compile Include="Items\Summons\SwarmSummons\Energizers\EnergizerBee.cs" />
     <Compile Include="Items\Summons\SwarmSummons\Energizers\EnergizerBrain.cs" />
     <Compile Include="Items\Summons\SwarmSummons\Energizers\EnergizerDestroy.cs" />

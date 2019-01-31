@@ -7,6 +7,7 @@ namespace Fargowiltas.Items.Tiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ech Painting");
+            Tooltip.SetDefault("'Groalt W. Fai'");
         }
 
         public override void SetDefaults()

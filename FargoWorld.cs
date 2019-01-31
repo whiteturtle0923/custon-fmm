@@ -95,6 +95,22 @@ namespace Fargowiltas
             Main.halloween = halloween;
             Main.xMas = xmas;
 
+            //no CD on fishing quests
+            bool changeQuest = true;
+
+            foreach (Player p in Main.player.Where(x => x.active))
+            {
+                if (!Main.anglerWhoFinishedToday.Contains(p.name))
+                {
+                    changeQuest = false;
+                    break;
+                }
+            }
+            if (changeQuest)
+            {
+                Main.AnglerQuestSwap();
+            }
+
             //swarm reset in case something goes wrong
             if (NoBosses())
             {

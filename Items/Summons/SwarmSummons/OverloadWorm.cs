@@ -28,7 +28,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.swarmActive && (player.ZoneCorrupt || player.ZoneCrimson);
+            return !Fargowiltas.swarmActive;
         }
 
         public override bool UseItem(Player player)

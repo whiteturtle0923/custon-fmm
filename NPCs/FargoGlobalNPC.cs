@@ -16,8 +16,9 @@ namespace Fargowiltas.NPCs
         public bool swarmActive;
         public bool pandoraActive;
         public bool noLoot;
+        private bool transform = true;
 
-        public static int[] bosses = { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, NPCID.MartianSaucerCore, NPCID.Pumpking, NPCID.IceQueen, NPCID.DD2Betsy, NPCID.DD2OgreT3, NPCID.IceGolem, NPCID.SandElemental, NPCID.Paladin, NPCID.Everscream, NPCID.MourningWood, NPCID.SantaNK1, NPCID.HeadlessHorseman, NPCID.PirateShip };
+        public static int[] bosses = { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, NPCID.MartianSaucerCore, NPCID.Pumpking, NPCID.IceQueen, NPCID.DD2Betsy, NPCID.DD2OgreT3, NPCID.IceGolem, NPCID.SandElemental, NPCID.Paladin, NPCID.Everscream, NPCID.MourningWood, NPCID.SantaNK1, NPCID.HeadlessHorseman, NPCID.PirateShip };
 
         public override void SetDefaults(NPC npc)
         {
@@ -132,6 +133,33 @@ namespace Fargowiltas.NPCs
             #endregion
         }
 
+        public override void AI(NPC npc)
+        {
+            if (transform && Main.rand.Next(10) == 0)
+            {
+                if (npc.type == NPCID.DemonEye && !Main.halloween)
+                {
+                    npc.Transform(NPCID.Raven);
+                }
+                else if (npc.type == NPCID.BlueSlime && !Main.xMas)
+                {
+                    npc.Transform(NPCID.SlimeRibbonRed);
+                }
+            }
+
+            transform = false;
+
+            if (Fargowiltas.swarmActive && Fargowiltas.instance.thoriumLoaded)
+            {
+                Mod thorium = ModLoader.GetMod("ThoriumMod");
+
+                if (npc.type == thorium.NPCType("BoreanStriderPopped") || npc.type == thorium.NPCType("FallenDeathBeholder2") || npc.type == thorium.NPCType("LichHeadless") || npc.type == thorium.NPCType("AbyssionReleased"))// || npc.type == thorium.NPCType("RealityBreaker"))
+                {
+                    swarmActive = true;
+                }
+            }
+        }
+
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
         {
             Player player = Main.player[Main.myPlayer];
@@ -241,9 +269,11 @@ namespace Fargowiltas.NPCs
 
         private void SpawnBoss(NPC npc, int boss)
         {
-            if(swarmActive)
+            int spawn;
+
+            if (swarmActive)
             {
-                int spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), boss);
+                spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), boss);
                 Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
                 NetMessage.SendData(23, -1, -1, null, boss, 0f, 0f, 0f, 0);
             }
@@ -256,7 +286,7 @@ namespace Fargowiltas.NPCs
                     rando = bosses[Main.rand.Next(bosses.Length)];
                 } while (NPC.CountNPCS(rando) >= 4);
 
-                int spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), rando);
+                spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), rando);
                 Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().pandoraActive = true;
                 NetMessage.SendData(23, -1, -1, null, rando, 0f, 0f, 0f, 0);
             }
@@ -294,6 +324,17 @@ namespace Fargowiltas.NPCs
             Main.NewText("Killed: " + Fargowiltas.swarmKills, 206, 12, 15);
             Main.NewText("Total: " + Fargowiltas.swarmTotal, 206, 12, 15);
 
+            if (minion != -1 && NPC.CountNPCS(minion) >= Fargowiltas.swarmSpawned)
+            {
+                for (int i = 0; i < 200; i++)
+                {
+                    if (Main.npc[i].active && Main.npc[i].type == minion)
+                    {
+                        Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
+                    }
+                }
+            }
+
             //if theres still more to spawn
             if (Fargowiltas.swarmKills <= Fargowiltas.swarmTotal - Fargowiltas.swarmSpawned)
             {
@@ -301,21 +342,31 @@ namespace Fargowiltas.NPCs
 
                 for (int i = 0; i < 200; i++)
                 {
-                    //kill a minion and spawn boss (to make sure there's spawn room)
-                    if(swarmActive && minion > 0 && i < 199)
+                    //count npcs
+                    int num = 0;
+                    for (int j = 0; j < 200; j++)
                     {
-                        if (Main.npc[i].type == minion)
+                        if (Main.npc[j].active)
                         {
-                            //Main.npc[i].active = false;
-                            //Main.npc[i].StrikeNPC(Main.npc[i].lifeMax * 2, 0f, 0);
-                            Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
+                            num++;
                         }
                     }
-                    else //pandora
+                    //kill a minion and spawn boss if too many npcs
+                    if (num >= 200)
                     {
-                        if (Array.IndexOf(bosses, Main.npc[i].type) == -1 && !Main.npc[i].boss)
+                        if (swarmActive && minion > 0 && i < 199)
                         {
-                            Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
+                            if (Main.npc[i].type == minion)
+                            {
+                                Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
+                            }
+                        }
+                        else //pandora
+                        {
+                            if (Array.IndexOf(bosses, Main.npc[i].type) == -1 && !Main.npc[i].boss)
+                            {
+                                Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
+                            }
                         }
                     }
 
@@ -344,7 +395,8 @@ namespace Fargowiltas.NPCs
 
                 for (int i = 0; i < 200; i++)
                 {
-                    if (Main.npc[i].active && !Main.npc[i].friendly)
+                    NPC kill = Main.npc[i];
+                    if (kill.active && !kill.friendly)
                     {
                         Main.npc[i].GetGlobalNPC<FargoGlobalNPC>().noLoot = true;
                         Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
@@ -362,10 +414,49 @@ namespace Fargowiltas.NPCs
             else
             {
                 //spawn more if needed
-                if (count >= Fargowiltas.swarmSpawned) return;
-                for (int i = 0; i < 5; i++)
+                if (count >= Fargowiltas.swarmSpawned || Fargowiltas.swarmTotal <= 20) return;
+
+                int extraSpawn = 0;
+
+                for (int i = 0; i < 200; i++)
                 {
+                    //count npcs
+                    int num = 0;
+                    for (int j = 0; j < 200; j++)
+                    {
+                        if (Main.npc[j].active)
+                        {
+                            num++;
+                        }
+                    }
+                    //kill a minion and spawn boss if too many npcs
+                    if (num >= 200)
+                    {
+                        if (swarmActive && minion > 0 && i < 199)
+                        {
+                            if (Main.npc[i].type == minion)
+                            {
+                                Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
+                            }
+                        }
+                        else //pandora
+                        {
+                            if (Array.IndexOf(bosses, Main.npc[i].type) == -1 && !Main.npc[i].boss)
+                            {
+                                Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
+                            }
+                        }
+                    }
+
                     SpawnBoss(npc, boss);
+                    extraSpawn++;
+
+                    if (extraSpawn < 5)
+                    {
+                        continue;
+                    }
+
+                    break;
                 }
             }
         }
@@ -389,7 +480,7 @@ namespace Fargowiltas.NPCs
                 return false;
             }
 
-            if(swarmActive)
+            if(swarmActive && Fargowiltas.swarmActive)
             {
                 switch (npc.type)
                 {
@@ -471,6 +562,58 @@ namespace Fargowiltas.NPCs
                         break;
                 }
 
+                if (Fargowiltas.instance.thoriumLoaded)
+                {
+                     Mod thorium = ModLoader.GetMod("ThoriumMod");
+
+                    if (npc.type == thorium.NPCType("TheGrandThunderBirdv2"))
+                    {
+                        Swarm(npc, thorium.NPCType("TheGrandThunderBirdv2"), thorium.NPCType("Hatchling"), thorium.ItemType("ThunderBirdBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("QueenJelly"))
+                    {
+                        Swarm(npc, thorium.NPCType("QueenJelly"), thorium.NPCType("ZealousJelly"), thorium.ItemType("JellyFishBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("GraniteEnergyStorm"))
+                    {
+                        Swarm(npc, thorium.NPCType("GraniteEnergyStorm"), thorium.NPCType("EncroachingEnergy"), thorium.ItemType("GraniteBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("TheBuriedWarrior"))
+                    {
+                        Swarm(npc, thorium.NPCType("TheBuriedWarrior"), -1, thorium.ItemType("HeroBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("Viscount"))
+                    {
+                        Swarm(npc, thorium.NPCType("Viscount"), -1, thorium.ItemType("CountBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("ThePrimeScouter"))
+                    {
+                        Swarm(npc, thorium.NPCType("ThePrimeScouter"), -1, thorium.ItemType("ScouterBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("BoreanStriderPopped"))
+                    {
+                        Swarm(npc, thorium.NPCType("BoreanStrider"), thorium.ItemType("BoreanMyte1"), thorium.ItemType("BoreanBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("FallenDeathBeholder2"))
+                    {
+                        Swarm(npc, thorium.NPCType("FallenDeathBeholder"), thorium.ItemType("EnemyBeholder"), thorium.ItemType("BeholderBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("LichHeadless"))
+                    {
+                        Swarm(npc, thorium.NPCType("Lich"), -1, thorium.ItemType("LichBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("AbyssionReleased"))
+                    {
+                        Swarm(npc, thorium.NPCType("Abyssion"), thorium.NPCType("AbyssalSpawn"), thorium.ItemType("AbyssionBag"), "");
+                    }
+                    else if (npc.type == thorium.NPCType("RealityBreaker"))
+                    {
+                        Swarm(npc, thorium.NPCType("Aquaius"), thorium.NPCType("AquaiusBubble"), thorium.ItemType("RagBag"), "");
+                        Swarm(npc, thorium.NPCType("Omnicide"), -1, -1, "");
+                        Swarm(npc, thorium.NPCType("SlagFury"), -1, -1, "");
+                    }
+                }
+
                 return false;
             }
 
@@ -491,7 +634,6 @@ namespace Fargowiltas.NPCs
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wood, Main.rand.Next(10, 30));
 			}
 
-			// ReSharper disable once SwitchStatementMissingSomeCases
 			if (npc.type == NPCID.GreekSkeleton && Main.rand.Next(15) == 0)
 			{
 				int i = Main.rand.Next(3);
@@ -622,8 +764,6 @@ namespace Fargowiltas.NPCs
 			}
             else if (npc.type == NPCID.DD2OgreT3 && !DD2Event.Ongoing)
             {
-                //Item.NewItem(npc.position, npc.Size, 3861, 1, false, 0, false, false);
-
                 if (Main.rand.Next(14) == 0)
                 {
                     Item.NewItem(npc.position, npc.Size, 3865, 1, false, 0, false, false);
@@ -653,6 +793,16 @@ namespace Fargowiltas.NPCs
                 {
                     Item.NewItem(npc.position, npc.Size, 3856, 1, false, 0, false, false);
                 }
+            }
+            else if (npc.type == NPCID.Raven && !Main.halloween)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
+                        ItemID.GoodieBag);
+            }
+            else if (npc.type == NPCID.SlimeRibbonRed && !Main.xMas)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
+                        ItemID.Present);
             }
         }
 		
