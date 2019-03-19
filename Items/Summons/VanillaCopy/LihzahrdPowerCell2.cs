@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Summons
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LihzahrdPowerCell);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

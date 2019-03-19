@@ -1,12 +1,18 @@
-NEW UPDATE - v 1.1
--Made EoW and BoC not despawn if you leave Corruption/Crimson and now all summons for them work anywhere
--Some swarms now spawn less bosses at a time to not go over the NPC limit
--Added swarm items for most Thorium bosses
--Made it so the Angler has no cooldown between quests, in Multiplayer all players need to complete the quest for it to change
--Added message saying download the other half on world enter, if its not already loaded, I'll remove this in like a month
--Teleport home key will work with Soul of Dimensions and Soul of Eternity now
--Moved Ogre and Betsy summons to the Abominationn's shop
--Fixed a bugged summon slot for an Enigma Mod summon
+NEW UPDATE - v 1.2
+-Moved Crucible of the Cosmos to the Soul Mod and it now has Luminite Bars in the recipe
+-Lihzahrdy Power Cell now crafted at Mythril Anvil
+-using Portable Sundial resets the Travelling Merchant's shop
+-Pirate Maps now stack to 9999
+-Added Goblin Head, a drop from the Goblin Tinkerer
+-Added thrown version of North Pole
+-Stopped the infinite Santa invasion bug
+-player no longer starts with Goodie Bag and Present
+-beating a swarm will no longer kill pillars
+-another fix attempt on Battle Cry in multiplayer working
+-added recipe conversion between Purple and Red Solutions
+-Added several missing sprites
+-Energizers can be sold for a nice price now
+
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

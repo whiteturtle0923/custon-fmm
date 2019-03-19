@@ -261,7 +261,7 @@ namespace Fargowiltas.NPCs
 
         public override void EditSpawnRate (Player player, ref int spawnRate, ref int maxSpawns)
 		{
-		    if (!FargoWorld.battleCry) return;
+		    if (!player.GetModPlayer<FargoPlayer>().battleCry) return;
 
 		    spawnRate = (int)(spawnRate * 0.1);
 		    maxSpawns = (int)(maxSpawns * 10f);
@@ -396,7 +396,7 @@ namespace Fargowiltas.NPCs
                 for (int i = 0; i < 200; i++)
                 {
                     NPC kill = Main.npc[i];
-                    if (kill.active && !kill.friendly)
+                    if (kill.active && !kill.friendly && kill.type != NPCID.LunarTowerNebula && kill.type != NPCID.LunarTowerSolar && kill.type != NPCID.LunarTowerStardust && kill.type != NPCID.LunarTowerVortex)
                     {
                         Main.npc[i].GetGlobalNPC<FargoGlobalNPC>().noLoot = true;
                         Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
@@ -758,10 +758,13 @@ namespace Fargowiltas.NPCs
 						ItemID.MushroomStatue);
 				}
 			}
-			else if (npc.type == NPCID.SantaClaus && FargoWorld.xmas)
+			else if (npc.type == NPCID.GoblinTinkerer)
 			{
-				NPC.NewNPC((int) npc.position.X, (int) npc.position.Y, NPCID.SantaClaus);
-			}
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem(npc.position, npc.Size, mod.ItemType("GoblinHead"), 1, false, 0, false, false);
+                }
+            }
             else if (npc.type == NPCID.DD2OgreT3 && !DD2Event.Ongoing)
             {
                 if (Main.rand.Next(14) == 0)

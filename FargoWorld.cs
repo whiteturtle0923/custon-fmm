@@ -18,8 +18,6 @@ namespace Fargowiltas
         public static bool xmas;
         public static bool eternity;
 
-        public static bool battleCry;
-
         private static bool[] currentSpawnRateTile;
 
         public override void Initialize()
@@ -31,8 +29,6 @@ namespace Fargowiltas
             halloween = false;
             xmas = false;
             eternity = false;
-
-            battleCry = false;
 
             currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
         }

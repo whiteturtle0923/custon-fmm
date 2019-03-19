@@ -54,8 +54,10 @@ Right click to kill all super dummies");
 				int x = (int) Main.MouseWorld.X - 9;
 				int y = (int) Main.MouseWorld.Y - 20;
 
-				NPC.NewNPC(x, y, mod.NPCType("SuperDummy"));
-			}
+                int dummy = NPC.NewNPC(x, y, mod.NPCType("SuperDummy"));
+              
+                NetMessage.SendData(23, -1, -1, null, dummy, 0f, 0f, 0f, 0);
+            }
 
             return true;
 		}

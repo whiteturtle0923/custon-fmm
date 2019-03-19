@@ -11,6 +11,7 @@ namespace Fargowiltas
 {
     public class FargoPlayer : ModPlayer
     {
+        public bool battleCry;
         private bool hasMirror;
         private int mirrorCD;
         private bool hasRod;
@@ -21,14 +22,6 @@ namespace Fargowiltas
             Item item = new Item();
             item.SetDefaults(mod.ItemType("Stats"));
             items.Add(item);
-
-            item = new Item();
-            item.SetDefaults(ItemID.GoodieBag);
-            items.Add(item);
-
-            item = new Item();
-            item.SetDefaults(ItemID.Present);
-            items.Add(item); 
         }
 
         public override void OnEnterWorld(Player player)
@@ -126,6 +119,7 @@ namespace Fargowiltas
 
         public override void ResetEffects()
         {
+            battleCry = false;
             hasMirror = false;
             hasRod = false;
         }

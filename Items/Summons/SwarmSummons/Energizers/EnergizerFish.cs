@@ -4,12 +4,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
 {
     public class EnergizerFish : ModItem
     {
-        //until it has a use
-        public override bool Autoload(ref string name)
-        {
-            return false;
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fishy Energizer");
@@ -22,8 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
             item.height = 20;
             item.maxStack = 999;
             item.rare = 1;
+            item.value = 100000;
         }
-
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 }

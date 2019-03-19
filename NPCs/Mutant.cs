@@ -566,6 +566,8 @@ namespace Fargowiltas.NPCs
                 {
                     //Mushroom Monarch
                     AddItem(AAMonarch, "AAMod", "IntimidatingMushroom", 20000, ref shop, ref nextSlot);
+
+                    AddItem(AAMonarch, "AAMod", "ConfusingMushroom", 20000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
@@ -1306,10 +1308,6 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.elementsLoaded)
                 {
                     AddItem(ElementsDownedEye, "ElementsAwoken", "EyeSummon", 750000, ref shop, ref nextSlot);
-                }
-
-                if (Fargowiltas.instance.elementsLoaded)
-                {
                     AddItem(ElementsDownedDragon, "ElementsAwoken", "AncientDragonSummon", 750000, ref shop, ref nextSlot);
                 }
 

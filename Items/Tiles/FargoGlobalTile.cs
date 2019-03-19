@@ -17,12 +17,6 @@ namespace Fargowiltas.Tiles
                 return adjTiles;
             }
 
-            if (type == mod.TileType("CrucibleCosmosSheet"))
-            {
-                Main.LocalPlayer.adjHoney = true;
-                Main.LocalPlayer.adjLava = true;
-            }
-
             return base.AdjTiles(type);
         }
 

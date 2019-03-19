@@ -112,6 +112,7 @@
     <Compile Include="Items\Misc\BattleCry.cs" />
     <Compile Include="Items\Misc\CorruptRenewal.cs" />
     <Compile Include="Items\Misc\CrimsonRenewal.cs" />
+    <Compile Include="Items\Misc\GoblinHead.cs" />
     <Compile Include="Items\Misc\HallowRenewal.cs" />
     <Compile Include="Items\Misc\MapViewer.cs" />
     <Compile Include="Items\Misc\MushroomRenewal.cs" />
@@ -176,8 +177,6 @@
     <Compile Include="Items\Summons\VanillaCopy\WormyFood.cs" />
     <Compile Include="Items\Tiles\AutoHouse.cs" />
     <Compile Include="Items\Tiles\AutoHouseTile.cs" />
-    <Compile Include="Items\Tiles\CrucibleCosmos.cs" />
-    <Compile Include="Items\Tiles\CrucibleCosmosSheet.cs" />
     <Compile Include="Items\Tiles\EchPainting.cs" />
     <Compile Include="Items\Tiles\EchPaintingSheet.cs" />
     <Compile Include="Items\Tiles\FargoGlobalTile.cs" />
@@ -222,6 +221,7 @@
     <Compile Include="Items\Weapons\Thrown\LightDiscThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\MagicDaggerThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\MalaiseThrown.cs" />
+    <Compile Include="Items\Weapons\Thrown\NorthPoleThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\PaladinsHammerThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\PossessedHatchetThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\RallyThrown.cs" />
@@ -348,11 +348,6 @@
     <Content Include="Items\Summons\SwarmSummons\OverloadWorm.png" />
     <Content Include="Items\Tiles\AutoHouse.png" />
     <Content Include="Items\Tiles\AutoHouseTile.png" />
-    <Content Include="Items\Tiles\crates.png" />
-    <Content Include="Items\Tiles\CrucibleCosmos.png" />
-    <Content Include="Items\Tiles\CrucibleCosmosSheet.png" />
-    <Content Include="Items\Tiles\CrucibleCosmosSheet2.png" />
-    <Content Include="Items\Tiles\CrucibleCosmosSheet3.png" />
     <Content Include="Items\Tiles\EchPainting.png" />
     <Content Include="Items\Tiles\EchPaintingSheet.png" />
     <Content Include="Items\Tiles\IceCrate.png" />

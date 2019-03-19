@@ -56,6 +56,7 @@ namespace Fargowiltas.Items.Misc
             {
                 Main.dayTime = !Main.dayTime;
                 Main.time = 0;
+                Chest.SetupTravelShop();
             }
 
             return true;

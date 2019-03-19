@@ -124,7 +124,7 @@ namespace Fargowiltas
 
             recipe = new ModRecipe(this);
             recipe.AddIngredient(null, "LihzahrdPowerCell2");
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(ItemID.LihzahrdPowerCell);
             recipe.AddRecipe();
 
@@ -191,6 +191,18 @@ namespace Fargowiltas
             #endregion
 
             #region crimson/corruption conversions
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PurpleSolution);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.RedSolution);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.RedSolution);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.PurpleSolution);
+            recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.Ichor);

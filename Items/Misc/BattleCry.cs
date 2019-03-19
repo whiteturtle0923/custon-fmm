@@ -28,9 +28,10 @@ namespace Fargowiltas.Items.Misc
 
         public override bool UseItem(Player player)
         {
-            FargoWorld.battleCry = !FargoWorld.battleCry;
+            FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
+            modPlayer.battleCry = !modPlayer.battleCry;
 
-            if (FargoWorld.battleCry)
+            if (modPlayer.battleCry)
             {
                 Main.NewText("Spawn rates increased!", 175, 75);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Horn").WithVolume(1f).WithPitchVariance(.5f), (int)player.position.X, (int)player.position.Y);
