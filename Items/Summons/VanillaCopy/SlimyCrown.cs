@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,8 +30,10 @@ namespace Fargowiltas.Items.Summons
 
         public override bool UseItem(Player player)
         {
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.KingSlime);
-            //NetMessage.SendData(23, -1, -1, null, NPCID.KingSlime, 0f, 0f, 0f, 0);
+            Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
+
+            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.KingSlime);
+
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

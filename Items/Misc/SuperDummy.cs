@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -51,12 +52,9 @@ Right click to kill all super dummies");
 			}
 			else if (player.whoAmI == Main.myPlayer)
 			{
-				int x = (int) Main.MouseWorld.X - 9;
-				int y = (int) Main.MouseWorld.Y - 20;
+                Vector2 pos = new Vector2((int)Main.MouseWorld.X - 9, (int)Main.MouseWorld.Y - 20);
 
-                int dummy = NPC.NewNPC(x, y, mod.NPCType("SuperDummy"));
-              
-                NetMessage.SendData(23, -1, -1, null, dummy, 0f, 0f, 0f, 0);
+                Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, mod.NPCType("SuperDummy"));
             }
 
             return true;

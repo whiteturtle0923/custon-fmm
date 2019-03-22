@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,9 +28,11 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public override bool UseItem(Player player)
         {
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), NPCID.DD2Betsy);
+            Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
+
+            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.DD2Betsy);
+
             Main.NewText("Betsy has awoken!", 175, 75);
-            //NetMessage.SendData(23, -1, -1, null, NPCID.DD2Betsy, 0f, 0f, 0f, 0);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

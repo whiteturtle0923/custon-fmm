@@ -1,18 +1,17 @@
 NEW UPDATE - v 1.2
--Moved Crucible of the Cosmos to the Soul Mod and it now has Luminite Bars in the recipe
--Lihzahrdy Power Cell now crafted at Mythril Anvil
--using Portable Sundial resets the Travelling Merchant's shop
--Pirate Maps now stack to 9999
--Added Goblin Head, a drop from the Goblin Tinkerer
--Added thrown version of North Pole
--Stopped the infinite Santa invasion bug
--player no longer starts with Goodie Bag and Present
--beating a swarm will no longer kill pillars
--another fix attempt on Battle Cry in multiplayer working
--added recipe conversion between Purple and Red Solutions
+-Added Cheapskate's End and North Pole Thrown
 -Added several missing sprites
+-Moved Crucible of the Cosmos to the Soul Mod and it now has Luminite Bars in the recipe
+-Super Dummys and all boss summons should no longer disappear on hit in multiplayer
+-Another fix attempt on Battle Cry in multiplayer
+-Using Portable Sundial resets the Travelling Merchant's shop
+-Players no longer starts with Goodie Bag and Present
+-Lihzahrdy Power Cell now crafted at Mythril Anvil
+-Added recipe conversion between Purple and Red Solutions
 -Energizers can be sold for a nice price now
-
+-Pirate Maps now stack to 9999
+-Stopped the infinite Santa invasion bug
+-Beating a swarm will no longer kill pillars
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

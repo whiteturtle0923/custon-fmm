@@ -119,7 +119,6 @@ namespace Fargowiltas
 
         public override void ResetEffects()
         {
-            battleCry = false;
             hasMirror = false;
             hasRod = false;
         }

@@ -263,6 +263,7 @@
     <Compile Include="Projectiles\MushroomNukeProj.cs" />
     <Compile Include="Projectiles\PhantasmalEyeProjectile.cs" />
     <Compile Include="Projectiles\PurityNukeProj.cs" />
+    <Compile Include="Projectiles\SpawnProj.cs" />
     <Compile Include="Projectiles\TrollbombProj.cs" />
   </ItemGroup>
   <ItemGroup>
