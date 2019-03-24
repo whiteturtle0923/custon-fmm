@@ -1,4 +1,5 @@
 using Fargowiltas.NPCs;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,6 +25,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.useTime = 30;
             item.useStyle = 4;
             item.consumable = true;
+            item.shoot = mod.ProjectileType("SpawnProj");
         }
 
         public override bool CanUseItem(Player player)
@@ -100,20 +102,13 @@ namespace Fargowiltas.Items.Summons.NewSummons
             "TerraLord",
             "TerraGuard",
         };
-        
-        public override bool UseItem(Player player)
-        {
-            // NPC npc = new NPC();
-            // for (int i = NPCID.Count; i < Main.npcTexture.Length; i++)
-            // {
-            // npc.SetDefaults(i);
-            // if (npc.boss && !NPC.AnyNPCs(npc.type))
-            // {
-            // NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000 ,1000), (int)player.position.Y + Main.rand.Next(-1000 ,1000), npc.type);
-            // Main.NewText(npc.modNPC.Name + " has awoken!", 175, 75, 255);
-            // }
-            // }
 
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
+            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, 1, 3);
+
+            //other mods
             if (Fargowiltas.instance.sacredToolsLoaded)
             {
                 foreach (string i in SacredToolsBosses)
@@ -128,9 +123,9 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
             if (Fargowiltas.instance.pumpkingLoaded)
             {
-                foreach(string i in PumpkingBosses)
+                foreach (string i in PumpkingBosses)
                     NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("Pumpking").NPCType(i));
-                
+
             }
 
             if (Fargowiltas.instance.crystiliumLoaded)
@@ -140,25 +135,25 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
             if (Fargowiltas.instance.thoriumLoaded)
             {
-                foreach(string i in ThoriumBosses)
+                foreach (string i in ThoriumBosses)
                     NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType(i));
                 player.AddBuff(ModLoader.GetMod("ThoriumMod").BuffType("TouchOfOmnicide"), 14400);
             }
 
             if (Fargowiltas.instance.calamityLoaded)
             {
-                foreach(string i in CalamityBosses)
+                foreach (string i in CalamityBosses)
                     NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType(i));
             }
 
             if (Fargowiltas.instance.spiritLoaded)
             {
-                foreach(string i in SpiritBosses)
+                foreach (string i in SpiritBosses)
                     NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("SpiritMod").NPCType(i));
             }
 
-            mod.GetItem("MutantVoodoo").UseItem(player);
-            
+            Main.NewText("Several bosses have awoken!", 175, 75, 255);
+
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

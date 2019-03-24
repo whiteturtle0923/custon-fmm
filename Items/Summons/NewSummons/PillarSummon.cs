@@ -24,9 +24,10 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.useTime = 30;
             item.useStyle = 4;
             item.consumable = true;
+            item.shoot = mod.ProjectileType("SpawnProj");
         }
 
-        public override bool UseItem(Player player)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int[] pillars = new int[] { NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex };
 
@@ -34,7 +35,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             {
                 Vector2 pos = new Vector2((int)player.position.X + (400 * i) - 600, (int)player.position.Y - 200);
 
-                Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, pillars[i]);
+                Projectile.NewProjectile(pos, Vector2.Zero, type, 0, 0, Main.myPlayer, pillars[i]);
             }
 
             Main.NewText("The Celestial Pillars have awoken!", 175, 75);

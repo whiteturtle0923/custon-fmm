@@ -24,9 +24,10 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.useTime = 30;
             item.useStyle = 4;
             item.consumable = true;
+            item.shoot = mod.ProjectileType("SpawnProj");
         }
 
-        public override bool UseItem(Player player)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
 
