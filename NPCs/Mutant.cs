@@ -253,13 +253,21 @@ namespace Fargowiltas.NPCs
 
         //Ancients Awakened
         public bool AAMonarch => AAMod.AAWorld.downedMonarch;
+        public bool AAFungus => AAMod.AAWorld.downedFungus;
         public bool AAGrips => AAMod.AAWorld.downedGrips;
         public bool AABrood => AAMod.AAWorld.downedBrood;
         public bool AAHydra => AAMod.AAWorld.downedHydra;
+        public bool AAToad => AAMod.AAWorld.downedToad;
+        public bool AADjinn => AAMod.AAWorld.downedDjinn;
+        public bool AASerpent => AAMod.AAWorld.downedSerpent;
+        public bool AASag => AAMod.AAWorld.downedSag;
         public bool AARetriever => AAMod.AAWorld.downedRetriever;
         public bool AARaider => AAMod.AAWorld.downedRaider;
         public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
+        public bool AATruffle => AAMod.AAWorld.downedTruffle;
+        public bool AARajah => AAMod.AAWorld.downedRajah;
         public bool AAEquinox => AAMod.AAWorld.downedEquinox;
+        public bool AASisters => AAMod.AAWorld.downedSisters;
         public bool AAYamata => AAMod.AAWorld.downedYamata;
         public bool AAYamataA => AAMod.AAWorld.downedYamata && Main.expertMode;
         public bool AAAkuma => AAMod.AAWorld.downedAkuma;
@@ -269,12 +277,7 @@ namespace Fargowiltas.NPCs
         public bool AAShen => AAMod.AAWorld.downedShen;
         public bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
         public bool AAIZ => AAMod.AAWorld.downedIZ;
-
-        public bool AAGripsS => AAMod.AAWorld.downedGripsS;
-        public bool AAToad => AAMod.AAWorld.downedToad;
-        public bool AADjinn => AAMod.AAWorld.downedDjinn;
         public bool AASoC => AAMod.AAWorld.downedSoC;
-        public bool AASerpent => AAMod.AAWorld.downedSerpent;
 
 
         //pinky
@@ -567,7 +570,7 @@ namespace Fargowiltas.NPCs
                     //Mushroom Monarch
                     AddItem(AAMonarch, "AAMod", "IntimidatingMushroom", 20000, ref shop, ref nextSlot);
 
-                    AddItem(AAMonarch, "AAMod", "ConfusingMushroom", 20000, ref shop, ref nextSlot);
+                    AddItem(AAFungus, "AAMod", "ConfusingMushroom", 20000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
@@ -928,7 +931,13 @@ namespace Fargowiltas.NPCs
                     //Star Scouter
                     AddItem(ThoriumDownedScout, "ThoriumMod", "StarCaller", 150000, ref shop, ref nextSlot);
                 }
-                
+
+                if (Fargowiltas.instance.thoriumLoaded)
+                {
+                    //Star Scouter
+                    AddItem(AASag, "AAMod", "Lifescanner", 150000, ref shop, ref nextSlot);
+                }
+
                 //Wall of Flesh
                 AddItem(Main.hardMode, "Fargowiltas", "FleshyDoll", 250000, ref shop, ref nextSlot);
                 //All Pre-HM bosses
@@ -1034,6 +1043,8 @@ namespace Fargowiltas.NPCs
                     AddItem(AARaider, "AAMod", "CyberneticBell", 250000, ref shop, ref nextSlot);
                     //Orthrus X
                     AddItem(AAOrthrus, "AAMod", "ScrapHeap", 250000, ref shop, ref nextSlot);
+                    //Techno Truffle
+                    AddItem(AATruffle, "AAMod", "CyberneticShroom", 250000, ref shop, ref nextSlot);
                     //All Storm bosses
                     //AddItem((AARetriever && AARaider && AAOrthrus), "Fargowiltas", "CyberneticAmalgam", 600000, ref shop, ref nextSlot);
                 }
@@ -1346,8 +1357,7 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.aaLoaded)
                 {
-                    AddItem(AAGripsS, "AAMod", "AbyssClaw", 1000000, ref shop, ref nextSlot);
-                    AddItem(AAGripsS, "AAMod", "BlazeClaw", 1000000, ref shop, ref nextSlot);
+                    AddItem(AASisters, "AAMod", "FlamesOfAnarchy", 1000000, ref shop, ref nextSlot);
                     //Equinox Worms
                     AddItem(AAEquinox, "AAMod", "EquinoxWorm", 1000000, ref shop, ref nextSlot);
                     //Akuma
