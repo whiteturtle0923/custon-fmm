@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +10,10 @@ namespace Fargowiltas.Items
 {
     public class FargoGlobalItem : GlobalItem
     {
+        public override bool InstancePerEntity => true;
+
+        public override bool CloneNewInstances => true;
+
         private static int[] thrown = { ItemID.Bananarang, ItemID.BloodyMachete, ItemID.DayBreak, ItemID.EnchantedBoomerang, ItemID.Flamarang, ItemID.FruitcakeChakram, ItemID.IceBoomerang, ItemID.LightDisc, ItemID.MagicDagger, ItemID.PaladinsHammer, ItemID.PossessedHatchet, ItemID.ShadowFlameKnife, ItemID.ThornChakram, ItemID.ToxicFlask, ItemID.VampireKnives, ItemID.WoodenBoomerang, ItemID.WoodYoyo, ItemID.Rally, ItemID.CorruptYoyo, ItemID.CrimsonYoyo, ItemID.JungleYoyo, ItemID.Code1, ItemID.Valor, ItemID.Cascade, ItemID.FormatC, ItemID.Gradient, ItemID.Chik, ItemID.HelFire, ItemID.Amarok, ItemID.Code2, ItemID.Yelets, ItemID.RedsYoyo, ItemID.ValkyrieYoyo, ItemID.Kraken, ItemID.TheEyeOfCthulhu, ItemID.Terrarian, ItemID.FlyingKnife, ItemID.BallOHurt, ItemID.TheMeatball, ItemID.BlueMoon, ItemID.Sunfury, ItemID.DaoofPow, ItemID.FlowerPow, ItemID.ScourgeoftheCorruptor, ItemID.NorthPole };
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
@@ -174,6 +177,29 @@ namespace Fargowiltas.Items
             if (Array.IndexOf(thrown, item.type) <= -1) return;
 
             NewThrown(item, player, item.Name.Replace(" ", "").Replace("'", "").Replace("-", "").Replace(":", ""));
+        }
+
+        static int[] hearts = new int[] { ItemID.Heart, ItemID.CandyApple, ItemID.CandyCane };
+        static int[] stars = new int[] { ItemID.Star, ItemID.SoulCake, ItemID.SugarPlum };
+
+        bool firstTick = true;
+
+        public override void PostUpdate(Item item)
+        {
+            if (FargoWorld.halloween && FargoWorld.xmas && firstTick)
+            {
+                if (Array.IndexOf(hearts, item.type) >= 0)
+                {
+                    item.type = hearts[Main.rand.Next(hearts.Length)];
+                }
+
+                if (Array.IndexOf(stars, item.type) >= 0)
+                {
+                    item.type = stars[Main.rand.Next(stars.Length)];
+                }
+
+                firstTick = false;
+            }
         }
 
         private void NewThrown(Item item, Player player, string thrown)

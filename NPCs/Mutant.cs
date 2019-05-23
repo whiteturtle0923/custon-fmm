@@ -201,10 +201,12 @@ namespace Fargowiltas.NPCs
         public bool ElementsDownedObsid => ElementsAwoken.MyWorld.downedObsidious;
         public bool ElementsDownedPerma => ElementsAwoken.MyWorld.downedPermafrost;
         public bool ElementsDownedAque => ElementsAwoken.MyWorld.downedAqueous;
-        public bool ElementsDownedEye => ElementsAwoken.MyWorld.downedEye;
-        public bool ElementsDownedDragon => ElementsAwoken.MyWorld.downedAncientDragon;
+        public bool ElementsDownedDragon => ElementsAwoken.MyWorld.downedAncientWyrm;
         public bool ElementsDownedGuardian => ElementsAwoken.MyWorld.downedGuardian;
         public bool ElementsDownedVoid => ElementsAwoken.MyWorld.downedVoidLeviathan;
+
+        public bool ElementsDownedVolcanox => ElementsAwoken.MyWorld.downedVolcanox;
+        public bool ElementsDownedAzana => ElementsAwoken.MyWorld.downedAzana;
 
         //antiaris
         public bool AntiarisDownedAntlion => Antiaris.AntiarisWorld.DownedAntlionQueen;
@@ -269,12 +271,13 @@ namespace Fargowiltas.NPCs
         public bool AAShen => AAMod.AAWorld.downedShen;
         public bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
         public bool AAIZ => AAMod.AAWorld.downedIZ;
-
         public bool AAGripsS => AAMod.AAWorld.downedGripsS;
         public bool AAToad => AAMod.AAWorld.downedToad;
         public bool AADjinn => AAMod.AAWorld.downedDjinn;
         public bool AASoC => AAMod.AAWorld.downedSoC;
         public bool AASerpent => AAMod.AAWorld.downedSerpent;
+        public bool AAFungus => AAMod.AAWorld.downedFungus;
+        public bool AASisters => AAMod.AAWorld.downedSisters;
 
 
         //pinky
@@ -292,6 +295,9 @@ namespace Fargowiltas.NPCs
         public bool RedeGigipede=> Redemption.RedeWorld.downedVlitch2;
         public bool RedeCleaver => Redemption.RedeWorld.downedVlitch1;
         public bool RedeSlayer => Redemption.RedeWorld.downedSlayer;
+
+        //ocram
+        public bool OcramOcram => Ocram.OcramWorld.downedOcram;
 
         #endregion other mod bools
 
@@ -566,8 +572,7 @@ namespace Fargowiltas.NPCs
                 {
                     //Mushroom Monarch
                     AddItem(AAMonarch, "AAMod", "IntimidatingMushroom", 20000, ref shop, ref nextSlot);
-
-                    AddItem(AAMonarch, "AAMod", "ConfusingMushroom", 20000, ref shop, ref nextSlot);
+                    AddItem(AAFungus, "AAMod", "ConfusingMushroom", 20000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.exodusLoaded)
@@ -1046,6 +1051,11 @@ namespace Fargowiltas.NPCs
                 AddItem(NPC.downedMechBoss3, "Fargowiltas", "MechSkull", 400000, ref shop, ref nextSlot);
                 //All Mechs
                 AddItem((NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3), "Fargowiltas", "MechanicalAmalgam", 1000000, ref shop, ref nextSlot);
+
+                if (Fargowiltas.instance.ocramLoaded)
+                {
+                    AddItem(OcramOcram, "Ocram", "item_suspicious_looking_skull", 400000, ref shop, ref nextSlot);
+                }
                 
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
@@ -1307,7 +1317,6 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
-                    AddItem(ElementsDownedEye, "ElementsAwoken", "EyeSummon", 750000, ref shop, ref nextSlot);
                     AddItem(ElementsDownedDragon, "ElementsAwoken", "AncientDragonSummon", 750000, ref shop, ref nextSlot);
                 }
 
@@ -1339,25 +1348,18 @@ namespace Fargowiltas.NPCs
             {
                 AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
 
-                if (Fargowiltas.instance.fargoLoaded)
-                {
-                    AddItem(FargoWorld.eternity, "FargowiltasSouls", "EternitySoul", 99000000, ref shop, ref nextSlot);
-                }
-
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     AddItem(AAGripsS, "AAMod", "AbyssClaw", 1000000, ref shop, ref nextSlot);
                     AddItem(AAGripsS, "AAMod", "BlazeClaw", 1000000, ref shop, ref nextSlot);
                     //Equinox Worms
                     AddItem(AAEquinox, "AAMod", "EquinoxWorm", 1000000, ref shop, ref nextSlot);
+                    //sisters
+                    AddItem(AASisters, "AAMod", "FlamesOfAnarchy ", 1000000, ref shop, ref nextSlot);
                     //Akuma
                     AddItem(AAAkuma, "AAMod", "DraconianSigil", 1000000, ref shop, ref nextSlot);
-                    //Akuma Awakened
-                    AddItem(AAAkumaA, "AAMod", "DraconianRune", 1000000, ref shop, ref nextSlot);
                     //Yamata
                     AddItem(AAYamata, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
-                    //Yamata Awakened
-                    AddItem(AAYamataA, "AAMod", "DreadRune", 1000000, ref shop, ref nextSlot);
                 }
                 
                 if (Fargowiltas.instance.trelamiumLoaded)
@@ -1392,7 +1394,9 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.elementsLoaded)
                 {
+                    AddItem(ElementsDownedVolcanox, "ElementsAwoken", "VolcanoxSummon", 1000000, ref shop, ref nextSlot);
                     AddItem(ElementsDownedVoid, "ElementsAwoken", "VoidLeviathanSummon", 1000000, ref shop, ref nextSlot);
+                    AddItem(ElementsDownedAzana, "ElementsAwoken", "AzanaSummon", 1000000, ref shop, ref nextSlot);
                 }
 
                 //abomination rematch - blue
@@ -1502,8 +1506,6 @@ namespace Fargowiltas.NPCs
                     AddItem(AASoC, "AAMod", "SpatialWheel ", 1500000, ref shop, ref nextSlot);
                     //Zero
                     AddItem(AAZero, "AAMod", "ZeroTesseract", 15000000, ref shop, ref nextSlot);
-                    //Zero Awakened
-                    AddItem(AAZeroA, "AAMod", "ZeroRune", 15000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.calamityLoaded)
@@ -1522,11 +1524,22 @@ namespace Fargowiltas.NPCs
                     AddItem(AAShen, "AAMod", "ChaosSigil", 20000000, ref shop, ref nextSlot);
                     //Infinity Zero
                     AddItem(AAIZ, "AAMod", "InfinityOverloader", 30000000, ref shop, ref nextSlot);
-                    //Shen Doragon Awakened
-                    AddItem(AAShenA, "AAMod", "ChaosRune", 40000000, ref shop, ref nextSlot);
                 }
                 //Pain
                 AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);
+
+                if (Fargowiltas.instance.fargoLoaded)
+                {
+                    Player player = Main.player[Main.myPlayer];
+
+                    foreach (Item item in player.armor)
+                    {
+                        if (item != null && item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("EternitySoul"))
+                        {
+                            AddItem(true, "FargowiltasSouls", "EternitySoul", 99000000, ref shop, ref nextSlot);
+                        }
+                    }
+                }
             }
 
             #endregion POST MOONLORD BOSSES

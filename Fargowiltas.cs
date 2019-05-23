@@ -41,6 +41,7 @@ namespace Fargowiltas
         internal bool trelamiumLoaded;
         internal bool pinkyLoaded;
         internal bool redemptionLoaded;
+        internal bool ocramLoaded;
         #endregion
 
         //swarms
@@ -103,6 +104,7 @@ namespace Fargowiltas
                 trelamiumLoaded = ModLoader.GetMod("TrelamiumMod") != null;
                 pinkyLoaded = ModLoader.GetMod("pinkymod") != null;
                 redemptionLoaded = ModLoader.GetMod("Redemption") != null;
+                ocramLoaded = ModLoader.GetMod("Ocram") != null;
             }
             catch (Exception e)
             {

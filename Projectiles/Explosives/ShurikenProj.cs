@@ -41,7 +41,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
-            int radius = 20;     //bigger = boomer
+            int radius = 16;     //bigger = boomer
 
             for (int x = -radius; x <= (radius); x++)
             {

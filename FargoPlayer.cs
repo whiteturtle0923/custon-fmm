@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameInput;
@@ -158,17 +157,6 @@ namespace Fargowiltas
             if (rodCD != 0)
             {
                 rodCD--;
-            }
-
-            if (Fargowiltas.instance.fargoLoaded && !FargoWorld.eternity)
-            {
-                foreach (Item item in player.armor)
-                {
-                    if (item != null && item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("EternitySoul"))
-                    {
-                        FargoWorld.eternity = true;
-                    }
-                }
             }
 
             if (NPC.AnyNPCs(NPCID.BrainofCthulhu))

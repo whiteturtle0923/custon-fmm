@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,7 +10,11 @@ namespace Fargowiltas.Items.Summons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Ancient Master's Map of the Lost King's Great Ancestors");
-            Tooltip.SetDefault("Reveals the whole map");
+
+            if (Main.netMode != 1)
+                Tooltip.SetDefault("Reveals the whole map");
+            else
+                Tooltip.SetDefault("Reveals an area of the map around you");
         }
 
         public override void SetDefaults()
@@ -29,16 +34,36 @@ namespace Fargowiltas.Items.Summons
 
         public override bool UseItem(Player player)
         {
-            for (int i = 0; i < Main.maxTilesX; i++)
+            if (Main.netMode != 1)
             {
-                for (int j = 0; j < Main.maxTilesY; j++)
+                for (int i = 0; i < Main.maxTilesX; i++)
                 {
-                    if (WorldGen.InWorld(i, j))
-                        Main.Map.Update(i, j, 255);
+                    for (int j = 0; j < Main.maxTilesY; j++)
+                    {
+                        if (WorldGen.InWorld(i, j))
+                            Main.Map.Update(i, j, 255);
+                    }
                 }
+
+                Main.refreshMap = true;
+            }
+            else
+            {
+                Point center = Main.player[Main.myPlayer].Center.ToTileCoordinates();
+
+                int range = 300;
+
+                for (int i = center.X - range / 2; i < center.X + range / 2; i++)
+                {
+                    for (int j = center.Y - range / 2; j < center.Y + range / 2; j++)
+                    {
+                        if (WorldGen.InWorld(i, j))
+                            Main.Map.Update(i, j, 255);
+                    }
+                }
+                Main.refreshMap = true;
             }
 
-            Main.refreshMap = true;
             return true;
         }
 

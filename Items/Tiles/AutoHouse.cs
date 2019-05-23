@@ -32,7 +32,7 @@ namespace Fargowiltas.Items.Tiles
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Wood, 51);  
 			recipe.AddIngredient(ItemID.Torch);  
-			recipe.AddTile(TileID.AlchemyTable); 
+			recipe.AddTile(TileID.Sawmill); 
 			recipe.SetResult(this);   
             recipe.AddRecipe();
         }

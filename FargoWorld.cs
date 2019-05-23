@@ -16,7 +16,6 @@ namespace Fargowiltas
 
         public static bool halloween;
         public static bool xmas;
-        public static bool eternity;
 
         private static bool[] currentSpawnRateTile;
 
@@ -28,7 +27,6 @@ namespace Fargowiltas
 
             halloween = false;
             xmas = false;
-            eternity = false;
 
             currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
         }
@@ -42,7 +40,6 @@ namespace Fargowiltas
 
             if (halloween) downed.Add("halloween");
             if (xmas) downed.Add("xmas");
-            if (eternity) downed.Add("eternity");
 
             return new TagCompound {
                 {"downed", downed}
@@ -58,7 +55,6 @@ namespace Fargowiltas
 
             halloween = downed.Contains("halloween");
             xmas = downed.Contains("xmas");
-            eternity = downed.Contains("eternity");
         }
 
 		public override void NetReceive(BinaryReader reader)
@@ -68,7 +64,6 @@ namespace Fargowiltas
 			downedBoss = flags[1];
             halloween = flags[2];
             xmas = flags[3];
-            eternity = flags[4];
         }
 		
 		public override void NetSend(BinaryWriter writer)
@@ -79,7 +74,6 @@ namespace Fargowiltas
 				[1] = downedBoss,
 				[2] = halloween,
                 [3] = xmas,
-                [4] = eternity
             };
 
 			writer.Write(flags);
