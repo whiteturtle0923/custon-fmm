@@ -460,10 +460,10 @@ namespace Fargowiltas.NPCs
                 }
             }
         }
-		
-		public override bool PreNPCLoot (NPC npc)
+
+        public override bool PreNPCLoot (NPC npc)
 		{
-            if(noLoot)
+            if (noLoot)
             {
                 return false;
             }

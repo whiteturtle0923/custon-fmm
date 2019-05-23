@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.IO;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas
@@ -100,7 +102,7 @@ namespace Fargowiltas
                 splitLoaded = ModLoader.GetMod("Split") != null;
                 //ferniumLoaded = ModLoader.GetMod("Fernium") != null;
                 antiarisLoaded = ModLoader.GetMod("Antiaris") != null;
-                aaLoaded = ModLoader.GetMod("AAMod") != null;
+                aaLoaded = ModLoader.GetMod("Fargowiltas") != null;
                 trelamiumLoaded = ModLoader.GetMod("TrelamiumMod") != null;
                 pinkyLoaded = ModLoader.GetMod("pinkymod") != null;
                 redemptionLoaded = ModLoader.GetMod("Redemption") != null;
@@ -1511,6 +1513,259 @@ namespace Fargowiltas
                     break;
             }
 
+        }
+
+        #region Boss Summon Method (Thanks Grox)
+        public static void SpawnBoss(Player player, string type, bool spawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        {
+            Mod mod = Fargowiltas.instance;
+            SpawnBoss(player, mod.NPCType(type), spawnMessage, overrideDirection, overrideDirectionY, overrideDisplayName, namePlural);
+        }
+
+        // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);
+        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        {
+            if (overrideDirection == 0)
+                overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
+            if (overrideDirectionY == 0)
+                overrideDirectionY = -1;
+            Vector2 npcCenter = player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
+            SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
+        }
+
+        // SpawnBoss(player, "MyBoss", true, player.Center + new Vector2(0, -800f), "DerpFromAbove", false);
+        public static void SpawnBoss(Player player, string type, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        {
+            Mod mod = Fargowiltas.instance;
+            SpawnBoss(player, mod.NPCType(type), spawnMessage, npcCenter, overrideDisplayName, namePlural);
+        }
+
+        // SpawnBoss(player, mod.NPCType("MyBoss"), true, player.Center + new Vector2(0, 800f), "DerpFromBelow", false);
+        public static int SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        {
+            if (npcCenter == default(Vector2))
+                npcCenter = player.Center;
+            if (Main.netMode != 1)
+            {
+                if (NPC.AnyNPCs(bossType)) { return; }
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
+                Main.npc[npcID].Center = npcCenter;
+                Main.npc[npcID].netUpdate2 = true;
+                if (spawnMessage)
+                {
+                    string npcName = (!String.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
+                    if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
+                        npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
+                    if (namePlural)
+                    {
+                        if (Main.netMode == 0) { Main.NewText(npcName + " have awoken!", 175, 75, 255, false); }
+                        else
+                        if (Main.netMode == 2)
+                        {
+                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255), -1);
+                        }
+                    }
+                    else
+                    {
+                        if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        else
+                        if (Main.netMode == 2)
+                        {
+                            NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
+                            {
+                            NetworkText.FromLiteral(npcName)
+                            }), new Color(175, 75, 255), -1);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                //I have no idea how to convert this to the standard system so im gonna post this method too lol
+                FargoNet.SendNetMessage(FargoNet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, spawnMessage, npcCenter.X, npcCenter.Y, overrideDisplayName, namePlural);
+            }
+            return 200;
+        }
+        #endregion
+    }
+
+    public static class FargoExtentions
+    {
+        public const byte SummonNPCFromClient = 0;
+        public static bool ReadBool(this BinaryReader w) { return w.ReadBoolean(); }
+        public static int ReadInt(this BinaryReader w) { return w.ReadInt32(); }
+        public static short ReadShort(this BinaryReader w) { return w.ReadInt16(); }
+        public static float ReadFloat(this BinaryReader w) { return w.ReadSingle(); }
+    }
+
+    public class FargoNet
+    {
+        public static bool DEBUG = true;
+
+        public static void SendData(int dataType, int dataA, int dataB, string text, int playerID, float dataC, float dataD, float dataE, int clientType)
+        {
+            NetMessage.SendData(dataType, dataA, dataB, NetworkText.FromLiteral(text), playerID, dataC, dataD, dataE, clientType);
+        }
+
+        public static ModPacket WriteToPacket(ModPacket packet, byte msg, params object[] param)
+        {
+            packet.Write((byte)msg);
+            for (int m = 0; m < param.Length; m++)
+            {
+                object obj = param[m];
+
+                if (obj is byte[])
+                {
+                    byte[] array = (byte[])obj;
+                    foreach (byte b in array) packet.Write((byte)b);
+                }
+                else
+                if (obj is bool) packet.Write((bool)obj);
+                else
+                if (obj is byte) packet.Write((byte)obj);
+                else
+                if (obj is short) packet.Write((short)obj);
+                else
+                if (obj is int) packet.Write((int)obj);
+                else
+                if (obj is float) packet.Write((float)obj);
+            }
+            return packet;
+        }
+
+        public static void SyncAI(Entity codable, float[] ai, int aitype)
+        {
+            int entType = (codable is NPC ? 0 : codable is Projectile ? 1 : -1);
+            if (entType == -1) { return; }
+            int id = (codable is NPC ? ((NPC)codable).whoAmI : ((Projectile)codable).identity);
+            SyncAI(entType, id, ai, aitype);
+        }
+
+        /*
+         * Used to sync custom ai float arrays. (the npc or projectile requires a method called 'public void SetAI(float[] ai, int type)' that sets the ai for this to work)
+         */
+        public static void SyncAI(int entType, int id, float[] ai, int aitype)
+        {
+            object[] ai2 = new object[ai.Length + 4];
+            ai2[0] = (byte)entType;
+            ai2[1] = (short)id;
+            ai2[2] = (byte)aitype;
+            ai2[3] = (byte)ai.Length;
+            for (int m = 4; m < ai2.Length; m++) { ai2[m] = ai[m - 4]; }
+            SendFargoNetMessage(1, ai2);
+        }
+
+        /*
+         * Writes a vector2 array to an obj[] array that can be sent via netmessaging.
+         */
+        public static object[] WriteVector2Array(Vector2[] array)
+        {
+            System.Collections.Generic.List<object> list = new System.Collections.Generic.List<object>();
+            list.Add(array.Length);
+            foreach (Vector2 vec in array)
+            {
+                list.Add(vec.X); list.Add(vec.Y);
+            }
+            return list.ToArray();
+        }
+
+        /*
+         * Writes a vector2 array to a binary writer.
+         */
+        public static void WriteVector2Array(Vector2[] array, BinaryWriter writer)
+        {
+            writer.Write(array.Length);
+            foreach (Vector2 vec in array)
+            {
+                writer.Write(vec.X); writer.Write(vec.Y);
+            }
+        }
+
+        /*
+         * Reads a vector2 array from a binary reader.
+         */
+        public static Vector2[] ReadVector2Array(BinaryReader reader)
+        {
+            int arrayLength = reader.ReadInt();
+            Vector2[] array = new Vector2[arrayLength];
+            for (int m = 0; m < arrayLength; m++)
+            {
+                array[m] = new Vector2(reader.ReadFloat(), reader.ReadFloat());
+            }
+            return array;
+        }
+
+        public static void SendFargoNetMessage(int msg, params object[] param)
+        {
+            if (Main.netMode == 0) { return; } //nothing to sync in SP
+            WriteToPacket(Fargowiltas.instance.GetPacket(), (byte)msg, param).Send();
+        }
+
+        public const byte SummonNPCFromClient = 0;
+
+        public static void HandlePacket(BinaryReader bb, int whoAmI)
+        {
+            byte msg = bb.ReadByte();
+            if (DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "HANDING MESSAGE: " + msg);
+            try
+            {
+                if (msg == SummonNPCFromClient)
+                {
+                    if (Main.netMode == 2)
+                    {
+                        int playerID = (int)bb.ReadByte();
+                        int bossType = bb.ReadShort();
+                        bool spawnMessage = bb.ReadBool();
+                        int npcCenterX = bb.ReadInt();
+                        int npcCenterY = bb.ReadInt();
+                        string overrideDisplayName = bb.ReadString();
+                        bool namePlural = bb.ReadBool();
+
+                        Fargowiltas.SpawnBoss(Main.player[playerID], bossType, spawnMessage, new Vector2(npcCenterX, npcCenterY), overrideDisplayName, namePlural);
+                    }
+                }
+            }
+            catch (Exception e) { ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
+        }
+
+        public static void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            if (DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "SYNC PLAYER CALLED! NEWPLAYER: " + newPlayer + ". TOWHO: " + toWho + ". FROMWHO:" + fromWho);
+            if (Main.netMode == 2 && (toWho > -1 || fromWho > -1))
+            {
+                PlayerConnected(toWho == -1 ? fromWho : toWho);
+            }
+        }
+
+        public static void PlayerConnected(int playerID)
+        {
+            if (DEBUG) ErrorLogger.Log("--SERVER-- PLAYER JOINED!");
+        }
+
+        public static void SendNetMessage(int msg, params object[] param)
+        {
+            SendNetMessageClient(msg, -1, param);
+        }
+
+        public static void SendNetMessageClient(int msg, int client, params object[] param)
+        {
+            try
+            {
+                if (Main.netMode == 0) { return; }
+
+                WriteToPacket(Fargowiltas.instance.GetPacket(), (byte)msg, param).Send(client);
+            }
+            catch (Exception e)
+            {
+                ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "ERROR SENDING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------");
+                string param2 = "";
+                for (int m = 0; m < param.Length; m++)
+                {
+                    param2 += param[m];
+                }
+                ErrorLogger.Log("PARAMS: " + param2);
+                ErrorLogger.Log("-------");
+            }
         }
     }
 }

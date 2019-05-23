@@ -23,8 +23,26 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include=".idea\.idea.Fargowiltas\riderModule.iml" />
+    <None Include=".vs\Fargowiltas\DesignTimeBuild\.dtbcache" />
+    <None Include=".vs\Fargowiltas\v15\.suo" />
+    <None Include=".vs\Fargowiltas\v15\Server\sqlite3\db.lock" />
+    <None Include=".vs\Fargowiltas\v15\Server\sqlite3\storage.ide" />
+    <None Include=".vs\Fargowiltas\v15\Server\sqlite3\storage.ide-shm" />
+    <None Include=".vs\Fargowiltas\v15\Server\sqlite3\storage.ide-wal" />
     <None Include="build.txt" />
     <None Include="description.txt" />
+    <None Include="obj\Debug\build.force" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\FargosModSummons.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\FargosModSummons.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\Fargowiltas.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\Fargowiltas.csprojAssemblyReference.cache" />
+    <None Include="obj\Release\FargosModSummons.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\Fargowiltas.csproj.CoreCompileInputs.cache" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework" />
@@ -48,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buffs\WoodDrop.cs" />
+    <Compile Include="Builds\Client\Intermediates\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="Builds\Client\Intermediates\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="Builds\Client\Intermediates\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="FargoPlayer.cs" />
     <Compile Include="Fargowiltas.cs" />
     <Compile Include="FargoWorld.cs" />
@@ -241,6 +262,9 @@
     <Compile Include="Items\Weapons\Thrown\WoodenYoyoThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\YeletsThrown.cs" />
     <Compile Include="NPCs\Abominationn.cs" />
+    <Compile Include="NPCs\Destroyer\Destroyer.cs" />
+    <Compile Include="NPCs\Destroyer\DestroyerBody.cs" />
+    <Compile Include="NPCs\Destroyer\DestroyerTail.cs" />
     <Compile Include="NPCs\FargoGlobalNPC.cs" />
     <Compile Include="NPCs\LumberJack.cs" />
     <Compile Include="NPCs\Mutant.cs" />
@@ -265,8 +289,15 @@
     <Compile Include="Projectiles\PurityNukeProj.cs" />
     <Compile Include="Projectiles\SpawnProj.cs" />
     <Compile Include="Projectiles\TrollbombProj.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".idea\.idea.Fargowiltas\.idea\contentModel.xml" />
+    <Content Include=".idea\.idea.Fargowiltas\.idea\indexLayout.xml" />
+    <Content Include=".idea\.idea.Fargowiltas\.idea\modules.xml" />
+    <Content Include=".idea\.idea.Fargowiltas\.idea\vcs.xml" />
+    <Content Include=".idea\.idea.Fargowiltas\.idea\workspace.xml" />
+    <Content Include=".vs\Fargowiltas\xs\UserPrefs.xml" />
     <Content Include="Buffs\WoodDrop.png" />
     <Content Include="Gores\AbomGore1.png" />
     <Content Include="Gores\AbomGore2.png" />
@@ -347,6 +378,16 @@
     <Content Include="Items\Summons\SwarmSummons\OverloadSlimeCrown.png" />
     <Content Include="Items\Summons\SwarmSummons\OverloadTwins.png" />
     <Content Include="Items\Summons\SwarmSummons\OverloadWorm.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadChampion.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadCoznix.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadGranite.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadJelly.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadLich.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadRag.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadSaucer.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadStrider.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadThunderbird.png" />
+    <Content Include="Items\Summons\SwarmSummons\Thorium\OverloadViscount.png" />
     <Content Include="Items\Tiles\AutoHouse.png" />
     <Content Include="Items\Tiles\AutoHouseTile.png" />
     <Content Include="Items\Tiles\EchPainting.png" />
@@ -375,11 +416,16 @@
     <Content Include="Items\Weapons\LumberJaxe.png" />
     <Content Include="NPCs\Abominationn.png" />
     <Content Include="NPCs\Abominationn_Head.png" />
+    <Content Include="NPCs\Destroyer\Destroyer.png" />
+    <Content Include="NPCs\Destroyer\DestroyerBody.png" />
+    <Content Include="NPCs\Destroyer\DestroyerTail.png" />
     <Content Include="NPCs\LumberJack.png" />
     <Content Include="NPCs\LumberJack_Head.png" />
     <Content Include="NPCs\Mutant.png" />
     <Content Include="NPCs\Mutant_Head.png" />
     <Content Include="NPCs\SuperDummy.png" />
+    <Content Include="obj\Debug\FargosModSummons.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Fargowiltas.csproj.FileListAbsolute.txt" />
     <Content Include="Projectiles\AutoHouseProj.png" />
     <Content Include="Projectiles\Explosion.png" />
     <Content Include="Projectiles\Explosives\ateway.png" />
@@ -395,6 +441,11 @@
     <Content Include="Projectiles\PhantasmalEyeProjectile.png" />
     <Content Include="Projectiles\TrollbombProj.png" />
     <Content Include="Sounds\Horn.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="Builds\Client\Binaries\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
