@@ -104,6 +104,9 @@ namespace Fargowiltas.NPCs
         public bool SacredDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
         public bool SacredDownedLunar => SacredTools.ModdedWorld.downedLunarians;
         public bool SacredDownedPump => SacredTools.ModdedWorld.downedPumpboi;
+        public bool SacreddownedDecree => SacredTools.ModdedWorld.downedDecree;
+        public bool SacreddownedPrimordia => SacredTools.ModdedWorld.downedPrimordia;
+        public bool SacreddownedAraneas => SacredTools.ModdedWorld.downedAraneas;
 
         //grealm bools
         public bool GRealmDownedFolivine => GRealm.MWorld.downedFolivine;
@@ -279,15 +282,7 @@ namespace Fargowiltas.NPCs
         public bool AAShen => AAMod.AAWorld.downedShen;
         public bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
         public bool AAIZ => AAMod.AAWorld.downedIZ;
-        public bool AAGripsS => AAMod.AAWorld.downedGripsS;
-        public bool AAToad => AAMod.AAWorld.downedToad;
-        public bool AADjinn => AAMod.AAWorld.downedDjinn;
         public bool AASoC => AAMod.AAWorld.downedSoC;
-        public bool AASerpent => AAMod.AAWorld.downedSerpent;
-        public bool AAFungus => AAMod.AAWorld.downedFungus;
-        public bool AASisters => AAMod.AAWorld.downedSisters;
-
-
 
         //pinky
         public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
@@ -304,6 +299,7 @@ namespace Fargowiltas.NPCs
         public bool RedeGigipede=> Redemption.RedeWorld.downedVlitch2;
         public bool RedeCleaver => Redemption.RedeWorld.downedVlitch1;
         public bool RedeSlayer => Redemption.RedeWorld.downedSlayer;
+        public bool RedeOmega => Redemption.Redeworld.downedVlitch3;
 
         //ocram
         public bool OcramOcram => Ocram.OcramWorld.downedOcram;
@@ -349,7 +345,7 @@ namespace Fargowiltas.NPCs
         {
             if (NPC.downedMoonlord && Fargowiltas.instance.fargoLoaded && Main.rand.Next(28) == 0)
             {
-                return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials! ;)";
+                return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials! You know what that means, right? MORE BOSSES!!!;)";
             }
 
             if (Main.bloodMoon)
@@ -637,6 +633,11 @@ namespace Fargowiltas.NPCs
                     AddItem(AAGrips, "AAMod", "InterestingClaw", 80000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.sacredToolsLoaded)
+                {
+                    AddItem(SacreddownedDecree, "SacredTools", "DecreeSummon", 80000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //Keeper
@@ -862,6 +863,12 @@ namespace Fargowiltas.NPCs
                     AddItem(W1KDownedAquatix, "W1KModRedux", "WateryEgg", 150000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.aaLoaded)
+                {
+                    //Sagittarius
+                    AddItem(AAToad, "AAMod", "Toadstool", 15000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.spiritLoaded)
                 {
                     //Starplate Raider
@@ -943,9 +950,9 @@ namespace Fargowiltas.NPCs
                     AddItem(ThoriumDownedScout, "ThoriumMod", "StarCaller", 150000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.instance.thoriumLoaded)
+                if (Fargowiltas.instance.aaLoaded)
                 {
-                    //Star Scouter
+                    //Sagittarius
                     AddItem(AASag, "AAMod", "Lifescanner", 150000, ref shop, ref nextSlot);
                 }
 
@@ -972,11 +979,6 @@ namespace Fargowiltas.NPCs
                 {
                     //Borean Strider
                     AddItem(ThoriumDownedStrider, "ThoriumMod", "StriderTear", 250000, ref shop, ref nextSlot);
-                }
-
-                if (Fargowiltas.instance.aaLoaded)
-                {
-                    AddItem(AAToad, "AAMod", "Toadstool ", 250000, ref shop, ref nextSlot);
                 }
 
                 /*if(Fargowiltas.instance.ferniumLoaded)
@@ -1241,6 +1243,11 @@ namespace Fargowiltas.NPCs
                     AddItem(PinkyAbyssmal, "pinkymod", "MindGodItem", 600000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.sacredToolsLoaded)
+                {
+                    AddItem(SacreddownedPrimordia, "SacredTools", "PrimordiaSummon", 600000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.elementsLoaded)
                 {
                     AddItem(ElementsDownedCelestial, "ElementsAwoken", "CelestialSummon", 600000, ref shop, ref nextSlot);
@@ -1342,7 +1349,12 @@ namespace Fargowiltas.NPCs
                     AddItem(RedeCleaver, "Redemption", "CorruptedHeroSword", 750000, ref shop, ref nextSlot);
                     AddItem(RedeGigipede, "Redemption", "CorruptedWormMedallion", 750000, ref shop, ref nextSlot);
                 }
-                
+
+                if (Fargowiltas.instance.aaLoaded)
+                {
+                    AddItem(AARajah, "AAMod", "GoldenCarrot", 750000, ref shop, ref nextSlot);
+                }
+
                 //Lunar Pillars
                 AddItem(NPC.downedTowers, "Fargowiltas", "PillarSummon", 750000, ref shop, ref nextSlot);
 
@@ -1377,7 +1389,13 @@ namespace Fargowiltas.NPCs
                     //Yamata
                     AddItem(AAYamata, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
                 }
-                
+
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    //Omega Obliterator
+                    AddItem(RedeOmega, "Redemption", "OmegaRadar", 1000000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
                     AddItem(TrelamiumAzolinth, "TrelamiumMod", "PlanetaryBeacon", 1000000, ref shop, ref nextSlot);
