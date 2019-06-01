@@ -280,14 +280,7 @@ namespace Fargowiltas.NPCs
         public bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
         public bool AAIZ => AAMod.AAWorld.downedIZ;
         public bool AAGripsS => AAMod.AAWorld.downedGripsS;
-        public bool AAToad => AAMod.AAWorld.downedToad;
-        public bool AADjinn => AAMod.AAWorld.downedDjinn;
         public bool AASoC => AAMod.AAWorld.downedSoC;
-        public bool AASerpent => AAMod.AAWorld.downedSerpent;
-        public bool AAFungus => AAMod.AAWorld.downedFungus;
-        public bool AASisters => AAMod.AAWorld.downedSisters;
-
-
 
         //pinky
         public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
@@ -943,9 +936,8 @@ namespace Fargowiltas.NPCs
                     AddItem(ThoriumDownedScout, "ThoriumMod", "StarCaller", 150000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.instance.thoriumLoaded)
+                if (Fargowiltas.instance.aaLoaded)
                 {
-                    //Star Scouter
                     AddItem(AASag, "AAMod", "Lifescanner", 150000, ref shop, ref nextSlot);
                 }
 

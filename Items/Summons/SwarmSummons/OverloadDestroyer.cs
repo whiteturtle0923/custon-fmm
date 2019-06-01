@@ -42,20 +42,20 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
             if (Fargowiltas.swarmTotal <= 20)
             {
-                Fargowiltas.swarmSpawned = Fargowiltas.swarmTotal;
+                Fargowiltas.swarmSpawned = 10;
             }
             else if (Fargowiltas.swarmTotal <= 100)
             {
-                Fargowiltas.swarmSpawned = 20;
+                Fargowiltas.swarmSpawned = 12;
             }
             else
             {
-                Fargowiltas.swarmSpawned = 40;
+                Fargowiltas.swarmSpawned = 15;
             }
 
             for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
             {
-                int worm = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.TheDestroyer);
+                int worm = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), mod.NPCType("Destroyer"));
                 Main.npc[worm].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 

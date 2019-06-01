@@ -102,7 +102,7 @@ namespace Fargowiltas
                 splitLoaded = ModLoader.GetMod("Split") != null;
                 //ferniumLoaded = ModLoader.GetMod("Fernium") != null;
                 antiarisLoaded = ModLoader.GetMod("Antiaris") != null;
-                aaLoaded = ModLoader.GetMod("Fargowiltas") != null;
+                aaLoaded = ModLoader.GetMod("AAMod") != null;
                 trelamiumLoaded = ModLoader.GetMod("TrelamiumMod") != null;
                 pinkyLoaded = ModLoader.GetMod("pinkymod") != null;
                 redemptionLoaded = ModLoader.GetMod("Redemption") != null;
@@ -1547,7 +1547,6 @@ namespace Fargowiltas
                 npcCenter = player.Center;
             if (Main.netMode != 1)
             {
-                if (NPC.AnyNPCs(bossType)) { return; }
                 int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType, 0);
                 Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate2 = true;
