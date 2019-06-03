@@ -51,12 +51,6 @@ namespace Fargowiltas.NPCs
             animationType = NPCID.Guide;
             Main.npcCatchable[npc.type] = true;
             npc.catchItem = (short)mod.ItemType("Mutant");
-
-            /*if(ModLoader.GetMod("FargowiltasSouls") != null)
-            {
-                Main.npcCatchable[npc.type] = true;
-                npc.catchItem = (short)ModLoader.GetMod("FargowiltasSouls").ItemType("Masochist");
-            }*/
         }
 
         #region other mod bools
@@ -299,7 +293,7 @@ namespace Fargowiltas.NPCs
         public bool RedeGigipede=> Redemption.RedeWorld.downedVlitch2;
         public bool RedeCleaver => Redemption.RedeWorld.downedVlitch1;
         public bool RedeSlayer => Redemption.RedeWorld.downedSlayer;
-        public bool RedeOmega => Redemption.Redeworld.downedVlitch3;
+        public bool RedeOmega => Redemption.RedeWorld.downedVlitch3;
 
         //ocram
         public bool OcramOcram => Ocram.OcramWorld.downedOcram;
@@ -345,7 +339,7 @@ namespace Fargowiltas.NPCs
         {
             if (NPC.downedMoonlord && Fargowiltas.instance.fargoLoaded && Main.rand.Next(28) == 0)
             {
-                return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials! You know what that means, right? MORE BOSSES!!!;)";
+                return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials!";
             }
 
             if (Main.bloodMoon)
@@ -865,7 +859,7 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.aaLoaded)
                 {
-                    //Sagittarius
+                    //
                     AddItem(AAToad, "AAMod", "Toadstool", 15000, ref shop, ref nextSlot);
                 }
 
@@ -1559,6 +1553,13 @@ namespace Fargowiltas.NPCs
                     //Infinity Zero
                     AddItem(AAIZ, "AAMod", "InfinityOverloader", 30000000, ref shop, ref nextSlot);
                 }
+
+                //Fishron EX
+                /*if (Fargowiltas.instance.fargoLoaded)
+                {
+                    AddItem(ModLoader.GetMod("FargowiltasSouls").GetModWorld<FargoWorld>().downedFishronEX, "FargowiltasSouls", "TruffleWormEX", 10000000);
+                }*/
+
                 //Pain
                 AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);
 

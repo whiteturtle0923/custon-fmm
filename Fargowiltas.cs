@@ -128,7 +128,7 @@ namespace Fargowiltas
 
             recipe = new ModRecipe(this);
             recipe.AddIngredient(null, "LihzahrdPowerCell2");
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.LihzahrdPowerCell);
             recipe.AddRecipe();
 

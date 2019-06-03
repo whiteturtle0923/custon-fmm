@@ -36,29 +36,25 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             Fargowiltas.swarmActive = true;
             Fargowiltas.swarmTotal = 10 * player.inventory[player.selectedItem].stack;
             Fargowiltas.swarmKills = 0;
-
             //kill whole stack
             player.inventory[player.selectedItem].stack = 0;
-
             if (Fargowiltas.swarmTotal <= 20)
             {
-                Fargowiltas.swarmSpawned = 10;
+                Fargowiltas.swarmSpawned = Fargowiltas.swarmTotal;
             }
             else if (Fargowiltas.swarmTotal <= 100)
             {
-                Fargowiltas.swarmSpawned = 12;
+                Fargowiltas.swarmSpawned = 20;
             }
             else
             {
-                Fargowiltas.swarmSpawned = 15;
+                Fargowiltas.swarmSpawned = 40;
             }
-
             for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
             {
-                int worm = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), mod.NPCType("Destroyer"));
+                int worm = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.TheDestroyer);
                 Main.npc[worm].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
-
             Main.NewText("The planet trembles from the core!", 175, 75);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

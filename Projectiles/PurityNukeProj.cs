@@ -55,10 +55,6 @@ namespace Fargowiltas.Projectiles
                     if (Math.Sqrt(x * x + y * y) <= radius + 0.5)   //circle
                     {
                         WorldGen.Convert(xPosition, yPosition, 0, 1); // convert to purity
-                        //WorldGen.Convert(xPosition, yPosition, 1, 1); // convert to corrupt
-                        //WorldGen.Convert(xPosition, yPosition, 2, 1); // convert to hallow
-                        //WorldGen.Convert(xPosition, yPosition, 3, 1); // convert to mushroom
-                        //WorldGen.Convert(xPosition, yPosition, 4, 1); // convert to crimson
                     }
                 }
             }

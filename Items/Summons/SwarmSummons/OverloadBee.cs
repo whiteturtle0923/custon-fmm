@@ -60,8 +60,8 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
             for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
             {
-                //int bee = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.QueenBee);
-                int bee = Fargowiltas.SpawnBoss(player, NPCID.QueenBee, false, new Vector2(player.position.X + Main.rand.Next(-1000, 1000), player.position.Y + Main.rand.Next(-1000, -400)), null, false);
+                int bee = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.QueenBee);
+                //int bee = Fargowiltas.SpawnBoss(player, NPCID.QueenBee, false, new Vector2(player.position.X + Main.rand.Next(-1000, 1000), player.position.Y + Main.rand.Next(-1000, -400)), null, false);
                 Main.npc[bee].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 

@@ -1,10 +1,9 @@
-NEW UPDATE - v 1.3
--The Ancient Master's Map of the Lost King's Great Ancestors now works differently in multiplayer, and will not break maps
--Added a few more boss summons to the Mutant from Ancients Awakened, Elements Awoken, and the Ocram 'n Stuff mod
--Auto House is now crafted at a Sawmill (much earlier)
--Changed how the Mutant sells Soul of Eternity, so it should not bug and be sold when its not supposed to 
--Nerfed Boom Shuriken's explosion radius
--With both seasons active, any type of heart or mana star variant may spawn
+NEW UPDATE - v 1.3.1
+-Added Icon!!
+-Added Supreme Renewals (Convert the entire world)
+-The Mutant now sells more summons from Shadows of Abbadon, Ancient Awakened, and Mod of Redemption
+-Lihzahrdy Power Cell is crafted at a Workbench again but cannot be used until post Plantera
+-Swarms now drop their loot per player like normal Treasure Bags
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
