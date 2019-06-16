@@ -23,14 +23,6 @@ namespace Fargowiltas
             items.Add(item);
         }
 
-        public override void OnEnterWorld(Player player)
-        {
-            if (!Fargowiltas.instance.fargoLoaded)
-            {
-                Main.NewText("Hello, Fargo's mod was recently split, if you're wondering about missing items, download Fargo's Soul Mod on the browser.", new Color(97, 115, 237));
-            }
-        }
-
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (Fargowiltas.RodKey.JustPressed && hasRod)

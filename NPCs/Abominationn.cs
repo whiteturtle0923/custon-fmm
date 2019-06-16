@@ -181,6 +181,7 @@ namespace Fargowiltas.NPCs
 			    nextSlot++;
 			}
 
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "ForbiddenTome", 200000, ref shop, ref nextSlot);
             AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 400000, ref shop, ref nextSlot);
             AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 600000, ref shop, ref nextSlot);
             AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 100000, ref shop, ref nextSlot);
@@ -198,8 +199,10 @@ namespace Fargowiltas.NPCs
 			    shop.item[nextSlot].value=150000;
 			    nextSlot++;
 			}
-			
-			if (Fargowiltas.instance.tremorLoaded)
+
+            AddItem(NPC.downedTowers, "Fargowiltas", "PillarSummon", 750000, ref shop, ref nextSlot);
+
+            if (Fargowiltas.instance.tremorLoaded)
 			{
                 AddItem(TremorInvasion, "Tremor", "AncientWatch", 200000, ref shop, ref nextSlot);
 			}

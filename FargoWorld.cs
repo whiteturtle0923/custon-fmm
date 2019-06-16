@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Fargowiltas.Items.Tiles;
+using Terraria.ID;
 
 namespace Fargowiltas
 {
@@ -102,7 +103,7 @@ namespace Fargowiltas
             }
 
             //swarm reset in case something goes wrong
-            if (NoBosses())
+            if (NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead))
             {
                 Fargowiltas.swarmActive = false;
             }

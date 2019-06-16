@@ -45,6 +45,9 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="FargowiltasSouls">
+      <HintPath>..\folder for wip\FargowiltasSouls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Game" />
     <Reference Include="Microsoft.Xna.Framework.GamerServices" />
@@ -154,6 +157,7 @@
     <Compile Include="Items\Summons\NewSummons\CultistSummon.cs" />
     <Compile Include="Items\Summons\NewSummons\DeathBringerFairy.cs" />
     <Compile Include="Items\Summons\NewSummons\FleshyDoll.cs" />
+    <Compile Include="Items\Summons\NewSummons\ForbiddenTome.cs" />
     <Compile Include="Items\Summons\NewSummons\LeviathanSummon.cs" />
     <Compile Include="Items\Summons\NewSummons\MechanicalAmalgam.cs" />
     <Compile Include="Items\Summons\NewSummons\MutantVoodoo.cs" />
@@ -294,6 +298,7 @@
     <Compile Include="Projectiles\MechEyeProjectile.cs" />
     <Compile Include="Projectiles\MushroomNukeProj.cs" />
     <Compile Include="Projectiles\MushroomNukeSupremeProj.cs" />
+    <Compile Include="Projectiles\MutantPenetrator.cs" />
     <Compile Include="Projectiles\PhantasmalEyeProjectile.cs" />
     <Compile Include="Projectiles\PurityNukeProj.cs" />
     <Compile Include="Projectiles\PurityNukeSupremeProj.cs" />

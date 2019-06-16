@@ -10,11 +10,11 @@ namespace Fargowiltas.Items
 {
     public class FargoGlobalItem : GlobalItem
     {
+        private static int[] thrown = { ItemID.Bananarang, ItemID.BloodyMachete, ItemID.DayBreak, ItemID.EnchantedBoomerang, ItemID.Flamarang, ItemID.FruitcakeChakram, ItemID.IceBoomerang, ItemID.LightDisc, ItemID.MagicDagger, ItemID.PaladinsHammer, ItemID.PossessedHatchet, ItemID.ShadowFlameKnife, ItemID.ThornChakram, ItemID.ToxicFlask, ItemID.VampireKnives, ItemID.WoodenBoomerang, ItemID.WoodYoyo, ItemID.Rally, ItemID.CorruptYoyo, ItemID.CrimsonYoyo, ItemID.JungleYoyo, ItemID.Code1, ItemID.Valor, ItemID.Cascade, ItemID.FormatC, ItemID.Gradient, ItemID.Chik, ItemID.HelFire, ItemID.Amarok, ItemID.Code2, ItemID.Yelets, ItemID.RedsYoyo, ItemID.ValkyrieYoyo, ItemID.Kraken, ItemID.TheEyeOfCthulhu, ItemID.Terrarian, ItemID.FlyingKnife, ItemID.BallOHurt, ItemID.TheMeatball, ItemID.BlueMoon, ItemID.Sunfury, ItemID.DaoofPow, ItemID.FlowerPow, ItemID.ScourgeoftheCorruptor, ItemID.NorthPole };
+
         public override bool InstancePerEntity => true;
 
         public override bool CloneNewInstances => true;
-
-        private static int[] thrown = { ItemID.Bananarang, ItemID.BloodyMachete, ItemID.DayBreak, ItemID.EnchantedBoomerang, ItemID.Flamarang, ItemID.FruitcakeChakram, ItemID.IceBoomerang, ItemID.LightDisc, ItemID.MagicDagger, ItemID.PaladinsHammer, ItemID.PossessedHatchet, ItemID.ShadowFlameKnife, ItemID.ThornChakram, ItemID.ToxicFlask, ItemID.VampireKnives, ItemID.WoodenBoomerang, ItemID.WoodYoyo, ItemID.Rally, ItemID.CorruptYoyo, ItemID.CrimsonYoyo, ItemID.JungleYoyo, ItemID.Code1, ItemID.Valor, ItemID.Cascade, ItemID.FormatC, ItemID.Gradient, ItemID.Chik, ItemID.HelFire, ItemID.Amarok, ItemID.Code2, ItemID.Yelets, ItemID.RedsYoyo, ItemID.ValkyrieYoyo, ItemID.Kraken, ItemID.TheEyeOfCthulhu, ItemID.Terrarian, ItemID.FlyingKnife, ItemID.BallOHurt, ItemID.TheMeatball, ItemID.BlueMoon, ItemID.Sunfury, ItemID.DaoofPow, ItemID.FlowerPow, ItemID.ScourgeoftheCorruptor, ItemID.NorthPole };
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
@@ -97,7 +97,7 @@ namespace Fargowiltas.Items
 
         public override void SetDefaults(Item item)
         {
-            if (item.maxStack > 10 && item.maxStack != 100 && item.type != ItemID.CopperCoin && item.type != ItemID.SilverCoin && item.type != ItemID.GoldCoin && item.type != ItemID.PlatinumCoin)
+            if (item.maxStack > 10 && (item.maxStack != 100 || ModLoader.GetMod("TerrariaOverhaul") != null) && item.type != ItemID.CopperCoin && item.type != ItemID.SilverCoin && item.type != ItemID.GoldCoin && item.type != ItemID.PlatinumCoin)
             {
                 item.maxStack = 9999;
             }
@@ -174,9 +174,156 @@ namespace Fargowiltas.Items
 
         public override void RightClick(Item item, Player player)
         {
-            if (Array.IndexOf(thrown, item.type) <= -1) return;
+            int newType = -1;
 
-            NewThrown(item, player, item.Name.Replace(" ", "").Replace("'", "").Replace("-", "").Replace(":", ""));
+            switch (item.type)
+            {
+                case ItemID.Bananarang:
+                    newType = mod.ItemType("BananarangThrown");
+                    break;
+                case ItemID.BloodyMachete:
+                    newType = mod.ItemType("BloodyMacheteThrown");
+                    break;
+                case ItemID.DayBreak:
+                    newType = mod.ItemType("DaybreakThrown");
+                    break;
+                case ItemID.EnchantedBoomerang:
+                    newType = mod.ItemType("EnchantedBoomerangThrown");
+                    break;
+                case ItemID.Flamarang:
+                    newType = mod.ItemType("FlamarangThrown");
+                    break;
+                case ItemID.FruitcakeChakram:
+                    newType = mod.ItemType("FruitcakeChakramThrown");
+                    break;
+                case ItemID.IceBoomerang:
+                    newType = mod.ItemType("IceBoomerangThrown");
+                    break;
+                case ItemID.LightDisc:
+                    newType = mod.ItemType("LightDiscThrown");
+                    break;
+                case ItemID.MagicDagger:
+                    newType = mod.ItemType("MagicDaggerThrown");
+                    break;
+                case ItemID.PaladinsHammer:
+                    newType = mod.ItemType("PaladinsHammerThrown");
+                    break;
+                case ItemID.PossessedHatchet:
+                    newType = mod.ItemType("PossessedHatchetThrown");
+                    break;
+                case ItemID.ShadowFlameKnife:
+                    newType = mod.ItemType("ShadowflameKnifeThrown");
+                    break;
+                case ItemID.ThornChakram:
+                    newType = mod.ItemType("ThornChakramThrown");
+                    break;
+                case ItemID.ToxicFlask:
+                    newType = mod.ItemType("ToxicFlaskThrown");
+                    break;
+                case ItemID.VampireKnives:
+                    newType = mod.ItemType("VampireKnivesThrown");
+                    break;
+                case ItemID.WoodenBoomerang:
+                    newType = mod.ItemType("WoodenBoomerangThrown");
+                    break;
+                case ItemID.WoodYoyo:
+                    newType = mod.ItemType("WoodenYoyoThrown");
+                    break;
+                case ItemID.Rally:
+                    newType = mod.ItemType("RallyThrown");
+                    break;
+                case ItemID.CorruptYoyo:
+                    newType = mod.ItemType("MalaiseThrown");
+                    break;
+                case ItemID.CrimsonYoyo:
+                    newType = mod.ItemType("ArteryThrown");
+                    break;
+                case ItemID.JungleYoyo:
+                    newType = mod.ItemType("AmazonThrown");
+                    break;
+                case ItemID.Code1:
+                    newType = mod.ItemType("Code1Thrown");
+                    break;
+                case ItemID.Valor:
+                    newType = mod.ItemType("ValorThrown");
+                    break;
+                case ItemID.Cascade:
+                    newType = mod.ItemType("CascadeThrown");
+                    break;
+                case ItemID.FormatC:
+                    newType = mod.ItemType("FormatCThrown");
+                    break;
+                case ItemID.Gradient:
+                    newType = mod.ItemType("GradientThrown");
+                    break;
+                case ItemID.Chik:
+                    newType = mod.ItemType("ChikThrown");
+                    break;
+                case ItemID.HelFire:
+                    newType = mod.ItemType("HelFireThrown");
+                    break;
+                case ItemID.Amarok:
+                    newType = mod.ItemType("AmarokThrown");
+                    break;
+                case ItemID.Code2:
+                    newType = mod.ItemType("Code2Thrown");
+                    break;
+                case ItemID.Yelets:
+                    newType = mod.ItemType("YeletsThrown");
+                    break;
+                case ItemID.RedsYoyo:
+                    newType = mod.ItemType("RedsThrowThrown");
+                    break;
+                case ItemID.ValkyrieYoyo:
+                    newType = mod.ItemType("ValkyrieYoyoThrown");
+                    break;
+                case ItemID.Kraken:
+                    newType = mod.ItemType("KrakenThrown");
+                    break;
+                case ItemID.TheEyeOfCthulhu:
+                    newType = mod.ItemType("TheEyeofCthulhuThrown");
+                    break;
+                case ItemID.Terrarian:
+                    newType = mod.ItemType("TerrarianThrown");
+                    break;
+                case ItemID.FlyingKnife:
+                    newType = mod.ItemType("FlyingKnifeThrown");
+                    break;
+                case ItemID.BallOHurt:
+                    newType = mod.ItemType("BallOHurtThrown");
+                    break;
+                case ItemID.TheMeatball:
+                    newType = mod.ItemType("TheMeatballThrown");
+                    break;
+                case ItemID.BlueMoon:
+                    newType = mod.ItemType("BlueMoonThrown");
+                    break;
+                case ItemID.Sunfury:
+                    newType = mod.ItemType("SunfuryThrown");
+                    break;
+                case ItemID.DaoofPow:
+                    newType = mod.ItemType("DaoofPowThrown");
+                    break;
+                case ItemID.FlowerPow:
+                    newType = mod.ItemType("FlowerPowThrown");
+                    break;
+                case ItemID.ScourgeoftheCorruptor:
+                    newType = mod.ItemType("ScourgeoftheCorruptorThrown");
+                    break;
+                case ItemID.NorthPole:
+                    newType = mod.ItemType("NorthPoleThrown");
+                    break;
+            }
+
+            if (newType != -1)
+            {
+                int num = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, newType, 1, false, item.prefix);
+
+                if (Main.netMode == 1)
+                {
+                    NetMessage.SendData(21, -1, -1, null, num, 1f, 0f, 0f, 0, 0, 0);
+                }
+            }
         }
 
         static int[] hearts = new int[] { ItemID.Heart, ItemID.CandyApple, ItemID.CandyCane };
@@ -199,16 +346,6 @@ namespace Fargowiltas.Items
                 }
 
                 firstTick = false;
-            }
-        }
-
-        private void NewThrown(Item item, Player player, string thrown)
-        {
-            int num = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType(thrown + "Thrown"), 1, false, item.prefix);
-
-            if (Main.netMode == 1)
-            {
-                NetMessage.SendData(21, -1, -1, null, num, 1f, 0f, 0f, 0, 0, 0);
             }
         }
     }

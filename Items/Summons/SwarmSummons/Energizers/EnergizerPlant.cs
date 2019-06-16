@@ -4,15 +4,9 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
 {
     public class EnergizerPlant : ModItem
     {
-        //until it has a use
-        public override bool Autoload(ref string name)
-        {
-            return false;
-        }
-
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Leaf Energizer");
+            DisplayName.SetDefault("Leafy Energizer");
             Tooltip.SetDefault("'Being a leaf sounds like a good time'");
         }
 
@@ -24,7 +18,5 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
             item.rare = 1;
             item.value = 100000;
         }
-
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 }

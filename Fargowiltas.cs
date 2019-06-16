@@ -1385,6 +1385,57 @@ namespace Fargowiltas
 
             #endregion
 
+            #region npc recipes
+
+            String[] townNPCs = new String[] { "Abominationn", "Angler", "ArmsDealer", "Clothier", "Cyborg", "Demolitionist", "Dryad", "DyeTrader", "GoblinTinkerer", "Guide", "LumberJack", "Mechanic", "Merchant", "Mutant", "Nurse", "Painter", "PartyGirl", "Pirate", "SantaClaus", "SkeletonMerchant", "Steampunker", "Stylist", "Tavernkeep", "TaxCollector", "TravellingMerchant", "Truffle", "WitchDoctor", "Wizard" };
+
+            for (int i = 0; i < townNPCs.Length; i++)
+            {
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, townNPCs[i]);
+                recipe.AddTile(TileID.MeatGrinder);
+                recipe.SetResult(ItemID.FleshBlock, 15);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, townNPCs[i]);
+                recipe.AddTile(TileID.DyeVat);
+                recipe.SetResult(ItemID.DeepRedPaint, 100);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, townNPCs[i]);
+                recipe.AddTile(TileID.DyeVat);
+                recipe.SetResult(ItemID.GrimDye, 3);
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(null, townNPCs[i]);
+                recipe.AddTile(TileID.BoneWelder);
+                recipe.SetResult(ItemID.Bone, 25);
+                recipe.AddRecipe();
+            }
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(null, "Dryad");
+            recipe.AddTile(TileID.LivingLoom);
+            recipe.SetResult(ItemID.LeafWand);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(null, "Dryad");
+            recipe.AddTile(TileID.LivingLoom);
+            recipe.SetResult(ItemID.LivingWoodWand);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(null, "Truffle");
+            recipe.AddIngredient(ItemID.EnchantedNightcrawler);
+            recipe.AddTile(TileID.Autohammer);
+            recipe.SetResult(ItemID.TruffleWorm);
+            recipe.AddRecipe();
+            #endregion
+
             #region misc recipes
 
             recipe = new ModRecipe(this);

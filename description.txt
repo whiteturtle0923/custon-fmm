@@ -1,9 +1,7 @@
-NEW UPDATE - v 1.3.1
--Added Icon!!
--Added Supreme Renewals (Convert the entire world)
--The Mutant now sells more summons from Shadows of Abbadon, Ancient Awakened, and Mod of Redemption
--Lihzahrdy Power Cell is crafted at a Workbench again but cannot be used until post Plantera
--Swarms now drop their loot per player like normal Treasure Bags
+NEW UPDATE - v 1.3.6
+-Added Forbidden Tome, which spawns Dark Mage
+-Moved Outsider's Portal to the Abominationn
+-Fixed issue with right click converting weapons only working with the English language selected
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

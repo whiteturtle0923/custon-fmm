@@ -42,8 +42,13 @@ namespace Fargowiltas.NPCs
             npc.damage = 10;
 
             npc.defense = NPC.downedMoonlord ? 50 : 15;
-
             npc.lifeMax = NPC.downedMoonlord ? 5000 : 250;
+
+            /*if (Fargowiltas.instance.fargoLoaded && FargowiltasSouls.FargoWorld.downedFishronEX)
+            {
+                npc.lifeMax *= 10;
+                npc.defense *= 10;
+            }*/
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
@@ -554,7 +559,9 @@ namespace Fargowiltas.NPCs
 
             if (shop1)
             {
-                if(Fargowiltas.instance.fargoLoaded)
+                AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
+
+                if (Fargowiltas.instance.fargoLoaded)
                 {
                     AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
                 }
@@ -1349,9 +1356,6 @@ namespace Fargowiltas.NPCs
                     AddItem(AARajah, "AAMod", "GoldenCarrot", 750000, ref shop, ref nextSlot);
                 }
 
-                //Lunar Pillars
-                AddItem(NPC.downedTowers, "Fargowiltas", "PillarSummon", 750000, ref shop, ref nextSlot);
-
                 if (Fargowiltas.instance.elementsLoaded)
                 {
                     AddItem(ElementsDownedGuardian, "ElementsAwoken", "GuardianSummon", 750000, ref shop, ref nextSlot);
@@ -1554,10 +1558,10 @@ namespace Fargowiltas.NPCs
                     AddItem(AAIZ, "AAMod", "InfinityOverloader", 30000000, ref shop, ref nextSlot);
                 }
 
-                //Fishron EX
-                /*if (Fargowiltas.instance.fargoLoaded)
+                /*//Fishron EX
+                if (Fargowiltas.instance.fargoLoaded)
                 {
-                    AddItem(ModLoader.GetMod("FargowiltasSouls").GetModWorld<FargoWorld>().downedFishronEX, "FargowiltasSouls", "TruffleWormEX", 10000000);
+                    AddItem(FargowiltasSouls.FargoWorld.downedFishronEX, "FargowiltasSouls", "TruffleWormEX", 10000000, ref shop, ref nextSlot);
                 }*/
 
                 //Pain
@@ -1631,6 +1635,11 @@ namespace Fargowiltas.NPCs
             {
                 projType = mod.ProjectileType("EyeProjectile");
             }
+
+            /*if (Fargowiltas.instance.fargoLoaded && FargowiltasSouls.FargoWorld.downedFishronEX)
+            {
+                projType = mod.ProjectileType("MutantPenetrator");
+            }*/
 
             attackDelay = 1;
         }
