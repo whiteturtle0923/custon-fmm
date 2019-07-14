@@ -10,6 +10,8 @@ namespace Fargowiltas
 {
     public class FargoPlayer : ModPlayer
     {
+        public int oldSelected;
+        bool IsReuse = false;
         public bool battleCry;
         private bool hasMirror;
         private int mirrorCD;
@@ -25,6 +27,24 @@ namespace Fargowiltas
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
+            //saves what the item selected was then switches to the hotkey item and uses it 
+            if (Fargowiltas.CustomKey.JustPressed)
+            {
+                oldSelected = player.selectedItem;
+                player.selectedItem = 40;
+                player.controlUseItem = true;
+                IsReuse = player.HeldItem.autoReuse;
+                player.HeldItem.autoReuse = true;
+                player.releaseUseItem = true;
+            }
+            //switches back to the old item (has some big ol jank)
+            if(Fargowiltas.CustomKey.JustReleased)
+            {
+                player.controlUseItem = false;
+                player.releaseUseItem = false;
+                player.HeldItem.autoReuse = IsReuse;
+                player.selectedItem = oldSelected;
+            }
             if (Fargowiltas.RodKey.JustPressed && hasRod)
             {
                 //.5 second cd
