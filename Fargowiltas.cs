@@ -71,7 +71,7 @@ namespace Fargowiltas
             instance = this;
             HomeKey = RegisterHotKey("Teleport Home", "P");
             RodKey = RegisterHotKey("Rod of Discord", "E");
-            CustomKey = RegisterHotKey("Custom Hotkey(Bottom Left Item)", "K");
+            CustomKey = RegisterHotKey("Custom Hotkey (Bottom Left Inventory Slot)", "K");
         }
 
         #region mod loaded bools
@@ -1436,6 +1436,92 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.EnchantedNightcrawler);
             recipe.AddTile(TileID.Autohammer);
             recipe.SetResult(ItemID.TruffleWorm);
+            recipe.AddRecipe();
+            #endregion
+
+            #region emblems 
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.RangerEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.SorcererEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.WarriorEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.SorcererEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SummonerEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.SorcererEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.WarriorEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.RangerEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SorcererEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.RangerEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SummonerEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.RangerEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.RangerEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.WarriorEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SorcererEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.WarriorEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SummonerEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.WarriorEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.RangerEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.SummonerEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SorcererEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.SummonerEmblem);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.WarriorEmblem);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddTile(TileID.CrystalBall);
+            recipe.SetResult(ItemID.SummonerEmblem);
             recipe.AddRecipe();
             #endregion
 

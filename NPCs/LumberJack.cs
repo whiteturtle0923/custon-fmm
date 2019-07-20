@@ -198,7 +198,7 @@ namespace Fargowiltas.NPCs
                 nextSlot++;
             }
 
-            if (ModLoader.GetLoadedMods().Contains("CosmeticVariety") && (NPC.downedBoss2))
+            if (ModLoader.GetMod("CosmeticVariety") != null && (NPC.downedBoss2))
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CosmeticVariety").ItemType("Starwood"));
                 shop.item[nextSlot].value = 20;

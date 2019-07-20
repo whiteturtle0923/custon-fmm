@@ -14,12 +14,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public override bool Autoload(ref string name)
         {
-            if (!ModLoader.GetLoadedMods().Contains("CalamityMod"))
-            {
-                return false;
-            }
-
-            return true;
+            return ModLoader.GetMod("CalamityMod") != null;
         }
 
         public override void SetDefaults()
@@ -37,10 +32,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public override bool UseItem(Player player)
         {
-            if (ModLoader.GetLoadedMods().Contains("CalamityMod"))
-            {
-                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Siren"));
-            }
+            NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("CalamityMod").NPCType("Siren"));
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

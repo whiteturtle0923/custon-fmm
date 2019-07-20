@@ -34,7 +34,12 @@ namespace Fargowiltas.NPCs
 			return false;
 		}
 
-		public override bool CheckDead ()
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
+
+        public override bool CheckDead ()
 		{
 			if (npc.lifeRegen < 0)
 			{

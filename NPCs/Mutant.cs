@@ -74,27 +74,27 @@ namespace Fargowiltas.NPCs
         public bool ThoriumDownedViscount => ThoriumMod.ThoriumWorld.downedBat;
 
         //calamity bools
-        public bool CalamityDownedScourge => CalamityMod.CalamityWorld.downedDesertScourge;
-        public bool CalamityDownedHive => CalamityMod.CalamityWorld.downedHiveMind;
-        public bool CalamityDownedPerfor => CalamityMod.CalamityWorld.downedPerforator;
-        public bool CalamityDownedSlime => CalamityMod.CalamityWorld.downedSlimeGod;
-        public bool CalamityDownedCryo => CalamityMod.CalamityWorld.downedCryogen;
-        public bool CalamityDownedBrim => CalamityMod.CalamityWorld.downedBrimstoneElemental;
-        public bool CalamityDownedCalamitas => CalamityMod.CalamityWorld.downedCalamitas;
-        public bool CalamityDownedLevi => CalamityMod.CalamityWorld.downedLeviathan;
-        public bool CalamityDownedPlague => CalamityMod.CalamityWorld.downedPlaguebringer;
-        public bool CalamityDownedGuardian => CalamityMod.CalamityWorld.downedGuardians;
-        public bool CalamityDownedProv => CalamityMod.CalamityWorld.downedProvidence;
-        public bool CalamityDownedDOG => CalamityMod.CalamityWorld.downedDoG;
-        public bool CalamityDownedYharon => CalamityMod.CalamityWorld.downedYharon;
-        public bool CalamityDownedSCAL => CalamityMod.CalamityWorld.downedSCal;
-        public bool CalamityDownedRav => CalamityMod.CalamityWorld.downedScavenger;
-        public bool CalamityDownedCrab => CalamityMod.CalamityWorld.downedCrabulon;
-        public bool CalamityDownedAstrum => CalamityMod.CalamityWorld.downedStarGod;
-        public bool CalamityDownedBirb => CalamityMod.CalamityWorld.downedBumble;
-        public bool CalamityDownedPolter => CalamityMod.CalamityWorld.downedPolterghast;
-        public bool CalamityDownedAquatic => CalamityMod.CalamityWorld.downedAquaticScourge;
-        public bool CalamityDownedAstragel => CalamityMod.CalamityWorld.downedAstrageldon;
+        public bool CalamityDownedScourge => CalamityMod.World.CalamityWorld.downedDesertScourge;
+        public bool CalamityDownedHive => CalamityMod.World.CalamityWorld.downedHiveMind;
+        public bool CalamityDownedPerfor => CalamityMod.World.CalamityWorld.downedPerforator;
+        public bool CalamityDownedSlime => CalamityMod.World.CalamityWorld.downedSlimeGod;
+        public bool CalamityDownedCryo => CalamityMod.World.CalamityWorld.downedCryogen;
+        public bool CalamityDownedBrim => CalamityMod.World.CalamityWorld.downedBrimstoneElemental;
+        public bool CalamityDownedCalamitas => CalamityMod.World.CalamityWorld.downedCalamitas;
+        public bool CalamityDownedLevi => CalamityMod.World.CalamityWorld.downedLeviathan;
+        public bool CalamityDownedPlague => CalamityMod.World.CalamityWorld.downedPlaguebringer;
+        public bool CalamityDownedGuardian => CalamityMod.World.CalamityWorld.downedGuardians;
+        public bool CalamityDownedProv => CalamityMod.World.CalamityWorld.downedProvidence;
+        public bool CalamityDownedDOG => CalamityMod.World.CalamityWorld.downedDoG;
+        public bool CalamityDownedYharon => CalamityMod.World.CalamityWorld.downedYharon;
+        public bool CalamityDownedSCAL => CalamityMod.World.CalamityWorld.downedSCal;
+        public bool CalamityDownedRav => CalamityMod.World.CalamityWorld.downedScavenger;
+        public bool CalamityDownedCrab => CalamityMod.World.CalamityWorld.downedCrabulon;
+        public bool CalamityDownedAstrum => CalamityMod.World.CalamityWorld.downedStarGod;
+        public bool CalamityDownedBirb => CalamityMod.World.CalamityWorld.downedBumble;
+        public bool CalamityDownedPolter => CalamityMod.World.CalamityWorld.downedPolterghast;
+        public bool CalamityDownedAquatic => CalamityMod.World.CalamityWorld.downedAquaticScourge;
+        public bool CalamityDownedAstragel => CalamityMod.World.CalamityWorld.downedAstrageldon;
 
         //sacred tools bools
         public bool SacredDownedHarpy => SacredTools.ModdedWorld.downedHarpy;

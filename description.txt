@@ -1,7 +1,9 @@
-NEW UPDATE - v 1.3.6
--Added Forbidden Tome, which spawns Dark Mage
--Moved Outsider's Portal to the Abominationn
--Fixed issue with right click converting weapons only working with the English language selected
+NEW UPDATE - v 1.4.0
+-Updated to tModLoader 0.11.2
+-Added a hotkey that will use whatever item is in your last inventory slot
+-Added recipes to swap emblems easily
+-Fixed the Mutant's shop exploding with Calamity
+-Fixed Super Dummies dropping loot like biome keys
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
