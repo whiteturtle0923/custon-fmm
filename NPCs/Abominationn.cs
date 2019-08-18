@@ -45,8 +45,10 @@ namespace Fargowiltas.NPCs
             Main.npcCatchable[npc.type] = true;
             npc.catchItem = (short)mod.ItemType("Abominationn");
         }
-		
-		public bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
+
+        public bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
+
+        public bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
 
 		public bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
 
@@ -71,7 +73,21 @@ namespace Fargowiltas.NPCs
 					return "Harley";
 				case 3:
 					return "Reaper";
-				default:
+                case 4:
+                    return "Stevenn";
+                case 5:
+                    return "Doof";
+                case 6:
+                    return "Baroo";
+                case 7:
+                    return "Fergus";
+                case 8:
+                    return "Entev";
+                case 9:
+                    return "Catastrophe";
+                case 10:
+                    return "Bardo";
+                default:
 					return "Betson";
 			}
 		}
@@ -79,13 +95,26 @@ namespace Fargowiltas.NPCs
 		public override string GetChat()
 		{
 			int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
+            int mechanic = NPC.FindFirstNPC(NPCID.Mechanic);
 
-			if (mutant >= 0 && Main.rand.Next(7) == 0)
+            if (mutant >= 0 && Main.rand.Next(26) == 0)
 			{
 				return "That one guy, " + Main.npc[mutant].GivenName + ", he is my brother... I've fought more bosses than him.";
 			}
+            if (mechanic >= 0 && Main.rand.Next(25) == 0)
+            {
+                return "Can you please ask " + Main.npc[mechanic].GivenName + " to stop touching my laser arm please.";
+            }
+            if (!Main.hardMode && Main.rand.Next(24) == 0)
+            {
+                return "Where'd I get my scythe from? Ask me later.";
+            }
+            if (Main.hardMode && Main.rand.Next(24) == 0)
+            {
+                return "Where'd I get my scythe from? You'll figure it out.";
+            }
 
-			switch (Main.rand.Next(6))
+            switch (Main.rand.Next(23))
 			{
 				case 0:
 					return "I have defeated everything in this land... nothing can beat me.";
@@ -96,8 +125,42 @@ namespace Fargowiltas.NPCs
 				case 3:
 					return "I sure wish I was a boss.";
 				case 4:
-					return "You wish you could dress like me? Ha! Maybe in 2019.";
-				default:
+					return "You wish you could dress like me? Ha! Maybe in 2020.";
+                case 5:
+                    return "You ever read the ancient classics, I love all the fighting in them.";
+                case 6:
+                    return "I'm a world class poet, ever read my piece about impending doom?";
+                case 7:
+                    return "You want swarm summons? Maybe next year.";
+                case 8:
+                    return "Like my wings? Thanks, the thing I got them from didn't like it much.";
+                case 9:
+                    return "Heroism has no place in this world, instead let's just play ping pong.";
+                case 10:
+                    return "Why are you looking at me like that? Your fashion sense isn't going to be winning you any awards either.";
+                case 11:
+                    return "No, you can't have my hat.";
+                case 12:
+                    return "Embrace suffering... Wait what do you mean that's already taken?";
+                case 13:
+                    return "Your attempt to exploit my anger is admirable, but I cannot be angered.";
+                case 14:
+                    return "Is it really a crime if everyone else does it.";
+                case 15:
+                    return "Inflicting suffering upon others is the most amusing thing there is.";
+                case 16:
+                    return "Irony is the best kind of humor, isn't that ironic?";
+                case 17:
+                    return "I like Cat... What do you mean who's Cat?";
+                case 18:
+                    return "Check the wiki if you need anything, the kirb is slowly getting it up to par.";
+                case 19:
+                    return "I've heard tales of a legendary Diver... Anyway what was that about a giant jellyfish?";
+                case 20:
+                    return "Overloaded events...? Maybe in 10 Fargo years.";
+                case 21:
+                    return "It's not like I don't enjoy your company, but can you buy something?";
+                default:
 					return "I have slain one thousand humans! Huh? You're a human? There's so much blood on your hands..";
 			}
 		}
@@ -105,6 +168,11 @@ namespace Fargowiltas.NPCs
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
 			button = Lang.inter[28].Value;
+
+            if (Fargowiltas.instance.fargoLoaded && MasochistMode)
+            {
+                button2 = "Maso Help :ech:";
+            }
 		}
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)

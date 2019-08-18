@@ -81,6 +81,20 @@ namespace Fargowiltas.NPCs
                     return "Bruce";
                 case 3:
                     return "Larry";
+                case 4:
+                    return "Will";
+                case 5:
+                    return "Jerry";
+                case 6:
+                    return "Liam";
+                case 7:
+                    return "Stan";
+                case 8:
+                    return "Lee";
+                case 9:
+                    return "Woody";
+                case 10:
+                    return "Leif";
                 default:
                     return "Paul";
             }
@@ -89,13 +103,29 @@ namespace Fargowiltas.NPCs
         public override string GetChat()
         {
             int dryad = NPC.FindFirstNPC(NPCID.Dryad);
+            int nurse = NPC.FindFirstNPC(NPCID.Nurse);
 
-            if (dryad >= 0 && Main.rand.Next(10) == 0)
+            if (dryad >= 0 && Main.rand.Next(22) == 0)
             {
                 return Main.npc[dryad].GivenName + " told me to start hugging trees... I hug trees with my chainsaw.";
             }
+            if (nurse >= 0 && Main.rand.Next(21) == 0)
+            {
+                return "I always see" + Main.npc[nurse].GivenName + " looking at my biceps when I'm working. Wonder if she wants some of my wood.";
+            }
 
-            switch (Main.rand.Next(9))
+            if (Fargowiltas.instance.thoriumLoaded && Main.rand.Next(20) == 0)
+            {
+                switch (Main.rand.Next(2))
+                {
+                    case 0:
+                        return "Astroturf? Sorry I only grow trees on real grass.";
+                    default:
+                        return "Yew tree? Sakura tree? Nope, haven't found any.";
+                }
+            }
+
+            switch (Main.rand.Next(19))
             {
                 case 0:
                     return "Dynasty wood? Between you and me, that stuff ain't real wood!";
@@ -113,6 +143,26 @@ namespace Fargowiltas.NPCs
                     return "You won't ever need an axe again with me around.";
                 case 7:
                     return "I have heard of people cutting trees with fish, who does that?";
+                case 8:
+                    return "You wanna see me work without my shirt on? Maybe in 2030.";
+                case 9:
+                    return "You ever seen the world tree?";
+                case 10:
+                    return "You want what? ...Sorry that's not the kind of wood I'm selling.";
+                case 11:
+                    return "Why don't I sell acorns? ...I replant all the trees I chop, don't you?";
+                case 12:
+                    return "What's the best kind of tree? ... Any if I can chop it.";
+                case 13:
+                    return "Can I axe you a question?";
+                case 14:
+                    return "Might take a nap under a tree later, care to join me?";
+                case 15:
+                    return "I'm an expert in all wood types.";
+                case 16:
+                    return "I wonder if there'll be more trees to chop in 1.4.";
+                case 17:
+                    return "Red is one of my favourite colors, right after wood.";
                 default:
                     return "It's always flannel season.";
             }

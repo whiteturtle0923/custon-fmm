@@ -37,7 +37,6 @@ namespace Fargowiltas
         internal bool disarrayLoaded;
         internal bool elementsLoaded;
         internal bool enigmaLoaded;
-        internal bool exodusLoaded;
         internal bool splitLoaded;
         //internal bool ferniumLoaded;
         internal bool antiarisLoaded;
@@ -101,9 +100,7 @@ namespace Fargowiltas
                 disarrayLoaded = ModLoader.GetMod("Disarray") != null;
                 elementsLoaded = ModLoader.GetMod("ElementsAwoken") != null;
                 enigmaLoaded = ModLoader.GetMod("Laugicality") != null; //why
-                exodusLoaded = ModLoader.GetMod("Exodus") != null;
                 splitLoaded = ModLoader.GetMod("Split") != null;
-                //ferniumLoaded = ModLoader.GetMod("Fernium") != null;
                 antiarisLoaded = ModLoader.GetMod("Antiaris") != null;
                 aaLoaded = ModLoader.GetMod("AAMod") != null;
                 trelamiumLoaded = ModLoader.GetMod("TrelamiumMod") != null;
@@ -1437,6 +1434,42 @@ namespace Fargowiltas
             recipe.AddTile(TileID.Autohammer);
             recipe.SetResult(ItemID.TruffleWorm);
             recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(null, "DyeTrader");
+            recipe.AddIngredient(ItemID.WoodenSword);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.DyeTradersScimitar);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(null, "Tavernkeep");
+            recipe.AddIngredient(ItemID.Ale, 5);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AleThrowingGlove);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(null, "Stylist");
+            recipe.AddIngredient(ItemID.WoodenSword);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.StylistKilLaKillScissorsIWish);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(null, "Painter");
+            recipe.AddIngredient(ItemID.WoodenBow);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.PainterPaintballGun);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(null, "TaxCollector");
+            recipe.AddIngredient(ItemID.WoodenSword);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.TaxCollectorsStickOfDoom);
+            recipe.AddRecipe();
+
             #endregion
 
             #region emblems 
@@ -1586,6 +1619,21 @@ namespace Fargowiltas
             recipe.AddTile(TileID.LivingLoom);
             recipe.SetResult(ItemID.JungleRose);
             recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Amber, 15);
+            recipe.AddIngredient(ItemID.Firefly);
+            recipe.AddTile(TileID.CookingPots);
+            recipe.SetResult(ItemID.AmberMosquito);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Moonglow, 15);
+            recipe.AddIngredient(ItemID.ManaCrystal);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.NaturesGift);
+            recipe.AddRecipe();
+
 
             #endregion
         }

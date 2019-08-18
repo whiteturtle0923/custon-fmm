@@ -1,5 +1,7 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Misc
@@ -31,18 +33,19 @@ namespace Fargowiltas.Items.Misc
             FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
             modPlayer.battleCry = !modPlayer.battleCry;
 
-            if (modPlayer.battleCry)
+            string text = "Spawn rates " + (modPlayer.battleCry ? "increased!" : "decreased!");
+            if (Main.netMode == 0)
             {
-                Main.NewText("Spawn rates increased!", 175, 75);
-
-                if (!Main.dedServ)
-                {
-                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Horn").WithVolume(1f).WithPitchVariance(.5f), (int)player.position.X, (int)player.position.Y);
-                }
+                Main.NewText(text, 175, 75, 255);
             }
-            else
+            else if (Main.netMode == 2)
             {
-                Main.NewText("Spawn rates decreased!", 175, 75);
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(text), new Color(175, 75, 255));
+            }
+
+            if (modPlayer.battleCry && !Main.dedServ)
+            {
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Horn").WithVolume(1f).WithPitchVariance(.5f), (int)player.position.X, (int)player.position.Y);
             }
 
             return true;

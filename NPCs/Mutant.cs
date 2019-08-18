@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
@@ -59,6 +60,10 @@ namespace Fargowiltas.NPCs
         }
 
         #region other mod bools
+
+        //fargo bools
+        public bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
+        public bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
 
         //thorium bools
         public bool ThoriumDownedBird => ThoriumMod.ThoriumWorld.downedThunderBird;
@@ -168,15 +173,6 @@ namespace Fargowiltas.NPCs
 
         //Crystilium
         public bool CrystiliumDownedKing => CrystiliumMod.CrystalWorld.downedCrystalKing;
-
-        //exodus
-        public bool ExodusDownedAbom => Exodus.ExodusWorld.downedExodusAbomination;
-        public bool ExodusDownedBlob => Exodus.ExodusWorld.downedExodusEvilBlob;
-        public bool ExodusDownedColoss => Exodus.ExodusWorld.downedExodusColossus;
-        public bool ExodusDownedEmperor => Exodus.ExodusWorld.downedExodusDesertEmperor;
-        public bool ExodusDownedHive => Exodus.ExodusWorld.downedExodusHivemind;
-        public bool ExodusDownedMaster => Exodus.ExodusWorld.downedExodusMaster;
-        public bool ExodusDownedHeart => Exodus.ExodusWorld.downedExodusSludgeheart;
 
         //W1K
         public bool W1KDownedKutku => W1KModRedux.MWorld.downedKutKu;
@@ -305,11 +301,14 @@ namespace Fargowiltas.NPCs
 
         #endregion other mod bools
 
-        public override bool CanTownNPCSpawn(int numTownNpcs, int money) => FargoWorld.downedBoss;
+        public override bool CanTownNPCSpawn(int numTownnpcs, int money)
+        {
+            return Fargowiltas.instance.fargoLoaded ? (FargoWorld.downedBoss && !NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss"))) : FargoWorld.downedBoss;
+        }
 
         public override string TownNPCName()
         {
-            switch (WorldGen.genRand.Next(9))
+            switch (WorldGen.genRand.Next(13))
             {
                 case 0:
                     return "Flacken";
@@ -335,6 +334,18 @@ namespace Fargowiltas.NPCs
                 case 7:
                     return "Fargu";
 
+                case 8:
+                    return "Terrance";
+
+                case 9:
+                    return "Catty N. Pem";
+
+                case 10:
+                    return "Tom";
+
+                case 11:
+                    return "Weirdus";
+
                 default:
                     return "Polly";
             }
@@ -342,9 +353,39 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (NPC.downedMoonlord && Fargowiltas.instance.fargoLoaded && Main.rand.Next(28) == 0)
+            if (NPC.downedMoonlord && Fargowiltas.instance.fargoLoaded && Main.rand.Next(32) == 0)
             {
                 return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials!";
+            }
+
+            if (Fargowiltas.instance.calamityLoaded && Main.rand.Next(63) == 0)
+            {
+                return "Why would you do this.";
+            }
+
+            if (Fargowiltas.instance.calamityLoaded && Fargowiltas.instance.thoriumLoaded && Main.rand.Next(62) == 0)
+            {
+                return "I feel a great imbalance in this world.";
+            }
+
+            if (Fargowiltas.instance.thoriumLoaded && Main.rand.Next(61) == 0)
+            {
+                return "A great choice, shame about that first desert boss thing though.";
+            }
+
+            if (Main.pumpkinMoon)
+            {
+                return "A bit spooky tonight, isn't it.";
+            }
+
+            if (Main.snowMoon)
+            {
+                return "I'd ask for a coat, but I don't think you have any my size.";
+            }
+
+            if (Main.slimeRain)
+            {
+                return "Weather seems odd today, wouldn't you agree?";
             }
 
             if (Main.bloodMoon)
@@ -359,11 +400,6 @@ namespace Fargowiltas.NPCs
                 }
             }
 
-            if (BirthdayParty.PartyIsUp)
-            {
-                return "I don't know what everyone's so happy about, but as long as nobody mistakes me for a Pigronata, I'm happy too.";
-            }
-
             //specific other npc quotes
             int nurse = NPC.FindFirstNPC(NPCID.Nurse);
             int witchDoctor = NPC.FindFirstNPC(NPCID.WitchDoctor);
@@ -373,54 +409,83 @@ namespace Fargowiltas.NPCs
             int tax = NPC.FindFirstNPC(NPCID.TaxCollector);
             int truffle = NPC.FindFirstNPC(NPCID.Truffle);
             int cyborg = NPC.FindFirstNPC(NPCID.Cyborg);
+            int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
+            int demoman = NPC.FindFirstNPC(NPCID.Demolitionist);
+            int tavernkeep = NPC.FindFirstNPC(NPCID.DD2Bartender);
+            int dyeTrader = NPC.FindFirstNPC(NPCID.DyeTrader);
+            int lumberJack = NPC.FindFirstNPC(mod.NPCType("LumberJack"));
 
-            if (nurse >= 0 && Main.rand.Next(27) == 0)
+            if (BirthdayParty.PartyIsUp)
+            {
+                switch (Main.rand.Next(2))
+                {
+                    case 0:
+                        return Main.npc[partyGirl].GivenName + " is the one who invited me, I don't understand why though.";
+
+                    default:
+                        return "I don't know what everyone's so happy about, but as long as nobody mistakes me for a Pigronata, I'm happy too.";
+                }
+            }
+
+            if (lumberJack >= 0 && Main.rand.Next(1) == 0)
+            {
+                return "It's okay " + Main.npc[npc.whoAmI].GivenName + ", just don't look straight into " + Main.npc[lumberJack].GivenName + "'s eyes. He can't scare you that way...";
+            }
+            if (nurse >= 0 && Main.rand.Next(59) == 0)
             {
                 return "Whenever we're alone, " + Main.npc[nurse].GivenName + " keeps throwing syringes at me, no matter how many times I tell her to stop!";
             }
-            if (witchDoctor >= 0 && Main.rand.Next(26) == 0)
+            if (witchDoctor >= 0 && Main.rand.Next(58) == 0)
             {
                 return "Please go tell " + Main.npc[witchDoctor].GivenName + " to drop the 'mystical' shtick, I mean, come on! I get it, you make tainted water or something.";
             }
-            if (dryad >= 0 && Main.rand.Next(25) == 0)
+            if (dryad >= 0 && Main.rand.Next(57) == 0)
             {
                 return "Why does " + Main.npc[dryad].GivenName + "'s outfit make my wings flutter?";
             }
-            if (stylist >= 0 && Main.rand.Next(24) == 0)
+            if (stylist >= 0 && Main.rand.Next(56) == 0)
             {
                 return Main.npc[stylist].GivenName + " once gave me a wig... I look hideous with long hair.";
             }
-            if (truffle >= 0 && Main.rand.Next(23) == 0)
+            if (truffle >= 0 && Main.rand.Next(55) == 0)
             {
                 return "That mutated mushroom seems like my type of fella.";
             }
-            if (tax >= 0 && Main.rand.Next(22) == 0)
+            if (tax >= 0 && Main.rand.Next(54) == 0)
             {
                 return Main.npc[tax].GivenName + " keeps asking me for money, but he won't accept my spawners!";
             }
-            if (guide >= 0 && Main.rand.Next(21) == 0)
+            if (guide >= 0 && Main.rand.Next(53) == 0)
             {
                 return "Any idea why " + Main.npc[guide].GivenName + " is always cowering in fear when I get near him?";
             }
-            if (truffle >= 0 && witchDoctor >= 0 && cyborg >= 0 && Main.rand.Next(20) == 0)
+            if (truffle >= 0 && witchDoctor >= 0 && cyborg >= 0 && Main.rand.Next(52) == 0)
             {
                 return "If any of us could play instruments, I'd totally start a band with " + Main.npc[witchDoctor].GivenName + ", " + Main.npc[truffle].GivenName + ", and " + Main.npc[cyborg].GivenName + ".";
             }
-            /* (Fargowiltas.instance.aaLoaded && Main.rand.Next(28) == 0 && AAZero == true)
+            if (partyGirl >= 0 && Main.rand.Next(51) == 0)
             {
-                return "I'm not gonna lie, that Zero thing kinda freaks me out.";
+                return "Man," + Main.npc[partyGirl].GivenName + "'s confetti keeps getting stuck to my wings";
             }
-            if (Fargowiltas.instance.aaLoaded && Main.rand.Next(29) == 0 && AAZeroA == true)
+            if (demoman >= 0 && Main.rand.Next(50) == 0)
             {
-                return "I know my bosses, but that...thing that came out of Zero...I've never seen anything like it before. Good job killin' it though.";
-            }*/
+                return "I'm surprised " + Main.npc[demoman].GivenName + " hasn't blown a hole in the floor yet, on second thought that sounds fun.";
+            }
+            if (tavernkeep >= 0 && Main.rand.Next(49) == 0)
+            {
+                return Main.npc[tavernkeep].GivenName + " keeps suggesting I drink some beer, something tells me he wouldn't like me when I'm drunk though.";
+            }
+            if (dyeTrader >= 0 && Main.rand.Next(48) == 0)
+            {
+                return Main.npc[dyeTrader].GivenName + " wants to see what I would look like in blue... I don't know how to feel.";
+            }
 
-            if (Main.dayTime != true && Main.rand.Next(10) == 0)
+            if (Main.dayTime != true && Main.rand.Next(20) == 0)
             {
                 return "I'd follow and help, but I'd much rather sit around right now.";
             }
 
-            switch (Main.rand.Next(19))
+            switch (Main.rand.Next(47))
             {
                 case 0:
                     return "Savagery, barbarism, bloodthirst, that's what I like seeing in people.";
@@ -458,24 +523,66 @@ namespace Fargowiltas.NPCs
                     return "Everything shall bow before me! ...after you make this purchase.";
                 case 17:
                     return "It's clear that I'm helping you out, but uh.. what's in this for me? A house you say? I eat zombies for breakfast.";
+                case 18:
+                    return "Can I jump? No, I don't have something called a 'spacebar'.";
+                case 19:
+                    return "Got your nose, I needed one to replace mine.";
+                case 20:
+                    return "What's a Terry?";
+                case 21:
+                    return "Why do so many creatures carry around a weird looking blue doll? The world may never know.";
+                case 22:
+                    return "Impending doom approaches. ...If you don't buy anything of course.";
+                case 23:
+                    return "I've heard of a '3rd dimension', I wonder what that looks like.";
+                case 24:
+                    return "Boy don't I look fabulous today.";
+                case 25:
+                    return "You have fewer friends than I do eyes.";
+                case 26:
+                    return "The ocean is a dangerous place, I wonder where Diver is?";
+                case 27:
+                    return "Do you know what an Ee-arth is?";
+                case 28:
+                    return "I can't even spell 'apotheosis', do you expect me to know what it is?";
+                case 29:
+                    return "Where do monsters get their gold from? ...I don't have pockets you know.";
+                case 30:
+                    return "Dogs are cool and all, but cats dont try to bite my brain.";
+                case 31:
+                    return "Beware the green dragon... What's that face mean?";
+                case 32:
+                    return "Where is this O-hi-o I keep hearing about.";
+                case 33:
+                    return "I've told you 56 times already, I'm busy... Oh wait you want to buy something, I suppose I have time.";
+                case 34:
+                    return "I've heard of a 'Soul of Souls' that only exists in 2015.";
+                case 35:
+                    return "Adding EX after everything makes it way more difficult.";
+                case 36:
+                    return "I think that all modern art looks great, especially the bloody stuff.";
+                case 37:
+                    return "How many guides does it take to change a lightbulb? ... I don't know, how about you ask him.";
+                case 38:
+                    return "Good thing I don't have a bed, I'd probably never leave it.";
+                case 39:
+                    return "What's this about an update? Sounds rare.";
+                case 40:
+                    return "If you need me I'll be slacking off somewhere.";
+                case 41:
+                    return "You want to fight me, maybe in 2022.";
+                case 42:
+                    return "What do you mean who is Fargo!";
+                case 43:
+                    return "Have you seen the ech cat?";
+                case 44:
+                    return "I don't understand music nowadays, I prefer some smooth jazz... or the dying screams of monsters.";
+                case 45:
+                    return "Why are you looking at me like that, all I did was eat an apple.";
                 default:
                     return "Cthulhu's got nothing on me!";
             }
         }
-
-        /*
-        //will he ever sell souls ? idk
-        -oh is that a soul of the universe? Fascinating I'll get all mine from the back
-        -Oh wow is that a speed soul. I coulda sold you one man
-        -all souls need one
-        "I know, I know, these souls look really pricy, buy I'm selling them at a loss here! Nobody would buy them otherwise! What a ripoff!"
-
-
-        Ancients Awakened will have a lot of bosses. May need it’s own tab all together. Mutant should be annoyed by this. 
-        -Eliza
-        “Damn fish, making me add another page to my store...”
-        fish = Alphakip
-        */
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
@@ -559,7 +666,7 @@ namespace Fargowiltas.NPCs
 
             if (shop1)
             {
-                AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
+                AddItem(true, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.fargoLoaded)
                 {
@@ -571,7 +678,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //The Mighty King Chicken
-                    AddItem(RedeChicken, "Redemption", "EggCrown", 2000, ref shop, ref nextSlot);
+                    AddItem(RedeChicken, "Redemption", "EggCrown", 50000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.aaLoaded)
@@ -579,11 +686,6 @@ namespace Fargowiltas.NPCs
                     //Mushroom Monarch
                     AddItem(AAMonarch, "AAMod", "IntimidatingMushroom", 20000, ref shop, ref nextSlot);
                     AddItem(AAFungus, "AAMod", "ConfusingMushroom", 20000, ref shop, ref nextSlot);
-                }
-
-                if (Fargowiltas.instance.exodusLoaded)
-                {
-                    AddItem(ExodusDownedAbom, "Exodus", "ZombieMeat", 20000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
@@ -660,12 +762,6 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
                     AddItem(EnigmaDownedShark, "Laugicality", "TastyMorsel", 80000, ref shop, ref nextSlot);
-                }
-
-                if (Fargowiltas.instance.exodusLoaded)
-                {
-                    AddItem(ExodusDownedColoss, "Exodus", "GraniteAnomaly", 80000, ref shop, ref nextSlot);
-                    AddItem(ExodusDownedBlob, "Exodus", "DisgustingJelly", 80000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
@@ -798,10 +894,6 @@ namespace Fargowiltas.NPCs
                     AddItem(TremorDownedDragon, "Tremor", "RustyLantern", 100000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.instance.exodusLoaded)
-                {
-                    AddItem(ExodusDownedEmperor, "Exodus", "AncientArtifact", 100000, ref shop, ref nextSlot);
-                }
                 //Queen Bee
                 AddItem(NPC.downedQueenBee, "Fargowiltas", "Abeemination2", 150000, ref shop, ref nextSlot);
 
@@ -940,11 +1032,6 @@ namespace Fargowiltas.NPCs
 
                 //alpha cactus worm - joost
 
-                if (Fargowiltas.instance.exodusLoaded)
-                {
-                    AddItem(ExodusDownedHive, "Exodus", "VineSerpent", 150000, ref shop, ref nextSlot);
-                }
-
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Star Scouter
@@ -1023,11 +1110,6 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
                     AddItem(DisarrayDownedShadows, "Disarray", "EnhancedShadowFragment", 250000, ref shop, ref nextSlot);
-                }
-
-                if (Fargowiltas.instance.exodusLoaded)
-                {
-                    AddItem(ExodusDownedMaster, "Exodus", "GlowingSkull", 250000, ref shop, ref nextSlot);
                 }
 
                 //ichor blaster/ grasper - true eater
@@ -1206,11 +1288,6 @@ namespace Fargowiltas.NPCs
                     AddItem(CalamityDownedLevi, "Fargowiltas", "LeviathanSummon", 500000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.instance.exodusLoaded)
-                {
-                    AddItem(ExodusDownedHeart, "Exodus", "JungleCrown", 500000, ref shop, ref nextSlot);
-                }
-
                 if (Fargowiltas.instance.enigmaLoaded)
                 {
                     AddItem(EnigmaDownedEther, "Laugicality", "EmblemOfEtheria", 500000, ref shop, ref nextSlot);
@@ -1282,8 +1359,6 @@ namespace Fargowiltas.NPCs
                 {
                     AddItem(NPC.downedPlantBoss, "TrueEater", "MimicKey", 600000, ref shop, ref nextSlot);
                 }
-
-                //the ancient - exodus
 
                 if (Fargowiltas.instance.calamityLoaded)
                 {
@@ -1524,8 +1599,6 @@ namespace Fargowiltas.NPCs
                     AddItem(JoostDownedGilga, "JoostMod", "Excalipoor", 15000000, ref shop, ref nextSlot);
                 }
 
-                //the challenger -sacred tools
-
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
                     AddItem(DisarrayDownedDungeon, "Disarray", "DungeonAmalgamation", 15000000, ref shop, ref nextSlot);
@@ -1558,13 +1631,18 @@ namespace Fargowiltas.NPCs
                     AddItem(AAIZ, "AAMod", "InfinityOverloader", 30000000, ref shop, ref nextSlot);
                 }
 
-                /*//Fishron EX
+                //Fishron EX
                 if (Fargowiltas.instance.fargoLoaded)
                 {
-                    AddItem(FargowiltasSouls.FargoWorld.downedFishronEX, "FargowiltasSouls", "TruffleWormEX", 10000000, ref shop, ref nextSlot);
-                }*/
+                    AddItem(FargoDownedFishEX, "FargowiltasSouls", "TruffleWormEX", 10000000, ref shop, ref nextSlot);
+                }
 
-                //Pain
+                //Mutant
+                if (Fargowiltas.instance.fargoLoaded)
+                {
+                    AddItem(FargoDownedMutant, "FargowiltasSouls", "AbominationnVoodooDoll", 20000000, ref shop, ref nextSlot);
+                }
+
                 AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.instance.fargoLoaded)
@@ -1623,7 +1701,11 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            if (NPC.downedMoonlord)
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedFishEX)
+            {
+                projType = ModLoader.GetMod("FargowiltasSouls").ProjectileType("MutantSpearThrownFriendly");
+            }
+            else if (NPC.downedMoonlord)
             {
                 projType = mod.ProjectileType("PhantasmalEyeProjectile");
             }
@@ -1635,11 +1717,6 @@ namespace Fargowiltas.NPCs
             {
                 projType = mod.ProjectileType("EyeProjectile");
             }
-
-            /*if (Fargowiltas.instance.fargoLoaded && FargowiltasSouls.FargoWorld.downedFishronEX)
-            {
-                projType = mod.ProjectileType("MutantPenetrator");
-            }*/
 
             attackDelay = 1;
         }
