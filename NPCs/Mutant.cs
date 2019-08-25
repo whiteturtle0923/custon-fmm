@@ -14,6 +14,8 @@ namespace Fargowiltas.NPCs
         public static bool shop2;
         public static bool shop3;
         public static int shopnum = 1;
+        
+        public bool spawned;
 
         public override bool Autoload(ref string name)
         {
@@ -301,6 +303,21 @@ namespace Fargowiltas.NPCs
         public bool OcramOcram => Ocram.OcramWorld.downedOcram;
 
         #endregion other mod bools
+        
+        public override void AI()
+        {
+            if (!spawned)
+            {
+                spawned = true;
+                if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
+                {
+                    npc.life = 7000000;
+                    npc.lifeMax = 7000000;
+                    npc.defense = 100;
+                    npc.defDefense = 100;
+                }
+            }
+        }
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
