@@ -517,7 +517,7 @@ namespace Fargowiltas.NPCs
                 case 13:
                     return "Those guys really need to get more creative. All of their first bosses are desert themed!";
                 case 14:
-                    return "I am proud to be known as the Mutant, but thank Fargo I'm no Abominationn";
+                    return "You say you want to know how a Mutant and Abominationn are brothers? You're better off not knowing.";
                 case 15:
                     return "I'm all you need for a calamity.";
                 case 16:
