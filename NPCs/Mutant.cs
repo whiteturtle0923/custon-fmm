@@ -46,11 +46,11 @@ namespace Fargowiltas.NPCs
             npc.defense = NPC.downedMoonlord ? 50 : 15;
             npc.lifeMax = NPC.downedMoonlord ? 5000 : 250;
 
-            /*if (Fargowiltas.instance.fargoLoaded && FargowiltasSouls.FargoWorld.downedFishronEX)
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
             {
-                npc.lifeMax *= 10;
-                npc.defense *= 10;
-            }*/
+                npc.lifeMax = 7000000;
+                npc.defense = 100;
+            }
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
@@ -495,7 +495,7 @@ namespace Fargowiltas.NPCs
                 case 2:
                     return "There's something all of you have that I don't... Death perception, I think it's called?";
                 case 3:
-                    return "It would be pretty cool if I could sell a summon for myself...";
+                    return "It would be pretty cool if I sold a summon for myself...";
                 case 4:
                     return "The only way to get stronger is to keep buying from me and in bulk too!";
                 case 5:
@@ -1634,7 +1634,7 @@ namespace Fargowiltas.NPCs
                 //Mutant
                 if (Fargowiltas.instance.fargoLoaded)
                 {
-                    AddItem(FargoDownedMutant, "FargowiltasSouls", "AbominationnVoodooDoll", 20000000, ref shop, ref nextSlot);
+                    AddItem(FargoDownedMutant, "FargowiltasSouls", "MutantsCurse", 20000000, ref shop, ref nextSlot);
                 }
 
                 AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);
@@ -1658,7 +1658,12 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            if (NPC.downedMoonlord)
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
+            {
+                damage = 1000;
+                knockback = 10f;
+            }
+            else if (NPC.downedMoonlord)
             {
                 damage = 500;
                 knockback = 10f;
@@ -1695,7 +1700,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            if (Fargowiltas.instance.fargoLoaded && FargoDownedFishEX)
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
             {
                 projType = ModLoader.GetMod("FargowiltasSouls").ProjectileType("MutantSpearThrownFriendly");
             }
