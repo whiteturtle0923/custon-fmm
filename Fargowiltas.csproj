@@ -298,7 +298,6 @@
     <Compile Include="Projectiles\MechEyeProjectile.cs" />
     <Compile Include="Projectiles\MushroomNukeProj.cs" />
     <Compile Include="Projectiles\MushroomNukeSupremeProj.cs" />
-    <Compile Include="Projectiles\MutantPenetrator.cs" />
     <Compile Include="Projectiles\PhantasmalEyeProjectile.cs" />
     <Compile Include="Projectiles\PurityNukeProj.cs" />
     <Compile Include="Projectiles\PurityNukeSupremeProj.cs" />

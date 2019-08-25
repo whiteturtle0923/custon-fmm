@@ -485,6 +485,14 @@ namespace Fargowiltas.NPCs
             if(npc.type == NPCID.CultistBoss && !pillarSpawn)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CultistBossBag);
+
+                if (Fargowiltas.instance.fargoLoaded && FargowiltasSouls.FargoSoulsWorld.MasochistMode)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModLoader.GetMod("FargowiltasSouls").ItemType("CelestialRune"));
+                }
+
+                Main.NewText("Lunatic Cultist has been defeated!", 175, 75, 255);
+
                 return false;
             }
 

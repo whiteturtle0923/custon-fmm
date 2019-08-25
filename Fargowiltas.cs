@@ -518,6 +518,12 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ZombieBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Shackle);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.RaincoatZombieBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.RainHat);
@@ -527,6 +533,18 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.ZombieEskimoBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.EskimoHood);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ZombieEskimoBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.EskimoCoat);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ZombieEskimoBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.EskimoPants);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -698,6 +716,12 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DesertDjinnBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DjinnsCurse);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.GiantBatBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.TrifoldMap);
@@ -710,6 +734,18 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.MummyBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MummyShirt);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.MummyBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MummyPants);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.WerewolfBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.MoonCharm);
@@ -719,6 +755,12 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.VampireBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.BrokenBatWing);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.EyezorBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.EyeSpring);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -737,6 +779,18 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.RaggedCasterBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.SpectreStaff);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PaladinBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PaladinsHammer);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PaladinBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PaladinsShield);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -789,6 +843,12 @@ namespace Fargowiltas
 
             recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.UnicornBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.UnicornonaStick);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.GastropodBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.BlessedApple);
             recipe.AddRecipe();
@@ -896,15 +956,69 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ZombieElfBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ElfShirt);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ZombieElfBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ElfPants);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SailorHat);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SailorShirt);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PirateBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SailorPants);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.BunnyBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.BunnyHood);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PenguinBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PedguinHat);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PenguinBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PedguinShirt);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PenguinBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PedguinPants);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.Keybrand);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Kraken);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -932,6 +1046,30 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DesertLamiaBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LamiaShirt);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DesertLamiaBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LamiaPants);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DesertLamiaBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MoonMask);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DesertLamiaBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SunMask);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.FloatyGrossBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.MeatGrinder);
@@ -944,9 +1082,9 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.PirateCaptainBanner);
+            recipe.AddIngredient(ItemID.VampireBanner);
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Cutlass);
+            recipe.SetResult(ItemID.MoonStone);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
@@ -1000,7 +1138,73 @@ namespace Fargowiltas
             recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.SkeletonSniperBanner);
             recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.SniperScope);
+            recipe.SetResult(ItemID.RifleScope);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SkeletonSniperBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SniperRifle);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.TacticalSkeletonBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.TacticalShotgun);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.TacticalSkeletonBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SWATHelmet);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.BoneLeeBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BlackBelt);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.BoneLeeBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Tabi);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PresentMimicBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ToySled);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.NailheadBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.NailGun);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ButcherBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ButchersChainsaw);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DeadlySphereBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DeadlySphereStaff);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.DrManFlyBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ToxicFlask);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.PsychoBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PsychoKnife);
             recipe.AddRecipe();
 
             #endregion

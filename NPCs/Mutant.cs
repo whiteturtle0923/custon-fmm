@@ -41,6 +41,7 @@ namespace Fargowiltas.NPCs
             npc.height = 40;
             npc.aiStyle = 7;
             npc.damage = 10;
+            npc.breathCounter = 9999;
 
             npc.defense = NPC.downedMoonlord ? 50 : 15;
             npc.lifeMax = NPC.downedMoonlord ? 5000 : 250;
@@ -427,7 +428,7 @@ namespace Fargowiltas.NPCs
                 }
             }
 
-            if (lumberJack >= 0 && Main.rand.Next(1) == 0)
+            if (lumberJack >= 0 && Main.rand.Next(60) == 0)
             {
                 return "It's okay " + Main.npc[npc.whoAmI].GivenName + ", just don't look straight into " + Main.npc[lumberJack].GivenName + "'s eyes. He can't scare you that way...";
             }
@@ -645,8 +646,7 @@ namespace Fargowiltas.NPCs
                         break;
                 }
             }
-
-            if (!firstButton && Main.hardMode)
+            else if (!firstButton && Main.hardMode)
             {
                 shopnum++;
             }
@@ -662,19 +662,12 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
+            AddItem(true, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
+
             #region PREHARDMODE BOSSES
 
             if (shop1)
             {
-                AddItem(true, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
-
-                if (Fargowiltas.instance.fargoLoaded)
-                {
-                    AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
-                }
-
-                //goblin king - true eater
-
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //The Mighty King Chicken
@@ -1056,7 +1049,10 @@ namespace Fargowiltas.NPCs
 
             else if (shop2)
             {
-                AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
+                if (Fargowiltas.instance.fargoLoaded)
+                {
+                    AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
+                }
 
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
@@ -1448,8 +1444,6 @@ namespace Fargowiltas.NPCs
 
             else
             {
-                AddItem(true, "Fargowiltas", "Overloader", 500000, ref shop, ref nextSlot);
-
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     AddItem(AASisters, "AAMod", "FlamesOfAnarchy", 1000000, ref shop, ref nextSlot);

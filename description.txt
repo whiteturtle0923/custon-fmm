@@ -1,8 +1,16 @@
-NEW UPDATE - v 1.4.2
--Added Duke Fishron EX and Mutant summons to the Mutant
--Mutant has a new attack post Duke Fishron EX
--Mutant cannot spawn while a Mutant boss is alive
--Abominationn now has a new button while Masochist Mode is active
+NEW UPDATE - v 1.4.3
+-Added a new dialogue option to the Abominationn while MAsochist Mode is active
+-Lunatic Cultist summon will now drop the Masochist Mode drop if that is active and it will actually have a message for him being beaten
+-Mutant can no longer drown
+-Fixed Overloader being different prices in different shops
+-Fixed Toxic Flask and Magic Dagger Thrown not actually doing thrown damage
+
+FIXED ABOMINATIONN sprite sheet
+
+-Moved Pandoras Box to the Hardmode shop
+-Fixed Skeleton Sniper Banner giving Sniper Scope instead of Rifle Scope
+-Added Banner recipes for many more items - every drop 10% or less should be covered now
+-Changed Blessed Apple banner recipe to use Gastropid Banner 
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

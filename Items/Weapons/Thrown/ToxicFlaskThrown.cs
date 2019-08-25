@@ -37,7 +37,7 @@ namespace Fargowiltas.Items.Weapons.Thrown
         {
             int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
             Main.projectile[proj].thrown = true;
-            Main.projectile[proj].melee = false;
+            Main.projectile[proj].magic = false;
             return false;
         }
     }
