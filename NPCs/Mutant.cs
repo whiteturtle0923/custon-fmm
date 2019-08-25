@@ -1722,8 +1722,16 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
-            multiplier = 12f;
-            randomOffset = 2f;
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
+            {
+                multiplier = 25f;
+                randomOffset = 0f;
+            }
+            else
+            {
+                multiplier = 12f;
+                randomOffset = 2f;
+            }
         }
 
         public override void NPCLoot()
