@@ -371,6 +371,18 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
+            if (Main.rand.next(25) == 0)
+            {
+                if (Fargowiltas.instance.fargoLoaded)
+                {
+                    if (FargoDownedMutant)
+                        return "What's that? You want to fight me? ...sure, I guess.";
+                    if (FargoDownedFishEX)
+                        return "What's that? You want to fight me? ...maybe if I had a reason.";
+                }
+                return "What's that? You want to fight me? ...you're not worthy you rat.";
+            }
+        
             if (NPC.downedMoonlord && Fargowiltas.instance.fargoLoaded && Main.rand.Next(32) == 0)
             {
                 return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials!";
@@ -503,7 +515,7 @@ namespace Fargowiltas.NPCs
                 return "I'd follow and help, but I'd much rather sit around right now.";
             }
 
-            switch (Main.rand.Next(47))
+            switch (Main.rand.Next(45))
             {
                 case 0:
                     return "Savagery, barbarism, bloodthirst, that's what I like seeing in people.";
@@ -516,7 +528,7 @@ namespace Fargowiltas.NPCs
                 case 4:
                     return "The only way to get stronger is to keep buying from me and in bulk too!";
                 case 5:
-                    return "What's that? You want to fight me? ...you're not worthy you rat.";
+                    return "Why are you looking at me like that, all I did was eat an apple.";
                 case 6:
                     return "Don't bother with anyone else, all you'll ever need is right here.";
                 case 7:
@@ -588,15 +600,11 @@ namespace Fargowiltas.NPCs
                 case 40:
                     return "If you need me I'll be slacking off somewhere.";
                 case 41:
-                    return "You want to fight me, maybe in 2022.";
-                case 42:
                     return "What do you mean who is Fargo!";
-                case 43:
+                case 42:
                     return "Have you seen the ech cat?";
-                case 44:
+                case 43:
                     return "I don't understand music nowadays, I prefer some smooth jazz... or the dying screams of monsters.";
-                case 45:
-                    return "Why are you looking at me like that, all I did was eat an apple.";
                 default:
                     return "Cthulhu's got nothing on me!";
             }
