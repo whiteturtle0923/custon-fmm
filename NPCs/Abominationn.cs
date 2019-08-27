@@ -59,7 +59,9 @@ namespace Fargowiltas.NPCs
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
-            return NPC.downedGoblins;
+			if (Fargowiltas.instance.fargoLoaded && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
+				return false;
+            		return NPC.downedGoblins;
 		}
 		
 		public override string TownNPCName()
@@ -187,7 +189,7 @@ namespace Fargowiltas.NPCs
                 Player p = Main.player[Main.myPlayer];
                 FargowiltasSouls.FargoPlayer fargoPlayer = p.GetModPlayer<FargowiltasSouls.FargoPlayer>();
 		
-		if (Main.rand.Next(5) == 0)
+		if (Main.rand.Next(3) == 0)
                 {
 			if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
 				return "What's that? You want to fight me? ...maybe in 2023.";
@@ -195,7 +197,7 @@ namespace Fargowiltas.NPCs
                     		return "What's that? You want to fight my brother? ...maybe if he had a reason to.";
 	    	}
 		
-		if (NPC.downedMoonlord && !FargowiltasSouls.FargoSoulsWorld.downedFishronEX && Main.rand.Next(5) == 0)
+		if (NPC.downedMoonlord && !FargowiltasSouls.FargoSoulsWorld.downedFishronEX && Main.rand.Next(3) == 0)
 			return "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
 
                 IList<string> dialogue = new List<string>();
