@@ -4,6 +4,7 @@ NEW UPDATE - v 1.4.3
 -Mutant can no longer drown
 -Fixed Overloader being different prices in different shops
 -Fixed Toxic Flask and Magic Dagger Thrown not actually doing thrown damage
+-Removed Mutant Grab Bag
 
 FIXED ABOMINATIONN sprite sheet
 
