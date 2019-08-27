@@ -59,7 +59,9 @@ namespace Fargowiltas.NPCs
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
-            return NPC.downedGoblins;
+			if (Fargowiltas.instance.fargoLoaded && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
+				return false;
+            		return NPC.downedGoblins;
 		}
 		
 		public override string TownNPCName()
@@ -186,6 +188,17 @@ namespace Fargowiltas.NPCs
             {
                 Player p = Main.player[Main.myPlayer];
                 FargowiltasSouls.FargoPlayer fargoPlayer = p.GetModPlayer<FargowiltasSouls.FargoPlayer>();
+		
+		if (Main.rand.Next(3) == 0)
+                {
+			if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
+				return "What's that? You want to fight me? ...maybe in 2023.";
+                	else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
+                    		return "What's that? You want to fight my brother? ...maybe if he had a reason to.";
+	    	}
+		
+		if (NPC.downedMoonlord && !FargowiltasSouls.FargoSoulsWorld.downedFishronEX && Main.rand.Next(3) == 0)
+			return "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
 
                 IList<string> dialogue = new List<string>();
 
@@ -194,13 +207,13 @@ namespace Fargowiltas.NPCs
                 dialogue.Add("There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once.");
                 dialogue.Add("I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.");
                 dialogue.Add("Powerful enemies can drop all sorts of helpful loot. They'll also come back for revenge after you beat them, so keep an eye out for that.");
-                dialogue.Add("Why bother fishing when you can massacre bosses for the same goods? With spawners provided by brother of course!");
+                dialogue.Add("Why bother fishing when you can massacre bosses for the same goods? With spawners provided by my brother of course!");
 
-                if (!p.accFlipper && !p.gills && fargoPlayer.MutantAntibodies)
+                if (!p.accFlipper && !p.gills && !fargoPlayer.MutantAntibodies)
                     dialogue.Add("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?");
                 if (!p.fireWalk && !p.buffImmune[BuffID.OnFire])
                     dialogue.Add("The underworld has gotten a lot hotter since the last time I visited. I hear an obsidian is a good luck charm against burning alive, though.");
-                if (!p.buffImmune[BuffID.Suffocation] && fargoPlayer.PureHeart)
+                if (!p.buffImmune[BuffID.Suffocation] && !fargoPlayer.PureHeart)
                     dialogue.Add("Want to have a breath-holding contest? The empty vacuum of space would be perfect.");
 
                 if (p.statLifeMax < 400)
@@ -210,7 +223,7 @@ namespace Fargowiltas.NPCs
 
                 if (Main.hardMode)
                 {
-                    if (fargoPlayer.PureHeart)
+                    if (!fargoPlayer.PureHeart)
                         dialogue.Add("The spirits of light and dark stopped by and they sounded pretty upset with you. Don't be too surprised if something happens to you for entering their territory.");
                     dialogue.Add("They're not in my shop, but why not go hunting for some rare monsters every once in a while? Plenty of treasure to be looted and all that.");
                     dialogue.Add("The desert monsters keep sending me letters about all the fossils they're collecting. I don't get the craze about it, myself.");
@@ -220,14 +233,6 @@ namespace Fargowiltas.NPCs
 
                 if (NPC.downedPlantBoss)
                     dialogue.Add("Trick or treat? Merry Christmas? I don't have anything for you, go ask Pumpking or Ice Queen.");
-
-                if (NPC.downedMoonlord && !FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
-                    dialogue.Add("When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?");
-
-                if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
-                    dialogue.Add("What's that? You want to fight me? ...maybe in 2023.");
-                else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
-                    dialogue.Add("What's that? You want to fight my brother? ...maybe if he had a reason to.");
 
                 Main.npcChatText = dialogue[Main.rand.Next(dialogue.Count)];
             }
