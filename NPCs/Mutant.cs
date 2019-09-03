@@ -290,14 +290,35 @@ namespace Fargowiltas.NPCs
 
         //Redemption
         public bool RedeChicken => Redemption.RedeWorld.downedKingChicken;
+        public bool RedeThorn => Redemption.RedeWorld.downedThorn;
         public bool RedeKeeper => Redemption.RedeWorld.downedTheKeeper;
         public bool RedeXeno => Redemption.RedeWorld.downedXenomiteCrystal;
         public bool RedeEye => Redemption.RedeWorld.downedInfectedEye;
         public bool RedePortal => Redemption.RedeWorld.downedStrangePortal;
-        public bool RedeGigipede=> Redemption.RedeWorld.downedVlitch2;
+        public bool RedeGigipede => Redemption.RedeWorld.downedVlitch2;
         public bool RedeCleaver => Redemption.RedeWorld.downedVlitch1;
         public bool RedeSlayer => Redemption.RedeWorld.downedSlayer;
         public bool RedeOmega => Redemption.RedeWorld.downedVlitch3;
+        public bool RedeThornPZ => Redemption.RedeWorld.downedThornPZ;
+        public bool RedeEaglecrestPZ => Redemption.RedeWorld.downedEaglecrestGolemPZ;
+        public bool RedeNeb => Redemption.RedeWorld.downedNebuleus;
+
+        //Jetshift
+
+        public bool JSSnake => Jetshift.JetshiftWorld.downedSnakeBoss;
+        public bool JSReaper => Jetshift.JetshiftWorld.downedReaper;
+        public bool JSViyilblud => Jetshift.JetshiftWorld.downedViyilblud;
+        public bool JSWall => Jetshift.JetshiftWorld.downedWallofVoices;
+        public bool JSArlenon => Jetshift.JetshiftWorld.downedArlenon;
+        public bool JSAthazel => Jetshift.JetshiftWorld.downedAthazel;
+        public bool JSPolypus => Jetshift.JetshiftWorld.downedPolypus;
+        public bool JSFrezyn => Jetshift.JetshiftWorld.downedFrezyn;
+        public bool JSMortalos => Jetshift.JetshiftWorld.downedMortalos;
+        public bool JSShift => Jetshift.JetshiftWorld.downedShiftFinal;
+        public bool JSAnnihilation => Jetshift.JetshiftWorld.downedAnnihilation;
+        public bool JSCCP1 => Jetshift.JetshiftWorld.downedCCP1;
+        public bool JSCCP2 => Jetshift.JetshiftWorld.downedCCP2;
+        public bool JSCosmic => Jetshift.JetshiftWorld.downedCosmicMystery;
 
         //ocram
         public bool OcramOcram => Ocram.OcramWorld.downedOcram;
@@ -733,6 +754,11 @@ namespace Fargowiltas.NPCs
                 //Slime King
                 AddItem(NPC.downedSlimeKing, "Fargowiltas", "SlimyCrown", 60000, ref shop, ref nextSlot);
 
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    AddItem(RedeThorn, "Redemption", "HeartOfTheThorns", 60000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
                     AddItem(DisarrayDownedCrusher, "Disarray", "ScorpionIdol", 60000, ref shop, ref nextSlot);
@@ -911,6 +937,11 @@ namespace Fargowiltas.NPCs
                     //Ancient Dragon
                     AddItem(TremorDownedDragon, "Tremor", "RustyLantern", 100000, ref shop, ref nextSlot);
                 }
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Viyilblud
+                    AddItem(JSViyilblud, "Jetshift", "CorruptedShard", 100000, ref shop, ref nextSlot);
+                }
 
                 //Queen Bee
                 AddItem(NPC.downedQueenBee, "Fargowiltas", "Abeemination2", 150000, ref shop, ref nextSlot);
@@ -923,6 +954,12 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.nightmaresLoaded)
                 {
                     AddItem(NPC.downedBoss3, "TrueEater", "SpitterSpawner", 150000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Serperannus
+                    AddItem(JSSnake, "Jetshift", "SoilBall", 100000, ref shop, ref nextSlot);
                 }
 
                 //magnoliac - btfa ?
@@ -1056,6 +1093,12 @@ namespace Fargowiltas.NPCs
                     AddItem(ThoriumDownedScout, "ThoriumMod", "StarCaller", 150000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Torvames 
+                    AddItem(JSReaper, "Jetshift", "Curse", 150000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Sagittarius
@@ -1089,6 +1132,11 @@ namespace Fargowiltas.NPCs
                     //Borean Strider
                     AddItem(ThoriumDownedStrider, "ThoriumMod", "StriderTear", 250000, ref shop, ref nextSlot);
                 }
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Wall of Voices 
+                    AddItem(JSWall, "Jetshift", "CursedWall", 250000, ref shop, ref nextSlot);
+                }
 
                 /*if(Fargowiltas.instance.ferniumLoaded)
                 {
@@ -1105,7 +1153,7 @@ namespace Fargowiltas.NPCs
                     AddItem(BtfaArtery, "ForgottenMemories", "BloodClot", 250000, ref shop, ref nextSlot);
                 }
 
-                if(Fargowiltas.instance.antiarisLoaded)
+                if (Fargowiltas.instance.antiarisLoaded)
                 {
                     AddItem(AntiarisDownedKeeper, "Antiaris", "PocketCursedMirror", 250000, ref shop, ref nextSlot);
                 }
@@ -1165,7 +1213,7 @@ namespace Fargowiltas.NPCs
                     //All Storm bosses
                     //AddItem((AARetriever && AARaider && AAOrthrus), "Fargowiltas", "CyberneticAmalgam", 600000, ref shop, ref nextSlot);
                 }
-                
+
                 //Destroyer
                 AddItem(NPC.downedMechBoss1, "Fargowiltas", "MechWorm", 400000, ref shop, ref nextSlot);
                 //Twins
@@ -1178,6 +1226,18 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.ocramLoaded)
                 {
                     AddItem(OcramOcram, "Ocram", "item_suspicious_looking_skull", 400000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Arlenon  
+                    AddItem(JSArlenon, "Jetshift", "PearlOfTheSky", 400000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Athazel  
+                    AddItem(JSAthazel, "Jetshift", "TridentOfDoom", 400000, ref shop, ref nextSlot);
                 }
                 
                 if(Fargowiltas.instance.pinkyLoaded)
@@ -1342,6 +1402,12 @@ namespace Fargowiltas.NPCs
                     AddItem(PinkyAbyssmal, "pinkymod", "MindGodItem", 600000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Shift
+                    AddItem(JSShift, "Jetshift", "ForbiddenGem", 600000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.sacredToolsLoaded)
                 {
                     AddItem(SacreddownedPrimordia, "SacredTools", "PrimordiaSummon", 600000, ref shop, ref nextSlot);
@@ -1433,6 +1499,13 @@ namespace Fargowiltas.NPCs
                 {
                     AddItem(BlueDownedAbom, "Bluemagic", "FoulOrb", 600000, ref shop, ref nextSlot);
                 }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Polypus
+                    AddItem(JSPolypus, "Jetshift", "RottenShrimp", 600000, ref shop, ref nextSlot);
+                }
+
                 //Lunatic Cultist
                 AddItem(NPC.downedAncientCultist, "Fargowiltas", "CultistSummon", 750000, ref shop, ref nextSlot);
 
@@ -1482,6 +1555,13 @@ namespace Fargowiltas.NPCs
                     AddItem(AAYamata, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Oculus
+                    //Frezyn 
+                    AddItem(JSFrezyn, "Jetshift", "Cryogen", 1000000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //Omega Obliterator
@@ -1526,6 +1606,15 @@ namespace Fargowiltas.NPCs
                 }
 
                 //abomination rematch - blue
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Mortalos
+                    AddItem(JSMortalos, "Jetshift", "TheVoid", 1000000, ref shop, ref nextSlot);
+                    //Shift Rematch
+                    AddItem(JSMortalos, "Jetshift", "ArtifactOfTheVoid", 1000000, ref shop, ref nextSlot);
+                }
+
 
                 if (Fargowiltas.instance.tremorLoaded)
                 {
@@ -1623,8 +1712,18 @@ namespace Fargowiltas.NPCs
                     AddItem(DisarrayDownedDungeon, "Disarray", "DungeonAmalgamation", 15000000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    //Thorn Rematch
+                    AddItem(RedeThornPZ, "Redemption", "LifeFruitOfThorns", 15000000, ref shop, ref nextSlot);
+                    //Eaglecrest Rematch
+                    AddItem(RedeEaglecrestPZ, "Redemption", "AncientSigil", 15000000, ref shop, ref nextSlot);
+                    //Nebuleus
+                    AddItem(RedeNeb, "Redemption", "NebSummon", 15000000, ref shop, ref nextSlot);
+                }
+
                 //spirit of purity
-                
+
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     AddItem(AASoC, "AAMod", "SpatialWheel ", 1500000, ref shop, ref nextSlot);
@@ -1638,10 +1737,16 @@ namespace Fargowiltas.NPCs
                     AddItem(CalamityDownedBirb, "CalamityMod", "BirbPheromones", 20000000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Crystal Conflict
+                    AddItem(JSCCP2, "Jetshift", "CrownOfConflict", 20000000, ref shop, ref nextSlot);
+                }
+
                 //spirit of chaos
 
                 //spirit of purity rematch
-                
+
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Shen Doragon

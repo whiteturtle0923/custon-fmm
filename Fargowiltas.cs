@@ -38,6 +38,7 @@ namespace Fargowiltas
         internal bool elementsLoaded;
         internal bool enigmaLoaded;
         internal bool splitLoaded;
+        internal bool JSLoaded;
         //internal bool ferniumLoaded;
         internal bool antiarisLoaded;
         internal bool aaLoaded;
@@ -106,6 +107,7 @@ namespace Fargowiltas
                 trelamiumLoaded = ModLoader.GetMod("TrelamiumMod") != null;
                 pinkyLoaded = ModLoader.GetMod("pinkymod") != null;
                 redemptionLoaded = ModLoader.GetMod("Redemption") != null;
+                JSLoaded = ModLoader.GetMod("Jetshift") != null;
                 ocramLoaded = ModLoader.GetMod("Ocram") != null;
             }
             catch (Exception e)

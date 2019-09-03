@@ -289,8 +289,12 @@ namespace Fargowiltas.NPCs
                 shop.item[nextSlot].value = 50;
                 nextSlot++;
 
-                
+
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("Bogwood"));
+                shop.item[nextSlot].value = 50;
+                nextSlot++;
+
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("OroborosWood"));
                 shop.item[nextSlot].value = 50;
                 nextSlot++;
             }

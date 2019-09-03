@@ -57,6 +57,10 @@ namespace Fargowiltas.NPCs
 
 		public bool TremorInvasion => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan];
 
+        public bool RedePatientZero => Redemption.RedeWorld.downedPatientZero;
+
+        public bool ChickenArmy => (Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ);
+
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
 			if (Fargowiltas.instance.fargoLoaded && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
@@ -260,8 +264,13 @@ namespace Fargowiltas.NPCs
 			{
                 AddItem(GRealmInvasion, "GRealm", "HordeStaff", 30000, ref shop, ref nextSlot);
 			}
-	
-			    shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
+
+            if (Fargowiltas.instance.redemptionLoaded)
+            {
+                AddItem(ChickenArmy, "Redemption", "ChickenContract", RedePatientZero ? 100000 : 10000, ref shop, ref nextSlot);
+            }
+
+            shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
 			    shop.item[nextSlot].value=50000;
 	     	    nextSlot++;
 			
