@@ -50,8 +50,8 @@ namespace Fargowiltas.NPCs
 
             if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
             {
-                npc.lifeMax = 7000000;
-                npc.defense = 100;
+                npc.lifeMax = 7700000;
+                npc.defense = 400;
             }
 
             npc.HitSound = SoundID.NPCHit1;
@@ -1790,7 +1790,7 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
             {
-                damage = 1000;
+                damage = 2700;
                 knockback = 10f;
             }
             else if (NPC.downedMoonlord)
