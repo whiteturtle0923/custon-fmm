@@ -305,7 +305,7 @@ namespace Fargowiltas.NPCs
 
         //Jetshift
 
-        public bool JSSnake => Jetshift.JetshiftWorld.downedSnakeBoss;
+        /*public bool JSSnake => Jetshift.JetshiftWorld.downedSnakeBoss;
         public bool JSReaper => Jetshift.JetshiftWorld.downedReaper;
         public bool JSViyilblud => Jetshift.JetshiftWorld.downedViyilblud;
         public bool JSWall => Jetshift.JetshiftWorld.downedWallofVoices;
@@ -318,7 +318,7 @@ namespace Fargowiltas.NPCs
         public bool JSAnnihilation => Jetshift.JetshiftWorld.downedAnnihilation;
         public bool JSCCP1 => Jetshift.JetshiftWorld.downedCCP1;
         public bool JSCCP2 => Jetshift.JetshiftWorld.downedCCP2;
-        public bool JSCosmic => Jetshift.JetshiftWorld.downedCosmicMystery;
+        public bool JSCosmic => Jetshift.JetshiftWorld.downedCosmicMystery;*/
 
         //ocram
         public bool OcramOcram => Ocram.OcramWorld.downedOcram;
@@ -392,7 +392,7 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (Main.rand.next(25) == 0)
+            if (Main.rand.Next(25) == 0)
             {
                 if (Fargowiltas.instance.fargoLoaded)
                 {
@@ -714,6 +714,11 @@ namespace Fargowiltas.NPCs
 
             if (shop1)
             {
+                if (Fargowiltas.instance.fargoLoaded)
+                {
+                    AddItem(true, "FargowiltasSouls", "Masochist", 10000, ref shop, ref nextSlot); //mutants gift, dam meme namer
+                }
+
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //The Mighty King Chicken
@@ -940,7 +945,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Viyilblud
-                    AddItem(JSViyilblud, "Jetshift", "CorruptedShard", 100000, ref shop, ref nextSlot);
+                    //AddItem(JSViyilblud, "Jetshift", "CorruptedShard", 100000, ref shop, ref nextSlot);
                 }
 
                 //Queen Bee
@@ -959,7 +964,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Serperannus
-                    AddItem(JSSnake, "Jetshift", "SoilBall", 100000, ref shop, ref nextSlot);
+                    //AddItem(JSSnake, "Jetshift", "SoilBall", 100000, ref shop, ref nextSlot);
                 }
 
                 //magnoliac - btfa ?
@@ -1096,7 +1101,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Torvames 
-                    AddItem(JSReaper, "Jetshift", "Curse", 150000, ref shop, ref nextSlot);
+                    //AddItem(JSReaper, "Jetshift", "Curse", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.aaLoaded)
@@ -1135,7 +1140,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Wall of Voices 
-                    AddItem(JSWall, "Jetshift", "CursedWall", 250000, ref shop, ref nextSlot);
+                    //AddItem(JSWall, "Jetshift", "CursedWall", 250000, ref shop, ref nextSlot);
                 }
 
                 /*if(Fargowiltas.instance.ferniumLoaded)
@@ -1231,13 +1236,13 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Arlenon  
-                    AddItem(JSArlenon, "Jetshift", "PearlOfTheSky", 400000, ref shop, ref nextSlot);
+                    //AddItem(JSArlenon, "Jetshift", "PearlOfTheSky", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Athazel  
-                    AddItem(JSAthazel, "Jetshift", "TridentOfDoom", 400000, ref shop, ref nextSlot);
+                    //AddItem(JSAthazel, "Jetshift", "TridentOfDoom", 400000, ref shop, ref nextSlot);
                 }
                 
                 if(Fargowiltas.instance.pinkyLoaded)
@@ -1405,7 +1410,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Shift
-                    AddItem(JSShift, "Jetshift", "ForbiddenGem", 600000, ref shop, ref nextSlot);
+                    //AddItem(JSShift, "Jetshift", "ForbiddenGem", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.sacredToolsLoaded)
@@ -1503,7 +1508,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Polypus
-                    AddItem(JSPolypus, "Jetshift", "RottenShrimp", 600000, ref shop, ref nextSlot);
+                    //AddItem(JSPolypus, "Jetshift", "RottenShrimp", 600000, ref shop, ref nextSlot);
                 }
 
                 //Lunatic Cultist
@@ -1559,7 +1564,7 @@ namespace Fargowiltas.NPCs
                 {
                     //Oculus
                     //Frezyn 
-                    AddItem(JSFrezyn, "Jetshift", "Cryogen", 1000000, ref shop, ref nextSlot);
+                    //AddItem(JSFrezyn, "Jetshift", "Cryogen", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.redemptionLoaded)
@@ -1610,9 +1615,9 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Mortalos
-                    AddItem(JSMortalos, "Jetshift", "TheVoid", 1000000, ref shop, ref nextSlot);
+                    //AddItem(JSMortalos, "Jetshift", "TheVoid", 1000000, ref shop, ref nextSlot);
                     //Shift Rematch
-                    AddItem(JSMortalos, "Jetshift", "ArtifactOfTheVoid", 1000000, ref shop, ref nextSlot);
+                    //AddItem(JSMortalos, "Jetshift", "ArtifactOfTheVoid", 1000000, ref shop, ref nextSlot);
                 }
 
 
@@ -1740,7 +1745,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.JSLoaded)
                 {
                     //Crystal Conflict
-                    AddItem(JSCCP2, "Jetshift", "CrownOfConflict", 20000000, ref shop, ref nextSlot);
+                    //AddItem(JSCCP2, "Jetshift", "CrownOfConflict", 20000000, ref shop, ref nextSlot);
                 }
 
                 //spirit of chaos

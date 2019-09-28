@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -35,12 +36,28 @@ namespace Fargowiltas.Items.Summons.NewSummons
             if (!Main.dayTime)
             {
                 Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.SkeletronHead);
-                Main.NewText("Skeletron has awoken!", 175, 75, 255);
+
+                if (Main.netMode == 2)
+                {
+                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Skeletron has awoken!"), new Color(175, 75, 255));
+                }
+                else
+                {
+                    Main.NewText("Skeletron has awoken!", 175, 75, 255);
+                }
             }
             else
             {
                 Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.DungeonGuardian);
-                Main.NewText("Dungeon Guardian has awoken!", 175, 75, 255);
+
+                if (Main.netMode == 2)
+                {
+                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Dungeon Guardian has awoken!"), new Color(175, 75, 255));
+                }
+                else
+                {
+                    Main.NewText("Dungeon Guardian has awoken!", 175, 75, 255);
+                }
             }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);

@@ -1,6 +1,8 @@
 using Fargowiltas.NPCs;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
@@ -76,7 +78,15 @@ Summons several Dungeon Guardians during the day");
                 Main.npc[skele].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("A great clammering of bones rises from the dungeon!", 175, 75);
+            if (Main.netMode == 2)
+            {
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("A great clammering of bones rises from the dungeon!"), new Color(175, 75, 255));
+            }
+            else
+            {
+                Main.NewText("A great clammering of bones rises from the dungeon!", 175, 75, 255);
+            }
+
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

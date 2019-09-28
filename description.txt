@@ -6,6 +6,12 @@ NEW UPDATE - v 1.4.3
 -Fixed Toxic Flask and Magic Dagger Thrown not actually doing thrown damage
 -Removed Mutant Grab Bag
 
+-Zealot's Possession (Cultist summon) now drops loot notmally while still not spawning pillars
+
+-swarms drop bags per kill instead of all at the end because they still fail someimtes and thats a meme 
+-mutant sells mutants gift 
+-all summons will display correct text in MP
+
 FIXED ABOMINATIONN sprite sheet
 
 -Moved Pandoras Box to the Hardmode shop

@@ -2,6 +2,7 @@ using Fargowiltas.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -38,7 +39,14 @@ namespace Fargowiltas.Items.Summons.NewSummons
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
             Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, 1, 3);
 
-            Main.NewText("Several bosses have awoken!", 175, 75, 255);
+            if (Main.netMode == 2)
+            {
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Several bosses have awoken!"), new Color(175, 75, 255));
+            }
+            else
+            {
+                Main.NewText("Several bosses have awoken!", 175, 75, 255);
+            }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

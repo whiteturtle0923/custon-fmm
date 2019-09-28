@@ -15,7 +15,7 @@ namespace Fargowiltas.NPCs
         public bool pillarSpawn = true;
         public bool swarmActive;
         public bool pandoraActive;
-        public bool noLoot;
+        public bool noLoot = false;
         private bool transform = true;
 
         public static int[] bosses = { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, NPCID.MartianSaucerCore, NPCID.Pumpking, NPCID.IceQueen, NPCID.DD2Betsy, NPCID.DD2OgreT3, NPCID.IceGolem, NPCID.SandElemental, NPCID.Paladin, NPCID.Everscream, NPCID.MourningWood, NPCID.SantaNK1, NPCID.HeadlessHorseman, NPCID.PirateShip };
@@ -299,6 +299,11 @@ namespace Fargowiltas.NPCs
 
         private void Swarm(NPC npc, int boss, int minion, int bossbag, string reward)
         {
+            if (bossbag >= 0)
+            {
+                npc.DropItemInstanced(npc.Center, npc.Size, bossbag, 1);
+            }
+
             int count = 0;
 
             if(swarmActive)
@@ -416,11 +421,6 @@ namespace Fargowiltas.NPCs
                     }
                 }
 
-                if (bossbag >= 0)
-                {
-                    npc.DropItemInstanced(npc.Center, npc.Size, bossbag, Fargowiltas.swarmTotal);
-                }
-                
                 Fargowiltas.swarmActive = false;
             }
             //make sure theres enough left to beat it
@@ -478,21 +478,6 @@ namespace Fargowiltas.NPCs
 		{
             if (noLoot)
             {
-                return false;
-            }
-
-            //avoid lunar event with cultist summon
-            if(npc.type == NPCID.CultistBoss && !pillarSpawn)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.CultistBossBag);
-
-                if (Fargowiltas.instance.fargoLoaded && FargowiltasSouls.FargoSoulsWorld.MasochistMode)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModLoader.GetMod("FargowiltasSouls").ItemType("CelestialRune"));
-                }
-
-                Main.NewText("Lunatic Cultist has been defeated!", 175, 75, 255);
-
                 return false;
             }
 
@@ -639,6 +624,7 @@ namespace Fargowiltas.NPCs
             }
 
 		    if (!pandoraActive) return true;
+
 		    Swarm(npc, 0, -1, -1, "");
 
 		    return false;
@@ -648,9 +634,27 @@ namespace Fargowiltas.NPCs
 		public override void NPCLoot(NPC npc)
 		{
             Player player = Main.player[Main.myPlayer];
-			
-			//lumber jaxe
-			if(npc.FindBuffIndex(mod.BuffType("WoodDrop")) != -1)
+
+            //avoid lunar event with cultist summon
+            if (npc.type == NPCID.CultistBoss && !pillarSpawn)
+            {
+                for (int i = 0; i < 200; i++)
+                {
+                    NPC npc2 = Main.npc[i];
+                    NPC.LunarApocalypseIsUp = false;
+
+                    if (npc2.type == NPCID.LunarTowerNebula || npc2.type == NPCID.LunarTowerSolar || npc2.type == NPCID.LunarTowerStardust || npc2.type == NPCID.LunarTowerVortex)
+                    {
+                        NPC.TowerActiveSolar = true;
+                        npc2.active = false;
+                    }
+
+                    NPC.TowerActiveSolar = false;
+                }
+            }
+
+            //lumber jaxe
+            if (npc.FindBuffIndex(mod.BuffType("WoodDrop")) != -1)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wood, Main.rand.Next(10, 30));
 			}

@@ -13,8 +13,8 @@ namespace Fargowiltas.NPCs
 
 		public override void SetDefaults()
 		{
-			npc.width = 18;
-			npc.height = 48;
+			npc.width = 28;
+			npc.height = 50;
 			npc.damage = 0;
 			npc.defense = 0;
 			npc.lifeMax = 9999999;

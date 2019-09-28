@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -50,8 +51,16 @@ namespace Fargowiltas.Items.Summons.NewSummons
                     SpawnBoss(player, i, npc.TypeName);
                 }
             }
- 
-            Main.NewText("Every boss has awoken!", 175, 75, 255);
+
+            if (Main.netMode == 2)
+            {
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Every boss has awoken!"), new Color(175, 75, 255));
+            }
+            else
+            {
+                Main.NewText("Every boss has awoken!", 175, 75, 255);
+
+            }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

@@ -6,43 +6,43 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.NPCs
 {
-	[AutoloadHead]
-	public class Abominationn : ModNPC
-	{	
-	
-		public override bool Autoload(ref string name)
-		{
-			name = "Abominationn";
-			return mod.Properties.Autoload;
-		}
+    [AutoloadHead]
+    public class Abominationn : ModNPC
+    {
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Abominationn");
-			Main.npcFrameCount[npc.type] = 25;
-			NPCID.Sets.ExtraFramesCount[npc.type] = 9;
-			NPCID.Sets.AttackFrameCount[npc.type] = 4;
-			NPCID.Sets.DangerDetectRange[npc.type] = 700;
-			NPCID.Sets.AttackType[npc.type] = 0;
-			NPCID.Sets.AttackTime[npc.type] = 90;
-			NPCID.Sets.AttackAverageChance[npc.type] = 30;
-			NPCID.Sets.HatOffsetY[npc.type] = 2;
-		}
+        public override bool Autoload(ref string name)
+        {
+            name = "Abominationn";
+            return mod.Properties.Autoload;
+        }
 
-		public override void SetDefaults()
-		{
-			npc.townNPC = true;
-			npc.friendly = true;
-			npc.width = 40;
-			npc.height = 40;
-			npc.aiStyle = 7;
-			npc.damage = 10;
-			npc.defense = 15;
-			npc.lifeMax = 250;
-			npc.HitSound = SoundID.NPCHit1;
-			npc.DeathSound = SoundID.NPCDeath1;
-			npc.knockBackResist = 0.5f;
-			animationType = NPCID.Guide;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Abominationn");
+            Main.npcFrameCount[npc.type] = 25;
+            NPCID.Sets.ExtraFramesCount[npc.type] = 9;
+            NPCID.Sets.AttackFrameCount[npc.type] = 4;
+            NPCID.Sets.DangerDetectRange[npc.type] = 700;
+            NPCID.Sets.AttackType[npc.type] = 0;
+            NPCID.Sets.AttackTime[npc.type] = 90;
+            NPCID.Sets.AttackAverageChance[npc.type] = 30;
+            NPCID.Sets.HatOffsetY[npc.type] = 2;
+        }
+
+        public override void SetDefaults()
+        {
+            npc.townNPC = true;
+            npc.friendly = true;
+            npc.width = 40;
+            npc.height = 40;
+            npc.aiStyle = 7;
+            npc.damage = 10;
+            npc.defense = 15;
+            npc.lifeMax = 250;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 0.5f;
+            animationType = NPCID.Guide;
             Main.npcCatchable[npc.type] = true;
             npc.catchItem = (short)mod.ItemType("Abominationn");
         }
@@ -51,35 +51,35 @@ namespace Fargowiltas.NPCs
 
         public bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
 
-		public bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
+        public bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
 
-		public bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
+        public bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
 
-		public bool TremorInvasion => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan];
+        public bool TremorInvasion => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan];
 
         public bool RedePatientZero => Redemption.RedeWorld.downedPatientZero;
 
         public bool ChickenArmy => (Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ);
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			if (Fargowiltas.instance.fargoLoaded && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
-				return false;
-            		return NPC.downedGoblins;
-		}
-		
-		public override string TownNPCName()
-		{
-			switch (WorldGen.genRand.Next(5))
-			{
-				case 0:
-					return "Wilta";
-				case 1:
-					return "Jack";
-				case 2:
-					return "Harley";
-				case 3:
-					return "Reaper";
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        {
+            if (Fargowiltas.instance.fargoLoaded && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
+                return false;
+            return NPC.downedGoblins;
+        }
+
+        public override string TownNPCName()
+        {
+            switch (WorldGen.genRand.Next(5))
+            {
+                case 0:
+                    return "Wilta";
+                case 1:
+                    return "Jack";
+                case 2:
+                    return "Harley";
+                case 3:
+                    return "Reaper";
                 case 4:
                     return "Stevenn";
                 case 5:
@@ -95,19 +95,19 @@ namespace Fargowiltas.NPCs
                 case 10:
                     return "Bardo";
                 default:
-					return "Betson";
-			}
-		}
+                    return "Betson";
+            }
+        }
 
-		public override string GetChat()
-		{
-			int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
+        public override string GetChat()
+        {
+            int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
             int mechanic = NPC.FindFirstNPC(NPCID.Mechanic);
 
             if (mutant >= 0 && Main.rand.Next(26) == 0)
-			{
-				return "That one guy, " + Main.npc[mutant].GivenName + ", he is my brother... I've fought more bosses than him.";
-			}
+            {
+                return "That one guy, " + Main.npc[mutant].GivenName + ", he is my brother... I've fought more bosses than him.";
+            }
             if (mechanic >= 0 && Main.rand.Next(25) == 0)
             {
                 return "Can you please ask " + Main.npc[mechanic].GivenName + " to stop touching my laser arm please.";
@@ -122,17 +122,17 @@ namespace Fargowiltas.NPCs
             }
 
             switch (Main.rand.Next(23))
-			{
-				case 0:
-					return "I have defeated everything in this land... nothing can beat me.";
-				case 1:
-					return "Have you ever had a weapon stuck to your hand? It's not very handy.";
-				case 2:
-					return "What happened to Yoramur? No idea who you're talking about.";
-				case 3:
-					return "I sure wish I was a boss.";
-				case 4:
-					return "You wish you could dress like me? Ha! Maybe in 2020.";
+            {
+                case 0:
+                    return "I have defeated everything in this land... nothing can beat me.";
+                case 1:
+                    return "Have you ever had a weapon stuck to your hand? It's not very handy.";
+                case 2:
+                    return "What happened to Yoramur? No idea who you're talking about.";
+                case 3:
+                    return "I sure wish I was a boss.";
+                case 4:
+                    return "You wish you could dress like me? Ha! Maybe in 2020.";
                 case 5:
                     return "You ever read the ancient classics, I love all the fighting in them.";
                 case 6:
@@ -168,43 +168,43 @@ namespace Fargowiltas.NPCs
                 case 21:
                     return "It's not like I don't enjoy your company, but can you buy something?";
                 default:
-					return "I have slain one thousand humans! Huh? You're a human? There's so much blood on your hands..";
-			}
-		}
+                    return "I have slain one thousand humans! Huh? You're a human? There's so much blood on your hands..";
+            }
+        }
 
-		public override void SetChatButtons(ref string button, ref string button2)
-		{
-			button = Lang.inter[28].Value;
+        public override void SetChatButtons(ref string button, ref string button2)
+        {
+            button = Lang.inter[28].Value;
 
             if (Fargowiltas.instance.fargoLoaded && MasochistMode)
             {
                 button2 = "Help";
             }
-		}
+        }
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
-		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        {
+            if (firstButton)
+            {
+                shop = true;
+            }
             else
             {
                 Player p = Main.player[Main.myPlayer];
                 FargowiltasSouls.FargoPlayer fargoPlayer = p.GetModPlayer<FargowiltasSouls.FargoPlayer>();
-		
-		if (Main.rand.Next(3) == 0)
-                {
-			if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
-				return "What's that? You want to fight me? ...maybe in 2023.";
-                	else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
-                    		return "What's that? You want to fight my brother? ...maybe if he had a reason to.";
-	    	}
-		
-		if (NPC.downedMoonlord && !FargowiltasSouls.FargoSoulsWorld.downedFishronEX && Main.rand.Next(3) == 0)
-			return "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
 
                 IList<string> dialogue = new List<string>();
+
+                if (Main.rand.Next(3) == 0)
+                {
+                    if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
+                        dialogue.Add("What's that? You want to fight me? ...maybe in 2023.");
+                    else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
+                        dialogue.Add("What's that? You want to fight my brother? ...maybe if he had a reason to.");
+                }
+
+                if (NPC.downedMoonlord && !FargowiltasSouls.FargoSoulsWorld.downedFishronEX && Main.rand.Next(3) == 0)
+                    dialogue.Add("When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?");
 
                 dialogue.Add("You're more masochistic than I thought, aren't you?");
                 dialogue.Add("Seems like everyone's learning to project auras these days. If you look at the particles, you can see whether it'll affect you at close range or a distance.");
@@ -240,30 +240,30 @@ namespace Fargowiltas.NPCs
 
                 Main.npcChatText = dialogue[Main.rand.Next(dialogue.Count)];
             }
-		}
+        }
 
         void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
         {
-	        if (!check) return;
-	        shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
-	        shop.item[nextSlot].value = price;
-	        nextSlot++;
+            if (!check) return;
+            shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
+            shop.item[nextSlot].value = price;
+            nextSlot++;
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot)
-		{
+        {
             //EVENTS
             //AddItem(NPC.downedBoss1, "Fargowiltas", "BloodMoonMedallion", 20000, ref shop, ref nextSlot);
 
             if (Fargowiltas.instance.sacredToolsLoaded)
-             {
+            {
                 AddItem(NPC.downedBoss1, "SacredTools", "SandstormMedallion", 20000, ref shop, ref nextSlot);
-			 }
-			 
-			if (Fargowiltas.instance.grealmLoaded)
-			{
+            }
+
+            if (Fargowiltas.instance.grealmLoaded)
+            {
                 AddItem(GRealmInvasion, "GRealm", "HordeStaff", 30000, ref shop, ref nextSlot);
-			}
+            }
 
             if (Fargowiltas.instance.redemptionLoaded)
             {
@@ -271,18 +271,18 @@ namespace Fargowiltas.NPCs
             }
 
             shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
-			    shop.item[nextSlot].value=50000;
-	     	    nextSlot++;
-			
-			if (Fargowiltas.instance.tremorLoaded)
-			{
+            shop.item[nextSlot].value = 50000;
+            nextSlot++;
+
+            if (Fargowiltas.instance.tremorLoaded)
+            {
                 AddItem(NPC.downedBoss2, "Tremor", "ScrollofUndead", 50000, ref shop, ref nextSlot);
-			}
+            }
 
             if (Fargowiltas.instance.spiritLoaded)
-			{
+            {
                 AddItem(SpiritInvasion, "SpiritMod", "BlackPearl", 60000, ref shop, ref nextSlot);
-			}
+            }
 
             if (Fargowiltas.instance.btfaLoaded)
             {
@@ -290,76 +290,76 @@ namespace Fargowiltas.NPCs
             }
 
             if (Main.hardMode)
-			{
-			    shop.item[nextSlot].SetDefaults(ItemID.SnowGlobe);
-			    shop.item[nextSlot].value=80000;
-			    nextSlot++;
-			}
-			
-			if (NPC.downedPirates)
-			{	
-			    shop.item[nextSlot].SetDefaults(ItemID.PirateMap);
-			    shop.item[nextSlot].value=100000;
-			    nextSlot++;
-			}
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.SnowGlobe);
+                shop.item[nextSlot].value = 80000;
+                nextSlot++;
+            }
+
+            if (NPC.downedPirates)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.PirateMap);
+                shop.item[nextSlot].value = 100000;
+                nextSlot++;
+            }
 
             if (NPC.downedGolemBoss)
-			{	
-			    shop.item[nextSlot].SetDefaults(ItemID.SolarTablet);
-			    shop.item[nextSlot].value=100000;
-			    nextSlot++;
-			}
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.SolarTablet);
+                shop.item[nextSlot].value = 100000;
+                nextSlot++;
+            }
 
             AddItem(FargoWorld.downedBetsy, "Fargowiltas", "ForbiddenTome", 200000, ref shop, ref nextSlot);
             AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 400000, ref shop, ref nextSlot);
             AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 600000, ref shop, ref nextSlot);
             AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 100000, ref shop, ref nextSlot);
-			
-			if (NPC.downedHalloweenKing)
-			{	
-			    shop.item[nextSlot].SetDefaults(ItemID.PumpkinMoonMedallion);
-			    shop.item[nextSlot].value=150000;
-			    nextSlot++;
-			}
-			
-			if (NPC.downedChristmasIceQueen)
-			{	
-			    shop.item[nextSlot].SetDefaults(ItemID.NaughtyPresent);
-			    shop.item[nextSlot].value=150000;
-			    nextSlot++;
-			}
+
+            if (NPC.downedHalloweenKing)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.PumpkinMoonMedallion);
+                shop.item[nextSlot].value = 150000;
+                nextSlot++;
+            }
+
+            if (NPC.downedChristmasIceQueen)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.NaughtyPresent);
+                shop.item[nextSlot].value = 150000;
+                nextSlot++;
+            }
 
             AddItem(NPC.downedTowers, "Fargowiltas", "PillarSummon", 750000, ref shop, ref nextSlot);
 
             if (Fargowiltas.instance.tremorLoaded)
-			{
+            {
                 AddItem(TremorInvasion, "Tremor", "AncientWatch", 200000, ref shop, ref nextSlot);
-			}
-		}
+            }
+        }
 
-		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
-		{
-			damage = 20;
-			knockback = 4f;
-		}
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
+        {
+            damage = 20;
+            knockback = 4f;
+        }
 
-		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
-		{
-			cooldown = 30;
-			randExtraCooldown = 30;
-		}
+        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+        {
+            cooldown = 30;
+            randExtraCooldown = 30;
+        }
 
-		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
-		{
-			projType = ProjectileID.DeathSickle;
-			attackDelay = 1;
-		}
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
+        {
+            projType = ProjectileID.DeathSickle;
+            attackDelay = 1;
+        }
 
-		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
-		{
-			multiplier = 12f;
-			randomOffset = 2f;
-		}
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+        {
+            multiplier = 12f;
+            randomOffset = 2f;
+        }
 
         //gore
         public override void HitEffect(int hitDirection, double damage)

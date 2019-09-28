@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons
@@ -40,7 +41,15 @@ namespace Fargowiltas.Items.Summons
 
             Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.EyeofCthulhu);
 
-            Main.NewText("Eye of Cthulhu has awoken!", 175, 75, 255);
+            if (Main.netMode == 2)
+            {
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Eye of Cthulhu has awoken!"), new Color(175, 75, 255));
+            }
+            else
+            {
+                Main.NewText("Eye of Cthulhu has awoken!", 175, 75, 255);
+            }
+
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

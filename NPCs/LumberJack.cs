@@ -111,7 +111,7 @@ namespace Fargowiltas.NPCs
             }
             if (nurse >= 0 && Main.rand.Next(21) == 0)
             {
-                return "I always see" + Main.npc[nurse].GivenName + " looking at my biceps when I'm working. Wonder if she wants some of my wood.";
+                return "I always see " + Main.npc[nurse].GivenName + " looking at my biceps when I'm working. Wonder if she wants some of my wood.";
             }
 
             if (Fargowiltas.instance.thoriumLoaded && Main.rand.Next(20) == 0)

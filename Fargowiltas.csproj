@@ -149,7 +149,6 @@
     <Compile Include="Items\Misc\PurityRenewalSupreme.cs" />
     <Compile Include="Items\Misc\Stats.cs" />
     <Compile Include="Items\Misc\SuperDummy.cs" />
-    <Compile Include="Items\Summons\MutantGrabBag.cs" />
     <Compile Include="Items\Summons\NewSummons\AbyssionSummon.cs" />
     <Compile Include="Items\Summons\NewSummons\AncientSeal.cs" />
     <Compile Include="Items\Summons\NewSummons\BatteredClub.cs" />
@@ -360,7 +359,6 @@
     <Content Include="Items\Misc\Stats.png" />
     <Content Include="Items\Misc\SuperDummy.png" />
     <Content Include="Items\Placeholder.png" />
-    <Content Include="Items\Summons\MutantGrabBag.png" />
     <Content Include="Items\Summons\NewSummons\AbyssionSummon.png" />
     <Content Include="Items\Summons\NewSummons\AncientSeal.png" />
     <Content Include="Items\Summons\NewSummons\BatteredClub.png" />
