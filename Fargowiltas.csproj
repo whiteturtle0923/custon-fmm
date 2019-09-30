@@ -193,6 +193,17 @@
     <Compile Include="Items\Summons\SwarmSummons\OverloadSlimeCrown.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadTwins.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadWorm.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadAbyssion.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadChampion.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadCoznix.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadGranite.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadJelly.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadLich.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadRag.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadSaucer.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadStrider.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadThunderbird.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadViscount.cs" />
     <Compile Include="Items\Summons\VanillaCopy\Abeemination2.cs" />
     <Compile Include="Items\Summons\VanillaCopy\CelestialSigil2.cs" />
     <Compile Include="Items\Summons\VanillaCopy\GoreySpine.cs" />

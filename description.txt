@@ -1,23 +1,18 @@
-NEW UPDATE - v 1.4.3
--Added a new dialogue option to the Abominationn while MAsochist Mode is active
--Lunatic Cultist summon will now drop the Masochist Mode drop if that is active and it will actually have a message for him being beaten
--Mutant can no longer drown
--Fixed Overloader being different prices in different shops
--Fixed Toxic Flask and Magic Dagger Thrown not actually doing thrown damage
--Removed Mutant Grab Bag
-
--Zealot's Possession (Cultist summon) now drops loot notmally while still not spawning pillars
-
--swarms drop bags per kill instead of all at the end because they still fail someimtes and thats a meme 
--mutant sells mutants gift 
--all summons will display correct text in MP
-
-FIXED ABOMINATIONN sprite sheet
-
+NEW UPDATE - v 1.5
+-Mutant sells Mutant's Gift
 -Moved Pandoras Box to the Hardmode shop
--Fixed Skeleton Sniper Banner giving Sniper Scope instead of Rifle Scope
+-Fixed Overloader being different prices in different shops
+-Removed Mutant Grab Bag
+-Fixed Abominationn sprite sheet
+-Added a new dialogue option to the Abominationn while Masochist Mode is active
+-Mutant can no longer drown
+-All summons will display correct text in Multiplayer
+-Zealot's Possession (Cultist summon) now drops loot normally while still not spawning pillars
+-Swarms drop Treasure Bags per kill instead of all at the end
 -Added Banner recipes for many more items - every drop 10% or less should be covered now
--Changed Blessed Apple banner recipe to use Gastropid Banner 
+-Changed Blessed Apple banner recipe to use Gastropod Banner 
+-Fixed the Skeleton Sniper Banner giving the Sniper Scope instead of the Rifle Scope
+-Fixed Toxic Flask and Magic Dagger Thrown not actually doing thrown damage
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
