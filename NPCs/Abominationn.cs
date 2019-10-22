@@ -199,7 +199,7 @@ namespace Fargowiltas.NPCs
                         Main.npcChatText = "What's that? You want to fight me? ...maybe in 2023.";
                     else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
                         Main.npcChatText = "What's that? You want to fight my brother? ...maybe if he had a reason to.";
-                    else if (NPC.downedMoonLord)
+                    else if (NPC.downedMoonlord)
                         Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
                     else if (NPC.downedAncientCultist)
                         Main.npcChatText = "Only a specific type of weapon will work against each specific pillar. As for that moon guy, his weakness will keep changing.";
