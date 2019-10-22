@@ -67,6 +67,8 @@ namespace Fargowiltas.NPCs
         //fargo bools
         public bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
         public bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
+        public bool MutantsDiscountCard => Main.player[Main.myPlayer].GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsDiscountCard;
+        public bool MutantsPact => Main.player[Main.myPlayer].GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsPact;
 
         //thorium bools
         public bool ThoriumDownedBird => ThoriumMod.ThoriumWorld.downedThunderBird;
@@ -703,6 +705,15 @@ namespace Fargowiltas.NPCs
             if (!check) return;
             shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
             shop.item[nextSlot].value = price;
+            if (Fargowiltas.instance.fargoLoaded) //lowered prices with discount card and pact
+            {
+                float modifier = 1f;
+                if (MutantsDiscountCard)
+                    modifier -= 0.2f;
+                if (MutantsPact)
+                    modifier -= 0.3f;
+                shop.item[nextSlot].value = (int)(shop.item[nextSlot].value * modifier);
+            }
             nextSlot++;
         }
 
