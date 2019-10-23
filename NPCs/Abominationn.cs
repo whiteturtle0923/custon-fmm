@@ -65,7 +65,7 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.instance.fargoLoaded && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
                 return false;
-            return NPC.downedGoblins;
+            return (NPC.downedGoblins || (Fargowiltas.instance.fargoLoaded && MasochistMode));
         }
 
         public override string TownNPCName()
@@ -277,16 +277,17 @@ namespace Fargowiltas.NPCs
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //EVENTS
-            //AddItem(NPC.downedBoss1, "Fargowiltas", "BloodMoonMedallion", 20000, ref shop, ref nextSlot);
+            AddItem(NPC.downedSlimeKing, "Fargowiltas", "SlimyBarometer", 40000, ref shop, ref nextSlot);
+            AddItem(NPC.downedBoss1, "Fargowiltas", "CursedSextant", 50000, ref shop, ref nextSlot);
 
             if (Fargowiltas.instance.sacredToolsLoaded)
             {
-                AddItem(NPC.downedBoss1, "SacredTools", "SandstormMedallion", 20000, ref shop, ref nextSlot);
+                AddItem(NPC.downedBoss1, "SacredTools", "SandstormMedallion", 40000, ref shop, ref nextSlot);
             }
 
             if (Fargowiltas.instance.grealmLoaded)
             {
-                AddItem(GRealmInvasion, "GRealm", "HordeStaff", 30000, ref shop, ref nextSlot);
+                AddItem(GRealmInvasion, "GRealm", "HordeStaff", 50000, ref shop, ref nextSlot);
             }
 
             if (Fargowiltas.instance.redemptionLoaded)
@@ -295,49 +296,49 @@ namespace Fargowiltas.NPCs
             }
 
             shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
-            shop.item[nextSlot].value = 50000;
+            shop.item[nextSlot].value = 60000;
             nextSlot++;
 
             if (Fargowiltas.instance.tremorLoaded)
             {
-                AddItem(NPC.downedBoss2, "Tremor", "ScrollofUndead", 50000, ref shop, ref nextSlot);
+                AddItem(NPC.downedBoss2, "Tremor", "ScrollofUndead", 60000, ref shop, ref nextSlot);
             }
 
             if (Fargowiltas.instance.spiritLoaded)
             {
-                AddItem(SpiritInvasion, "SpiritMod", "BlackPearl", 60000, ref shop, ref nextSlot);
+                AddItem(SpiritInvasion, "SpiritMod", "BlackPearl", 80000, ref shop, ref nextSlot);
             }
 
             if (Fargowiltas.instance.btfaLoaded)
             {
-                AddItem(BtfaInvasion, "ForgottenMemories", "AncientLog", 50000, ref shop, ref nextSlot);
+                AddItem(BtfaInvasion, "ForgottenMemories", "AncientLog", 80000, ref shop, ref nextSlot);
             }
 
             if (Main.hardMode)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.SnowGlobe);
-                shop.item[nextSlot].value = 80000;
+                shop.item[nextSlot].value = 100000;
                 nextSlot++;
             }
 
             if (NPC.downedPirates)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.PirateMap);
-                shop.item[nextSlot].value = 100000;
+                shop.item[nextSlot].value = 120000;
                 nextSlot++;
             }
 
             if (NPC.downedGolemBoss)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.SolarTablet);
-                shop.item[nextSlot].value = 100000;
+                shop.item[nextSlot].value = 120000;
                 nextSlot++;
             }
 
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "ForbiddenTome", 200000, ref shop, ref nextSlot);
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 400000, ref shop, ref nextSlot);
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 600000, ref shop, ref nextSlot);
-            AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 100000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "ForbiddenTome", 150000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 250000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 400000, ref shop, ref nextSlot);
+            AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 150000, ref shop, ref nextSlot);
 
             if (NPC.downedHalloweenKing)
             {
