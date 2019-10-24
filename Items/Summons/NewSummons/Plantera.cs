@@ -46,5 +46,16 @@ namespace Fargowiltas.Items.Summons.NewSummons
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 2);
+            recipe.AddIngredient(ItemID.Moonglow, 5);
+            recipe.AddIngredient(ItemID.Blinkroot, 5);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

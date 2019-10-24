@@ -1767,11 +1767,17 @@ namespace Fargowiltas
             #region misc recipes
 
             recipe = new ModRecipe(this);
-            recipe.AddIngredient(ItemID.Bubble);
-            recipe.AddIngredient(ItemID.RedHusk);
+            recipe.AddIngredient(ItemID.SillyBalloonPink);
             recipe.AddIngredient(ItemID.WhiteString);
             recipe.AddTile(TileID.SkyMill);
             recipe.SetResult(ItemID.ShinyRedBalloon);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.GoldBar, 10);
+            recipe.AddIngredient(ItemID.Feather, 5);
+            recipe.AddTile(TileID.SkyMill);
+            recipe.SetResult(ItemID.LuckyHorseshoe);
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
