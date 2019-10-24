@@ -203,14 +203,25 @@ namespace Fargowiltas.NPCs
                         Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
                     else if (NPC.downedAncientCultist)
                         Main.npcChatText = "Only a specific type of weapon will work against each specific pillar. As for that moon guy, his weakness will keep changing.";
+                    else if (NPC.downedFishron)
+                        Main.npcChatText = "Some powerful enemies like that dungeon guy can create their own arenas. You won't be able to escape, so make full use of the room you do have.";
                     else if (NPC.downedGolemBoss)
-                        Main.npcChatText = "Some powerful enemies know how to create their own arenas. You won't be able to escape from them, so make full use of the room you do have.";
+                        Main.npcChatText = "Did you beat that fish pig dragon yet? He's strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?";
                     else if (NPC.downedPlantBoss)
                         Main.npcChatText = "That golem? It gets upset when you leave the temple, so fighting in there is best.";
                     else if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                        Main.npcChatText = "That overgrown plant has a special venom that lasts longer the more it hits you. Once there's enough, you'll get a deadly infestation.";
+                        Main.npcChatText = "That overgrown plant inflicts a special venom that helps her works herself into a frenzy against you. She also has a ring of crystal leaves, but minions go through it.";
                     else if (Main.hardMode)
-                        Main.npcChatText = "Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.";
+                    {
+                        if (!NPC.downedMechBoss1)
+                            Main.npcChatText = "That metal worm has a few upgrades. It'll start shooting dark stars and start flying as you damage it. Too bad you can't stay in the air forever, right?";
+                        else if (!NPC.downedMechBoss2)
+                            Main.npcChatText = "I saw that metal eye spinning while firing a huge laser the other day. Too bad you can't teleport through an attack like that on command, right?";
+                        else if (!NPC.downedMechBoss3)
+                            Main.npcChatText = "You'll have to destroy the limbs before you can hurt that metal skull. But once it reveals its true form, focus on taking down the head instead.";
+                        else
+                            Main.npcChatText = "Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.";
+                    }
                     else if (NPC.downedBoss3)
                         Main.npcChatText = "That thing's mouth is as good as immune to damage, so you'll have to aim for the eyes. What thing? You know, that thing.";
                     else if (NPC.downedQueenBee)
