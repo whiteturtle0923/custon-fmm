@@ -60,6 +60,8 @@ namespace Fargowiltas.NPCs
             animationType = NPCID.Guide;
             Main.npcCatchable[npc.type] = true;
             npc.catchItem = (short)mod.ItemType("Mutant");
+            
+            npc.buffImmune[BuffID.Suffocation] = true;
         }
 
         #region other mod bools
