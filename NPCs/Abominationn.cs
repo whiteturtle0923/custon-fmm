@@ -45,6 +45,7 @@ namespace Fargowiltas.NPCs
             animationType = NPCID.Guide;
             Main.npcCatchable[npc.type] = true;
             npc.catchItem = (short)mod.ItemType("Abominationn");
+            npc.buffImmune[BuffID.Suffocation] = true;
         }
 
         public bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
