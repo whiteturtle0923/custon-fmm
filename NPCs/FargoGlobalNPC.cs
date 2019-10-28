@@ -872,7 +872,7 @@ namespace Fargowiltas.NPCs
 		public override bool CheckDead(NPC npc)
 		{
 			Player player = Main.player[Main.myPlayer];
-			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>(mod);
+			FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
 
             if(npc.type == NPCID.DD2Betsy && !pandoraActive)
             {

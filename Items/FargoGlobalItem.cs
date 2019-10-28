@@ -12,6 +12,8 @@ namespace Fargowiltas.Items
     {
         private static int[] thrown = { ItemID.Bananarang, ItemID.BloodyMachete, ItemID.DayBreak, ItemID.EnchantedBoomerang, ItemID.Flamarang, ItemID.FruitcakeChakram, ItemID.IceBoomerang, ItemID.LightDisc, ItemID.MagicDagger, ItemID.PaladinsHammer, ItemID.PossessedHatchet, ItemID.ShadowFlameKnife, ItemID.ThornChakram, ItemID.ToxicFlask, ItemID.VampireKnives, ItemID.WoodenBoomerang, ItemID.WoodYoyo, ItemID.Rally, ItemID.CorruptYoyo, ItemID.CrimsonYoyo, ItemID.JungleYoyo, ItemID.Code1, ItemID.Valor, ItemID.Cascade, ItemID.FormatC, ItemID.Gradient, ItemID.Chik, ItemID.HelFire, ItemID.Amarok, ItemID.Code2, ItemID.Yelets, ItemID.RedsYoyo, ItemID.ValkyrieYoyo, ItemID.Kraken, ItemID.TheEyeOfCthulhu, ItemID.Terrarian, ItemID.FlyingKnife, ItemID.BallOHurt, ItemID.TheMeatball, ItemID.BlueMoon, ItemID.Sunfury, ItemID.DaoofPow, ItemID.FlowerPow, ItemID.ScourgeoftheCorruptor, ItemID.NorthPole };
 
+        private static int[] summon = { ItemID.NimbusRod, ItemID.CrimsonRod, ItemID.BeeGun, ItemID.WaspGun, ItemID.PiranhaGun, ItemID.BatScepter };
+
         public override bool InstancePerEntity => true;
 
         public override bool CloneNewInstances => true;
@@ -26,16 +28,8 @@ namespace Fargowiltas.Items
                 tooltips.Add(line);
             }
 
-            if (Array.IndexOf(thrown, item.type) > -1)
+            if (Array.IndexOf(thrown, item.type) > -1 || Array.IndexOf(summon, item.type) > -1)
             {
-                /*foreach(TooltipLine line in tooltips)
-                {
-                    if (line.Name == "")
-                    {
-
-                    }
-                }*/
-
                 TooltipLine line = new TooltipLine(mod, "help", "Right click to convert");
                 tooltips.Add(line);
             }
@@ -170,7 +164,7 @@ namespace Fargowiltas.Items
             }
         }
 
-        public override bool CanRightClick(Item item) => Array.IndexOf(thrown, item.type) > -1;
+        public override bool CanRightClick(Item item) => (Array.IndexOf(thrown, item.type) > -1 || Array.IndexOf(summon, item.type) > -1);
 
         public override void RightClick(Item item, Player player)
         {
@@ -312,6 +306,24 @@ namespace Fargowiltas.Items
                     break;
                 case ItemID.NorthPole:
                     newType = mod.ItemType("NorthPoleThrown");
+                    break;
+                case ItemID.NimbusRod:
+                    newType = mod.ItemType("NimbusRodSummon");
+                    break;
+                case ItemID.CrimsonRod:
+                    newType = mod.ItemType("CrimsonRodSummon");
+                    break;
+                case ItemID.BatScepter:
+                    newType = mod.ItemType("BatScepterSummon");
+                    break;
+                case ItemID.BeeGun:
+                    newType = mod.ItemType("BeeGunSummon");
+                    break;
+                case ItemID.WaspGun:
+                    newType = mod.ItemType("WaspGunSummon");
+                    break;
+                case ItemID.PiranhaGun:
+                    newType = mod.ItemType("PiranhaGunSummon");
                     break;
             }
 

@@ -1848,6 +1848,648 @@ namespace Fargowiltas
 
 
             #endregion
+
+            #region thorium banner recipes
+
+            if (thoriumLoaded)
+            {
+                Mod thorium = ModLoader.GetMod("ThoriumMod");
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("AncientChargerBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("OlympicTorch"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("AncientPhalanxBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("AncientAegis"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("ArmyAntBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("HiveMind"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("CoinBagBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("AncientDrachma"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("CoolmeraBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("MeatBallStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("DarksteelKnightBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BrokenDarksteelHelmet"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("DarksteelKnightBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("GrayDPaintingItem"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("FlamekinCasterBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("MoltenScale"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("GigaClamBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("NanoClamCane"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("HammerHeadBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("CartlidgedCatcher"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("MudManBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("WeirdMud"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("ShamblerBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BallnChain"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("UFOBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("DetachedUFOBlaster"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("WindElementalBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("Zapper"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("AstroBeetleBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("AstroBeetleHusk"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("BlisterPodBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BlisterSack"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("BoneFlayerBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BoneFlayerTail"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("ChilledSpitterBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("FrostPlagueStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("ColdlingBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("SpineBuster"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("CrownBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("SpinyShell"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("GnomesBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("GnomePick"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("InvaderBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("VegaPhaser"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("InvaderBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BioPod"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("InfernalHoundBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("MoltenCollar"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("KrakenBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("Leviathan"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("UnderworldPotBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("HotPot"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("NecroPotBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("GhostlyGrapple"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("LostProbeBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("UFOCommunicator"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("LycanBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("MoonlightStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("MoltenMortarBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("MortarStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("SpectrumiteBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("PrismiteStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("TarantulaBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("Arthropod"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("VampireSquidBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("VampireGland"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("StarvedBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("DesecratedHeart"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("VileSpitterBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("VileSpitter"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("VoltBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("VoltHatchet"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("WargBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BattleHorn"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("WargBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BlackCatEars"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("NecroticImbuerBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("TechniqueBloodLotus"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("NecroticImbuerBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("NecroticStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("BlizzardBatBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("IceFairyStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("FrostBurntBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BlizzardsEdge"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("SnowyOwlBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("LostMail"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("SnowSingaBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("EskimoBanjo"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("ScissorStalkerBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("StalkersSnippers"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(thorium.ItemType("SharptoothBanner"), 4);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("GoldenScale"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SquirrelGold, 10);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("SinisterAcorn"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.MimicBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("ProofAvarice"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.MimicBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("LargeCoin"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SnowBallaBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("HailBomber"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.RaggedCasterBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("GatewayGlass"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.FrankensteinBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("TeslaDefibrillator"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PirateDeadeyeBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("DeadEyePatch"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SkeletonCommandoBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("LaunchJumper"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.MartianOfficerBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("ShieldDroneBeacon"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SwampThingBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("SwampSpike"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.MisterStabbyBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BackStabber"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BloodZombieBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BloodCellStaff"));
+                recipe.AddRecipe();
+
+               /* recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BloodZombieBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("BloodDrinker"));
+                recipe.AddRecipe();*/
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.DripplerBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("Bagpipe"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.WyvernBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("CloudyChewToy"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.RedDevilBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("DemonTongue"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.AngryBonesBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("GraveGoods"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.FlyingSnakeBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("Spearmint"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BoneLeeBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("TechniqueShadowClone"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SnowmanGangstaBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("TommyGun"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.RavagerScorpionBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("EbonyTail"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BoneSerpentBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(thorium.ItemType("SpineBreaker"));
+                recipe.AddRecipe();
+            }
+
+            #endregion
+
+            #region calamity banner recipes
+
+            if (calamityLoaded)
+            {
+                Mod calamity = ModLoader.GetMod("CalamityMod");
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PirateCrossbowerBanner, 4);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("Arbalest"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PirateCrossbowerBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("RaidersGlory"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TacticalSkeletonBanner, 4);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("TrueConferenceCall"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.DesertBasiliskBanner, 4);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("EvilSmasher"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TortoiseBanner, 4);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("FabledTortoiseShell"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.DungeonSpiritBanner, 4);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("PearlGod"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PossessedArmorBanner, 4);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("PsychoticAmulet"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.IchorStickerBanner, 4);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("SpearofDestiny"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.IchorStickerBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("IchorSpear"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.MimicBanner, 2);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("TheBee"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.HarpyBanner, 2);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("SkyGlaze"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.DemonBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("BladecrestOathsword"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SkeletonMageBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("AncientShiv"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.ClingerBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("CursedDagger"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.GoblinSorcererBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("PlasmaRod"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.PirateDeadeyeBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("ProporsePistol"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.GoblinWarriorBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("Warblade"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.NecromancerBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("WrathoftheAncients"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.FlyingAntlionBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("MandibleBow"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.WalkingAntlionBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("MandibleClaws"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SkeletonBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("Waraxe"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.TombCrawlerBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("BurntSienna"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SharkBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("DepthBlade"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.BoneSerpentBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("OldLordOathsword"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.RuneWizardBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("EyeofMagnus"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("ArmoredDiggerBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("LeadWizard"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("IceClasperBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("FrostBarrier"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("ImpiousImmolatorBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("EnergyStaff"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("EidolonWyrmJuvenileBanner"), 200);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("HalibutCannon"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("CuttlefishBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("InkBomb"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("CnidrionBanner"), 2);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("TheTransformer"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("CrystalCrawlerBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("CrystalBlade"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("IrradiatedSlimeBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("LeadCore"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("TrasherBanner"));
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("TrashmanTrashcan"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(calamity.ItemType("AngryDogBanner"), 2);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("Cryophobia"));
+                recipe.AddRecipe();
+
+                recipe = new ModRecipe(this);
+                recipe.AddIngredient(ItemID.SandElementalBanner);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.SetResult(calamity.ItemType("WifeinaBottlewithBoobs"));
+                recipe.AddRecipe();
+            }
+
+            #endregion
         }
 
         public override void AddRecipeGroups()
