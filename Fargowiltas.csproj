@@ -234,7 +234,13 @@
     <Compile Include="Items\Vanity\MutantBody.cs" />
     <Compile Include="Items\Vanity\MutantMask.cs" />
     <Compile Include="Items\Vanity\MutantPants.cs" />
+    <Compile Include="Items\Weapons\Summon\BatScepterSummon.cs" />
+    <Compile Include="Items\Weapons\Summon\BeeGunSummon.cs" />
+    <Compile Include="Items\Weapons\Summon\CrimsonRodSummon.cs" />
     <Compile Include="Items\Weapons\LumberJaxe.cs" />
+    <Compile Include="Items\Weapons\Summon\NimbusRodSummon.cs" />
+    <Compile Include="Items\Weapons\Summon\PiranhaGunSummon.cs" />
+    <Compile Include="Items\Weapons\Summon\WaspGunSummon.cs" />
     <Compile Include="Items\Weapons\Thrown\AmarokThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\AmazonThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\ArteryThrown.cs" />

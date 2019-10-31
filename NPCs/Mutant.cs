@@ -783,7 +783,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Desert Scourge
-                    AddItem(CalamityDownedScourge, "CalamityMod", "DriedSeafood", 60000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedScourge, "CalamityMod", "DriedSeafood", 20000, ref shop, ref nextSlot);
                 }
                 
                 //Eye of Cthulhu
@@ -855,7 +855,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Crabulon
-                    AddItem(CalamityDownedCrab, "CalamityMod", "DecapoditaSprout", 80000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCrab, "CalamityMod", "DecapoditaSprout", 40000, ref shop, ref nextSlot);
                 }
                 
                 //Eater of Worlds
@@ -1189,7 +1189,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Cryogen
-                    AddItem(CalamityDownedCryo, "CalamityMod", "CryoKey", 250000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCryo, "CalamityMod", "CryoKey", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
@@ -1280,7 +1280,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Brimstone Elemental
-                    AddItem(CalamityDownedBrim, "CalamityMod", "CharredIdol", 400000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedBrim, "CalamityMod", "CharredIdol", 200000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
@@ -1303,7 +1303,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Aquatic Scourge
-                    AddItem(CalamityDownedAquatic, "CalamityMod", "Seafood", 400000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedAquatic, "CalamityMod", "Seafood", 200000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
@@ -1352,7 +1352,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Calamitas
-                    AddItem(CalamityDownedCalamitas, "CalamityMod", "BlightedEyeball", 400000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCalamitas, "CalamityMod", "BlightedEyeball", 300000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
@@ -1382,7 +1382,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Leviathan
-                    AddItem(CalamityDownedLevi, "Fargowiltas", "LeviathanSummon", 500000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedLevi, "Fargowiltas", "LeviathanSummon", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
@@ -1399,7 +1399,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Astrageldon
-                    AddItem(CalamityDownedAstragel, "CalamityMod", "AstralChunk", 500000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedAstragel, "CalamityMod", "AstralChunk", 250000, ref shop, ref nextSlot);
                     //Astrum Deus
                     AddItem(CalamityDownedAstrum, "CalamityMod", "Starcore", 500000, ref shop, ref nextSlot);
                 }
@@ -1466,7 +1466,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Plaguebringer Goliath
-                    AddItem(CalamityDownedPlague, "CalamityMod", "Abomination", 600000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedPlague, "CalamityMod", "Abomination", 500000, ref shop, ref nextSlot);
                 }
 
                 //behemoth - true eater
@@ -1508,7 +1508,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Ravager
-                    AddItem(CalamityDownedRav, "CalamityMod", "AncientMedallion", 600000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedRav, "CalamityMod", "AncientMedallion", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.blueMagicLoaded)
@@ -1647,7 +1647,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Profaned Guardians
-                    AddItem(CalamityDownedGuardian, "CalamityMod", "ProfanedShard", 5000000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedGuardian, "CalamityMod", "ProfanedShard", 10000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.joostLoaded)
@@ -1750,7 +1750,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Bumblebirb
-                    AddItem(CalamityDownedBirb, "CalamityMod", "BirbPheromones", 20000000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedBirb, "CalamityMod", "BirbPheromones", 5000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.JSLoaded)

@@ -1764,6 +1764,70 @@ namespace Fargowiltas
             recipe.AddRecipe();
             #endregion
 
+            #region goodiebag/present recipes
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.GoodieBag, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.UnluckyYarn);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.GoodieBag, 100);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BatHook);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Present, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.DogWhistle);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Present, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.Toolbox);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Present, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.HandWarmer);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Present, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.RedRyder);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Present, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.CandyCaneSword);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Present, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.CandyCaneHook);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Present, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.FruitcakeChakram);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.Present, 50);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.CnadyCanePickaxe);
+            recipe.AddRecipe();
+
+            #endregion
+
             #region misc recipes
 
             recipe = new ModRecipe(this);
@@ -1844,6 +1908,13 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.ManaCrystal);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(ItemID.NaturesGift);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.SandBlock, 50);
+            recipe.AddIngredient(ItemID.Bottle);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(ItemID.SandstorminaBottle);
             recipe.AddRecipe();
 
 
