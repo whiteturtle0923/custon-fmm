@@ -149,7 +149,6 @@
     <Compile Include="Items\Misc\PurityRenewalSupreme.cs" />
     <Compile Include="Items\Misc\Stats.cs" />
     <Compile Include="Items\Misc\SuperDummy.cs" />
-    <Compile Include="Items\Summons\MutantGrabBag.cs" />
     <Compile Include="Items\Summons\NewSummons\AbyssionSummon.cs" />
     <Compile Include="Items\Summons\NewSummons\AncientSeal.cs" />
     <Compile Include="Items\Summons\NewSummons\BatteredClub.cs" />
@@ -194,6 +193,17 @@
     <Compile Include="Items\Summons\SwarmSummons\OverloadSlimeCrown.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadTwins.cs" />
     <Compile Include="Items\Summons\SwarmSummons\OverloadWorm.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadAbyssion.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadChampion.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadCoznix.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadGranite.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadJelly.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadLich.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadRag.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadSaucer.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadStrider.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadThunderbird.cs" />
+    <Compile Include="Items\Summons\SwarmSummons\Thorium\OverloadViscount.cs" />
     <Compile Include="Items\Summons\VanillaCopy\Abeemination2.cs" />
     <Compile Include="Items\Summons\VanillaCopy\CelestialSigil2.cs" />
     <Compile Include="Items\Summons\VanillaCopy\GoreySpine.cs" />
@@ -224,7 +234,13 @@
     <Compile Include="Items\Vanity\MutantBody.cs" />
     <Compile Include="Items\Vanity\MutantMask.cs" />
     <Compile Include="Items\Vanity\MutantPants.cs" />
+    <Compile Include="Items\Weapons\Summon\BatScepterSummon.cs" />
+    <Compile Include="Items\Weapons\Summon\BeeGunSummon.cs" />
+    <Compile Include="Items\Weapons\Summon\CrimsonRodSummon.cs" />
     <Compile Include="Items\Weapons\LumberJaxe.cs" />
+    <Compile Include="Items\Weapons\Summon\NimbusRodSummon.cs" />
+    <Compile Include="Items\Weapons\Summon\PiranhaGunSummon.cs" />
+    <Compile Include="Items\Weapons\Summon\WaspGunSummon.cs" />
     <Compile Include="Items\Weapons\Thrown\AmarokThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\AmazonThrown.cs" />
     <Compile Include="Items\Weapons\Thrown\ArteryThrown.cs" />
@@ -360,7 +376,6 @@
     <Content Include="Items\Misc\Stats.png" />
     <Content Include="Items\Misc\SuperDummy.png" />
     <Content Include="Items\Placeholder.png" />
-    <Content Include="Items\Summons\MutantGrabBag.png" />
     <Content Include="Items\Summons\NewSummons\AbyssionSummon.png" />
     <Content Include="Items\Summons\NewSummons\AncientSeal.png" />
     <Content Include="Items\Summons\NewSummons\BatteredClub.png" />

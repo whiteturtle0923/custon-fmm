@@ -1,6 +1,8 @@
 using Fargowiltas.NPCs;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
@@ -63,7 +65,15 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.npc[plant].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
             }
 
-            Main.NewText("The jungle beats as one!", 175, 75);
+            if (Main.netMode == 2)
+            {
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The jungle beats as one!"), new Color(175, 75, 255));
+            }
+            else
+            {
+                Main.NewText("The jungle beats as one!", 175, 75, 255);
+            }
+
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

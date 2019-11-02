@@ -6,74 +6,81 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.NPCs
 {
-	[AutoloadHead]
-	public class Abominationn : ModNPC
-	{	
-	
-		public override bool Autoload(ref string name)
-		{
-			name = "Abominationn";
-			return mod.Properties.Autoload;
-		}
+    [AutoloadHead]
+    public class Abominationn : ModNPC
+    {
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Abominationn");
-			Main.npcFrameCount[npc.type] = 25;
-			NPCID.Sets.ExtraFramesCount[npc.type] = 9;
-			NPCID.Sets.AttackFrameCount[npc.type] = 4;
-			NPCID.Sets.DangerDetectRange[npc.type] = 700;
-			NPCID.Sets.AttackType[npc.type] = 0;
-			NPCID.Sets.AttackTime[npc.type] = 90;
-			NPCID.Sets.AttackAverageChance[npc.type] = 30;
-			NPCID.Sets.HatOffsetY[npc.type] = 2;
-		}
+        public override bool Autoload(ref string name)
+        {
+            name = "Abominationn";
+            return mod.Properties.Autoload;
+        }
 
-		public override void SetDefaults()
-		{
-			npc.townNPC = true;
-			npc.friendly = true;
-			npc.width = 40;
-			npc.height = 40;
-			npc.aiStyle = 7;
-			npc.damage = 10;
-			npc.defense = 15;
-			npc.lifeMax = 250;
-			npc.HitSound = SoundID.NPCHit1;
-			npc.DeathSound = SoundID.NPCDeath1;
-			npc.knockBackResist = 0.5f;
-			animationType = NPCID.Guide;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Abominationn");
+            Main.npcFrameCount[npc.type] = 25;
+            NPCID.Sets.ExtraFramesCount[npc.type] = 9;
+            NPCID.Sets.AttackFrameCount[npc.type] = 4;
+            NPCID.Sets.DangerDetectRange[npc.type] = 700;
+            NPCID.Sets.AttackType[npc.type] = 0;
+            NPCID.Sets.AttackTime[npc.type] = 90;
+            NPCID.Sets.AttackAverageChance[npc.type] = 30;
+            NPCID.Sets.HatOffsetY[npc.type] = 2;
+        }
+
+        public override void SetDefaults()
+        {
+            npc.townNPC = true;
+            npc.friendly = true;
+            npc.width = 40;
+            npc.height = 40;
+            npc.aiStyle = 7;
+            npc.damage = 10;
+            npc.defense = 15;
+            npc.lifeMax = 250;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 0.5f;
+            animationType = NPCID.Guide;
             Main.npcCatchable[npc.type] = true;
             npc.catchItem = (short)mod.ItemType("Abominationn");
+            npc.buffImmune[BuffID.Suffocation] = true;
         }
 
         public bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
 
         public bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
 
-		public bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
+        public bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
 
-		public bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
+        public bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
 
-		public bool TremorInvasion => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan];
+        public bool TremorInvasion => Tremor.TremorWorld.downedBoss[Tremor.TremorWorld.Boss.ParadoxTitan];
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-            return NPC.downedGoblins;
-		}
-		
-		public override string TownNPCName()
-		{
-			switch (WorldGen.genRand.Next(5))
-			{
-				case 0:
-					return "Wilta";
-				case 1:
-					return "Jack";
-				case 2:
-					return "Harley";
-				case 3:
-					return "Reaper";
+        public bool RedePatientZero => Redemption.RedeWorld.downedPatientZero;
+
+        public bool ChickenArmy => (Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ);
+
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        {
+            if (Fargowiltas.instance.fargoLoaded && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
+                return false;
+            return (NPC.downedGoblins || (Fargowiltas.instance.fargoLoaded && MasochistMode));
+        }
+
+        public override string TownNPCName()
+        {
+            switch (WorldGen.genRand.Next(5))
+            {
+                case 0:
+                    return "Wilta";
+                case 1:
+                    return "Jack";
+                case 2:
+                    return "Harley";
+                case 3:
+                    return "Reaper";
                 case 4:
                     return "Stevenn";
                 case 5:
@@ -89,19 +96,19 @@ namespace Fargowiltas.NPCs
                 case 10:
                     return "Bardo";
                 default:
-					return "Betson";
-			}
-		}
+                    return "Betson";
+            }
+        }
 
-		public override string GetChat()
-		{
-			int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
+        public override string GetChat()
+        {
+            int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
             int mechanic = NPC.FindFirstNPC(NPCID.Mechanic);
 
             if (mutant >= 0 && Main.rand.Next(26) == 0)
-			{
-				return "That one guy, " + Main.npc[mutant].GivenName + ", he is my brother... I've fought more bosses than him.";
-			}
+            {
+                return "That one guy, " + Main.npc[mutant].GivenName + ", he is my brother... I've fought more bosses than him.";
+            }
             if (mechanic >= 0 && Main.rand.Next(25) == 0)
             {
                 return "Can you please ask " + Main.npc[mechanic].GivenName + " to stop touching my laser arm please.";
@@ -116,17 +123,17 @@ namespace Fargowiltas.NPCs
             }
 
             switch (Main.rand.Next(23))
-			{
-				case 0:
-					return "I have defeated everything in this land... nothing can beat me.";
-				case 1:
-					return "Have you ever had a weapon stuck to your hand? It's not very handy.";
-				case 2:
-					return "What happened to Yoramur? No idea who you're talking about.";
-				case 3:
-					return "I sure wish I was a boss.";
-				case 4:
-					return "You wish you could dress like me? Ha! Maybe in 2020.";
+            {
+                case 0:
+                    return "I have defeated everything in this land... nothing can beat me.";
+                case 1:
+                    return "Have you ever had a weapon stuck to your hand? It's not very handy.";
+                case 2:
+                    return "What happened to Yoramur? No idea who you're talking about.";
+                case 3:
+                    return "I sure wish I was a boss.";
+                case 4:
+                    return "You wish you could dress like me? Ha! Maybe in 2020.";
                 case 5:
                     return "You ever read the ancient classics, I love all the fighting in them.";
                 case 6:
@@ -162,190 +169,234 @@ namespace Fargowiltas.NPCs
                 case 21:
                     return "It's not like I don't enjoy your company, but can you buy something?";
                 default:
-					return "I have slain one thousand humans! Huh? You're a human? There's so much blood on your hands..";
-			}
-		}
+                    return "I have slain one thousand humans! Huh? You're a human? There's so much blood on your hands..";
+            }
+        }
 
-		public override void SetChatButtons(ref string button, ref string button2)
-		{
-			button = Lang.inter[28].Value;
+        public override void SetChatButtons(ref string button, ref string button2)
+        {
+            button = Lang.inter[28].Value;
 
             if (Fargowiltas.instance.fargoLoaded && MasochistMode)
             {
                 button2 = "Help";
             }
-		}
+        }
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
-		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        {
+            if (firstButton)
+            {
+                shop = true;
+            }
             else
             {
                 Player p = Main.player[Main.myPlayer];
                 FargowiltasSouls.FargoPlayer fargoPlayer = p.GetModPlayer<FargowiltasSouls.FargoPlayer>();
 
-                IList<string> dialogue = new List<string>();
-
-                dialogue.Add("You're more masochistic than I thought, aren't you?");
-                dialogue.Add("Seems like everyone's learning to project auras these days. If you look at the particles, you can see whether it'll affect you at close range or a distance.");
-                dialogue.Add("There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once.");
-                dialogue.Add("I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.");
-                dialogue.Add("Powerful enemies can drop all sorts of helpful loot. They'll also come back for revenge after you beat them, so keep an eye out for that.");
-                dialogue.Add("Why bother fishing when you can massacre bosses for the same goods? With spawners provided by brother of course!");
-
-                if (!p.accFlipper && !p.gills && fargoPlayer.MutantAntibodies)
-                    dialogue.Add("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?");
-                if (!p.fireWalk && !p.buffImmune[BuffID.OnFire])
-                    dialogue.Add("The underworld has gotten a lot hotter since the last time I visited. I hear an obsidian is a good luck charm against burning alive, though.");
-                if (!p.buffImmune[BuffID.Suffocation] && fargoPlayer.PureHeart)
-                    dialogue.Add("Want to have a breath-holding contest? The empty vacuum of space would be perfect.");
-
-                if (p.statLifeMax < 400)
-                    dialogue.Add("I don't have any Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share...");
-                if (NPC.downedBoss3)
-                    dialogue.Add("Dungeon Guardian sent me photos of their kids earlier. Cute little skull demons hiding in other skeletons, aren't they? Oh, and their drop wards off random boss spawns, I guess.");
-
-                if (Main.hardMode)
+                if (Main.rand.Next(4) == 0)
                 {
-                    if (fargoPlayer.PureHeart)
-                        dialogue.Add("The spirits of light and dark stopped by and they sounded pretty upset with you. Don't be too surprised if something happens to you for entering their territory.");
-                    dialogue.Add("They're not in my shop, but why not go hunting for some rare monsters every once in a while? Plenty of treasure to be looted and all that.");
-                    dialogue.Add("The desert monsters keep sending me letters about all the fossils they're collecting. I don't get the craze about it, myself.");
-                    if (p.statLifeMax < 500)
-                        dialogue.Add("If you ask me, Plantera is really letting herself go. Chlorophyte and Life Fruit aren't THAT healthy!");
+                    if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
+                        Main.npcChatText = "What's that? You want to fight me? ...maybe in 2023.";
+                    else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
+                        Main.npcChatText = "What's that? You want to fight my brother? ...maybe if he had a reason to.";
+                    else if (NPC.downedMoonlord)
+                        Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
+                    else if (NPC.downedAncientCultist)
+                        Main.npcChatText = "Only a specific type of weapon will work against each specific pillar. As for that moon guy, his weakness will keep changing.";
+                    else if (NPC.downedFishron)
+                        Main.npcChatText = "Some powerful enemies like that dungeon guy can create their own arenas. You won't be able to escape, so make full use of the room you do have.";
+                    else if (NPC.downedGolemBoss)
+                        Main.npcChatText = "Did you beat that fish pig dragon yet? He's strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?";
+                    else if (NPC.downedPlantBoss)
+                        Main.npcChatText = "That golem? It gets upset when you leave the temple, so fighting in there is best.";
+                    else if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+                        Main.npcChatText = "That overgrown plant inflicts a special venom that helps her works herself into a frenzy against you. She also has a ring of crystal leaves, but minions go through it.";
+                    else if (Main.hardMode)
+                    {
+                        if (!NPC.downedMechBoss1)
+                            Main.npcChatText = "That metal worm has a few upgrades. It'll start shooting dark stars and start flying as you damage it. Too bad you can't stay in the air forever, right?";
+                        else if (!NPC.downedMechBoss2)
+                            Main.npcChatText = "I saw that metal eye spinning while firing a huge laser the other day. Too bad you can't teleport through an attack like that on command, right?";
+                        else if (!NPC.downedMechBoss3)
+                            Main.npcChatText = "You'll have to destroy the limbs before you can hurt that metal skull. But once it reveals its true form, focus on taking down the head instead.";
+                        else
+                            Main.npcChatText = "Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.";
+                    }
+                    else if (NPC.downedBoss3)
+                        Main.npcChatText = "That thing's mouth is as good as immune to damage, so you'll have to aim for the eyes. What thing? You know, that thing.";
+                    else if (NPC.downedQueenBee)
+                        Main.npcChatText = "The master of the dungeon can revive itself with a sliver of life for a last stand. Be ready to run for it when you make the killing blow.";
+                    else if (NPC.downedBoss2)
+                        Main.npcChatText = "The queen bee will summon her progeny for backup. She's harder to hurt while they're there, so take them out first.";
+                    else if (NPC.downedBoss1)
+                        Main.npcChatText = WorldGen.crimson ? "When the brain gets mad, it'll confuse you every few seconds. Knowledge is power!" : "When you hurt the world eater, its segments will break off as smaller eaters. Don't let them pile up!";
+                    else if (NPC.downedSlimeKing)
+                        Main.npcChatText = "Keep an eye on Cthulhu's eye when you're fighting. It might just teleport behind you whenever it finishes a set of mad dashes.";
+                    else
+                        Main.npcChatText = "Gonna fight that slime king soon? Don't spend too long up and out of his reach or he'll get mad. Very, very mad.";
                 }
+                else
+                {
+                    IList<string> dialogue = new List<string>();
 
-                if (NPC.downedPlantBoss)
-                    dialogue.Add("Trick or treat? Merry Christmas? I don't have anything for you, go ask Pumpking or Ice Queen.");
+                    dialogue.Add("You're more masochistic than I thought, aren't you?");
+                    dialogue.Add("Seems like everyone's learning to project auras these days. If you look at the particles, you can see whether it'll affect you at close range or a distance.");
+                    dialogue.Add("There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once.");
+                    dialogue.Add("I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.");
+                    dialogue.Add("Powerful enemies can drop all sorts of helpful loot. They'll also come back for revenge after you beat them, so keep an eye out for that.");
+                    dialogue.Add("Why bother fishing when you can massacre bosses for the same goods? With spawners provided by my brother of course!");
+                    dialogue.Add("Watch out for those fish. Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.");
 
-                if (NPC.downedMoonlord && !FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
-                    dialogue.Add("When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?");
+                    if (!p.accFlipper && !p.gills && !fargoPlayer.MutantAntibodies)
+                        dialogue.Add("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?");
+                    if (!p.fireWalk && !p.buffImmune[BuffID.OnFire])
+                        dialogue.Add("The underworld has gotten a lot hotter since the last time I visited. I hear an obsidian is a good luck charm against burning alive, though.");
+                    if (!p.buffImmune[BuffID.Suffocation] && !fargoPlayer.PureHeart)
+                        dialogue.Add("Want to have a breath-holding contest? The empty vacuum of space would be perfect.");
 
-                if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
-                    dialogue.Add("What's that? You want to fight me? ...maybe in 2023.");
-                else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
-                    dialogue.Add("What's that? You want to fight my brother? ...maybe if he had a reason to.");
+                    if (p.statLifeMax < 400)
+                        dialogue.Add("I don't have any Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share...");
+                    if (NPC.downedBoss3)
+                        dialogue.Add("Dungeon Guardian sent me photos of their kids earlier. Cute little skull demons hiding in other skeletons, aren't they? Oh, and their drop wards off random boss spawns, I guess.");
 
-                Main.npcChatText = dialogue[Main.rand.Next(dialogue.Count)];
+                    if (Main.hardMode)
+                    {
+                        if (!fargoPlayer.PureHeart)
+                            dialogue.Add("The spirits of light and dark stopped by and they sounded pretty upset with you. Don't be too surprised if something happens to you for entering their territory.");
+                        dialogue.Add("They're not in my shop, but why not go hunting for some rare monsters every once in a while? Plenty of treasure to be looted and all that.");
+                        dialogue.Add("The desert monsters keep sending me letters about all the fossils they're collecting. I don't get the craze about it, myself.");
+                        if (p.statLifeMax < 500)
+                            dialogue.Add("If you ask me, Plantera is really letting herself go. Chlorophyte and Life Fruit aren't THAT healthy!");
+                    }
+
+                    if (NPC.downedPlantBoss)
+                        dialogue.Add("Trick or treat? Merry Christmas? I don't have anything for you, go ask Pumpking or Ice Queen.");
+
+                    Main.npcChatText = dialogue[Main.rand.Next(dialogue.Count)];
+                }
             }
-		}
+        }
 
         void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
         {
-	        if (!check) return;
-	        shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
-	        shop.item[nextSlot].value = price;
-	        nextSlot++;
+            if (!check) return;
+            shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
+            shop.item[nextSlot].value = price;
+            nextSlot++;
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot)
-		{
+        {
             //EVENTS
-            //AddItem(NPC.downedBoss1, "Fargowiltas", "BloodMoonMedallion", 20000, ref shop, ref nextSlot);
+            AddItem(NPC.downedSlimeKing, "Fargowiltas", "SlimyBarometer", 40000, ref shop, ref nextSlot);
+            AddItem(NPC.downedBoss1, "Fargowiltas", "CursedSextant", 50000, ref shop, ref nextSlot);
 
             if (Fargowiltas.instance.sacredToolsLoaded)
-             {
-                AddItem(NPC.downedBoss1, "SacredTools", "SandstormMedallion", 20000, ref shop, ref nextSlot);
-			 }
-			 
-			if (Fargowiltas.instance.grealmLoaded)
-			{
-                AddItem(GRealmInvasion, "GRealm", "HordeStaff", 30000, ref shop, ref nextSlot);
-			}
-	
-			    shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
-			    shop.item[nextSlot].value=50000;
-	     	    nextSlot++;
-			
-			if (Fargowiltas.instance.tremorLoaded)
-			{
-                AddItem(NPC.downedBoss2, "Tremor", "ScrollofUndead", 50000, ref shop, ref nextSlot);
-			}
+            {
+                AddItem(NPC.downedBoss1, "SacredTools", "SandstormMedallion", 40000, ref shop, ref nextSlot);
+            }
+
+            if (Fargowiltas.instance.grealmLoaded)
+            {
+                AddItem(GRealmInvasion, "GRealm", "HordeStaff", 50000, ref shop, ref nextSlot);
+            }
+
+            if (Fargowiltas.instance.redemptionLoaded)
+            {
+                AddItem(ChickenArmy, "Redemption", "ChickenContract", RedePatientZero ? 100000 : 10000, ref shop, ref nextSlot);
+            }
+
+            shop.item[nextSlot].SetDefaults(ItemID.GoblinBattleStandard);
+            shop.item[nextSlot].value = 60000;
+            nextSlot++;
+
+            if (Fargowiltas.instance.tremorLoaded)
+            {
+                AddItem(NPC.downedBoss2, "Tremor", "ScrollofUndead", 60000, ref shop, ref nextSlot);
+            }
 
             if (Fargowiltas.instance.spiritLoaded)
-			{
-                AddItem(SpiritInvasion, "SpiritMod", "BlackPearl", 60000, ref shop, ref nextSlot);
-			}
+            {
+                AddItem(SpiritInvasion, "SpiritMod", "BlackPearl", 80000, ref shop, ref nextSlot);
+            }
 
             if (Fargowiltas.instance.btfaLoaded)
             {
-                AddItem(BtfaInvasion, "ForgottenMemories", "AncientLog", 50000, ref shop, ref nextSlot);
+                AddItem(BtfaInvasion, "ForgottenMemories", "AncientLog", 80000, ref shop, ref nextSlot);
             }
 
             if (Main.hardMode)
-			{
-			    shop.item[nextSlot].SetDefaults(ItemID.SnowGlobe);
-			    shop.item[nextSlot].value=80000;
-			    nextSlot++;
-			}
-			
-			if (NPC.downedPirates)
-			{	
-			    shop.item[nextSlot].SetDefaults(ItemID.PirateMap);
-			    shop.item[nextSlot].value=100000;
-			    nextSlot++;
-			}
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.SnowGlobe);
+                shop.item[nextSlot].value = 100000;
+                nextSlot++;
+            }
+
+            if (NPC.downedPirates)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.PirateMap);
+                shop.item[nextSlot].value = 120000;
+                nextSlot++;
+            }
 
             if (NPC.downedGolemBoss)
-			{	
-			    shop.item[nextSlot].SetDefaults(ItemID.SolarTablet);
-			    shop.item[nextSlot].value=100000;
-			    nextSlot++;
-			}
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.SolarTablet);
+                shop.item[nextSlot].value = 120000;
+                nextSlot++;
+            }
 
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "ForbiddenTome", 200000, ref shop, ref nextSlot);
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 400000, ref shop, ref nextSlot);
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 600000, ref shop, ref nextSlot);
-            AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 100000, ref shop, ref nextSlot);
-			
-			if (NPC.downedHalloweenKing)
-			{	
-			    shop.item[nextSlot].SetDefaults(ItemID.PumpkinMoonMedallion);
-			    shop.item[nextSlot].value=150000;
-			    nextSlot++;
-			}
-			
-			if (NPC.downedChristmasIceQueen)
-			{	
-			    shop.item[nextSlot].SetDefaults(ItemID.NaughtyPresent);
-			    shop.item[nextSlot].value=150000;
-			    nextSlot++;
-			}
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "ForbiddenTome", 150000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 250000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 400000, ref shop, ref nextSlot);
+            AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 150000, ref shop, ref nextSlot);
+
+            if (NPC.downedHalloweenKing)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.PumpkinMoonMedallion);
+                shop.item[nextSlot].value = 150000;
+                nextSlot++;
+            }
+
+            if (NPC.downedChristmasIceQueen)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.NaughtyPresent);
+                shop.item[nextSlot].value = 150000;
+                nextSlot++;
+            }
 
             AddItem(NPC.downedTowers, "Fargowiltas", "PillarSummon", 750000, ref shop, ref nextSlot);
 
             if (Fargowiltas.instance.tremorLoaded)
-			{
+            {
                 AddItem(TremorInvasion, "Tremor", "AncientWatch", 200000, ref shop, ref nextSlot);
-			}
-		}
+            }
+        }
 
-		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
-		{
-			damage = 20;
-			knockback = 4f;
-		}
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
+        {
+            damage = 20;
+            knockback = 4f;
+        }
 
-		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
-		{
-			cooldown = 30;
-			randExtraCooldown = 30;
-		}
+        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+        {
+            cooldown = 30;
+            randExtraCooldown = 30;
+        }
 
-		public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
-		{
-			projType = ProjectileID.DeathSickle;
-			attackDelay = 1;
-		}
+        public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
+        {
+            projType = ProjectileID.DeathSickle;
+            attackDelay = 1;
+        }
 
-		public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
-		{
-			multiplier = 12f;
-			randomOffset = 2f;
-		}
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+        {
+            multiplier = 12f;
+            randomOffset = 2f;
+        }
 
         //gore
         public override void HitEffect(int hitDirection, double damage)

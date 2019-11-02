@@ -4,12 +4,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
 {
     public class EnergizerPrime : ModItem
     {
-        //until it has a use
-        public override bool Autoload(ref string name)
-        {
-            return false;
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Prime Energizer");
@@ -24,7 +18,5 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
             item.rare = 1;
             item.value = 100000;
         }
-
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 }

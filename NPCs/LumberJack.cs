@@ -111,7 +111,7 @@ namespace Fargowiltas.NPCs
             }
             if (nurse >= 0 && Main.rand.Next(21) == 0)
             {
-                return "I always see" + Main.npc[nurse].GivenName + " looking at my biceps when I'm working. Wonder if she wants some of my wood.";
+                return "I always see " + Main.npc[nurse].GivenName + " looking at my biceps when I'm working. Wonder if she wants some of my wood.";
             }
 
             if (Fargowiltas.instance.thoriumLoaded && Main.rand.Next(20) == 0)
@@ -177,7 +177,7 @@ namespace Fargowiltas.NPCs
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
             Player player = Main.player[Main.myPlayer];
-            FargoPlayer p = player.GetModPlayer<FargoPlayer>(mod);
+            FargoPlayer p = player.GetModPlayer<FargoPlayer>();
 
             if (firstButton)
             {
@@ -289,8 +289,12 @@ namespace Fargowiltas.NPCs
                 shop.item[nextSlot].value = 50;
                 nextSlot++;
 
-                
+
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("Bogwood"));
+                shop.item[nextSlot].value = 50;
+                nextSlot++;
+
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("OroborosWood"));
                 shop.item[nextSlot].value = 50;
                 nextSlot++;
             }

@@ -14,6 +14,8 @@ namespace Fargowiltas.NPCs
         public static bool shop2;
         public static bool shop3;
         public static int shopnum = 1;
+        
+        public bool spawned;
 
         public override bool Autoload(ref string name)
         {
@@ -46,11 +48,11 @@ namespace Fargowiltas.NPCs
             npc.defense = NPC.downedMoonlord ? 50 : 15;
             npc.lifeMax = NPC.downedMoonlord ? 5000 : 250;
 
-            /*if (Fargowiltas.instance.fargoLoaded && FargowiltasSouls.FargoWorld.downedFishronEX)
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
             {
-                npc.lifeMax *= 10;
-                npc.defense *= 10;
-            }*/
+                npc.lifeMax = 7700000;
+                npc.defense = 400;
+            }
 
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
@@ -58,6 +60,8 @@ namespace Fargowiltas.NPCs
             animationType = NPCID.Guide;
             Main.npcCatchable[npc.type] = true;
             npc.catchItem = (short)mod.ItemType("Mutant");
+            
+            npc.buffImmune[BuffID.Suffocation] = true;
         }
 
         #region other mod bools
@@ -65,6 +69,8 @@ namespace Fargowiltas.NPCs
         //fargo bools
         public bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
         public bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
+        public bool MutantsDiscountCard => Main.player[Main.myPlayer].GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsDiscountCard;
+        public bool MutantsPact => Main.player[Main.myPlayer].GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsPact;
 
         //thorium bools
         public bool ThoriumDownedBird => ThoriumMod.ThoriumWorld.downedThunderBird;
@@ -288,19 +294,55 @@ namespace Fargowiltas.NPCs
 
         //Redemption
         public bool RedeChicken => Redemption.RedeWorld.downedKingChicken;
+        public bool RedeThorn => Redemption.RedeWorld.downedThorn;
         public bool RedeKeeper => Redemption.RedeWorld.downedTheKeeper;
         public bool RedeXeno => Redemption.RedeWorld.downedXenomiteCrystal;
         public bool RedeEye => Redemption.RedeWorld.downedInfectedEye;
         public bool RedePortal => Redemption.RedeWorld.downedStrangePortal;
-        public bool RedeGigipede=> Redemption.RedeWorld.downedVlitch2;
+        public bool RedeGigipede => Redemption.RedeWorld.downedVlitch2;
         public bool RedeCleaver => Redemption.RedeWorld.downedVlitch1;
         public bool RedeSlayer => Redemption.RedeWorld.downedSlayer;
         public bool RedeOmega => Redemption.RedeWorld.downedVlitch3;
+        public bool RedeThornPZ => Redemption.RedeWorld.downedThornPZ;
+        public bool RedeEaglecrestPZ => Redemption.RedeWorld.downedEaglecrestGolemPZ;
+        public bool RedeNeb => Redemption.RedeWorld.downedNebuleus;
+
+        //Jetshift
+
+        /*public bool JSSnake => Jetshift.JetshiftWorld.downedSnakeBoss;
+        public bool JSReaper => Jetshift.JetshiftWorld.downedReaper;
+        public bool JSViyilblud => Jetshift.JetshiftWorld.downedViyilblud;
+        public bool JSWall => Jetshift.JetshiftWorld.downedWallofVoices;
+        public bool JSArlenon => Jetshift.JetshiftWorld.downedArlenon;
+        public bool JSAthazel => Jetshift.JetshiftWorld.downedAthazel;
+        public bool JSPolypus => Jetshift.JetshiftWorld.downedPolypus;
+        public bool JSFrezyn => Jetshift.JetshiftWorld.downedFrezyn;
+        public bool JSMortalos => Jetshift.JetshiftWorld.downedMortalos;
+        public bool JSShift => Jetshift.JetshiftWorld.downedShiftFinal;
+        public bool JSAnnihilation => Jetshift.JetshiftWorld.downedAnnihilation;
+        public bool JSCCP1 => Jetshift.JetshiftWorld.downedCCP1;
+        public bool JSCCP2 => Jetshift.JetshiftWorld.downedCCP2;
+        public bool JSCosmic => Jetshift.JetshiftWorld.downedCosmicMystery;*/
 
         //ocram
         public bool OcramOcram => Ocram.OcramWorld.downedOcram;
 
         #endregion other mod bools
+        
+        public override void AI()
+        {
+            if (!spawned)
+            {
+                spawned = true;
+                if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
+                {
+                    npc.life = 7000000;
+                    npc.lifeMax = 7000000;
+                    npc.defense = 100;
+                    npc.defDefense = 100;
+                }
+            }
+        }
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
@@ -354,6 +396,18 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
+            if (Main.rand.Next(25) == 0)
+            {
+                if (Fargowiltas.instance.fargoLoaded)
+                {
+                    if (FargoDownedMutant)
+                        return "What's that? You want to fight me? ...sure, I guess.";
+                    if (FargoDownedFishEX)
+                        return "What's that? You want to fight me? ...maybe if I had a reason.";
+                }
+                return "What's that? You want to fight me? ...you're not worthy you rat.";
+            }
+        
             if (NPC.downedMoonlord && Fargowiltas.instance.fargoLoaded && Main.rand.Next(32) == 0)
             {
                 return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials!";
@@ -486,7 +540,7 @@ namespace Fargowiltas.NPCs
                 return "I'd follow and help, but I'd much rather sit around right now.";
             }
 
-            switch (Main.rand.Next(47))
+            switch (Main.rand.Next(45))
             {
                 case 0:
                     return "Savagery, barbarism, bloodthirst, that's what I like seeing in people.";
@@ -495,11 +549,11 @@ namespace Fargowiltas.NPCs
                 case 2:
                     return "There's something all of you have that I don't... Death perception, I think it's called?";
                 case 3:
-                    return "It would be pretty cool if I could sell a summon for myself...";
+                    return "It would be pretty cool if I sold a summon for myself...";
                 case 4:
                     return "The only way to get stronger is to keep buying from me and in bulk too!";
                 case 5:
-                    return "What's that? You want to fight me? ...you're not worthy you rat.";
+                    return "Why are you looking at me like that, all I did was eat an apple.";
                 case 6:
                     return "Don't bother with anyone else, all you'll ever need is right here.";
                 case 7:
@@ -517,7 +571,7 @@ namespace Fargowiltas.NPCs
                 case 13:
                     return "Those guys really need to get more creative. All of their first bosses are desert themed!";
                 case 14:
-                    return "I am proud to be known as the Mutant, but thank Fargo I'm no Abominationn";
+                    return "You say you want to know how a Mutant and Abominationn are brothers? You're better off not knowing.";
                 case 15:
                     return "I'm all you need for a calamity.";
                 case 16:
@@ -571,15 +625,11 @@ namespace Fargowiltas.NPCs
                 case 40:
                     return "If you need me I'll be slacking off somewhere.";
                 case 41:
-                    return "You want to fight me, maybe in 2022.";
-                case 42:
                     return "What do you mean who is Fargo!";
-                case 43:
+                case 42:
                     return "Have you seen the ech cat?";
-                case 44:
+                case 43:
                     return "I don't understand music nowadays, I prefer some smooth jazz... or the dying screams of monsters.";
-                case 45:
-                    return "Why are you looking at me like that, all I did was eat an apple.";
                 default:
                     return "Cthulhu's got nothing on me!";
             }
@@ -657,6 +707,15 @@ namespace Fargowiltas.NPCs
             if (!check) return;
             shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
             shop.item[nextSlot].value = price;
+            if (Fargowiltas.instance.fargoLoaded) //lowered prices with discount card and pact
+            {
+                float modifier = 1f;
+                if (MutantsDiscountCard)
+                    modifier -= 0.2f;
+                if (MutantsPact)
+                    modifier -= 0.3f;
+                shop.item[nextSlot].value = (int)(shop.item[nextSlot].value * modifier);
+            }
             nextSlot++;
         }
 
@@ -668,6 +727,11 @@ namespace Fargowiltas.NPCs
 
             if (shop1)
             {
+                if (Fargowiltas.instance.fargoLoaded)
+                {
+                    AddItem(true, "FargowiltasSouls", "Masochist", 10000, ref shop, ref nextSlot); //mutants gift, dam meme namer
+                }
+
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //The Mighty King Chicken
@@ -708,6 +772,11 @@ namespace Fargowiltas.NPCs
                 //Slime King
                 AddItem(NPC.downedSlimeKing, "Fargowiltas", "SlimyCrown", 60000, ref shop, ref nextSlot);
 
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    AddItem(RedeThorn, "Redemption", "HeartOfTheThorns", 60000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
                     AddItem(DisarrayDownedCrusher, "Disarray", "ScorpionIdol", 60000, ref shop, ref nextSlot);
@@ -716,7 +785,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Desert Scourge
-                    AddItem(CalamityDownedScourge, "CalamityMod", "DriedSeafood", 60000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedScourge, "CalamityMod", "DriedSeafood", 20000, ref shop, ref nextSlot);
                 }
                 
                 //Eye of Cthulhu
@@ -788,7 +857,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Crabulon
-                    AddItem(CalamityDownedCrab, "CalamityMod", "DecapoditaSprout", 80000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCrab, "CalamityMod", "DecapoditaSprout", 40000, ref shop, ref nextSlot);
                 }
                 
                 //Eater of Worlds
@@ -886,6 +955,11 @@ namespace Fargowiltas.NPCs
                     //Ancient Dragon
                     AddItem(TremorDownedDragon, "Tremor", "RustyLantern", 100000, ref shop, ref nextSlot);
                 }
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Viyilblud
+                    //AddItem(JSViyilblud, "Jetshift", "CorruptedShard", 100000, ref shop, ref nextSlot);
+                }
 
                 //Queen Bee
                 AddItem(NPC.downedQueenBee, "Fargowiltas", "Abeemination2", 150000, ref shop, ref nextSlot);
@@ -898,6 +972,12 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.nightmaresLoaded)
                 {
                     AddItem(NPC.downedBoss3, "TrueEater", "SpitterSpawner", 150000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Serperannus
+                    //AddItem(JSSnake, "Jetshift", "SoilBall", 100000, ref shop, ref nextSlot);
                 }
 
                 //magnoliac - btfa ?
@@ -1031,6 +1111,12 @@ namespace Fargowiltas.NPCs
                     AddItem(ThoriumDownedScout, "ThoriumMod", "StarCaller", 150000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Torvames 
+                    //AddItem(JSReaper, "Jetshift", "Curse", 150000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Sagittarius
@@ -1064,6 +1150,11 @@ namespace Fargowiltas.NPCs
                     //Borean Strider
                     AddItem(ThoriumDownedStrider, "ThoriumMod", "StriderTear", 250000, ref shop, ref nextSlot);
                 }
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Wall of Voices 
+                    //AddItem(JSWall, "Jetshift", "CursedWall", 250000, ref shop, ref nextSlot);
+                }
 
                 /*if(Fargowiltas.instance.ferniumLoaded)
                 {
@@ -1080,7 +1171,7 @@ namespace Fargowiltas.NPCs
                     AddItem(BtfaArtery, "ForgottenMemories", "BloodClot", 250000, ref shop, ref nextSlot);
                 }
 
-                if(Fargowiltas.instance.antiarisLoaded)
+                if (Fargowiltas.instance.antiarisLoaded)
                 {
                     AddItem(AntiarisDownedKeeper, "Antiaris", "PocketCursedMirror", 250000, ref shop, ref nextSlot);
                 }
@@ -1100,7 +1191,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Cryogen
-                    AddItem(CalamityDownedCryo, "CalamityMod", "CryoKey", 250000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCryo, "CalamityMod", "CryoKey", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.disarrayLoaded)
@@ -1140,7 +1231,7 @@ namespace Fargowiltas.NPCs
                     //All Storm bosses
                     //AddItem((AARetriever && AARaider && AAOrthrus), "Fargowiltas", "CyberneticAmalgam", 600000, ref shop, ref nextSlot);
                 }
-                
+
                 //Destroyer
                 AddItem(NPC.downedMechBoss1, "Fargowiltas", "MechWorm", 400000, ref shop, ref nextSlot);
                 //Twins
@@ -1153,6 +1244,18 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.ocramLoaded)
                 {
                     AddItem(OcramOcram, "Ocram", "item_suspicious_looking_skull", 400000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Arlenon  
+                    //AddItem(JSArlenon, "Jetshift", "PearlOfTheSky", 400000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Athazel  
+                    //AddItem(JSAthazel, "Jetshift", "TridentOfDoom", 400000, ref shop, ref nextSlot);
                 }
                 
                 if(Fargowiltas.instance.pinkyLoaded)
@@ -1179,7 +1282,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Brimstone Elemental
-                    AddItem(CalamityDownedBrim, "CalamityMod", "CharredIdol", 400000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedBrim, "CalamityMod", "CharredIdol", 200000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
@@ -1202,7 +1305,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Aquatic Scourge
-                    AddItem(CalamityDownedAquatic, "CalamityMod", "Seafood", 400000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedAquatic, "CalamityMod", "Seafood", 200000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
@@ -1251,7 +1354,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Calamitas
-                    AddItem(CalamityDownedCalamitas, "CalamityMod", "BlightedEyeball", 400000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedCalamitas, "CalamityMod", "BlightedEyeball", 300000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.spiritLoaded)
@@ -1281,7 +1384,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Leviathan
-                    AddItem(CalamityDownedLevi, "Fargowiltas", "LeviathanSummon", 500000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedLevi, "Fargowiltas", "LeviathanSummon", 400000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.enigmaLoaded)
@@ -1298,7 +1401,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Astrageldon
-                    AddItem(CalamityDownedAstragel, "CalamityMod", "AstralChunk", 500000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedAstragel, "CalamityMod", "AstralChunk", 250000, ref shop, ref nextSlot);
                     //Astrum Deus
                     AddItem(CalamityDownedAstrum, "CalamityMod", "Starcore", 500000, ref shop, ref nextSlot);
                 }
@@ -1315,6 +1418,12 @@ namespace Fargowiltas.NPCs
                 if(Fargowiltas.instance.pinkyLoaded)
                 {
                     AddItem(PinkyAbyssmal, "pinkymod", "MindGodItem", 600000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Shift
+                    //AddItem(JSShift, "Jetshift", "ForbiddenGem", 600000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.sacredToolsLoaded)
@@ -1359,7 +1468,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Plaguebringer Goliath
-                    AddItem(CalamityDownedPlague, "CalamityMod", "Abomination", 600000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedPlague, "CalamityMod", "Abomination", 500000, ref shop, ref nextSlot);
                 }
 
                 //behemoth - true eater
@@ -1401,13 +1510,20 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Ravager
-                    AddItem(CalamityDownedRav, "CalamityMod", "AncientMedallion", 600000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedRav, "CalamityMod", "AncientMedallion", 500000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.blueMagicLoaded)
                 {
                     AddItem(BlueDownedAbom, "Bluemagic", "FoulOrb", 600000, ref shop, ref nextSlot);
                 }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Polypus
+                    //AddItem(JSPolypus, "Jetshift", "RottenShrimp", 600000, ref shop, ref nextSlot);
+                }
+
                 //Lunatic Cultist
                 AddItem(NPC.downedAncientCultist, "Fargowiltas", "CultistSummon", 750000, ref shop, ref nextSlot);
 
@@ -1457,6 +1573,13 @@ namespace Fargowiltas.NPCs
                     AddItem(AAYamata, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Oculus
+                    //Frezyn 
+                    //AddItem(JSFrezyn, "Jetshift", "Cryogen", 1000000, ref shop, ref nextSlot);
+                }
+
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     //Omega Obliterator
@@ -1502,6 +1625,15 @@ namespace Fargowiltas.NPCs
 
                 //abomination rematch - blue
 
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Mortalos
+                    //AddItem(JSMortalos, "Jetshift", "TheVoid", 1000000, ref shop, ref nextSlot);
+                    //Shift Rematch
+                    //AddItem(JSMortalos, "Jetshift", "ArtifactOfTheVoid", 1000000, ref shop, ref nextSlot);
+                }
+
+
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Brutalisk
@@ -1517,7 +1649,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Profaned Guardians
-                    AddItem(CalamityDownedGuardian, "CalamityMod", "ProfanedShard", 5000000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedGuardian, "CalamityMod", "ProfanedShard", 10000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.joostLoaded)
@@ -1598,8 +1730,18 @@ namespace Fargowiltas.NPCs
                     AddItem(DisarrayDownedDungeon, "Disarray", "DungeonAmalgamation", 15000000, ref shop, ref nextSlot);
                 }
 
+                if (Fargowiltas.instance.redemptionLoaded)
+                {
+                    //Thorn Rematch
+                    AddItem(RedeThornPZ, "Redemption", "LifeFruitOfThorns", 15000000, ref shop, ref nextSlot);
+                    //Eaglecrest Rematch
+                    AddItem(RedeEaglecrestPZ, "Redemption", "AncientSigil", 15000000, ref shop, ref nextSlot);
+                    //Nebuleus
+                    AddItem(RedeNeb, "Redemption", "NebSummon", 15000000, ref shop, ref nextSlot);
+                }
+
                 //spirit of purity
-                
+
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     AddItem(AASoC, "AAMod", "SpatialWheel ", 1500000, ref shop, ref nextSlot);
@@ -1610,13 +1752,19 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.calamityLoaded)
                 {
                     //Bumblebirb
-                    AddItem(CalamityDownedBirb, "CalamityMod", "BirbPheromones", 20000000, ref shop, ref nextSlot);
+                    AddItem(CalamityDownedBirb, "CalamityMod", "BirbPheromones", 5000000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.JSLoaded)
+                {
+                    //Crystal Conflict
+                    //AddItem(JSCCP2, "Jetshift", "CrownOfConflict", 20000000, ref shop, ref nextSlot);
                 }
 
                 //spirit of chaos
 
                 //spirit of purity rematch
-                
+
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Shen Doragon
@@ -1634,7 +1782,7 @@ namespace Fargowiltas.NPCs
                 //Mutant
                 if (Fargowiltas.instance.fargoLoaded)
                 {
-                    AddItem(FargoDownedMutant, "FargowiltasSouls", "AbominationnVoodooDoll", 20000000, ref shop, ref nextSlot);
+                    AddItem(FargoDownedMutant, "FargowiltasSouls", "MutantsCurse", 20000000, ref shop, ref nextSlot);
                 }
 
                 AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);
@@ -1658,7 +1806,12 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            if (NPC.downedMoonlord)
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
+            {
+                damage = 360;
+                knockback = 10f;
+            }
+            else if (NPC.downedMoonlord)
             {
                 damage = 500;
                 knockback = 10f;
@@ -1695,7 +1848,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            if (Fargowiltas.instance.fargoLoaded && FargoDownedFishEX)
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
             {
                 projType = ModLoader.GetMod("FargowiltasSouls").ProjectileType("MutantSpearThrownFriendly");
             }
@@ -1717,15 +1870,15 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
-            multiplier = 12f;
-            randomOffset = 2f;
-        }
-
-        public override void NPCLoot()
-        {
-            if (Main.rand.Next(4) == 0)
+            if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MutantGrabBag"));
+                multiplier = 25f;
+                randomOffset = 0f;
+            }
+            else
+            {
+                multiplier = 12f;
+                randomOffset = 2f;
             }
         }
 

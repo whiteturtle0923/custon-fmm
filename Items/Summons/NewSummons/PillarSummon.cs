@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -38,7 +39,14 @@ namespace Fargowiltas.Items.Summons.NewSummons
                 Projectile.NewProjectile(pos, Vector2.Zero, type, 0, 0, Main.myPlayer, pillars[i]);
             }
 
-            Main.NewText("The Celestial Pillars have awoken!", 175, 75);
+            if (Main.netMode == 2)
+            {
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The Celestial Pillars have awoken!"), new Color(175, 75, 255));
+            }
+            else
+            {
+                Main.NewText("The Celestial Pillars have awoken!", 175, 75, 255);
+            }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

@@ -115,7 +115,7 @@ namespace Fargowiltas
 
             ref bool current = ref currentSpawnRateTile[0];
             bool oldSpawnRateTile = current;
-            current = tileCounts[mod.TileType<RegalStatueSheet>()] > 0;
+            current = tileCounts[mod.TileType("RegalStatueSheet")] > 0;
 
             if (Main.netMode == 1 && current != oldSpawnRateTile)
             {

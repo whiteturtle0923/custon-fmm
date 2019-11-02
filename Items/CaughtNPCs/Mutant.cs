@@ -12,7 +12,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Mutant");
+            DisplayName.SetDefault("Mutant");
             Tooltip.SetDefault("'You're lucky I'm on your side.'");
         }
 
