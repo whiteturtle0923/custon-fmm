@@ -8,3 +8,10 @@ obj/Debug/*.cache
 obj/Debug/Fargowiltas.csproj.CoreCompileInputs.cache
 Fargowiltas.csproj
 Fargowiltas.csproj
+/.vs
+/Builds/Server/Intermediates
+/Builds/Client/Intermediates/Fargowiltas.csprojAssemblyReference.cache
+/obj/Debug/net45
+/obj/x86/Client/net45
+/obj
+/Properties

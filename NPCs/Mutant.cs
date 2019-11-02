@@ -268,10 +268,10 @@ namespace Fargowiltas.NPCs
         public bool AADjinn => AAMod.AAWorld.downedDjinn;
         public bool AASerpent => AAMod.AAWorld.downedSerpent;
         public bool AASag => AAMod.AAWorld.downedSag;
-        public bool AARetriever => AAMod.AAWorld.downedRetriever;
-        public bool AARaider => AAMod.AAWorld.downedRaider;
-        public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
-        public bool AATruffle => AAMod.AAWorld.downedTruffle;
+        //public bool AARetriever => AAMod.AAWorld.downedRetriever;
+        //public bool AARaider => AAMod.AAWorld.downedRaider;
+        //public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
+        //public bool AATruffle => AAMod.AAWorld.downedTruffle;
         public bool AARajah => AAMod.AAWorld.downedRajah;
         public bool AAEquinox => AAMod.AAWorld.downedEquinox;
         public bool AASisters => AAMod.AAWorld.downedSisters;
@@ -283,8 +283,8 @@ namespace Fargowiltas.NPCs
         public bool AAZeroA => AAMod.AAWorld.downedZero && Main.expertMode;
         public bool AAShen => AAMod.AAWorld.downedShen;
         public bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
-        public bool AAIZ => AAMod.AAWorld.downedIZ;
-        public bool AASoC => AAMod.AAWorld.downedSoC;
+        //public bool AAIZ => AAMod.AAWorld.downedIZ;
+        //public bool AASoC => AAMod.AAWorld.downedSoC;
 
         //pinky
         public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
@@ -1221,13 +1221,13 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.aaLoaded)
                 {
                     //Retriever
-                    AddItem(AARetriever, "AAMod", "CyberneticClaw", 250000, ref shop, ref nextSlot);
+                    //AddItem(AARetriever, "AAMod", "CyberneticClaw", 250000, ref shop, ref nextSlot);
                     //Raider Ultima
-                    AddItem(AARaider, "AAMod", "CyberneticBell", 250000, ref shop, ref nextSlot);
+                    //AddItem(AARaider, "AAMod", "CyberneticBell", 250000, ref shop, ref nextSlot);
                     //Orthrus X
-                    AddItem(AAOrthrus, "AAMod", "ScrapHeap", 250000, ref shop, ref nextSlot);
+                    //AddItem(AAOrthrus, "AAMod", "ScrapHeap", 250000, ref shop, ref nextSlot);
                     //Techno Truffle
-                    AddItem(AATruffle, "AAMod", "CyberneticShroom", 250000, ref shop, ref nextSlot);
+                    //AddItem(AATruffle, "AAMod", "CyberneticShroom", 250000, ref shop, ref nextSlot);
                     //All Storm bosses
                     //AddItem((AARetriever && AARaider && AAOrthrus), "Fargowiltas", "CyberneticAmalgam", 600000, ref shop, ref nextSlot);
                 }
@@ -1744,7 +1744,7 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.instance.aaLoaded)
                 {
-                    AddItem(AASoC, "AAMod", "SpatialWheel ", 1500000, ref shop, ref nextSlot);
+                    //AddItem(AASoC, "AAMod", "SpatialWheel ", 1500000, ref shop, ref nextSlot);
                     //Zero
                     AddItem(AAZero, "AAMod", "ZeroTesseract", 15000000, ref shop, ref nextSlot);
                 }
@@ -1770,7 +1770,7 @@ namespace Fargowiltas.NPCs
                     //Shen Doragon
                     AddItem(AAShen, "AAMod", "ChaosSigil", 20000000, ref shop, ref nextSlot);
                     //Infinity Zero
-                    AddItem(AAIZ, "AAMod", "InfinityOverloader", 30000000, ref shop, ref nextSlot);
+                    //AddItem(AAIZ, "AAMod", "InfinityOverloader", 30000000, ref shop, ref nextSlot);
                 }
 
                 //Fishron EX
