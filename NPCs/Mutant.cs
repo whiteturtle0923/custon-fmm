@@ -1808,7 +1808,7 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
             {
-                damage = 360;
+                damage = 720;
                 knockback = 10f;
             }
             else if (NPC.downedMoonlord)
