@@ -11,10 +11,10 @@ Global
 		Server|x86 = Server|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Client|x86.ActiveCfg = Client|x86
-		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Client|x86.Build.0 = Client|x86
-		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Server|x86.ActiveCfg = Server|x86
-		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Server|x86.Build.0 = Server|x86
+		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Client|x86.ActiveCfg = Debug|Any CPU
+		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Client|x86.Build.0 = Debug|Any CPU
+		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Server|x86.ActiveCfg = Debug|Any CPU
+		{EA6D10D1-6F8C-4EFD-BACB-8D3FF16422D1}.Server|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
