@@ -59,7 +59,7 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            return NPC.AnyNPCs(mod.NPCType("Mutant"));
+            return FargoWorld.downedRareEnemy || NPC.AnyNPCs(mod.NPCType("Mutant"));
         }
 
         public override string TownNPCName()
