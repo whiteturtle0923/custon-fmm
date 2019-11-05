@@ -107,14 +107,14 @@ namespace Fargowiltas.NPCs
                 return "What's that? You want to fight me? ...nah, I can't put up a good fight on my own.";
 
             if (Main.bloodMoon && Main.rand.Next(2) == 0)
-                return "The blood moon's effects? I'm not exactly human, so...";
+                return "The blood moon's effects? I'm not human anymore, so nope!";
 
             IList<string> dialogue = new List<string>();
 
             int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
             if (mutant != -1)
             {
-                dialogue.Add("Can you help me tell " + Main.npc[mutant].GivenName + "to put some clothes on?");
+                dialogue.Add("Can you tell " + Main.npc[mutant].GivenName + "to put some clothes on?");
                 dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding. That'd be " + Main.npc[mutant].GivenName + "'s job.");
                 dialogue.Add(Main.npc[mutant].GivenName + " is here! That's my big brother!");
             }
@@ -141,13 +141,13 @@ namespace Fargowiltas.NPCs
             }
 
             if (Fargowiltas.instance.fargoLoaded && MasochistMode)
-                dialogue.Add("Embrace suffering... and while you're at it, why not embrace another purchase?");
-
+                dialogue.Add("Embrace suffering... and while you're at it, embrace another purchase!");
+            
             dialogue.Add("Did you know? The only real music genres are death metal and artcore.");
             dialogue.Add("I'll have you know I'm over a hundred Fargo years old! Don't ask me how long a Fargo year is.");
             dialogue.Add("I might be able to afford a taller body if you keep buying!");
             dialogue.Add("Where's that screm cat?");
-            dialogue.Add(Main.player[Main.myPlayer].name + "! I saw something rodent-y just now! You don't a hamster infestation here, right? Right!?");
+            dialogue.Add(Main.player[Main.myPlayer].name + "! I saw something rodent-y just now! You don't a hamster infestation, right? Right!?");
             dialogue.Add("You're the Terrarian? Honestly, I was expecting someone a little... taller.");
             dialogue.Add("Don't look at me like that! The only thing I've deviated from is my humanity.");
             dialogue.Add("Rip and tear and buy from me for more things to rip and tear!");
@@ -155,6 +155,7 @@ namespace Fargowiltas.NPCs
             dialogue.Add("Wait a second. Are you sure this house isn't what they call 'prison?'");
             dialogue.Add("Deviantt has awoken! Quick, give her all your money to defeat her!");
             dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding.");
+            dialogue.Add("Hmm, I can tell! You've killed a lot, but you haven't killed enough!");
 
             return dialogue[Main.rand.Next(dialogue.Count)];
         }
