@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -37,8 +38,8 @@ namespace Fargowiltas.NPCs
             npc.height = 40;
             npc.aiStyle = 7;
             npc.damage = 10;
-            npc.defense = 15;
-            npc.lifeMax = 250;
+            npc.defense = NPC.downedMoonlord ? 50 : 15;
+            npc.lifeMax = NPC.downedMoonlord ? 5000 : 250;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
@@ -66,7 +67,7 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.instance.fargoLoaded && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
                 return false;
-            return (NPC.downedGoblins || (Fargowiltas.instance.fargoLoaded && MasochistMode));
+            return NPC.downedGoblins;
         }
 
         public override string TownNPCName()
@@ -176,11 +177,7 @@ namespace Fargowiltas.NPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Lang.inter[28].Value;
-
-            if (Fargowiltas.instance.fargoLoaded && MasochistMode)
-            {
-                button2 = "Help";
-            }
+            button2 = "Cancel Event";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -191,89 +188,87 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                Player p = Main.player[Main.myPlayer];
-                FargowiltasSouls.FargoPlayer fargoPlayer = p.GetModPlayer<FargowiltasSouls.FargoPlayer>();
+                bool clearedEvent = false;
 
-                if (Main.rand.Next(4) == 0)
+                if (Main.invasionType != 0)
                 {
-                    if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
-                        Main.npcChatText = "What's that? You want to fight me? ...maybe in 2023.";
-                    else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
-                        Main.npcChatText = "What's that? You want to fight my brother? ...maybe if he had a reason to.";
-                    else if (NPC.downedMoonlord)
-                        Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
-                    else if (NPC.downedAncientCultist)
-                        Main.npcChatText = "Only a specific type of weapon will work against each specific pillar. As for that moon guy, his weakness will keep changing.";
-                    else if (NPC.downedFishron)
-                        Main.npcChatText = "Some powerful enemies like that dungeon guy can create their own arenas. You won't be able to escape, so make full use of the room you do have.";
-                    else if (NPC.downedGolemBoss)
-                        Main.npcChatText = "Did you beat that fish pig dragon yet? He's strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?";
-                    else if (NPC.downedPlantBoss)
-                        Main.npcChatText = "That golem? It gets upset when you leave the temple, so fighting in there is best.";
-                    else if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                        Main.npcChatText = "That overgrown plant inflicts a special venom that helps her works herself into a frenzy against you. She also has a ring of crystal leaves, but minions go through it.";
-                    else if (Main.hardMode)
-                    {
-                        if (!NPC.downedMechBoss1)
-                            Main.npcChatText = "That metal worm has a few upgrades. It'll start shooting dark stars and start flying as you damage it. Too bad you can't stay in the air forever, right?";
-                        else if (!NPC.downedMechBoss2)
-                            Main.npcChatText = "I saw that metal eye spinning while firing a huge laser the other day. Too bad you can't teleport through an attack like that on command, right?";
-                        else if (!NPC.downedMechBoss3)
-                            Main.npcChatText = "You'll have to destroy the limbs before you can hurt that metal skull. But once it reveals its true form, focus on taking down the head instead.";
-                        else
-                            Main.npcChatText = "Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.";
-                    }
-                    else if (NPC.downedBoss3)
-                        Main.npcChatText = "That thing's mouth is as good as immune to damage, so you'll have to aim for the eyes. What thing? You know, that thing.";
-                    else if (NPC.downedQueenBee)
-                        Main.npcChatText = "The master of the dungeon can revive itself with a sliver of life for a last stand. Be ready to run for it when you make the killing blow.";
-                    else if (NPC.downedBoss2)
-                        Main.npcChatText = "The queen bee will summon her progeny for backup. She's harder to hurt while they're there, so take them out first.";
-                    else if (NPC.downedBoss1)
-                        Main.npcChatText = WorldGen.crimson ? "When the brain gets mad, it'll confuse you every few seconds. Knowledge is power!" : "When you hurt the world eater, its segments will break off as smaller eaters. Don't let them pile up!";
-                    else if (NPC.downedSlimeKing)
-                        Main.npcChatText = "Keep an eye on Cthulhu's eye when you're fighting. It might just teleport behind you whenever it finishes a set of mad dashes.";
-                    else
-                        Main.npcChatText = "Gonna fight that slime king soon? Don't spend too long up and out of his reach or he'll get mad. Very, very mad.";
+                    clearedEvent = true;
+                    Main.invasionType = 0; 
+                }
+                if (Main.pumpkinMoon)
+                {
+                    clearedEvent = true;
+                    Main.pumpkinMoon = false;
+                }
+                if (Main.snowMoon)
+                {
+                    clearedEvent = true;
+                    Main.snowMoon = false;
+                }
+                if (Main.eclipse)
+                {
+                    clearedEvent = true;
+                    Main.eclipse = false;
+                }
+                if (Main.bloodMoon)
+                {
+                    clearedEvent = true;
+                    Main.bloodMoon = false;
+                }
+                if (Main.raining)
+                {
+                    clearedEvent = true;
+                    Main.raining = false;
+                }
+                if (Main.slimeRain)
+                {
+                    clearedEvent = true;
+                    Main.StopSlimeRain();
+                }
+                if (BirthdayParty.PartyIsUp)
+                {
+                    clearedEvent = true;
+                    BirthdayParty.WorldClear();
+                }
+                if (DD2Event.Ongoing)
+                {
+                    clearedEvent = true;
+                    DD2Event.StopInvasion();
+                }
+                if (Sandstorm.Happening)
+                {
+                    clearedEvent = true;
+                    Sandstorm.Happening = false;
+                    Sandstorm.TimeLeft = 0;
+                }
+                if (NPC.LunarApocalypseIsUp)
+                {
+                    clearedEvent = true;
+                    NPC.LunarApocalypseIsUp = false;
+                    NPC.ShieldStrengthTowerNebula = 0;
+                    NPC.ShieldStrengthTowerSolar = 0;
+                    NPC.ShieldStrengthTowerStardust = 0;
+                    NPC.ShieldStrengthTowerVortex = 0;
+                    for (int i = 0; i < Main.maxNPCs; i++) //purge all towers
+                        if (Main.npc[i].active
+                            && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar
+                            || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
+                        {
+                            Main.npc[i].life = 0;
+                            Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
+                        }
+                }
+
+                if (clearedEvent)
+                {
+                    if (Main.netMode != 0)
+                        NetMessage.SendData(7);
+                    Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0, 1f, 0.0f);
+                    Main.npcChatText = "Hocus pocus, the event is over.";
                 }
                 else
                 {
-                    IList<string> dialogue = new List<string>();
-
-                    dialogue.Add("You're more masochistic than I thought, aren't you?");
-                    dialogue.Add("Seems like everyone's learning to project auras these days. If you look at the particles, you can see whether it'll affect you at close range or a distance.");
-                    dialogue.Add("There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once.");
-                    dialogue.Add("I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.");
-                    dialogue.Add("Powerful enemies can drop all sorts of helpful loot. They'll also come back for revenge after you beat them, so keep an eye out for that.");
-                    dialogue.Add("Why bother fishing when you can massacre bosses for the same goods? With spawners provided by my brother of course!");
-                    dialogue.Add("Watch out for those fish. Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.");
-
-                    if (!p.accFlipper && !p.gills && !fargoPlayer.MutantAntibodies)
-                        dialogue.Add("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?");
-                    if (!p.fireWalk && !p.buffImmune[BuffID.OnFire])
-                        dialogue.Add("The underworld has gotten a lot hotter since the last time I visited. I hear an obsidian is a good luck charm against burning alive, though.");
-                    if (!p.buffImmune[BuffID.Suffocation] && !fargoPlayer.PureHeart)
-                        dialogue.Add("Want to have a breath-holding contest? The empty vacuum of space would be perfect.");
-
-                    if (p.statLifeMax < 400)
-                        dialogue.Add("I don't have any Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share...");
-                    if (NPC.downedBoss3)
-                        dialogue.Add("Dungeon Guardian sent me photos of their kids earlier. Cute little skull demons hiding in other skeletons, aren't they? Oh, and their drop wards off random boss spawns, I guess.");
-
-                    if (Main.hardMode)
-                    {
-                        if (!fargoPlayer.PureHeart)
-                            dialogue.Add("The spirits of light and dark stopped by and they sounded pretty upset with you. Don't be too surprised if something happens to you for entering their territory.");
-                        dialogue.Add("They're not in my shop, but why not go hunting for some rare monsters every once in a while? Plenty of treasure to be looted and all that.");
-                        dialogue.Add("The desert monsters keep sending me letters about all the fossils they're collecting. I don't get the craze about it, myself.");
-                        if (p.statLifeMax < 500)
-                            dialogue.Add("If you ask me, Plantera is really letting herself go. Chlorophyte and Life Fruit aren't THAT healthy!");
-                    }
-
-                    if (NPC.downedPlantBoss)
-                        dialogue.Add("Trick or treat? Merry Christmas? I don't have anything for you, go ask Pumpking or Ice Queen.");
-
-                    Main.npcChatText = dialogue[Main.rand.Next(dialogue.Count)];
+                    Main.npcChatText = "I don't think there's an event right now.";
                 }
             }
         }
