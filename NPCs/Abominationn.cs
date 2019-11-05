@@ -254,7 +254,6 @@ namespace Fargowiltas.NPCs
                             && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar
                             || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
                         {
-                            Main.npc[i].life = 0;
                             Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
                         }
                 }
