@@ -192,7 +192,7 @@ namespace Fargowiltas.NPCs
                     else if (NPC.downedPlantBoss)
                         Main.npcChatText = "That golem? It gets upset when you leave the temple, so fighting in there is best.";
                     else if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                        Main.npcChatText = "That overgrown plant inflicts a special venom that helps her works herself into a frenzy against you. She also has a ring of crystal leaves, but minions go through it.";
+                        Main.npcChatText = "That overgrown plant inflicts a special venom that works her into an enraged frenzy. She also has a ring of crystal leaves, but minions go through it.";
                     else if (Main.hardMode)
                     {
                         if (!NPC.downedMechBoss1)
