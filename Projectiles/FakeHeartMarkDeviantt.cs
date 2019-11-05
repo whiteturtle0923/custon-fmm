@@ -33,7 +33,7 @@ namespace Fargowiltas.Projectiles
             if (Main.netMode != 1)
             {
                 for (int i = -3; i < 3; i++)
-                    Projectile.NewProjectile(projectile.Center, -projectile.velocity.RotatedBy(Math.PI / 7 * i), mod.ProjectileType("FakeHeart2Deviantt"), projectile.damage, projectile.knockBack, projectile.owner, -1, 90 + 10 * i);
+                    Projectile.NewProjectile(projectile.Center, -projectile.velocity.RotatedBy(Math.PI / 7 * i), mod.ProjectileType("FakeHeart2Deviantt"), projectile.damage, projectile.knockBack, projectile.owner, -1, 120 + 20 * i);
             }
             projectile.Kill();
         }

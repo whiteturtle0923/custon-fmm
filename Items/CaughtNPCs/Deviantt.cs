@@ -21,7 +21,7 @@ namespace Fargowiltas.Items.CaughtNPCs
             base.SetDefaults();
             item.makeNPC = (short)mod.NPCType("Deviantt");
 
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 25));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 23));
         }
 
         public override string Texture => "Fargowiltas/NPCs/Deviantt";

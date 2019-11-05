@@ -14,6 +14,8 @@ namespace Fargowiltas.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fake Heart");
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 7;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 2;
         }
 
         public override void SetDefaults()
@@ -23,9 +25,15 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 600;
             projectile.friendly = true;
             projectile.aiStyle = -1;
+            projectile.penetrate = 7;
 
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
+
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 20;
+
+            projectile.extraUpdates = 1;
         }
 
         public override void AI()
@@ -41,7 +49,7 @@ namespace Fargowiltas.Projectiles
 
             if (--projectile.ai[1] == 0)
             {
-                projectile.velocity = projectile.localAI[1].ToRotationVector2() * -20;
+                projectile.velocity = projectile.localAI[1].ToRotationVector2() * -12.5f;
             }
             else if (projectile.ai[1] < 0)
             {
@@ -65,7 +73,7 @@ namespace Fargowiltas.Projectiles
                 }
                 else
                 {
-                    if (++projectile.localAI[1] > 6f)
+                    if (++projectile.localAI[1] > 12f)
                     {
                         projectile.localAI[1] = 0f;
                         float maxDistance = 700f;
@@ -112,6 +120,19 @@ namespace Fargowiltas.Projectiles
             int y3 = num156 * projectile.frame; //ypos of upper left corner of sprite to draw
             Rectangle rectangle = new Rectangle(0, y3, texture2D13.Width, num156);
             Vector2 origin2 = rectangle.Size() / 2f;
+
+            Color color26 = lightColor;
+            color26 = projectile.GetAlpha(color26);
+
+            for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[projectile.type]; i++)
+            {
+                Color color27 = color26;
+                color27 *= (float)(ProjectileID.Sets.TrailCacheLength[projectile.type] - i) / ProjectileID.Sets.TrailCacheLength[projectile.type];
+                Vector2 value4 = projectile.oldPos[i];
+                float num165 = projectile.oldRot[i];
+                Main.spriteBatch.Draw(texture2D13, value4 + projectile.Size / 2f - Main.screenPosition + new Vector2(0, projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), color27, num165, origin2, projectile.scale, SpriteEffects.None, 0f);
+            }
+
             Main.spriteBatch.Draw(texture2D13, projectile.Center - Main.screenPosition + new Vector2(0f, projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), projectile.GetAlpha(lightColor), projectile.rotation, origin2, projectile.scale, SpriteEffects.None, 0f);
             return false;
         }
