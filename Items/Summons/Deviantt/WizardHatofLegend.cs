@@ -16,5 +16,10 @@ namespace Fargowiltas.Items.Summons.Deviantt
             DisplayName.SetDefault("Wizard Hat of Legend");
             Tooltip.SetDefault("Summons Rune Wizard");
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            return !Main.dayTime || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
+        }
     }
 }

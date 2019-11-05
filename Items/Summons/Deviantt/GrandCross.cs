@@ -16,5 +16,10 @@ namespace Fargowiltas.Items.Summons.Deviantt
             DisplayName.SetDefault("Grand Cross");
             Tooltip.SetDefault("Summons Paladin");
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            return !Main.dayTime || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
+        }
     }
 }

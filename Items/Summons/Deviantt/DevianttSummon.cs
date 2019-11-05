@@ -6,9 +6,9 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class DevianttSummon : ModItem
+    public abstract class DevianttSummon : ModItem
     {
-        public int type = NPCID.BlueSlime;
+        public virtual int summonType => NPCID.BlueSlime;
 
         public override void SetDefaults()
         {
@@ -28,7 +28,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
 
-            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, type);
+            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, summonType);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

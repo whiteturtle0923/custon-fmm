@@ -9,7 +9,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
     public class CorruptChest : DevianttSummon
     {
         public override string Texture => "Fargowiltas/Items/Placeholder";
-        public override int summonType => NPCID.BigMimicCorrupt;
+        public override int summonType => NPCID.BigMimicCorruption;
 
         public override void SetStaticDefaults()
         {

@@ -16,5 +16,10 @@ namespace Fargowiltas.Items.Summons.Deviantt
             DisplayName.SetDefault("Clown Shoe");
             Tooltip.SetDefault("Summons Clown");
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            return !Main.dayTime || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
+        }
     }
 }

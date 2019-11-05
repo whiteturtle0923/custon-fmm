@@ -924,6 +924,11 @@ namespace Fargowiltas.NPCs
                     FargoWorld.downedSandElemental = true;
                     break;
 
+                case NPCID.Mothron:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMothron = true;
+                    break;
+
                 case NPCID.BigMimicCorruption:
                     FargoWorld.downedRareEnemy = true;
                     FargoWorld.downedMimicCorrupt = true;

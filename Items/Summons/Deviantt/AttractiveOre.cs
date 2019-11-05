@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class PinkSlimeCrown : DevianttSummon
+    public class AttractiveOre : DevianttSummon
     {
         public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.UndeadMiner;
@@ -17,18 +17,9 @@ namespace Fargowiltas.Items.Summons.Deviantt
             Tooltip.SetDefault("Summons Undead Miner");
         }
 
-        public override void SetDefaults()
+        public override bool CanUseItem(Player player)
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 1;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = 4;
-            item.consumable = true;
-            item.shoot = mod.ProjectileType("SpawnProj");
+            return !Main.dayTime || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
         }
     }
 }

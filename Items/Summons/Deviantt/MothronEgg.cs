@@ -16,5 +16,10 @@ namespace Fargowiltas.Items.Summons.Deviantt
             DisplayName.SetDefault("Mothron Egg");
             Tooltip.SetDefault("Summons Mothron");
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            return Main.eclipse;
+        }
     }
 }

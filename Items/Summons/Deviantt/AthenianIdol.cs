@@ -16,5 +16,10 @@ namespace Fargowiltas.Items.Summons.Deviantt
             DisplayName.SetDefault("Athenian Idol");
             Tooltip.SetDefault("Summons Medusa");
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            return !Main.dayTime || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
+        }
     }
 }
