@@ -57,6 +57,9 @@ namespace Fargowiltas.NPCs
             npc.buffImmune[BuffID.Suffocation] = true;
         }
 
+        public bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
+        public bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
+
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
             return FargoWorld.downedRareEnemy || NPC.AnyNPCs(mod.NPCType("Mutant"));
@@ -100,240 +103,60 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
+            if (Main.rand.Next(25) == 0)
+                return "What's that? You want to fight me? ...nah, I can't put up a good fight on my own.";
+
+            if (Main.bloodMoon && Main.rand.Next(2) == 0)
+                return "The blood moon's effects? I'm not exactly human, so...";
+
             IList<string> dialogue = new List<string>();
 
+            int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
+            if (mutant != -1)
+            {
+                dialogue.Add("Can you help me tell " + Main.npc[mutant].GivenName + "to put some clothes on?");
+                dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding. That'd be " + Main.npc[mutant].GivenName + "'s job.");
+                dialogue.Add(Main.npc[mutant].GivenName + " is here! That's my big brother!");
+            }
 
-            
+            int abom = NPC.FindFirstNPC(mod.NPCType("Abominationn"));
+            if (abom != -1)
+            {
+                if (Fargowiltas.instance.fargoLoaded && MasochistMode && Main.rand.Next(5) == 0)
+                    return "You made a good choice with this world! Don't forget to chat with " + Main.npc[abom].GivenName + " if you need any tips!";
+
+                dialogue.Add(Main.npc[abom].GivenName + " is here! That's my big-but-not-biggest brother!");
+            }
+
+            int lumberjack = NPC.FindFirstNPC(mod.NPCType("LumberJack"));
+            if (lumberjack != -1)
+            {
+                dialogue.Add("What's that? You want to fight " + Main.npc[lumberjack].GivenName + "? ...even I know better than to try.");
+            }
+
+            int angler = NPC.FindFirstNPC(NPCID.Angler);
+            if (angler != -1)
+            {
+                dialogue.Add("Have you ever considered throwing " + Main.npc[angler].GivenName + " back where you found him?");
+            }
+
+            if (Fargowiltas.instance.fargoLoaded && MasochistMode)
+                dialogue.Add("Embrace suffering... and while you're at it, why not embrace another purchase?");
+
             dialogue.Add("Did you know? The only real music genres are death metal and artcore.");
+            dialogue.Add("I'll have you know I'm over a hundred Fargo years old! Don't ask me how long a Fargo year is.");
+            dialogue.Add("I might be able to afford a taller body if you keep buying!");
+            dialogue.Add("Where's that screm cat?");
+            dialogue.Add(Main.player[Main.myPlayer].name + "! I saw something rodent-y just now! You don't a hamster infestation here, right? Right!?");
+            dialogue.Add("You're the Terrarian? Honestly, I was expecting someone a little... taller.");
+            dialogue.Add("Don't look at me like that! The only thing I've deviated from is my humanity.");
+            dialogue.Add("Rip and tear and buy from me for more things to rip and tear!");
+            dialogue.Add("What's a chee-bee doe-goe?");
+            dialogue.Add("Wait a second. Are you sure this house isn't what they call 'prison?'");
+            dialogue.Add("Deviantt has awoken! Quick, give her all your money to defeat her!");
+            dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding.");
 
             return dialogue[Main.rand.Next(dialogue.Count)];
-
-
-            if (NPC.downedMoonlord && Fargowiltas.instance.fargoLoaded && Main.rand.Next(32) == 0)
-            {
-                return "Now that you've defeated the big guy, I'd say it's time to start collecting those materials!";
-            }
-
-            if (Fargowiltas.instance.calamityLoaded && Main.rand.Next(63) == 0)
-            {
-                return "Why would you do this.";
-            }
-
-            if (Fargowiltas.instance.calamityLoaded && Fargowiltas.instance.thoriumLoaded && Main.rand.Next(62) == 0)
-            {
-                return "I feel a great imbalance in this world.";
-            }
-
-            if (Fargowiltas.instance.thoriumLoaded && Main.rand.Next(61) == 0)
-            {
-                return "A great choice, shame about that first desert boss thing though.";
-            }
-
-            if (Main.pumpkinMoon)
-            {
-                return "A bit spooky tonight, isn't it.";
-            }
-
-            if (Main.snowMoon)
-            {
-                return "I'd ask for a coat, but I don't think you have any my size.";
-            }
-
-            if (Main.slimeRain)
-            {
-                return "Weather seems odd today, wouldn't you agree?";
-            }
-
-            if (Main.bloodMoon)
-            {
-                switch (Main.rand.Next(1))
-                {
-                    case 0:
-                        return "Lovely night, isn't it?";
-
-                    default:
-                        return "I hope the constant arguing I'm hearing isn't my fault.";
-                }
-            }
-
-            //specific other npc quotes
-            int nurse = NPC.FindFirstNPC(NPCID.Nurse);
-            int witchDoctor = NPC.FindFirstNPC(NPCID.WitchDoctor);
-            int dryad = NPC.FindFirstNPC(NPCID.Dryad);
-            int stylist = NPC.FindFirstNPC(NPCID.Stylist);
-            int guide = NPC.FindFirstNPC(NPCID.Guide);
-            int tax = NPC.FindFirstNPC(NPCID.TaxCollector);
-            int truffle = NPC.FindFirstNPC(NPCID.Truffle);
-            int cyborg = NPC.FindFirstNPC(NPCID.Cyborg);
-            int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
-            int demoman = NPC.FindFirstNPC(NPCID.Demolitionist);
-            int tavernkeep = NPC.FindFirstNPC(NPCID.DD2Bartender);
-            int dyeTrader = NPC.FindFirstNPC(NPCID.DyeTrader);
-            int lumberJack = NPC.FindFirstNPC(mod.NPCType("LumberJack"));
-
-            if (BirthdayParty.PartyIsUp)
-            {
-                switch (Main.rand.Next(2))
-                {
-                    case 0:
-                        return Main.npc[partyGirl].GivenName + " is the one who invited me, I don't understand why though.";
-
-                    default:
-                        return "I don't know what everyone's so happy about, but as long as nobody mistakes me for a Pigronata, I'm happy too.";
-                }
-            }
-
-            if (lumberJack >= 0 && Main.rand.Next(60) == 0)
-            {
-                return "It's okay " + Main.npc[npc.whoAmI].GivenName + ", just don't look straight into " + Main.npc[lumberJack].GivenName + "'s eyes. He can't scare you that way...";
-            }
-            if (nurse >= 0 && Main.rand.Next(59) == 0)
-            {
-                return "Whenever we're alone, " + Main.npc[nurse].GivenName + " keeps throwing syringes at me, no matter how many times I tell her to stop!";
-            }
-            if (witchDoctor >= 0 && Main.rand.Next(58) == 0)
-            {
-                return "Please go tell " + Main.npc[witchDoctor].GivenName + " to drop the 'mystical' shtick, I mean, come on! I get it, you make tainted water or something.";
-            }
-            if (dryad >= 0 && Main.rand.Next(57) == 0)
-            {
-                return "Why does " + Main.npc[dryad].GivenName + "'s outfit make my wings flutter?";
-            }
-            if (stylist >= 0 && Main.rand.Next(56) == 0)
-            {
-                return Main.npc[stylist].GivenName + " once gave me a wig... I look hideous with long hair.";
-            }
-            if (truffle >= 0 && Main.rand.Next(55) == 0)
-            {
-                return "That mutated mushroom seems like my type of fella.";
-            }
-            if (tax >= 0 && Main.rand.Next(54) == 0)
-            {
-                return Main.npc[tax].GivenName + " keeps asking me for money, but he won't accept my spawners!";
-            }
-            if (guide >= 0 && Main.rand.Next(53) == 0)
-            {
-                return "Any idea why " + Main.npc[guide].GivenName + " is always cowering in fear when I get near him?";
-            }
-            if (truffle >= 0 && witchDoctor >= 0 && cyborg >= 0 && Main.rand.Next(52) == 0)
-            {
-                return "If any of us could play instruments, I'd totally start a band with " + Main.npc[witchDoctor].GivenName + ", " + Main.npc[truffle].GivenName + ", and " + Main.npc[cyborg].GivenName + ".";
-            }
-            if (partyGirl >= 0 && Main.rand.Next(51) == 0)
-            {
-                return "Man," + Main.npc[partyGirl].GivenName + "'s confetti keeps getting stuck to my wings";
-            }
-            if (demoman >= 0 && Main.rand.Next(50) == 0)
-            {
-                return "I'm surprised " + Main.npc[demoman].GivenName + " hasn't blown a hole in the floor yet, on second thought that sounds fun.";
-            }
-            if (tavernkeep >= 0 && Main.rand.Next(49) == 0)
-            {
-                return Main.npc[tavernkeep].GivenName + " keeps suggesting I drink some beer, something tells me he wouldn't like me when I'm drunk though.";
-            }
-            if (dyeTrader >= 0 && Main.rand.Next(48) == 0)
-            {
-                return Main.npc[dyeTrader].GivenName + " wants to see what I would look like in blue... I don't know how to feel.";
-            }
-
-            if (Main.dayTime != true && Main.rand.Next(20) == 0)
-            {
-                return "I'd follow and help, but I'd much rather sit around right now.";
-            }
-
-            switch (Main.rand.Next(45))
-            {
-                case 0:
-                    return "Savagery, barbarism, bloodthirst, that's what I like seeing in people.";
-                case 1:
-                    return "The stronger you get, the more stuff I sell. Makes sense, right?";
-                case 2:
-                    return "There's something all of you have that I don't... Death perception, I think it's called?";
-                case 3:
-                    return "It would be pretty cool if I sold a summon for myself...";
-                case 4:
-                    return "The only way to get stronger is to keep buying from me and in bulk too!";
-                case 5:
-                    return "Why are you looking at me like that, all I did was eat an apple.";
-                case 6:
-                    return "Don't bother with anyone else, all you'll ever need is right here.";
-                case 7:
-                    return "You're lucky I'm on your side.";
-                case 8:
-                    return "Thanks for the house, I guess.";
-                case 9:
-                    return "Why yes I would love a ham and swiss sandwich.";
-                case 10:
-                    return "Should I start wearing clothes? ...Nah.";
-                case 11:
-                    return "It's not like I can actually use all the gold you're spending.";
-                case 12:
-                    return "Violence for violence is the law of the beast.";
-                case 13:
-                    return "Those guys really need to get more creative. All of their first bosses are desert themed!";
-                case 14:
-                    return "You say you want to know how a Mutant and Abominationn are brothers? You're better off not knowing.";
-                case 15:
-                    return "I'm all you need for a calamity.";
-                case 16:
-                    return "Everything shall bow before me! ...after you make this purchase.";
-                case 17:
-                    return "It's clear that I'm helping you out, but uh.. what's in this for me? A house you say? I eat zombies for breakfast.";
-                case 18:
-                    return "Can I jump? No, I don't have something called a 'spacebar'.";
-                case 19:
-                    return "Got your nose, I needed one to replace mine.";
-                case 20:
-                    return "What's a Terry?";
-                case 21:
-                    return "Why do so many creatures carry around a weird looking blue doll? The world may never know.";
-                case 22:
-                    return "Impending doom approaches. ...If you don't buy anything of course.";
-                case 23:
-                    return "I've heard of a '3rd dimension', I wonder what that looks like.";
-                case 24:
-                    return "Boy don't I look fabulous today.";
-                case 25:
-                    return "You have fewer friends than I do eyes.";
-                case 26:
-                    return "The ocean is a dangerous place, I wonder where Diver is?";
-                case 27:
-                    return "Do you know what an Ee-arth is?";
-                case 28:
-                    return "I can't even spell 'apotheosis', do you expect me to know what it is?";
-                case 29:
-                    return "Where do monsters get their gold from? ...I don't have pockets you know.";
-                case 30:
-                    return "Dogs are cool and all, but cats dont try to bite my brain.";
-                case 31:
-                    return "Beware the green dragon... What's that face mean?";
-                case 32:
-                    return "Where is this O-hi-o I keep hearing about.";
-                case 33:
-                    return "I've told you 56 times already, I'm busy... Oh wait you want to buy something, I suppose I have time.";
-                case 34:
-                    return "I've heard of a 'Soul of Souls' that only exists in 2015.";
-                case 35:
-                    return "Adding EX after everything makes it way more difficult.";
-                case 36:
-                    return "I think that all modern art looks great, especially the bloody stuff.";
-                case 37:
-                    return "How many guides does it take to change a lightbulb? ... I don't know, how about you ask him.";
-                case 38:
-                    return "Good thing I don't have a bed, I'd probably never leave it.";
-                case 39:
-                    return "What's this about an update? Sounds rare.";
-                case 40:
-                    return "If you need me I'll be slacking off somewhere.";
-                case 41:
-                    return "What do you mean who is Fargo!";
-                case 42:
-                    return "Have you seen the ech cat?";
-                case 43:
-                    return "I don't understand music nowadays, I prefer some smooth jazz... or the dying screams of monsters.";
-                default:
-                    return "Cthulhu's got nothing on me!";
-            }
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
