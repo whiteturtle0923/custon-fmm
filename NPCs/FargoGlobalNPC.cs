@@ -944,6 +944,16 @@ namespace Fargowiltas.NPCs
                     FargoWorld.downedMimicJungle = true;
                     break;
 
+                case NPCID.GoblinSummoner:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedGoblinSummoner = true;
+                    break;
+
+                case NPCID.PirateShip:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedFlyingDutchman = true;
+                    break;
+
                 default:
                     break;
             }

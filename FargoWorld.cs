@@ -34,13 +34,13 @@ namespace Fargowiltas
         public static bool downedClown;
         public static bool downedIceGolem;
         public static bool downedSandElemental;
-        //public static bool downedGoblinSummoner;
         public static bool downedMothron;
-        //public static bool downedFlyingDutchman;
         public static bool downedMimicHallow;
         public static bool downedMimicCorrupt;
         public static bool downedMimicCrimson;
         public static bool downedMimicJungle;
+        public static bool downedGoblinSummoner;
+        public static bool downedFlyingDutchman;
 
         private static bool[] currentSpawnRateTile;
 
@@ -74,8 +74,10 @@ namespace Fargowiltas
             downedMimicCorrupt = false;
             downedMimicCrimson = false;
             downedMimicJungle = false;
+            downedGoblinSummoner = false;
+            downedFlyingDutchman = false;
 
-        currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
+            currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
         }
 
 		public override TagCompound Save()
@@ -109,6 +111,8 @@ namespace Fargowiltas
             if (downedMimicCorrupt) downed.Add("mimicCorrupt");
             if (downedMimicCrimson) downed.Add("mimicCrimson");
             if (downedMimicJungle) downed.Add("mimicJungle");
+            if (downedGoblinSummoner) downed.Add("goblinSummoner");
+            if (downedFlyingDutchman) downed.Add("flyingDutchman");
 
             return new TagCompound {
                 {"downed", downed}
@@ -146,6 +150,8 @@ namespace Fargowiltas
             downedMimicCorrupt = downed.Contains("mimicCorrupt");
             downedMimicCrimson = downed.Contains("mimicCrimson");
             downedMimicJungle = downed.Contains("mimicJungle");
+            downedGoblinSummoner = downed.Contains("goblinSummoner");
+            downedFlyingDutchman = downed.Contains("flyingDutchman");
         }
 
 		public override void NetReceive(BinaryReader reader)
@@ -176,6 +182,8 @@ namespace Fargowiltas
             downedMimicCorrupt = flags[22];
             downedMimicCrimson = flags[23];
             downedMimicJungle = flags[24];
+            downedGoblinSummoner = flags[25];
+            downedFlyingDutchman = flags[26];
         }
 		
 		public override void NetSend(BinaryWriter writer)
@@ -206,8 +214,10 @@ namespace Fargowiltas
                 [21] = downedMimicHallow,
                 [22] = downedMimicCorrupt,
                 [23] = downedMimicCrimson,
-                [24] = downedMimicJungle
-            };
+                [24] = downedMimicJungle,
+                [25] = downedGoblinSummoner,
+                [26] = downedFlyingDutchman
+        };
 
 			writer.Write(flags);
         }
