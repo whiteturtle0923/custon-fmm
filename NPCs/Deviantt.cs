@@ -150,6 +150,7 @@ namespace Fargowiltas.NPCs
             dialogue.Add("Deviantt has awoken! Quick, give her all your money to defeat her!");
             dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding.");
             dialogue.Add("Hmm, I can tell! You've killed a lot, but you haven't killed enough!");
+            dialogue.Add("Why the extra letter? Only the strongest sibling is allowed to remove their own!");
 
             return dialogue[Main.rand.Next(dialogue.Count)];
         }
