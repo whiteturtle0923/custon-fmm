@@ -13,5 +13,10 @@ NEW UPDATE - v 1.6
 -added recipes for rare drops from goodie bags,presents
 -loweredmutant prices for calamity summons to match the ones sold there
 
+-Ninja Enchant First Strike now works with this mods Rod of Discord key
+-Teleport home hotkey now plays the mirror sound effect
+-Medusa's Banner now also crafts into Pocket Mirror
+-now extract things at MEME speed
+
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

@@ -220,5 +220,28 @@ namespace Fargowiltas.Tiles
             return !TileIsNull(x, y) && tile.active() && Main.tileSolid[tile.type] && !Main.tileSolidTop[tile.type] && !tile.halfBrick()
                 && tile.slope() == 0 && !tile.inActive();
         }
+
+        /*public override void NearbyEffects(int i, int j, int type, bool closer)
+        {
+            if (closer)
+            {
+                Player player = Main.LocalPlayer;
+
+                //DD2 banners work 
+                if (type == TileID.Banners)
+                {
+                    switch (Main.tile[i, j].frameX) idfk echprime
+                    {
+
+                    }
+                }
+
+                player.NPCBannerBuff[NPCID.ech] = true;
+                player.hasBanner = true;
+            }
+        }*/
+
+
+
     }
 }

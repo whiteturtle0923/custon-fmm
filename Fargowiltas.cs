@@ -833,6 +833,12 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.MedusaBanner);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PocketMirror);
+            recipe.AddRecipe();
+
+            recipe = new ModRecipe(this);
             recipe.AddIngredient(ItemID.SkeletonArcherBanner);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.MagicQuiver);
