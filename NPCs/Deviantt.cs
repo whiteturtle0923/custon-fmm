@@ -170,7 +170,7 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
             }
-            else
+            else if (Fargowiltas.instance.fargoLoaded)
             {
                 Player p = Main.player[Main.myPlayer];
                 FargowiltasSouls.FargoPlayer fargoPlayer = p.GetModPlayer<FargowiltasSouls.FargoPlayer>();

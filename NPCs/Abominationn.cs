@@ -188,80 +188,18 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                bool clearedEvent = false;
-
-                if (Main.invasionType != 0)
-                {
-                    clearedEvent = true;
-                    Main.invasionType = 0; 
-                }
-                if (Main.pumpkinMoon)
-                {
-                    clearedEvent = true;
-                    Main.pumpkinMoon = false;
-                }
-                if (Main.snowMoon)
-                {
-                    clearedEvent = true;
-                    Main.snowMoon = false;
-                }
-                if (Main.eclipse)
-                {
-                    clearedEvent = true;
-                    Main.eclipse = false;
-                }
-                if (Main.bloodMoon)
-                {
-                    clearedEvent = true;
-                    Main.bloodMoon = false;
-                }
-                if (Main.raining)
-                {
-                    clearedEvent = true;
-                    Main.raining = false;
-                }
-                if (Main.slimeRain)
-                {
-                    clearedEvent = true;
-                    Main.StopSlimeRain();
-                }
-                if (BirthdayParty.PartyIsUp)
-                {
-                    clearedEvent = true;
-                    BirthdayParty.WorldClear();
-                }
-                if (DD2Event.Ongoing)
-                {
-                    clearedEvent = true;
-                    DD2Event.StopInvasion();
-                }
-                if (Sandstorm.Happening)
-                {
-                    clearedEvent = true;
-                    Sandstorm.Happening = false;
-                    Sandstorm.TimeLeft = 0;
-                }
-                if (NPC.LunarApocalypseIsUp)
-                {
-                    clearedEvent = true;
-                    NPC.LunarApocalypseIsUp = false;
-                    NPC.ShieldStrengthTowerNebula = 0;
-                    NPC.ShieldStrengthTowerSolar = 0;
-                    NPC.ShieldStrengthTowerStardust = 0;
-                    NPC.ShieldStrengthTowerVortex = 0;
-                    for (int i = 0; i < Main.maxNPCs; i++) //purge all towers
-                        if (Main.npc[i].active
-                            && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar
-                            || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
-                        {
-                            Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
-                        }
-                }
-
-                if (clearedEvent)
+                if (Fargowiltas.ClearEvents())
                 {
                     if (Main.netMode != 0)
-                        NetMessage.SendData(7);
+                    {
+                        var netMessage = mod.GetPacket();
+                        netMessage.Write((byte)2);
+                        netMessage.Send();
+                    }
+                    else
+                    {
+                        Main.NewText("The event has been cancelled!", 175, 75, 255);
+                    }
                     Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0, 1f, 0.0f);
                     Main.npcChatText = "Hocus pocus, the event is over.";
                 }
