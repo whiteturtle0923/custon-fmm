@@ -1,5 +1,4 @@
 
-*.cs
 Buffs/BrainMinion.cs
 obj/Debug/*.cache
 .vs/Fargowiltas/v15/Server/sqlite3/db.lock

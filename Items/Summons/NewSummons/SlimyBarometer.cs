@@ -1,8 +1,4 @@
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.GameContent.Events;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -12,7 +8,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Slimy Barometer");
-            Tooltip.SetDefault("Summons Slime Rain");
+            Tooltip.SetDefault("Starts the Slime Rain");
         }
 
         public override void SetDefaults()
@@ -38,6 +34,9 @@ namespace Fargowiltas.Items.Summons.NewSummons
             Main.StartSlimeRain();
             Main.slimeWarningDelay = 1;
             Main.slimeWarningTime = 1;
+            
+            Main.NewText("Slime is falling from the sky!", 175, 75, 255);
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
     }

@@ -11,7 +11,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Forbidden Tome");
-            Tooltip.SetDefault("Summons Dark Mage");
+            Tooltip.SetDefault("Summons a Dark Mage");
         }
 
         public override void SetDefaults()
@@ -41,7 +41,6 @@ namespace Fargowiltas.Items.Summons.NewSummons
             else
             {
                 Main.NewText("Dark Mage has awoken!", 175, 75, 255);
-
             }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);

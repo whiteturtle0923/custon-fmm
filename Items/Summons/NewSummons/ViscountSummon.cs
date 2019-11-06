@@ -1,14 +1,20 @@
+﻿using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
 {
-    public class CursedSextant : ModItem
+    public class ViscountSummon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cursed Sextant");
-            Tooltip.SetDefault("Starts the Blood Moon");
+            DisplayName.SetDefault("Activated Blood Altar");
+            Tooltip.SetDefault("Summons Viscount\nCan only be used underground");
+        }
+
+        public override bool Autoload(ref string name)
+        {
+            return ModLoader.GetMod("ThoriumMod") != null;
         }
 
         public override void SetDefaults()
@@ -17,7 +23,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.height = 20;
             item.maxStack = 20;
             item.value = 1000;
-            item.rare = 1;
+            item.rare = 3;
             item.useAnimation = 30;
             item.useTime = 30;
             item.useStyle = 4;
@@ -26,14 +32,16 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime && !Main.bloodMoon;
+            return player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight;
         }
 
         public override bool UseItem(Player player)
         {
-            Main.bloodMoon = true;
-            NetMessage.SendData(7);
-            Main.NewText("The Blood Moon is rising...", 175, 75, 255);
+            if (Fargowiltas.instance.thoriumLoaded)
+            {
+                NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("Viscount"));
+            }
+
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
