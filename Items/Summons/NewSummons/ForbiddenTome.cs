@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
 {
-    public class BetsyEgg : ModItem
+    public class ForbiddenTome : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dragon's Egg");
-            Tooltip.SetDefault("Summons Betsy");
+            DisplayName.SetDefault("Forbidden Tome");
+            Tooltip.SetDefault("Summons Dark Mage");
         }
 
         public override void SetDefaults()
@@ -32,15 +32,15 @@ namespace Fargowiltas.Items.Summons.NewSummons
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
 
-            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.DD2Betsy);
+            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.DD2DarkMageT3);
 
             if (Main.netMode == 2)
             {
-                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Betsy has awoken!"), new Color(175, 75, 255));
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Dark Mage has awoken!"), new Color(175, 75, 255));
             }
             else
             {
-                Main.NewText("Betsy has awoken!", 175, 75, 255);
+                Main.NewText("Dark Mage has awoken!", 175, 75, 255);
 
             }
 

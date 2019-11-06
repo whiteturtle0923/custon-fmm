@@ -2676,6 +2676,8 @@ namespace Fargowiltas
             {
                 clearedEvent = true;
                 Main.StopSlimeRain();
+                Main.slimeWarningDelay = 1;
+                Main.slimeWarningTime = 1;
             }
             if (BirthdayParty.PartyIsUp)
             {
