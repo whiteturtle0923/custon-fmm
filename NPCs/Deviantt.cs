@@ -62,7 +62,7 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            return FargoWorld.downedRareEnemy || Fargowiltas.instance.fargoLoaded && MasochistMode;
+            return FargoWorld.downedRareEnemy || (Fargowiltas.instance.fargoLoaded && MasochistMode);
         }
 
         public override string TownNPCName()
@@ -280,6 +280,9 @@ namespace Fargowiltas.NPCs
 
             //doctor bones
             AddItem(FargoWorld.downedDoctorBones, "Fargowiltas", "GoldArtifact", Item.buyPrice(0, 2), ref shop, ref nextSlot);
+
+            //dungeon slime
+            AddItem(FargoWorld.downedDungeonSlime, "Fargowiltas", "SlimyLockBox", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
             //mimics
             AddItem(FargoWorld.downedMimic, "Fargowiltas", "SuspiciousLookingChest", Item.buyPrice(0, 20), ref shop, ref nextSlot);

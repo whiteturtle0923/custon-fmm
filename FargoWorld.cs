@@ -41,6 +41,7 @@ namespace Fargowiltas
         public static bool downedMimicJungle;
         public static bool downedGoblinSummoner;
         public static bool downedFlyingDutchman;
+        public static bool downedDungeonSlime;
 
         private static bool[] currentSpawnRateTile;
 
@@ -76,6 +77,7 @@ namespace Fargowiltas
             downedMimicJungle = false;
             downedGoblinSummoner = false;
             downedFlyingDutchman = false;
+            downedDungeonSlime = false;
 
             currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
         }
@@ -113,6 +115,7 @@ namespace Fargowiltas
             if (downedMimicJungle) downed.Add("mimicJungle");
             if (downedGoblinSummoner) downed.Add("goblinSummoner");
             if (downedFlyingDutchman) downed.Add("flyingDutchman");
+            if (downedDungeonSlime) downed.Add("dungeonSlime");
 
             return new TagCompound {
                 {"downed", downed}
@@ -152,6 +155,7 @@ namespace Fargowiltas
             downedMimicJungle = downed.Contains("mimicJungle");
             downedGoblinSummoner = downed.Contains("goblinSummoner");
             downedFlyingDutchman = downed.Contains("flyingDutchman");
+            downedDungeonSlime = downed.Contains("dungeonSlime");
         }
 
 		public override void NetReceive(BinaryReader reader)
@@ -184,6 +188,7 @@ namespace Fargowiltas
             downedMimicJungle = flags[24];
             downedGoblinSummoner = flags[25];
             downedFlyingDutchman = flags[26];
+            downedDungeonSlime = flags[27];
         }
 		
 		public override void NetSend(BinaryWriter writer)
@@ -216,8 +221,9 @@ namespace Fargowiltas
                 [23] = downedMimicCrimson,
                 [24] = downedMimicJungle,
                 [25] = downedGoblinSummoner,
-                [26] = downedFlyingDutchman
-        };
+                [26] = downedFlyingDutchman,
+                [27] = downedDungeonSlime
+            };
 
 			writer.Write(flags);
         }

@@ -6,15 +6,15 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class CloudSnack : DevianttSummon
+    public class SlimyLockBox : DevianttSummon
     {
         public override string Texture => "Fargowiltas/Items/Placeholder";
-        public override int summonType => NPCID.WyvernHead;
+        public override int summonType => NPCID.DungeonSlime;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cloud Snack");
-            Tooltip.SetDefault("Summons Wyvern");
+            DisplayName.SetDefault("Slimy Lock Box");
+            Tooltip.SetDefault("Summons Dungeon Slime");
         }
     }
 }

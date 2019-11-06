@@ -959,6 +959,11 @@ namespace Fargowiltas.NPCs
                     FargoWorld.downedFlyingDutchman = true;
                     break;
 
+                case NPCID.DungeonSlime:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedDungeonSlime = true;
+                    break;
+
                 default:
                     break;
             }
