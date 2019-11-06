@@ -42,14 +42,18 @@ namespace Fargowiltas
         public static bool downedGoblinSummoner;
         public static bool downedFlyingDutchman;
         public static bool downedDungeonSlime;
+        public static bool downedPirateCaptain;
+        public static bool downedSkeletonGunAny;
+        public static bool downedSkeletonMageAny;
+        public static bool downedBoneLee;
 
         private static bool[] currentSpawnRateTile;
 
         public override void Initialize()
-		{
-			movedLumberjack = false;
-			downedBetsy = false;
-			downedBoss = false;
+        {
+            movedLumberjack = false;
+            downedBetsy = false;
+            downedBoss = false;
 
             halloween = false;
             xmas = false;
@@ -78,6 +82,10 @@ namespace Fargowiltas
             downedGoblinSummoner = false;
             downedFlyingDutchman = false;
             downedDungeonSlime = false;
+            downedPirateCaptain = false;
+            downedSkeletonGunAny = false;
+            downedSkeletonMageAny = false;
+            downedBoneLee = false;
 
             currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
         }
@@ -116,6 +124,10 @@ namespace Fargowiltas
             if (downedGoblinSummoner) downed.Add("goblinSummoner");
             if (downedFlyingDutchman) downed.Add("flyingDutchman");
             if (downedDungeonSlime) downed.Add("dungeonSlime");
+            if (downedPirateCaptain) downed.Add("pirateCaptain");
+            if (downedSkeletonGunAny) downed.Add("skeletonGun");
+            if (downedSkeletonMageAny) downed.Add("skeletonMage");
+            if (downedBoneLee) downed.Add("boneLee");
 
             return new TagCompound {
                 {"downed", downed}
@@ -156,6 +168,10 @@ namespace Fargowiltas
             downedGoblinSummoner = downed.Contains("goblinSummoner");
             downedFlyingDutchman = downed.Contains("flyingDutchman");
             downedDungeonSlime = downed.Contains("dungeonSlime");
+            downedPirateCaptain = downed.Contains("pirateCaptain");
+            downedSkeletonGunAny = downed.Contains("skeletonGun");
+            downedSkeletonMageAny = downed.Contains("skeletonMage");
+            downedBoneLee = downed.Contains("boneLee");
         }
 
 		public override void NetReceive(BinaryReader reader)
@@ -189,6 +205,10 @@ namespace Fargowiltas
             downedGoblinSummoner = flags[25];
             downedFlyingDutchman = flags[26];
             downedDungeonSlime = flags[27];
+            downedPirateCaptain = flags[28];
+            downedSkeletonGunAny = flags[29];
+            downedSkeletonMageAny = flags[30];
+            downedBoneLee = flags[31];
         }
 		
 		public override void NetSend(BinaryWriter writer)
@@ -222,7 +242,11 @@ namespace Fargowiltas
                 [24] = downedMimicJungle,
                 [25] = downedGoblinSummoner,
                 [26] = downedFlyingDutchman,
-                [27] = downedDungeonSlime
+                [27] = downedDungeonSlime,
+                [28] = downedPirateCaptain,
+                [29] = downedSkeletonGunAny,
+                [30] = downedSkeletonMageAny,
+                [31] = downedBoneLee
             };
 
 			writer.Write(flags);

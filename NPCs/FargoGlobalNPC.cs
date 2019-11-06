@@ -964,6 +964,33 @@ namespace Fargowiltas.NPCs
                     FargoWorld.downedDungeonSlime = true;
                     break;
 
+                case NPCID.PirateCaptain:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedPirateCaptain = true;
+                    break;
+
+                case NPCID.SkeletonSniper:
+                case NPCID.TacticalSkeleton:
+                case NPCID.SkeletonCommando:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedSkeletonGunAny = true;
+                    break;
+
+                case NPCID.Necromancer:
+                case NPCID.NecromancerArmored:
+                case NPCID.DiabolistRed:
+                case NPCID.DiabolistWhite:
+                case NPCID.RaggedCaster:
+                case NPCID.RaggedCasterOpenCoat:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedSkeletonMageAny = true;
+                    break;
+
+                case NPCID.BoneLee:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedBoneLee = true;
+                    break;
+
                 default:
                     break;
             }

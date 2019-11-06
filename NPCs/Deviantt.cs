@@ -313,8 +313,17 @@ namespace Fargowiltas.NPCs
             //rainbow slime
             AddItem(FargoWorld.downedRainbowSlime, "Fargowiltas", "DilutedRainbowMatter", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
+            //bone lee
+            AddItem(FargoWorld.downedBoneLee, "Fargowiltas", "NinjaRags", Item.buyPrice(0, 15), ref shop, ref nextSlot);
+
             //paladin
             AddItem(FargoWorld.downedPaladin, "Fargowiltas", "GrandCross", Item.buyPrice(0, 15), ref shop, ref nextSlot);
+
+            //skeleton gunners
+            AddItem(FargoWorld.downedSkeletonGunAny, "Fargowiltas", "AmalgamatedSkull", Item.buyPrice(0, 30), ref shop, ref nextSlot);
+
+            //skeleton mages
+            AddItem(FargoWorld.downedSkeletonMageAny, "Fargowiltas", "AmalgamatedSpirit", Item.buyPrice(0, 30), ref shop, ref nextSlot);
 
             //medusa
             AddItem(FargoWorld.downedMedusa, "Fargowiltas", "AthenianIdol", Item.buyPrice(0, 5), ref shop, ref nextSlot);
@@ -346,8 +355,11 @@ namespace Fargowiltas.NPCs
             //goblin summoner
             AddItem(FargoWorld.downedGoblinSummoner, "Fargowiltas", "ShadowflameIcon", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
+            //pirate captain
+            AddItem(FargoWorld.downedPirateCaptain, "Fargowiltas", "PirateFlag", Item.buyPrice(0, 10), ref shop, ref nextSlot);
+
             //flying dutchman
-            AddItem(FargoWorld.downedFlyingDutchman, "Fargowiltas", "PlunderedBooty", Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedFlyingDutchman, "Fargowiltas", "PlunderedBooty", Item.buyPrice(0, 15), ref shop, ref nextSlot);
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
