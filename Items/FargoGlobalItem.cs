@@ -360,5 +360,16 @@ namespace Fargowiltas.Items
                 firstTick = false;
             }
         }
+
+        public override bool CanUseItem(Item item, Player player)
+        {
+            if (item.type == ItemID.SiltBlock || item.type == ItemID.SlushBlock || item.type == ItemID.DesertFossil)
+            {
+                item.useTime = 2;
+                item.useAnimation = 3;
+            }
+
+            return base.CanUseItem(item, player);
+        }
     }
 }

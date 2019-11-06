@@ -90,6 +90,12 @@ namespace Fargowiltas
                                 player.lifeRegenTime = 0;
                             }
                             player.AddBuff(88, 360, true);
+
+                            if (Fargowiltas.instance.fargoLoaded)
+                            {
+                                player.AddBuff(ModLoader.GetMod("FargowiltasSouls").BuffType("FirstStrike"), 60);
+                            }
+
                             rodCD = 30;
                         }
                     }
@@ -116,6 +122,8 @@ namespace Fargowiltas
                     if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7)
                         Main.projectile[i].Kill();
                 }
+
+                Main.PlaySound(SoundID.Item6, player.Center);
 
                 player.Spawn();
 
