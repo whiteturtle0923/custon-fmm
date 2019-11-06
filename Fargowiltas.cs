@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using Terraria;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -1593,7 +1594,7 @@ namespace Fargowiltas
 
             #region npc recipes
 
-            String[] townNPCs = new String[] { "Abominationn", "Angler", "ArmsDealer", "Clothier", "Cyborg", "Demolitionist", "Dryad", "DyeTrader", "GoblinTinkerer", "Guide", "LumberJack", "Mechanic", "Merchant", "Mutant", "Nurse", "Painter", "PartyGirl", "Pirate", "SantaClaus", "SkeletonMerchant", "Steampunker", "Stylist", "Tavernkeep", "TaxCollector", "TravellingMerchant", "Truffle", "WitchDoctor", "Wizard" };
+            String[] townNPCs = new String[] { "Abominationn", "Angler", "ArmsDealer", "Clothier", "Cyborg", "Demolitionist", "Deviantt", "Dryad", "DyeTrader", "GoblinTinkerer", "Guide", "LumberJack", "Mechanic", "Merchant", "Mutant", "Nurse", "Painter", "PartyGirl", "Pirate", "SantaClaus", "SkeletonMerchant", "Steampunker", "Stylist", "Tavernkeep", "TaxCollector", "TravellingMerchant", "Truffle", "WitchDoctor", "Wizard" };
 
             for (int i = 0; i < townNPCs.Length; i++)
             {
@@ -2610,10 +2611,96 @@ namespace Fargowiltas
                 case 1: //regal statue
                     FargoWorld.ReceiveCurrentSpawnRateTile(reader, whoAmI);
                     break;
+                case 2: //abom clear events
+                    if (Main.netMode == 2)
+                    {
+                        if (ClearEvents())
+                        {
+                            NetMessage.SendData(7);
+                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The event has been cancelled!"), new Color(175, 75, 255));
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
 
+        }
+
+        public static bool ClearEvents()
+        {
+            bool clearedEvent = false;
+            if (Main.invasionType != 0)
+            {
+                clearedEvent = true;
+                Main.invasionType = 0;
+            }
+            if (Main.pumpkinMoon)
+            {
+                clearedEvent = true;
+                Main.pumpkinMoon = false;
+            }
+            if (Main.snowMoon)
+            {
+                clearedEvent = true;
+                Main.snowMoon = false;
+            }
+            if (Main.eclipse)
+            {
+                clearedEvent = true;
+                Main.eclipse = false;
+            }
+            if (Main.bloodMoon)
+            {
+                clearedEvent = true;
+                Main.bloodMoon = false;
+            }
+            if (Main.raining)
+            {
+                clearedEvent = true;
+                Main.raining = false;
+            }
+            if (Main.slimeRain)
+            {
+                clearedEvent = true;
+                Main.StopSlimeRain();
+                Main.slimeWarningDelay = 1;
+                Main.slimeWarningTime = 1;
+            }
+            if (BirthdayParty.PartyIsUp)
+            {
+                clearedEvent = true;
+                BirthdayParty.WorldClear();
+            }
+            if (DD2Event.Ongoing)
+            {
+                clearedEvent = true;
+                DD2Event.StopInvasion();
+            }
+            if (Sandstorm.Happening)
+            {
+                clearedEvent = true;
+                Sandstorm.Happening = false;
+                Sandstorm.TimeLeft = 0;
+            }
+            if (NPC.LunarApocalypseIsUp)
+            {
+                clearedEvent = true;
+                NPC.LunarApocalypseIsUp = false;
+                NPC.ShieldStrengthTowerNebula = 0;
+                NPC.ShieldStrengthTowerSolar = 0;
+                NPC.ShieldStrengthTowerStardust = 0;
+                NPC.ShieldStrengthTowerVortex = 0;
+                for (int i = 0; i < Main.maxNPCs; i++) //purge all towers
+                    if (Main.npc[i].active
+                        && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar
+                        || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
+                    {
+                        Main.npc[i].dontTakeDamage = false;
+                        Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
+                    }
+            }
+            return clearedEvent;
         }
 
         #region Boss Summon Method (Thanks Grox)

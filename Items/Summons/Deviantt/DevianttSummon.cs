@@ -4,15 +4,11 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class ForbiddenTome : ModItem
+    public abstract class DevianttSummon : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Forbidden Tome");
-            Tooltip.SetDefault("Summons a Dark Mage");
-        }
+        public virtual int summonType => NPCID.BlueSlime;
 
         public override void SetDefaults()
         {
@@ -32,16 +28,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
 
-            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.DD2DarkMageT3);
-
-            if (Main.netMode == 2)
-            {
-                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Dark Mage has awoken!"), new Color(175, 75, 255));
-            }
-            else
-            {
-                Main.NewText("Dark Mage has awoken!", 175, 75, 255);
-            }
+            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, summonType);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

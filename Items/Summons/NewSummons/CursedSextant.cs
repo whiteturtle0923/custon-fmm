@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -26,12 +26,13 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime;
+            return !Main.dayTime && !Main.bloodMoon;
         }
 
         public override bool UseItem(Player player)
         {
             Main.bloodMoon = true;
+            NetMessage.SendData(7);
             Main.NewText("The Blood Moon is rising...", 175, 75, 255);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;

@@ -328,7 +328,7 @@ namespace Fargowiltas.NPCs
             //drop swarm reward every 100 kills
             if (Fargowiltas.swarmKills % 100 == 0 && reward != "")
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(reward));
+                Item.NewItem(npc.Hitbox, mod.ItemType(reward));
             }
 
             if (Main.netMode == 2)
@@ -635,237 +635,337 @@ namespace Fargowiltas.NPCs
 		{
             Player player = Main.player[Main.myPlayer];
 
-            //avoid lunar event with cultist summon
-            if (npc.type == NPCID.CultistBoss && !pillarSpawn)
-            {
-                for (int i = 0; i < 200; i++)
-                {
-                    NPC npc2 = Main.npc[i];
-                    NPC.LunarApocalypseIsUp = false;
-
-                    if (npc2.type == NPCID.LunarTowerNebula || npc2.type == NPCID.LunarTowerSolar || npc2.type == NPCID.LunarTowerStardust || npc2.type == NPCID.LunarTowerVortex)
-                    {
-                        NPC.TowerActiveSolar = true;
-                        npc2.active = false;
-                    }
-
-                    NPC.TowerActiveSolar = false;
-                }
-            }
-
             //lumber jaxe
             if (npc.FindBuffIndex(mod.BuffType("WoodDrop")) != -1)
 			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wood, Main.rand.Next(10, 30));
+				Item.NewItem(npc.Hitbox, ItemID.Wood, Main.rand.Next(10, 30));
 			}
 
-            if (npc.type == NPCID.GreekSkeleton && Main.rand.Next(15) == 0)
+            switch(npc.type)
             {
-                int i = Main.rand.Next(3);
-
-                switch (i)
-                {
-                    case 0:
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                            ItemID.GladiatorHelmet);
-                        break;
-                    case 1:
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                            ItemID.GladiatorBreastplate);
-                        break;
-                    default:
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                            ItemID.GladiatorLeggings);
-                        break;
-                }
-            }
-            else if (npc.type == NPCID.Clown)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Bananarang);
-            }
-            else if (npc.type == NPCID.Merchant)
-            {
-                if (Main.rand.Next(8) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MiningShirt);
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.MiningPants);
-                }
-            }
-            else if (npc.type == NPCID.Nurse)
-            {
-                if (Main.rand.Next(5) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.LifeCrystal);
-                }
-            }
-            else if (npc.type == NPCID.Demolitionist)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Dynamite, 5);
-                }
-            }
-            else if (npc.type == NPCID.Dryad)
-            {
-                if (Main.rand.Next(3) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.HerbBag);
-                }
-            }
-            else if (npc.type == NPCID.DD2Bartender)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Ale, 4);
-                }
-            }
-            else if (npc.type == NPCID.ArmsDealer)
-            {
-                if (Main.rand.Next(4) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                        ItemID.CrystalBullet, 30);
-                }
-            }
-            else if (npc.type == NPCID.Painter)
-            {
-                if (NPC.AnyNPCs(NPCID.MoonLordCore))
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                        mod.ItemType("EchPainting"));
-                }
-            }
-            else if (npc.type == NPCID.Angler)
-            {
-                if (Main.rand.Next(4) == 0)
-                {
-                    int[] drops = { ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio };
-
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                        drops[Main.rand.Next(drops.Length)]);
-                }
-            }
-            else if (npc.type == NPCID.Clothier)
-            {
-                if (Main.rand.Next(20) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Skull);
-                }
-            }
-            else if (npc.type == NPCID.Mechanic)
-            {
-                if (Main.rand.Next(5) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Wire, 40);
-                }
-            }
-            else if (npc.type == NPCID.Wizard)
-            {
-                if (Main.rand.Next(5) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.FallenStar,
-                        5);
-                }
-            }
-            else if (npc.type == NPCID.TaxCollector)
-            {
-                if (Main.rand.Next(8) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.GoldCoin,
-                        10);
-                }
-            }
-            else if (npc.type == NPCID.Truffle)
-            {
-                if (Main.rand.Next(8) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                        ItemID.MushroomStatue);
-                }
-            }
-            else if (npc.type == NPCID.GoblinTinkerer)
-            {
-                if (Main.rand.Next(10) == 0)
-                {
-                    Item.NewItem(npc.position, npc.Size, mod.ItemType("GoblinHead"), 1, false, 0, false, false);
-                }
-            }
-            else if (npc.type == NPCID.DD2OgreT3 && !DD2Event.Ongoing)
-            {
-                if (Main.rand.Next(14) == 0)
-                {
-                    Item.NewItem(npc.position, npc.Size, 3865, 1, false, 0, false, false);
-                }
-                if (Main.rand.Next(6) == 0)
-                {
-                    Item.NewItem(npc.position, npc.Size, (int)Utils.SelectRandom<short>(Main.rand, new short[]
+                case NPCID.CultistBoss: //avoid lunar event with cultist summon
+                    if (!pillarSpawn)
                     {
+                        for (int i = 0; i < 200; i++)
+                        {
+                            NPC npc2 = Main.npc[i];
+                            NPC.LunarApocalypseIsUp = false;
+
+                            if (npc2.type == NPCID.LunarTowerNebula || npc2.type == NPCID.LunarTowerSolar || npc2.type == NPCID.LunarTowerStardust || npc2.type == NPCID.LunarTowerVortex)
+                            {
+                                NPC.TowerActiveSolar = true;
+                                npc2.active = false;
+                            }
+
+                            NPC.TowerActiveSolar = false;
+                        }
+                    }
+                    break;
+
+                case NPCID.GreekSkeleton:
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        int i = Main.rand.Next(3);
+                        switch (i)
+                        {
+                            case 0:
+                                Item.NewItem(npc.Hitbox,
+                                    ItemID.GladiatorHelmet);
+                                break;
+                            case 1:
+                                Item.NewItem(npc.Hitbox,
+                                    ItemID.GladiatorBreastplate);
+                                break;
+                            default:
+                                Item.NewItem(npc.Hitbox,
+                                    ItemID.GladiatorLeggings);
+                                break;
+                        }
+                    }
+                    break;
+
+                case NPCID.Merchant:
+                    if (Main.rand.Next(8) == 0)
+                    {
+                        Item.NewItem(npc.Hitbox, ItemID.MiningShirt);
+                        Item.NewItem(npc.Hitbox, ItemID.MiningPants);
+                    }
+                    break;
+
+                case NPCID.Nurse:
+                    if (Main.rand.Next(5) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.LifeCrystal);
+                    break;
+
+                case NPCID.Demolitionist:
+                    if (Main.rand.Next(2) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.Dynamite, 5);
+                    break;
+
+                case NPCID.Dryad:
+                    if (Main.rand.Next(3) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.HerbBag);
+                    break;
+
+                case NPCID.DD2Bartender:
+                    if (Main.rand.Next(2) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.Ale, 4);
+                    break;
+
+                case NPCID.ArmsDealer:
+                    if (Main.rand.Next(4) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.CrystalBullet, 30);
+                    break;
+
+                case NPCID.Painter:
+                    if (NPC.AnyNPCs(NPCID.MoonLordCore))
+                        Item.NewItem(npc.Hitbox, mod.ItemType("EchPainting"));
+                    break;
+
+                case NPCID.Angler:
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        int[] drops = { ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio };
+                        Item.NewItem(npc.Hitbox,
+                            drops[Main.rand.Next(drops.Length)]);
+                    }
+                    break;
+
+                case NPCID.Clothier:
+                    if (Main.rand.Next(20) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.Skull);
+                    break;
+
+                case NPCID.Mechanic:
+                    if (Main.rand.Next(5) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.Wire, 40);
+                    break;
+
+                case NPCID.Wizard:
+                    if (Main.rand.Next(5) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.FallenStar, 5);
+                    break;
+
+                case NPCID.TaxCollector:
+                    if (Main.rand.Next(8) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.GoldCoin, 10);
+                    break;
+
+                case NPCID.Truffle:
+                    if (Main.rand.Next(8) == 0)
+                        Item.NewItem(npc.Hitbox, ItemID.MushroomStatue);
+                    break;
+
+                case NPCID.GoblinTinkerer:
+                    if (Main.rand.Next(10) == 0)
+                        Item.NewItem(npc.Hitbox, mod.ItemType("GoblinHead"), 1, false, 0, false, false);
+                    break;
+
+                case NPCID.DD2OgreT3:
+                    if (!DD2Event.Ongoing)
+                    {
+                        if (Main.rand.Next(14) == 0)
+                        {
+                            Item.NewItem(npc.position, npc.Size, 3865, 1, false, 0, false, false);
+                        }
+                        if (Main.rand.Next(6) == 0)
+                        {
+                            Item.NewItem(npc.position, npc.Size, (int)Utils.SelectRandom<short>(Main.rand, new short[]
+                            {
                             3809,
                             3811,
                             3810,
                             3812
-                    }), 1, false, 0, false, false);
-                }
-                if (Main.rand.Next(6) == 0)
-                {
-                    Item.NewItem(npc.position, npc.Size, (int)Utils.SelectRandom<short>(Main.rand, new short[]
-                    {
+                            }), 1, false, 0, false, false);
+                        }
+                        if (Main.rand.Next(6) == 0)
+                        {
+                            Item.NewItem(npc.position, npc.Size, (int)Utils.SelectRandom<short>(Main.rand, new short[]
+                            {
                             3852,
                             3854,
                             3823,
                             3835,
                             3836
-                    }), 1, false, 0, false, false);
-                }
-                if (Main.rand.Next(10) == 0)
-                {
-                    Item.NewItem(npc.position, npc.Size, 3856, 1, false, 0, false, false);
-                }
-            }
-            else if (npc.type == NPCID.DD2DarkMageT3 && !DD2Event.Ongoing)
-            {
-                if (Main.rand.Next(14) == 0)
-                {
-                    Item.NewItem(npc.position, npc.Size, 3864, 1, false, 0, false, false);
-                }
-                if (Main.rand.Next(10) == 0)
-                {
-                    if (Main.rand.Next(2) == 0)
-                    {
-                        Item.NewItem(npc.position, npc.Size, 3815, 4, false, 0, false, false);
+                            }), 1, false, 0, false, false);
+                        }
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            Item.NewItem(npc.position, npc.Size, 3856, 1, false, 0, false, false);
+                        }
                     }
-                    else
+                    break;
+
+                case NPCID.DD2DarkMageT3:
+                    if (!DD2Event.Ongoing)
                     {
-                        Item.NewItem(npc.position, npc.Size, 3814, 1, false, 0, false, false);
-                    }
-                }
-                if (Main.rand.Next(6) == 0)
-                {
-                    Item.NewItem(npc.position, npc.Size, (int)Utils.SelectRandom<short>(Main.rand, new short[]
-                    {
+                        if (Main.rand.Next(14) == 0)
+                        {
+                            Item.NewItem(npc.position, npc.Size, 3864, 1, false, 0, false, false);
+                        }
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                Item.NewItem(npc.position, npc.Size, 3815, 4, false, 0, false, false);
+                            }
+                            else
+                            {
+                                Item.NewItem(npc.position, npc.Size, 3814, 1, false, 0, false, false);
+                            }
+                        }
+                        if (Main.rand.Next(6) == 0)
+                        {
+                            Item.NewItem(npc.position, npc.Size, (int)Utils.SelectRandom<short>(Main.rand, new short[]
+                            {
                             3857,
                             3855
-                    }), 1, false, 0, false, false);
-                }
-                if (DD2Event.ShouldDropCrystals())
-                {
-                    Item.NewItem(npc.position, npc.Size, 3822, 1, false, 0, false, false);
-                }
-            }
-            else if (npc.type == NPCID.Raven && !Main.halloween)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                        ItemID.GoodieBag);
-            }
-            else if (npc.type == NPCID.SlimeRibbonRed && !Main.xMas)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                        ItemID.Present);
-            }
-            else if (npc.type == NPCID.BloodZombie && Main.rand.Next(200) == 0)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height,
-                        Main.rand.Next(2) == 0 ? ItemID.BladedGlove : ItemID.BloodyMachete);
+                            }), 1, false, 0, false, false);
+                        }
+                        if (DD2Event.ShouldDropCrystals())
+                        {
+                            Item.NewItem(npc.position, npc.Size, 3822, 1, false, 0, false, false);
+                        }
+                    }
+                    break;
+
+                case NPCID.Raven:
+                    if (!Main.halloween)
+                        Item.NewItem(npc.Hitbox, ItemID.GoodieBag);
+                    break;
+
+                case NPCID.SlimeRibbonRed:
+                    if (!Main.xMas)
+                        Item.NewItem(npc.Hitbox, ItemID.Present);
+                    break;
+
+                case NPCID.BloodZombie:
+                    if (Main.rand.Next(200) == 0)
+                        Item.NewItem(npc.Hitbox, Main.rand.Next(2) == 0 ? ItemID.BladedGlove : ItemID.BloodyMachete);
+                    break;
+
+                case NPCID.Clown:
+                    Item.NewItem(npc.Hitbox, ItemID.Bananarang);
+
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedClown = true;
+                    break;
+
+                case NPCID.BlueSlime:
+                    if (npc.netID == NPCID.Pinky)
+                    {
+                        FargoWorld.downedRareEnemy = true;
+                        FargoWorld.downedPinky = true;
+                    }
+                    break;
+
+                case NPCID.UndeadMiner:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedUndeadMiner = true;
+                    break;
+
+                case NPCID.Tim:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedTim = true;
+                    break;
+
+                case NPCID.DoctorBones:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedDoctorBones = true;
+                    break;
+
+                case NPCID.Mimic:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMimic = true;
+                    break;
+
+                case NPCID.WyvernHead:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedWyvern = true;
+                    break;
+
+                case NPCID.RuneWizard:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedRuneWizard = true;
+                    break;
+
+                case NPCID.Nymph:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedNymph = true;
+                    break;
+
+                case NPCID.Moth:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMoth = true;
+                    break;
+
+                case NPCID.RainbowSlime:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedRainbowSlime = true;
+                    break;
+
+                case NPCID.Paladin:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedPaladin = true;
+                    break;
+
+                case NPCID.Medusa:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMedusa = true;
+                    break;
+
+                case NPCID.IceGolem:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedIceGolem = true;
+                    break;
+
+                case NPCID.SandElemental:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedSandElemental = true;
+                    break;
+
+                case NPCID.Mothron:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMothron = true;
+                    break;
+
+                case NPCID.BigMimicCorruption:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMimicCorrupt = true;
+                    break;
+
+                case NPCID.BigMimicHallow:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMimicHallow = true;
+                    break;
+
+                case NPCID.BigMimicCrimson:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMimicCrimson = true;
+                    break;
+
+                case NPCID.BigMimicJungle:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedMimicJungle = true;
+                    break;
+
+                case NPCID.GoblinSummoner:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedGoblinSummoner = true;
+                    break;
+
+                case NPCID.PirateShip:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedFlyingDutchman = true;
+                    break;
+
+                case NPCID.DungeonSlime:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedDungeonSlime = true;
+                    break;
+
+                default:
+                    break;
             }
         }
 		

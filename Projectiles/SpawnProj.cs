@@ -1,4 +1,4 @@
-﻿using Fargowiltas.NPCs;
+using Fargowiltas.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +9,7 @@ namespace Fargowiltas.Projectiles
     public class SpawnProj : ModProjectile
     {
         private int[] bosses = new int[] { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.EaterofWorldsHead, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, }; 
-
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spawn");
@@ -17,11 +17,18 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 1;
-            projectile.height = 1;
-            projectile.aiStyle = 0;
-            projectile.friendly = true;
-            projectile.timeLeft = 10;
+            projectile.width = 2; 
+            projectile.height = 2;
+            projectile.aiStyle = -1;
+            projectile.timeLeft = 1;
+            projectile.tileCollide = false;
+            projectile.ignoreWater = true;
+            projectile.hide = true;
+        }
+
+        public override bool CanDamage()
+        {
+            return false;
         }
 
         public override void Kill(int timeLeft)
