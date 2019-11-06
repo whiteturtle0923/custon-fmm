@@ -150,7 +150,7 @@ namespace Fargowiltas.NPCs
             dialogue.Add("Deviantt has awoken! Quick, give her all your money to defeat her!");
             dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding.");
             dialogue.Add("Hmm, I can tell! You've killed a lot, but you haven't killed enough!");
-            dialogue.Add("Why the extra letter? Only the strongest sibling is allowed to remove their own!");
+            dialogue.Add("Why the extra letter, you ask? Only the strongest sibling is allowed to remove their own!");
 
             return dialogue[Main.rand.Next(dialogue.Count)];
         }
@@ -171,10 +171,20 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
             }
-            else if (Fargowiltas.instance.fargoLoaded)
+            else if (Fargowiltas.instance.fargoLoaded && MasochistMode)
             {
                 Player p = Main.player[Main.myPlayer];
                 FargowiltasSouls.FargoPlayer fargoPlayer = p.GetModPlayer<FargowiltasSouls.FargoPlayer>();
+
+                if (!fargoPlayer.ReceivedMasoGift && !NPC.downedBoss1)
+                {
+                    fargoPlayer.ReceivedMasoGift = true;
+                    Item.NewItem(p.Center, ItemID.BonePickaxe);
+                    Item.NewItem(p.Center, ItemID.HermesBoots);
+                    Item.NewItem(p.Center, ItemID.CloudinaBottle);
+                    Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
+                    return;
+                }
 
                 if (Main.rand.Next(4) == 0)
                 {

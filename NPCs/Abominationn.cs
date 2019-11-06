@@ -104,11 +104,16 @@ namespace Fargowiltas.NPCs
         public override string GetChat()
         {
             int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
+            int deviantt = NPC.FindFirstNPC(mod.NPCType("Deviantt"));
             int mechanic = NPC.FindFirstNPC(NPCID.Mechanic);
 
             if (mutant >= 0 && Main.rand.Next(26) == 0)
             {
                 return "That one guy, " + Main.npc[mutant].GivenName + ", he is my brother... I've fought more bosses than him.";
+            }
+            if (deviantt >= 0 && Main.rand.Next(26) == 0)
+            {
+                return "That one girl, " + Main.npc[deviantt].GivenName + ", she is my sister... I've defeated more events than her.";
             }
             if (mechanic >= 0 && Main.rand.Next(25) == 0)
             {
