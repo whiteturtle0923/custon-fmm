@@ -1987,12 +1987,6 @@ namespace Fargowiltas
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(this);
-                recipe.AddIngredient(thorium.ItemType("MudManBanner"));
-                recipe.AddTile(TileID.Solidifier);
-                recipe.SetResult(thorium.ItemType("WeirdMud"));
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(this);
                 recipe.AddIngredient(thorium.ItemType("ShamblerBanner"));
                 recipe.AddTile(TileID.Solidifier);
                 recipe.SetResult(thorium.ItemType("BallnChain"));
@@ -2086,12 +2080,6 @@ namespace Fargowiltas
                 recipe.AddIngredient(thorium.ItemType("NecroPotBanner"));
                 recipe.AddTile(TileID.Solidifier);
                 recipe.SetResult(thorium.ItemType("GhostlyGrapple"));
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(this);
-                recipe.AddIngredient(thorium.ItemType("LostProbeBanner"));
-                recipe.AddTile(TileID.Solidifier);
-                recipe.SetResult(thorium.ItemType("UFOCommunicator"));
                 recipe.AddRecipe();
 
                 recipe = new ModRecipe(this);
@@ -2701,14 +2689,14 @@ namespace Fargowiltas
         #endregion
     }
 
-    public static class FargoExtentions
+    /*public static class FargoExtentions
     {
         public const byte SummonNPCFromClient = 0;
         public static bool ReadBool(this BinaryReader w) { return w.ReadBoolean(); }
         public static int ReadInt(this BinaryReader w) { return w.ReadInt32(); }
         public static short ReadShort(this BinaryReader w) { return w.ReadInt16(); }
         public static float ReadFloat(this BinaryReader w) { return w.ReadSingle(); }
-    }
+    }*/
 
     public class FargoNet
     {
@@ -2798,11 +2786,11 @@ namespace Fargowiltas
          */
         public static Vector2[] ReadVector2Array(BinaryReader reader)
         {
-            int arrayLength = reader.ReadInt();
+            int arrayLength = reader.ReadInt32();
             Vector2[] array = new Vector2[arrayLength];
             for (int m = 0; m < arrayLength; m++)
             {
-                array[m] = new Vector2(reader.ReadFloat(), reader.ReadFloat());
+                array[m] = new Vector2(reader.ReadSingle(), reader.ReadSingle());
             }
             return array;
         }
@@ -2826,12 +2814,12 @@ namespace Fargowiltas
                     if (Main.netMode == 2)
                     {
                         int playerID = (int)bb.ReadByte();
-                        int bossType = bb.ReadShort();
-                        bool spawnMessage = bb.ReadBool();
-                        int npcCenterX = bb.ReadInt();
-                        int npcCenterY = bb.ReadInt();
+                        int bossType = bb.ReadInt16();
+                        bool spawnMessage = bb.ReadBoolean();
+                        int npcCenterX = bb.ReadInt32();
+                        int npcCenterY = bb.ReadInt32();
                         string overrideDisplayName = bb.ReadString();
-                        bool namePlural = bb.ReadBool();
+                        bool namePlural = bb.ReadBoolean();
 
                         Fargowiltas.SpawnBoss(Main.player[playerID], bossType, spawnMessage, new Vector2(npcCenterX, npcCenterY), overrideDisplayName, namePlural);
                     }
