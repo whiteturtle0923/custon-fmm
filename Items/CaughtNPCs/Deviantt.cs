@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.CaughtNPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deviantt");
-            Tooltip.SetDefault("''");
+            Tooltip.SetDefault("'Embrace suffering... and while you're at it, embrace another purchase!'");
         }
 
         public override void SetDefaults()
