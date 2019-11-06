@@ -191,13 +191,9 @@ namespace Fargowiltas.NPCs
                     if (FargowiltasSouls.FargoSoulsWorld.downedMutant)
                         Main.npcChatText = "What's that? You want to fight me? ...nah, I can't put up a good fight on my own.";
                     else if (FargowiltasSouls.FargoSoulsWorld.downedFishronEX)
-                        Main.npcChatText = Main.rand.Next(2) == 0 ?
-                            "What's that? You want to fight my big brother? ...maybe if he had a reason to."
-                            : "Remember to disable any soul toggles you don't need in the Mod Configurations menu!";
+                        Main.npcChatText = "What's that? You want to fight my big brother? ...maybe if he had a reason to.";
                     else if (NPC.downedMoonlord)
-                        Main.npcChatText = Main.rand.Next(2) == 0 ?
-                            "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?"
-                            : "Friendly reminder that you can disable soul toggles in the Mod Configurations menu!";
+                        Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
                     else if (NPC.downedAncientCultist)
                         Main.npcChatText = "Only a specific type of weapon will work against each specific pillar. As for that moon guy, his weakness will keep changing.";
                     else if (NPC.downedFishron)
@@ -244,6 +240,7 @@ namespace Fargowiltas.NPCs
                     dialogue.Add("Why bother fishing when you can massacre bosses for the same goods? With spawners provided by my big brother, of course!");
                     dialogue.Add("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.");
                     dialogue.Add("Don't forget you can turn off your soul toggles in the Mod Configurations menu!");
+                    dialogue.Add("Remember to disable any soul toggles you don't need in the Mod Configurations menu!");
 
                     if (!p.accFlipper && !p.gills && !fargoPlayer.MutantAntibodies)
                         dialogue.Add("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?");
