@@ -6,14 +6,13 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class NinjaRags : DevianttSummon
+    public class LeesHeadband : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.BoneLee;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ninja Rags");
+            DisplayName.SetDefault("Lee's Headband");
             Tooltip.SetDefault("Summons Bone Lee");
         }
 

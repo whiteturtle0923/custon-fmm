@@ -6,14 +6,13 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class SupremeMothDust : DevianttSummon
+    public class MothLamp : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.Moth;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Supreme Moth Dust");
+            DisplayName.SetDefault("Moth Lamp");
             Tooltip.SetDefault("Summons Moth");
         }
     }

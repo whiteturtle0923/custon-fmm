@@ -307,19 +307,19 @@ namespace Fargowiltas.NPCs
             AddItem(FargoWorld.downedWyvern, "Fargowiltas", "CloudSnack", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
             //rune wizard
-            AddItem(FargoWorld.downedRuneWizard, "Fargowiltas", "WizardHatofLegend", Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedRuneWizard, "Fargowiltas", "RuneOrb", Item.buyPrice(0, 15), ref shop, ref nextSlot);
 
             //nymph
             AddItem(FargoWorld.downedNymph, "Fargowiltas", "HeartChocolate", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
             //moth
-            AddItem(FargoWorld.downedMoth, "Fargowiltas", "SupremeMothDust", Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedMoth, "Fargowiltas", "MothLamp", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
             //rainbow slime
             AddItem(FargoWorld.downedRainbowSlime, "Fargowiltas", "DilutedRainbowMatter", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
             //bone lee
-            AddItem(FargoWorld.downedBoneLee, "Fargowiltas", "NinjaRags", Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedBoneLee, "Fargowiltas", "LeesHeadband", Item.buyPrice(0, 15), ref shop, ref nextSlot);
 
             //paladin
             AddItem(FargoWorld.downedPaladin, "Fargowiltas", "GrandCross", Item.buyPrice(0, 15), ref shop, ref nextSlot);

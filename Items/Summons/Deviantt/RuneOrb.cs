@@ -6,14 +6,13 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class WizardHatofLegend : DevianttSummon
+    public class RuneOrb : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.RuneWizard;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wizard Hat of Legend");
+            DisplayName.SetDefault("Rune Orb");
             Tooltip.SetDefault("Summons Rune Wizard");
         }
 
