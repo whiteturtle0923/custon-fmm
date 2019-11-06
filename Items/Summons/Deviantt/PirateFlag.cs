@@ -16,5 +16,10 @@ namespace Fargowiltas.Items.Summons.Deviantt
             DisplayName.SetDefault("Pirate Flag");
             Tooltip.SetDefault("Summons Pirate Captain");
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            return !Main.dayTime || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
+        }
     }
 }
