@@ -2620,7 +2620,8 @@ namespace Fargowiltas
                 case 2: //abom clear events
                     if (Main.netMode == 2)
                     {
-                        if (ClearEvents())
+                        bool eventOccurring = false;
+                        if (ClearEvents(ref eventOccurring))
                         {
                             NetMessage.SendData(7);
                             NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The event has been cancelled!"), new Color(175, 75, 255));
