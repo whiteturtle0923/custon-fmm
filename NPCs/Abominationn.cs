@@ -193,13 +193,8 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                if (FargoWorld.AbomClearCD > 0)
-                {
-                    Main.npcChatText = "I'm not feeling it right now, come back in " + (FargoWorld.AbomClearCD / 60).ToString() + " seconds.";
-                    return;
-                }
-
-                if (Fargowiltas.ClearEvents())
+                bool eventOccurring = false;
+                if (Fargowiltas.ClearEvents(ref eventOccurring))
                 {
                     if (Main.netMode != 0)
                     {
@@ -216,7 +211,10 @@ namespace Fargowiltas.NPCs
                 }
                 else
                 {
-                    Main.npcChatText = "I don't think there's an event right now.";
+                    if (eventOccurring)
+                        Main.npcChatText = "I'm not feeling it right now, come back in " + (FargoWorld.AbomClearCD / 60).ToString() + " seconds.";
+                    else
+                        Main.npcChatText = "I don't think there's an event right now.";
                 }
             }
         }
