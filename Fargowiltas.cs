@@ -1594,7 +1594,7 @@ namespace Fargowiltas
 
             #region npc recipes
 
-            String[] townNPCs = new String[] { "Abominationn", "Angler", "ArmsDealer", "Clothier", "Cyborg", "Demolitionist", "Dryad", "DyeTrader", "GoblinTinkerer", "Guide", "LumberJack", "Mechanic", "Merchant", "Mutant", "Nurse", "Painter", "PartyGirl", "Pirate", "SantaClaus", "SkeletonMerchant", "Steampunker", "Stylist", "Tavernkeep", "TaxCollector", "TravellingMerchant", "Truffle", "WitchDoctor", "Wizard" };
+            String[] townNPCs = new String[] { "Abominationn", "Angler", "ArmsDealer", "Clothier", "Cyborg", "Demolitionist", "Deviantt", "Dryad", "DyeTrader", "GoblinTinkerer", "Guide", "LumberJack", "Mechanic", "Merchant", "Mutant", "Nurse", "Painter", "PartyGirl", "Pirate", "SantaClaus", "SkeletonMerchant", "Steampunker", "Stylist", "Tavernkeep", "TaxCollector", "TravellingMerchant", "Truffle", "WitchDoctor", "Wizard" };
 
             for (int i = 0; i < townNPCs.Length; i++)
             {
