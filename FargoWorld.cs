@@ -47,6 +47,8 @@ namespace Fargowiltas
         public static bool downedSkeletonMageAny;
         public static bool downedBoneLee;
 
+        public static int AbomClearCD;
+
         private static bool[] currentSpawnRateTile;
 
         public override void Initialize()
@@ -86,6 +88,8 @@ namespace Fargowiltas
             downedSkeletonGunAny = false;
             downedSkeletonMageAny = false;
             downedBoneLee = false;
+
+            AbomClearCD = 0;
 
             currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
         }
@@ -209,6 +213,8 @@ namespace Fargowiltas
             downedSkeletonGunAny = flags[29];
             downedSkeletonMageAny = flags[30];
             downedBoneLee = flags[31];
+
+            AbomClearCD = reader.ReadInt32();
         }
 		
 		public override void NetSend(BinaryWriter writer)
@@ -250,6 +256,8 @@ namespace Fargowiltas
             };
 
 			writer.Write(flags);
+
+            writer.Write(AbomClearCD);
         }
 
         public override void PostUpdate ()
@@ -279,6 +287,9 @@ namespace Fargowiltas
             {
                 Fargowiltas.swarmActive = false;
             }
+
+            if (AbomClearCD > 0)
+                AbomClearCD--;
 		}
 
         public override void TileCountsAvailable(int[] tileCounts)

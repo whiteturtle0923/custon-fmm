@@ -193,6 +193,12 @@ namespace Fargowiltas.NPCs
             }
             else
             {
+                if (FargoWorld.AbomClearCD > 0)
+                {
+                    Main.npcChatText = "I'm not feeling it right now, come back in " + (FargoWorld.AbomClearCD / 60).ToString() + " seconds.";
+                    return;
+                }
+
                 if (Fargowiltas.ClearEvents())
                 {
                     if (Main.netMode != 0)

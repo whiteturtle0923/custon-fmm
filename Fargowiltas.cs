@@ -2706,6 +2706,8 @@ namespace Fargowiltas
                         Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
                     }
             }
+            if (clearedEvent)
+                FargoWorld.AbomClearCD = 7200;
             return clearedEvent;
         }
 
