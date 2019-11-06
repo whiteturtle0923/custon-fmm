@@ -370,11 +370,6 @@ namespace Fargowiltas.NPCs
             {
                 cooldown = 1;
             }
-            else if (Main.hardMode)
-            {
-                cooldown = 20;
-                randExtraCooldown = 25;
-            }
             else
             {
                 cooldown = 30;

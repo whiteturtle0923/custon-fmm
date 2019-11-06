@@ -308,20 +308,43 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            damage = 20;
-            knockback = 4f;
+            if (NPC.downedMoonlord)
+            {
+                damage = 250;
+                knockback = 10f;
+            }
+            else
+            {
+                damage = 20;
+                knockback = 4f;
+            }
         }
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            cooldown = 30;
-            randExtraCooldown = 30;
+            if (NPC.downedMoonlord)
+            {
+                cooldown = 1;
+            }
+            else
+            {
+                cooldown = 30;
+                randExtraCooldown = 30;
+            }
         }
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.DeathSickle;
-            attackDelay = 1;
+            if (NPC.downedMoonlord)
+            {
+                projType = mod.ProjectileType("DeathScythe");
+                attackDelay = 1;
+            }
+            else
+            {
+                projType = ProjectileID.DeathSickle;
+                attackDelay = 1;
+            }
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)

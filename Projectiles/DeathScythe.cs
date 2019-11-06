@@ -53,10 +53,10 @@ namespace Fargowiltas.Projectiles
             {
                 projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
 
-                int foundTarget = (int)projectile.ai[0];
-                if (foundTarget > -1 && foundTarget < 200)
+                projectile.ai[0] = HomeOnTarget();
+                if (projectile.ai[0] > -1 && projectile.ai[0] < 200)
                 {
-                    NPC n = Main.npc[foundTarget];
+                    NPC n = Main.npc[(int)projectile.ai[0]];
                     if (n.active && n.CanBeChasedBy())
                     {
                         Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
@@ -68,6 +68,30 @@ namespace Fargowiltas.Projectiles
                     projectile.ai[0] = -1;
                 }
             }
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 1000;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
