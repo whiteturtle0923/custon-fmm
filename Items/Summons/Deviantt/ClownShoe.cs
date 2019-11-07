@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Clown Shoe");
-            Tooltip.SetDefault("Summons Clown");
+            Tooltip.SetDefault("Summons Clown\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rune Orb");
-            Tooltip.SetDefault("Summons Rune Wizard");
+            Tooltip.SetDefault("Summons Rune Wizard\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

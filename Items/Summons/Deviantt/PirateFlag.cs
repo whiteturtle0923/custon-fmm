@@ -14,7 +14,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Pirate Flag");
-            Tooltip.SetDefault("Summons Pirate Captain");
+            Tooltip.SetDefault("Summons Pirate Captain\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

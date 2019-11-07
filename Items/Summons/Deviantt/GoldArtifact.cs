@@ -14,7 +14,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gold Artifact");
-            Tooltip.SetDefault("Summons Doctor Bones");
+            Tooltip.SetDefault("Summons Doctor Bones\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Athenian Idol");
-            Tooltip.SetDefault("Summons Medusa");
+            Tooltip.SetDefault("Summons Medusa\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

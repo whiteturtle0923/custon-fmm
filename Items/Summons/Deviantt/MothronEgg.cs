@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mothron Egg");
-            Tooltip.SetDefault("Summons Mothron");
+            Tooltip.SetDefault("Summons Mothron\nOnly usable during Solar Eclipse");
         }
 
         public override bool CanUseItem(Player player)

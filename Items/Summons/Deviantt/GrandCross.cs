@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Grand Cross");
-            Tooltip.SetDefault("Summons Paladin");
+            Tooltip.SetDefault("Summons Paladin\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)
