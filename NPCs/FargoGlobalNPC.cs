@@ -1022,5 +1022,23 @@ namespace Fargowiltas.NPCs
 				damage *= 20;
 			}
 		}
-	}
+
+        public override void OnChatButtonClicked(NPC npc, bool firstButton)
+        {
+            if (npc.type == NPCID.Angler && firstButton && Main.anglerQuestFinished)
+            {
+                if (Main.netMode == 0)
+                {
+                    Main.AnglerQuestSwap();
+                }
+                else if (Main.netMode == 1)
+                {
+                    //broadcast swap request to server
+                    var netMessage = mod.GetPacket();
+                    netMessage.Write((byte)3);
+                    netMessage.Send();
+                }
+            }
+        }
+    }
 }

@@ -2617,6 +2617,7 @@ namespace Fargowiltas
                 case 1: //regal statue
                     FargoWorld.ReceiveCurrentSpawnRateTile(reader, whoAmI);
                     break;
+
                 case 2: //abom clear events
                     if (Main.netMode == 2)
                     {
@@ -2628,6 +2629,12 @@ namespace Fargowiltas
                         }
                     }
                     break;
+
+                case 3: //angler reset
+                    if (Main.netMode == 2)
+                        Main.AnglerQuestSwap();
+                    break;
+
                 default:
                     break;
             }

@@ -267,8 +267,7 @@ namespace Fargowiltas
             Main.xMas = xmas;
 
             //no CD on fishing quests
-            bool changeQuest = true;
-
+            /*bool changeQuest = true;
             foreach (Player p in Main.player.Where(x => x.active))
             {
                 if (!Main.anglerWhoFinishedToday.Contains(p.name))
@@ -280,13 +279,11 @@ namespace Fargowiltas
             if (changeQuest)
             {
                 Main.AnglerQuestSwap();
-            }
+            }*/
 
             //swarm reset in case something goes wrong
-            if (NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead))
-            {
+            if (Fargowiltas.swarmActive && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead))
                 Fargowiltas.swarmActive = false;
-            }
 
             if (AbomClearCD > 0)
                 AbomClearCD--;
