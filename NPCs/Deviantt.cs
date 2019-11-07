@@ -286,7 +286,7 @@ namespace Fargowiltas.NPCs
                 AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
 
             //pinky
-            AddItem(true, "Fargowiltas", "PinkSlimeCrown", Item.buyPrice(0, 5), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedPinky, "Fargowiltas", "PinkSlimeCrown", Item.buyPrice(0, 5), ref shop, ref nextSlot);
 
             //undead miner
             AddItem(FargoWorld.downedUndeadMiner, "Fargowiltas", "AttractiveOre", Item.buyPrice(0, 3), ref shop, ref nextSlot);
