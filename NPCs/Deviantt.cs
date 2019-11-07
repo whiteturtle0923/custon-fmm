@@ -111,7 +111,7 @@ namespace Fargowiltas.NPCs
             int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
             if (mutant != -1)
             {
-                dialogue.Add("Can you tell " + Main.npc[mutant].GivenName + "to put some clothes on?");
+                dialogue.Add("Can you tell " + Main.npc[mutant].GivenName + " to put some clothes on?");
                 dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding. That'd be " + Main.npc[mutant].GivenName + "'s job.");
                 dialogue.Add(Main.npc[mutant].GivenName + " is here! That's my big brother!");
             }
