@@ -8,8 +8,6 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class AmalgamatedSkull : ModItem
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Amalgamated Skull");
