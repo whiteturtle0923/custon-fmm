@@ -181,7 +181,7 @@ namespace Fargowiltas.NPCs
                     fargoPlayer.ReceivedMasoGift = true;
                     Item.NewItem(p.Center, ItemID.BonePickaxe);
                     Item.NewItem(p.Center, ItemID.HermesBoots);
-                    Item.NewItem(p.Center, ItemID.CloudinaBottle);
+                    Item.NewItem(p.Center, ItemID.LifeCrystal, 5);
                     Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
                     return;
                 }
