@@ -8,7 +8,6 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class ForbiddenForbiddenFragment : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.SandElemental;
 
         public override void SetStaticDefaults()

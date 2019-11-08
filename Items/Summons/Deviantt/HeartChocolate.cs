@@ -8,13 +8,12 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class HeartChocolate : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.Nymph;
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Heart Chocolate");
-            Tooltip.SetDefault("Summons Nymph");
+            Tooltip.SetDefault("Summons Nymph\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

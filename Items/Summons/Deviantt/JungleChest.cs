@@ -8,7 +8,6 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class JungleChest : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.BigMimicJungle;
 
         public override void SetStaticDefaults()

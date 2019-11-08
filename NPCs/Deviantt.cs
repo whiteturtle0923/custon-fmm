@@ -111,7 +111,7 @@ namespace Fargowiltas.NPCs
             int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
             if (mutant != -1)
             {
-                dialogue.Add("Can you tell " + Main.npc[mutant].GivenName + "to put some clothes on?");
+                dialogue.Add("Can you tell " + Main.npc[mutant].GivenName + " to put some clothes on?");
                 dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding. That'd be " + Main.npc[mutant].GivenName + "'s job.");
                 dialogue.Add(Main.npc[mutant].GivenName + " is here! That's my big brother!");
             }
@@ -150,7 +150,7 @@ namespace Fargowiltas.NPCs
             dialogue.Add("Deviantt has awoken! Quick, give her all your money to defeat her!");
             dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding.");
             dialogue.Add("Hmm, I can tell! You've killed a lot, but you haven't killed enough!");
-            dialogue.Add("Why the extra letter? Only the strongest sibling is allowed to remove their own!");
+            dialogue.Add("Why the extra letter, you ask? Only the strongest sibling is allowed to remove their own!");
 
             return dialogue[Main.rand.Next(dialogue.Count)];
         }
@@ -171,10 +171,20 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
             }
-            else if (Fargowiltas.instance.fargoLoaded)
+            else if (Fargowiltas.instance.fargoLoaded && MasochistMode)
             {
                 Player p = Main.player[Main.myPlayer];
                 FargowiltasSouls.FargoPlayer fargoPlayer = p.GetModPlayer<FargowiltasSouls.FargoPlayer>();
+
+                if (!fargoPlayer.ReceivedMasoGift && !NPC.downedBoss1)
+                {
+                    fargoPlayer.ReceivedMasoGift = true;
+                    Item.NewItem(p.Center, ItemID.BonePickaxe);
+                    Item.NewItem(p.Center, ItemID.HermesBoots);
+                    Item.NewItem(p.Center, ItemID.LifeCrystal, 5);
+                    Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
+                    return;
+                }
 
                 if (Main.rand.Next(4) == 0)
                 {
@@ -229,6 +239,8 @@ namespace Fargowiltas.NPCs
                     dialogue.Add("Powerful enemies can drop all sorts of helpful loot. They'll also come back for revenge after you beat them, so keep an eye out for that.");
                     dialogue.Add("Why bother fishing when you can massacre bosses for the same goods? With spawners provided by my big brother, of course!");
                     dialogue.Add("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.");
+                    dialogue.Add("Don't forget you can turn off your soul toggles in the Mod Configurations menu!");
+                    dialogue.Add("Remember to disable any soul toggles you don't need in the Mod Configurations menu!");
 
                     if (!p.accFlipper && !p.gills && !fargoPlayer.MutantAntibodies)
                         dialogue.Add("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?");
@@ -270,8 +282,11 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
+            if (Main.hardMode && Fargowiltas.instance.fargoLoaded)
+                AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
+
             //pinky
-            AddItem(true, "Fargowiltas", "PinkSlimeCrown", Item.buyPrice(0, 5), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedPinky, "Fargowiltas", "PinkSlimeCrown", Item.buyPrice(0, 5), ref shop, ref nextSlot);
 
             //undead miner
             AddItem(FargoWorld.downedUndeadMiner, "Fargowiltas", "AttractiveOre", Item.buyPrice(0, 3), ref shop, ref nextSlot);
@@ -280,7 +295,7 @@ namespace Fargowiltas.NPCs
             AddItem(FargoWorld.downedTim, "Fargowiltas", "HolyGrail", Item.buyPrice(0, 5), ref shop, ref nextSlot);
 
             //doctor bones
-            AddItem(FargoWorld.downedDoctorBones, "Fargowiltas", "GoldArtifact", Item.buyPrice(0, 2), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedDoctorBones, "Fargowiltas", "Eggplant", Item.buyPrice(0, 2), ref shop, ref nextSlot);
 
             //dungeon slime
             AddItem(FargoWorld.downedDungeonSlime, "Fargowiltas", "SlimyLockBox", Item.buyPrice(0, 10), ref shop, ref nextSlot);
@@ -292,19 +307,28 @@ namespace Fargowiltas.NPCs
             AddItem(FargoWorld.downedWyvern, "Fargowiltas", "CloudSnack", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
             //rune wizard
-            AddItem(FargoWorld.downedRuneWizard, "Fargowiltas", "WizardHatofLegend", Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedRuneWizard, "Fargowiltas", "RuneOrb", Item.buyPrice(0, 15), ref shop, ref nextSlot);
 
             //nymph
             AddItem(FargoWorld.downedNymph, "Fargowiltas", "HeartChocolate", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
             //moth
-            AddItem(FargoWorld.downedMoth, "Fargowiltas", "SupremeMothDust", Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedMoth, "Fargowiltas", "MothLamp", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
             //rainbow slime
             AddItem(FargoWorld.downedRainbowSlime, "Fargowiltas", "DilutedRainbowMatter", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
+            //bone lee
+            AddItem(FargoWorld.downedBoneLee, "Fargowiltas", "LeesHeadband", Item.buyPrice(0, 15), ref shop, ref nextSlot);
+
             //paladin
             AddItem(FargoWorld.downedPaladin, "Fargowiltas", "GrandCross", Item.buyPrice(0, 15), ref shop, ref nextSlot);
+
+            //skeleton gunners
+            AddItem(FargoWorld.downedSkeletonGunAny, "Fargowiltas", "AmalgamatedSkull", Item.buyPrice(0, 30), ref shop, ref nextSlot);
+
+            //skeleton mages
+            AddItem(FargoWorld.downedSkeletonMageAny, "Fargowiltas", "AmalgamatedSpirit", Item.buyPrice(0, 30), ref shop, ref nextSlot);
 
             //medusa
             AddItem(FargoWorld.downedMedusa, "Fargowiltas", "AthenianIdol", Item.buyPrice(0, 5), ref shop, ref nextSlot);
@@ -336,8 +360,11 @@ namespace Fargowiltas.NPCs
             //goblin summoner
             AddItem(FargoWorld.downedGoblinSummoner, "Fargowiltas", "ShadowflameIcon", Item.buyPrice(0, 10), ref shop, ref nextSlot);
 
+            //pirate captain
+            AddItem(FargoWorld.downedPirateCaptain, "Fargowiltas", "PirateFlag", Item.buyPrice(0, 10), ref shop, ref nextSlot);
+
             //flying dutchman
-            AddItem(FargoWorld.downedFlyingDutchman, "Fargowiltas", "PlunderedBooty", Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedFlyingDutchman, "Fargowiltas", "PlunderedBooty", Item.buyPrice(0, 15), ref shop, ref nextSlot);
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

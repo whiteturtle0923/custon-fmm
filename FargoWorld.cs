@@ -42,14 +42,20 @@ namespace Fargowiltas
         public static bool downedGoblinSummoner;
         public static bool downedFlyingDutchman;
         public static bool downedDungeonSlime;
+        public static bool downedPirateCaptain;
+        public static bool downedSkeletonGunAny;
+        public static bool downedSkeletonMageAny;
+        public static bool downedBoneLee;
+
+        public static int AbomClearCD;
 
         private static bool[] currentSpawnRateTile;
 
         public override void Initialize()
-		{
-			movedLumberjack = false;
-			downedBetsy = false;
-			downedBoss = false;
+        {
+            movedLumberjack = false;
+            downedBetsy = false;
+            downedBoss = false;
 
             halloween = false;
             xmas = false;
@@ -78,6 +84,12 @@ namespace Fargowiltas
             downedGoblinSummoner = false;
             downedFlyingDutchman = false;
             downedDungeonSlime = false;
+            downedPirateCaptain = false;
+            downedSkeletonGunAny = false;
+            downedSkeletonMageAny = false;
+            downedBoneLee = false;
+
+            AbomClearCD = 0;
 
             currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
         }
@@ -116,6 +128,10 @@ namespace Fargowiltas
             if (downedGoblinSummoner) downed.Add("goblinSummoner");
             if (downedFlyingDutchman) downed.Add("flyingDutchman");
             if (downedDungeonSlime) downed.Add("dungeonSlime");
+            if (downedPirateCaptain) downed.Add("pirateCaptain");
+            if (downedSkeletonGunAny) downed.Add("skeletonGun");
+            if (downedSkeletonMageAny) downed.Add("skeletonMage");
+            if (downedBoneLee) downed.Add("boneLee");
 
             return new TagCompound {
                 {"downed", downed}
@@ -156,6 +172,10 @@ namespace Fargowiltas
             downedGoblinSummoner = downed.Contains("goblinSummoner");
             downedFlyingDutchman = downed.Contains("flyingDutchman");
             downedDungeonSlime = downed.Contains("dungeonSlime");
+            downedPirateCaptain = downed.Contains("pirateCaptain");
+            downedSkeletonGunAny = downed.Contains("skeletonGun");
+            downedSkeletonMageAny = downed.Contains("skeletonMage");
+            downedBoneLee = downed.Contains("boneLee");
         }
 
 		public override void NetReceive(BinaryReader reader)
@@ -189,6 +209,12 @@ namespace Fargowiltas
             downedGoblinSummoner = flags[25];
             downedFlyingDutchman = flags[26];
             downedDungeonSlime = flags[27];
+            downedPirateCaptain = flags[28];
+            downedSkeletonGunAny = flags[29];
+            downedSkeletonMageAny = flags[30];
+            downedBoneLee = flags[31];
+
+            AbomClearCD = reader.ReadInt32();
         }
 		
 		public override void NetSend(BinaryWriter writer)
@@ -222,10 +248,16 @@ namespace Fargowiltas
                 [24] = downedMimicJungle,
                 [25] = downedGoblinSummoner,
                 [26] = downedFlyingDutchman,
-                [27] = downedDungeonSlime
+                [27] = downedDungeonSlime,
+                [28] = downedPirateCaptain,
+                [29] = downedSkeletonGunAny,
+                [30] = downedSkeletonMageAny,
+                [31] = downedBoneLee
             };
 
 			writer.Write(flags);
+
+            writer.Write(AbomClearCD);
         }
 
         public override void PostUpdate ()
@@ -235,8 +267,7 @@ namespace Fargowiltas
             Main.xMas = xmas;
 
             //no CD on fishing quests
-            bool changeQuest = true;
-
+            /*bool changeQuest = true;
             foreach (Player p in Main.player.Where(x => x.active))
             {
                 if (!Main.anglerWhoFinishedToday.Contains(p.name))
@@ -248,13 +279,14 @@ namespace Fargowiltas
             if (changeQuest)
             {
                 Main.AnglerQuestSwap();
-            }
+            }*/
 
             //swarm reset in case something goes wrong
-            if (NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead))
-            {
+            if (Fargowiltas.swarmActive && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead))
                 Fargowiltas.swarmActive = false;
-            }
+
+            if (AbomClearCD > 0)
+                AbomClearCD--;
 		}
 
         public override void TileCountsAvailable(int[] tileCounts)

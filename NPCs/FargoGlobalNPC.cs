@@ -964,6 +964,33 @@ namespace Fargowiltas.NPCs
                     FargoWorld.downedDungeonSlime = true;
                     break;
 
+                case NPCID.PirateCaptain:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedPirateCaptain = true;
+                    break;
+
+                case NPCID.SkeletonSniper:
+                case NPCID.TacticalSkeleton:
+                case NPCID.SkeletonCommando:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedSkeletonGunAny = true;
+                    break;
+
+                case NPCID.Necromancer:
+                case NPCID.NecromancerArmored:
+                case NPCID.DiabolistRed:
+                case NPCID.DiabolistWhite:
+                case NPCID.RaggedCaster:
+                case NPCID.RaggedCasterOpenCoat:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedSkeletonMageAny = true;
+                    break;
+
+                case NPCID.BoneLee:
+                    FargoWorld.downedRareEnemy = true;
+                    FargoWorld.downedBoneLee = true;
+                    break;
+
                 default:
                     break;
             }
@@ -995,5 +1022,23 @@ namespace Fargowiltas.NPCs
 				damage *= 20;
 			}
 		}
-	}
+
+        public override void OnChatButtonClicked(NPC npc, bool firstButton)
+        {
+            if (Main.anglerQuestFinished) //no angler check enables luiafk compat
+            {
+                if (Main.netMode == 0)
+                {
+                    Main.AnglerQuestSwap();
+                }
+                else if (Main.netMode == 1)
+                {
+                    //broadcast swap request to server
+                    var netMessage = mod.GetPacket();
+                    netMessage.Write((byte)3);
+                    netMessage.Send();
+                }
+            }
+        }
+    }
 }

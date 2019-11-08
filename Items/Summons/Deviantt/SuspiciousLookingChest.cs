@@ -8,7 +8,6 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class SuspiciousLookingChest : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.Mimic;
 
         public override void SetStaticDefaults()

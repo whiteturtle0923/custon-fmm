@@ -1135,10 +1135,10 @@ namespace Fargowiltas.NPCs
 
             else if (shop2)
             {
-                if (Fargowiltas.instance.fargoLoaded)
+                /*if (Fargowiltas.instance.fargoLoaded)
                 {
                     AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
-                }
+                }*/
 
                 if (Fargowiltas.instance.redemptionLoaded)
                 {

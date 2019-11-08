@@ -6,15 +6,14 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class WizardHatofLegend : DevianttSummon
+    public class LeesHeadband : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
-        public override int summonType => NPCID.RuneWizard;
+        public override int summonType => NPCID.BoneLee;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Wizard Hat of Legend");
-            Tooltip.SetDefault("Summons Rune Wizard");
+            DisplayName.SetDefault("Lee's Headband");
+            Tooltip.SetDefault("Summons Bone Lee\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

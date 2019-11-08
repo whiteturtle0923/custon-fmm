@@ -8,7 +8,6 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class HallowChest : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.BigMimicHallow;
 
         public override void SetStaticDefaults()

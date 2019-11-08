@@ -8,18 +8,17 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class HolyGrail : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.Tim;
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Holy Grail");
-            Tooltip.SetDefault("Summons Tim");
+            Tooltip.SetDefault("Summons Tim\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)
         {
-            return player.position.Y / 16 > Main.worldSurface || !Main.dayTime;
+            return !Main.dayTime || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
         }
     }
 }

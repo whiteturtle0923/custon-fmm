@@ -8,13 +8,12 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class AthenianIdol : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.Medusa;
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Athenian Idol");
-            Tooltip.SetDefault("Summons Medusa");
+            Tooltip.SetDefault("Summons Medusa\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

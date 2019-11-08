@@ -6,14 +6,14 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class AttractiveOre : DevianttSummon
+    public class RuneOrb : DevianttSummon
     {
-        public override int summonType => NPCID.UndeadMiner;
+        public override int summonType => NPCID.RuneWizard;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Attractive Ore");
-            Tooltip.SetDefault("Summons Undead Miner\nOnly usable at night or underground");
+            DisplayName.SetDefault("Rune Orb");
+            Tooltip.SetDefault("Summons Rune Wizard\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

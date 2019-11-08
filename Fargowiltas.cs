@@ -2617,96 +2617,123 @@ namespace Fargowiltas
                 case 1: //regal statue
                     FargoWorld.ReceiveCurrentSpawnRateTile(reader, whoAmI);
                     break;
+
                 case 2: //abom clear events
                     if (Main.netMode == 2)
                     {
-                        if (ClearEvents())
+                        bool eventOccurring = false;
+                        if (ClearEvents(ref eventOccurring))
                         {
                             NetMessage.SendData(7);
                             NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The event has been cancelled!"), new Color(175, 75, 255));
                         }
                     }
                     break;
+
+                case 3: //angler reset
+                    if (Main.netMode == 2)
+                        Main.AnglerQuestSwap();
+                    break;
+
                 default:
                     break;
             }
 
         }
 
-        public static bool ClearEvents()
+        public static bool ClearEvents(ref bool eventOccurring)
         {
-            bool clearedEvent = false;
+            bool canClearEvent = FargoWorld.AbomClearCD <= 0;
             if (Main.invasionType != 0)
             {
-                clearedEvent = true;
-                Main.invasionType = 0;
+                eventOccurring = true;
+                if (canClearEvent)
+                    Main.invasionType = 0;
             }
             if (Main.pumpkinMoon)
             {
-                clearedEvent = true;
-                Main.pumpkinMoon = false;
+                eventOccurring = true;
+                if (canClearEvent)
+                    Main.pumpkinMoon = false;
             }
             if (Main.snowMoon)
             {
-                clearedEvent = true;
-                Main.snowMoon = false;
+                eventOccurring = true;
+                if (canClearEvent)
+                    Main.snowMoon = false;
             }
             if (Main.eclipse)
             {
-                clearedEvent = true;
-                Main.eclipse = false;
+                eventOccurring = true;
+                if (canClearEvent)
+                    Main.eclipse = false;
             }
             if (Main.bloodMoon)
             {
-                clearedEvent = true;
-                Main.bloodMoon = false;
+                eventOccurring = true;
+                if (canClearEvent)
+                    Main.bloodMoon = false;
             }
             if (Main.raining)
             {
-                clearedEvent = true;
-                Main.raining = false;
+                eventOccurring = true;
+                if (canClearEvent)
+                    Main.raining = false;
             }
             if (Main.slimeRain)
             {
-                clearedEvent = true;
-                Main.StopSlimeRain();
-                Main.slimeWarningDelay = 1;
-                Main.slimeWarningTime = 1;
+                eventOccurring = true;
+                if (canClearEvent)
+                {
+                    Main.StopSlimeRain();
+                    Main.slimeWarningDelay = 1;
+                    Main.slimeWarningTime = 1;
+                }
             }
             if (BirthdayParty.PartyIsUp)
             {
-                clearedEvent = true;
-                BirthdayParty.WorldClear();
+                eventOccurring = true;
+                if (canClearEvent)
+                    BirthdayParty.WorldClear();
             }
             if (DD2Event.Ongoing)
             {
-                clearedEvent = true;
-                DD2Event.StopInvasion();
+                eventOccurring = true;
+                if (canClearEvent)
+                    DD2Event.StopInvasion();
             }
             if (Sandstorm.Happening)
             {
-                clearedEvent = true;
-                Sandstorm.Happening = false;
-                Sandstorm.TimeLeft = 0;
+                eventOccurring = true;
+                if (canClearEvent)
+                {
+                    Sandstorm.Happening = false;
+                    Sandstorm.TimeLeft = 0;
+                }
             }
             if (NPC.LunarApocalypseIsUp)
             {
-                clearedEvent = true;
-                NPC.LunarApocalypseIsUp = false;
-                NPC.ShieldStrengthTowerNebula = 0;
-                NPC.ShieldStrengthTowerSolar = 0;
-                NPC.ShieldStrengthTowerStardust = 0;
-                NPC.ShieldStrengthTowerVortex = 0;
-                for (int i = 0; i < Main.maxNPCs; i++) //purge all towers
-                    if (Main.npc[i].active
-                        && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar
-                        || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
-                    {
-                        Main.npc[i].dontTakeDamage = false;
-                        Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
-                    }
+                eventOccurring = true;
+                if (canClearEvent)
+                {
+                    NPC.LunarApocalypseIsUp = false;
+                    NPC.ShieldStrengthTowerNebula = 0;
+                    NPC.ShieldStrengthTowerSolar = 0;
+                    NPC.ShieldStrengthTowerStardust = 0;
+                    NPC.ShieldStrengthTowerVortex = 0;
+                    for (int i = 0; i < Main.maxNPCs; i++) //purge all towers
+                        if (Main.npc[i].active
+                            && (Main.npc[i].type == NPCID.LunarTowerNebula || Main.npc[i].type == NPCID.LunarTowerSolar
+                            || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
+                        {
+                            Main.npc[i].dontTakeDamage = false;
+                            Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
+                        }
+                }
             }
-            return clearedEvent;
+            if (eventOccurring && canClearEvent)
+                FargoWorld.AbomClearCD = 7200;
+            return eventOccurring && canClearEvent;
         }
 
         #region Boss Summon Method (Thanks Grox)

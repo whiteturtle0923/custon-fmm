@@ -6,15 +6,14 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class GoldArtifact : DevianttSummon
+    public class PirateFlag : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
-        public override int summonType => NPCID.DoctorBones;
+        public override int summonType => NPCID.PirateCaptain;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gold Artifact");
-            Tooltip.SetDefault("Summons Doctor Bones");
+            DisplayName.SetDefault("Pirate Flag");
+            Tooltip.SetDefault("Summons Pirate Captain\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)

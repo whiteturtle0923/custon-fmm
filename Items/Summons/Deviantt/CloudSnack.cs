@@ -8,7 +8,6 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class CloudSnack : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.WyvernHead;
 
         public override void SetStaticDefaults()

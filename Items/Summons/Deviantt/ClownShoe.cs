@@ -8,13 +8,12 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class ClownShoe : DevianttSummon
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
         public override int summonType => NPCID.Clown;
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Clown Shoe");
-            Tooltip.SetDefault("Summons Clown");
+            Tooltip.SetDefault("Summons Clown\nOnly usable at night or underground");
         }
 
         public override bool CanUseItem(Player player)
