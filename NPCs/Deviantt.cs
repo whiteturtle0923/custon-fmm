@@ -295,7 +295,7 @@ namespace Fargowiltas.NPCs
             AddItem(FargoWorld.downedTim, "Fargowiltas", "HolyGrail", Item.buyPrice(0, 5), ref shop, ref nextSlot);
 
             //doctor bones
-            AddItem(FargoWorld.downedDoctorBones, "Fargowiltas", "GoldArtifact", Item.buyPrice(0, 2), ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedDoctorBones, "Fargowiltas", "Eggplant", Item.buyPrice(0, 2), ref shop, ref nextSlot);
 
             //dungeon slime
             AddItem(FargoWorld.downedDungeonSlime, "Fargowiltas", "SlimyLockBox", Item.buyPrice(0, 10), ref shop, ref nextSlot);
