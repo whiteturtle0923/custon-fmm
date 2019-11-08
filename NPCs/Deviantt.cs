@@ -141,7 +141,7 @@ namespace Fargowiltas.NPCs
             dialogue.Add("I'll have you know I'm over a hundred Fargo years old! Don't ask me how long a Fargo year is.");
             dialogue.Add("I might be able to afford a taller body if you keep buying!");
             dialogue.Add("Where's that screm cat?");
-            dialogue.Add(Main.player[Main.myPlayer].name + "! I saw something rodent-y just now! You don't a hamster infestation, right? Right!?");
+            dialogue.Add(Main.player[Main.myPlayer].name + "! I saw something rodent-y just now! You don't have a hamster infestation, right? Right!?");
             dialogue.Add("You're the Terrarian? Honestly, I was expecting someone a little... taller.");
             dialogue.Add("Don't look at me like that! The only thing I've deviated from is my humanity.");
             dialogue.Add("Rip and tear and buy from me for more things to rip and tear!");
@@ -201,7 +201,7 @@ namespace Fargowiltas.NPCs
                     else if (NPC.downedGolemBoss)
                         Main.npcChatText = "Did you beat that fish pig dragon yet? He's strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?";
                     else if (NPC.downedPlantBoss)
-                        Main.npcChatText = "That golem? It gets upset when you leave the temple, so fighting in there is best.";
+                        Main.npcChatText = "That golem? It gets upset when you leave the temple, so fighting in there is best. It'll also try to take the high ground against you...";
                     else if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
                         Main.npcChatText = "That overgrown plant inflicts a special venom that works her into an enraged frenzy. She also has a ring of crystal leaves, but minions go through it.";
                     else if (Main.hardMode)
