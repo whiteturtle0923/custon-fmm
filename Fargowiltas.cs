@@ -47,6 +47,7 @@ namespace Fargowiltas
         internal bool pinkyLoaded;
         internal bool redemptionLoaded;
         internal bool ocramLoaded;
+        internal bool CSkiesLoaded;
         #endregion
 
         //swarms
@@ -110,6 +111,7 @@ namespace Fargowiltas
                 redemptionLoaded = ModLoader.GetMod("Redemption") != null;
                 JSLoaded = ModLoader.GetMod("Jetshift") != null;
                 ocramLoaded = ModLoader.GetMod("Ocram") != null;
+                CSkiesLoaded = ModLoader.GetMod("CSkies") != null;
             }
             catch (Exception e)
             {

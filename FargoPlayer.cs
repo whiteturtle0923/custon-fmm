@@ -93,7 +93,7 @@ namespace Fargowiltas
 
                             if (Fargowiltas.instance.fargoLoaded)
                             {
-                                player.AddBuff(ModLoader.GetMod("FargowiltasSouls").BuffType("FirstStrike"), 60);
+                                Fargos();
                             }
 
                             rodCD = 30;
@@ -135,6 +135,16 @@ namespace Fargowiltas
                 mirrorCD = 120;
             }
         }
+
+        private void Fargos()
+        {
+            if (player.GetModPlayer<FargowiltasSouls.FargoPlayer>().NinjaEnchant)
+            {
+                player.AddBuff(ModLoader.GetMod("FargowiltasSouls").BuffType("FirstStrike"), 60);
+            }
+
+        }
+
 
         public override void ResetEffects()
         {
