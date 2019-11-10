@@ -6,13 +6,13 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class ClownShoe : DevianttSummon
+    public class ClownLicense : DevianttSummon
     {
         public override int summonType => NPCID.Clown;
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Clown Shoe");
+            DisplayName.SetDefault("Clown License");
             Tooltip.SetDefault("Summons Clown\nOnly usable at night or underground");
         }
 
