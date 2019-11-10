@@ -1,24 +1,23 @@
 NEW UPDATE - v 1.6
-
--renamed The Mutant caught to Mutant
+-Added the Deviantt
+-Added Pink Slime Crown, Eggplant, Attractive Ore, Holy Grail, Slimy Lock Box, Athenian Idol, and Clown License
+-Added Heart Chocolate, Moth Lamp, Diluted Rainbow Matter, Cloud Snack, Rune Orb, and Suspicious Looking Chest
+-Added Hallow Chest, Corrupt Chest, Crimson Chest, Jungle Chest, Core of the FrostCore, and Forbidden Forbidden Fragment
+-Added Shadowflame Icon, Pirate Flag, Plundered Booty, Mothron Egg, Lee's Headband, Grand Cross, Amalgamated Skull, and Amalgamated Spirit
 -Added Slimy Barometer and Cursed Sextant
--Abominationn can spawn any time in masomode
--adjusted abom shop prices
--altered shiny red balloon recipe
--added lucky horseshoe and plantera bulb recipe, and Sandstorm in a Bottle
--Brainy, Destruction, Sibling, Prime, and Lihzahrd Energizers are now obtainable
--Added Thorium and Calamity banner recipes
+-Added Celestial Skies Mutant support
+-Lowered Mutant prices for Calamity summons to match the ones sold there
+-Adjusted Abominationn shop prices
 -Added Summon variants for Nimbus Rod, Crimson Rod, Bee Gun, Wasp Gun, Piranha Gun, and Bat Scepter
--updated to latest tmod
--added recipes for rare drops from goodie bags,presents
--loweredmutant prices for calamity summons to match the ones sold there
-
--Ninja Enchant First Strike now works with this mods Rod of Discord key
+-Added Thorium and Calamity banner recipes
+-Added recipes for Lucky Horseshoe, Plantera's Bulb, Sandstorm in a Bottle, and Pocket Mirror
+-Added recipes for rare drops from Goodie Bags and Presents
+-Made the Shiny Red Balloon recipe simpler
+-You can now use the Extractinator at super speed
+-Brainy, Destruction, Sibling, Prime, and Lihzahrd Energizers are now obtainable
+-Auto House now takes any Wood
+-Ninja Enchantment First Strike now works with this mod's Rod of Discord key
 -Teleport home hotkey now plays the mirror sound effect
--Medusa's Banner now also crafts into Pocket Mirror
--now extract things at MEME speed
--auto house now takes any wood
--added Celestial Skies Mutant support
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
