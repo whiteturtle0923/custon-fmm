@@ -30,9 +30,10 @@ namespace Fargowiltas.Items.Tiles
         public override void AddRecipes()   
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Wood, 51);  
-			recipe.AddIngredient(ItemID.Torch);  
-			recipe.AddTile(TileID.Sawmill); 
+            recipe.AddRecipeGroup("Wood", 50);
+            recipe.AddIngredient(ItemID.Torch);  
+			recipe.AddTile(TileID.Sawmill);
+            
 			recipe.SetResult(this);   
             recipe.AddRecipe();
         }

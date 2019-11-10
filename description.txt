@@ -17,6 +17,8 @@ NEW UPDATE - v 1.6
 -Teleport home hotkey now plays the mirror sound effect
 -Medusa's Banner now also crafts into Pocket Mirror
 -now extract things at MEME speed
+-auto house now takes any wood
+-added Celestial Skies Mutant support
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

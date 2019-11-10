@@ -91,7 +91,7 @@ namespace Fargowiltas
                             }
                             player.AddBuff(88, 360, true);
 
-                            if (Fargowiltas.instance.fargoLoaded)
+                            if (Fargowiltas.instance.fargoLoaded && player.GetModPlayer<FargowiltasSouls.FargoPlayer>().NinjaEnchant)
                             {
                                 player.AddBuff(ModLoader.GetMod("FargowiltasSouls").BuffType("FirstStrike"), 60);
                             }

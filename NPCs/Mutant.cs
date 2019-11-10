@@ -327,8 +327,14 @@ namespace Fargowiltas.NPCs
         //ocram
         public bool OcramOcram => Ocram.OcramWorld.downedOcram;
 
+        //celestial skies
+        public bool CSkiesObserver => CSkies.CWorld.downedObserver;
+        public bool CSkiesObserverV => CSkies.CWorld.downedObserverV;
+        public bool CSkiesStarcore => CSkies.CWorld.downedStarcore;
+        public bool CSkiesHeartcore => CSkies.CWorld.downedHeartcore;
+
         #endregion other mod bools
-        
+
         public override void AI()
         {
             if (!spawned)
@@ -761,8 +767,6 @@ namespace Fargowiltas.NPCs
                     AddItem(TrelamiumGoliath, "TrelamiumMod", "MycelialCluster", 20000, ref shop, ref nextSlot);
                 }
 
-                //antlion queen - true eater
-
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
                     //Grand Thunderbird
@@ -846,8 +850,6 @@ namespace Fargowiltas.NPCs
                     AddItem(ElementsDownedWaste, "ElementsAwoken", "WastelandSummon", 80000, ref shop, ref nextSlot);
                 }
 
-                //The Spirit - Split
-
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Rukh
@@ -905,19 +907,12 @@ namespace Fargowiltas.NPCs
                     AddItem(TremorDownedTotem, "Tremor", "MysteriousDrum", 100000, ref shop, ref nextSlot);
                 }
 
-                //One Shot -Split
-
                 if (Fargowiltas.instance.tremorLoaded)
                 {
                     //Evil Corn
                     AddItem(TremorDownedCorn, "Tremor", "CursedPopcorn", 100000, ref shop, ref nextSlot);
                 }
 
-                /*if (Fargowiltas.instance.ferniumLoaded)
-                {
-                    AddItem(FerniumDownedMargrama, "Fernium", "LunarFlame", 100000, ref shop, ref nextSlot);
-                }
-                */
                 if (Fargowiltas.instance.disarrayLoaded)
                 {
                     AddItem(DisarrayDownedGeneral, "Disarray", "TornBattleArmor", 100000, ref shop, ref nextSlot);
@@ -942,8 +937,6 @@ namespace Fargowiltas.NPCs
                     //Storm Jellyfish
                     AddItem(TremorDownedJelly, "Tremor", "StormJelly", 100000, ref shop, ref nextSlot);
                 }
-
-                //Clampula - True Eater
 
                 if (Fargowiltas.instance.spiritLoaded)
                 {
@@ -980,8 +973,6 @@ namespace Fargowiltas.NPCs
                     //AddItem(JSSnake, "Jetshift", "SoilBall", 100000, ref shop, ref nextSlot);
                 }
 
-                //magnoliac - btfa ?
-
                 if (Fargowiltas.instance.spiritLoaded)
                 {
                     AddItem(SpiritDownedFlier, "SpiritMod", "JewelCrown", 150000, ref shop, ref nextSlot);
@@ -997,6 +988,7 @@ namespace Fargowiltas.NPCs
                     //Flaming Pumpkin
                     AddItem(SacredDownedPump, "SacredTools", "PumpkinLantern", 150000, ref shop, ref nextSlot);
                 }
+
                 //Skeletron
                 AddItem(NPC.downedBoss3, "Fargowiltas", "SuspiciousSkull", 150000, ref shop, ref nextSlot);
 
@@ -1004,6 +996,11 @@ namespace Fargowiltas.NPCs
                 {
                     AddItem(AADjinn, "AAMod", "DjinnLamp ", 150000, ref shop, ref nextSlot);
                     AddItem(AASerpent, "AAMod", "SubzeroCrystal ", 150000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.CSkiesLoaded)
+                {
+                    AddItem(CSkiesObserver, "CSkies", "CosmicEye ", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.cookieLoaded)
@@ -1040,8 +1037,6 @@ namespace Fargowiltas.NPCs
                     //Starplate Raider
                     AddItem(SpiritDownedRaider, "SpiritMod", "StarWormSummon", 150000, ref shop, ref nextSlot);
                 }
-
-                //the cluster -peculiarity
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
@@ -1135,11 +1130,6 @@ namespace Fargowiltas.NPCs
 
             else if (shop2)
             {
-                /*if (Fargowiltas.instance.fargoLoaded)
-                {
-                    AddItem(true, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
-                }*/
-
                 if (Fargowiltas.instance.redemptionLoaded)
                 {
                     AddItem(RedeEye, "Redemption", "XenoEye", 250000, ref shop, ref nextSlot);
@@ -1155,11 +1145,6 @@ namespace Fargowiltas.NPCs
                     //Wall of Voices 
                     //AddItem(JSWall, "Jetshift", "CursedWall", 250000, ref shop, ref nextSlot);
                 }
-
-                /*if(Fargowiltas.instance.ferniumLoaded)
-                {
-                    AddItem(FerniumFernite, "Fernium", "FerniumCore ", 250000, ref shop, ref nextSlot);
-                }*/
 
                 if (Fargowiltas.instance.trelamiumLoaded)
                 {
@@ -1199,7 +1184,10 @@ namespace Fargowiltas.NPCs
                     AddItem(DisarrayDownedShadows, "Disarray", "EnhancedShadowFragment", 250000, ref shop, ref nextSlot);
                 }
 
-                //ichor blaster/ grasper - true eater
+                if (Fargowiltas.instance.CSkiesLoaded)
+                {
+                    AddItem(CSkiesStarcore, "CSkies", "Transmitter ", 250000, ref shop, ref nextSlot);
+                }
 
                 if (Fargowiltas.instance.thoriumLoaded)
                 {
@@ -1471,8 +1459,6 @@ namespace Fargowiltas.NPCs
                     AddItem(CalamityDownedPlague, "CalamityMod", "Abomination", 500000, ref shop, ref nextSlot);
                 }
 
-                //behemoth - true eater
-
                 if (Fargowiltas.instance.crystiliumLoaded)
                 {
                     //Crystal King
@@ -1571,6 +1557,12 @@ namespace Fargowiltas.NPCs
                     AddItem(AAAkuma, "AAMod", "DraconianSigil", 1000000, ref shop, ref nextSlot);
                     //Yamata
                     AddItem(AAYamata, "AAMod", "DreadSigil", 1000000, ref shop, ref nextSlot);
+                }
+
+                if (Fargowiltas.instance.CSkiesLoaded)
+                {
+                    AddItem(CSkiesObserverV, "CSkies", "VoidEye ", 1000000, ref shop, ref nextSlot);
+                    AddItem(CSkiesHeartcore, "CSkies", "PassionRune ", 2000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.instance.JSLoaded)
