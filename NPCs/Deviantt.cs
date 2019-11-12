@@ -189,7 +189,7 @@ namespace Fargowiltas.NPCs
                 Item.NewItem(p.Center, ItemID.SilverPickaxe);
                 Item.NewItem(p.Center, ItemID.SilverAxe);
                 Item.NewItem(p.Center, ItemID.HermesBoots);
-                Item.NewItem(p.Center, ItemID.LifeCrystal, 5);
+                Item.NewItem(p.Center, ItemID.LifeCrystal, 4);
                 Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
                 return;
             }
