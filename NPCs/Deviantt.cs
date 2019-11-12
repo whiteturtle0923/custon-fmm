@@ -186,7 +186,8 @@ namespace Fargowiltas.NPCs
             if (!fargoPlayer.ReceivedMasoGift && !NPC.downedBoss1)
             {
                 fargoPlayer.ReceivedMasoGift = true;
-                Item.NewItem(p.Center, ItemID.BonePickaxe);
+                Item.NewItem(p.Center, ItemID.SilverPickaxe);
+                Item.NewItem(p.Center, ItemID.SilverAxe);
                 Item.NewItem(p.Center, ItemID.HermesBoots);
                 Item.NewItem(p.Center, ItemID.LifeCrystal, 5);
                 Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
@@ -213,6 +214,8 @@ namespace Fargowiltas.NPCs
                     Main.npcChatText = "That overgrown plant inflicts a special venom that works her into an enraged frenzy. She also has a ring of crystal leaves, but minions go through it.";
                 else if (Main.hardMode)
                 {
+                    if (!NPC.downedPirates)
+                        Main.npcChatText = "Watch out when you break your fourth altar! It might attract the pirates, so be sure you're ready when you do it.";
                     if (!NPC.downedMechBoss1)
                         Main.npcChatText = "That metal worm has a few upgrades. It'll start shooting dark stars and start flying as you damage it. Too bad you can't stay in the air forever, right?";
                     else if (!NPC.downedMechBoss2)
@@ -232,6 +235,8 @@ namespace Fargowiltas.NPCs
                     Main.npcChatText = WorldGen.crimson ? "When the brain gets mad, it'll confuse you every few seconds. Knowledge is power!" : "When you hurt the world eater, its segments will break off as smaller eaters. Don't let them pile up!";
                 else if (NPC.downedSlimeKing)
                     Main.npcChatText = "Keep an eye on Cthulhu's eye when you're fighting. It might just teleport behind you whenever it finishes a set of mad dashes.";
+                else if (!NPC.downedGoblins)
+                    Main.npcChatText = "Watch out when you break your second " + (WorldGen.crimson ? "Crimson Heart" : "Shadow Orb") + "! It might attract the goblins, so prepare before you do it.";
                 else
                     Main.npcChatText = "Gonna fight that slime king soon? Don't spend too long up and out of his reach or he'll get mad. Very, very mad.";
             }
