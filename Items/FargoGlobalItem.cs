@@ -374,7 +374,7 @@ namespace Fargowiltas.Items
 
         public override void UpdateInventory(Item item, Player player)
         {
-            if (item.buffType != 0 && item.stack >= 120 && player.buffType[21] == 0) //dont try to buff if slots full
+            if (item.buffType != 0 && item.stack >= 120 && FargoConfig.Instance.UnlimitedPotionBuffsOn120 && player.buffType[21] == 0) //dont try to buff if slots full
                 player.AddBuff(item.buffType, 2);
         }
     }

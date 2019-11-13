@@ -1025,7 +1025,7 @@ namespace Fargowiltas.NPCs
 
         public override void OnChatButtonClicked(NPC npc, bool firstButton)
         {
-            if (Main.anglerQuestFinished) //no angler check enables luiafk compat
+            if (FargoConfig.Instance.AnglerQuestInstantReset && Main.anglerQuestFinished) //no angler check enables luiafk compat
             {
                 if (Main.netMode == 0)
                 {
