@@ -2637,6 +2637,17 @@ namespace Fargowiltas
                         Main.AnglerQuestSwap();
                     break;
 
+                case 4: //spawn deviantt items
+                    if (Main.netMode == 2)
+                    {
+                        Player p = Main.player[reader.ReadByte()];
+                        Item.NewItem(p.Center, ItemID.SilverPickaxe);
+                        Item.NewItem(p.Center, ItemID.SilverAxe);
+                        Item.NewItem(p.Center, ItemID.HermesBoots);
+                        Item.NewItem(p.Center, ItemID.LifeCrystal, 4);
+                    }
+                    break;
+
                 default:
                     break;
             }

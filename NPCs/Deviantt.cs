@@ -190,10 +190,20 @@ namespace Fargowiltas.NPCs
             if (!fargoPlayer.ReceivedMasoGift && !NPC.downedBoss1)
             {
                 fargoPlayer.ReceivedMasoGift = true;
-                Item.NewItem(p.Center, ItemID.SilverPickaxe);
-                Item.NewItem(p.Center, ItemID.SilverAxe);
-                Item.NewItem(p.Center, ItemID.HermesBoots);
-                Item.NewItem(p.Center, ItemID.LifeCrystal, 4);
+                if (Main.netMode == 0)
+                {
+                    Item.NewItem(p.Center, ItemID.SilverPickaxe);
+                    Item.NewItem(p.Center, ItemID.SilverAxe);
+                    Item.NewItem(p.Center, ItemID.HermesBoots);
+                    Item.NewItem(p.Center, ItemID.LifeCrystal, 4);
+                }
+                else if (Main.netMode == 1)
+                {
+                    var netMessage = mod.GetPacket(); //broadcast item request to server
+                    netMessage.Write((byte)4);
+                    netMessage.Write((byte)p.whoAmI);
+                    netMessage.Send();
+                }
                 Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
                 return;
             }
