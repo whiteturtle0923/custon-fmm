@@ -70,6 +70,11 @@ namespace Fargowiltas.NPCs
             return NPC.downedGoblins;
         }
 
+        public override void AI()
+        {
+            npc.breath = 200;
+        }
+
         public override string TownNPCName()
         {
             switch (WorldGen.genRand.Next(5))

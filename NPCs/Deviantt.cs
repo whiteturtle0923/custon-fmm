@@ -36,7 +36,6 @@ namespace Fargowiltas.NPCs
             npc.height = 40;
             npc.aiStyle = 7;
             npc.damage = 10;
-            npc.breathCounter = 9999;
 
             npc.defense = NPC.downedMoonlord ? 50 : 15;
             npc.lifeMax = NPC.downedMoonlord ? 2500 : 250;
@@ -64,6 +63,11 @@ namespace Fargowiltas.NPCs
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
             return FargoWorld.downedRareEnemy || (Fargowiltas.instance.fargoLoaded && MasochistMode);
+        }
+
+        public override void AI()
+        {
+            npc.breath = 200;
         }
 
         public override string TownNPCName()
