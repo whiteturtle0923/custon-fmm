@@ -6,6 +6,7 @@ using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas
 {
@@ -76,7 +77,7 @@ namespace Fargowiltas
             CustomKey = RegisterHotKey("Custom Hotkey (Bottom Left Inventory Slot)", "K");
         }
 
-        #region mod loaded bools
+        #region mod loaded bools + census
         //bool sheet
         public override void PostSetupContent()
         {
@@ -117,6 +118,16 @@ namespace Fargowiltas
             {
                 ErrorLogger.Log("Fargowiltas PostSetupContent Error: " + e.StackTrace + e.Message);
             }
+            Mod censusMod = ModLoader.GetMod("Census");
+            if (censusMod != null)
+            {
+				censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Use the Mutant's Gift");
+				censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any Boss or Miniboss");
+				censusMod.Call("TownNPCCondition", NPCType("LumberJack"), "Hold a Wooden Token in your Inventory");
+				censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Defeat any Event");
+
+			}
+
         }
         #endregion
 
