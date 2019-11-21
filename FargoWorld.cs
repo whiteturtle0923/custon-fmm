@@ -186,8 +186,8 @@ namespace Fargowiltas
             downedSkeletonMageAny = downed.Contains("skeletonMage");
             downedBoneLee = downed.Contains("boneLee");
 
-            downedDarkMage3 = downed.Add("darkMage3");
-            downedOgre3 = downed.Add("ogre");
+            downedDarkMage3 = downed.Contains("darkMage3");
+            downedOgre3 = downed.Contains("ogre");
         }
 
 		public override void NetReceive(BinaryReader reader)
