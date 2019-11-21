@@ -156,6 +156,7 @@ namespace Fargowiltas.NPCs
             dialogue.Add("One day, I'll sell a summon for myself! ...Just kidding.");
             dialogue.Add("Hmm, I can tell! You've killed a lot, but you haven't killed enough!");
             dialogue.Add("Why the extra letter, you ask? Only the strongest sibling is allowed to remove their own!");
+            dialogue.Add("The more rare things you kill, the more stuff I sell! Simple, right?");
 
             return dialogue[Main.rand.Next(dialogue.Count)];
         }
