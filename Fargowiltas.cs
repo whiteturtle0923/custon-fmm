@@ -1613,34 +1613,29 @@ namespace Fargowiltas
 
             #region npc recipes
 
-            String[] townNPCs = new String[] { "Abominationn", "Angler", "ArmsDealer", "Clothier", "Cyborg", "Demolitionist", "Deviantt", "Dryad", "DyeTrader", "GoblinTinkerer", "Guide", "LumberJack", "Mechanic", "Merchant", "Mutant", "Nurse", "Painter", "PartyGirl", "Pirate", "SantaClaus", "SkeletonMerchant", "Steampunker", "Stylist", "Tavernkeep", "TaxCollector", "TravellingMerchant", "Truffle", "WitchDoctor", "Wizard" };
+            recipe = new ModRecipe(this);
+            recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
+            recipe.AddTile(TileID.MeatGrinder);
+            recipe.SetResult(ItemID.FleshBlock, 15);
+            recipe.AddRecipe();
 
-            for (int i = 0; i < townNPCs.Length; i++)
-            {
-                recipe = new ModRecipe(this);
-                recipe.AddIngredient(null, townNPCs[i]);
-                recipe.AddTile(TileID.MeatGrinder);
-                recipe.SetResult(ItemID.FleshBlock, 15);
-                recipe.AddRecipe();
+            recipe = new ModRecipe(this);
+            recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(ItemID.DeepRedPaint, 100);
+            recipe.AddRecipe();
 
-                recipe = new ModRecipe(this);
-                recipe.AddIngredient(null, townNPCs[i]);
-                recipe.AddTile(TileID.DyeVat);
-                recipe.SetResult(ItemID.DeepRedPaint, 100);
-                recipe.AddRecipe();
+            recipe = new ModRecipe(this);
+            recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(ItemID.GrimDye, 3);
+            recipe.AddRecipe();
 
-                recipe = new ModRecipe(this);
-                recipe.AddIngredient(null, townNPCs[i]);
-                recipe.AddTile(TileID.DyeVat);
-                recipe.SetResult(ItemID.GrimDye, 3);
-                recipe.AddRecipe();
-
-                recipe = new ModRecipe(this);
-                recipe.AddIngredient(null, townNPCs[i]);
-                recipe.AddTile(TileID.BoneWelder);
-                recipe.SetResult(ItemID.Bone, 25);
-                recipe.AddRecipe();
-            }
+            recipe = new ModRecipe(this);
+            recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
+            recipe.AddTile(TileID.BoneWelder);
+            recipe.SetResult(ItemID.Bone, 25);
+            recipe.AddRecipe();
 
             recipe = new ModRecipe(this);
             recipe.AddIngredient(null, "Dryad");
@@ -2581,37 +2576,7 @@ namespace Fargowiltas
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
 
-            //anvil HM
-            group = new RecipeGroup(() => Lang.misc[37] + " Mythril Anvil", new int[]
-            {
-                ItemID.MythrilAnvil,
-                ItemID.OrichalcumAnvil,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyAnvil", group);
-
-            //forge HM
-            group = new RecipeGroup(() => Lang.misc[37] + " Adamantite Forge", new int[]
-            {
-                ItemID.AdamantiteForge,
-                ItemID.TitaniumForge,
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyForge", group);
-
-            //book cases
-            group = new RecipeGroup(() => Lang.misc[37] + " Wooden Bookcase", new int[]
-            {
-                ItemID.Bookcase,
-                ItemID.EbonwoodBookcase,
-                ItemID.RichMahoganyBookcase,
-                ItemID.LivingWoodBookcase,
-                ItemID.ShadewoodBookcase,
-                ItemID.PalmWoodBookcase,
-                ItemID.BorealWoodBookcase,
-                ItemID.DynastyBookcase
-            });
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyBookcase", group);
-
-            //book cases
+            //bone banner
             group = new RecipeGroup(() => Lang.misc[37] + " Armored Bones Banner", new int[]
             {
                 ItemID.BlueArmoredBonesBanner,
@@ -2619,6 +2584,41 @@ namespace Fargowiltas
                 ItemID.RustyArmoredBonesBanner,
             });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyArmoredBones", group);
+
+            //npcs
+            group = new RecipeGroup(() => Lang.misc[37] + " Caught Town NPC", new int[]
+            {
+                ItemType("Guide"),
+                ItemType("Abominationn"),
+                ItemType("Angler"),
+                ItemType("ArmsDealer"),
+                ItemType("Clothier"),
+                ItemType("Cyborg"),
+                ItemType("Demolitionist"),
+                ItemType("Deviantt"),
+                ItemType("Dryad"),
+                ItemType("DyeTrader"),
+                ItemType("GoblinTinkerer"),
+                ItemType("LumberJack"),
+                ItemType("Mechanic"),
+                ItemType("Merchant"),
+                ItemType("Mutant"),
+                ItemType("Nurse"),
+                ItemType("Painter"),
+                ItemType("PartyGirl"),
+                ItemType("Pirate"),
+                ItemType("SantaClaus"),
+                ItemType("SkeletonMerchant"),
+                ItemType("Steampunker"),
+                ItemType("Stylist"),
+                ItemType("Tavernkeep"),
+                ItemType("TaxCollector"),
+                ItemType("TravellingMerchant"),
+                ItemType("Truffle"),
+                ItemType("WitchDoctor"),
+                ItemType("Wizard"),
+            });
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)

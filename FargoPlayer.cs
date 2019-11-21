@@ -18,6 +18,8 @@ namespace Fargowiltas
         private bool hasRod;
         internal int rodCD;
 
+        public bool troughPet;
+
         public override void SetupStartInventory(IList<Item> items)
         {
             Item item = new Item();
@@ -150,6 +152,8 @@ namespace Fargowiltas
         {
             hasMirror = false;
             hasRod = false;
+
+            troughPet = false;
         }
 
         public override void PostUpdateEquips()
@@ -196,6 +200,10 @@ namespace Fargowiltas
             if (NPC.AnyNPCs(NPCID.EaterofWorldsHead))
             {
                 player.ZoneCorrupt = true;
+            }
+            if (NPC.AnyNPCs(NPCID.Plantera))
+            {
+                player.ZoneJungle = true;
             }
         }
 
