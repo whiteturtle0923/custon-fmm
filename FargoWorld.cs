@@ -47,6 +47,9 @@ namespace Fargowiltas
         public static bool downedSkeletonMageAny;
         public static bool downedBoneLee;
 
+        public static bool downedDarkMage3;
+        public static bool downedOgre3;
+
         public static int AbomClearCD;
 
         private static bool[] currentSpawnRateTile;
@@ -88,6 +91,9 @@ namespace Fargowiltas
             downedSkeletonGunAny = false;
             downedSkeletonMageAny = false;
             downedBoneLee = false;
+
+            downedDarkMage3 = false;
+            downedOgre3 = false;
 
             AbomClearCD = 0;
 
@@ -133,6 +139,9 @@ namespace Fargowiltas
             if (downedSkeletonMageAny) downed.Add("skeletonMage");
             if (downedBoneLee) downed.Add("boneLee");
 
+            if (downedDarkMage3) downed.Add("darkMage3");
+            if (downedOgre3) downed.Add("ogre");
+
             return new TagCompound {
                 {"downed", downed}
             };
@@ -176,6 +185,9 @@ namespace Fargowiltas
             downedSkeletonGunAny = downed.Contains("skeletonGun");
             downedSkeletonMageAny = downed.Contains("skeletonMage");
             downedBoneLee = downed.Contains("boneLee");
+
+            downedDarkMage3 = downed.Add("darkMage3");
+            downedOgre3 = downed.Add("ogre");
         }
 
 		public override void NetReceive(BinaryReader reader)
@@ -213,6 +225,8 @@ namespace Fargowiltas
             downedSkeletonGunAny = flags[29];
             downedSkeletonMageAny = flags[30];
             downedBoneLee = flags[31];
+            downedDarkMage3 = flags[32];
+            downedOgre3 = flags[33];
 
             AbomClearCD = reader.ReadInt32();
         }
@@ -252,7 +266,9 @@ namespace Fargowiltas
                 [28] = downedPirateCaptain,
                 [29] = downedSkeletonGunAny,
                 [30] = downedSkeletonMageAny,
-                [31] = downedBoneLee
+                [31] = downedBoneLee,
+                [32] = downedDarkMage3,
+                [33] = downedOgre3
             };
 
 			writer.Write(flags);

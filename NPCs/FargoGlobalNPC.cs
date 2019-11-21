@@ -762,6 +762,7 @@ namespace Fargowiltas.NPCs
                     break;
 
                 case NPCID.DD2OgreT3:
+                    FargoWorld.downedOgre3 = true;
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.Next(14) == 0)
@@ -797,6 +798,7 @@ namespace Fargowiltas.NPCs
                     break;
 
                 case NPCID.DD2DarkMageT3:
+                    FargoWorld.downedDarkMage3 = true;
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.Next(14) == 0)

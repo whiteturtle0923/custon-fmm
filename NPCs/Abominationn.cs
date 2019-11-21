@@ -293,8 +293,8 @@ namespace Fargowiltas.NPCs
                 nextSlot++;
             }
 
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "ForbiddenTome", 150000, ref shop, ref nextSlot);
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 250000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedDarkMage3, "Fargowiltas", "ForbiddenTome", 150000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedOgre3, "Fargowiltas", "BatteredClub", 250000, ref shop, ref nextSlot);
             AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 400000, ref shop, ref nextSlot);
             AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 150000, ref shop, ref nextSlot);
 
