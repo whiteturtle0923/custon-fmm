@@ -36,7 +36,6 @@ namespace Fargowiltas.NPCs
             npc.height = 40;
             npc.aiStyle = 7;
             npc.damage = 10;
-            npc.breathCounter = 9999;
 
             npc.defense = NPC.downedMoonlord ? 50 : 15;
             npc.lifeMax = NPC.downedMoonlord ? 2500 : 250;
@@ -64,6 +63,11 @@ namespace Fargowiltas.NPCs
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
             return FargoWorld.downedRareEnemy || (Fargowiltas.instance.fargoLoaded && MasochistMode);
+        }
+
+        public override void AI()
+        {
+            npc.breath = 200;
         }
 
         public override string TownNPCName()
@@ -186,10 +190,20 @@ namespace Fargowiltas.NPCs
             if (!fargoPlayer.ReceivedMasoGift && !NPC.downedBoss1)
             {
                 fargoPlayer.ReceivedMasoGift = true;
-                Item.NewItem(p.Center, ItemID.SilverPickaxe);
-                Item.NewItem(p.Center, ItemID.SilverAxe);
-                Item.NewItem(p.Center, ItemID.HermesBoots);
-                Item.NewItem(p.Center, ItemID.LifeCrystal, 5);
+                if (Main.netMode == 0)
+                {
+                    Item.NewItem(p.Center, ItemID.SilverPickaxe);
+                    Item.NewItem(p.Center, ItemID.SilverAxe);
+                    Item.NewItem(p.Center, ItemID.HermesBoots);
+                    Item.NewItem(p.Center, ItemID.LifeCrystal, 4);
+                }
+                else if (Main.netMode == 1)
+                {
+                    var netMessage = mod.GetPacket(); //broadcast item request to server
+                    netMessage.Write((byte)4);
+                    netMessage.Write((byte)p.whoAmI);
+                    netMessage.Send();
+                }
                 Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
                 return;
             }

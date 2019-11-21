@@ -70,6 +70,11 @@ namespace Fargowiltas.NPCs
             return NPC.downedGoblins;
         }
 
+        public override void AI()
+        {
+            npc.breath = 200;
+        }
+
         public override string TownNPCName()
         {
             switch (WorldGen.genRand.Next(5))
@@ -288,8 +293,8 @@ namespace Fargowiltas.NPCs
                 nextSlot++;
             }
 
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "ForbiddenTome", 150000, ref shop, ref nextSlot);
-            AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BatteredClub", 250000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedDarkMage3, "Fargowiltas", "ForbiddenTome", 150000, ref shop, ref nextSlot);
+            AddItem(FargoWorld.downedOgre3, "Fargowiltas", "BatteredClub", 250000, ref shop, ref nextSlot);
             AddItem(FargoWorld.downedBetsy, "Fargowiltas", "BetsyEgg", 400000, ref shop, ref nextSlot);
             AddItem(NPC.downedMartians, "Fargowiltas", "RunawayProbe", 150000, ref shop, ref nextSlot);
 

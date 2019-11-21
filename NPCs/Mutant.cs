@@ -43,7 +43,6 @@ namespace Fargowiltas.NPCs
             npc.height = 40;
             npc.aiStyle = 7;
             npc.damage = 10;
-            npc.breathCounter = 9999;
 
             npc.defense = NPC.downedMoonlord ? 50 : 15;
             npc.lifeMax = NPC.downedMoonlord ? 5000 : 250;
@@ -337,6 +336,7 @@ namespace Fargowiltas.NPCs
 
         public override void AI()
         {
+            npc.breath = 200;
             if (!spawned)
             {
                 spawned = true;
