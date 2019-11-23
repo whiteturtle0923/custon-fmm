@@ -1,23 +1,15 @@
-NEW UPDATE - v 1.6
--Added the Deviantt
--Added Pink Slime Crown, Eggplant, Attractive Ore, Holy Grail, Slimy Lock Box, Athenian Idol, and Clown License
--Added Heart Chocolate, Moth Lamp, Diluted Rainbow Matter, Cloud Snack, Rune Orb, and Suspicious Looking Chest
--Added Hallow Chest, Corrupt Chest, Crimson Chest, Jungle Chest, Core of the FrostCore, and Forbidden Forbidden Fragment
--Added Shadowflame Icon, Pirate Flag, Plundered Booty, Mothron Egg, Lee's Headband, Grand Cross, Amalgamated Skull, and Amalgamated Spirit
--Added Slimy Barometer and Cursed Sextant
--Added Celestial Skies Mutant support
--Lowered Mutant prices for Calamity summons to match the ones sold there
--Adjusted Abominationn shop prices
--Added Summon variants for Nimbus Rod, Crimson Rod, Bee Gun, Wasp Gun, Piranha Gun, and Bat Scepter
--Added Thorium and Calamity banner recipes
--Added recipes for Lucky Horseshoe, Plantera's Bulb, Sandstorm in a Bottle, and Pocket Mirror
--Added recipes for rare drops from Goodie Bags and Presents
--Made the Shiny Red Balloon recipe simpler
--You can now use the Extractinator at super speed
--Brainy, Destruction, Sibling, Prime, and Lihzahrd Energizers are now obtainable
--Auto House now takes any Wood
--Ninja Enchantment First Strike now works with this mod's Rod of Discord key
--Teleport home hotkey now plays the mirror sound effect
+
+
+NEW UPDATE - v 1.6.1
+-Added Census support
+
+-Deviantt gift is now 4 Life Crystals instead of 5 and Silver Pickaxe and Axe instead of Bone Pick
+-Having a stack of 120 or more of any potion in your inventory will grant you the buff forever
+-Presents and Goodie Bags are consumable again to fix infinite when placing
+-Added recipe group for caught npcs
+-Plantera makes you always in the Jungle
+-Money Trough pig will now follow you around
+
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

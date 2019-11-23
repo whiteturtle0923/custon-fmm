@@ -103,7 +103,6 @@ namespace Fargowiltas.Items
 
             if (item.type == ItemID.GoodieBag || item.type == ItemID.Present)
             {
-                item.consumable = false;
                 item.useAnimation = 30;
                 item.useTime = 30;
                 item.useStyle = 4;
