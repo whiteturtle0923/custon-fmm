@@ -337,17 +337,6 @@ namespace Fargowiltas.NPCs
         public override void AI()
         {
             npc.breath = 200;
-            if (!spawned)
-            {
-                spawned = true;
-                if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
-                {
-                    npc.life = 7700000;
-                    npc.lifeMax = 7700000;
-                    npc.defense = 400;
-                    npc.defDefense = 400;
-                }
-            }
         }
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
