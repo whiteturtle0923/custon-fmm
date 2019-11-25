@@ -27,7 +27,7 @@ namespace Fargowiltas.Projectiles
         {
             get
             {
-                return "Fargowiltas/Items/Misc/HallowRenewalSupreme";
+                return "Fargowiltas/Items/Renewals/HallowRenewalSupreme";
             }
         }
 

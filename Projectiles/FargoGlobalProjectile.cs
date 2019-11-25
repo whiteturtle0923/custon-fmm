@@ -24,9 +24,9 @@ namespace Fargowiltas.Projectiles
                 Player player = Main.player[projectile.owner];
                 float dist = Vector2.Distance(projectile.Center, player.Center);
 
-                if (dist > 1000)
+                if (dist > 2000)
                 {
-                    projectile.position = player.position;
+                    projectile.Kill();
                 }
                 else if (dist > 100)
                 {
