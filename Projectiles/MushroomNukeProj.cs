@@ -27,7 +27,7 @@ namespace Fargowiltas.Projectiles
         {
             get
             {
-                return "Fargowiltas/Items/Misc/MushroomRenewal";
+                return "Fargowiltas/Items/Renewals/MushroomRenewal";
             }
         }
 

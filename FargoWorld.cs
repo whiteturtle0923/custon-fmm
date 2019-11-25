@@ -52,6 +52,12 @@ namespace Fargowiltas
 
         public static int AbomClearCD;
 
+        public static bool OverloadGoblins;
+        public static bool OverloadPirates;
+        public static bool OverloadPumpkinMoon;
+        public static bool OverloadFrostMoon;
+        public static bool OverloadMartians;
+
         private static bool[] currentSpawnRateTile;
 
         public override void Initialize()
@@ -96,6 +102,12 @@ namespace Fargowiltas
             downedOgre3 = false;
 
             AbomClearCD = 0;
+
+            OverloadGoblins = false;
+            OverloadPirates = false;
+            OverloadPumpkinMoon = false;
+            OverloadFrostMoon = false;
+            OverloadMartians = false;
 
             currentSpawnRateTile = new bool[Main.netMode == 2 ? 255 : 1];
         }
@@ -278,28 +290,28 @@ namespace Fargowiltas
             Main.halloween = halloween;
             Main.xMas = xmas;
 
-            //no CD on fishing quests
-            /*bool changeQuest = true;
-            foreach (Player p in Main.player.Where(x => x.active))
-            {
-                if (!Main.anglerWhoFinishedToday.Contains(p.name))
-                {
-                    changeQuest = false;
-                    break;
-                }
-            }
-            if (changeQuest)
-            {
-                Main.AnglerQuestSwap();
-            }*/
-
             //swarm reset in case something goes wrong
             if (Fargowiltas.swarmActive && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead))
                 Fargowiltas.swarmActive = false;
 
             if (AbomClearCD > 0)
                 AbomClearCD--;
-		}
+
+            if (OverloadGoblins && Main.invasionType != 1)
+                OverloadGoblins = false;
+
+            if (OverloadPirates && Main.invasionType != 3)
+                OverloadPirates = false;
+
+            if (OverloadPumpkinMoon && !Main.pumpkinMoon)
+                OverloadPumpkinMoon = false;
+
+            if (OverloadFrostMoon && !Main.snowMoon)
+                OverloadFrostMoon = false;
+
+            if (OverloadMartians && Main.invasionType != 4)
+                OverloadMartians = false;
+        }
 
         public override void TileCountsAvailable(int[] tileCounts)
         {

@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Misc
+namespace Fargowiltas.Items.Renewals
 {
     public class PurityRenewalSupreme : ModItem
     {

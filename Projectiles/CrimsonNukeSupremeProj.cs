@@ -27,7 +27,7 @@ namespace Fargowiltas.Projectiles
         {
             get
             {
-                return "Fargowiltas/Items/Misc/CrimsonRenewalSupreme";
+                return "Fargowiltas/Items/Renewals/CrimsonRenewalSupreme";
             }
         }
 

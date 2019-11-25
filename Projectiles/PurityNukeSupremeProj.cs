@@ -23,7 +23,7 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 170;
         }
 
-        public override string Texture => "Fargowiltas/Items/Misc/PurityRenewalSupreme";
+        public override string Texture => "Fargowiltas/Items/Renewals/PurityRenewalSupreme";
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

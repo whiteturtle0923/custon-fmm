@@ -234,6 +234,8 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
+            AddItem(true, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
+
             //EVENTS
             AddItem(NPC.downedSlimeKing, "Fargowiltas", "SlimyBarometer", 40000, ref shop, ref nextSlot);
             AddItem(NPC.downedBoss1, "Fargowiltas", "CursedSextant", 50000, ref shop, ref nextSlot);
