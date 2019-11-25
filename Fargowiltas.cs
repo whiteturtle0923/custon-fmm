@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Fargowiltas.NPCs;
+using Microsoft.Xna.Framework;
 using System;
 using System.IO;
 using Terraria;
@@ -2751,10 +2752,9 @@ namespace Fargowiltas
                             || Main.npc[i].type == NPCID.LunarTowerStardust || Main.npc[i].type == NPCID.LunarTowerVortex))
                         {
                             Main.npc[i].dontTakeDamage = false;
-                            Main.npc[i].life = 0;
-                            if (Main.netMode == 2)
-                                NetMessage.SendData(23, -1, -1, null, i);
-                            //Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
+                            Main.npc[i].GetGlobalNPC<FargoGlobalNPC>().noLoot = true;
+                            Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
+
                         }
                 }
             }

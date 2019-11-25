@@ -1,15 +1,16 @@
-
-
 NEW UPDATE - v 1.6.1
--Added Census support
-
--Deviantt gift is now 4 Life Crystals instead of 5 and Silver Pickaxe and Axe instead of Bone Pick
+-Added Overloaded Goblin Battle Standard, Pirate Map, Pumpkin Medallion, Naughty Present, and Runaway Probe
+-Added Instabridge
+-Changed Instavator to use Sturdy Fossils instead of Desert Fossils in the recipe, also needs more Dynamite
 -Having a stack of 120 or more of any potion in your inventory will grant you the buff forever
--Presents and Goodie Bags are consumable again to fix infinite when placing
--Added recipe group for caught npcs
+-Money Trough pig will now follow you around, If you get too far away he will stop
 -Plantera makes you always in the Jungle
--Money Trough pig will now follow you around
-
+-Added Census support
+-Abominationn now also sells the Overloader
+-Abominationn cancelling pillars no longer gives free fragments
+-Deviantt's gift is now 4 Life Crystals instead of 5 and Silver Pickaxe and Axe instead of Bone Pick
+-Added recipe group for caught npcs
+-Presents and Goodie Bags are consumable again to fix infinite when placing
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

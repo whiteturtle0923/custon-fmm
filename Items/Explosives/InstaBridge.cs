@@ -4,12 +4,12 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Explosives
 {
-    public class Instabridge : ModItem
+    public class InstaBridge : ModItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Instabridge");
-            Tooltip.SetDefault("Creates a bridge of platforms instantly \nDo not use if any important building is nearby");
+            Tooltip.SetDefault("Creates a bridge of platforms instantly\nAlso clears the area right above the platforms\nDo not use if any important building is nearby");
         }
 
         public override void SetDefaults()
@@ -34,7 +34,9 @@ namespace Fargowiltas.Items.Explosives
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.WoodPlatform, 1000);
+            recipe.AddIngredient(ItemID.FossilOre, 20);
+            recipe.AddIngredient(ItemID.Dynamite, 10);
+            recipe.AddIngredient(ItemID.WoodPlatform, 2000);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
