@@ -204,86 +204,82 @@ namespace Fargowiltas
 
 		public override void NetReceive(BinaryReader reader)
 		{
-            BitsByte flags = reader.ReadByte();
-			downedBetsy = flags[0];		
-			downedBoss = flags[1];
-            halloween = flags[2];
-            xmas = flags[3];
-            downedRareEnemy = flags[4];
-            downedPinky = flags[5];
-            downedUndeadMiner = flags[6];
-            downedTim = flags[7];
-            downedDoctorBones = flags[8];
-            downedMimic = flags[9];
-            downedWyvern = flags[10];
-            downedRuneWizard = flags[11];
-            downedNymph = flags[12];
-            downedMoth = flags[13];
-            downedRainbowSlime = flags[14];
-            downedPaladin = flags[15];
-            downedMedusa = flags[16];
-            downedClown = flags[17];
-            downedIceGolem = flags[18];
-            downedSandElemental = flags[19];
-            downedMothron = flags[20];
-            downedMimicHallow = flags[21];
-            downedMimicCorrupt = flags[22];
-            downedMimicCrimson = flags[23];
-            downedMimicJungle = flags[24];
-            downedGoblinSummoner = flags[25];
-            downedFlyingDutchman = flags[26];
-            downedDungeonSlime = flags[27];
-            downedPirateCaptain = flags[28];
-            downedSkeletonGunAny = flags[29];
-            downedSkeletonMageAny = flags[30];
-            downedBoneLee = flags[31];
-            downedDarkMage3 = flags[32];
-            downedOgre3 = flags[33];
+			downedBetsy = reader.ReadBoolean();
+			downedBoss = reader.ReadBoolean();
+            halloween = reader.ReadBoolean();
+            xmas = reader.ReadBoolean();
+
+            downedRareEnemy = reader.ReadBoolean();
+            downedPinky = reader.ReadBoolean();
+            downedUndeadMiner = reader.ReadBoolean();
+            downedTim = reader.ReadBoolean();
+            downedDoctorBones = reader.ReadBoolean();
+            downedMimic = reader.ReadBoolean();
+            downedWyvern = reader.ReadBoolean();
+            downedRuneWizard = reader.ReadBoolean();
+            downedNymph = reader.ReadBoolean();
+            downedMoth = reader.ReadBoolean();
+            downedRainbowSlime = reader.ReadBoolean();
+            downedPaladin = reader.ReadBoolean();
+            downedMedusa = reader.ReadBoolean();
+            downedClown = reader.ReadBoolean();
+            downedIceGolem = reader.ReadBoolean();
+            downedSandElemental = reader.ReadBoolean();
+            downedMothron = reader.ReadBoolean();
+            downedMimicHallow = reader.ReadBoolean();
+            downedMimicCorrupt = reader.ReadBoolean();
+            downedMimicCrimson = reader.ReadBoolean();
+            downedMimicJungle = reader.ReadBoolean();
+            downedGoblinSummoner = reader.ReadBoolean();
+            downedFlyingDutchman = reader.ReadBoolean();
+            downedDungeonSlime = reader.ReadBoolean();
+            downedPirateCaptain = reader.ReadBoolean();
+            downedSkeletonGunAny = reader.ReadBoolean();
+            downedSkeletonMageAny = reader.ReadBoolean();
+            downedBoneLee = reader.ReadBoolean();
+            downedDarkMage3 = reader.ReadBoolean();
+            downedOgre3 = reader.ReadBoolean();
 
             AbomClearCD = reader.ReadInt32();
         }
 		
 		public override void NetSend(BinaryWriter writer)
 		{
-            BitsByte flags = new BitsByte
-            {
-                [0] = downedBetsy,
-                [1] = downedBoss,
-                [2] = halloween,
-                [3] = xmas,
-                [4] = downedRareEnemy,
-                [5] = downedPinky,
-                [6] = downedUndeadMiner,
-                [7] = downedTim,
-                [8] = downedDoctorBones,
-                [9] = downedMimic,
-                [10] = downedWyvern,
-                [11] = downedRuneWizard,
-                [12] = downedNymph,
-                [13] = downedMoth,
-                [14] = downedRainbowSlime,
-                [15] = downedPaladin,
-                [16] = downedMedusa,
-                [17] = downedClown,
-                [18] = downedIceGolem,
-                [19] = downedSandElemental,
-                [20] = downedMothron,
-                [21] = downedMimicHallow,
-                [22] = downedMimicCorrupt,
-                [23] = downedMimicCrimson,
-                [24] = downedMimicJungle,
-                [25] = downedGoblinSummoner,
-                [26] = downedFlyingDutchman,
-                [27] = downedDungeonSlime,
-                [28] = downedPirateCaptain,
-                [29] = downedSkeletonGunAny,
-                [30] = downedSkeletonMageAny,
-                [31] = downedBoneLee,
-                [32] = downedDarkMage3,
-                [33] = downedOgre3
-            };
+            writer.Write(downedBetsy);
+            writer.Write(downedBoss);
+            writer.Write(halloween);
+            writer.Write(xmas);
 
-			writer.Write(flags);
+            writer.Write(downedRareEnemy);
+            writer.Write(downedPinky);
+            writer.Write(downedUndeadMiner);
+            writer.Write(downedTim);
+            writer.Write(downedDoctorBones);
+            writer.Write(downedMimic);
+            writer.Write(downedWyvern);
+            writer.Write(downedRuneWizard);
+            writer.Write(downedNymph);
+            writer.Write(downedMoth);
+            writer.Write(downedRainbowSlime);
+            writer.Write(downedPaladin);
+            writer.Write(downedMedusa);
+            writer.Write(downedClown);
+            writer.Write(downedIceGolem);
+            writer.Write(downedSandElemental);
+            writer.Write(downedMothron);
+            writer.Write(downedMimicHallow);
+            writer.Write(downedMimicCorrupt);
+            writer.Write(downedMimicCrimson);
+            writer.Write(downedMimicJungle);
+            writer.Write(downedGoblinSummoner);
+            writer.Write(downedFlyingDutchman);
+            writer.Write(downedDungeonSlime);
+            writer.Write(downedPirateCaptain);
+            writer.Write(downedSkeletonGunAny);
+            writer.Write(downedSkeletonMageAny);
+            writer.Write(downedBoneLee);
+            writer.Write(downedDarkMage3);
+            writer.Write(downedOgre3);
 
             writer.Write(AbomClearCD);
         }

@@ -2736,7 +2736,7 @@ namespace Fargowiltas
                     Sandstorm.TimeLeft = 0;
                 }
             }
-            if (NPC.LunarApocalypseIsUp)
+            if (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0)
             {
                 eventOccurring = true;
                 if (canClearEvent)
@@ -2754,6 +2754,7 @@ namespace Fargowiltas
                             Main.npc[i].dontTakeDamage = false;
                             Main.npc[i].GetGlobalNPC<FargoGlobalNPC>().noLoot = true;
                             Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
+
                         }
                 }
             }
