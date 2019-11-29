@@ -308,7 +308,7 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            AddItem(Main.hardMode && Fargowiltas.instance.fargoLoaded, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
+            AddItem(Fargowiltas.instance.fargoLoaded, "FargowiltasSouls", "PandorasBox", 250000, ref shop, ref nextSlot);
 
             //pinky
             AddItem(FargoWorld.downedPinky, "Fargowiltas", "PinkSlimeCrown", Item.buyPrice(0, 5), ref shop, ref nextSlot);

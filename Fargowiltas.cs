@@ -1933,6 +1933,13 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.SandstorminaBottle);
             recipe.AddRecipe();
 
+            recipe = new ModRecipe(this);
+            recipe.AddIngredient(ItemID.ChlorophyteBar);
+            recipe.AddIngredient(ItemID.DarkBlueSolution);
+            recipe.AddTile(TileID.Autohammer);
+            recipe.SetResult(ItemID.ShroomiteBar);
+            recipe.AddRecipe();
+
 
             #endregion
 
