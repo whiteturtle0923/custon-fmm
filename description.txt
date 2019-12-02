@@ -12,5 +12,12 @@ NEW UPDATE - v 1.6.1
 -Added recipe group for caught npcs
 -Presents and Goodie Bags are consumable again to fix infinite when placing
 
+
+
+-Fixed Piranha Gun Summon variant saying it dealt ranged damage
+-Deviantt sells Pandora's Box always
+-Steampunker will sell the opposite evil solutiuon now
+-Added recipe for Shroomite Bars using Chlorophyte Bars and Dark Blue Solution
+
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

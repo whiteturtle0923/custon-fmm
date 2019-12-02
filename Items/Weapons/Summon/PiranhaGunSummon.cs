@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Weapons.Summon
         {
             item.CloneDefaults(ItemID.PiranhaGun);
             item.shoot = ProjectileID.MechanicalPiranha;
-            item.magic = false;
+            item.ranged = false;
             item.summon = true;
         }
 

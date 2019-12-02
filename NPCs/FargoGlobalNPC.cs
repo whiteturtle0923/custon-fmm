@@ -263,6 +263,18 @@ namespace Fargowiltas.NPCs
                     }
 
                     break;
+                case NPCID.Steampunker:
+                    if (WorldGen.crimson)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.PurpleSolution);
+                        nextSlot++;
+                    }
+                    else
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.RedSolution);
+                        nextSlot++;
+                    }
+                    break;
             }
         }
 
@@ -278,7 +290,7 @@ namespace Fargowiltas.NPCs
             {
                 if (FargoWorld.OverloadGoblins)
                 {
-                    spawnRate = (int)(spawnRate * 0.1);
+                    spawnRate = (int)(spawnRate * 0.2);
                     maxSpawns = (int)(maxSpawns * 10f);
                 }
                 else if (FargoWorld.OverloadPirates)
@@ -300,7 +312,7 @@ namespace Fargowiltas.NPCs
             }
             else if (FargoWorld.OverloadMartians)
             {
-                spawnRate = (int)(spawnRate * 0.05);
+                spawnRate = (int)(spawnRate * 0.2);
                 maxSpawns = (int)(maxSpawns * 30f);
             }
         }
