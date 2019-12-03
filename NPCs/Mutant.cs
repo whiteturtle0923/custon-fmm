@@ -343,6 +343,7 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.instance.fargoLoaded && FargoDownedMutant)
                 {
                     npc.lifeMax = 7700000;
+                    npc.life = npc.lifeMax;
                     npc.defense = 400;
                 }
             }
