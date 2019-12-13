@@ -2,7 +2,7 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-    public class ShadowflameKnifeThrown : BaseThrownItem
+    public class ShadowFlameKnifeThrown : BaseThrownItem
     {
         public override int Type => ItemID.ShadowFlameKnife;
 

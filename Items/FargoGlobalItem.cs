@@ -195,6 +195,7 @@ namespace Fargowiltas.Items
             }
             else if (Array.IndexOf(Thrown, item.type) > -1)
             {
+                Main.NewText(ItemID.GetUniqueKey(item.type).Replace("Terraria ", string.Empty));
                 newType = mod.ItemType(ItemID.GetUniqueKey(item.type).Replace("Terraria ", string.Empty) + "Thrown");
             }
 
