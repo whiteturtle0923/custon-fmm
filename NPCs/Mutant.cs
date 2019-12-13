@@ -15,6 +15,8 @@ namespace Fargowiltas.NPCs
         private static bool hardmodeShop;
         private static int shopNum = 1;
 
+        internal bool spawned;
+
         #region Mod Bools
 
         // Fargo
@@ -457,6 +459,16 @@ namespace Fargowiltas.NPCs
         public override void AI()
         {
             npc.breath = 200;
+            if (!spawned)
+            {
+                spawned = true;
+                if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoDownedMutant)
+                {
+                    npc.lifeMax = 7700000;
+                    npc.life = npc.lifeMax;
+                    npc.defense = 400;
+                }
+            }
         }
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
@@ -605,7 +617,7 @@ namespace Fargowiltas.NPCs
             }
 
             int cyborg = NPC.FindFirstNPC(NPCID.Cyborg);
-            if (truffle >= 0 && witchDoctor >= 0 && cyborg >= 0 && Main.rand.Next(52) == 0)
+            if (truffle >= 0 && witchDoctor >= 0 && cyborg >= 0 && Main.rand.NextBool(52))
             {
                 dialogue.Add($"If any of us could play instruments, I'd totally start a band with {Main.npc[witchDoctor].GivenName}, {Main.npc[truffle].GivenName}, and {Main.npc[cyborg].GivenName}.");
             }
