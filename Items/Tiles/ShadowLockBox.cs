@@ -6,24 +6,23 @@ namespace Fargowiltas.Items.Tiles
 {
     public class ShadowLockBox : ModItem
     {
-        public override void SetDefaults()
-        {
-            item.width = 12;
-            item.height = 12;
-            item.rare = 2;
-            item.maxStack = 99;
-            item.useAnimation = 15;
-            item.useTime = 15;
-            item.autoReuse = true;
-            item.useStyle = 1;
-            //item.consumable = true;
-            item.value = Item.sellPrice(0, 1, 0, 0);
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shadow Lock Box");
             Tooltip.SetDefault("Right click to open\nRequires a Shadow Key");
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 12;
+            item.height = 12;
+            item.rare = ItemRarityID.Green;
+            item.maxStack = 99;
+            item.useAnimation = 15;
+            item.useTime = 15;
+            item.autoReuse = true;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.value = Item.sellPrice(0, 1);
         }
 
         public override bool CanRightClick()
@@ -56,11 +55,11 @@ namespace Fargowiltas.Items.Tiles
                         break;
                 }
 
-                int index = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, drop, 1, false, -1, false, false);
+                int index = Item.NewItem(player.getRect(), drop, prefixGiven: -1);
 
-                if (Main.netMode == 1)
+                if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    NetMessage.SendData(21, -1, -1, null, index, 1f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.SyncItem, number: index, number2: 1f);
                 }
             }
             else

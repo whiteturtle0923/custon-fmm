@@ -11,41 +11,39 @@ namespace Fargowiltas.Items.Misc
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Battle Cry");
-            Tooltip.SetDefault("Increase spawn rates by 10x on use\n" +
-                                "Use it again to decrease them");
+            Tooltip.SetDefault("Increase spawn rates by 10x on use" +
+                               "\nUse it again to decrease them");
         }
 
         public override void SetDefaults()
         {
             item.width = 28;
             item.height = 38;
-            item.maxStack = 1;
-            item.value = 1000;
-            item.rare = 5;
+            item.value = Item.sellPrice(0, 0, 2);
+            item.rare = ItemRarityID.Pink;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
-            item.consumable = false;
+            item.useStyle = ItemUseStyleID.HoldingUp;
         }
 
         public override bool UseItem(Player player)
         {
-            FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
-            modPlayer.battleCry = !modPlayer.battleCry;
+            FargoPlayer modPlayer = player.GetFargoPlayer();
+            modPlayer.BattleCry = !modPlayer.BattleCry;
 
-            string text = "Spawn rates " + (modPlayer.battleCry ? "increased!" : "decreased!");
-            if (Main.netMode == 0)
+            string text = "Spawn rates " + (modPlayer.BattleCry ? "increased!" : "decreased!");
+            if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText(text, 175, 75, 255);
+                Main.NewText(text, new Color(175, 75, 255));
             }
-            else if (Main.netMode == 2)
+            else if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(text), new Color(175, 75, 255));
             }
 
-            if (modPlayer.battleCry && !Main.dedServ)
+            if (modPlayer.BattleCry && !Main.dedServ)
             {
-                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Horn").WithVolume(1f).WithPitchVariance(.5f), (int)player.position.X, (int)player.position.Y);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Horn").WithVolume(1f).WithPitchVariance(.5f), player.position);
             }
 
             return true;

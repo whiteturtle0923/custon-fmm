@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Tiles
             TileObjectData.newTile.CoordinateHeights = new int[]
             {
                 16,
-                16
+                16,
             };
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 36;
@@ -32,9 +32,9 @@ namespace Fargowiltas.Items.Tiles
 
         public override void NearbyEffects(int i, int j, bool closer)
         {
-            if(!FargoWorld.movedLumberjack)
+            if (!FargoWorld.MovedLumberjack)
             {
-                FargoWorld.movedLumberjack = true;
+                FargoWorld.MovedLumberjack = true;
             }
         }
     }

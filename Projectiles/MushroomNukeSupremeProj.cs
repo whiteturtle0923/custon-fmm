@@ -8,6 +8,8 @@ namespace Fargowiltas.Projectiles
 {
     public class MushroomNukeSupremeProj : ModProjectile
     {
+        public override string Texture => "Fargowiltas/Items/Renewals/MushroomRenewalSupreme";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shroom Nuke Supreme");
@@ -23,14 +25,6 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 170;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Fargowiltas/Items/Renewals/MushroomRenewalSupreme";
-            }
-        }
-
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
@@ -40,9 +34,8 @@ namespace Fargowiltas.Projectiles
         public override void Kill(int timeLeft)
         {
             Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Shatter, (int)position.X, (int)position.Y);
+            Main.PlaySound(SoundID.Shatter, position);
 
-            int radius = 100;
             float[] speedX = { 0, 0, 5, 5, 5, -5, -5, -5 };
             float[] speedY = { 5, -5, 0, 5, -5, 0, 5, -5 };
 
@@ -58,7 +51,7 @@ namespace Fargowiltas.Projectiles
                     int xPosition = (int)(x + position.X / 16.0f);
                     int yPosition = (int)(y + position.Y / 16.0f);
 
-                    WorldGen.Convert(xPosition, yPosition, 3, 1); // convert to mushroom 
+                    WorldGen.Convert(xPosition, yPosition, 3, 1); // convert to mushroom
                 }
             }
         }

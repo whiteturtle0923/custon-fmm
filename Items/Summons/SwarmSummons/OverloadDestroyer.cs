@@ -30,32 +30,34 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.swarmActive && !Main.dayTime;
+            return !Fargowiltas.SwarmActive && !Main.dayTime;
         }
 
         public override bool UseItem(Player player)
         {
-            Fargowiltas.swarmActive = true;
-            Fargowiltas.swarmTotal = 10 * player.inventory[player.selectedItem].stack;
-            Fargowiltas.swarmKills = 0;
-            //kill whole stack
+            Fargowiltas.SwarmActive = true;
+            Fargowiltas.SwarmTotal = 10 * player.inventory[player.selectedItem].stack;
+            Fargowiltas.SwarmKills = 0;
+
+            // Kill whole stack
             player.inventory[player.selectedItem].stack = 0;
-            if (Fargowiltas.swarmTotal <= 20)
+            if (Fargowiltas.SwarmTotal <= 20)
             {
-                Fargowiltas.swarmSpawned = Fargowiltas.swarmTotal;
+                Fargowiltas.SwarmSpawned = Fargowiltas.SwarmTotal;
             }
-            else if (Fargowiltas.swarmTotal <= 100)
+            else if (Fargowiltas.SwarmTotal <= 100)
             {
-                Fargowiltas.swarmSpawned = 20;
+                Fargowiltas.SwarmSpawned = 20;
             }
             else
             {
-                Fargowiltas.swarmSpawned = 40;
+                Fargowiltas.SwarmSpawned = 40;
             }
-            for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
+
+            for (int i = 0; i < Fargowiltas.SwarmSpawned; i++)
             {
                 int worm = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.TheDestroyer);
-                Main.npc[worm].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
+                Main.npc[worm].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
             }
 
             if (Main.netMode == 2)

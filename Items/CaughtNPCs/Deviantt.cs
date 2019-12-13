@@ -5,10 +5,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class Deviantt : CaughtNPC
     {
-        public override bool Autoload(ref string name)
-        {
-            return true;
-        }
+        public override string Texture => "Fargowiltas/NPCs/Deviantt";
 
         public override void SetStaticDefaults()
         {
@@ -20,10 +17,7 @@ namespace Fargowiltas.Items.CaughtNPCs
         {
             base.SetDefaults();
             item.makeNPC = (short)mod.NPCType("Deviantt");
-
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 23));
         }
-
-        public override string Texture => "Fargowiltas/NPCs/Deviantt";
     }
 }

@@ -11,7 +11,8 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Death Bringer Fairy");
-            Tooltip.SetDefault("Summons all pre-hardmode bosses \nCertain bosses will only spawn if you're in their specific biome");
+            Tooltip.SetDefault("Summons all pre-hardmode bosses" +
+                               "\nCertain bosses will only spawn if you're in their specific biome");
         }
 
         public override void SetDefaults()
@@ -19,11 +20,11 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.width = 20;
             item.height = 20;
             item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 2;
+            item.value = Item.sellPrice(0, 0, 2);
+            item.rare = ItemRarityID.Green;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
             item.shoot = mod.ProjectileType("SpawnProj");
         }
@@ -38,16 +39,17 @@ namespace Fargowiltas.Items.Summons.NewSummons
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
             Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, 1, 2);
 
-            if (Main.netMode == 2)
+            if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Several bosses have awoken!"), new Color(175, 75, 255));
             }
             else
             {
-                Main.NewText("Several bosses have awoken!", 175, 75, 255);
+                Main.NewText("Several bosses have awoken!", new Color(175, 75, 255));
             }
 
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, player.position, 0);
+
             return true;
         }
     }

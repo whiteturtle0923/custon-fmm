@@ -8,6 +8,8 @@ namespace Fargowiltas.Projectiles
 {
     public class HallowNukeProj : ModProjectile
     {
+        public override string Texture => "Fargowiltas/Items/Renewals/HallowRenewal";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hallow Nuke");
@@ -21,14 +23,6 @@ namespace Fargowiltas.Projectiles
             projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.timeLeft = 170;
-        }
-
-        public override string Texture
-        {
-            get
-            {
-                return "Fargowiltas/Items/Renewals/HallowRenewal";
-            }
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -58,9 +52,10 @@ namespace Fargowiltas.Projectiles
                     int xPosition = (int)(x + position.X / 16.0f);
                     int yPosition = (int)(y + position.Y / 16.0f);
 
-                    if (Math.Sqrt(x * x + y * y) <= radius + 0.5)   //circle
+                    // Circle
+                    if (Math.Sqrt(x * x + y * y) <= radius + 0.5)
                     {
-                        WorldGen.Convert(xPosition, yPosition, 2, 1); // convert to hallow 
+                        WorldGen.Convert(xPosition, yPosition, 2, 1); // convert to hallow
                     }
                 }
             }

@@ -1,17 +1,22 @@
-using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.NPCs
 {
     [AutoloadHead]
     public class LumberJack : ModNPC
     {
-        public bool dayOver;
-        public bool nightOver;
-        public int woodAmount = 100;
+        private bool dayOver;
+        private bool nightOver;
+        private int woodAmount = 100;
+
+        public bool SacredToolsDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
 
         public override bool Autoload(ref string name)
         {
@@ -50,11 +55,9 @@ namespace Fargowiltas.NPCs
             npc.catchItem = (short)mod.ItemType("LumberJack");
         }
 
-        public bool SacredToolsDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
-
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            return FargoWorld.movedLumberjack || Main.player.Where(player => player.active).Any(player => player.inventory.Any(t => t.type == mod.ItemType("WoodenToken")));
+            return FargoWorld.MovedLumberjack || Main.player.Where(player => player.active).Any(player => player.HasItem(ItemType<Items.Tiles.WoodenToken>()));
         }
 
         public override void AI()
@@ -63,6 +66,7 @@ namespace Fargowiltas.NPCs
             {
                 nightOver = true;
             }
+
             if (Main.dayTime)
             {
                 dayOver = true;
@@ -71,133 +75,76 @@ namespace Fargowiltas.NPCs
 
         public override string TownNPCName()
         {
-            switch (WorldGen.genRand.Next(5))
-            {
-                case 0:
-                    return "Griff";
-                case 1:
-                    return "Jack";
-                case 2:
-                    return "Bruce";
-                case 3:
-                    return "Larry";
-                case 4:
-                    return "Will";
-                case 5:
-                    return "Jerry";
-                case 6:
-                    return "Liam";
-                case 7:
-                    return "Stan";
-                case 8:
-                    return "Lee";
-                case 9:
-                    return "Woody";
-                case 10:
-                    return "Leif";
-                default:
-                    return "Paul";
-            }
+            string[] names = { "Griff", "Jack", "Bruce", "Larry", "Will", "Jerry", "Liam", "Stan", "Lee", "Woody", "Leif", "Paul" };
+            return Main.rand.Next(names);
         }
 
         public override string GetChat()
         {
+            List<string> dialogue = new List<string>
+            {
+                "Dynasty wood? Between you and me, that stuff ain't real wood!",
+                "Sure cactus isn't wood, but I can still chop it with me trusty axe.",
+                "You wouldn't by chance have any fantasies about me... right?",
+                "I eat a bowl of woodchips for breakfast... without any milk.",
+                "TIIIIIIIIIMMMBEEEEEEEERRR!",
+                "I'm a lumberjack and I'm okay, I sleep all night and I work all day!",
+                "You won't ever need an axe again with me around.",
+                "I have heard of people cutting trees with fish, who does that?",
+                "You wanna see me work without my shirt on? Maybe in 2030.",
+                "You ever seen the world tree?",
+                "You want what? ...Sorry that's not the kind of wood I'm selling.",
+                "Why don't I sell acorns? ...I replant all the trees I chop, don't you?",
+                "What's the best kind of tree? ... Any if I can chop it.",
+                "Can I axe you a question?",
+                "Might take a nap under a tree later, care to join me?",
+                "I'm an expert in all wood types.",
+                "I wonder if there'll be more trees to chop in 1.4.",
+                "Red is one of my favourite colors, right after wood.",
+                "It's always flannel season.",
+            };
+
             int dryad = NPC.FindFirstNPC(NPCID.Dryad);
+            if (dryad >= 0)
+            {
+                dialogue.Add($"{Main.npc[dryad].GivenName} told me to start hugging trees... I hug trees with my chainsaw.");
+            }
+
             int nurse = NPC.FindFirstNPC(NPCID.Nurse);
-
-            if (dryad >= 0 && Main.rand.Next(22) == 0)
+            if (nurse >= 0)
             {
-                return Main.npc[dryad].GivenName + " told me to start hugging trees... I hug trees with my chainsaw.";
-            }
-            if (nurse >= 0 && Main.rand.Next(21) == 0)
-            {
-                return "I always see " + Main.npc[nurse].GivenName + " looking at my biceps when I'm working. Wonder if she wants some of my wood.";
+                dialogue.Add($"I always see {Main.npc[nurse].GivenName} looking at my biceps when I'm working. Wonder if she wants some of my wood.");
             }
 
-            if (Fargowiltas.instance.thoriumLoaded && Main.rand.Next(20) == 0)
+            if (Fargowiltas.ModLoaded["ThoriumMod"])
             {
-                switch (Main.rand.Next(2))
-                {
-                    case 0:
-                        return "Astroturf? Sorry I only grow trees on real grass.";
-                    default:
-                        return "Yew tree? Sakura tree? Nope, haven't found any.";
-                }
+                dialogue.Add("Astroturf? Sorry I only grow trees on real grass.");
+                dialogue.Add("Yew tree? Sakura tree? Nope, haven't found any.");
             }
 
-            switch (Main.rand.Next(19))
-            {
-                case 0:
-                    return "Dynasty wood? Between you and me, that stuff ain't real wood!";
-                case 1:
-                    return "Sure cactus isn't wood, but I can still chop it with me trusty axe.";
-                case 2:
-                    return "You wouldn't by chance have any fantasies about me... right?";
-                case 3:
-                    return "I eat a bowl of woodchips for breakfast... without any milk.";
-                case 4:
-                    return "TIIIIIIIIIMMMBEEEEEEEERRR!";
-                case 5:
-                    return "I'm a lumberjack and I'm okay, I sleep all night and I work all day!";
-                case 6:
-                    return "You won't ever need an axe again with me around.";
-                case 7:
-                    return "I have heard of people cutting trees with fish, who does that?";
-                case 8:
-                    return "You wanna see me work without my shirt on? Maybe in 2030.";
-                case 9:
-                    return "You ever seen the world tree?";
-                case 10:
-                    return "You want what? ...Sorry that's not the kind of wood I'm selling.";
-                case 11:
-                    return "Why don't I sell acorns? ...I replant all the trees I chop, don't you?";
-                case 12:
-                    return "What's the best kind of tree? ... Any if I can chop it.";
-                case 13:
-                    return "Can I axe you a question?";
-                case 14:
-                    return "Might take a nap under a tree later, care to join me?";
-                case 15:
-                    return "I'm an expert in all wood types.";
-                case 16:
-                    return "I wonder if there'll be more trees to chop in 1.4.";
-                case 17:
-                    return "Red is one of my favourite colors, right after wood.";
-                default:
-                    return "It's always flannel season.";
-            }
+            return Main.rand.Next(dialogue);
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = Lang.inter[28].Value;
+            button = Language.GetTextValue("LegacyInterface.28");
             button2 = "Free Wood";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
-            Player player = Main.player[Main.myPlayer];
-            FargoPlayer p = player.GetModPlayer<FargoPlayer>();
+            Player player = Main.LocalPlayer;
 
             if (firstButton)
             {
                 shop = true;
+                return;
             }
 
-            if (firstButton) return;
             if (dayOver && nightOver)
             {
                 Main.npcChatText = "Here you go. I'm glad my wood put such a big smile on your face.";
-
-                if (NPC.downedBoss1)
-                {
-                    woodAmount = 200;
-                }
-                if (Main.hardMode)
-                {
-                    woodAmount = 500;
-                }
-
+                woodAmount = Main.hardMode ? 500 : NPC.downedBoss1 ? 200 : 100;
                 player.QuickSpawnItem(ItemID.Wood, woodAmount);
                 dayOver = false;
                 nightOver = false;
@@ -234,21 +181,14 @@ namespace Fargowiltas.NPCs
             shop.item[nextSlot].value = 15;
             nextSlot++;
 
-            if (Fargowiltas.instance.tremorLoaded)
-            {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Tremor").ItemType("GlacierWood"));
-                shop.item[nextSlot].value = 15;
-                nextSlot++;
-            }
-
-            if (Fargowiltas.instance.crystiliumLoaded)
+            if (Fargowiltas.ModLoaded["CrystiliumMod"])
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CrystiliumMod").ItemType("CrystalWood"));
                 shop.item[nextSlot].value = 20;
                 nextSlot++;
             }
 
-            if (ModLoader.GetMod("CosmeticVariety") != null && (NPC.downedBoss2))
+            if (ModLoader.GetMod("CosmeticVariety") != null && NPC.downedBoss2)
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CosmeticVariety").ItemType("Starwood"));
                 shop.item[nextSlot].value = 20;
@@ -266,7 +206,7 @@ namespace Fargowiltas.NPCs
                 nextSlot++;
             }
 
-            if (Fargowiltas.instance.sacredToolsLoaded)
+            if (Fargowiltas.ModLoaded["SacredTools"])
             {
                 if (SacredToolsDownedSerpent)
                 {
@@ -276,19 +216,18 @@ namespace Fargowiltas.NPCs
                 }
             }
 
-            if (Fargowiltas.instance.redemptionLoaded)
+            if (Fargowiltas.ModLoaded["Redemption"])
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Redemption").ItemType("AncientWood"));
                 shop.item[nextSlot].value = 20;
                 nextSlot++;
             }
 
-            if (Fargowiltas.instance.aaLoaded)
+            if (Fargowiltas.ModLoaded["AAMod"])
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("Razewood"));
                 shop.item[nextSlot].value = 50;
                 nextSlot++;
-
 
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("Bogwood"));
                 shop.item[nextSlot].value = 50;
@@ -338,39 +277,32 @@ namespace Fargowiltas.NPCs
 
         public override void NPCLoot()
         {
-            FargoWorld.movedLumberjack = true;
+            FargoWorld.MovedLumberjack = true;
         }
 
-        //gore
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default(Color), 0.8f);
+                    Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * hitDirection, -2.5f, Scale: 0.8f);
                 }
-                for (int k = 0; k < 1; k++)
-                {
-                    Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore3"));
-                }
-                for (int k = 0; k < 1; k++)
-                {
-                    Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore2"));
-                }
-                for (int k = 0; k < 1; k++)
-                {
-                    Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                    Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore1"));
-                }
+
+                Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
+                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore3"));
+
+                pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
+                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore2"));
+
+                pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
+                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/LumberGore1"));
             }
             else
             {
                 for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, 5, (float)hitDirection, -1f, 0, default(Color), 0.6f);
+                    Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f, Scale: 0.6f);
                 }
             }
         }

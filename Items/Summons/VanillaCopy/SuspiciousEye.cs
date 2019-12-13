@@ -8,6 +8,8 @@ namespace Fargowiltas.Items.Summons
 {
     public class SuspiciousEye : ModItem
     {
+        public override string Texture => "Terraria/Item_43";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eye That Could Be Seen As Suspicious");
@@ -27,8 +29,6 @@ namespace Fargowiltas.Items.Summons
             item.consumable = true;
             item.shoot = mod.ProjectileType("SpawnProj");
         }
-
-        public override string Texture => "Terraria/Item_43";
 
         public override bool CanUseItem(Player player)
         {

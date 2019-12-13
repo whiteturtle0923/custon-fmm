@@ -22,14 +22,14 @@ namespace Fargowiltas.Items.Explosives
             item.noUseGraphic = true;
             item.scale = 0.75f;
             item.crit = 5;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTime = 10;
             item.useAnimation = 10;
             item.knockBack = 3f;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.maxStack = 999;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.shoot = mod.ProjectileType("ShurikenProj");
             item.shootSpeed = 11f;
         }

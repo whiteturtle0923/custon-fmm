@@ -6,8 +6,10 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-    class OverloadFrostMoon : ModItem
+    public class OverloadFrostMoon : ModItem
     {
+        public override string Texture => "Terraria/Item_1958";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Overloaded Naughty Present");
@@ -27,8 +29,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             item.consumable = false;
         }
 
-        public override string Texture => "Terraria/Item_1958";
-
         public override bool CanUseItem(Player player)
         {
             return !Main.dayTime;
@@ -38,7 +38,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         {
             if (FargoWorld.OverloadFrostMoon)
             {
-                //cancel it
+                // cancel it
                 Main.snowMoon = false;
                 FargoWorld.OverloadFrostMoon = false;
 

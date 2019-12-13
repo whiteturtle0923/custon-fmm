@@ -10,25 +10,25 @@ namespace Fargowiltas.Items.Explosives
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Troll Bomb");
-            Tooltip.SetDefault("'What could go wrong?' \nOnly Snek knows");
+            Tooltip.SetDefault("'What could go wrong?'" +
+                               "\nOnly Snek knows");
         }
 
         public override void SetDefaults()
         {
             item.width = 10;
             item.height = 32;
-            item.maxStack = 1;
             item.consumable = false;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.mana = 10;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item18;
             item.autoReuse = true;
             item.useAnimation = 20;
             item.useTime = 20;
             item.value = Item.buyPrice(0, 0, 3);
             item.noMelee = true;
-            item.shoot = 1;
+            item.shoot = ProjectileID.WoodenArrowFriendly;
             item.shootSpeed = 5f;
         }
 

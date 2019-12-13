@@ -1,4 +1,5 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Vanity
 {
@@ -14,7 +15,7 @@ namespace Fargowiltas.Items.Vanity
         {
             item.width = 18;
             item.height = 18;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.vanity = true;
         }
     }

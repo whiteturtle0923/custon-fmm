@@ -15,7 +15,7 @@ namespace Fargowiltas.Items.Vanity
         {
             item.width = 18;
             item.height = 18;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.vanity = true;
         }
 

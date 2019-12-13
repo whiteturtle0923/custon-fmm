@@ -8,6 +8,8 @@ namespace Fargowiltas.Items.Summons
 {
     public class TruffleWorm2 : ModItem
     {
+        public override string Texture => "Terraria/Item_2673";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Truffly Worm");
@@ -27,8 +29,6 @@ namespace Fargowiltas.Items.Summons
             item.consumable = true;
             item.shoot = mod.ProjectileType("SpawnProj");
         }
-
-        public override string Texture => "Terraria/Item_2673";
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

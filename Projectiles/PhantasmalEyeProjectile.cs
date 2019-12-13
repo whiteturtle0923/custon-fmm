@@ -7,6 +7,12 @@ namespace Fargowiltas.Projectiles
 {
     public class PhantasmalEyeProjectile : ModProjectile
     {
+        private float HomingCooldown
+        {
+            get => projectile.ai[0];
+            set => projectile.ai[0] = value;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("PhantasmalEyeProjectile");
@@ -37,23 +43,34 @@ namespace Fargowiltas.Projectiles
 
         public override void AI()
         {
-            const int AISLOT_HOMING_COOLDOWN = 0;
-            const int HOMING_DELAY = 10;
-            const float DESIRED_FLY_SPEED_IN_PIXELS_PER_FRAME = 60;
-            const float AMOUNT_OF_FRAMES_TO_LERP_BY = 20; // minimum of 1, please keep in full numbers even though it's a float!
+            const int homingDelay = 10;
+            const float flySpeed = 60; // fly speed in pixels per frame
+            const int lerpFrameAmount = 20; // minimum of 1
 
-            projectile.ai[AISLOT_HOMING_COOLDOWN]++;
-            if (projectile.ai[AISLOT_HOMING_COOLDOWN] > HOMING_DELAY)
+            HomingCooldown++;
+            if (HomingCooldown > homingDelay)
             {
-                projectile.ai[AISLOT_HOMING_COOLDOWN] = HOMING_DELAY; //cap this value
+                HomingCooldown = homingDelay; // cap this value
 
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
                 {
                     NPC n = Main.npc[foundTarget];
-                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * DESIRED_FLY_SPEED_IN_PIXELS_PER_FRAME;
-                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / AMOUNT_OF_FRAMES_TO_LERP_BY);
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * flySpeed;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / lerpFrameAmount);
                 }
+            }
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            for (int num468 = 0; num468 < 20; num468++)
+            {
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.BlueCrystalShard, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 1.5f);
+                Main.dust[num469].noGravity = true;
+                Main.dust[num469].velocity *= 2f;
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.BlueCrystalShard, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, .75f);
+                Main.dust[num469].velocity *= 2f;
             }
         }
 
@@ -69,11 +86,7 @@ namespace Fargowiltas.Projectiles
                 if (n.CanBeChasedBy(projectile) && (!n.wet || HOMING_CAN_AIM_AT_WET_ENEMIES))
                 {
                     float distance = projectile.Distance(n.Center);
-                    if (distance <= HOMING_MAXIMUM_RANGE_IN_PIXELS &&
-                        (
-                        selectedTarget == -1 ||  //there is no selected target
-                        projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
-                        )
+                    if (distance <= HOMING_MAXIMUM_RANGE_IN_PIXELS && (selectedTarget == -1 || projectile.Distance(Main.npc[selectedTarget].Center) > distance))
                     {
                         selectedTarget = i;
                     }
@@ -81,18 +94,6 @@ namespace Fargowiltas.Projectiles
             }
 
             return selectedTarget;
-        }
-
-        public override void Kill(int timeLeft)
-        {
-            for (int num468 = 0; num468 < 20; num468++)
-            {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.BlueCrystalShard, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default(Color), 1.5f);
-                Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.BlueCrystalShard, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default(Color), .75f);
-                Main.dust[num469].velocity *= 2f;
-            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Vanity
             item.width = 18;
             item.height = 18;
             item.vanity = true;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
         }
 
         public override void AddRecipes()

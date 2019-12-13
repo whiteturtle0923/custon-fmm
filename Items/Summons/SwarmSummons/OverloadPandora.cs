@@ -30,20 +30,20 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.swarmActive && !Main.dayTime;
+            return !Fargowiltas.SwarmActive && !Main.dayTime;
         }
 
         public override bool UseItem(Player player)
         {
-            Fargowiltas.swarmActive = true;
-            Fargowiltas.swarmTotal = 500;
-            Fargowiltas.swarmKills = 0;
-            Fargowiltas.swarmSpawned = 40;
+            Fargowiltas.SwarmActive = true;
+            Fargowiltas.SwarmTotal = 500;
+            Fargowiltas.SwarmKills = 0;
+            Fargowiltas.SwarmSpawned = 40;
 
-            for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
+            for (int i = 0; i < Fargowiltas.SwarmSpawned; i++)
             {
-                int boss = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), FargoGlobalNPC.bosses[Main.rand.Next(FargoGlobalNPC.bosses.Length)]);
-                Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().pandoraActive = true;
+                int boss = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), FargoGlobalNPC.Bosses[Main.rand.Next(FargoGlobalNPC.Bosses.Length)]);
+                Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().PandoraActive = true;
             }
 
             /*if (Main.netMode == 2)

@@ -1,15 +1,12 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class CoreoftheFrostCore : DevianttSummon
     {
-        public override int summonType => NPCID.IceGolem;
+        public override int SummonType => NPCID.IceGolem;
 
         public override void SetStaticDefaults()
         {

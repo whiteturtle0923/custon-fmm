@@ -1,6 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,13 +26,10 @@ namespace Fargowiltas.Projectiles
             projectile.friendly = true;
             projectile.aiStyle = -1;
             projectile.penetrate = 7;
-
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 20;
-
             projectile.extraUpdates = 1;
         }
 
@@ -60,9 +57,15 @@ namespace Fargowiltas.Projectiles
                     {
                         double num4 = (Main.npc[ai0].Center - projectile.Center).ToRotation() - projectile.velocity.ToRotation();
                         if (num4 > Math.PI)
+                        {
                             num4 -= 2.0 * Math.PI;
+                        }
+
                         if (num4 < -1.0 * Math.PI)
+                        {
                             num4 += 2.0 * Math.PI;
+                        }
+
                         projectile.velocity = projectile.velocity.RotatedBy(num4 * 0.2f);
                     }
                     else
@@ -78,7 +81,7 @@ namespace Fargowiltas.Projectiles
                         projectile.localAI[1] = 0f;
                         float maxDistance = 700f;
                         int possibleTarget = -1;
-                        for (int i = 0; i < 200; i++)
+                        for (int i = 0; i < Main.maxNPCs; i++)
                         {
                             NPC npc = Main.npc[i];
                             if (npc.CanBeChasedBy())
@@ -91,6 +94,7 @@ namespace Fargowiltas.Projectiles
                                 }
                             }
                         }
+
                         projectile.ai[0] = possibleTarget;
                         projectile.netUpdate = true;
                     }
@@ -98,7 +102,9 @@ namespace Fargowiltas.Projectiles
             }
 
             if (projectile.velocity != Vector2.Zero)
+            {
                 projectile.rotation = projectile.velocity.ToRotation();
+            }
 
             projectile.rotation -= (float)Math.PI / 2;
         }
@@ -116,8 +122,8 @@ namespace Fargowiltas.Projectiles
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Texture2D texture2D13 = Main.projectileTexture[projectile.type];
-            int num156 = Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type]; //ypos of lower right corner of sprite to draw
-            int y3 = num156 * projectile.frame; //ypos of upper left corner of sprite to draw
+            int num156 = Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type]; // Y-pos of lower right corner of sprite to draw
+            int y3 = num156 * projectile.frame; // Y-pos of upper left corner of sprite to draw
             Rectangle rectangle = new Rectangle(0, y3, texture2D13.Width, num156);
             Vector2 origin2 = rectangle.Size() / 2f;
 

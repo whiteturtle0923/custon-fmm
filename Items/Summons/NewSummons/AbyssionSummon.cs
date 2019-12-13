@@ -1,5 +1,5 @@
-using System.Linq;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -22,22 +22,23 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.width = 20;
             item.height = 20;
             item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 1;
+            item.value = Item.sellPrice(0, 0, 2);
+            item.rare = ItemRarityID.Blue;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
         }
 
         public override bool UseItem(Player player)
         {
-            if (Fargowiltas.instance.thoriumLoaded)
+            if (Fargowiltas.ModLoaded["ThoriumMod"])
             {
                 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("Abyssion"));
             }
 
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, player.position, 0);
+
             return true;
         }
     }
