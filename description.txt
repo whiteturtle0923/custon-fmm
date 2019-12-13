@@ -1,5 +1,7 @@
 NEW UPDATE - v 1.6.2
 -Fixed Mutant not having the right amount of health when loading into a post-Mutant world
+-Deviantt's Masochist gifts are now available up to post-EoW/BoC
+-Adjusted Deviantt's mimic summon prices
 
 NEW UPDATE - v 1.6.1
 -Added Overloaded Goblin Battle Standard, Pirate Map, Pumpkin Medallion, Naughty Present, and Runaway Probe
