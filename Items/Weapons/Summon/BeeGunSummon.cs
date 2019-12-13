@@ -7,6 +7,8 @@ namespace Fargowiltas.Items.Weapons.Summon
 {
     public class BeeGunSummon : ModItem
     {
+        public override string Texture => "Terraria/Item_1121";
+
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Shoots bees that will chase your enemy");
@@ -20,8 +22,6 @@ namespace Fargowiltas.Items.Weapons.Summon
             item.summon = true;
         }
 
-        public override string Texture => "Terraria/Item_1121";
-
         public override bool CanRightClick()
         {
             return true;
@@ -29,33 +29,34 @@ namespace Fargowiltas.Items.Weapons.Summon
 
         public override void RightClick(Player player)
         {
-            int num = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.BeeGun, 1, false, item.prefix);
+            int num = Item.NewItem(player.getRect(), ItemID.BeeGun, prefixGiven: item.prefix);
 
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
-                NetMessage.SendData(21, -1, -1, null, num, 1f, 0f, 0f, 0, 0, 0);
+                NetMessage.SendData(MessageID.SyncItem, number: num, number2: 1f);
             }
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int num162 = Main.rand.Next(1, 4);
-            if (Main.rand.Next(6) == 0)
+            int amount = Main.rand.Next(1, 4);
+            for (int i = 0; i <= 2; i++)
             {
-                num162++;
+                if (Main.rand.NextBool(6))
+                {
+                    amount++;
+                }
             }
-            if (Main.rand.Next(6) == 0)
+
+            if (player.strongBees && Main.rand.NextBool(3))
             {
-                num162++;
+                amount++;
             }
-            if (player.strongBees && Main.rand.Next(3) == 0)
+
+            for (int i = 0; i < amount; i++)
             {
-                num162++;
-            }
-            for (int num163 = 0; num163 < num162; num163++)
-            {
-                speedX += (float)Main.rand.Next(-35, 36) * 0.02f;
-                speedY += (float)Main.rand.Next(-35, 36) * 0.02f;
+                speedX += Main.rand.Next(-35, 36) * 0.02f;
+                speedY += Main.rand.Next(-35, 36) * 0.02f;
                 int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, player.beeType(), player.beeDamage(damage), player.beeKB(knockBack), player.whoAmI);
                 Main.projectile[proj].minion = true;
                 Main.projectile[proj].magic = false;

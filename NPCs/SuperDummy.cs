@@ -4,50 +4,49 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.NPCs
 {
-	public class SuperDummy : ModNPC
-	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Super Dummy");
-		}
+    public class SuperDummy : ModNPC
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Super Dummy");
+        }
 
-		public override void SetDefaults()
-		{
-			npc.width = 28;
-			npc.height = 50;
-			npc.damage = 0;
-			npc.defense = 0;
-			npc.lifeMax = 9999999;
-			npc.HitSound = SoundID.NPCHit15;
-			npc.DeathSound = SoundID.NPCDeath2;
-			npc.value = 0f;
-			npc.knockBackResist = 0f;
-		}
+        public override void SetDefaults()
+        {
+            npc.width = 28;
+            npc.height = 50;
+            npc.damage = 0;
+            npc.defense = 0;
+            npc.lifeMax = 9999999;
+            npc.HitSound = SoundID.NPCHit15;
+            npc.DeathSound = SoundID.NPCDeath2;
+            npc.knockBackResist = 0f;
+        }
 
-		public override void UpdateLifeRegen (ref int damage)
-		{
-			npc.lifeRegen += 2000000;
-		}
+        public override void UpdateLifeRegen(ref int damage)
+        {
+            npc.lifeRegen += 2000000;
+        }
 
-		public override bool? DrawHealthBar (byte hbPosition, ref float scale, ref Vector2 position)
-		{
-			return false;
-		}
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            return false;
+        }
 
         public override bool PreNPCLoot()
         {
             return false;
         }
 
-        public override bool CheckDead ()
-		{
-			if (npc.lifeRegen < 0)
-			{
-				npc.life = npc.lifeMax;
-				return false;
-			}
-			
-			return true;
-		}
-	}
+        public override bool CheckDead()
+        {
+            if (npc.lifeRegen < 0)
+            {
+                npc.life = npc.lifeMax;
+                return false;
+            }
+
+            return true;
+        }
+    }
 }

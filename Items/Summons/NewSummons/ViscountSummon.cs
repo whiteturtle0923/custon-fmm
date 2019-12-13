@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using Terraria;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -9,7 +9,8 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Activated Blood Altar");
-            Tooltip.SetDefault("Summons Viscount\nCan only be used underground");
+            Tooltip.SetDefault("Summons Viscount" +
+                               "\nCan only be used underground");
         }
 
         public override bool Autoload(ref string name)
@@ -22,11 +23,11 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.width = 20;
             item.height = 20;
             item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 3;
+            item.value = Item.sellPrice(0, 0, 2);
+            item.rare = ItemRarityID.Orange;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
         }
 
@@ -37,12 +38,13 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public override bool UseItem(Player player)
         {
-            if (Fargowiltas.instance.thoriumLoaded)
+            if (Fargowiltas.ModLoaded["ThoriumMod"])
             {
                 NPC.SpawnOnPlayer(player.whoAmI, ModLoader.GetMod("ThoriumMod").NPCType("Viscount"));
             }
 
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, player.position, 0);
+
             return true;
         }
     }

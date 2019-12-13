@@ -32,33 +32,33 @@ Summons several Dungeon Guardians during the day");
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.swarmActive;
+            return !Fargowiltas.SwarmActive;
         }
 
         public override bool UseItem(Player player)
         {
-            Fargowiltas.swarmActive = true;
-            Fargowiltas.swarmTotal = 10 * player.inventory[player.selectedItem].stack;
-            Fargowiltas.swarmKills = 0;
+            Fargowiltas.SwarmActive = true;
+            Fargowiltas.SwarmTotal = 10 * player.inventory[player.selectedItem].stack;
+            Fargowiltas.SwarmKills = 0;
 
-            //kill whole stack
+            // kill whole stack
             player.inventory[player.selectedItem].stack = 0;
 
-            if (Fargowiltas.swarmTotal <= 20)
+            if (Fargowiltas.SwarmTotal <= 20)
             {
-                Fargowiltas.swarmSpawned = Fargowiltas.swarmTotal;
+                Fargowiltas.SwarmSpawned = Fargowiltas.SwarmTotal;
             }
-            else if (Fargowiltas.swarmTotal <= 100)
+            else if (Fargowiltas.SwarmTotal <= 100)
             {
-                Fargowiltas.swarmSpawned = 20;
+                Fargowiltas.SwarmSpawned = 20;
             }
-            else if (Fargowiltas.swarmTotal != 1000)
+            else if (Fargowiltas.SwarmTotal != 1000)
             {
-                Fargowiltas.swarmSpawned = 40;
+                Fargowiltas.SwarmSpawned = 40;
             }
             else
             {
-                Fargowiltas.swarmSpawned = 60;
+                Fargowiltas.SwarmSpawned = 60;
             }
 
             int npc;
@@ -72,10 +72,10 @@ Summons several Dungeon Guardians during the day");
                 npc = NPCID.SkeletronHead;
             }
 
-            for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
+            for (int i = 0; i < Fargowiltas.SwarmSpawned; i++)
             {
                 int skele = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), npc);
-                Main.npc[skele].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
+                Main.npc[skele].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
             }
 
             if (Main.netMode == 2)

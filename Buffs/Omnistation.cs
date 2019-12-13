@@ -1,7 +1,7 @@
+using Fargowiltas.Items.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Fargowiltas.Items.Tiles;
 
 namespace Fargowiltas.Buffs
 {
@@ -28,7 +28,9 @@ namespace Fargowiltas.Buffs
             Main.starInBottle = true;
 
             if (Framing.GetTileSafely(player.Center).type == ModContent.TileType<OmnistationSheet>())
+            {
                 player.AddBuff(BuffID.Honey, 30 * 60 + 1);
+            }
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using Fargowiltas.NPCs;
-using System.Linq;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.Localization;
-using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
 {
@@ -20,7 +19,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
 
         public override bool Autoload(ref string name)
         {
-            return false;// return ModLoader.GetMod("ThoriumMod") != null;
+            return false; // return ModLoader.GetMod("ThoriumMod") != null;
         }
 
         public override void SetDefaults()
@@ -38,39 +37,39 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.swarmActive;
+            return !Fargowiltas.SwarmActive;
         }
 
         public override bool UseItem(Player player)
         {
-            Fargowiltas.swarmActive = true;
-            Fargowiltas.swarmTotal = 10 * player.inventory[player.selectedItem].stack;
-            Fargowiltas.swarmKills = 0;
+            Fargowiltas.SwarmActive = true;
+            Fargowiltas.SwarmTotal = 10 * player.inventory[player.selectedItem].stack;
+            Fargowiltas.SwarmKills = 0;
 
-            //kill whole stack
+            // Kill whole stack
             player.inventory[player.selectedItem].stack = 0;
 
-            if (Fargowiltas.swarmTotal <= 20)
+            if (Fargowiltas.SwarmTotal <= 20)
             {
-                Fargowiltas.swarmSpawned = Fargowiltas.swarmTotal;
+                Fargowiltas.SwarmSpawned = Fargowiltas.SwarmTotal;
             }
-            else if (Fargowiltas.swarmTotal <= 100)
+            else if (Fargowiltas.SwarmTotal <= 100)
             {
-                Fargowiltas.swarmSpawned = 20;
+                Fargowiltas.SwarmSpawned = 20;
             }
-            else if (Fargowiltas.swarmTotal != 1000)
+            else if (Fargowiltas.SwarmTotal != 1000)
             {
-                Fargowiltas.swarmSpawned = 30;
+                Fargowiltas.SwarmSpawned = 30;
             }
             else
             {
-                Fargowiltas.swarmSpawned = 30;
+                Fargowiltas.SwarmSpawned = 30;
             }
 
-            for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
+            for (int i = 0; i < Fargowiltas.SwarmSpawned; i++)
             {
                 int boss = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), thorium.NPCType("GraniteEnergyStorm"));
-                Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
+                Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
             }
 
             if (Main.netMode == 2)

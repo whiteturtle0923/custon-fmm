@@ -6,8 +6,10 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-    class OverloadMartians : ModItem
+    public class OverloadMartians : ModItem
     {
+        public override string Texture => "Fargowiltas/Items/Summons/NewSummons/RunawayProbe";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Overloaded Runaway Probe");
@@ -27,13 +29,11 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             item.consumable = false;
         }
 
-        public override string Texture => "Fargowiltas/Items/Summons/NewSummons/RunawayProbe";
-
         public override bool UseItem(Player player)
         {
             if (FargoWorld.OverloadMartians)
             {
-                //cancel it
+                // cancel it
                 Main.invasionSize = 1;
                 FargoWorld.OverloadMartians = false;
 

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +7,8 @@ namespace Fargowiltas.Projectiles
 {
     public class PurityNukeSupremeProj : ModProjectile
     {
+        public override string Texture => "Fargowiltas/Items/Renewals/PurityRenewalSupreme";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cleanse Nuke Supreme");
@@ -23,8 +24,6 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 170;
         }
 
-        public override string Texture => "Fargowiltas/Items/Renewals/PurityRenewalSupreme";
-
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
@@ -34,7 +33,7 @@ namespace Fargowiltas.Projectiles
         public override void Kill(int timeLeft)
         {
             Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Shatter, (int)position.X, (int)position.Y);
+            Main.PlaySound(SoundID.Shatter, position);
 
             float[] speedX = { 0, 0, 5, 5, 5, -5, -5, -5 };
             float[] speedY = { 5, -5, 0, 5, -5, 0, 5, -5 };

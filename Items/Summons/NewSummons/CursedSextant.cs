@@ -1,4 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.NewSummons
@@ -16,11 +18,11 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.width = 20;
             item.height = 20;
             item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 1;
+            item.value = Item.sellPrice(0, 0, 2);
+            item.rare = ItemRarityID.Blue;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
         }
 
@@ -32,9 +34,11 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override bool UseItem(Player player)
         {
             Main.bloodMoon = true;
-            NetMessage.SendData(7);
-            Main.NewText("The Blood Moon is rising...", 175, 75, 255);
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+
+            NetMessage.SendData(MessageID.WorldData);
+            Main.NewText("The Blood Moon is rising...", new Color(175, 75, 255));
+            Main.PlaySound(SoundID.Roar, player.position, 0);
+
             return true;
         }
     }

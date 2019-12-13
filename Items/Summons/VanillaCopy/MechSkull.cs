@@ -6,6 +6,8 @@ namespace Fargowiltas.Items.Summons
 {
     public class MechSkull : ModItem
     {
+        public override string Texture => "Terraria/Item_557";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Some Kind of Metallic Skull");
@@ -24,8 +26,6 @@ namespace Fargowiltas.Items.Summons
             item.useStyle = 4;
             item.consumable = true;
         }
-
-        public override string Texture => "Terraria/Item_557";
 
         public override bool CanUseItem(Player player)
         {

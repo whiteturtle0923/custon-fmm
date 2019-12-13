@@ -6,6 +6,8 @@ namespace Fargowiltas.Items.Summons
 {
     public class WormyFood : ModItem
     {
+        public override string Texture => "Terraria/Item_70";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wormy Food");
@@ -24,8 +26,6 @@ namespace Fargowiltas.Items.Summons
             item.useStyle = 4;
             item.consumable = true;
         }
-
-        public override string Texture => "Terraria/Item_70";
 
         public override bool UseItem(Player player)
         {

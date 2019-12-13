@@ -1,5 +1,5 @@
-using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +8,8 @@ namespace Fargowiltas.Projectiles
 {
     public class PurityNukeProj : ModProjectile
     {
+        public override string Texture => "Fargowiltas/Items/Renewals/PurityRenewal";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cleanse Nuke");
@@ -23,8 +25,6 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 170;
         }
 
-        public override string Texture => "Fargowiltas/Items/Renewals/PurityRenewal";
-
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
@@ -34,7 +34,7 @@ namespace Fargowiltas.Projectiles
         public override void Kill(int timeLeft)
         {
             Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Shatter, (int)position.X, (int)position.Y);
+            Main.PlaySound(SoundID.Shatter, position);
 
             int radius = 100;
             float[] speedX = { 0, 0, 5, 5, 5, -5, -5, -5 };
@@ -52,7 +52,8 @@ namespace Fargowiltas.Projectiles
                     int xPosition = (int)(x + position.X / 16.0f);
                     int yPosition = (int)(y + position.Y / 16.0f);
 
-                    if (Math.Sqrt(x * x + y * y) <= radius + 0.5)   //circle
+                    // Circle
+                    if (Math.Sqrt(x * x + y * y) <= radius + 0.5)
                     {
                         WorldGen.Convert(xPosition, yPosition, 0, 1); // convert to purity
                     }

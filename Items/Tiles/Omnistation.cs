@@ -19,9 +19,8 @@ namespace Fargowiltas.Items.Tiles
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
-            item.consumable = false;
-            item.rare = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.rare = ItemRarityID.Blue;
             item.createTile = mod.TileType("OmnistationSheet");
         }
 

@@ -1,12 +1,11 @@
-using Microsoft.Xna.Framework;
 using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.NPCs.Destroyer
 {
-
     public class Destroyer : ModNPC
     {
         public override void SetStaticDefaults()
@@ -26,10 +25,12 @@ namespace Fargowiltas.NPCs.Destroyer
             {
                 npc.realLife = (int)npc.ai[3];
             }
+
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead)
             {
                 npc.TargetClosest(true);
             }
+
             if (npc.type == mod.NPCType("Destroyer") || npc.type == mod.NPCType("DestroyerBody") || npc.type == mod.NPCType("DestroyerTail"))
             {
                 npc.velocity.Length();
@@ -39,11 +40,12 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         for (int i = 0; i < 2; i++)
                         {
-                            int num = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 182, 0f, 0f, 100, default(Color), 2f);
+                            int num = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 182, 0f, 0f, 100, default, 2f);
                             Main.dust[num].noGravity = true;
                             Main.dust[num].noLight = true;
                         }
                     }
+
                     npc.alpha -= 42;
                     if (npc.alpha < 0)
                     {
@@ -51,6 +53,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     }
                 }
             }
+
             if (npc.type == mod.NPCType("DestroyerBody") || npc.type == mod.NPCType("DestroyerTail"))
             {
                 bool flag = false;
@@ -62,6 +65,7 @@ namespace Fargowiltas.NPCs.Destroyer
                 {
                     flag = true;
                 }
+
                 if (flag)
                 {
                     npc.life = 0;
@@ -69,6 +73,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     npc.checkDead();
                 }
             }
+
             if (Main.netMode != 1)
             {
                 if (npc.ai[0] == 0f && npc.type == mod.NPCType("Destroyer"))
@@ -84,6 +89,7 @@ namespace Fargowiltas.NPCs.Destroyer
                         {
                             num4 = mod.NPCType("DestroyerTail");
                         }
+
                         int num5 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + npc.height), num4, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                         Main.npc[num5].ai[3] = (float)npc.whoAmI;
                         Main.npc[num5].realLife = npc.whoAmI;
@@ -93,6 +99,7 @@ namespace Fargowiltas.NPCs.Destroyer
                         num2 = num5;
                     }
                 }
+
                 if (npc.type == mod.NPCType("DestroyerBody"))
                 {
                     npc.localAI[0] += Main.rand.Next(4);
@@ -117,6 +124,7 @@ namespace Fargowiltas.NPCs.Destroyer
                             {
                                 num10 = 18;
                             }
+
                             int num11 = 100;
                             vector.X += num7 * 5f;
                             vector.Y += num8 * 5f;
@@ -127,6 +135,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     }
                 }
             }
+
             int num13 = (int)(npc.position.X / 16f) - 1;
             int num14 = (int)((npc.position.X + (float)npc.width) / 16f) + 2;
             int num15 = (int)(npc.position.Y / 16f) - 1;
@@ -135,18 +144,22 @@ namespace Fargowiltas.NPCs.Destroyer
             {
                 num13 = 0;
             }
+
             if (num14 > Main.maxTilesX)
             {
                 num14 = Main.maxTilesX;
             }
+
             if (num15 < 0)
             {
                 num15 = 0;
             }
+
             if (num16 > Main.maxTilesY)
             {
                 num16 = Main.maxTilesY;
             }
+
             bool flag2 = false;
             if (!flag2)
             {
@@ -168,12 +181,14 @@ namespace Fargowiltas.NPCs.Destroyer
                     }
                 }
             }
+
             if (!flag2)
             {
                 if (npc.type != mod.NPCType("DestroyerBody") || npc.ai[2] != 1f)
                 {
                     Lighting.AddLight((int)((npc.position.X + (float)(npc.width / 2)) / 16f), (int)((npc.position.Y + (float)(npc.height / 2)) / 16f), 0.3f, 0.1f, 0.05f);
                 }
+
                 npc.localAI[1] = 1f;
                 if (npc.type == mod.NPCType("Destroyer"))
                 {
@@ -194,6 +209,7 @@ namespace Fargowiltas.NPCs.Destroyer
                                 }
                             }
                         }
+
                         if (flag3)
                         {
                             flag2 = true;
@@ -205,6 +221,7 @@ namespace Fargowiltas.NPCs.Destroyer
             {
                 npc.localAI[1] = 0f;
             }
+
             float num18 = 16f;
             if (Main.dayTime || Main.player[npc.target].dead)
             {
@@ -215,6 +232,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     npc.velocity.Y = npc.velocity.Y + 1f;
                     num18 = 32f;
                 }
+
                 if (npc.position.Y > Main.rockLayer * 16.0)
                 {
                     for (int n = 0; n < 200; n++)
@@ -226,18 +244,19 @@ namespace Fargowiltas.NPCs.Destroyer
                     }
                 }
             }
+
             float num19 = 0.1f;
             float num20 = 0.15f;
             Vector2 vector3 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
             float num21 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
             float num22 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);
-            num21 = ((int)(num21 / 16f) * 16);
-            num22 = ((int)(num22 / 16f) * 16);
-            vector3.X = ((int)(vector3.X / 16f) * 16);
-            vector3.Y = ((int)(vector3.Y / 16f) * 16);
+            num21 = (int)(num21 / 16f) * 16;
+            num22 = (int)(num22 / 16f) * 16;
+            vector3.X = (int)(vector3.X / 16f) * 16;
+            vector3.Y = (int)(vector3.Y / 16f) * 16;
             num21 -= vector3.X;
             num22 -= vector3.Y;
-            float num23 = (float)Math.Sqrt((num21 * num21 + num22 * num22));
+            float num23 = (float)Math.Sqrt(num21 * num21 + num22 * num22);
             if (npc.ai[1] > 0f && npc.ai[1] < Main.npc.Length)
             {
                 try
@@ -249,6 +268,7 @@ namespace Fargowiltas.NPCs.Destroyer
                 catch
                 {
                 }
+
                 npc.rotation = (float)Math.Atan2((double)num22, (double)num21) + 1.57f;
                 num23 = (float)Math.Sqrt((double)(num21 * num21 + num22 * num22));
                 int num24 = (int)(44f * npc.scale);
@@ -260,6 +280,7 @@ namespace Fargowiltas.NPCs.Destroyer
                 npc.position.Y = npc.position.Y + num22;
                 return;
             }
+
             if (!flag2)
             {
                 npc.TargetClosest(true);
@@ -268,6 +289,7 @@ namespace Fargowiltas.NPCs.Destroyer
                 {
                     npc.velocity.Y = num18;
                 }
+
                 if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)num18 * 0.4)
                 {
                     if (npc.velocity.X < 0f)
@@ -311,13 +333,16 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         num25 = 10f;
                     }
+
                     if (num25 > 20f)
                     {
                         num25 = 20f;
                     }
+
                     npc.soundDelay = (int)num25;
                     Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1, 1f, 0f);
                 }
+
                 num23 = (float)Math.Sqrt((double)(num21 * num21 + num22 * num22));
                 float num26 = Math.Abs(num21);
                 float num27 = Math.Abs(num22);
@@ -334,6 +359,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         npc.velocity.X = npc.velocity.X - num20;
                     }
+
                     if (npc.velocity.Y < num22)
                     {
                         npc.velocity.Y = npc.velocity.Y + num20;
@@ -343,6 +369,7 @@ namespace Fargowiltas.NPCs.Destroyer
                         npc.velocity.Y = npc.velocity.Y - num20;
                     }
                 }
+
                 if ((npc.velocity.X > 0f && num21 > 0f) || (npc.velocity.X < 0f && num21 < 0f) || (npc.velocity.Y > 0f && num22 > 0f) || (npc.velocity.Y < 0f && num22 < 0f))
                 {
                     if (npc.velocity.X < num21)
@@ -353,6 +380,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         npc.velocity.X = npc.velocity.X - num19;
                     }
+
                     if (npc.velocity.Y < num22)
                     {
                         npc.velocity.Y = npc.velocity.Y + num19;
@@ -361,6 +389,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         npc.velocity.Y = npc.velocity.Y - num19;
                     }
+
                     if ((double)Math.Abs(num22) < (double)num18 * 0.2 && ((npc.velocity.X > 0f && num21 < 0f) || (npc.velocity.X < 0f && num21 > 0f)))
                     {
                         if (npc.velocity.Y > 0f)
@@ -372,6 +401,7 @@ namespace Fargowiltas.NPCs.Destroyer
                             npc.velocity.Y = npc.velocity.Y - num19 * 2f;
                         }
                     }
+
                     if ((double)Math.Abs(num21) < (double)num18 * 0.2 && ((npc.velocity.Y > 0f && num22 < 0f) || (npc.velocity.Y < 0f && num22 > 0f)))
                     {
                         if (npc.velocity.X > 0f)
@@ -394,6 +424,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         npc.velocity.X = npc.velocity.X - num19 * 1.1f;
                     }
+
                     if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)num18 * 0.5)
                     {
                         if (npc.velocity.Y > 0f)
@@ -416,6 +447,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         npc.velocity.Y = npc.velocity.Y - num19 * 1.1f;
                     }
+
                     if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)num18 * 0.5)
                     {
                         if (npc.velocity.X > 0f)
@@ -429,6 +461,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     }
                 }
             }
+
             npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
             if (npc.type == mod.NPCType("Destroyer"))
             {
@@ -438,6 +471,7 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         npc.netUpdate = true;
                     }
+
                     npc.localAI[0] = 1f;
                 }
                 else
@@ -446,8 +480,10 @@ namespace Fargowiltas.NPCs.Destroyer
                     {
                         npc.netUpdate = true;
                     }
+
                     npc.localAI[0] = 0f;
                 }
+
                 if (((npc.velocity.X > 0f && npc.oldVelocity.X < 0f) || (npc.velocity.X < 0f && npc.oldVelocity.X > 0f) || (npc.velocity.Y > 0f && npc.oldVelocity.Y < 0f) || (npc.velocity.Y < 0f && npc.oldVelocity.Y > 0f)) && !npc.justHit)
                 {
                     npc.netUpdate = true;

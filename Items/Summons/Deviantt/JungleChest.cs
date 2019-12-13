@@ -1,14 +1,10 @@
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class JungleChest : DevianttSummon
     {
-        public override int summonType => NPCID.BigMimicJungle;
+        public override int SummonType => NPCID.BigMimicJungle;
 
         public override void SetStaticDefaults()
         {

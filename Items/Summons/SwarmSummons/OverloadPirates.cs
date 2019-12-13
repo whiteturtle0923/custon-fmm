@@ -6,8 +6,10 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-    class OverloadPirates : ModItem
+    public class OverloadPirates : ModItem
     {
+        public override string Texture => "Terraria/Item_1315";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Overloaded Pirate Map");
@@ -27,13 +29,11 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             item.consumable = false;
         }
 
-        public override string Texture => "Terraria/Item_1315";
-
         public override bool UseItem(Player player)
         {
             if (FargoWorld.OverloadPirates)
             {
-                //cancel it
+                // cancel it
                 Main.invasionSize = 1;
                 FargoWorld.OverloadPirates = false;
 

@@ -1,8 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Projectiles
@@ -33,8 +30,11 @@ namespace Fargowiltas.Projectiles
             if (Main.netMode != 1)
             {
                 for (int i = -3; i < 3; i++)
+                {
                     Projectile.NewProjectile(projectile.Center, -projectile.velocity.RotatedBy(Math.PI / 7 * i), mod.ProjectileType("FakeHeart2Deviantt"), projectile.damage, projectile.knockBack, projectile.owner, -1, 120 + 20 * i);
+                }
             }
+
             projectile.Kill();
         }
 

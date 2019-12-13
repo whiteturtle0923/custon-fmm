@@ -30,31 +30,31 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.swarmActive;
+            return !Fargowiltas.SwarmActive;
         }
 
         public override bool UseItem(Player player)
         {
-            Fargowiltas.swarmActive = true;
-            Fargowiltas.swarmTotal = 10 * player.inventory[player.selectedItem].stack;
-            Fargowiltas.swarmKills = 0;
+            Fargowiltas.SwarmActive = true;
+            Fargowiltas.SwarmTotal = 10 * player.inventory[player.selectedItem].stack;
+            Fargowiltas.SwarmKills = 0;
 
-            //kill whole stack
+            // Kill whole stack
             player.inventory[player.selectedItem].stack = 0;
 
-            if (Fargowiltas.swarmTotal <= 20)
+            if (Fargowiltas.SwarmTotal <= 20)
             {
-                Fargowiltas.swarmSpawned = Fargowiltas.swarmTotal;
+                Fargowiltas.SwarmSpawned = Fargowiltas.SwarmTotal;
             }
             else
             {
-                Fargowiltas.swarmSpawned = 50;
+                Fargowiltas.SwarmSpawned = 50;
             }
 
-            for (int i = 0; i < Fargowiltas.swarmSpawned; i++)
+            for (int i = 0; i < Fargowiltas.SwarmSpawned; i++)
             {
                 int brain = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.BrainofCthulhu);
-                Main.npc[brain].GetGlobalNPC<FargoGlobalNPC>().swarmActive = true;
+                Main.npc[brain].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
             }
 
             if (Main.netMode == 2)
