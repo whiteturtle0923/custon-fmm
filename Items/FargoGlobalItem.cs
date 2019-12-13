@@ -27,16 +27,16 @@ namespace Fargowiltas.Items
         {
             int[] yoyos = { mod.ItemType("CascadeThrown"), mod.ItemType("ChikThrown"), mod.ItemType("Code1Thrown"), mod.ItemType("Code2Thrown"), mod.ItemType("FormatCThrown"), mod.ItemType("GradientThrown"), mod.ItemType("KrakenThrown"), mod.ItemType("RallyThrown"), mod.ItemType("TerrarianThrown"), mod.ItemType("ValorThrown"), mod.ItemType("YeletsThrown") };
 
+            if (Array.IndexOf(Thrown, item.type) > -1 || Array.IndexOf(Summon, item.type) > -1)
+            {
+                TooltipLine line = new TooltipLine(mod, "help", "Right click to convert");
+                tooltips.Add(line);
+            }
+
             if (Array.IndexOf(yoyos, item.type) > -1)
             {
                 TooltipLine line = new TooltipLine(mod, "OneDrop", string.Empty);
                 tooltips.Add(line);
-            }
-
-            if (Array.IndexOf(Thrown, item.type) > -1 || Array.IndexOf(Summon, item.type) > -1)
-            {
-                TooltipLine line = new TooltipLine(mod, "help", "Right click to convert");
-                tooltips.Insert(tooltips.Count - 1, line);
             }
 
             if (item.type == ItemID.CrystalBall)
