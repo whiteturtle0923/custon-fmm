@@ -9,6 +9,8 @@ namespace Fargowiltas.Items.Tiles
 {
     public class OmnistationSheet : ModTile
     {
+        public virtual Color color => new Color(221, 85, 125);
+
         public override void SetDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -18,7 +20,7 @@ namespace Fargowiltas.Items.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Omnistation");
-            AddMapEntry(new Color(100, 255, 100), name);
+            AddMapEntry(color, name);
             disableSmartCursor = true;
         }
 

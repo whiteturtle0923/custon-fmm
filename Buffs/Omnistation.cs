@@ -27,7 +27,8 @@ namespace Fargowiltas.Buffs
             Main.heartLantern = true;
             Main.starInBottle = true;
 
-            if (Framing.GetTileSafely(player.Center).type == ModContent.TileType<OmnistationSheet>())
+            int type = Framing.GetTileSafely(player.Center).type;
+            if (type == ModContent.TileType<OmnistationSheet>() || type == ModContent.TileType<OmnistationSheet2>())
             {
                 player.AddBuff(BuffID.Honey, 30 * 60 + 1);
             }
