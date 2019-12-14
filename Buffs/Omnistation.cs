@@ -22,10 +22,13 @@ namespace Fargowiltas.Buffs
             player.buffImmune[BuffID.HeartLamp] = true;
             player.buffImmune[BuffID.StarInBottle] = true;
 
-            Main.sunflower = true;
-            Main.campfire = true;
-            Main.heartLantern = true;
-            Main.starInBottle = true;
+            if (player.whoAmI == Main.myPlayer)
+            {
+                Main.sunflower = true;
+                Main.campfire = true;
+                Main.heartLantern = true;
+                Main.starInBottle = true;
+            }
 
             int type = Framing.GetTileSafely(player.Center).type;
             if (type == ModContent.TileType<OmnistationSheet>() || type == ModContent.TileType<OmnistationSheet2>())
