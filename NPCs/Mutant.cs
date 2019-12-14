@@ -516,7 +516,7 @@ namespace Fargowiltas.NPCs
                 "Do you know what an Ee-arth is?",
                 "I can't even spell 'apotheosis', do you expect me to know what it is?",
                 "Where do monsters get their gold from? ...I don't have pockets you know.",
-                "Dogs are cool and all, but cats dont try to bite my brain.",
+                "Dogs are cool and all, but cats don't try to bite my brain.",
                 "Beware the green dragon... What's that face mean?",
                 "Where is this O-hi-o I keep hearing about.",
                 "I've told you 56 times already, I'm busy... Oh wait you want to buy something, I suppose I have time.",

@@ -51,7 +51,7 @@ namespace Fargowiltas.Items.Summons
             }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
+            return false;
         }
 
         public override void AddRecipes()
