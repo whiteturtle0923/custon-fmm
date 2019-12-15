@@ -9,6 +9,8 @@ namespace Fargowiltas.Items.Tiles
 {
     public class OmnistationSheet : ModTile
     {
+        public virtual Color color => new Color(221, 85, 125);
+
         public override void SetDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -18,13 +20,14 @@ namespace Fargowiltas.Items.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Omnistation");
-            AddMapEntry(new Color(100, 255, 100), name);
+            AddMapEntry(color, name);
             disableSmartCursor = true;
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
         {
-            Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
+            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
+                Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
         }
 
         public override void MouseOver(int i, int j)

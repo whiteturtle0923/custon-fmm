@@ -3,27 +3,12 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Tiles
 {
-    public class Omnistation : ModItem
+    public class Omnistation2 : Omnistation
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Omnistation");
-            Tooltip.SetDefault(@"Effects of all stations
-Grants Honey when touched
-Right click while holding a weapon for its respective buff");
-        }
-
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.useAnimation = 15;
-            item.useTime = 10;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.rare = ItemRarityID.Blue;
-            item.createTile = mod.TileType("OmnistationSheet");
+            base.SetDefaults();
+            item.createTile = mod.TileType("OmnistationSheet2");
         }
 
         public override void AddRecipes()
@@ -38,7 +23,7 @@ Right click while holding a weapon for its respective buff");
             recipe.AddIngredient(ItemID.AmmoBox, 5);
             recipe.AddIngredient(ItemID.CrystalBall, 5);
             recipe.AddIngredient(ItemID.BewitchingTable, 5);
-            recipe.AddIngredient(ItemID.AdamantiteBar, 5);
+            recipe.AddIngredient(ItemID.TitaniumBar, 5);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
