@@ -9,7 +9,9 @@ namespace Fargowiltas.Items.Explosives
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Instabridge");
-            Tooltip.SetDefault("Creates a bridge of platforms instantly\nAlso clears the area right above the platforms\nDo not use if any important building is nearby");
+            Tooltip.SetDefault("Creates a bridge of platforms instantly" +
+                               "\nAlso clears the area right above the platforms" +
+                               "\nDo not use if any important building is nearby");
         }
 
         public override void SetDefaults()
@@ -19,8 +21,8 @@ namespace Fargowiltas.Items.Explosives
             item.height = 32;
             item.maxStack = 99;
             item.consumable = true;
-            item.useStyle = 1;
-            item.rare = 2;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item1;
             item.useAnimation = 20;
             item.useTime = 20;

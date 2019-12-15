@@ -6,9 +6,10 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class Demolitionist : CaughtNPC
     {
+        public override string Texture => "Terraria/NPC_38";
+
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Demolitionist");
             Tooltip.SetDefault("'It's a good day to die!'");
         }
 
@@ -18,7 +19,5 @@ namespace Fargowiltas.Items.CaughtNPCs
             item.makeNPC = NPCID.Demolitionist;
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 25));
         }
-
-        public override string Texture => "Terraria/NPC_38";
     }
 }

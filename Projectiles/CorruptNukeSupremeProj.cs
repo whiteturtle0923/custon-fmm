@@ -8,6 +8,8 @@ namespace Fargowiltas.Projectiles
 {
     public class CorruptNukeSupremeProj : ModProjectile
     {
+        public override string Texture => "Fargowiltas/Items/Renewals/CorruptRenewalSupreme";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Corrupt Nuke Supreme");
@@ -23,14 +25,6 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 170;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Fargowiltas/Items/Renewals/CorruptRenewalSupreme";
-            }
-        }
-
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
@@ -39,8 +33,7 @@ namespace Fargowiltas.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Shatter, (int)position.X, (int)position.Y);
+            Main.PlaySound(SoundID.Shatter, projectile.Center);
 
             float[] speedX = { 0, 0, 5, 5, 5, -5, -5, -5 };
             float[] speedY = { 5, -5, 0, 5, -5, 0, 5, -5 };
@@ -54,10 +47,10 @@ namespace Fargowiltas.Projectiles
             {
                 for (int y = -Main.maxTilesY; y < Main.maxTilesY; y++)
                 {
-                    int xPosition = (int)(x + position.X / 16.0f);
-                    int yPosition = (int)(y + position.Y / 16.0f);
+                    int xPosition = (int)(x + projectile.Center.X / 16.0f);
+                    int yPosition = (int)(y + projectile.Center.Y / 16.0f);
 
-                    WorldGen.Convert(xPosition, yPosition, 1, 1); // convert to corrupt 
+                    WorldGen.Convert(xPosition, yPosition, 1, 1); // Convert to corrupt
                 }
             }
         }

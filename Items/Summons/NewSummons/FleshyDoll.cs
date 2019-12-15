@@ -9,8 +9,8 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fleshy Doll");
-            Tooltip.SetDefault("Summons the Wall of Flesh\n" +
-                                "Make sure you use it in the Underworld");
+            Tooltip.SetDefault("Summons the Wall of Flesh" +
+                               "\nMake sure you use it in the Underworld");
         }
 
         public override void SetDefaults()
@@ -18,11 +18,10 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.width = 20;
             item.height = 20;
             item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 0;
+            item.value = Item.sellPrice(0, 0, 2);
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
         }
 
@@ -39,8 +38,8 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override bool UseItem(Player player)
         {
             NPC.SpawnWOF(player.Center);
+            Main.PlaySound(SoundID.Roar, player.position, 0);
 
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
 
@@ -49,9 +48,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             if (item.lavaWet && !NPC.AnyNPCs(NPCID.WallofFlesh))
             {
                 NPC.SpawnWOF(item.position);
-                item.active = false;
-                item.type = 0;
-                item.stack = 0;
+                item.TurnToAir();
             }
         }
 

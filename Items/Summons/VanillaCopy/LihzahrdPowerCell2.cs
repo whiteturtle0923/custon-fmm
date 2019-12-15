@@ -8,6 +8,8 @@ namespace Fargowiltas.Items.Summons
 {
     public class LihzahrdPowerCell2 : ModItem
     {
+        public override string Texture => "Terraria/Item_1293";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lihzahrdy Power Cell");
@@ -27,8 +29,6 @@ namespace Fargowiltas.Items.Summons
             item.consumable = true;
             item.shoot = mod.ProjectileType("SpawnProj");
         }
-
-        public override string Texture => "Terraria/Item_1293";
 
         public override bool CanUseItem(Player player)
         {
@@ -51,7 +51,7 @@ namespace Fargowiltas.Items.Summons
             }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
+            return false;
         }
 
         public override void AddRecipes()

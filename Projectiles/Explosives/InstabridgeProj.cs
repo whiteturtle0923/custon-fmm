@@ -34,41 +34,47 @@ namespace Fargowiltas.Projectiles.Explosives
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
 
-            if (Main.netMode == 1) return;
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
 
-            //all the way across
+            // All the way across
             for (int x = 1; x <= Main.maxTilesX; x++)
             {
-                //6 down, last is platforms
+                // Six down, last is platforms
                 for (int y = 1; y <= 6; y++)
                 {
-                    int xPosition = (x);
+                    int xPosition = x;
                     int yPosition = (int)(y + position.Y / 16.0f);
 
                     Tile tile = Main.tile[xPosition, yPosition];
 
-                    if (tile == null) continue;
+                    if (tile == null)
+                    {
+                        continue;
+                    }
 
-                    //testing for blocks that should not be destroyed
+                    // Testing for blocks that should not be destroyed
                     bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
                     bool noDungeon = (tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick || tile.type == TileID.PinkDungeonBrick) && !NPC.downedBoss3;
                     bool noHMOre = (tile.type == TileID.Cobalt || tile.type == TileID.Palladium || tile.type == TileID.Mythril || tile.type == TileID.Orichalcum || tile.type == TileID.Adamantite || tile.type == TileID.Titanium) && !NPC.downedMechBossAny;
                     bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || !NPC.downedMechBoss3);
-                    bool noLihzahrd = (tile.type == TileID.LihzahrdBrick && !NPC.downedGolemBoss);
+                    bool noLihzahrd = tile.type == TileID.LihzahrdBrick && !NPC.downedGolemBoss;
 
                     if (noFossil || noDungeon || noHMOre || noChloro || noLihzahrd)
                     {
                         continue;
                     }
 
-                    FargoGlobalTile.ClearEverythingWithNet(xPosition, yPosition);
+                    FargoGlobalTile.ClearEverything(xPosition, yPosition);
 
                     if (y == 6)
                     {
-                        //spawn platforms
+                        // Spawn platforms
                         WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms);
                     }
-                    
+
                     NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
                 }
             }

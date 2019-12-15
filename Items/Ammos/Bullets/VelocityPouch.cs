@@ -1,10 +1,11 @@
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Ammos.Bullets
 {
-    public class VelocityPouch : ModItem
+    public class VelocityPouch : BaseAmmo
     {
+        public override int AmmunitionItem => ItemID.HighVelocityBullet;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endless High Velocity Pouch");
@@ -12,24 +13,8 @@ namespace Fargowiltas.Items.Ammos.Bullets
 
         public override void SetDefaults()
         {
+            base.SetDefaults();
             item.shootSpeed = 28f;
-            item.shoot = ProjectileID.BulletHighVelocity;
-            item.damage = 10;
-            item.width = 26;
-            item.height = 26;
-            item.ranged = true;
-            item.ammo = AmmoID.Bullet;
-            item.knockBack = 4f;
-            item.rare = 4;
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.HighVelocityBullet, 3996);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }

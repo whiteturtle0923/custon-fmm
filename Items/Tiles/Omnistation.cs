@@ -8,7 +8,9 @@ namespace Fargowiltas.Items.Tiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Omnistation");
-            Tooltip.SetDefault("Effects of all stations");
+            Tooltip.SetDefault(@"Effects of all stations
+Grants Honey when touched
+Right click while holding a weapon for its respective buff");
         }
 
         public override void SetDefaults()
@@ -19,9 +21,8 @@ namespace Fargowiltas.Items.Tiles
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.useStyle = 1;
-            item.consumable = false;
-            item.rare = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.rare = ItemRarityID.Blue;
             item.createTile = mod.TileType("OmnistationSheet");
         }
 
@@ -37,7 +38,7 @@ namespace Fargowiltas.Items.Tiles
             recipe.AddIngredient(ItemID.AmmoBox, 5);
             recipe.AddIngredient(ItemID.CrystalBall, 5);
             recipe.AddIngredient(ItemID.BewitchingTable, 5);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 5);
+            recipe.AddIngredient(ItemID.AdamantiteBar, 5);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

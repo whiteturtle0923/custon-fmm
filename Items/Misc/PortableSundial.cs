@@ -9,21 +9,19 @@ namespace Fargowiltas.Items.Misc
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Portable Sundial");
-            Tooltip.SetDefault("Left click to instantly switch from day to night\n" +
-                                "Right click to activate the Enchanted Sundial effect");
+            Tooltip.SetDefault("Left click to instantly switch from day to night" +
+                               "\nRight click to activate the Enchanted Sundial effect");
         }
 
         public override void SetDefaults()
         {
             item.width = 20;
             item.height = 20;
-            item.maxStack = 1;
-            item.value = 1000;
-            item.rare = 4;
+            item.value = Item.sellPrice(0, 0, 2);
+            item.rare = ItemRarityID.LightRed;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
-            item.consumable = false;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.mana = 50;
             item.UseSound = SoundID.Item4;
         }
@@ -40,19 +38,20 @@ namespace Fargowiltas.Items.Misc
 
         public override bool UseItem(Player player)
         {
-            if (player.altFunctionUse == 2) //right click
+            if (player.altFunctionUse == ItemAlternativeFunctionID.ActivatedAndUsed)
             {
                 Main.sundialCooldown = 0;
-                if (Main.netMode == 1)
+                if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    NetMessage.SendData(51, -1, -1, null, Main.myPlayer, 3f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.Assorted1, number: Main.myPlayer, number2: 3f);
                     return true;
                 }
+
                 Main.fastForwardTime = true;
-                NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+                NetMessage.SendData(MessageID.WorldData);
                 Main.PlaySound(SoundID.Item4, player.position);
             }
-            else //left click
+            else
             {
                 Main.dayTime = !Main.dayTime;
                 Main.time = 0;

@@ -5,10 +5,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class LumberJack : CaughtNPC
     {
-        public override bool Autoload(ref string name)
-        {
-            return true;
-        }
+        public override string Texture => "Fargowiltas/NPCs/LumberJack";
 
         public override void SetStaticDefaults()
         {
@@ -20,10 +17,7 @@ namespace Fargowiltas.Items.CaughtNPCs
         {
             base.SetDefaults();
             item.makeNPC = (short)mod.NPCType("LumberJack");
-            
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 25));
         }
-
-        public override string Texture => "Fargowiltas/NPCs/LumberJack";
     }
 }

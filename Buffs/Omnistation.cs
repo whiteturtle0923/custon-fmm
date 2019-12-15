@@ -1,7 +1,7 @@
+using Fargowiltas.Items.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Fargowiltas.Items.Tiles;
 
 namespace Fargowiltas.Buffs
 {
@@ -22,13 +22,19 @@ namespace Fargowiltas.Buffs
             player.buffImmune[BuffID.HeartLamp] = true;
             player.buffImmune[BuffID.StarInBottle] = true;
 
-            Main.sunflower = true;
-            Main.campfire = true;
-            Main.heartLantern = true;
-            Main.starInBottle = true;
+            if (player.whoAmI == Main.myPlayer)
+            {
+                Main.sunflower = true;
+                Main.campfire = true;
+                Main.heartLantern = true;
+                Main.starInBottle = true;
+            }
 
-            if (Framing.GetTileSafely(player.Center).type == ModContent.TileType<OmnistationSheet>())
+            int type = Framing.GetTileSafely(player.Center).type;
+            if (type == ModContent.TileType<OmnistationSheet>() || type == ModContent.TileType<OmnistationSheet2>())
+            {
                 player.AddBuff(BuffID.Honey, 30 * 60 + 1);
+            }
         }
     }
 }

@@ -4,11 +4,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.Items.Tiles
 {
     public class OmnistationSheet : ModTile
     {
+        public virtual Color color => new Color(221, 85, 125);
+
         public override void SetDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -18,13 +21,14 @@ namespace Fargowiltas.Items.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Omnistation");
-            AddMapEntry(new Color(100, 255, 100), name);
+            AddMapEntry(color, name);
             disableSmartCursor = true;
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
         {
-            Main.player[Main.myPlayer].AddBuff(mod.BuffType("Omnistation"), 10);
+            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
+                Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
         }
 
         public override void MouseOver(int i, int j)
@@ -32,22 +36,41 @@ namespace Fargowiltas.Items.Tiles
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.showItemIcon = true;
-            player.showItemIcon2 = mod.ItemType("Omnistation");
+            player.showItemIcon2 = ItemType<Omnistation>();
         }
 
         public override bool NewRightClick(int i, int j)
         {
-            Item item = Main.player[Main.myPlayer].HeldItem;
+            Item item = Main.LocalPlayer.HeldItem;
             if (item.melee)
-                Main.player[Main.myPlayer].AddBuff(BuffID.Sharpened, 60 * 60 * 10);
+            {
+                Main.LocalPlayer.AddBuff(BuffID.Sharpened, 60 * 60 * 10);
+            }
+
             if (item.ranged)
-                Main.player[Main.myPlayer].AddBuff(BuffID.AmmoBox, 60 * 60 * 10);
+            {
+                Main.LocalPlayer.AddBuff(BuffID.AmmoBox, 60 * 60 * 10);
+            }
+
             if (item.magic)
-                Main.player[Main.myPlayer].AddBuff(BuffID.Clairvoyance, 60 * 60 * 10);
+            {
+                Main.LocalPlayer.AddBuff(BuffID.Clairvoyance, 60 * 60 * 10);
+            }
+
             if (item.summon)
-                Main.player[Main.myPlayer].AddBuff(BuffID.Bewitched, 60 * 60 * 10);
+            {
+                Main.LocalPlayer.AddBuff(BuffID.Bewitched, 60 * 60 * 10);
+            }
+
             if (item.melee || item.ranged || item.magic || item.summon)
+<<<<<<< HEAD
                 Main.PlaySound(SoundID.Item37, i * 16 + 8, j * 16 + 8);
+=======
+            {
+                Main.PlaySound(SoundID.Item44, i * 16 + 8, j * 16 + 8);
+            }
+
+>>>>>>> 34a936c2d50291fc6f067b0c45a3fe240e058e5b
             return true;
         }
 

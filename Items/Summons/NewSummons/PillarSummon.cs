@@ -19,11 +19,11 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.width = 20;
             item.height = 20;
             item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 9;
+            item.value = Item.sellPrice(0, 0, 2);
+            item.rare = ItemRarityID.Cyan;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.consumable = true;
             item.shoot = mod.ProjectileType("SpawnProj");
         }
@@ -35,21 +35,21 @@ namespace Fargowiltas.Items.Summons.NewSummons
             for (int i = 0; i < pillars.Length; i++)
             {
                 Vector2 pos = new Vector2((int)player.position.X + (400 * i) - 600, (int)player.position.Y - 200);
-
                 Projectile.NewProjectile(pos, Vector2.Zero, type, 0, 0, Main.myPlayer, pillars[i]);
             }
 
-            if (Main.netMode == 2)
+            if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The Celestial Pillars have awoken!"), new Color(175, 75, 255));
             }
             else
             {
-                Main.NewText("The Celestial Pillars have awoken!", 175, 75, 255);
+                Main.NewText("The Celestial Pillars have awoken!", new Color(175, 75, 255));
             }
 
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
+            Main.PlaySound(SoundID.Roar, player.position, 0);
+
+            return false;
         }
     }
 }

@@ -8,6 +8,8 @@ namespace Fargowiltas.Items.Summons
 {
     public class GoreySpine : ModItem
     {
+        public override string Texture => "Terraria/Item_1331";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Red Stained Spine");
@@ -28,8 +30,6 @@ namespace Fargowiltas.Items.Summons
             item.shoot = mod.ProjectileType("SpawnProj");
         }
 
-        public override string Texture => "Terraria/Item_1331";
-
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
@@ -46,7 +46,7 @@ namespace Fargowiltas.Items.Summons
             }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
+            return false;
         }
 
         public override void AddRecipes()

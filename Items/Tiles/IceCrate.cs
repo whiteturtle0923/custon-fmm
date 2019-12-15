@@ -1,30 +1,31 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.Items.Tiles
 {
     public class IceCrate : ModItem
     {
-        public override void SetDefaults()
-        {
-            item.width = 12;
-            item.height = 12;
-            item.rare = 2;
-            item.maxStack = 99;
-            item.useAnimation = 15;
-            item.useTime = 15;
-            item.autoReuse = true;
-            item.useStyle = 1;
-            item.consumable = true;
-            item.value = Item.sellPrice(0, 1, 0, 0);
-            item.createTile = mod.TileType("IceCrateSheet");
-        }
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ice Crate");
             Tooltip.SetDefault("Right click to open");
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 12;
+            item.height = 12;
+            item.rare = ItemRarityID.Green;
+            item.maxStack = 99;
+            item.useAnimation = 15;
+            item.useTime = 15;
+            item.autoReuse = true;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.consumable = true;
+            item.value = Item.sellPrice(0, 1);
+            item.createTile = TileType<IceCrateSheet>();
         }
 
         public override bool CanRightClick()
@@ -34,7 +35,7 @@ namespace Fargowiltas.Items.Tiles
 
         public override void RightClick(Player player)
         {
-            if(Main.rand.Next(6) == 0)
+            if (Main.rand.NextBool(6))
             {
                 int item = Main.rand.Next(8);
 
@@ -66,15 +67,15 @@ namespace Fargowiltas.Items.Tiles
                         break;
                 }
 
-                int index = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item, 1, false, -1, false, false);
+                int index = Item.NewItem(player.getRect(), item, prefixGiven: -1);
 
-                if (Main.netMode == 1)
+                if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    NetMessage.SendData(21, -1, -1, null, index, 1f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.SyncItem, number: index, number2: 1f);
                 }
             }
-            
-            //bypass all checks and spawn defaults
+
+            // Bypass all checks and spawn defaults
             player.openCrate(4000);
         }
     }

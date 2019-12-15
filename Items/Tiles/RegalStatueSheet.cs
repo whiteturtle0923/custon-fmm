@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.Items.Tiles
 {
@@ -19,22 +19,11 @@ namespace Fargowiltas.Items.Tiles
             name.SetDefault("Regal Statue");
             AddMapEntry(new Color(200, 200, 200), name);
             disableSmartCursor = true;
-
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("RegalStatue"));
+            Item.NewItem(i * 16, j * 16, 32, 16, ItemType<RegalStatue>());
         }
-
-        /*public override void NearbyEffects(int i, int j, bool closer)
-        {
-            Main.NewText(Main.checkForSpawns);
-            if (Main.netMode != 1)
-            {
-                //usually 9 so should make it 10x as fast
-                //Main.checkForSpawns += 81;
-            }
-        }*/
     }
 }

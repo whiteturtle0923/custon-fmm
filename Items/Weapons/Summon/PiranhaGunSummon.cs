@@ -7,6 +7,8 @@ namespace Fargowiltas.Items.Weapons.Summon
 {
     public class PiranhaGunSummon : ModItem
     {
+        public override string Texture => "Terraria/Item_1156";
+
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Latches on to enemies for continuous damage");
@@ -20,8 +22,6 @@ namespace Fargowiltas.Items.Weapons.Summon
             item.summon = true;
         }
 
-        public override string Texture => "Terraria/Item_1156";
-
         public override bool CanRightClick()
         {
             return true;
@@ -29,11 +29,11 @@ namespace Fargowiltas.Items.Weapons.Summon
 
         public override void RightClick(Player player)
         {
-            int num = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.PiranhaGun, 1, false, item.prefix);
+            int num = Item.NewItem(player.getRect(), ItemID.PiranhaGun, prefixGiven: item.prefix);
 
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
-                NetMessage.SendData(21, -1, -1, null, num, 1f, 0f, 0f, 0, 0, 0);
+                NetMessage.SendData(MessageID.SyncItem, number: num, number2: 1f);
             }
         }
 

@@ -6,8 +6,10 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-    class OverloadGoblins : ModItem
+    public class OverloadGoblins : ModItem
     {
+        public override string Texture => "Terraria/Item_361";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Overloaded Goblin Battle Standard");
@@ -27,13 +29,11 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             item.consumable = false;
         }
 
-        public override string Texture => "Terraria/Item_361";
-
         public override bool UseItem(Player player)
         {
             if (FargoWorld.OverloadGoblins)
             {
-                //cancel it
+                // cancel it
                 Main.invasionSize = 1;
                 FargoWorld.OverloadGoblins = false;
 

@@ -18,8 +18,8 @@ namespace Fargowiltas.Items.Renewals
             item.height = 26;
             item.maxStack = 99;
             item.consumable = true;
-            item.useStyle = 1;
-            item.rare = 3;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item1;
             item.useAnimation = 20;
             item.useTime = 20;

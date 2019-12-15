@@ -8,6 +8,8 @@ namespace Fargowiltas.Projectiles
 {
     public class CorruptNukeProj : ModProjectile
     {
+        public override string Texture => "Fargowiltas/Items/Renewals/CorruptRenewal";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Corrupt Nuke");
@@ -23,14 +25,6 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 170;
         }
 
-        public override string Texture
-        {
-            get
-            {
-                return "Fargowiltas/Items/Renewals/CorruptRenewal";
-            }
-        }
-
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
@@ -39,8 +33,7 @@ namespace Fargowiltas.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Shatter, (int)position.X, (int)position.Y);
+            Main.PlaySound(SoundID.Shatter, projectile.Center);
 
             int radius = 100;
             float[] speedX = { 0, 0, 5, 5, 5, -5, -5, -5 };
@@ -55,12 +48,13 @@ namespace Fargowiltas.Projectiles
             {
                 for (int y = -radius; y <= radius; y++)
                 {
-                    int xPosition = (int)(x + position.X / 16.0f);
-                    int yPosition = (int)(y + position.Y / 16.0f);
+                    int xPosition = (int)(x + projectile.Center.X / 16.0f);
+                    int yPosition = (int)(y + projectile.Center.Y / 16.0f);
 
-                    if (Math.Sqrt(x * x + y * y) <= radius + 0.5)   //circle
+                    // Circle
+                    if (Math.Sqrt(x * x + y * y) <= radius + 0.5)
                     {
-                        WorldGen.Convert(xPosition, yPosition, 1, 1); // convert to corrupt 
+                        WorldGen.Convert(xPosition, yPosition, 1, 1); // convert to corrupt
                     }
                 }
             }

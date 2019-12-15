@@ -19,8 +19,8 @@ namespace Fargowiltas.Items.Explosives
             item.height = 32;
             item.maxStack = 99;
             item.consumable = true;
-            item.useStyle = 1;
-            item.rare = 2;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item1;
             item.useAnimation = 20;
             item.useTime = 20;

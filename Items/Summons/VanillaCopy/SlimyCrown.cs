@@ -7,6 +7,8 @@ namespace Fargowiltas.Items.Summons
 {
     public class SlimyCrown : ModItem
     {
+        public override string Texture => "Terraria/Item_560";
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Slimy Crown");
@@ -27,8 +29,6 @@ namespace Fargowiltas.Items.Summons
             item.shoot = mod.ProjectileType("SpawnProj");
         }
 
-        public override string Texture => "Terraria/Item_560";
-
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
@@ -36,7 +36,7 @@ namespace Fargowiltas.Items.Summons
             Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.KingSlime);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
+            return false;
         }
 
         public override void AddRecipes()

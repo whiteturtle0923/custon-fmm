@@ -11,6 +11,8 @@ namespace Fargowiltas.Projectiles
     {
         public override string Texture => "Terraria/Projectile_274";
 
+        public override Color? GetAlpha(Color lightColor) => Color.White;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Abominationn Scythe");
@@ -46,12 +48,12 @@ namespace Fargowiltas.Projectiles
             const int aislotHomingCooldown = 1;
             const int homingDelay = 30;
             const float desiredFlySpeedInPixelsPerFrame = 70;
-            const float amountOfFramesToLerpBy = 10; // minimum of 1, please keep in full numbers even though it's a float!
+            const float amountOfFramesToLerpBy = 10; // Minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+                projectile.ai[aislotHomingCooldown] = homingDelay; // Cap this value
 
                 projectile.ai[0] = HomeOnTarget();
                 if (projectile.ai[0] > -1 && projectile.ai[0] < 200)
@@ -70,30 +72,6 @@ namespace Fargowiltas.Projectiles
             }
         }
 
-        private int HomeOnTarget()
-        {
-            const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 1000;
-
-            int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                NPC n = Main.npc[i];
-                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
-                {
-                    float distance = projectile.Distance(n.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
-                    )
-                        selectedTarget = i;
-                }
-            }
-
-            return selectedTarget;
-        }
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.ShadowFlame, 600);
@@ -102,8 +80,8 @@ namespace Fargowiltas.Projectiles
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Texture2D texture2D13 = Main.projectileTexture[projectile.type];
-            int num156 = Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type]; //ypos of lower right corner of sprite to draw
-            int y3 = num156 * projectile.frame; //ypos of upper left corner of sprite to draw
+            int num156 = Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type]; // Y-pos of lower right corner of sprite to draw
+            int y3 = num156 * projectile.frame; // Y-pos of upper left corner of sprite to draw
             Rectangle rectangle = new Rectangle(0, y3, texture2D13.Width, num156);
             Vector2 origin2 = rectangle.Size() / 2f;
 
@@ -125,9 +103,26 @@ namespace Fargowiltas.Projectiles
             return false;
         }
 
-        public override Color? GetAlpha(Color lightColor)
+        private int HomeOnTarget()
         {
-            return Color.White;
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 1000;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels && (selectedTarget == -1 || projectile.Distance(Main.npc[selectedTarget].Center) > distance))
+                    {
+                        selectedTarget = i;
+                    }
+                }
+            }
+
+            return selectedTarget;
         }
     }
 }
