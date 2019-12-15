@@ -2,7 +2,7 @@
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-    public class RedsThrowThrown : BaseThrownItem
+    public class RedsYoyoThrown : BaseThrownItem
     {
         public override int Type => ItemID.RedsYoyo;
 

@@ -2,7 +2,7 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-    public class DaybreakThrown : BaseThrownItem
+    public class DayBreakThrown : BaseThrownItem
     {
         public override int Type => ItemID.DayBreak;
 
