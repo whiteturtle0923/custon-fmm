@@ -63,14 +63,10 @@ namespace Fargowiltas.Items.Tiles
             }
 
             if (item.melee || item.ranged || item.magic || item.summon)
-<<<<<<< HEAD
-                Main.PlaySound(SoundID.Item37, i * 16 + 8, j * 16 + 8);
-=======
             {
                 Main.PlaySound(SoundID.Item44, i * 16 + 8, j * 16 + 8);
             }
 
->>>>>>> 34a936c2d50291fc6f067b0c45a3fe240e058e5b
             return true;
         }
 
