@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,6 +10,8 @@ namespace Fargowiltas.Items.Tiles
 {
     public class OmnistationSheet : ModTile
     {
+        public virtual Color color => new Color(221, 85, 125);
+
         public override void SetDefaults()
         {
             Main.tileFrameImportant[Type] = true;
@@ -18,13 +21,14 @@ namespace Fargowiltas.Items.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Omnistation");
-            AddMapEntry(new Color(100, 255, 100), name);
+            AddMapEntry(color, name);
             disableSmartCursor = true;
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
         {
-            Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
+            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
+                Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
         }
 
         public override void MouseOver(int i, int j)
@@ -59,11 +63,29 @@ namespace Fargowiltas.Items.Tiles
             }
 
             if (item.melee || item.ranged || item.magic || item.summon)
+<<<<<<< HEAD
+                Main.PlaySound(SoundID.Item37, i * 16 + 8, j * 16 + 8);
+=======
             {
                 Main.PlaySound(SoundID.Item44, i * 16 + 8, j * 16 + 8);
             }
 
+>>>>>>> 34a936c2d50291fc6f067b0c45a3fe240e058e5b
             return true;
         }
+
+
+        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+        {
+            Tile tile = Main.tile[i, j];
+            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
+            if (Main.drawToScreen)
+            {
+                zero = Vector2.Zero;
+            }
+            int height = tile.frameY == 36 ? 18 : 16;
+            Main.spriteBatch.Draw(mod.GetTexture("Items/Tiles/OmnistationSheet_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+        }
+
     }
 }

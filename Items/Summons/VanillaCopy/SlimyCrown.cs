@@ -36,7 +36,7 @@ namespace Fargowiltas.Items.Summons
             Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.KingSlime);
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
+            return false;
         }
 
         public override void AddRecipes()

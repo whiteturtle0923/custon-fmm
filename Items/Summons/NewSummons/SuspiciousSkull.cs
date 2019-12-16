@@ -62,7 +62,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
             Main.PlaySound(SoundID.Roar, player.position, 0);
 
-            return true;
+            return false;
         }
 
         public override void AddRecipes()
