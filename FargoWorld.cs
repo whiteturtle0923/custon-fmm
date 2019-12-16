@@ -20,48 +20,57 @@ namespace Fargowiltas
         internal static bool OverloadMartians;
 
         internal static bool[] CurrentSpawnRateTile;
-        internal static Dictionary<string, bool> DownedBools;
+        internal static Dictionary<string, bool> DownedBools = new Dictionary<string, bool>();
+
+        // Do not change any of these value names, it will fuck up loading.
+        private readonly string[] tags = new string[]
+        {
+            "lumberjack",
+            "betsy",
+            "boss",
+            "halloween",
+            "xmas",
+            "rareEnemy",
+            "pinky",
+            "undeadMiner",
+            "tim",
+            "doctorBones",
+            "mimic",
+            "wyvern",
+            "runeWizard",
+            "nymph",
+            "moth",
+            "rainbowSlime",
+            "paladin",
+            "medusa",
+            "clown",
+            "iceGolem",
+            "sandElemental",
+            "mothron",
+            "mimicHallow",
+            "mimicCorrupt",
+            "mimicCrimson",
+            "mimicJungle",
+            "goblinSummoner",
+            "flyingDutchman",
+            "dungeonSlime",
+            "pirateCaptain",
+            "skeletonGun",
+            "skeletonMage",
+            "boneLee",
+            "darkMage3",
+            "ogre",
+        };
 
         public override void Initialize()
         {
-            DownedBools = new Dictionary<string, bool>
+            foreach (string tag in tags)
             {
-                ["lumberjack"] = false,
-                ["betsy"] = false,
-                ["boss"] = false,
-                ["halloween"] = false,
-                ["xmas"] = false,
-                ["rareEnemy"] = false,
-                ["pinky"] = false,
-                ["undeadMiner"] = false,
-                ["tim"] = false,
-                ["doctorBones"] = false,
-                ["mimic"] = false,
-                ["wyvern"] = false,
-                ["runeWizard"] = false,
-                ["nymph"] = false,
-                ["moth"] = false,
-                ["rainbowSlime"] = false,
-                ["paladin"] = false,
-                ["medusa"] = false,
-                ["clown"] = false,
-                ["iceGolem"] = false,
-                ["sandElemental"] = false,
-                ["mothron"] = false,
-                ["mimicHallow"] = false,
-                ["mimicCorrupt"] = false,
-                ["mimicCrimson"] = false,
-                ["mimicJungle"] = false,
-                ["goblinSummoner"] = false,
-                ["flyingDutchman"] = false,
-                ["dungeonSlime"] = false,
-                ["pirateCaptain"] = false,
-                ["skeletonGun"] = false,
-                ["skeletonMage"] = false,
-                ["boneLee"] = false,
-                ["darkMage3"] = false,
-                ["ogre"] = false,
-            };
+                if (!DownedBools.ContainsKey(tag))
+                {
+                    DownedBools.Add(tag, false);
+                }
+            }
 
             AbomClearCD = 0;
 
@@ -77,9 +86,9 @@ namespace Fargowiltas
         public override TagCompound Save()
         {
             List<string> downed = new List<string>();
-            foreach (KeyValuePair<string, bool> downedBool in DownedBools.ToList())
+            foreach (string tag in tags)
             {
-                downed.AddWithCondition(downedBool.Key, downedBool.Value);
+                downed.AddWithCondition(tag, DownedBools[tag]);
             }
 
             return new TagCompound
@@ -91,19 +100,19 @@ namespace Fargowiltas
         public override void Load(TagCompound tag)
         {
             IList<string> downed = tag.GetList<string>("downed");
-            foreach (KeyValuePair<string, bool> downedBool in DownedBools.ToList())
+            foreach (string downedTag in tags)
             {
-                DownedBools[downedBool.Key] = downed.Contains(downedBool.Key);
+                DownedBools[downedTag] = downed.Contains(downedTag);
             }
         }
 
         public override void NetReceive(BinaryReader reader)
         {
-            foreach (KeyValuePair<string, bool> downedBool in DownedBools.ToList())
+            foreach (string tag in tags)
             {
-                if (downedBool.Key != "lumberjack")
+                if (tag != "lumberjack")
                 {
-                    DownedBools[downedBool.Key] = reader.ReadBoolean();
+                    DownedBools[tag] = reader.ReadBoolean();
                 }
             }
 
@@ -112,11 +121,11 @@ namespace Fargowiltas
 
         public override void NetSend(BinaryWriter writer)
         {
-            foreach (KeyValuePair<string, bool> downedBool in DownedBools.ToList())
+            foreach (string tag in tags)
             {
-                if (downedBool.Key != "lumberjack")
+                if (tag != "lumberjack")
                 {
-                    writer.Write(DownedBools[downedBool.Key]);
+                    writer.Write(DownedBools[tag]);
                 }
             }
 
