@@ -8,6 +8,7 @@ namespace Fargowiltas.Items.Weapons.Thrown
 
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Shadowflame Knife");
             Tooltip.SetDefault("Inflicts Shadowflame on hit");
         }
     }

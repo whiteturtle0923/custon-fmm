@@ -10,19 +10,6 @@ namespace Fargowiltas
 {
     internal class FargoRecipes
     {
-        public static void AddRecipes()
-        {
-            AddSummonConversions();
-            AddEvilConversions();
-            AddMetalConversions();
-            AddBannerToItemRecipes();
-            AddStatueRecipes();
-            AddContainerLootRecipes();
-            AddNPCRecipes();
-            AddEmblemRecipes();
-            AddMiscRecipes();
-        }
-
         public static void AddRecipeGroups()
         {
             // Evil Wood
@@ -69,6 +56,19 @@ namespace Fargowiltas
             };
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", caughtNPCs);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
+        }
+
+        public static void AddRecipes()
+        {
+            AddSummonConversions();
+            AddEvilConversions();
+            AddMetalConversions();
+            AddBannerToItemRecipes();
+            AddStatueRecipes();
+            AddContainerLootRecipes();
+            AddNPCRecipes();
+            AddEmblemRecipes();
+            AddMiscRecipes();
         }
 
         private static void AddSummonConversions()
