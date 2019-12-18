@@ -8,6 +8,7 @@ namespace Fargowiltas.Items.Weapons.Thrown
 
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Daybreak Thrown");
             Tooltip.SetDefault("'Rend your foes asunder with a spear of light!'");
         }
     }

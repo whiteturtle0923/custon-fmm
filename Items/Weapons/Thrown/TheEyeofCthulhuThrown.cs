@@ -2,7 +2,7 @@
 
 namespace Fargowiltas.Items.Weapons.Thrown
 {
-    public class TheEyeofCthulhuThrown : BaseThrownItem
+    public class TheEyeOfCthulhuThrown : BaseThrownItem
     {
         public override int Type => ItemID.TheEyeOfCthulhu;
 
