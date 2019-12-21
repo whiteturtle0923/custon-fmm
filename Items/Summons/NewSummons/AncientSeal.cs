@@ -67,7 +67,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             return false;
         }
 
-        public int SpawnBoss(Player player, int npcID, string name)
+        public static int SpawnBoss(Player player, int npcID, string name)
         {
             Main.NewText($"{name} has awoken!", new Color(175, 75, 255));
             return NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250), npcID);
