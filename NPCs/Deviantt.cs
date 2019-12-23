@@ -279,7 +279,7 @@ namespace Fargowiltas.NPCs
                 {
                     Item.NewItem(player.Center, ItemID.SilverPickaxe);
                     Item.NewItem(player.Center, ItemID.SilverAxe);
-                    Item.NewItem(player.Center, ItemID.HermesBoots);
+                    Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock")); 
                     Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
                 }
                 else if (Main.netMode == NetmodeID.MultiplayerClient)
