@@ -979,7 +979,7 @@ namespace Fargowiltas.NPCs
             Fargowiltas.SwarmKills++;
 
             // Drop swarm reward every 100 kills
-            if (Fargowiltas.SwarmKills % 100 == 0 && reward != string.Empty)
+            if (Fargowiltas.SwarmKills % 100 == 0 && !string.IsNullOrEmpty(reward))
             {
                 Item.NewItem(npc.Hitbox, mod.ItemType(reward));
             }

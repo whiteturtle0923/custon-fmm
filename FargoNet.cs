@@ -9,10 +9,10 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas
 {
-    public class FargoNet
+    public static class FargoNet
     {
         public const byte SummonNPCFromClient = 0;
-        private static readonly bool Debug = true;
+        private const bool Debug = true;
 
         public static void SendData(int dataType, int dataA, int dataB, string text, int playerID, float dataC, float dataD, float dataE, int clientType)
         {

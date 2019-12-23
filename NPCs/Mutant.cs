@@ -19,396 +19,396 @@ namespace Fargowiltas.NPCs
         #region Mod Bools
 
         // Fargo
-        public bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
+        public static bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
 
-        public bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
+        public static bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
 
-        public bool MutantsDiscountCard => Main.LocalPlayer.GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsDiscountCard;
+        public static bool MutantsDiscountCard => Main.LocalPlayer.GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsDiscountCard;
 
-        public bool MutantsPact => Main.LocalPlayer.GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsPact;
+        public static bool MutantsPact => Main.LocalPlayer.GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsPact;
 
         // Thorium
-        public bool ThoriumDownedBird => ThoriumMod.ThoriumWorld.downedThunderBird;
+        public static bool ThoriumDownedBird => ThoriumMod.ThoriumWorld.downedThunderBird;
 
-        public bool ThoriumDownedJelly => ThoriumMod.ThoriumWorld.downedJelly;
+        public static bool ThoriumDownedJelly => ThoriumMod.ThoriumWorld.downedJelly;
 
-        public bool ThoriumDownedStorm => ThoriumMod.ThoriumWorld.downedStorm;
+        public static bool ThoriumDownedStorm => ThoriumMod.ThoriumWorld.downedStorm;
 
-        public bool ThoriumDownedChamp => ThoriumMod.ThoriumWorld.downedChampion;
+        public static bool ThoriumDownedChamp => ThoriumMod.ThoriumWorld.downedChampion;
 
-        public bool ThoriumDownedScout => ThoriumMod.ThoriumWorld.downedScout;
+        public static bool ThoriumDownedScout => ThoriumMod.ThoriumWorld.downedScout;
 
-        public bool ThoriumDownedStrider => ThoriumMod.ThoriumWorld.downedStrider;
+        public static bool ThoriumDownedStrider => ThoriumMod.ThoriumWorld.downedStrider;
 
-        public bool ThoriumDownedBeholder => ThoriumMod.ThoriumWorld.downedFallenBeholder;
+        public static bool ThoriumDownedBeholder => ThoriumMod.ThoriumWorld.downedFallenBeholder;
 
-        public bool ThoriumDownedLich => ThoriumMod.ThoriumWorld.downedLich;
+        public static bool ThoriumDownedLich => ThoriumMod.ThoriumWorld.downedLich;
 
-        public bool ThoriumDownedAbyss => ThoriumMod.ThoriumWorld.downedDepthBoss;
+        public static bool ThoriumDownedAbyss => ThoriumMod.ThoriumWorld.downedDepthBoss;
 
-        public bool ThoriumDownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
+        public static bool ThoriumDownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
 
-        public bool ThoriumDownedViscount => ThoriumMod.ThoriumWorld.downedBat;
+        public static bool ThoriumDownedViscount => ThoriumMod.ThoriumWorld.downedBat;
 
         // Calamity
-        public bool CalamityDownedScourge => CalamityMod.World.CalamityWorld.downedDesertScourge;
+        public static bool CalamityDownedScourge => CalamityMod.World.CalamityWorld.downedDesertScourge;
 
-        public bool CalamityDownedHive => CalamityMod.World.CalamityWorld.downedHiveMind;
+        public static bool CalamityDownedHive => CalamityMod.World.CalamityWorld.downedHiveMind;
 
-        public bool CalamityDownedPerfor => CalamityMod.World.CalamityWorld.downedPerforator;
+        public static bool CalamityDownedPerfor => CalamityMod.World.CalamityWorld.downedPerforator;
 
-        public bool CalamityDownedSlime => CalamityMod.World.CalamityWorld.downedSlimeGod;
+        public static bool CalamityDownedSlime => CalamityMod.World.CalamityWorld.downedSlimeGod;
 
-        public bool CalamityDownedCryo => CalamityMod.World.CalamityWorld.downedCryogen;
+        public static bool CalamityDownedCryo => CalamityMod.World.CalamityWorld.downedCryogen;
 
-        public bool CalamityDownedBrim => CalamityMod.World.CalamityWorld.downedBrimstoneElemental;
+        public static bool CalamityDownedBrim => CalamityMod.World.CalamityWorld.downedBrimstoneElemental;
 
-        public bool CalamityDownedCalamitas => CalamityMod.World.CalamityWorld.downedCalamitas;
+        public static bool CalamityDownedCalamitas => CalamityMod.World.CalamityWorld.downedCalamitas;
 
-        public bool CalamityDownedLevi => CalamityMod.World.CalamityWorld.downedLeviathan;
+        public static bool CalamityDownedLevi => CalamityMod.World.CalamityWorld.downedLeviathan;
 
-        public bool CalamityDownedPlague => CalamityMod.World.CalamityWorld.downedPlaguebringer;
+        public static bool CalamityDownedPlague => CalamityMod.World.CalamityWorld.downedPlaguebringer;
 
-        public bool CalamityDownedGuardian => CalamityMod.World.CalamityWorld.downedGuardians;
+        public static bool CalamityDownedGuardian => CalamityMod.World.CalamityWorld.downedGuardians;
 
-        public bool CalamityDownedProv => CalamityMod.World.CalamityWorld.downedProvidence;
+        public static bool CalamityDownedProv => CalamityMod.World.CalamityWorld.downedProvidence;
 
-        public bool CalamityDownedDOG => CalamityMod.World.CalamityWorld.downedDoG;
+        public static bool CalamityDownedDOG => CalamityMod.World.CalamityWorld.downedDoG;
 
-        public bool CalamityDownedYharon => CalamityMod.World.CalamityWorld.downedYharon;
+        public static bool CalamityDownedYharon => CalamityMod.World.CalamityWorld.downedYharon;
 
-        public bool CalamityDownedSCAL => CalamityMod.World.CalamityWorld.downedSCal;
+        public static bool CalamityDownedSCAL => CalamityMod.World.CalamityWorld.downedSCal;
 
-        public bool CalamityDownedRav => CalamityMod.World.CalamityWorld.downedScavenger;
+        public static bool CalamityDownedRav => CalamityMod.World.CalamityWorld.downedScavenger;
 
-        public bool CalamityDownedCrab => CalamityMod.World.CalamityWorld.downedCrabulon;
+        public static bool CalamityDownedCrab => CalamityMod.World.CalamityWorld.downedCrabulon;
 
-        public bool CalamityDownedAstrum => CalamityMod.World.CalamityWorld.downedStarGod;
+        public static bool CalamityDownedAstrum => CalamityMod.World.CalamityWorld.downedStarGod;
 
-        public bool CalamityDownedBirb => CalamityMod.World.CalamityWorld.downedBumble;
+        public static bool CalamityDownedBirb => CalamityMod.World.CalamityWorld.downedBumble;
 
-        public bool CalamityDownedPolter => CalamityMod.World.CalamityWorld.downedPolterghast;
+        public static bool CalamityDownedPolter => CalamityMod.World.CalamityWorld.downedPolterghast;
 
-        public bool CalamityDownedAquatic => CalamityMod.World.CalamityWorld.downedAquaticScourge;
+        public static bool CalamityDownedAquatic => CalamityMod.World.CalamityWorld.downedAquaticScourge;
 
-        public bool CalamityDownedAstragel => CalamityMod.World.CalamityWorld.downedAstrageldon;
+        public static bool CalamityDownedAstragel => CalamityMod.World.CalamityWorld.downedAstrageldon;
 
         // SacredTools
-        public bool SacredDownedHarpy => SacredTools.ModdedWorld.downedHarpy;
+        public static bool SacredDownedHarpy => SacredTools.ModdedWorld.downedHarpy;
 
-        public bool SacredDownedHarpy2 => SacredTools.ModdedWorld.downedRaynare;
+        public static bool SacredDownedHarpy2 => SacredTools.ModdedWorld.downedRaynare;
 
-        public bool SacredDownedAbbadon => SacredTools.ModdedWorld.OblivionSpawns;
+        public static bool SacredDownedAbbadon => SacredTools.ModdedWorld.OblivionSpawns;
 
-        public bool SacredDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
+        public static bool SacredDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
 
-        public bool SacredDownedLunar => SacredTools.ModdedWorld.downedLunarians;
+        public static bool SacredDownedLunar => SacredTools.ModdedWorld.downedLunarians;
 
-        public bool SacredDownedPump => SacredTools.ModdedWorld.downedPumpboi;
+        public static bool SacredDownedPump => SacredTools.ModdedWorld.downedPumpboi;
 
-        public bool SacreddownedDecree => SacredTools.ModdedWorld.downedDecree;
+        public static bool SacreddownedDecree => SacredTools.ModdedWorld.downedDecree;
 
-        public bool SacreddownedPrimordia => SacredTools.ModdedWorld.downedPrimordia;
+        public static bool SacreddownedPrimordia => SacredTools.ModdedWorld.downedPrimordia;
 
-        public bool SacreddownedAraneas => SacredTools.ModdedWorld.downedAraneas;
+        public static bool SacreddownedAraneas => SacredTools.ModdedWorld.downedAraneas;
 
         // GRealm
-        public bool GRealmDownedFolivine => GRealm.MWorld.downedFolivine;
+        public static bool GRealmDownedFolivine => GRealm.MWorld.downedFolivine;
 
-        public bool GRealmDownedMantid => GRealm.MWorld.downedMatriarch;
+        public static bool GRealmDownedMantid => GRealm.MWorld.downedMatriarch;
 
         // Pumpking
-        public bool PumpkingDownedHorse => Pumpking.PumpkingWorld.downedPumpkingHorseman;
+        public static bool PumpkingDownedHorse => Pumpking.PumpkingWorld.downedPumpkingHorseman;
 
-        public bool PumpkingDownedTerra => Pumpking.PumpkingWorld.downedTerraLord;
+        public static bool PumpkingDownedTerra => Pumpking.PumpkingWorld.downedTerraLord;
 
         // Joost
-        public bool JoostDownedCactuar => JoostMod.JoostWorld.downedJumboCactuar;
+        public static bool JoostDownedCactuar => JoostMod.JoostWorld.downedJumboCactuar;
 
-        public bool JoostDownedSAX => JoostMod.JoostWorld.downedSAX;
+        public static bool JoostDownedSAX => JoostMod.JoostWorld.downedSAX;
 
-        public bool JoostDownedGilga => JoostMod.JoostWorld.downedGilgamesh;
+        public static bool JoostDownedGilga => JoostMod.JoostWorld.downedGilgamesh;
 
         // Spirit
-        public bool SpiritDownedScarab => SpiritMod.MyWorld.downedScarabeus;
+        public static bool SpiritDownedScarab => SpiritMod.MyWorld.downedScarabeus;
 
-        public bool SpiritDownedFlier => SpiritMod.MyWorld.downedAncientFlier;
+        public static bool SpiritDownedFlier => SpiritMod.MyWorld.downedAncientFlier;
 
-        public bool SpiritDownedRaider => SpiritMod.MyWorld.downedRaider;
+        public static bool SpiritDownedRaider => SpiritMod.MyWorld.downedRaider;
 
-        public bool SpiritDownedInfer => SpiritMod.MyWorld.downedInfernon;
+        public static bool SpiritDownedInfer => SpiritMod.MyWorld.downedInfernon;
 
-        public bool SpiritDownedDusking => SpiritMod.MyWorld.downedDusking;
+        public static bool SpiritDownedDusking => SpiritMod.MyWorld.downedDusking;
 
-        public bool SpiritDownedIlluminant => SpiritMod.MyWorld.downedIlluminantMaster;
+        public static bool SpiritDownedIlluminant => SpiritMod.MyWorld.downedIlluminantMaster;
 
-        public bool SpiritDownedAtlas => SpiritMod.MyWorld.downedAtlas;
+        public static bool SpiritDownedAtlas => SpiritMod.MyWorld.downedAtlas;
 
-        public bool SpiritDownedOverseer => SpiritMod.MyWorld.downedOverseer;
+        public static bool SpiritDownedOverseer => SpiritMod.MyWorld.downedOverseer;
 
-        public bool SpiritDownedVine => SpiritMod.MyWorld.downedReachBoss;
+        public static bool SpiritDownedVine => SpiritMod.MyWorld.downedReachBoss;
 
-        public bool SpiritDownedUmbra => SpiritMod.MyWorld.downedSpiritCore;
+        public static bool SpiritDownedUmbra => SpiritMod.MyWorld.downedSpiritCore;
 
         // BTFA
-        public bool BtfaTitan => ForgottenMemories.TGEMWorld.downedTitanRock;
+        public static bool BtfaTitan => ForgottenMemories.TGEMWorld.downedTitanRock;
 
-        public bool BtfaAcheron => ForgottenMemories.TGEMWorld.downedAcheron;
+        public static bool BtfaAcheron => ForgottenMemories.TGEMWorld.downedAcheron;
 
-        public bool BtfaArtery => ForgottenMemories.TGEMWorld.downedArterius;
+        public static bool BtfaArtery => ForgottenMemories.TGEMWorld.downedArterius;
 
-        public bool BtfaGhastly => ForgottenMemories.TGEMWorld.downedGhastlyEnt;
+        public static bool BtfaGhastly => ForgottenMemories.TGEMWorld.downedGhastlyEnt;
 
         // Bluemagic
-        public bool BlueDownedPhantom => Bluemagic.BluemagicWorld.downedPhantom;
+        public static bool BlueDownedPhantom => Bluemagic.BluemagicWorld.downedPhantom;
 
-        public bool BlueDownedAbom => Bluemagic.BluemagicWorld.downedAbomination;
+        public static bool BlueDownedAbom => Bluemagic.BluemagicWorld.downedAbomination;
 
         // EotA
-        public bool AncientsDownedWorms => EchoesoftheAncients.AncientWorld.downedWyrms;
+        public static bool AncientsDownedWorms => EchoesoftheAncients.AncientWorld.downedWyrms;
 
         // Crystilium
-        public bool CrystiliumDownedKing => CrystiliumMod.CrystalWorld.downedCrystalKing;
+        public static bool CrystiliumDownedKing => CrystiliumMod.CrystalWorld.downedCrystalKing;
 
         // W1K
-        public bool W1KDownedKutku => W1KModRedux.MWorld.downedKutKu;
+        public static bool W1KDownedKutku => W1KModRedux.MWorld.downedKutKu;
 
-        public bool W1KDownedArdorix => W1KModRedux.MWorld.downedArdorix;
+        public static bool W1KDownedArdorix => W1KModRedux.MWorld.downedArdorix;
 
-        public bool W1KDownedArborix => W1KModRedux.MWorld.downedArborix;
+        public static bool W1KDownedArborix => W1KModRedux.MWorld.downedArborix;
 
-        public bool W1KDownedAquatix => W1KModRedux.MWorld.downedAquatix;
+        public static bool W1KDownedAquatix => W1KModRedux.MWorld.downedAquatix;
 
-        public bool W1KDownedIvy => W1KModRedux.MWorld.downedIvy;
+        public static bool W1KDownedIvy => W1KModRedux.MWorld.downedIvy;
 
-        public bool W1KDownedDeath => W1KModRedux.MWorld.downedDeath;
+        public static bool W1KDownedDeath => W1KModRedux.MWorld.downedDeath;
 
-        public bool W1KDownedRathalos => W1KModRedux.MWorld.downedRathalos;
+        public static bool W1KDownedRathalos => W1KModRedux.MWorld.downedRathalos;
 
-        public bool W1KDownedRidley => W1KModRedux.MWorld.downedRidley;
+        public static bool W1KDownedRidley => W1KModRedux.MWorld.downedRidley;
 
-        public bool W1KDownedOkiku => W1KModRedux.MWorld.downedOkiku;
+        public static bool W1KDownedOkiku => W1KModRedux.MWorld.downedOkiku;
 
         // Fernium
-        /*public bool FerniumDownedMargrama => Fernium.world.downedMargrama;
-        public bool FerniumDownedLunarRex => Fernium.world.downedLunarRex;
-        public bool FerniumFernite => Fernium.world.downedFerniteTheUnpleasant;*/
+        /*public static bool FerniumDownedMargrama => Fernium.world.downedMargrama;
+        public static bool FerniumDownedLunarRex => Fernium.world.downedLunarRex;
+        public static bool FerniumFernite => Fernium.world.downedFerniteTheUnpleasant;*/
 
         // Elements awoken
-        public bool ElementsDownedWaste => ElementsAwoken.MyWorld.downedWasteland;
+        public static bool ElementsDownedWaste => ElementsAwoken.MyWorld.downedWasteland;
 
-        public bool ElementsDownedInfern => ElementsAwoken.MyWorld.downedInfernace;
+        public static bool ElementsDownedInfern => ElementsAwoken.MyWorld.downedInfernace;
 
-        public bool ElementsDownedScourge => ElementsAwoken.MyWorld.downedScourgeFighter;
+        public static bool ElementsDownedScourge => ElementsAwoken.MyWorld.downedScourgeFighter;
 
-        public bool ElementsDownedReg => ElementsAwoken.MyWorld.downedRegaroth;
+        public static bool ElementsDownedReg => ElementsAwoken.MyWorld.downedRegaroth;
 
-        public bool ElementsDownedCelestial => ElementsAwoken.MyWorld.downedCelestial;
+        public static bool ElementsDownedCelestial => ElementsAwoken.MyWorld.downedCelestial;
 
-        public bool ElementsDownedObsid => ElementsAwoken.MyWorld.downedObsidious;
+        public static bool ElementsDownedObsid => ElementsAwoken.MyWorld.downedObsidious;
 
-        public bool ElementsDownedPerma => ElementsAwoken.MyWorld.downedPermafrost;
+        public static bool ElementsDownedPerma => ElementsAwoken.MyWorld.downedPermafrost;
 
-        public bool ElementsDownedAque => ElementsAwoken.MyWorld.downedAqueous;
+        public static bool ElementsDownedAque => ElementsAwoken.MyWorld.downedAqueous;
 
-        public bool ElementsDownedDragon => ElementsAwoken.MyWorld.downedAncientWyrm;
+        public static bool ElementsDownedDragon => ElementsAwoken.MyWorld.downedAncientWyrm;
 
-        public bool ElementsDownedGuardian => ElementsAwoken.MyWorld.downedGuardian;
+        public static bool ElementsDownedGuardian => ElementsAwoken.MyWorld.downedGuardian;
 
-        public bool ElementsDownedVoid => ElementsAwoken.MyWorld.downedVoidLeviathan;
+        public static bool ElementsDownedVoid => ElementsAwoken.MyWorld.downedVoidLeviathan;
 
-        public bool ElementsDownedVolcanox => ElementsAwoken.MyWorld.downedVolcanox;
+        public static bool ElementsDownedVolcanox => ElementsAwoken.MyWorld.downedVolcanox;
 
-        public bool ElementsDownedAzana => ElementsAwoken.MyWorld.downedAzana;
+        public static bool ElementsDownedAzana => ElementsAwoken.MyWorld.downedAzana;
 
         // Antiaris
-        public bool AntiarisDownedAntlion => Antiaris.AntiarisWorld.DownedAntlionQueen;
+        public static bool AntiarisDownedAntlion => Antiaris.AntiarisWorld.DownedAntlionQueen;
 
-        public bool AntiarisDownedKeeper => Antiaris.AntiarisWorld.DownedTowerKeeper;
+        public static bool AntiarisDownedKeeper => Antiaris.AntiarisWorld.DownedTowerKeeper;
 
         // Disarray
-        public bool DisarrayDownedPlant => Disarray.DisarrayWorld.downedPlantKing;
+        public static bool DisarrayDownedPlant => Disarray.DisarrayWorld.downedPlantKing;
 
-        public bool DisarrayDownedCrusher => Disarray.DisarrayWorld.downedDesertCrusher;
+        public static bool DisarrayDownedCrusher => Disarray.DisarrayWorld.downedDesertCrusher;
 
-        public bool DisarrayDownedProbe => Disarray.DisarrayWorld.downedProbeMother;
+        public static bool DisarrayDownedProbe => Disarray.DisarrayWorld.downedProbeMother;
 
-        public bool DisarrayDownedGeneral => Disarray.DisarrayWorld.downedTheGeneral;
+        public static bool DisarrayDownedGeneral => Disarray.DisarrayWorld.downedTheGeneral;
 
-        public bool DisarrayDownedSerpent => Disarray.DisarrayWorld.downedLunarSerpent;
+        public static bool DisarrayDownedSerpent => Disarray.DisarrayWorld.downedLunarSerpent;
 
-        public bool DisarrayDownedCold => Disarray.DisarrayWorld.downedColdBoss;
+        public static bool DisarrayDownedCold => Disarray.DisarrayWorld.downedColdBoss;
 
-        public bool DisarrayDownedShadows => Disarray.DisarrayWorld.downedShadows;
+        public static bool DisarrayDownedShadows => Disarray.DisarrayWorld.downedShadows;
 
-        public bool DisarrayDownedLuna => Disarray.DisarrayWorld.downedLuna;
+        public static bool DisarrayDownedLuna => Disarray.DisarrayWorld.downedLuna;
 
-        public bool DisarrayDownedBell => Disarray.DisarrayWorld.downedBell;
+        public static bool DisarrayDownedBell => Disarray.DisarrayWorld.downedBell;
 
-        public bool DisarrayDownedMech => Disarray.DisarrayWorld.downedMech;
+        public static bool DisarrayDownedMech => Disarray.DisarrayWorld.downedMech;
 
-        public bool DisarrayDownedSludge => Disarray.DisarrayWorld.downedCosmicSludge;
+        public static bool DisarrayDownedSludge => Disarray.DisarrayWorld.downedCosmicSludge;
 
-        public bool DisarrayDownedDeva => Disarray.DisarrayWorld.downedCoreOfTheDevastator;
+        public static bool DisarrayDownedDeva => Disarray.DisarrayWorld.downedCoreOfTheDevastator;
 
-        public bool DisarrayDownedMeteor => Disarray.DisarrayWorld.downedMeteorzoid;
+        public static bool DisarrayDownedMeteor => Disarray.DisarrayWorld.downedMeteorzoid;
 
-        public bool DisarrayDownedDungeon => Disarray.DisarrayWorld.downedDungeon;
+        public static bool DisarrayDownedDungeon => Disarray.DisarrayWorld.downedDungeon;
 
         // Cookie
-        public bool CookieDownedCookie => CookieMod.CookieModWorld.downedCookieBoss;
+        public static bool CookieDownedCookie => CookieMod.CookieModWorld.downedCookieBoss;
 
-        public bool CookieDownedBunny => CookieMod.CookieModWorld.downedBunny;
+        public static bool CookieDownedBunny => CookieMod.CookieModWorld.downedBunny;
 
         // Enigma
-        public bool EnigmaDownedAnnih => Laugicality.LaugicalityWorld.downedAnnihilator;
+        public static bool EnigmaDownedAnnih => Laugicality.LaugicalityWorld.downedAnnihilator;
 
-        public bool EnigmaDownedSlyber => Laugicality.LaugicalityWorld.downedSlybertron;
+        public static bool EnigmaDownedSlyber => Laugicality.LaugicalityWorld.downedSlybertron;
 
-        public bool EnigmaDownedTrain => Laugicality.LaugicalityWorld.downedSteamTrain;
+        public static bool EnigmaDownedTrain => Laugicality.LaugicalityWorld.downedSteamTrain;
 
-        public bool EnigmaDownedShark => Laugicality.LaugicalityWorld.downedDuneSharkron;
+        public static bool EnigmaDownedShark => Laugicality.LaugicalityWorld.downedDuneSharkron;
 
-        public bool EnigmaDownedHypo => Laugicality.LaugicalityWorld.downedHypothema;
+        public static bool EnigmaDownedHypo => Laugicality.LaugicalityWorld.downedHypothema;
 
-        public bool EnigmaDownedRagnar => Laugicality.LaugicalityWorld.downedRagnar;
+        public static bool EnigmaDownedRagnar => Laugicality.LaugicalityWorld.downedRagnar;
 
-        public bool EnigmaDownedRocks => Laugicality.LaugicalityWorld.downedRocks;
+        public static bool EnigmaDownedRocks => Laugicality.LaugicalityWorld.downedRocks;
 
-        public bool EnigmaDownedEther => Laugicality.LaugicalityWorld.downedTrueEtheria;
+        public static bool EnigmaDownedEther => Laugicality.LaugicalityWorld.downedTrueEtheria;
 
-        public bool EnigmaDownedDio => Laugicality.LaugicalityWorld.downedAnDio;
+        public static bool EnigmaDownedDio => Laugicality.LaugicalityWorld.downedAnDio;
 
         // Trelamium
-        public bool TrelamiumAzolinth => TrelamiumMod.TrelamiumModWorld.downedAzolinth;
+        public static bool TrelamiumAzolinth => TrelamiumMod.TrelamiumModWorld.downedAzolinth;
 
-        public bool TrelamiumSerpent => TrelamiumMod.TrelamiumModWorld.downedCrystallineSerpent;
+        public static bool TrelamiumSerpent => TrelamiumMod.TrelamiumModWorld.downedCrystallineSerpent;
 
-        public bool TrelamiumCumulor => TrelamiumMod.TrelamiumModWorld.downedCumulor;
+        public static bool TrelamiumCumulor => TrelamiumMod.TrelamiumModWorld.downedCumulor;
 
-        public bool TrelamiumParadox => TrelamiumMod.TrelamiumModWorld.downedParadoxHive;
+        public static bool TrelamiumParadox => TrelamiumMod.TrelamiumModWorld.downedParadoxHive;
 
-        public bool TrelamiumPermafrost => TrelamiumMod.TrelamiumModWorld.downedPermafrost;
+        public static bool TrelamiumPermafrost => TrelamiumMod.TrelamiumModWorld.downedPermafrost;
 
-        public bool TrelamiumGoliath => TrelamiumMod.TrelamiumModWorld.downedPholiotaGoliath;
+        public static bool TrelamiumGoliath => TrelamiumMod.TrelamiumModWorld.downedPholiotaGoliath;
 
-        public bool TrelamiumPyron => TrelamiumMod.TrelamiumModWorld.downedPyron;
+        public static bool TrelamiumPyron => TrelamiumMod.TrelamiumModWorld.downedPyron;
 
-        public bool TrelamiumSymphony => TrelamiumMod.TrelamiumModWorld.downedSymphony;
+        public static bool TrelamiumSymphony => TrelamiumMod.TrelamiumModWorld.downedSymphony;
 
         // Ancients Awakened
-        public bool AAMonarch => AAMod.AAWorld.downedMonarch;
+        public static bool AAMonarch => AAMod.AAWorld.downedMonarch;
 
-        public bool AAFungus => AAMod.AAWorld.downedFungus;
+        public static bool AAFungus => AAMod.AAWorld.downedFungus;
 
-        public bool AAGrips => AAMod.AAWorld.downedGrips;
+        public static bool AAGrips => AAMod.AAWorld.downedGrips;
 
-        public bool AABrood => AAMod.AAWorld.downedBrood;
+        public static bool AABrood => AAMod.AAWorld.downedBrood;
 
-        public bool AAHydra => AAMod.AAWorld.downedHydra;
+        public static bool AAHydra => AAMod.AAWorld.downedHydra;
 
-        public bool AAToad => AAMod.AAWorld.downedToad;
+        public static bool AAToad => AAMod.AAWorld.downedToad;
 
-        public bool AADjinn => AAMod.AAWorld.downedDjinn;
+        public static bool AADjinn => AAMod.AAWorld.downedDjinn;
 
-        public bool AASerpent => AAMod.AAWorld.downedSerpent;
+        public static bool AASerpent => AAMod.AAWorld.downedSerpent;
 
-        public bool AASag => AAMod.AAWorld.downedSag;
+        public static bool AASag => AAMod.AAWorld.downedSag;
 
-        /* public bool AARetriever => AAMod.AAWorld.downedRetriever;
-           public bool AARaider => AAMod.AAWorld.downedRaider;
-           public bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
-           public bool AATruffle => AAMod.AAWorld.downedTruffle;*/
+        /* public static bool AARetriever => AAMod.AAWorld.downedRetriever;
+           public static bool AARaider => AAMod.AAWorld.downedRaider;
+           public static bool AAOrthrus => AAMod.AAWorld.downedOrthrus;
+           public static bool AATruffle => AAMod.AAWorld.downedTruffle;*/
 
-        public bool AARajah => AAMod.AAWorld.downedRajah;
+        public static bool AARajah => AAMod.AAWorld.downedRajah;
 
-        public bool AAEquinox => AAMod.AAWorld.downedEquinox;
+        public static bool AAEquinox => AAMod.AAWorld.downedEquinox;
 
-        public bool AASisters => AAMod.AAWorld.downedSisters;
+        public static bool AASisters => AAMod.AAWorld.downedSisters;
 
-        public bool AAYamata => AAMod.AAWorld.downedYamata;
+        public static bool AAYamata => AAMod.AAWorld.downedYamata;
 
-        public bool AAYamataA => AAMod.AAWorld.downedYamata && Main.expertMode;
+        public static bool AAYamataA => AAMod.AAWorld.downedYamata && Main.expertMode;
 
-        public bool AAAkuma => AAMod.AAWorld.downedAkuma;
+        public static bool AAAkuma => AAMod.AAWorld.downedAkuma;
 
-        public bool AAAkumaA => AAMod.AAWorld.downedAkuma && Main.expertMode;
+        public static bool AAAkumaA => AAMod.AAWorld.downedAkuma && Main.expertMode;
 
-        public bool AAZero => AAMod.AAWorld.downedZero;
+        public static bool AAZero => AAMod.AAWorld.downedZero;
 
-        public bool AAZeroA => AAMod.AAWorld.downedZero && Main.expertMode;
+        public static bool AAZeroA => AAMod.AAWorld.downedZero && Main.expertMode;
 
-        public bool AAShen => AAMod.AAWorld.downedShen;
+        public static bool AAShen => AAMod.AAWorld.downedShen;
 
-        public bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
+        public static bool AAShenA => AAMod.AAWorld.downedShen && Main.expertMode;
 
-        // public bool AAIZ => AAMod.AAWorld.downedIZ;
-        // public bool AASoC => AAMod.AAWorld.downedSoC;
+        // public static bool AAIZ => AAMod.AAWorld.downedIZ;
+        // public static bool AASoC => AAMod.AAWorld.downedSoC;
 
         // Pinky
-        public bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
+        public static bool PinkySlime => pinkymod.Global.Pinkyworld.downedMythrilSlime;
 
-        public bool PinkyValdaris => pinkymod.Global.Pinkyworld.downedValdaris;
+        public static bool PinkyValdaris => pinkymod.Global.Pinkyworld.downedValdaris;
 
-        public bool PinkySunlight => pinkymod.Global.Pinkyworld.downedSunlightTrader;
+        public static bool PinkySunlight => pinkymod.Global.Pinkyworld.downedSunlightTrader;
 
-        public bool PinkyAbyssmal => pinkymod.Global.Pinkyworld.downedAbyssmalDuo;
+        public static bool PinkyAbyssmal => pinkymod.Global.Pinkyworld.downedAbyssmalDuo;
 
         // Redemption
-        public bool RedeChicken => Redemption.RedeWorld.downedKingChicken;
+        public static bool RedeChicken => Redemption.RedeWorld.downedKingChicken;
 
-        public bool RedeThorn => Redemption.RedeWorld.downedThorn;
+        public static bool RedeThorn => Redemption.RedeWorld.downedThorn;
 
-        public bool RedeKeeper => Redemption.RedeWorld.downedTheKeeper;
+        public static bool RedeKeeper => Redemption.RedeWorld.downedTheKeeper;
 
-        public bool RedeXeno => Redemption.RedeWorld.downedXenomiteCrystal;
+        public static bool RedeXeno => Redemption.RedeWorld.downedXenomiteCrystal;
 
-        public bool RedeEye => Redemption.RedeWorld.downedInfectedEye;
+        public static bool RedeEye => Redemption.RedeWorld.downedInfectedEye;
 
-        public bool RedePortal => Redemption.RedeWorld.downedStrangePortal;
+        public static bool RedePortal => Redemption.RedeWorld.downedStrangePortal;
 
-        public bool RedeGigipede => Redemption.RedeWorld.downedVlitch2;
+        public static bool RedeGigipede => Redemption.RedeWorld.downedVlitch2;
 
-        public bool RedeCleaver => Redemption.RedeWorld.downedVlitch1;
+        public static bool RedeCleaver => Redemption.RedeWorld.downedVlitch1;
 
-        public bool RedeSlayer => Redemption.RedeWorld.downedSlayer;
+        public static bool RedeSlayer => Redemption.RedeWorld.downedSlayer;
 
-        public bool RedeOmega => Redemption.RedeWorld.downedVlitch3;
+        public static bool RedeOmega => Redemption.RedeWorld.downedVlitch3;
 
-        public bool RedeThornPZ => Redemption.RedeWorld.downedThornPZ;
+        public static bool RedeThornPZ => Redemption.RedeWorld.downedThornPZ;
 
-        public bool RedeEaglecrestPZ => Redemption.RedeWorld.downedEaglecrestGolemPZ;
+        public static bool RedeEaglecrestPZ => Redemption.RedeWorld.downedEaglecrestGolemPZ;
 
-        public bool RedeNeb => Redemption.RedeWorld.downedNebuleus;
+        public static bool RedeNeb => Redemption.RedeWorld.downedNebuleus;
 
         // Jetshift
 
-        /*public bool JSSnake => Jetshift.JetshiftWorld.downedSnakeBoss;
-        public bool JSReaper => Jetshift.JetshiftWorld.downedReaper;
-        public bool JSViyilblud => Jetshift.JetshiftWorld.downedViyilblud;
-        public bool JSWall => Jetshift.JetshiftWorld.downedWallofVoices;
-        public bool JSArlenon => Jetshift.JetshiftWorld.downedArlenon;
-        public bool JSAthazel => Jetshift.JetshiftWorld.downedAthazel;
-        public bool JSPolypus => Jetshift.JetshiftWorld.downedPolypus;
-        public bool JSFrezyn => Jetshift.JetshiftWorld.downedFrezyn;
-        public bool JSMortalos => Jetshift.JetshiftWorld.downedMortalos;
-        public bool JSShift => Jetshift.JetshiftWorld.downedShiftFinal;
-        public bool JSAnnihilation => Jetshift.JetshiftWorld.downedAnnihilation;
-        public bool JSCCP1 => Jetshift.JetshiftWorld.downedCCP1;
-        public bool JSCCP2 => Jetshift.JetshiftWorld.downedCCP2;
-        public bool JSCosmic => Jetshift.JetshiftWorld.downedCosmicMystery;*/
+        /*public static bool JSSnake => Jetshift.JetshiftWorld.downedSnakeBoss;
+        public static bool JSReaper => Jetshift.JetshiftWorld.downedReaper;
+        public static bool JSViyilblud => Jetshift.JetshiftWorld.downedViyilblud;
+        public static bool JSWall => Jetshift.JetshiftWorld.downedWallofVoices;
+        public static bool JSArlenon => Jetshift.JetshiftWorld.downedArlenon;
+        public static bool JSAthazel => Jetshift.JetshiftWorld.downedAthazel;
+        public static bool JSPolypus => Jetshift.JetshiftWorld.downedPolypus;
+        public static bool JSFrezyn => Jetshift.JetshiftWorld.downedFrezyn;
+        public static bool JSMortalos => Jetshift.JetshiftWorld.downedMortalos;
+        public static bool JSShift => Jetshift.JetshiftWorld.downedShiftFinal;
+        public static bool JSAnnihilation => Jetshift.JetshiftWorld.downedAnnihilation;
+        public static bool JSCCP1 => Jetshift.JetshiftWorld.downedCCP1;
+        public static bool JSCCP2 => Jetshift.JetshiftWorld.downedCCP2;
+        public static bool JSCosmic => Jetshift.JetshiftWorld.downedCosmicMystery;*/
 
         // Ocram
-        public bool OcramOcram => Ocram.OcramWorld.downedOcram;
+        public static bool OcramOcram => Ocram.OcramWorld.downedOcram;
 
         // Celestial Skies
-        public bool CSkiesObserver => CSkies.CWorld.downedObserver;
+        public static bool CSkiesObserver => CSkies.CWorld.downedObserver;
 
-        public bool CSkiesObserverV => CSkies.CWorld.downedObserverV;
+        public static bool CSkiesObserverV => CSkies.CWorld.downedObserverV;
 
-        public bool CSkiesStarcore => CSkies.CWorld.downedStarcore;
+        public static bool CSkiesStarcore => CSkies.CWorld.downedStarcore;
 
-        public bool CSkiesHeartcore => CSkies.CWorld.downedHeartcore;
+        public static bool CSkiesHeartcore => CSkies.CWorld.downedHeartcore;
 
         #endregion
 
@@ -713,9 +713,9 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
+        public static void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
         {
-            if (!check)
+            if (!check || shop is null)
             {
                 return;
             }

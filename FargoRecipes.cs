@@ -10,19 +10,6 @@ namespace Fargowiltas
 {
     internal class FargoRecipes
     {
-        public static void AddRecipes()
-        {
-            AddSummonConversions();
-            AddEvilConversions();
-            AddMetalConversions();
-            AddBannerToItemRecipes();
-            AddStatueRecipes();
-            AddContainerLootRecipes();
-            AddNPCRecipes();
-            AddEmblemRecipes();
-            AddMiscRecipes();
-        }
-
         public static void AddRecipeGroups()
         {
             // Evil Wood
@@ -69,6 +56,19 @@ namespace Fargowiltas
             };
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", caughtNPCs);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
+        }
+
+        public static void AddRecipes()
+        {
+            AddSummonConversions();
+            AddEvilConversions();
+            AddMetalConversions();
+            AddBannerToItemRecipes();
+            AddStatueRecipes();
+            AddContainerLootRecipes();
+            AddNPCRecipes();
+            AddEmblemRecipes();
+            AddMiscRecipes();
         }
 
         private static void AddSummonConversions()
@@ -220,7 +220,6 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.ReaperBanner, ItemID.DeathSickle);
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Rally);
             AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.DivingHelmet);
-            AddBannerToItemRecipe(ItemID.SkeletonArcherBanner, ItemID.MagicQuiver, ItemID.Marrow);
             AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.BoneSword);
             AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher);
             AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.BoneWand);
@@ -252,6 +251,7 @@ namespace Fargowiltas
             AddBannerToItemsRecipe(ItemID.PirateBanner, new int[] { ItemID.SailorHat, ItemID.SailorShirt, ItemID.SailorPants });
             AddBannerToItemsRecipe(ItemID.PirateCaptainBanner, new int[] { ItemID.Cutlass, ItemID.GoldRing, ItemID.PirateStaff, ItemID.DiscountCard, ItemID.LuckyCoin });
             AddBannerToItemsRecipe(ItemID.RedDevilBanner, new int[] { ItemID.UnholyTrident, ItemID.FireFeather });
+			AddBannerToItemsRecipe(ItemID.SkeletonArcherBanner, new int[] { ItemID.MagicQuiver, ItemID.Marrow});
             AddBannerToItemsRecipe(ItemID.SkeletonSniperBanner, new int[] { ItemID.RifleScope, ItemID.SniperRifle });
             AddBannerToItemsRecipe(ItemID.TacticalSkeletonBanner, new int[] { ItemID.TacticalShotgun, ItemID.SWATHelmet });
             AddBannerToItemsRecipe(ItemID.VampireBanner, new int[] { ItemID.BrokenBatWing, ItemID.MoonStone });

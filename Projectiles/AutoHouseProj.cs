@@ -14,7 +14,7 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 1;
         }
 
-        public void PlaceHouse(int x, int y, Vector2 position, int side)
+        public static void PlaceHouse(int x, int y, Vector2 position, int side)
         {
             int xPosition = (int)((side * -1) + x + position.X / 16.0f);
             int yPosition = (int)(y + position.Y / 16.0f);
@@ -62,7 +62,7 @@ namespace Fargowiltas.Projectiles
             }
         }
 
-        public void PlaceFurniture(int x, int y, Vector2 position, int side)
+        public static void PlaceFurniture(int x, int y, Vector2 position, int side)
         {
             int xPosition = (int)((side * -1) + x + position.X / 16.0f);
             int yPosition = (int)(y + position.Y / 16.0f);

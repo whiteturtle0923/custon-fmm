@@ -12,15 +12,15 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Abominationn : ModNPC
     {
-        public bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
+        public static bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
 
-        public bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
+        public static bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
 
-        public bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
+        public static bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
 
-        public bool RedePatientZero => Redemption.RedeWorld.downedPatientZero;
+        public static bool RedePatientZero => Redemption.RedeWorld.downedPatientZero;
 
-        public bool ChickenArmy => Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ;
+        public static bool ChickenArmy => Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ;
 
         public override bool Autoload(ref string name)
         {
@@ -177,7 +177,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public void AddModItem(bool condition, string modName, string itemName, int price, ref Chest shop, ref int nextSlot)
+        public static void AddModItem(bool condition, string modName, string itemName, int price, ref Chest shop, ref int nextSlot)
         {
             if (condition)
             {
@@ -187,7 +187,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public void AddItem(bool check, int item, int price, ref Chest shop, ref int nextSlot)
+        public static void AddItem(bool check, int item, int price, ref Chest shop, ref int nextSlot)
         {
             if (check)
             {
