@@ -16,7 +16,7 @@ namespace Fargowiltas.NPCs
         private bool nightOver;
         private int woodAmount = 100;
 
-        public bool SacredToolsDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
+        public static bool SacredToolsDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
 
         public override bool Autoload(ref string name)
         {

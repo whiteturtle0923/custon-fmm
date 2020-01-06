@@ -344,7 +344,7 @@ namespace Fargowiltas
                 if (spawnMessage)
                 {
                     string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
-                    if ((npcName == null || npcName.Equals(string.Empty)) && Main.npc[npcID].modNPC != null)
+                    if ((npcName == null || string.IsNullOrEmpty(npcName)) && Main.npc[npcID].modNPC != null)
                     {
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     }

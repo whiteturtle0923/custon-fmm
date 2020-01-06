@@ -12,11 +12,11 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Deviantt : ModNPC
     {
-        public bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
+        public static bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
 
-        public bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
+        public static bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
 
-        public bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
+        public static bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
 
         public override bool Autoload(ref string name)
         {
@@ -152,7 +152,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public void AddItem(bool check, int item, int price, ref Chest shop, ref int nextSlot)
+        public static void AddItem(bool check, int item, int price, ref Chest shop, ref int nextSlot)
         {
             if (check)
             {
@@ -279,7 +279,7 @@ namespace Fargowiltas.NPCs
                 {
                     Item.NewItem(player.Center, ItemID.SilverPickaxe);
                     Item.NewItem(player.Center, ItemID.SilverAxe);
-                    Item.NewItem(player.Center, ItemID.HermesBoots);
+                    Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock")); 
                     Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
                 }
                 else if (Main.netMode == NetmodeID.MultiplayerClient)

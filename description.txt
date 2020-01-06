@@ -1,27 +1,9 @@
-
-NEW UPDATE - v 1.6.2
+NEW UPDATE - v 1.7.1
+-DD2 banners will now actually function
+-Moved Omnistation to pre-mechs as Adamantite and Titanium variations
 -Fixed Mutant not having the right amount of health when loading into a post-Mutant world
 -Deviantt's Masochist gifts are now available up to post-EoW/BoC
 -Adjusted Deviantt's mimic summon prices
--Moved Omnistation to pre-mechs as Adamantite and Titanium variations
-
-NEW UPDATE - v 1.6.1
--Added Overloaded Goblin Battle Standard, Pirate Map, Pumpkin Medallion, Naughty Present, and Runaway Probe
--Added Instabridge and Omnistation
--Changed Instavator to use Sturdy Fossils instead of Desert Fossils in the recipe, also needs more Dynamite
--Having a stack of 120 or more of any potion in your inventory will grant you the buff forever
--Money Trough pig will now follow you around, If you get too far away he will stop
--Plantera makes you always in the Jungle
--Added Census support
--Abominationn now also sells the Overloader
--Abominationn cancelling pillars no longer gives free fragments
--Deviantt's gift is now 4 Life Crystals instead of 5 and Silver Pickaxe and Axe instead of Bone Pick
--Deviantt always sells Pandora's Box
--Steampunker will sell the opposite evil solution now
--Added recipe group for caught npcs
--Added recipe for Shroomite Bars using Chlorophyte Bars and Dark Blue Solution
--Presents and Goodie Bags are consumable again to fix infinite when placing
--Fixed Piranha Gun Summon variant saying it dealt ranged damage
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
