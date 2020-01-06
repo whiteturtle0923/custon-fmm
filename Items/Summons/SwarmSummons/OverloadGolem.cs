@@ -30,7 +30,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.SwarmActive;
+            return !Fargowiltas.SwarmActive && NPC.downedPlantBoss;
         }
 
         public override bool UseItem(Player player)

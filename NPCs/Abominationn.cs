@@ -199,7 +199,7 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            AddItem(true, ItemType<Items.Summons.SwarmSummons.Overloader>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
+            AddItem(Main.expertMode, ItemType<Items.Summons.SwarmSummons.Overloader>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
 
             // Events
             AddItem(NPC.downedSlimeKing, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);

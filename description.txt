@@ -1,3 +1,9 @@
+NEW UPDATE - v 1.7.2
+-Adjusted Deviantt dialogue
+-Mutant now sells Expert's Token in normal mode
+-Overloader is Expert only
+-Golem swarm cannot be used pre-Plantera to fix a sequence break
+
 NEW UPDATE - v 1.7.1
 -DD2 banners will now actually function
 -Moved Omnistation to pre-mechs as Adamantite and Titanium variations

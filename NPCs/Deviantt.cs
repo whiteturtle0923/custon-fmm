@@ -302,7 +302,14 @@ namespace Fargowiltas.NPCs
                 }
                 else if (FargoDownedFishEX)
                 {
-                    Main.npcChatText = "What's that? You want to fight my big brother? ...maybe if he had a reason to.";
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Main.npcChatText = "What's that? You want to fight my big brother? ...maybe if he had a reason to.";
+                    }
+                    else
+                    {
+                        Main.npcChatText = "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brother!";
+                    }
                 }
                 else if (NPC.downedMoonlord)
                 {
@@ -335,19 +342,19 @@ namespace Fargowiltas.NPCs
                         Main.npcChatText = "Watch out when you break your fourth altar! It might attract the pirates, so be sure you're ready when you do it.";
                     }
 
-                    if (!NPC.downedMechBoss1)
+                    if (!NPC.downedMechBoss1) //destroyer
                     {
-                        Main.npcChatText = "That metal worm has a few upgrades. It'll start shooting dark stars and start flying as you damage it. Too bad you can't stay in the air forever, right?";
+                        Main.npcChatText = "That metal worm has a few upgrades. It'll start shooting dark stars and flying. When it coils around you, don't try to escape!";
                     }
-                    else if (!NPC.downedMechBoss2)
+                    else if (!NPC.downedMechBoss2) //twins
                     {
                         Main.npcChatText = "I saw that metal eye spinning while firing a huge laser the other day. Too bad you can't teleport through an attack like that on command, right?";
                     }
-                    else if (!NPC.downedMechBoss3)
+                    else if (!NPC.downedMechBoss3) //prime
                     {
                         Main.npcChatText = "You'll have to destroy the limbs before you can hurt that metal skull. But once it reveals its true form, focus on taking down the head instead.";
                     }
-                    else
+                    else //probably impossible to see lol
                     {
                         Main.npcChatText = "Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.";
                     }

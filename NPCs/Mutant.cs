@@ -745,7 +745,8 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            AddItem(true, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
+            AddItem(!Main.expertMode, "Fargowiltas", "ExpertToggle", 1000000, ref shop, ref nextSlot);
+            AddItem(Main.expertMode, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
 
             if (prehardmodeShop)
             {
