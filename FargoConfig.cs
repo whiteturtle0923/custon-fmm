@@ -14,5 +14,9 @@ namespace Fargowiltas
         [Label("Angler Quest Instant Reset")]
         [DefaultValue(true)]
         public bool AnglerQuestInstantReset { get; set; }
+
+        [Label("Stalker Money Trough")]
+        [DefaultValue(true)]
+        public bool StalkerMoneyTrough { get; set; }
     }
 }
