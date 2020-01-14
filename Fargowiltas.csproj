@@ -16,4 +16,9 @@
   <Target Name="BuildMod" AfterTargets="Build">
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
+  <ItemGroup>
+    <Compile Remove="Items\Summons\Abom\FestiveOrnament.png\**" />
+    <EmbeddedResource Remove="Items\Summons\Abom\FestiveOrnament.png\**" />
+    <None Remove="Items\Summons\Abom\FestiveOrnament.png\**" />
+  </ItemGroup>
 </Project>

@@ -60,20 +60,14 @@ namespace Fargowiltas
             "boneLee",
             "darkMage3",
             "ogre",
+            "headlessHorseman"
         };
 
         public override void Initialize()
         {
             foreach (string tag in tags)
             {
-                if (DownedBools.ContainsKey(tag))
-                {
-                    DownedBools[tag] = false;
-                }
-                else
-                {
-                    DownedBools.Add(tag, false);
-                }
+                DownedBools[tag] = false;
             }
 
             AbomClearCD = 0;

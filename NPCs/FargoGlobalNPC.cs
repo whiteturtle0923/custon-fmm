@@ -871,6 +871,10 @@ namespace Fargowiltas.NPCs
                     FargoWorld.DownedBools["boneLee"] = true;
                     break;
 
+                case NPCID.HeadlessHorseman:
+                    FargoWorld.DownedBools["headlessHorseman"] = true;
+                    break;
+
                 default:
                     break;
             }
