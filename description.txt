@@ -4,6 +4,7 @@ NEW UPDATE - v 1.7.2
 -Overloader is Expert only
 -Golem swarm cannot be used pre-Plantera to fix a sequence break
 -Toggle for stalker Money Trough
+-Fixed Deviantt sometimes selling items early
 
 NEW UPDATE - v 1.7.1
 -DD2 banners will now actually function
