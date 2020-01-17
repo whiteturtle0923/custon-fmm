@@ -8,6 +8,7 @@ namespace Fargowiltas.Items.Ammos.Arrows
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             Tooltip.SetDefault("'Shooting them down at the speed of sound!'");
         }
     }
