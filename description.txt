@@ -6,6 +6,9 @@ NEW UPDATE - v 1.7.2
 -Toggle for stalker Money Trough
 -Fixed Deviantt sometimes selling items early
 -Added many miniboss summons for Abominationn
+-Deviantt gift is no longer locked to before a boss
+-Deviantt gift also includes Magic Storage items if enabled
+-Deviantt gift includes a one-time use portable sundial
 
 NEW UPDATE - v 1.7.1
 -DD2 banners will now actually function
