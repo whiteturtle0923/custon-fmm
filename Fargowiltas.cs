@@ -171,7 +171,7 @@ namespace Fargowiltas
                         Item.NewItem(player.Center, ItemID.SilverAxe);
                         Item.NewItem(player.Center, ItemID.BugNet);
                         Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
-                        Item.NewItem(player.Center, mod.ItemType("DevianttsSundial"));
+                        Item.NewItem(player.Center, ItemType("DevianttsSundial"));
                         Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
 
                         if (ModLoader.GetMod("MagicStorage") != null)
