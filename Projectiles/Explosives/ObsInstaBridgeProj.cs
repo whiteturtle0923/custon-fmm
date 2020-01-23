@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace test.Projectiles.Explosives
+namespace Fargowiltas.Projectiles.Explosives
 {
     public class ObsInstabridgeProj : ModProjectile
     {

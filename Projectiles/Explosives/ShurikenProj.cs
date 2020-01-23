@@ -55,6 +55,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     // testing for blocks that should not be destroyed
                     bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
                     bool noDungeon = (tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick || tile.type == TileID.PinkDungeonBrick) && !NPC.downedBoss3;
+                    bool noHellstone = tile.type == TileID.Hellstone && !NPC.downedBoss3;
                     bool noHMOre = (tile.type == TileID.Cobalt || tile.type == TileID.Palladium || tile.type == TileID.Mythril || tile.type == TileID.Orichalcum || tile.type == TileID.Adamantite || tile.type == TileID.Titanium) && !NPC.downedMechBossAny;
                     bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || !NPC.downedMechBoss3);
                     bool noLihzahrd = tile.type == TileID.LihzahrdBrick && !NPC.downedGolemBoss;

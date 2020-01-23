@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace test.Items.Explosives
+namespace Fargowiltas.Items.Explosives
 {
     public class ObsidianInstaBridge : ModItem
     {
