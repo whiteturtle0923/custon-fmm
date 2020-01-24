@@ -22,7 +22,7 @@ namespace Fargowiltas
         internal static bool[] CurrentSpawnRateTile;
         internal static Dictionary<string, bool> DownedBools = new Dictionary<string, bool>();
 
-        // Do not change any of these value names, it will fuck up loading.
+        // Do not change the order or name of any of these value names, it will fuck up loading. Any new additions should be added at the end.
         private readonly string[] tags = new string[]
         {
             "lumberjack",

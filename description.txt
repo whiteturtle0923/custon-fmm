@@ -15,11 +15,14 @@ NEW UPDATE - v 1.7.2
 -Deviantt gift includes a Bug Net and one-time use portable sundial
 
 NEW UPDATE - v 1.7.1
--DD2 banners will now actually function
--Moved Omnistation to pre-mechs as Adamantite and Titanium variations
--Fixed Mutant not having the right amount of health when loading into a post-Mutant world
--Deviantt's Masochist gifts are now available up to post-EoW/BoC
--Adjusted Deviantt's mimic summon prices
+-Added Obsidian Insta Bridge
+-Fixed Skeleton Merchant not being catchable
+-Fixed some Endless ammos being named wrong
+-Boom shurikens can no longer destroy hellstone until post skeletron
+-Added banner recipes for all ancient armor pieces
+-Added wooden crate recipes to turn them into chest drops more easily
+-increased golden crate chest loot drop rate
+
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
