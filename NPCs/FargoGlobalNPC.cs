@@ -28,7 +28,7 @@ namespace Fargowiltas.NPCs
             if (npc.townNPC && npc.type < NPCID.Count && npc.type != NPCID.OldMan)
             {
                 Main.npcCatchable[npc.type] = true;
-                npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty));
+                npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (npc.type == NPCID.SkeletonMerchant ? (short)mod.ItemType("SkeletonMerchant") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty)));
             }
         }
 

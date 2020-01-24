@@ -8,6 +8,7 @@ namespace Fargowiltas.Items.Ammos.Bullets
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             Tooltip.SetDefault("'Line 'em up and knock 'em down...'");
         }
     }

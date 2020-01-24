@@ -8,6 +8,7 @@ namespace Fargowiltas.Items.Ammos.Arrows
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             Tooltip.SetDefault("Bounces back after hitting a wall");
         }
     }

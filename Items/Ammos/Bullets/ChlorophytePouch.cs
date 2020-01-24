@@ -8,6 +8,7 @@ namespace Fargowiltas.Items.Ammos.Bullets
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             Tooltip.SetDefault("Chases after your enemy");
         }
     }

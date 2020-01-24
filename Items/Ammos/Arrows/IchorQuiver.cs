@@ -8,6 +8,7 @@ namespace Fargowiltas.Items.Ammos.Arrows
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             Tooltip.SetDefault("Decreases target's defense");
         }
     }

@@ -153,12 +153,12 @@ namespace Fargowiltas
                 recipe.AddRecipe();
             }
 
-            void AddBannerToItemsRecipe(int banner, int[] results)
+            void AddBannerToItemsRecipe(int banner, int[] results, int bannerAmount = 1)
             {
                 foreach (int result in results)
                 {
                     recipe = GetNewRecipe();
-                    recipe.AddIngredient(banner);
+                    recipe.AddIngredient(banner, bannerAmount);
                     recipe.AddTile(TileID.Solidifier);
                     recipe.SetResult(result);
                     recipe.AddRecipe();
@@ -258,6 +258,11 @@ namespace Fargowiltas
             AddBannerToItemsRecipe(ItemID.ZombieBanner, new int[] { ItemID.ZombieArm, ItemID.Shackle });
             AddBannerToItemsRecipe(ItemID.ZombieElfBanner, new int[] { ItemID.ElfHat, ItemID.ElfShirt, ItemID.ElfPants });
             AddBannerToItemsRecipe(ItemID.ZombieEskimoBanner, new int[] { ItemID.EskimoHood, ItemID.EskimoCoat, ItemID.EskimoPants });
+            //ancient armors
+            AddBannerToItemsRecipe(ItemID.EaterofSoulsBanner, new int[] { ItemID.AncientShadowHelmet, ItemID.AncientShadowScalemail, ItemID.AncientShadowGreaves }, 5);
+            AddBannerToItemsRecipe(ItemID.HornetBanner, new int[] { ItemID.AncientCobaltHelmet, ItemID.AncientCobaltBreastplate, ItemID.AncientCobaltLeggings }, 5);
+            AddBannerToItemsRecipe(ItemID.SkeletonBanner, new int[] { ItemID.AncientIronHelmet, ItemID.AncientGoldHelmet }, 2);
+            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 5);
 
             recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
@@ -504,6 +509,18 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.CnadyCanePickaxe);
             AddGrabBagItemRecipe(ItemID.UnluckyYarn, ItemID.GoodieBag);
             AddGrabBagItemRecipe(ItemID.BatHook, ItemID.GoodieBag, 100);
+            AddGrabBagItemRecipe(ItemID.SailfishBoots, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.TsunamiInABottle, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.Extractinator, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.Aglet, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.CordageGuide, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.Umbrella, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.ClimbingClaws, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.Radar, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.WoodenBoomerang, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.WandofSparking, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.Spear, ItemID.WoodenCrate, 10);
+            AddGrabBagItemRecipe(ItemID.Blowpipe, ItemID.WoodenCrate, 10);
 
             // Water chests
             recipe = GetNewRecipe();
