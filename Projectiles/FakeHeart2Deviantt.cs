@@ -66,7 +66,7 @@ namespace Fargowiltas.Projectiles
                             num4 += 2.0 * Math.PI;
                         }
 
-                        projectile.velocity = projectile.velocity.RotatedBy(num4 * 0.2f);
+                        projectile.velocity = projectile.velocity.RotatedBy(num4 * (projectile.Distance(Main.npc[ai0].Center) > 100 ? 0.6f : 0.2f));
                     }
                     else
                     {

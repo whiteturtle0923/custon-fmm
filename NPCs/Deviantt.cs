@@ -13,9 +13,8 @@ namespace Fargowiltas.NPCs
     public class Deviantt : ModNPC
     {
         public static bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
-
+        public static bool FargoDownedAbom => FargowiltasSouls.FargoSoulsWorld.downedAbom;
         public static bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
-
         public static bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
 
         public override bool Autoload(ref string name)
@@ -309,7 +308,7 @@ namespace Fargowiltas.NPCs
                 {
                     Main.npcChatText = "What's that? You want to fight me? ...nah, I can't put up a good fight on my own.";
                 }
-                else if (FargoDownedFishEX)
+                else if (FargoDownedAbom && FargoDownedFishEX)
                 {
                     if (Main.rand.Next(2) == 0)
                     {
@@ -317,12 +316,20 @@ namespace Fargowiltas.NPCs
                     }
                     else
                     {
-                        Main.npcChatText = "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brother!";
+                        Main.npcChatText = "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brothers!";
                     }
+                }
+                else if (FargoDownedFishEX)
+                {
+                    Main.npcChatText = "Big brother Abominationn mentioned he's pretty excited to fight you! Make sure you're really well prepared before taking him on, though!";
+                }
+                else if (FargoDownedAbom)
+                {
+                    Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
                 }
                 else if (NPC.downedMoonlord)
                 {
-                    Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
+                    Main.npcChatText = "You've got two options now: a powerful foe's rematch or one of my brothers. Prepare as much as you can before going for either one, though!";
                 }
                 else if (NPC.downedAncientCultist)
                 {
