@@ -1,3 +1,7 @@
+NEW UPDATE - v 1.7.3
+-Unlimited potions now activate starting at 60
+-Fixed unlimited potions not always applying you reach buff cap
+
 NEW UPDATE - v 1.7.2
 -Adjusted Deviantt dialogue
 -Mutant now sells Expert's Token in normal mode
