@@ -69,7 +69,6 @@ namespace Fargowiltas.NPCs
             {
                 return false;
             }
-
             return NPC.downedGoblins;
         }
 
