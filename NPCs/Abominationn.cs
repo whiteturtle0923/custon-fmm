@@ -61,9 +61,11 @@ namespace Fargowiltas.NPCs
             npc.buffImmune[BuffID.Suffocation] = true;
         }
 
+        public static bool FargoAbomBossAlive => FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.BossIsAlive(ref FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.abomBoss, ModLoader.GetMod("FargowiltasSouls").NPCType("AbomBoss"));
+
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss")))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (Mutant.FargoMutantBossAlive || FargoAbomBossAlive))
             {
                 return false;
             }

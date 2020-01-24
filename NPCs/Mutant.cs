@@ -470,9 +470,15 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public static bool FargoMutantBossAlive => FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.BossIsAlive(ref FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.mutantBoss, ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss"));
+
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            return Fargowiltas.ModLoaded["FargowiltasSouls"] ? (FargoWorld.DownedBools["boss"] && !NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss"))) : FargoWorld.DownedBools["boss"];
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoMutantBossAlive)
+            {
+                return false;
+            }
+            return FargoWorld.DownedBools["boss"];
         }
 
         public override string TownNPCName()
