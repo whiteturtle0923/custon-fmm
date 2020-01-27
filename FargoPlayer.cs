@@ -6,6 +6,7 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Fargowiltas.NPCs;
 
 namespace Fargowiltas
 {
@@ -184,17 +185,17 @@ namespace Fargowiltas
                 rodCD--;
             }
 
-            if (NPC.AnyNPCs(NPCID.BrainofCthulhu))
-            {
-                player.ZoneCrimson = true;
-            }
-
-            if (NPC.AnyNPCs(NPCID.EaterofWorldsHead))
+            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
             {
                 player.ZoneCorrupt = true;
             }
 
-            if (NPC.AnyNPCs(NPCID.Plantera))
+            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu))
+            {
+                player.ZoneCrimson = true;
+            }
+
+            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera))
             {
                 player.ZoneJungle = true;
             }

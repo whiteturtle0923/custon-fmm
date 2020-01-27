@@ -21,6 +21,10 @@ namespace Fargowiltas.NPCs
 
         private bool transform = true;
 
+        public static int eaterBoss = -1;
+        public static int brainBoss = -1;
+        public static int plantBoss = -1;
+
         public override bool InstancePerEntity => true;
 
         public override void SetDefaults(NPC npc)
@@ -30,6 +34,29 @@ namespace Fargowiltas.NPCs
                 Main.npcCatchable[npc.type] = true;
                 npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (npc.type == NPCID.SkeletonMerchant ? (short)mod.ItemType("SkeletonMerchant") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty)));
             }
+        }
+
+        public override bool PreAI(NPC npc)
+        {
+            switch (npc.type)
+            {
+                case NPCID.EaterofWorldsHead:
+                    eaterBoss = npc.whoAmI;
+                    break;
+
+                case NPCID.BrainofCthulhu:
+                    brainBoss = npc.whoAmI;
+                    break;
+
+                case NPCID.Plantera:
+                    plantBoss = npc.whoAmI;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return true;
         }
 
         public override void AI(NPC npc)
@@ -1135,6 +1162,26 @@ namespace Fargowiltas.NPCs
 
                     break;
                 }
+            }
+        }
+
+        public static bool BossIsAlive(ref int bossID, int bossType)
+        {
+            if (bossID != -1)
+            {
+                if (Main.npc[bossID].active && Main.npc[bossID].type == bossType)
+                {
+                    return true;
+                }
+                else
+                {
+                    bossID = -1;
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
     }
