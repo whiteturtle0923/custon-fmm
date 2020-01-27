@@ -21,6 +21,8 @@ namespace Fargowiltas.NPCs
         // Fargo
         public static bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
 
+        public static bool FargoDownedAbom => FargowiltasSouls.FargoSoulsWorld.downedAbom;
+
         public static bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
 
         public static bool MutantsDiscountCard => Main.LocalPlayer.GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsDiscountCard;
@@ -546,7 +548,7 @@ namespace Fargowiltas.NPCs
                 {
                     dialogue.Add("What's that? You want to fight me? ...sure, I guess.");
                 }
-                else if (FargoDownedFishEX)
+                else if (FargoDownedFishEX || FargoDownedAbom)
                 {
                     dialogue.Add("What's that? You want to fight me? ...maybe if I had a reason.");
                 }
@@ -1696,6 +1698,12 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.ModLoaded["FargowiltasSouls"])
                 {
                     AddItem(FargoDownedFishEX, "FargowiltasSouls", "TruffleWormEX", 10000000, ref shop, ref nextSlot);
+                }
+
+                // Abominationn
+                if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+                {
+                    AddItem(FargoDownedAbom, "FargowiltasSouls", "AbomsCurse", 10000000, ref shop, ref nextSlot);
                 }
 
                 // Mutant

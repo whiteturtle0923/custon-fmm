@@ -2,6 +2,7 @@ NEW UPDATE - v 1.7.3
 -Unlimited potions now activate starting at 60
 -Fixed unlimited potions not always applying you reach buff cap
 -Deviantt's homing hearts shouldn't get stuck circling small targets as much
+-Abominationn summon added to Mutant shop
 
 NEW UPDATE - v 1.7.2
 -Adjusted Deviantt dialogue

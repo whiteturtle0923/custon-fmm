@@ -118,6 +118,16 @@ namespace Fargowiltas
             }
         }
 
+        public override object Call(params object[] args)
+        {
+            string code = args[0].ToString();
+
+            if (code == "SwarmActive")
+                return SwarmActive;
+
+            return base.Call(args);
+        }
+
         public override void AddRecipes()
         {
             FargoRecipes.AddRecipes();
