@@ -563,7 +563,11 @@ namespace Fargowiltas.NPCs
             int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
             if (BirthdayParty.PartyIsUp)
             {
-                dialogue.Add($"{Main.npc[partyGirl].GivenName} is the one who invited me, I don't understand why though.");
+                if (partyGirl >= 0)
+                {
+                    dialogue.Add($"{Main.npc[partyGirl].GivenName} is the one who invited me, I don't understand why though.");
+                }
+                
                 dialogue.Add("I don't know what everyone's so happy about, but as long as nobody mistakes me for a Pigronata, I'm happy too.");
             }
 
@@ -629,7 +633,7 @@ namespace Fargowiltas.NPCs
             int demoman = NPC.FindFirstNPC(NPCID.Demolitionist);
             if (demoman >= 0)
             {
-                dialogue.Add("I'm surprised {Main.npc[demoman].GivenName} hasn't blown a hole in the floor yet, on second thought that sounds fun.");
+                dialogue.Add($"I'm surprised {Main.npc[demoman].GivenName} hasn't blown a hole in the floor yet, on second thought that sounds fun.");
             }
 
             int tavernkeep = NPC.FindFirstNPC(NPCID.DD2Bartender);

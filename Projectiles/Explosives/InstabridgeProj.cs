@@ -23,6 +23,13 @@ namespace Fargowiltas.Projectiles.Explosives
             projectile.timeLeft = 170;
         }
 
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        {
+            fallThrough = false;
+
+            return base.TileCollideStyle(ref width, ref height, ref fallThrough);
+        }
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
@@ -43,7 +50,7 @@ namespace Fargowiltas.Projectiles.Explosives
             for (int x = 1; x <= Main.maxTilesX; x++)
             {
                 // Six down, last is platforms
-                for (int y = 1; y <= 6; y++)
+                for (int y = -5; y <= 0; y++)
                 {
                     int xPosition = x;
                     int yPosition = (int)(y + position.Y / 16.0f);
@@ -69,7 +76,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     FargoGlobalTile.ClearEverything(xPosition, yPosition);
 
-                    if (y == 6)
+                    if (y == 0)
                     {
                         // Spawn platforms
                         WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms);
