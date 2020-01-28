@@ -32,7 +32,13 @@ namespace Fargowiltas.NPCs
             if (npc.townNPC && npc.type < NPCID.Count && npc.type != NPCID.OldMan)
             {
                 Main.npcCatchable[npc.type] = true;
-                npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (npc.type == NPCID.SkeletonMerchant ? (short)mod.ItemType("SkeletonMerchant") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty)));
+                npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty));
+            }
+
+            if (npc.type == NPCID.SkeletonMerchant)
+            {
+                Main.npcCatchable[npc.type] = true;
+                npc.catchItem = (short)mod.ItemType("SkeletonMerchant");
             }
         }
 
@@ -429,7 +435,7 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.DungeonGuardian:
-                        Swarm(npc, NPCID.DungeonGuardian, -1, ItemID.BoneKey, string.Empty);
+                        Swarm(npc, NPCID.DungeonGuardian, -1, ItemID.BoneKey, "EnergizerDG");
                         break;
                 }
 
@@ -595,7 +601,7 @@ namespace Fargowiltas.NPCs
                 case NPCID.ArmsDealer:
                     if (Main.rand.NextBool(4))
                     {
-                        Item.NewItem(npc.Hitbox, ItemID.CrystalBullet, 30);
+                        Item.NewItem(npc.Hitbox, ItemID.NanoBullet, 30);
                     }
 
                     break;

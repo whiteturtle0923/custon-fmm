@@ -1,29 +1,29 @@
-NEW UPDATE - v 1.7.3
--Unlimited potions now activate starting at 60
--Fixed unlimited potions not always applying you reach buff cap
--Deviantt's homing hearts shouldn't get stuck circling small targets as much
--Abominationn summon added to Mutant shop
 
-NEW UPDATE - v 1.7.2
+NEW UPDATE - v 1.7.3
+-Added Head of Man, Spooky Branch, Suspicious Looking Scythe, and Martian Memory Stick
+-Added Festive Ornament, Naughty List, Ice King's Remains, and Extra Boney Energizer
+-Added Expert's Token
+-Overloader is sold in Expert only
+-Abominationn summon added to Mutant shop
 -Adjusted Deviantt dialogue
--Mutant now sells Expert's Token in normal mode
--Overloader is Expert only
--Golem swarm cannot be used pre-Plantera to fix a sequence break
--Toggle for stalker Money Trough
--Fixed Deviantt sometimes selling items early
--Added many miniboss summons for Abominationn
 -Deviantt gift is no longer locked to before a boss
 -Deviantt gift also includes Magic Storage items if enabled
 -Deviantt gift includes a Bug Net and one-time use portable sundial
+-Deviantt's homing hearts shouldn't get stuck circling small targets as much
 
-NEW UPDATE - v 1.7.1
--Added Obsidian Insta Bridge
--Fixed Skeleton Merchant not being catchable
--Fixed some Endless ammos being named wrong
--Boom shurikens can no longer destroy hellstone until post skeletron
--Added banner recipes for all ancient armor pieces
--Added wooden crate recipes to turn them into chest drops more easily
--increased golden crate chest loot drop rate
+-Golem swarm cannot be used pre-Plantera to fix a sequence break
+-Added toggle for stalker Money Trough
+
+-Unlimited potions now activate starting at a stack of 60
+-Fixed unlimited potions not always applying you reach buff cap
+-Actually fixed Deviantt sometimes selling items early
+-Actually fixed Skeleton Merchant not being catchable
+
+
+
+
+
+
 
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
