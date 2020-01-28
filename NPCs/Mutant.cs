@@ -21,6 +21,8 @@ namespace Fargowiltas.NPCs
         // Fargo
         public static bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
 
+        public static bool FargoDownedAbom => FargowiltasSouls.FargoSoulsWorld.downedAbom;
+
         public static bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
 
         public static bool MutantsDiscountCard => Main.LocalPlayer.GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsDiscountCard;
@@ -470,9 +472,15 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public static bool FargoMutantBossAlive => FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.BossIsAlive(ref FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.mutantBoss, ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss"));
+
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            return Fargowiltas.ModLoaded["FargowiltasSouls"] ? (FargoWorld.DownedBools["boss"] && !NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss"))) : FargoWorld.DownedBools["boss"];
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoMutantBossAlive)
+            {
+                return false;
+            }
+            return FargoWorld.DownedBools["boss"];
         }
 
         public override string TownNPCName()
@@ -540,7 +548,7 @@ namespace Fargowiltas.NPCs
                 {
                     dialogue.Add("What's that? You want to fight me? ...sure, I guess.");
                 }
-                else if (FargoDownedFishEX)
+                else if (FargoDownedFishEX || FargoDownedAbom)
                 {
                     dialogue.Add("What's that? You want to fight me? ...maybe if I had a reason.");
                 }
@@ -749,7 +757,8 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            AddItem(true, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
+            AddItem(!Main.expertMode, "Fargowiltas", "ExpertToggle", 1000000, ref shop, ref nextSlot);
+            AddItem(Main.expertMode, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
 
             if (prehardmodeShop)
             {
@@ -1693,6 +1702,12 @@ namespace Fargowiltas.NPCs
                 if (Fargowiltas.ModLoaded["FargowiltasSouls"])
                 {
                     AddItem(FargoDownedFishEX, "FargowiltasSouls", "TruffleWormEX", 10000000, ref shop, ref nextSlot);
+                }
+
+                // Abominationn
+                if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+                {
+                    AddItem(FargoDownedAbom, "FargowiltasSouls", "AbomsCurse", 10000000, ref shop, ref nextSlot);
                 }
 
                 // Mutant

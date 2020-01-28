@@ -13,9 +13,8 @@ namespace Fargowiltas.NPCs
     public class Deviantt : ModNPC
     {
         public static bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
-
+        public static bool FargoDownedAbom => FargowiltasSouls.FargoSoulsWorld.downedAbom;
         public static bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
-
         public static bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
 
         public override bool Autoload(ref string name)
@@ -272,15 +271,24 @@ namespace Fargowiltas.NPCs
             Player player = Main.LocalPlayer;
             FargowiltasSouls.FargoPlayer fargoPlayer = player.GetModPlayer<FargowiltasSouls.FargoPlayer>();
 
-            if (!fargoPlayer.ReceivedMasoGift && !NPC.downedBoss2)
+            if (!fargoPlayer.ReceivedMasoGift)
             {
                 fargoPlayer.ReceivedMasoGift = true;
                 if (Main.netMode == NetmodeID.SinglePlayer)
                 {
                     Item.NewItem(player.Center, ItemID.SilverPickaxe);
                     Item.NewItem(player.Center, ItemID.SilverAxe);
-                    Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock")); 
+                    Item.NewItem(player.Center, ItemID.BugNet);
                     Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
+                    Item.NewItem(player.Center, mod.ItemType("DevianttsSundial"));
+                    Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock")); 
+
+                    if (ModLoader.GetMod("MagicStorage") != null)
+                    {
+                        Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageHeart"));
+                        Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("CraftingAccess"));
+                        Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageUnitTerra"));
+                    }
                 }
                 else if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
@@ -300,13 +308,28 @@ namespace Fargowiltas.NPCs
                 {
                     Main.npcChatText = "What's that? You want to fight me? ...nah, I can't put up a good fight on my own.";
                 }
+                else if (FargoDownedAbom && FargoDownedFishEX)
+                {
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Main.npcChatText = "What's that? You want to fight my big brother? ...maybe if he had a reason to.";
+                    }
+                    else
+                    {
+                        Main.npcChatText = "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brothers!";
+                    }
+                }
                 else if (FargoDownedFishEX)
                 {
-                    Main.npcChatText = "What's that? You want to fight my big brother? ...maybe if he had a reason to.";
+                    Main.npcChatText = "Big brother Abominationn mentioned he's pretty excited to fight you! Make sure you're really well prepared before taking him on, though!";
+                }
+                else if (FargoDownedAbom)
+                {
+                    Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
                 }
                 else if (NPC.downedMoonlord)
                 {
-                    Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
+                    Main.npcChatText = "You've got two options now: a powerful foe's rematch or one of my brothers. Prepare as much as you can before going for either one, though!";
                 }
                 else if (NPC.downedAncientCultist)
                 {
@@ -335,19 +358,19 @@ namespace Fargowiltas.NPCs
                         Main.npcChatText = "Watch out when you break your fourth altar! It might attract the pirates, so be sure you're ready when you do it.";
                     }
 
-                    if (!NPC.downedMechBoss1)
+                    if (!NPC.downedMechBoss1) //destroyer
                     {
-                        Main.npcChatText = "That metal worm has a few upgrades. It'll start shooting dark stars and start flying as you damage it. Too bad you can't stay in the air forever, right?";
+                        Main.npcChatText = "That metal worm has a few upgrades. It'll start shooting dark stars and flying. When it coils around you, don't try to escape!";
                     }
-                    else if (!NPC.downedMechBoss2)
+                    else if (!NPC.downedMechBoss2) //twins
                     {
                         Main.npcChatText = "I saw that metal eye spinning while firing a huge laser the other day. Too bad you can't teleport through an attack like that on command, right?";
                     }
-                    else if (!NPC.downedMechBoss3)
+                    else if (!NPC.downedMechBoss3) //prime
                     {
                         Main.npcChatText = "You'll have to destroy the limbs before you can hurt that metal skull. But once it reveals its true form, focus on taking down the head instead.";
                     }
-                    else
+                    else //probably impossible to see lol
                     {
                         Main.npcChatText = "Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.";
                     }

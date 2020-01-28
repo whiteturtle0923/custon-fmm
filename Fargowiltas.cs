@@ -118,6 +118,16 @@ namespace Fargowiltas
             }
         }
 
+        public override object Call(params object[] args)
+        {
+            string code = args[0].ToString();
+
+            if (code == "SwarmActive")
+                return SwarmActive;
+
+            return base.Call(args);
+        }
+
         public override void AddRecipes()
         {
             FargoRecipes.AddRecipes();
@@ -169,8 +179,17 @@ namespace Fargowiltas
                         Player player = Main.player[reader.ReadByte()];
                         Item.NewItem(player.Center, ItemID.SilverPickaxe);
                         Item.NewItem(player.Center, ItemID.SilverAxe);
-                        Item.NewItem(player.Center, ItemID.HermesBoots);
+                        Item.NewItem(player.Center, ItemID.BugNet);
                         Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
+                        Item.NewItem(player.Center, ItemType("DevianttsSundial"));
+                        Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
+
+                        if (ModLoader.GetMod("MagicStorage") != null)
+                        {
+                            Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageHeart"));
+                            Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("CraftingAccess"));
+                            Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageUnitTerra"));
+                        }
                     }
 
                     break;

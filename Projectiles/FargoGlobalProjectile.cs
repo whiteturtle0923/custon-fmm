@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.Projectiles
 {
@@ -19,7 +20,7 @@ namespace Fargowiltas.Projectiles
 
         public override bool PreAI(Projectile projectile)
         {
-            if (projectile.type == ProjectileID.FlyingPiggyBank)
+            if (projectile.type == ProjectileID.FlyingPiggyBank && GetInstance<FargoConfig>().StalkerMoneyTrough)
             {
                 Player player = Main.player[projectile.owner];
                 float dist = Vector2.Distance(projectile.Center, player.Center);

@@ -7,12 +7,16 @@ namespace Fargowiltas
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-        [Label("Unlimited Potion Buffs for 120+ Potions")]
+        [Label("Unlimited Potion Buffs for 60+ Potions")]
         [DefaultValue(true)]
         public bool UnlimitedPotionBuffsOn120 { get; set; }
 
         [Label("Angler Quest Instant Reset")]
         [DefaultValue(true)]
         public bool AnglerQuestInstantReset { get; set; }
+
+        [Label("Stalker Money Trough")]
+        [DefaultValue(true)]
+        public bool StalkerMoneyTrough { get; set; }
     }
 }

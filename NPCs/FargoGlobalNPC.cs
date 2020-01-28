@@ -21,6 +21,10 @@ namespace Fargowiltas.NPCs
 
         private bool transform = true;
 
+        public static int eaterBoss = -1;
+        public static int brainBoss = -1;
+        public static int plantBoss = -1;
+
         public override bool InstancePerEntity => true;
 
         public override void SetDefaults(NPC npc)
@@ -36,6 +40,29 @@ namespace Fargowiltas.NPCs
                 Main.npcCatchable[npc.type] = true;
                 npc.catchItem = (short)mod.ItemType("SkeletonMerchant");
             }
+        }
+
+        public override bool PreAI(NPC npc)
+        {
+            switch (npc.type)
+            {
+                case NPCID.EaterofWorldsHead:
+                    eaterBoss = npc.whoAmI;
+                    break;
+
+                case NPCID.BrainofCthulhu:
+                    brainBoss = npc.whoAmI;
+                    break;
+
+                case NPCID.Plantera:
+                    plantBoss = npc.whoAmI;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return true;
         }
 
         public override void AI(NPC npc)
@@ -877,6 +904,10 @@ namespace Fargowiltas.NPCs
                     FargoWorld.DownedBools["boneLee"] = true;
                     break;
 
+                case NPCID.HeadlessHorseman:
+                    FargoWorld.DownedBools["headlessHorseman"] = true;
+                    break;
+
                 default:
                     break;
             }
@@ -1137,6 +1168,26 @@ namespace Fargowiltas.NPCs
 
                     break;
                 }
+            }
+        }
+
+        public static bool BossIsAlive(ref int bossID, int bossType)
+        {
+            if (bossID != -1)
+            {
+                if (Main.npc[bossID].active && Main.npc[bossID].type == bossType)
+                {
+                    return true;
+                }
+                else
+                {
+                    bossID = -1;
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
     }
