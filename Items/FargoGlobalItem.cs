@@ -245,5 +245,19 @@ namespace Fargowiltas.Items
                 player.AddBuff(item.buffType, 2);
             }
         }
+
+        public override bool ConsumeAmmo(Item item, Player player)
+        {
+            if (GetInstance<FargoConfig>().UnlimitedAmmo && item.ammo != 0 && item.stack >= 3996)
+                return false;
+            return true;
+        }
+
+        public override bool ConsumeItem(Item item, Player player)
+        {
+            if (GetInstance<FargoConfig>().UnlimitedConsumableWeapons && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
+                return false;
+            return true;
+        }
     }
 }
