@@ -31,24 +31,28 @@ namespace Fargowiltas
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            // Saves what the item selected was then switches to the hotkey item and uses it
-            if (Fargowiltas.CustomKey.JustPressed)
-            {
-                oldSelected = player.selectedItem;
-                player.selectedItem = 40;
-                player.controlUseItem = true;
-                isReuse = player.HeldItem.autoReuse;
-                player.HeldItem.autoReuse = true;
-                player.releaseUseItem = true;
-            }
 
-            // Switches back to the old item (has some big ol jank)
-            if (Fargowiltas.CustomKey.JustReleased)
+            if (player.itemAnimation == 0 && player.itemTime == 0 && player.reuseDelay == 0)
             {
-                player.controlUseItem = false;
-                player.releaseUseItem = false;
-                player.HeldItem.autoReuse = isReuse;
-                player.selectedItem = oldSelected;
+                // Saves what the item selected was then switches to the hotkey item and uses it
+                if (Fargowiltas.CustomKey.JustPressed)
+                {
+                    oldSelected = player.selectedItem;
+                    player.selectedItem = 40;
+                    player.controlUseItem = true;
+                    isReuse = player.HeldItem.autoReuse;
+                    player.HeldItem.autoReuse = true;
+                    player.releaseUseItem = true;
+                }
+
+                // Switches back to the old item (has some big ol jank)
+                if (Fargowiltas.CustomKey.JustReleased)
+                {
+                    player.controlUseItem = false;
+                    player.releaseUseItem = false;
+                    player.HeldItem.autoReuse = isReuse;
+                    player.selectedItem = oldSelected;
+                }
             }
 
             if (Fargowiltas.RodKey.JustPressed && hasRod)
