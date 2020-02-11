@@ -119,6 +119,7 @@ namespace Fargowiltas
             AddConvertRecipe(ItemID.VampireKnives, ItemID.ScourgeoftheCorruptor);
             AddConvertRecipe(ItemID.Ebonkoi, ItemID.CrimsonTigerfish);
             AddConvertRecipe(ItemID.Hemopiranha, ItemID.Ebonkoi);
+            AddConvertRecipe(ItemID.BoneRattle, ItemID.EatersBone);
         }
 
         private static void AddMetalConversions()
@@ -756,13 +757,13 @@ namespace Fargowiltas
         {
             ModRecipe recipe = GetNewRecipe();
             recipe.AddIngredient(item);
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(item2);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
             recipe.AddIngredient(item2);
-            recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(item);
             recipe.AddRecipe();
         }

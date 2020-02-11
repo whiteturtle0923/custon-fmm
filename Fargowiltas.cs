@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Fargowiltas.Items.Misc;
+using Fargowiltas.Items.Tiles;
 
 namespace Fargowiltas
 {
@@ -195,6 +196,7 @@ namespace Fargowiltas
             Item.NewItem(player.Center, ItemID.BugNet);
             Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
             Item.NewItem(player.Center, ModContent.ItemType<DevianttsSundial>());
+            Item.NewItem(player.Center, ModContent.ItemType<AutoHouse>(), 3);
             Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
 
             if (ModLoader.GetMod("MagicStorage") != null)
