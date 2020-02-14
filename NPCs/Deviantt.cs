@@ -396,16 +396,22 @@ namespace Fargowiltas.NPCs
             {
                 IList<string> dialogue = new List<string>
                 {
-                    "You're more masochistic than I thought, aren't you?",
                     "Seems like everyone's learning to project auras these days. If you look at the particles, you can see whether it'll affect you at close range or a distance.",
                     "There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once.",
-                    "I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.",
-                    "Powerful enemies can drop all sorts of helpful loot. They'll also come back for revenge after you beat them, so keep an eye out for that.",
-                    "Why bother fishing when you can massacre bosses for the same goods? With spawners provided by my big brother, of course!",
-                    "Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.",
                     "Don't forget you can turn off your soul toggles in the Mod Configurations menu!",
                     "Remember to disable any soul toggles you don't need in the Mod Configurations menu!",
+                    //"Powerful enemies can drop all sorts of helpful loot. They'll also come back for revenge after you beat them, so keep an eye out for that.",
+                    //"Why bother fishing when you can massacre bosses for the same goods? With spawners provided by my big brother, of course!",
                 };
+
+                if (player.HeldItem.ranged)
+                    dialogue.Add("Just so you know, ammos are less effective. Only a tiny fraction of their damage can contribute to your total output!");
+
+                if (!Main.hardMode)
+                {
+                    dialogue.Add("I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.");
+                    dialogue.Add("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.");
+                }
 
                 if (!player.accFlipper && !player.gills && !fargoPlayer.MutantAntibodies)
                 {
@@ -424,10 +430,10 @@ namespace Fargowiltas.NPCs
 
                 if (player.statLifeMax < 400)
                 {
-                    dialogue.Add("I don't have any Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share.");
+                    dialogue.Add("I don't have any more Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share.");
                 }
 
-                if (NPC.downedBoss3)
+                if (NPC.downedBoss3 && !fargoPlayer.Graze && !fargoPlayer.SinisterIcon)
                 {
                     dialogue.Add("Dungeon Guardian sent me photos of their kids earlier. Cute little skull demons hiding in other skeletons, aren't they? Oh, and their drop wards off random boss spawns, I guess.");
                 }
@@ -440,7 +446,7 @@ namespace Fargowiltas.NPCs
                     }
 
                     dialogue.Add("Why not go hunting for some rare monsters every once in a while? Plenty of treasure to be looted and all that.");
-                    dialogue.Add("The desert monsters keep sending me letters about all the fossils they're collecting. I don't get the craze about it, myself!");
+                    //dialogue.Add("The desert monsters keep sending me letters about all the fossils they're collecting. I don't get the craze about it, myself!");
 
                     if (player.statLifeMax < 500)
                     {

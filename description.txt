@@ -2,6 +2,7 @@ NEW UPDATE - v 1.7.4
 -Deviantt gift includes 3 Auto Houses
 -Conversion recipes moved from Alchemy Station to Bottle
 -Added conversion recipes for Eater's Bone and Bone Rattle
+-Adjusted Deviantt help dialogue
 
 NEW UPDATE - v 1.7.3
 -Added Head of Man, Spooky Branch, Suspicious Looking Scythe, and Martian Memory Stick
