@@ -3,6 +3,9 @@ NEW UPDATE - v 1.7.4
 -Conversion recipes moved from Alchemy Station to Bottle
 -Added conversion recipes for Eater's Bone and Bone Rattle
 -Adjusted Deviantt help dialogue
+-Removed Pink Gel recipe (because Deviantt summon)
+-All banners for Slimes for that drop Gel can be converted into Gel
+-All biome-specific banners can be converted into their biome key at Mythril Anvil
 
 NEW UPDATE - v 1.7.3
 -Added Head of Man, Spooky Branch, Suspicious Looking Scythe, and Martian Memory Stick

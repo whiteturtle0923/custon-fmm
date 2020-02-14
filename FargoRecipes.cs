@@ -21,6 +21,119 @@ namespace Fargowiltas
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Armored Bones Banner", boneBanners);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyArmoredBones", group);
 
+            // Slimes (excluding ones that don't drop gel)
+            int[] slimeBanners = {
+                ItemID.SlimeBanner,
+                ItemID.GreenSlimeBanner,
+                ItemID.RedSlimeBanner,
+                ItemID.PurpleSlimeBanner,
+                ItemID.YellowSlimeBanner,
+                ItemID.BlackSlimeBanner,
+                ItemID.IceSlimeBanner,
+                ItemID.SandSlimeBanner,
+                ItemID.JungleSlimeBanner,
+                ItemID.SpikedIceSlimeBanner,
+                ItemID.SpikedJungleSlimeBanner,
+                ItemID.MotherSlimeBanner,
+                ItemID.UmbrellaSlimeBanner,
+                ItemID.ToxicSludgeBanner,
+                ItemID.CorruptSlimeBanner,
+                ItemID.SlimerBanner,
+                ItemID.CrimslimeBanner,
+                ItemID.GastropodBanner,
+                ItemID.IlluminantSlimeBanner,
+                ItemID.RainbowSlimeBanner
+            };
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Slime Banner", slimeBanners);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnySlimes", group);
+
+            // Any Hallow enemy
+            int[] hallowBanners = {
+                ItemID.PixieBanner,
+                ItemID.UnicornBanner,
+                ItemID.RainbowSlimeBanner,
+                ItemID.GastropodBanner,
+                ItemID.LightMummyBanner,
+                ItemID.IlluminantBatBanner,
+                ItemID.IlluminantSlimeBanner,
+                ItemID.ChaosElementalBanner,
+                ItemID.EnchantedSwordBanner,
+            };
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Hallow Banner", hallowBanners);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyHallows", group);
+
+            // Any Corruption enemy
+            int[] corruptionBanners = {
+                ItemID.EaterofSoulsBanner,
+                ItemID.CorruptorBanner,
+                ItemID.CorruptSlimeBanner,
+                ItemID.SlimerBanner,
+                ItemID.DevourerBanner,
+                ItemID.WorldFeederBanner,
+                ItemID.DarkMummyBanner,
+                ItemID.CursedHammerBanner,
+                ItemID.ClingerBanner,
+            };
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Corruption Banner", corruptionBanners);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyCorruptions", group);
+
+            // Any Crimson enemy
+            int[] crimsonBanners = {
+                ItemID.BloodCrawlerBanner,
+                ItemID.FaceMonsterBanner,
+                ItemID.CrimeraBanner,
+                ItemID.HerplingBanner,
+                ItemID.CrimslimeBanner,
+                ItemID.BloodJellyBanner,
+                ItemID.BloodFeederBanner,
+                ItemID.DarkMummyBanner,
+                ItemID.CrimsonAxeBanner,
+                ItemID.IchorStickerBanner,
+                ItemID.FloatyGrossBanner,
+            };
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Crimson Banner", crimsonBanners);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyCrimsons", group);
+
+            // Any Jungle enemy
+            int[] jungleBanners = {
+                ItemID.PiranhaBanner,
+                ItemID.SnatcherBanner,
+                ItemID.JungleBatBanner,
+                ItemID.JungleSlimeBanner,
+                ItemID.DoctorBonesBanner,
+                ItemID.AnglerFishBanner,
+                ItemID.ArapaimaBanner,
+                ItemID.TortoiseBanner,
+                ItemID.AngryTrapperBanner,
+                ItemID.DerplingBanner,
+                ItemID.GiantFlyingFoxBanner,
+                ItemID.HornetBanner,
+                ItemID.SpikedJungleSlimeBanner,
+                ItemID.JungleCreeperBanner,
+                ItemID.MothBanner,
+            };
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Jungle Banner", jungleBanners);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyJungles", group);
+
+            // Any Snow enemy
+            int[] snowBanners = {
+                ItemID.IceSlimeBanner,
+                ItemID.ZombieEskimoBanner,
+                ItemID.IceElementalBanner,
+                ItemID.WolfBanner,
+                ItemID.IceGolemBanner,
+                ItemID.IceBatBanner,
+                ItemID.SnowFlinxBanner,
+                ItemID.SpikedIceSlimeBanner,
+                ItemID.UndeadVikingBanner,
+                ItemID.ArmoredVikingBanner,
+                ItemID.IceTortoiseBanner,
+                ItemID.IcyMermanBanner,
+                ItemID.PigronBanner,
+            };
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Snow Banner", snowBanners);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnySnows", group);
+
             // Caught NPCs
             int[] caughtNPCs = new int[]
             {
@@ -166,6 +279,15 @@ namespace Fargowiltas
                 }
             }
 
+            void AddGroupToItemRecipe(string group, int result, int station = TileID.Solidifier, int resultAmount = 1)
+            {
+                recipe = GetNewRecipe();
+                recipe.AddRecipeGroup(group);
+                recipe.AddTile(station);
+                recipe.SetResult(result, resultAmount);
+                recipe.AddRecipe();
+            }
+
             AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage);
             AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.TallyCounter);
             AddBannerToItemRecipe(ItemID.AngryNimbusBanner, ItemID.NimbusRod);
@@ -237,8 +359,8 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock);
             AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun, 5);
             AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 5);
-            AddBannerToItemRecipe(ItemID.SlimeBanner, ItemID.Gel, resultAmount: 200);
-            AddBannerToItemRecipe(ItemID.PinkyBanner, ItemID.PinkGel, resultAmount: 999);
+            //AddBannerToItemRecipe(ItemID.SlimeBanner, ItemID.Gel, resultAmount: 200);
+            //AddBannerToItemRecipe(ItemID.PinkyBanner, ItemID.PinkGel, resultAmount: 999);
 
             AddBannerToItemsRecipe(ItemID.ArmoredSkeletonBanner, new int[] { ItemID.ArmorPolish, ItemID.BeamSword });
             AddBannerToItemsRecipe(ItemID.BoneLeeBanner, new int[] { ItemID.BlackBelt, ItemID.Tabi });
@@ -266,36 +388,21 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 5);
             //gladiator
             AddBannerToItemsRecipe(ItemID.GreekSkeletonBanner, new int[] { ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings });
+            
 
-            recipe = GetNewRecipe();
-            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Keybrand);
-            recipe.AddRecipe();
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Keybrand);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Kraken);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.MagnetSphere);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.WispinaBottle);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.BoneFeather);
 
-            recipe = GetNewRecipe();
-            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.Kraken);
-            recipe.AddRecipe();
+            AddGroupToItemRecipe("Fargowiltas:AnySlimes", ItemID.Gel, resultAmount: 200);
 
-            recipe = GetNewRecipe();
-            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.MagnetSphere);
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.WispinaBottle);
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
-            recipe.AddTile(TileID.Solidifier);
-            recipe.SetResult(ItemID.BoneFeather);
-            recipe.AddRecipe();
+            AddGroupToItemRecipe("Fargowiltas:AnyHallows", ItemID.HallowedKey, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyCorrupts", ItemID.CorruptionKey, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.CrimsonKey, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyJungles", ItemID.JungleKey, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil);
 
             // Thorium
             if (Fargowiltas.ModLoaded["ThoriumMod"])
