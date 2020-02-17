@@ -370,12 +370,12 @@ namespace Fargowiltas
             {
                 Mod calamity = ModLoader.GetMod("CalamityMod");
 
-                AddBannerToItemRecipe(calamity.ItemType("AngryDogBanner"), 2, calamity.ItemType("Cryophobia"));
+                AddBannerToItemRecipe(calamity.ItemType("AngryDogBanner"), calamity.ItemType("Cryophobia"), 2);
                 AddBannerToItemRecipe(calamity.ItemType("ArmoredDiggerBanner"), calamity.ItemType("LeadWizard"));
-                AddBannerToItemRecipe(calamity.ItemType("CnidrionBanner"), 2, calamity.ItemType("TheTransformer"));
+                AddBannerToItemRecipe(calamity.ItemType("CnidrionBanner"), calamity.ItemType("TheTransformer"), 2);
                 AddBannerToItemRecipe(calamity.ItemType("CrystalCrawlerBanner"), calamity.ItemType("CrystalBlade"));
                 AddBannerToItemRecipe(calamity.ItemType("CuttlefishBanner"), calamity.ItemType("InkBomb"));
-                AddBannerToItemRecipe(calamity.ItemType("EidolonWyrmJuvenileBanner"), 200, calamity.ItemType("HalibutCannon"));
+                AddBannerToItemRecipe(calamity.ItemType("EidolonWyrmJuvenileBanner"), calamity.ItemType("HalibutCannon"), 200);
                 AddBannerToItemRecipe(calamity.ItemType("IceClasperBanner"), calamity.ItemType("FrostBarrier"));
                 AddBannerToItemRecipe(calamity.ItemType("ImpiousImmolatorBanner"), calamity.ItemType("EnergyStaff"));
                 AddBannerToItemRecipe(calamity.ItemType("IrradiatedSlimeBanner"), calamity.ItemType("LeadCore"));

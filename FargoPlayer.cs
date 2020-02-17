@@ -205,13 +205,13 @@ namespace Fargowiltas
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
         {
             // Crate chance
-            if (Main.rand.Next(100) < (5 + (player.cratePotion ? 10 : 0)))
+            if (Main.rand.Next(100) < (player.cratePotion ? 15 : 5))
             {
-                if (liquidType == 0 && player.ZoneSnow)
+                if (liquidType == Tile.Liquid_Water && player.ZoneSnow)
                 {
                     caughtType = mod.ItemType("IceCrate");
                 }
-                else if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
+                else if (liquidType == Tile.Liquid_Lava && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
                 {
                     caughtType = mod.ItemType("ShadowCrate");
                 }
