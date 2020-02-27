@@ -7,6 +7,14 @@ namespace Fargowiltas
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+        [Label("Unlimited Ammo at 3996+")]
+        [DefaultValue(true)]
+        public bool UnlimitedAmmo { get; set; }
+
+        [Label("Unlimited Consumable Weapons at 3996+")]
+        [DefaultValue(true)]
+        public bool UnlimitedConsumableWeapons { get; set; }
+
         [Label("Unlimited Potion Buffs for 60+ Potions")]
         [DefaultValue(true)]
         public bool UnlimitedPotionBuffsOn120 { get; set; }

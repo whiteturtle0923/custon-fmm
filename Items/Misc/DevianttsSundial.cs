@@ -11,7 +11,7 @@ namespace Fargowiltas.Items.Misc
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deviantt's Sundial");
-            Tooltip.SetDefault("Activates the Enchanted Sundial effect\nCan only be used once!");
+            Tooltip.SetDefault("'For getting through those early nights'\nActivates the Enchanted Sundial effect\nCan only be used once");
         }
 
         public override void SetDefaults()

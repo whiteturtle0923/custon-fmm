@@ -5,5 +5,14 @@ NEW UPDATE - v 1.7.3
 -removed mutant siblings from being able to be grinded up
 -added Web Slinger recipe
 
+
+-Deviantt gift includes 3 Auto Houses
+-Conversion recipes moved from Alchemy Station to Bottle
+-Added conversion recipes for Eater's Bone and Bone Rattle
+-Adjusted Deviantt help dialogue
+-Removed Pink Gel recipe (because Deviantt summon)
+-All banners for Slimes for that drop Gel can be converted into Gel
+-All biome-specific banners can be converted into their biome key at Mythril Anvil
+
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
