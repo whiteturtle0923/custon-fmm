@@ -138,20 +138,17 @@ namespace Fargowiltas
             int[] caughtNPCs = new int[]
             {
                 ModContent.ItemType<Guide>(),
-                ModContent.ItemType<Abominationn>(),
                 ModContent.ItemType<Angler>(),
                 ModContent.ItemType<ArmsDealer>(),
                 ModContent.ItemType<Clothier>(),
                 ModContent.ItemType<Cyborg>(),
                 ModContent.ItemType<Demolitionist>(),
-                ModContent.ItemType<Deviantt>(),
                 ModContent.ItemType<Dryad>(),
                 ModContent.ItemType<DyeTrader>(),
                 ModContent.ItemType<GoblinTinkerer>(),
                 ModContent.ItemType<LumberJack>(),
                 ModContent.ItemType<Mechanic>(),
                 ModContent.ItemType<Merchant>(),
-                ModContent.ItemType<Mutant>(),
                 ModContent.ItemType<Nurse>(),
                 ModContent.ItemType<Painter>(),
                 ModContent.ItemType<PartyGirl>(),
@@ -390,6 +387,13 @@ namespace Fargowiltas
             AddBannerToItemsRecipe(ItemID.GreekSkeletonBanner, new int[] { ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings });
             
 
+
+
+            //boss trophy recipes
+            AddBannerToItemRecipe(ItemID.KingSlimeTrophy, ItemID.SlimeStaff);
+            AddBannerToItemRecipe(ItemID.BrainofCthulhuTrophy, ItemID.BoneRattle);
+
+
             AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Keybrand);
             AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Kraken);
             AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.MagnetSphere);
@@ -478,12 +482,12 @@ namespace Fargowiltas
             {
                 Mod calamity = ModLoader.GetMod("CalamityMod");
 
-                AddBannerToItemRecipe(calamity.ItemType("AngryDogBanner"), 2, calamity.ItemType("Cryophobia"));
+                AddBannerToItemRecipe(calamity.ItemType("AngryDogBanner"), calamity.ItemType("Cryophobia"), 2);
                 AddBannerToItemRecipe(calamity.ItemType("ArmoredDiggerBanner"), calamity.ItemType("LeadWizard"));
-                AddBannerToItemRecipe(calamity.ItemType("CnidrionBanner"), 2, calamity.ItemType("TheTransformer"));
+                AddBannerToItemRecipe(calamity.ItemType("CnidrionBanner"), calamity.ItemType("TheTransformer"), 2);
                 AddBannerToItemRecipe(calamity.ItemType("CrystalCrawlerBanner"), calamity.ItemType("CrystalBlade"));
                 AddBannerToItemRecipe(calamity.ItemType("CuttlefishBanner"), calamity.ItemType("InkBomb"));
-                AddBannerToItemRecipe(calamity.ItemType("EidolonWyrmJuvenileBanner"), 200, calamity.ItemType("HalibutCannon"));
+                AddBannerToItemRecipe(calamity.ItemType("EidolonWyrmJuvenileBanner"), calamity.ItemType("HalibutCannon"), 200);
                 AddBannerToItemRecipe(calamity.ItemType("IceClasperBanner"), calamity.ItemType("FrostBarrier"));
                 AddBannerToItemRecipe(calamity.ItemType("ImpiousImmolatorBanner"), calamity.ItemType("EnergyStaff"));
                 AddBannerToItemRecipe(calamity.ItemType("IrradiatedSlimeBanner"), calamity.ItemType("LeadCore"));
@@ -857,6 +861,13 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.DarkBlueSolution);
             recipe.AddTile(TileID.Autohammer);
             recipe.SetResult(ItemID.ShroomiteBar);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GrapplingHook);
+            recipe.AddIngredient(ItemID.WebRopeCoil, 8);
+            recipe.AddTile(TileID.CookingPots);
+            recipe.SetResult(ItemID.WebSlinger);
             recipe.AddRecipe();
         }
 
