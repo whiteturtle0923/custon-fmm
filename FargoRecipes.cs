@@ -25,20 +25,17 @@ namespace Fargowiltas
             int[] caughtNPCs = new int[]
             {
                 ModContent.ItemType<Guide>(),
-                ModContent.ItemType<Abominationn>(),
                 ModContent.ItemType<Angler>(),
                 ModContent.ItemType<ArmsDealer>(),
                 ModContent.ItemType<Clothier>(),
                 ModContent.ItemType<Cyborg>(),
                 ModContent.ItemType<Demolitionist>(),
-                ModContent.ItemType<Deviantt>(),
                 ModContent.ItemType<Dryad>(),
                 ModContent.ItemType<DyeTrader>(),
                 ModContent.ItemType<GoblinTinkerer>(),
                 ModContent.ItemType<LumberJack>(),
                 ModContent.ItemType<Mechanic>(),
                 ModContent.ItemType<Merchant>(),
-                ModContent.ItemType<Mutant>(),
                 ModContent.ItemType<Nurse>(),
                 ModContent.ItemType<Painter>(),
                 ModContent.ItemType<PartyGirl>(),
@@ -265,6 +262,12 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 5);
             //gladiator
             AddBannerToItemsRecipe(ItemID.GreekSkeletonBanner, new int[] { ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings });
+
+
+            //boss trophy recipes
+            AddBannerToItemRecipe(ItemID.KingSlimeTrophy, ItemID.SlimeStaff);
+            AddBannerToItemRecipe(ItemID.BrainofCthulhuTrophy, ItemID.BoneRattle);
+
 
             recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyArmoredBones");
@@ -749,6 +752,13 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.DarkBlueSolution);
             recipe.AddTile(TileID.Autohammer);
             recipe.SetResult(ItemID.ShroomiteBar);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GrapplingHook);
+            recipe.AddIngredient(ItemID.WebRopeCoil, 8);
+            recipe.AddTile(TileID.CookingPots);
+            recipe.SetResult(ItemID.WebSlinger);
             recipe.AddRecipe();
         }
 

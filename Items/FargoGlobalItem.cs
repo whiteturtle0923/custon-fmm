@@ -145,7 +145,7 @@ namespace Fargowiltas.Items
             switch (arg)
             {
                 case ItemID.KingSlimeBossBag:
-                    if (Main.rand.NextBool(50))
+                    if (Main.rand.NextBool(25))
                     {
                         player.QuickSpawnItem(ItemID.SlimeStaff);
                     }
@@ -162,7 +162,7 @@ namespace Fargowiltas.Items
                     break;
 
                 case ItemID.GoldenCrate:
-                    if (Main.rand.NextBool(10))
+                    if (Main.rand.NextBool(5))
                     {
                         int[] drops = { ItemID.BandofRegeneration, ItemID.MagicMirror, ItemID.CloudinaBottle, ItemID.EnchantedBoomerang, ItemID.ShoeSpikes, ItemID.FlareGun, ItemID.HermesBoots, ItemID.LavaCharm, ItemID.SandstorminaBottle, ItemID.FlyingCarpet };
                         player.QuickSpawnItem(Main.rand.Next(drops));
