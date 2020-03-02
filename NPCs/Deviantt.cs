@@ -135,7 +135,7 @@ namespace Fargowiltas.NPCs
             button = Language.GetTextValue("LegacyInterface.28");
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && MasochistMode)
             {
-                button2 = "Help";
+                button2 = FargoDownedMutant ? "Lore" : "Help";
             }
         }
 
@@ -147,7 +147,10 @@ namespace Fargowiltas.NPCs
             }
             else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && MasochistMode)
             {
-                Fargos();
+                if (FargoDownedMutant)
+                    FargosLore();
+                else
+                    Fargos();
             }
         }
 
@@ -461,6 +464,31 @@ namespace Fargowiltas.NPCs
 
                 Main.npcChatText = Main.rand.Next(dialogue);
             }
+        }
+
+        private void FargosLore()
+        {
+            IList<string> dialogue = new List<string>
+            {
+                "We all came from the end of time. This past world is a lot better than the timeless abyss of nothing!",
+                "Lumberjack is 'the one who cuts.' That means trees, connections, and even severing alternate timelines.",
+                "Who do you think we are? We're parts of you, a few hundred million years from now after you shed the need for a physical body.",
+                "Mutant... he's inhabiting the physical shell of your future self, but we're all manifestations of your power and experience.",
+                "In our first past, it took you eons to amass power. Since we happened to come back, we decided to help speed it up a little!",
+                "Even if the three of us joined forces again, we still wouldn't regain the full power of our original self. You could probably still beat us!",
+                "To accelerate your growth, Mutant released his powers to the rest of the world. Good work gathering it all back for yourself!",
+                "Don't worry about our true names. We don't actually have any!",
+                "No hard feelings about killing Abominationn, by the way. He comes back, right? Not that it won't miff Mutant if you do it again!",
+                "We summon enemies and control events because we are them! Sort of. It's a long story.",
+                "Take on a bigger form? I could do that, but I don't feel like it! Sorry!",
+                "Why was Mutant in that big slime? It was the best way to power it up. Too bad he's too lazy to do that with the rest!",
+                "Don't worry about the end of time, it's still billions of years away! I think. Dunno how this timey-wimey stuff works, really!",
+                "There's no fighting Lumberjack at full power. He's already cut away every timeline in which you tried.",
+                "Cthulhu? Hastur? All I know is where we came from, so your guess is as good as mine when it comes to them!",
+                "I once heard Mutant mention a once cat-like being so far beyond us that its existence transcends cause and effect. It's more like a law of reality."
+            };
+
+            Main.npcChatText = Main.rand.Next(dialogue);
         }
     }
 }
