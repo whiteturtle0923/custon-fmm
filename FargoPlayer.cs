@@ -31,24 +31,28 @@ namespace Fargowiltas
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            // Saves what the item selected was then switches to the hotkey item and uses it
-            if (Fargowiltas.CustomKey.JustPressed)
-            {
-                oldSelected = player.selectedItem;
-                player.selectedItem = 40;
-                player.controlUseItem = true;
-                isReuse = player.HeldItem.autoReuse;
-                player.HeldItem.autoReuse = true;
-                player.releaseUseItem = true;
-            }
 
-            // Switches back to the old item (has some big ol jank)
-            if (Fargowiltas.CustomKey.JustReleased)
+            if (player.itemAnimation == 0 && player.itemTime == 0 && player.reuseDelay == 0)
             {
-                player.controlUseItem = false;
-                player.releaseUseItem = false;
-                player.HeldItem.autoReuse = isReuse;
-                player.selectedItem = oldSelected;
+                // Saves what the item selected was then switches to the hotkey item and uses it
+                if (Fargowiltas.CustomKey.JustPressed)
+                {
+                    oldSelected = player.selectedItem;
+                    player.selectedItem = 40;
+                    player.controlUseItem = true;
+                    isReuse = player.HeldItem.autoReuse;
+                    player.HeldItem.autoReuse = true;
+                    player.releaseUseItem = true;
+                }
+
+                // Switches back to the old item (has some big ol jank)
+                if (Fargowiltas.CustomKey.JustReleased)
+                {
+                    player.controlUseItem = false;
+                    player.releaseUseItem = false;
+                    player.HeldItem.autoReuse = isReuse;
+                    player.selectedItem = oldSelected;
+                }
             }
 
             if (Fargowiltas.RodKey.JustPressed && hasRod)
@@ -201,13 +205,13 @@ namespace Fargowiltas
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
         {
             // Crate chance
-            if (Main.rand.Next(100) < (5 + (player.cratePotion ? 10 : 0)))
+            if (Main.rand.Next(100) < (player.cratePotion ? 15 : 5))
             {
-                if (liquidType == 0 && player.ZoneSnow)
+                if (liquidType == Tile.Liquid_Water && player.ZoneSnow)
                 {
                     caughtType = mod.ItemType("IceCrate");
                 }
-                else if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
+                else if (liquidType == Tile.Liquid_Lava && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
                 {
                     caughtType = mod.ItemType("ShadowCrate");
                 }

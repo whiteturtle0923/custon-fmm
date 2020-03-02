@@ -1,4 +1,11 @@
-NEW UPDATE - v 1.7.4
+NEW UPDATE - v 1.7.3
+-Fixed some AA summons not appearing
+-Increased Slime Staff chance from King Slime's bag to 4% from 2%
+-Added soe recipes using boss trophies
+-removed mutant siblings from being able to be grinded up
+-added Web Slinger recipe
+
+
 -Deviantt gift includes 3 Auto Houses
 -Conversion recipes moved from Alchemy Station to Bottle
 -Added conversion recipes for Eater's Bone and Bone Rattle
@@ -7,33 +14,6 @@ NEW UPDATE - v 1.7.4
 -All banners for Slimes for that drop Gel can be converted into Gel
 -All biome-specific banners can be converted into their biome key at Mythril Anvil
 -Added Deviantt lore post-Mutant in Masochist Mode
-
-NEW UPDATE - v 1.7.3
--Added Head of Man, Spooky Branch, Suspicious Looking Scythe, and Martian Memory Stick
--Added Festive Ornament, Naughty List, Ice King's Remains, and Extra Boney Energizer
--Added Expert's Token
--Overloader is sold in Expert only
--Abominationn summon added to Mutant shop
--Adjusted Deviantt dialogue
--Deviantt gift is no longer locked to before a boss
--Deviantt gift also includes Magic Storage items if enabled
--Deviantt gift includes a Bug Net and one-time use portable sundial
--Deviantt's homing hearts shouldn't get stuck circling small targets as much
-
--Golem swarm cannot be used pre-Plantera to fix a sequence break
--Added toggle for stalker Money Trough
-
--Unlimited potions now activate starting at a stack of 60
--Fixed unlimited potions not always applying you reach buff cap
--Actually fixed Deviantt sometimes selling items early
--Actually fixed Skeleton Merchant not being catchable
-
-
-
-
-
-
-
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

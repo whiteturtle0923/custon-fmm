@@ -998,8 +998,8 @@ namespace Fargowiltas.NPCs
 
                 if (Fargowiltas.ModLoaded["AAMod"])
                 {
-                    AddItem(AADjinn, "AAMod", "DjinnLamp ", 150000, ref shop, ref nextSlot);
-                    AddItem(AASerpent, "AAMod", "SubzeroCrystal ", 150000, ref shop, ref nextSlot);
+                    AddItem(AADjinn, "AAMod", "DjinnLamp", 150000, ref shop, ref nextSlot);
+                    AddItem(AASerpent, "AAMod", "SubzeroCrystal", 150000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.ModLoaded["CSkies"])
