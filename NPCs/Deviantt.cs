@@ -473,7 +473,7 @@ namespace Fargowiltas.NPCs
                 "We all came from the end of time. This past world is a lot better than the timeless abyss of nothing!",
                 "Lumberjack is 'the one who cuts.' That means trees, connections, and even severing alternate timelines.",
                 "Who do you think we are? We're parts of you, a few hundred million years from now after you shed the need for a physical body.",
-                "Mutant... he's inhabiting the physical shell of your future self, but we're all manifestations of your power and experience.",
+                "Mutant is inhabiting the physical shell of your future self, but we're all manifestations of your power and experience.",
                 "In our first past, it took you eons to amass power. Since we happened to come back, we decided to help speed it up a little!",
                 "Even if the three of us joined forces again, we still wouldn't regain the full power of our original self. You could probably still beat us!",
                 "To accelerate your growth, Mutant released his powers to the rest of the world. Good work gathering it all back for yourself!",
