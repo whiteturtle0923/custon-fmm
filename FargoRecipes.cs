@@ -75,7 +75,7 @@ namespace Fargowiltas
                 ItemID.ClingerBanner,
             };
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Corruption Banner", corruptionBanners);
-            RecipeGroup.RegisterGroup("Fargowiltas:AnyCorruptions", group);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyCorrupts", group);
 
             // Any Crimson enemy
             int[] crimsonBanners = {
