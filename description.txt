@@ -36,6 +36,7 @@ NEW UPDATE - v 2.0
 -Removed Pink Gel recipe (because Deviantt summon)
 -All banners for Slimes for that drop Gel can be converted into Gel
 -All biome-specific banners can be converted into their biome key at Mythril Anvil
+-Added Deviantt lore post-Mutant in Masochist Mode
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
