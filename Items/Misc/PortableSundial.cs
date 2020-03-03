@@ -10,7 +10,8 @@ namespace Fargowiltas.Items.Misc
         {
             DisplayName.SetDefault("Portable Sundial");
             Tooltip.SetDefault("Left click to instantly switch from day to night" +
-                               "\nRight click to activate the Enchanted Sundial effect");
+                               "\nRight click to activate the Enchanted Sundial effect" +
+                               "\nThis will also reset travelling merchant's shops");
         }
 
         public override void SetDefaults()
@@ -56,6 +57,12 @@ namespace Fargowiltas.Items.Misc
                 Main.dayTime = !Main.dayTime;
                 Main.time = 0;
                 Chest.SetupTravelShop();
+
+                //change moon phases when switching to night
+                if (!Main.dayTime && ++Main.moonPhase > 7)
+                {
+                    Main.moonPhase = 0;
+                }
             }
 
             return true;

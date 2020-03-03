@@ -3,14 +3,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Abom
 {
-    public class SlimyBarometer : ModItem
+    public class CursedSextant : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Slimy Barometer");
-            Tooltip.SetDefault("Starts the Slime Rain");
+            DisplayName.SetDefault("Cursed Sextant");
+            Tooltip.SetDefault("Starts the Blood Moon");
         }
 
         public override void SetDefaults()
@@ -28,16 +28,15 @@ namespace Fargowiltas.Items.Summons.NewSummons
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.slimeRain;
+            return !Main.dayTime && !Main.bloodMoon;
         }
 
         public override bool UseItem(Player player)
         {
-            Main.StartSlimeRain();
-            Main.slimeWarningDelay = 1;
-            Main.slimeWarningTime = 1;
+            Main.bloodMoon = true;
 
-            Main.NewText("Slime is falling from the sky!", new Color(175, 75, 255));
+            NetMessage.SendData(MessageID.WorldData);
+            Main.NewText("The Blood Moon is rising...", new Color(175, 75, 255));
             Main.PlaySound(SoundID.Roar, player.position, 0);
 
             return true;

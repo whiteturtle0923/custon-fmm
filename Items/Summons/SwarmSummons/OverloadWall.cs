@@ -7,21 +7,21 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-    public class OverloadGolem : SwarmSummonBase
+    public class OverloadWall : SwarmSummonBase
     {
-        public OverloadGolem() : base(NPCID.Golem, "Ancient automatons come crashing down!", 25, "LihzahrdPowerCell2")
+        public OverloadWall() : base(NPCID.WallofFlesh, "A fortress of flesh arises from the depths!", 10, "FleshyDoll")
         {
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Runic Power Cell");
-            Tooltip.SetDefault("Summons several Golems");
+            DisplayName.SetDefault("Fleshiest Doll");
+            Tooltip.SetDefault("Summons several Walls of Flesh");
         }
 
         public override bool CanUseItem(Player player)
         {
-            return !Fargowiltas.SwarmActive && NPC.downedPlantBoss;
+            return !Fargowiltas.SwarmActive && player.ZoneUnderworldHeight;
         }
     }
 }

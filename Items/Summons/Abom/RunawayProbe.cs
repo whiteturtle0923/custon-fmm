@@ -1,16 +1,15 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Abom
 {
-    public class CursedSextant : ModItem
+    public class RunawayProbe : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cursed Sextant");
-            Tooltip.SetDefault("Starts the Blood Moon");
+            DisplayName.SetDefault("Runaway Probe");
+            Tooltip.SetDefault("Starts the Martian invasion");
         }
 
         public override void SetDefaults()
@@ -26,17 +25,9 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.consumable = true;
         }
 
-        public override bool CanUseItem(Player player)
-        {
-            return !Main.dayTime && !Main.bloodMoon;
-        }
-
         public override bool UseItem(Player player)
         {
-            Main.bloodMoon = true;
-
-            NetMessage.SendData(MessageID.WorldData);
-            Main.NewText("The Blood Moon is rising...", new Color(175, 75, 255));
+            Main.StartInvasion(InvasionID.MartianMadness);
             Main.PlaySound(SoundID.Roar, player.position, 0);
 
             return true;

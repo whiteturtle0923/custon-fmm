@@ -1,12 +1,12 @@
 using Terraria.ID;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Abom
 {
-    public class BetsyEgg : BaseSummon
+    public class BetsyEgg : AbomSummon
     {
-        public override int Type => NPCID.DD2Betsy;
+        public override int SummonType => NPCID.DD2Betsy;
 
-        public override string NPCName => "Betsy";
+        //public override string NPCName => "Betsy";
 
         public override void SetStaticDefaults()
         {

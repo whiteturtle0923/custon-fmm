@@ -1,12 +1,12 @@
 using Terraria.ID;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Abom
 {
-    public class BatteredClub : BaseSummon
+    public class BatteredClub : AbomSummon
     {
-        public override int Type => NPCID.DD2OgreT3;
+        public override int SummonType => NPCID.DD2OgreT3;
 
-        public override string NPCName => "Ogre";
+        //public override string NPCName => "Ogre";
 
         public override void SetStaticDefaults()
         {

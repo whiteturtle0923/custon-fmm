@@ -1,4 +1,4 @@
-using Fargowiltas.NPCs;
+﻿using Fargowiltas.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,16 +7,16 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.SwarmSummons
 {
-    public class OverloadMoon : SwarmSummonBase
+    public class OverloadCultist : SwarmSummonBase
     {
-        public OverloadMoon() : base(NPCID.MoonLordCore, "The wind whispers of death's approach!", 20, "CelestialSigil2")
+        public OverloadCultist() : base(NPCID.CultistBoss, "Defeaning chants fill your ears!", 25, "CultistSummon")
         {
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Runic Inscription");
-            Tooltip.SetDefault("Summons several Moon Lords");
+            DisplayName.SetDefault("Zealot's Madness");
+            Tooltip.SetDefault("Summons several Lunatic Cultists");
         }
 
         public override bool CanUseItem(Player player)

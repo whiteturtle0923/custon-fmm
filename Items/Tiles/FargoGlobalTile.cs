@@ -17,6 +17,13 @@ namespace Fargowiltas.Tiles
                 return adjTiles;
             }
 
+            if (type == TileID.HeavyWorkBench)
+            {
+                int[] adjTiles = new int[] { TileID.WorkBenches, TileID.HeavyWorkBench };
+
+                return adjTiles;
+            }
+
             return base.AdjTiles(type);
         }
 
