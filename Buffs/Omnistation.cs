@@ -10,7 +10,7 @@ namespace Fargowiltas.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Omnistation");
-            Description.SetDefault("Effects of all stations");
+            Description.SetDefault("Effects of all vanilla stations");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }
@@ -21,6 +21,7 @@ namespace Fargowiltas.Buffs
             player.buffImmune[BuffID.Campfire] = true;
             player.buffImmune[BuffID.HeartLamp] = true;
             player.buffImmune[BuffID.StarInBottle] = true;
+            player.buffImmune[BuffID.DryadsWard] = true;
 
             if (player.whoAmI == Main.myPlayer)
             {
@@ -28,6 +29,14 @@ namespace Fargowiltas.Buffs
                 Main.campfire = true;
                 Main.heartLantern = true;
                 Main.starInBottle = true;
+
+                //dryad's blessing
+                player.lifeRegen += 6;
+                player.statDefense += 8;
+                if (player.thorns < 1f)
+                {
+                    player.thorns += 0.2f;
+                }
             }
 
             int type = Framing.GetTileSafely(player.Center).type;

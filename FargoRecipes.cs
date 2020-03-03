@@ -1,6 +1,7 @@
 ﻿using Fargowiltas.Items.CaughtNPCs;
 using Fargowiltas.Items.Summons;
 using Fargowiltas.Items.Summons.NewSummons;
+using Fargowiltas.Items.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -166,6 +167,9 @@ namespace Fargowiltas
             };
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", caughtNPCs);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Omnistation", ModContent.ItemType<Omnistation>(), ModContent.ItemType<Omnistation2>());
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyOmnistation", group);
         }
 
         public static void AddRecipes()
