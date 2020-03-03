@@ -757,8 +757,17 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
+            //int tracker = Fargowiltas.summonTracker.SortedSummons.Capacity;
+            Main.NewText(Fargowiltas.summonTracker.SortedSummons[0].itemName);
+
             AddItem(!Main.expertMode, "Fargowiltas", "ExpertToggle", 1000000, ref shop, ref nextSlot);
             AddItem(Main.expertMode, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
+
+
+
+
+
+
 
             if (prehardmodeShop)
             {
@@ -766,6 +775,23 @@ namespace Fargowiltas.NPCs
                 {
                     AddItem(true, "FargowiltasSouls", "Masochist", 10000, ref shop, ref nextSlot); // mutants gift, dam meme namer
                 }
+
+                foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
+                {
+                    //phm
+                    if (summon.progression <= 6f)
+                    {
+                        AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
+                    }
+                }
+
+
+
+
+                
+
+
+
 
                 if (Fargowiltas.ModLoaded["Redemption"])
                 {
@@ -802,9 +828,6 @@ namespace Fargowiltas.NPCs
                     AddItem(ThoriumDownedBird, "ThoriumMod", "StormFlare", 50000, ref shop, ref nextSlot);
                 }
 
-                // Slime King
-                AddItem(NPC.downedSlimeKing, "Fargowiltas", "SlimyCrown", 60000, ref shop, ref nextSlot);
-
                 if (Fargowiltas.ModLoaded["Redemption"])
                 {
                     AddItem(RedeThorn, "Redemption", "HeartOfTheThorns", 60000, ref shop, ref nextSlot);
@@ -820,9 +843,6 @@ namespace Fargowiltas.NPCs
                     // Desert Scourge
                     AddItem(CalamityDownedScourge, "CalamityMod", "DriedSeafood", 20000, ref shop, ref nextSlot);
                 }
-
-                // Eye of Cthulhu
-                AddItem(NPC.downedBoss1, "Fargowiltas", "SuspiciousEye", 80000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.ModLoaded["AAMod"])
                 {
@@ -884,12 +904,6 @@ namespace Fargowiltas.NPCs
                     // Crabulon
                     AddItem(CalamityDownedCrab, "CalamityMod", "DecapoditaSprout", 40000, ref shop, ref nextSlot);
                 }
-
-                // Eater of Worlds
-                AddItem(NPC.downedBoss2, "Fargowiltas", "WormyFood", 100000, ref shop, ref nextSlot);
-
-                // Brain of Cthulhu
-                AddItem(NPC.downedBoss2, "Fargowiltas", "GoreySpine", 100000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.ModLoaded["AAMod"])
                 {
@@ -958,9 +972,6 @@ namespace Fargowiltas.NPCs
                     // AddItem(JSViyilblud, "Jetshift", "CorruptedShard", 100000, ref shop, ref nextSlot);
                 }
 
-                // Queen Bee
-                AddItem(NPC.downedQueenBee, "Fargowiltas", "Abeemination2", 150000, ref shop, ref nextSlot);
-
                 if (Fargowiltas.ModLoaded["Disarray"])
                 {
                     AddItem(DisarrayDownedSerpent, "Disarray", "MoonStone", 150000, ref shop, ref nextSlot);
@@ -992,9 +1003,6 @@ namespace Fargowiltas.NPCs
                     // Flaming Pumpkin
                     AddItem(SacredDownedPump, "SacredTools", "PumpkinLantern", 150000, ref shop, ref nextSlot);
                 }
-
-                // Skeletron
-                AddItem(NPC.downedBoss3, "Fargowiltas", "SuspiciousSkull", 150000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.ModLoaded["AAMod"])
                 {
@@ -1047,11 +1055,6 @@ namespace Fargowiltas.NPCs
                     // Granite Core
                     AddItem(ThoriumDownedStorm, "ThoriumMod", "UnstableCore", 150000, ref shop, ref nextSlot);
                 }
-
-                /*if (GetInstance<Fargowiltas>().ferniumLoaded)
-                {
-                    AddItem(FerniumDownedMargrama, "Fernium", "HardenedSludge", 150000, ref shop, ref nextSlot);
-                }*/
 
                 if (Fargowiltas.ModLoaded["ElementsAwoken"])
                 {
@@ -1108,15 +1111,21 @@ namespace Fargowiltas.NPCs
                     // Sagittarius
                     AddItem(AASag, "AAMod", "Lifescanner", 150000, ref shop, ref nextSlot);
                 }
-
-                // Wall of Flesh
-                AddItem(Main.hardMode, "Fargowiltas", "FleshyDoll", 250000, ref shop, ref nextSlot);
-
-                // All Pre-HM bosses
+                
                 AddItem(Main.hardMode, "Fargowiltas", "DeathBringerFairy", 500000, ref shop, ref nextSlot);
             }
             else if (hardmodeShop)
             {
+                foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
+                {
+                    //hm
+                    if (summon.progression > 6f && summon.progression <= 14)
+                    {
+                        AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
+                    }
+                }
+
+
                 if (Fargowiltas.ModLoaded["Redemption"])
                 {
                     AddItem(RedeEye, "Redemption", "XenoEye", 250000, ref shop, ref nextSlot);
@@ -1201,18 +1210,6 @@ namespace Fargowiltas.NPCs
                     // All Storm bosses
                     // AddItem((AARetriever && AARaider && AAOrthrus), "Fargowiltas", "CyberneticAmalgam", 600000, ref shop, ref nextSlot);
                 }
-
-                // Destroyer
-                AddItem(NPC.downedMechBoss1, "Fargowiltas", "MechWorm", 400000, ref shop, ref nextSlot);
-
-                // Twins
-                AddItem(NPC.downedMechBoss2, "Fargowiltas", "MechEye", 400000, ref shop, ref nextSlot);
-
-                // Skeletron Prime
-                AddItem(NPC.downedMechBoss3, "Fargowiltas", "MechSkull", 400000, ref shop, ref nextSlot);
-
-                // All Mechs
-                AddItem(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3, "Fargowiltas", "MechanicalAmalgam", 1000000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.ModLoaded["Ocram"])
                 {
@@ -1329,9 +1326,6 @@ namespace Fargowiltas.NPCs
                     AddItem(W1KDownedOkiku, "W1KModRedux", "OminousMask", 400000, ref shop, ref nextSlot);
                 }
 
-                // Plantera
-                AddItem(NPC.downedPlantBoss, "Fargowiltas", "Plantera", 500000, ref shop, ref nextSlot);
-
                 if (Fargowiltas.ModLoaded["Redemption"])
                 {
                     AddItem(RedeSlayer, "Redemption", "KingSummon", 500000, ref shop, ref nextSlot);
@@ -1361,9 +1355,6 @@ namespace Fargowiltas.NPCs
                     // Astrum Deus
                     AddItem(CalamityDownedAstrum, "CalamityMod", "Starcore", 500000, ref shop, ref nextSlot);
                 }
-
-                // Golem
-                AddItem(NPC.downedGolemBoss, "Fargowiltas", "LihzahrdPowerCell2", 600000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.ModLoaded["pinkymod"])
                 {
@@ -1424,8 +1415,6 @@ namespace Fargowiltas.NPCs
                     AddItem(W1KDownedDeath, "W1KModRedux", "DungeonMasterGuide", 600000, ref shop, ref nextSlot);
                 }
 
-                AddItem(NPC.downedFishron, "Fargowiltas", "TruffleWorm2", 600000, ref shop, ref nextSlot);
-
                 if (Fargowiltas.ModLoaded["Bluemagic"])
                 {
                     AddItem(BlueDownedPhantom, "Bluemagic", "PaladinEmblem", 600000, ref shop, ref nextSlot);
@@ -1464,9 +1453,6 @@ namespace Fargowiltas.NPCs
                     // AddItem(JSPolypus, "Jetshift", "RottenShrimp", 600000, ref shop, ref nextSlot);
                 }
 
-                // Lunatic Cultist
-                AddItem(NPC.downedAncientCultist, "Fargowiltas", "CultistSummon", 750000, ref shop, ref nextSlot);
-
                 if (Fargowiltas.ModLoaded["ElementsAwoken"])
                 {
                     AddItem(ElementsDownedDragon, "ElementsAwoken", "AncientDragonSummon", 750000, ref shop, ref nextSlot);
@@ -1487,15 +1473,19 @@ namespace Fargowiltas.NPCs
                 {
                     AddItem(ElementsDownedGuardian, "ElementsAwoken", "GuardianSummon", 750000, ref shop, ref nextSlot);
                 }
-
-                // Moon Lord
-                AddItem(NPC.downedMoonlord, "Fargowiltas", "CelestialSigil2", 1000000, ref shop, ref nextSlot);
-
-                // All Vanilla Bosses
-                AddItem(NPC.downedMoonlord, "Fargowiltas", "MutantVoodoo", 2000000, ref shop, ref nextSlot);
             }
             else
             {
+                foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
+                {
+                    //post ml
+                    if (summon.progression > 14f)
+                    {
+                        AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
+                    }
+                }
+
+
                 if (Fargowiltas.ModLoaded["AAMod"])
                 {
                     AddItem(AASisters, "AAMod", "FlamesOfAnarchy", 1000000, ref shop, ref nextSlot);

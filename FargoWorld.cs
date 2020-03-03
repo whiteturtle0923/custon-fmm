@@ -1,3 +1,4 @@
+using Fargowiltas.NPCs;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -140,6 +141,8 @@ namespace Fargowiltas
             if (Fargowiltas.SwarmActive && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead))
             {
                 Fargowiltas.SwarmActive = false;
+                FargoGlobalNPC.LastWoFIndex = -1;
+                FargoGlobalNPC.WoFDirection = 0;
             }
 
             if (AbomClearCD > 0)

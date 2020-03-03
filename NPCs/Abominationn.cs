@@ -108,7 +108,7 @@ namespace Fargowiltas.NPCs
                 "I like Cat... What do you mean who's Cat?",
                 "Check the wiki if you need anything, the kirb is slowly getting it up to par.",
                 "I've heard tales of a legendary Diver... Anyway what was that about a giant jellyfish?",
-                "Overloaded events...? Maybe in 10 Fargo years.",
+                "Overloaded events...? Yeah, they're pretty cool.",
                 "It's not like I don't enjoy your company, but can you buy something?",
                 "I have slain one thousand humans! Huh? You're a human? There's so much blood on your hands..",
             };
@@ -204,13 +204,10 @@ namespace Fargowiltas.NPCs
             AddItem(Main.expertMode, ItemType<Items.Summons.SwarmSummons.Overloader>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
 
             // Events
+            AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
+            AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
             AddItem(NPC.downedSlimeKing, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
             AddItem(NPC.downedBoss1, ItemType<CursedSextant>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
-
-            if (Fargowiltas.ModLoaded["SacredTools"])
-            {
-                AddModItem(NPC.downedBoss1, "SacredTools", "SandstormMedallion", 40000, ref shop, ref nextSlot);
-            }
 
             if (Fargowiltas.ModLoaded["GRealm"])
             {
@@ -234,25 +231,25 @@ namespace Fargowiltas.NPCs
                 AddModItem(BtfaInvasion, "ForgottenMemories", "AncientLog", 80000, ref shop, ref nextSlot);
             }
 
-            AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 10), ref shop, ref nextSlot);
-            AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 12), ref shop, ref nextSlot);
-            AddItem(NPC.downedGolemBoss, ItemID.SolarTablet, Item.buyPrice(0, 12), ref shop, ref nextSlot);
+            AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
+            AddItem(NPC.downedGolemBoss, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["darkMage3"], ItemType<ForbiddenTome>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["ogre"], ItemType<BatteredClub>(), Item.buyPrice(0, 25), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["betsy"], ItemType<BetsyEgg>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
 
             AddItem(NPC.downedMartians, ItemType<MartianMemoryStick>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(NPC.downedMartians, ItemType<RunawayProbe>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(NPC.downedMartians, ItemType<RunawayProbe>(), Item.buyPrice(0, 50), ref shop, ref nextSlot);
 
             AddItem(FargoWorld.DownedBools["headlessHorseman"], ItemType<HeadofMan>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedHalloweenTree, ItemType<SpookyBranch>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedHalloweenKing, ItemType<SuspiciousLookingScythe>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(NPC.downedHalloweenKing, ItemID.PumpkinMoonMedallion, Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(NPC.downedHalloweenKing, ItemID.PumpkinMoonMedallion, Item.buyPrice(0, 50), ref shop, ref nextSlot);
 
             AddItem(NPC.downedChristmasTree, ItemType<FestiveOrnament>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedChristmasSantank, ItemType<NaughtyList>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedChristmasIceQueen, ItemType<IceKingsRemains>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(NPC.downedChristmasIceQueen, ItemID.NaughtyPresent, Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(NPC.downedChristmasIceQueen, ItemID.NaughtyPresent, Item.buyPrice(0, 50), ref shop, ref nextSlot);
 
             AddItem(NPC.downedTowers, ItemType<PillarSummon>(), Item.buyPrice(0, 75), ref shop, ref nextSlot);
         }

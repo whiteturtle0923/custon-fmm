@@ -1,11 +1,34 @@
-NEW UPDATE - v 1.7.3
+NEW UPDATE - v 2.0
+-Added Mutant call support
+-refactored several swarm amounts, mostly making less bosses appear at once
+-Destroyer swarm now spawns destroyers with 10 segments each
+-Added Fleshiest Doll and Wally Energizer
+-Added Zealot's Madness and Insanity Energizer
+
+
 -Fixed some AA summons not appearing
 -Increased Slime Staff chance from King Slime's bag to 4% from 2%
 -Added soe recipes using boss trophies
 -removed mutant siblings from being able to be grinded up
 -added Web Slinger recipe
+-fixed being able to use the custom hotkey while using another item
+-fixed several banner recipe issues with calamity
+-Gold Crates drop chest items more often
+-Increased caught npc and snow globe stack sizes
+-Portable Sundial now cycles through moon phases
+-Pharoah vanity is no longer free
+-Added banner recipes for Rain Coat
+-increased several prices in Aboms shop
+-decreased some prices in mutants shop
+-Added Weather Balloon and Forbidden Scarab
+-Rearranged Stat Sheet's stat order and added Max sentries and Armor penetration
+-Painter now sells all naturally occurring paintings while in the cavern layer, dungeon, or underworld
+-Heavy Work Bench now counts as Workbenches as well
+-Fixed invisible npcs spawning from Deviantt summons in multiplayer
+-Deviantt summons spawn the enemy slghtly closer
 
-
+-Ammo and consumable items are not used once you have 3996 of them
+-Deviantt summons will not be sold too early if you manage to kill something from Pandora's Box
 -Deviantt gift includes 3 Auto Houses
 -Conversion recipes moved from Alchemy Station to Bottle
 -Added conversion recipes for Eater's Bone and Bone Rattle

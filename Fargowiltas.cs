@@ -15,6 +15,8 @@ namespace Fargowiltas
 {
     public class Fargowiltas : Mod
     {
+        internal static MutantSummonTracker summonTracker;
+
         // Hotkeys
         internal static ModHotKey CustomKey;
         internal static ModHotKey HomeKey;
@@ -42,6 +44,8 @@ namespace Fargowiltas
 
         public override void Load()
         {
+            summonTracker = new MutantSummonTracker();
+
             HomeKey = RegisterHotKey("Teleport Home", "P");
             RodKey = RegisterHotKey("Rod of Discord", "E");
             CustomKey = RegisterHotKey("Custom Hotkey (Bottom Left Inventory Slot)", "K");
@@ -89,6 +93,8 @@ namespace Fargowiltas
 
         public override void Unload()
         {
+            summonTracker = null;
+
             HomeKey = null;
             RodKey = null;
             CustomKey = null;
@@ -122,16 +128,42 @@ namespace Fargowiltas
 
         public override object Call(params object[] args)
         {
-            string code = args[0].ToString();
+            try
+            {
+                string code = args[0].ToString();
 
-            if (code == "SwarmActive")
-                return SwarmActive;
+                switch (code)
+                {
+                    case "SwarmActive":
+                        return SwarmActive;
+                    case "AddSummon":
+
+                        if (summonTracker.SummonsFinalized)
+                            throw new Exception($"Call Error: Summons must be added before AddRecipes");
+
+                        summonTracker.AddSummon(
+                            Convert.ToSingle(args[1]), 
+                            args[2] as string,
+                            args[3] as string,
+                            args[4] as Func<bool>,
+                            Convert.ToInt32(args[5])
+                        );
+                        break;
+                }
+
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Call Error: " + e.StackTrace + e.Message);
+            }
 
             return base.Call(args);
         }
 
         public override void AddRecipes()
         {
+            summonTracker.FinalizeSummonData();
+
             FargoRecipes.AddRecipes();
         }
 

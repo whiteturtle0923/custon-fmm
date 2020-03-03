@@ -337,6 +337,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.PsychoBanner, ItemID.PsychoKnife);
             AddBannerToItemRecipe(ItemID.RaggedCasterBanner, ItemID.SpectreStaff);
             AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainHat);
+            AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainCoat);
             AddBannerToItemRecipe(ItemID.ReaperBanner, ItemID.DeathSickle);
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Rally);
             AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.DivingHelmet);
@@ -391,7 +392,12 @@ namespace Fargowiltas
 
             //boss trophy recipes
             AddBannerToItemRecipe(ItemID.KingSlimeTrophy, ItemID.SlimeStaff);
+            AddBannerToItemRecipe(ItemID.EyeofCthulhuTrophy, ItemID.Binoculars);
+            AddBannerToItemRecipe(ItemID.EaterofWorldsTrophy, ItemID.EatersBone);
             AddBannerToItemRecipe(ItemID.BrainofCthulhuTrophy, ItemID.BoneRattle);
+            AddBannerToItemRecipe(ItemID.QueenBeeTrophy, ItemID.HoneyedGoggles);
+            AddBannerToItemRecipe(ItemID.SkeletronTrophy, ItemID.BookofSkulls);
+            AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.TheAxe);
 
 
             AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Keybrand);
@@ -402,11 +408,11 @@ namespace Fargowiltas
 
             AddGroupToItemRecipe("Fargowiltas:AnySlimes", ItemID.Gel, resultAmount: 200);
 
-            AddGroupToItemRecipe("Fargowiltas:AnyHallows", ItemID.HallowedKey, TileID.MythrilAnvil);
-            AddGroupToItemRecipe("Fargowiltas:AnyCorrupts", ItemID.CorruptionKey, TileID.MythrilAnvil);
-            AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.CrimsonKey, TileID.MythrilAnvil);
-            AddGroupToItemRecipe("Fargowiltas:AnyJungles", ItemID.JungleKey, TileID.MythrilAnvil);
-            AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyHallows", ItemID.HallowedKey, TileID.MythrilAnvil, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnyCorruptions", ItemID.CorruptionKey, TileID.MythrilAnvil, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.CrimsonKey, TileID.MythrilAnvil, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnyJungles", ItemID.JungleKey, TileID.MythrilAnvil, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil, 10);
 
             // Thorium
             if (Fargowiltas.ModLoaded["ThoriumMod"])
