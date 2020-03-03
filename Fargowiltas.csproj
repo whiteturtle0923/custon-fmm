@@ -21,4 +21,12 @@
     <EmbeddedResource Remove="Items\Summons\Abom\FestiveOrnament.png\**" />
     <None Remove="Items\Summons\Abom\FestiveOrnament.png\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CalamityMod">
+      <HintPath>..\..\references\mods\CalamityMod.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoriumMod">
+      <HintPath>..\..\references\mods\ThoriumMod.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

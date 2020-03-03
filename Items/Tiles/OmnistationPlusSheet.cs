@@ -4,12 +4,21 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using System;
+using System.Collections.Generic;
+using ThoriumMod.Items;
+using ThoriumMod.Projectiles.Bard;
+using ThoriumMod.Utilities;
+using CalamityMod.NPCs;
 using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.Items.Tiles
 {
-    public class OmnistationSheet : ModTile
+    public class OmnistationPlusSheet : ModTile
     {
+        private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
+        private readonly Mod calamity = ModLoader.GetMod("CalamityMod");
+
         public virtual Color color => new Color(221, 85, 125);
 
         public override void SetDefaults()
@@ -20,7 +29,7 @@ namespace Fargowiltas.Items.Tiles
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Omnistation");
+            name.SetDefault("Omnistation+");
             AddMapEntry(color, name);
             disableSmartCursor = true;
         }
@@ -30,7 +39,11 @@ namespace Fargowiltas.Items.Tiles
             if (closer)
             {
                 if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
-                    Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
+                {
+                    Main.LocalPlayer.AddBuff(BuffType<Buffs.OmnistationPlus>(), 10);
+
+                    if (Fargowiltas.ModLoaded["CalamityMod"]) Calamity();
+                }
             }
         }
 
@@ -65,6 +78,8 @@ namespace Fargowiltas.Items.Tiles
                 Main.LocalPlayer.AddBuff(BuffID.Bewitched, 60 * 60 * 10);
             }
 
+            if (Fargowiltas.ModLoaded["ThoriumMod"]) Thorium(item, i, j);
+
             if (item.melee || item.ranged || item.magic || item.summon)
             {
                 Main.PlaySound(SoundID.Item44, i * 16 + 8, j * 16 + 8);
@@ -72,7 +87,7 @@ namespace Fargowiltas.Items.Tiles
 
             return true;
         }
-        
+
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
@@ -84,5 +99,51 @@ namespace Fargowiltas.Items.Tiles
             int height = tile.frameY == 36 ? 18 : 16;
             Main.spriteBatch.Draw(mod.GetTexture("Items/Tiles/OmnistationSheet_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
+
+        private void Thorium(Item item, int i, int j)
+        {
+            BardItem bardItem = item.modItem as BardItem;
+            ThoriumItem healerItem = item.modItem as ThoriumItem;
+
+            if (item.thrown)
+            {
+                Main.LocalPlayer.AddBuff(thorium.BuffType("NinjaBuff"), 60 * 60 * 10);
+            }
+
+            if (bardItem != null && bardItem.item.damage > 0)
+            {
+                Main.LocalPlayer.AddBuff(thorium.BuffType("ConductorBuff"), 60 * 60 * 10);
+            }
+
+            if (healerItem != null && healerItem.isHealer)
+            {
+                Main.LocalPlayer.AddBuff(thorium.BuffType("SpiritualConnection"), 60 * 60 * 10);
+            }
+
+            if (item.thrown || (bardItem != null && bardItem.item.damage > 0) || (healerItem != null && healerItem.isHealer))
+            {
+                Main.PlaySound(SoundID.Item44, i * 16 + 8, j * 16 + 8);
+            }
+        }
+
+        private void Calamity()
+        {
+            if (Main.netMode != 1)
+            {
+                for (int k = 0; k < 200; k++)
+                {
+                    if (Main.npc[k].active && !Main.npc[k].friendly)
+                    {
+                        Main.npc[k].buffImmune[calamity.BuffType("YellowDamageCandle")] = false;
+                        if (Main.npc[k].GetGlobalNPC<CalamityGlobalNPC>().DR >= 0.99f)
+                        {
+                            Main.npc[k].buffImmune[calamity.BuffType("YellowDamageCandle")] = true;
+                        }
+                        Main.npc[k].AddBuff(calamity.BuffType("YellowDamageCandle"), 0x14, false);
+                    }
+                }
+            }
+        }
+
     }
 }
