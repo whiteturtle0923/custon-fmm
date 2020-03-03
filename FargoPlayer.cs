@@ -17,10 +17,8 @@ namespace Fargowiltas
         private int oldSelected;
         private bool isReuse = false;
 
-        private int mirrorCD;
-        private int rodCD;
-        private bool hasMirror;
-        private bool hasRod;
+        internal int originalSelectedItem;
+        internal bool autoRevertSelectedItem = false;
 
         public override void SetupStartInventory(IList<Item> items, bool mediumCoreDeath)
         {
@@ -31,115 +29,19 @@ namespace Fargowiltas
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-
-            if (player.itemAnimation == 0 && player.itemTime == 0 && player.reuseDelay == 0)
+            if (Fargowiltas.CustomKey.JustPressed)
             {
-                // Saves what the item selected was then switches to the hotkey item and uses it
-                if (Fargowiltas.CustomKey.JustPressed)
-                {
-                    oldSelected = player.selectedItem;
-                    player.selectedItem = 40;
-                    player.controlUseItem = true;
-                    isReuse = player.HeldItem.autoReuse;
-                    player.HeldItem.autoReuse = true;
-                    player.releaseUseItem = true;
-                }
-
-                // Switches back to the old item (has some big ol jank)
-                if (Fargowiltas.CustomKey.JustReleased)
-                {
-                    player.controlUseItem = false;
-                    player.releaseUseItem = false;
-                    player.HeldItem.autoReuse = isReuse;
-                    player.selectedItem = oldSelected;
-                }
+                QuickUseItemAt(40);
             }
 
-            if (Fargowiltas.RodKey.JustPressed && hasRod)
+            if (Fargowiltas.RodKey.JustPressed)
             {
-                // .5 second cd
-                if (rodCD == 0 && Main.myPlayer == player.whoAmI)
-                {
-                    Vector2 targetPos;
-                    targetPos.X = Main.MouseWorld.X;
-                    targetPos.Y = (player.gravDir == -1f) ? Main.MouseWorld.Y : Main.MouseWorld.Y - player.height;
-
-                    targetPos.X -= player.width / 2;
-
-                    if (targetPos.X > 50f && targetPos.X < (Main.maxTilesX * 16 - 50) && targetPos.Y > 50f && targetPos.Y < (Main.maxTilesY * 16 - 50))
-                    {
-                        int tileX = (int)(targetPos.X / 16f);
-                        int tileY = (int)(targetPos.Y / 16f);
-                        if ((Main.tile[tileX, tileY].wall != WallID.LihzahrdBrickUnsafe || tileY <= Main.worldSurface || NPC.downedPlantBoss) && !Collision.SolidCollision(targetPos, player.width, player.height))
-                        {
-                            player.Teleport(targetPos, 1);
-                            NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, targetPos.X, targetPos.Y, 1);
-
-                            if (player.chaosState)
-                            {
-                                player.statLife -= player.statLifeMax2 / 7;
-
-                                PlayerDeathReason damageSource = PlayerDeathReason.ByOther(13);
-                                if (Main.rand.NextBool(2))
-                                {
-                                    damageSource = PlayerDeathReason.ByOther(player.Male ? 14 : 15);
-                                }
-
-                                if (player.statLife <= 0)
-                                {
-                                    player.KillMe(damageSource, 1d, 0);
-                                }
-
-                                player.lifeRegenCount = 0;
-                                player.lifeRegenTime = 0;
-                            }
-
-                            player.AddBuff(BuffID.ChaosState, 360);
-
-                            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
-                            {
-                                Fargos();
-                            }
-
-                            rodCD = 30;
-                        }
-                    }
-                }
+                AutoUseRod();
             }
 
-            if (Fargowiltas.HomeKey.JustPressed && hasMirror && mirrorCD == 0)
+            if (Fargowiltas.HomeKey.JustPressed)
             {
-                if (Main.rand.NextBool(2))
-                {
-                    Dust.NewDust(player.position, player.width, player.height, 15, 0f, 0f, 150, Color.White, 1.1f);
-                }
-
-                for (int i = 0; i < 70; ++i)
-                {
-                    Dust.NewDust(player.position, player.width, player.height, 15, (float)(player.velocity.X * 0.5), (float)(player.velocity.Y * 0.5), 150, Color.White, 1.5f);
-                }
-
-                player.grappling[0] = -1;
-                player.grapCount = 0;
-
-                for (int i = 0; i < Main.maxProjectiles; ++i)
-                {
-                    if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7)
-                    {
-                        Main.projectile[i].Kill();
-                    }
-                }
-
-                Main.PlaySound(SoundID.Item6, player.Center);
-
-                player.Spawn();
-
-                for (int i = 0; i < 70; ++i)
-                {
-                    Dust.NewDust(player.position, player.width, player.height, 15, 0.0f, 0.0f, 150, Color.White, 1.5f);
-                }
-
-                mirrorCD = 120;
+                AutoUseMirror();
             }
         }
 
@@ -151,40 +53,21 @@ namespace Fargowiltas
             }
         }
 
-        public override void ResetEffects()
+        public override void PostUpdate()
         {
-            hasMirror = false;
-            hasRod = false;
+            if (autoRevertSelectedItem)
+            {
+                if (player.itemTime == 0 && player.itemAnimation == 0)
+                {
+                    player.selectedItem = originalSelectedItem;
+                    autoRevertSelectedItem = false;
+                }
+            }
         }
 
         public override void PostUpdateEquips()
         {
             Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
-
-            if (!hasMirror)
-            {
-                hasMirror = player.HasAnyItem(ItemID.IceMirror, ItemID.MagicMirror, ItemID.CellPhone);
-
-                if (Fargowiltas.ModLoaded["FargowiltasSouls"])
-                {
-                    hasMirror = player.HasAnyItem(ItemID.IceMirror, ItemID.MagicMirror, ItemID.CellPhone, soulsMod.ItemType("WorldShaperSoul"), soulsMod.ItemType("DimensionSoul"), soulsMod.ItemType("EternitySoul"));
-                }
-            }
-
-            if (!hasRod)
-            {
-                hasRod = player.HasItem(ItemID.RodofDiscord);
-            }
-
-            if (mirrorCD != 0)
-            {
-                mirrorCD--;
-            }
-
-            if (rodCD != 0)
-            {
-                rodCD--;
-            }
 
             if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
             {
@@ -200,22 +83,78 @@ namespace Fargowiltas
             {
                 player.ZoneJungle = true;
             }
-
-
         }
 
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
         {
-            // Crate chance
-            if (Main.rand.Next(100) < (player.cratePotion ? 15 : 5))
+            int num15 = 150;
+            int num18 = num15 * 7 / power;
+            if (num18 < 4)
             {
-                if (liquidType == Tile.Liquid_Water && player.ZoneSnow)
+                num18 = 4;
+            }
+            bool flag5 = false;
+            if (Main.rand.Next(num18) == 0)
+            {
+                flag5 = true;
+            }
+            int num21 = 10;
+            if (player.cratePotion)
+            {
+                num21 += 10;
+            }
+            if (Main.rand.Next(100) < num21)
+            {
+                if (flag5 && liquidType == 0 && player.ZoneSnow)
                 {
                     caughtType = mod.ItemType("IceCrate");
                 }
-                else if (liquidType == Tile.Liquid_Lava && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
+                else if (flag5 && liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
                 {
                     caughtType = mod.ItemType("ShadowCrate");
+                }
+            }
+        }
+
+        public void AutoUseMirror()
+        {
+            for (int i = 0; i < player.inventory.Length; i++)
+            {
+                switch (player.inventory[i].type)
+                {
+                    case ItemID.RecallPotion:
+                    case ItemID.MagicMirror:
+                    case ItemID.IceMirror:
+                    case ItemID.CellPhone:
+                        QuickUseItemAt(i);
+                        break;
+                }
+            }
+        }
+
+        public void AutoUseRod()
+        {
+            for (int i = 0; i < player.inventory.Length; i++)
+            {
+                if (player.inventory[i].type == ItemID.RodofDiscord)
+                {
+                    QuickUseItemAt(i);
+                    break;
+                }
+            }
+        }
+
+        public void QuickUseItemAt(int index, bool use = true)
+        {
+            if (!autoRevertSelectedItem && player.selectedItem != index && player.inventory[index].type != 0)
+            {
+                originalSelectedItem = player.selectedItem;
+                autoRevertSelectedItem = true;
+                player.selectedItem = index;
+                player.controlUseItem = true;
+                if (use)
+                {
+                    player.ItemCheck(Main.myPlayer);
                 }
             }
         }

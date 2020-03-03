@@ -119,11 +119,6 @@ namespace Fargowiltas.NPCs
 
         public static bool GRealmDownedMantid => GRealm.MWorld.downedMatriarch;
 
-        // Pumpking
-        public static bool PumpkingDownedHorse => Pumpking.PumpkingWorld.downedPumpkingHorseman;
-
-        public static bool PumpkingDownedTerra => Pumpking.PumpkingWorld.downedTerraLord;
-
         // Joost
         public static bool JoostDownedCactuar => JoostMod.JoostWorld.downedJumboCactuar;
 
@@ -1425,11 +1420,6 @@ namespace Fargowiltas.NPCs
                     AddItem(ElementsDownedAque, "ElementsAwoken", "AqueousSummon", 600000, ref shop, ref nextSlot);
                 }
 
-                if (Fargowiltas.ModLoaded["Pumpking"])
-                {
-                    AddItem(PumpkingDownedHorse, "Pumpking", "PumpkingSoul", 600000, ref shop, ref nextSlot);
-                }
-
                 if (Fargowiltas.ModLoaded["SpiritMod"])
                 {
                     // Atlas
@@ -1536,11 +1526,6 @@ namespace Fargowiltas.NPCs
                 {
                     // Overseer
                     AddItem(SpiritDownedOverseer, "SpiritMod", "SpiritIdol", 1000000, ref shop, ref nextSlot);
-                }
-
-                if (Fargowiltas.ModLoaded["Pumpking"])
-                {
-                    AddItem(PumpkingDownedTerra, "Pumpking", "TerraCore", 1000000, ref shop, ref nextSlot);
                 }
 
                 if (Fargowiltas.ModLoaded["TrelamiumMod"])

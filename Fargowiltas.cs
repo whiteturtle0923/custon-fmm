@@ -46,9 +46,9 @@ namespace Fargowiltas
         {
             summonTracker = new MutantSummonTracker();
 
-            HomeKey = RegisterHotKey("Teleport Home", "P");
-            RodKey = RegisterHotKey("Rod of Discord", "E");
-            CustomKey = RegisterHotKey("Custom Hotkey (Bottom Left Inventory Slot)", "K");
+            HomeKey = RegisterHotKey("Quick Recall/Mirror", "P");
+            RodKey = RegisterHotKey("Quick Rod of Discord", "E");
+            CustomKey = RegisterHotKey("Quick Use Custom (Bottom Left Inventory Slot)", "K");
 
             mods = new string[]
             {
@@ -60,7 +60,6 @@ namespace Fargowiltas
                 "GRealm", // GRealm
                 "JoostMod", // JoostMod
                 "TrueEater", // Nightmares Unleashed
-                "Pumpking", // Pumpking's Mod
                 "SacredTools", // SacredTools / Shadows of Abaddon
                 "SpiritMod", // Spirit
                 "ThoriumMod", // Thorium
