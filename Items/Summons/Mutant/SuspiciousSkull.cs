@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Mutant
 {
     public class SuspiciousSkull : ModItem
     {

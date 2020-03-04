@@ -4,9 +4,13 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons
 {
-    public class MechWorm : ModItem
+    public class MechWorm : BaseSummon
     {
         public override string Texture => "Terraria/Item_556";
+
+        public override int Type => NPCID.TheDestroyer;
+
+        public override string NPCName => "The Destroyer";
 
         public override void SetStaticDefaults()
         {
@@ -14,29 +18,9 @@ namespace Fargowiltas.Items.Summons
             Tooltip.SetDefault("Summons the Destroyer");
         }
 
-        public override void SetDefaults()
-        {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 3;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = 4;
-            item.consumable = true;
-        }
-
         public override bool CanUseItem(Player player)
         {
             return Main.dayTime != true;
-        }
-
-        public override bool UseItem(Player player)
-        {
-            NPC.SpawnOnPlayer(player.whoAmI, NPCID.TheDestroyer);
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
         }
 
         public override void AddRecipes()

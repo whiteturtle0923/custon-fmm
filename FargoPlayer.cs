@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Fargowiltas.NPCs;
+using System;
 
 namespace Fargowiltas
 {
@@ -201,8 +202,28 @@ namespace Fargowiltas
                 player.ZoneJungle = true;
             }
 
+            if (Fargowiltas.SwarmActive)
+            {
+                player.buffImmune[BuffID.Horrified] = true;
+            }
+
+            for (int i = 0; i < player.bank.item.Length; i++)
+            {
+                Item item = player.bank.item[i];
+
+                if (Array.IndexOf(Informational, item.type) > -1)
+                {
+                    bool boolean = false;
+                    player.VanillaUpdateAccessory(player.whoAmI, item, true, ref boolean, ref boolean, ref boolean );
+                }
+            }
+
+
 
         }
+
+        int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.DPSMeter, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone};
+
 
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
         {

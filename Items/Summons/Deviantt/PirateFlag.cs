@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class PirateFlag : DevianttSummon
+    public class PirateFlag : BaseSummon
     {
-        public override int SummonType => NPCID.PirateCaptain;
+        public override int Type => NPCID.PirateCaptain;
+
+        public override string NPCName => "Pirate Captain";
 
         public override void SetStaticDefaults()
         {

@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class GrandCross : DevianttSummon
+    public class GrandCross : BaseSummon
     {
-        public override int SummonType => NPCID.Paladin;
+        public override int Type => NPCID.Paladin;
+
+        public override string NPCName => "Paladin";
 
         public override void SetStaticDefaults()
         {

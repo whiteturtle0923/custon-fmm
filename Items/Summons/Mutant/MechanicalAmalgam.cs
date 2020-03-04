@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Mutant
 {
     public class MechanicalAmalgam : ModItem
     {

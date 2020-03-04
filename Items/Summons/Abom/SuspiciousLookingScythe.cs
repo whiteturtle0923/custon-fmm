@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class SuspiciousLookingScythe : AbomSummon
+    public class SuspiciousLookingScythe : BaseSummon
     {
-        public override int SummonType => NPCID.Pumpking;
+        public override int Type => NPCID.Pumpking;
+
+        public override string NPCName => "Pumpking";
 
         public override void SetStaticDefaults()
         {

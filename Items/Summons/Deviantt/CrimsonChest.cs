@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class CrimsonChest : DevianttSummon
+    public class CrimsonChest : BaseSummon
     {
-        public override int SummonType => NPCID.BigMimicCrimson;
+        public override int Type => NPCID.BigMimicCrimson;
+
+        public override string NPCName => "Crimson Mimic";
 
         public override void SetStaticDefaults()
         {

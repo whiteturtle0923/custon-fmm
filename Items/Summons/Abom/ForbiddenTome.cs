@@ -2,11 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class ForbiddenTome : AbomSummon
+    public class ForbiddenTome : BaseSummon
     {
-        public override int SummonType => NPCID.DD2DarkMageT3;
+        public override int Type => NPCID.DD2DarkMageT3;
 
-        //public override string NPCName => "Dark Mage";
+        public override string NPCName => "Dark Mage";
 
         public override void SetStaticDefaults()
         {

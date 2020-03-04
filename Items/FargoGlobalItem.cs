@@ -27,10 +27,13 @@ namespace Fargowiltas.Items
         {
             int[] yoyos = { mod.ItemType("CascadeThrown"), mod.ItemType("ChikThrown"), mod.ItemType("Code1Thrown"), mod.ItemType("Code2Thrown"), mod.ItemType("FormatCThrown"), mod.ItemType("GradientThrown"), mod.ItemType("KrakenThrown"), mod.ItemType("RallyThrown"), mod.ItemType("TerrarianThrown"), mod.ItemType("ValorThrown"), mod.ItemType("YeletsThrown") };
 
-            if (Array.IndexOf(Thrown, item.type) > -1 || Array.IndexOf(Summon, item.type) > -1)
+            if (GetInstance<FargoConfig>().WeaponConversions)
             {
-                TooltipLine line = new TooltipLine(mod, "help", "Right click to convert");
-                tooltips.Add(line);
+                if (Array.IndexOf(Thrown, item.type) > -1 || Array.IndexOf(Summon, item.type) > -1)
+                {
+                    TooltipLine line = new TooltipLine(mod, "help", "Right click to convert");
+                    tooltips.Add(line);
+                }
             }
 
             if (Array.IndexOf(yoyos, item.type) > -1)
@@ -103,16 +106,19 @@ namespace Fargowiltas.Items
 
         public override void SetDefaults(Item item)
         {
-            if (item.maxStack > 10 && (item.maxStack != 100 || ModLoader.GetMod("TerrariaOverhaul") != null) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
+            if (GetInstance<FargoConfig>().IncreaseMaxStack)
             {
-                item.maxStack = 9999;
-            }
+                if (item.maxStack > 10 && (item.maxStack != 100 || ModLoader.GetMod("TerrariaOverhaul") != null) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
+                {
+                    item.maxStack = 9999;
+                }
 
-            if (item.type == ItemID.PirateMap || item.type == ItemID.SnowGlobe)
-            {
-                item.maxStack = 9999;
+                if (item.type == ItemID.PirateMap || item.type == ItemID.SnowGlobe)
+                {
+                    item.maxStack = 9999;
+                }
             }
-
+            
             if (item.type == ItemID.GoodieBag || item.type == ItemID.Present)
             {
                 item.useAnimation = 30;
@@ -162,7 +168,7 @@ namespace Fargowiltas.Items
                     break;
 
                 case ItemID.GoldenCrate:
-                    if (Main.rand.NextBool(5))
+                    if (Main.rand.NextBool(10))
                     {
                         int[] drops = { ItemID.BandofRegeneration, ItemID.MagicMirror, ItemID.CloudinaBottle, ItemID.EnchantedBoomerang, ItemID.ShoeSpikes, ItemID.FlareGun, ItemID.HermesBoots, ItemID.LavaCharm, ItemID.SandstorminaBottle, ItemID.FlyingCarpet };
                         player.QuickSpawnItem(Main.rand.Next(drops));
@@ -182,7 +188,12 @@ namespace Fargowiltas.Items
 
         public override bool CanRightClick(Item item)
         {
-            return Array.IndexOf(Thrown, item.type) > -1 || Array.IndexOf(Summon, item.type) > -1;
+            if (GetInstance<FargoConfig>().WeaponConversions)
+            {
+                return Array.IndexOf(Thrown, item.type) > -1 || Array.IndexOf(Summon, item.type) > -1;
+            }
+
+            return base.CanRightClick(item);
         }
 
         public override void RightClick(Item item, Player player)
@@ -229,7 +240,7 @@ namespace Fargowiltas.Items
 
         public override bool CanUseItem(Item item, Player player)
         {
-            if (item.type == ItemID.SiltBlock || item.type == ItemID.SlushBlock || item.type == ItemID.DesertFossil)
+            if (GetInstance<FargoConfig>().ExtractSpeed && (item.type == ItemID.SiltBlock || item.type == ItemID.SlushBlock || item.type == ItemID.DesertFossil))
             {
                 item.useTime = 2;
                 item.useAnimation = 3;
@@ -248,14 +259,14 @@ namespace Fargowiltas.Items
 
         public override bool ConsumeAmmo(Item item, Player player)
         {
-            if (GetInstance<FargoConfig>().UnlimitedAmmo && item.ammo != 0 && item.stack >= 3996)
+            if (GetInstance<FargoConfig>().UnlimitedAmmo && Main.hardMode && item.ammo != 0 && item.stack >= 3996)
                 return false;
             return true;
         }
 
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (GetInstance<FargoConfig>().UnlimitedConsumableWeapons && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
+            if (GetInstance<FargoConfig>().UnlimitedConsumableWeapons && Main.hardMode && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
                 return false;
             return true;
         }

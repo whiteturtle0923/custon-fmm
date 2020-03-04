@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class HallowChest : DevianttSummon
+    public class HallowChest : BaseSummon
     {
-        public override int SummonType => NPCID.BigMimicHallow;
+        public override int Type => NPCID.BigMimicHallow;
+
+        public override string NPCName => "Hallowed Mimic";
 
         public override void SetStaticDefaults()
         {

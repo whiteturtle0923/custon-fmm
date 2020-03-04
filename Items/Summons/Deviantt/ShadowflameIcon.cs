@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class ShadowflameIcon : DevianttSummon
+    public class ShadowflameIcon : BaseSummon
     {
-        public override int SummonType => NPCID.GoblinSummoner;
+        public override int Type => NPCID.GoblinSummoner;
+
+        public override string NPCName => "Goblin Summoner";
 
         public override void SetStaticDefaults()
         {

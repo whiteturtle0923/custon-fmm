@@ -33,16 +33,19 @@ namespace Fargowiltas.NPCs
 
         public override void SetDefaults(NPC npc)
         {
-            if (npc.townNPC && npc.type < NPCID.Count && npc.type != NPCID.OldMan)
+            if (GetInstance<FargoConfig>().CatchNPCs)
             {
-                Main.npcCatchable[npc.type] = true;
-                npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty));
-            }
+                if (npc.townNPC && npc.type < NPCID.Count && npc.type != NPCID.OldMan)
+                {
+                    Main.npcCatchable[npc.type] = true;
+                    npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty));
+                }
 
-            if (npc.type == NPCID.SkeletonMerchant)
-            {
-                Main.npcCatchable[npc.type] = true;
-                npc.catchItem = (short)mod.ItemType("SkeletonMerchant");
+                if (npc.type == NPCID.SkeletonMerchant)
+                {
+                    Main.npcCatchable[npc.type] = true;
+                    npc.catchItem = (short)mod.ItemType("SkeletonMerchant");
+                }
             }
         }
 
@@ -457,7 +460,7 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.CultistBoss:
-                        Swarm(npc, NPCID.CultistBoss, -1, ItemID.CultistBossBag, string.Empty);
+                        Swarm(npc, NPCID.CultistBoss, -1, ItemID.CultistBossBag, "EnergizerCultist");
                         break;
 
                     case NPCID.MoonLordCore:

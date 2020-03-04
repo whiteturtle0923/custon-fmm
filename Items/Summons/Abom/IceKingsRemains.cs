@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class IceKingsRemains : AbomSummon
+    public class IceKingsRemains : BaseSummon
     {
-        public override int SummonType => NPCID.IceQueen;
+        public override int Type => NPCID.IceQueen;
+
+        public override string NPCName => "Ice Queen";
 
         public override void SetStaticDefaults()
         {

@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class MothronEgg : DevianttSummon
+    public class MothronEgg : BaseSummon
     {
-        public override int SummonType => NPCID.Mothron;
+        public override int Type => NPCID.Mothron;
+
+        public override string NPCName => "Mothron";
 
         public override void SetStaticDefaults()
         {

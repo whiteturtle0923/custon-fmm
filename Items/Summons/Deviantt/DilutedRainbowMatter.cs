@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class DilutedRainbowMatter : DevianttSummon
+    public class DilutedRainbowMatter : BaseSummon
     {
-        public override int SummonType => NPCID.RainbowSlime;
+        public override int Type => NPCID.RainbowSlime;
+
+        public override string NPCName => "Rainbow Slime";
 
         public override void SetStaticDefaults()
         {

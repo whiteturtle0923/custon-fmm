@@ -6,6 +6,16 @@ NEW UPDATE - v 2.0
 -Added Zealot's Madness and Insanity Energizer
 
 
+-Added several more crate recipes
+-Reduced crates needed for wooden crate recipes
+-Piranha gun, summon variant now has a mana cost
+-informational accessories now work from piggy bank
+-Added toggles for banner recipes, max stack icrease, catching town npcs, extractinator speed, weapon conversions
+-Added images for all toggles 
+-made almost all summons inherit from the same base class
+-unlims only work in hm
+
+-Added Dryads blessing to omnistation and added omnistation plus
 -Fixed some AA summons not appearing
 -Increased Slime Staff chance from King Slime's bag to 4% from 2%
 -Added soe recipes using boss trophies
