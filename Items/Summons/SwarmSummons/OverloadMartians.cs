@@ -8,7 +8,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 {
     public class OverloadMartians : ModItem
     {
-        public override string Texture => "Fargowiltas/Items/Summons/NewSummons/RunawayProbe";
+        public override string Texture => "Fargowiltas/Items/Summons/Mutant/RunawayProbe";
 
         public override void SetStaticDefaults()
         {

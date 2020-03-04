@@ -11,7 +11,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
     {
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
 
-        public override string Texture => "Fargowiltas/Items/Summons/NewSummons/AbyssionSummon";
+        public override string Texture => "Fargowiltas/Items/Summons/Mutant/AbyssionSummon";
 
         public override void SetStaticDefaults()
         {
