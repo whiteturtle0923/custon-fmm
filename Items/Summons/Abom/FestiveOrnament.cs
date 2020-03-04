@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class FestiveOrnament : AbomSummon
+    public class FestiveOrnament : BaseSummon
     {
-        public override int SummonType => NPCID.Everscream;
+        public override int Type => NPCID.Everscream;
+
+        public override string NPCName => "Everscream";
 
         public override void SetStaticDefaults()
         {

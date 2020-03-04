@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class ClownLicense : DevianttSummon
+    public class ClownLicense : BaseSummon
     {
-        public override int SummonType => NPCID.Clown;
+        public override int Type => NPCID.Clown;
+
+        public override string NPCName => "Clown";
 
         public override void SetStaticDefaults()
         {

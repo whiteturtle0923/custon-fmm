@@ -1,18 +1,18 @@
-using Fargowiltas.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Mutant
 {
-    public class MutantVoodoo : ModItem
+    public class DeathBringerFairy : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mutant Voodoo Doll");
-            Tooltip.SetDefault("Summons ALL the bosses");
+            DisplayName.SetDefault("Death Bringer Fairy");
+            Tooltip.SetDefault("Summons all pre-hardmode bosses" +
+                               "\nCertain bosses will only spawn if you're in their specific biome");
         }
 
         public override void SetDefaults()
@@ -21,7 +21,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
             item.height = 20;
             item.maxStack = 20;
             item.value = Item.sellPrice(0, 0, 2);
-            item.rare = ItemRarityID.Red;
+            item.rare = ItemRarityID.Green;
             item.useAnimation = 30;
             item.useTime = 30;
             item.useStyle = ItemUseStyleID.HoldingUp;
@@ -37,7 +37,7 @@ namespace Fargowiltas.Items.Summons.NewSummons
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
-            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, 1, 3);
+            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, 1, 2);
 
             if (Main.netMode == NetmodeID.Server)
             {

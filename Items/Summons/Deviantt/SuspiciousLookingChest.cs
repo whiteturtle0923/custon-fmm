@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class SuspiciousLookingChest : DevianttSummon
+    public class SuspiciousLookingChest : BaseSummon
     {
-        public override int SummonType => NPCID.Mimic;
+        public override int Type => NPCID.Mimic;
+
+        public override string NPCName => "Mimic";
 
         public override void SetStaticDefaults()
         {

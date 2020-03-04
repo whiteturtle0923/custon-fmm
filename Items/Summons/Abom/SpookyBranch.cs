@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class SpookyBranch : AbomSummon
+    public class SpookyBranch : BaseSummon
     {
-        public override int SummonType => NPCID.MourningWood;
+        public override int Type => NPCID.MourningWood;
+
+        public override string NPCName => "Mourning Wood";
 
         public override void SetStaticDefaults()
         {

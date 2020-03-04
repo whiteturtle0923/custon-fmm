@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class HeartChocolate : DevianttSummon
+    public class HeartChocolate : BaseSummon
     {
-        public override int SummonType => NPCID.Nymph;
+        public override int Type => NPCID.Nymph;
+
+        public override string NPCName => "Nymph";
 
         public override void SetStaticDefaults()
         {

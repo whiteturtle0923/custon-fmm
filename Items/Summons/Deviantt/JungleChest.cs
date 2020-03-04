@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class JungleChest : DevianttSummon
+    public class JungleChest : BaseSummon
     {
-        public override int SummonType => NPCID.BigMimicJungle;
+        public override int Type => NPCID.BigMimicJungle;
+
+        public override string NPCName => "Jungle Mimic";
 
         public override void SetStaticDefaults()
         {

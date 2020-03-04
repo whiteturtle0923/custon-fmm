@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class MothLamp : DevianttSummon
+    public class MothLamp : BaseSummon
     {
-        public override int SummonType => NPCID.Moth;
+        public override int Type => NPCID.Moth;
+
+        public override string NPCName => "Moth";
 
         public override void SetStaticDefaults()
         {

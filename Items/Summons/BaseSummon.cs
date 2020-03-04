@@ -1,13 +1,16 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Summons.Deviantt
+namespace Fargowiltas.Items.Summons
 {
-    public abstract class DevianttSummon : ModItem
+    public abstract class BaseSummon : ModItem
     {
-        public abstract int SummonType { get; }
+        public abstract int Type { get; }
+
+        public abstract string NPCName { get; }
 
         public override void SetDefaults()
         {
@@ -29,12 +32,21 @@ namespace Fargowiltas.Items.Summons.Deviantt
 
             if (Main.netMode != 1)
             {
-                Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, SummonType);
+                Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, Type);
+            }
+
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral($"{NPCName} has awoken!"), new Color(175, 75, 255));
+            }
+            else
+            {
+                Main.NewText($"{NPCName} has awoken!", new Color(175, 75, 255));
             }
 
             Main.PlaySound(SoundID.Roar, player.position, 0);
 
-            return true;
+            return false;
         }
     }
 }

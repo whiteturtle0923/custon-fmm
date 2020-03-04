@@ -4,34 +4,18 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons
 {
-    public class WormyFood : ModItem
+    public class WormyFood : BaseSummon
     {
         public override string Texture => "Terraria/Item_70";
+
+        public override int Type => NPCID.EaterofWorldsHead;
+
+        public override string NPCName => "Eater of Worlds";
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wormy Food");
             Tooltip.SetDefault("Summons the Eater of Worlds");
-        }
-
-        public override void SetDefaults()
-        {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 20;
-            item.value = 1000;
-            item.rare = 0;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = 4;
-            item.consumable = true;
-        }
-
-        public override bool UseItem(Player player)
-        {
-            NPC.SpawnOnPlayer(player.whoAmI, NPCID.EaterofWorldsHead);
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
         }
 
         public override void AddRecipes()

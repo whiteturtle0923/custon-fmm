@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class AthenianIdol : DevianttSummon
+    public class AthenianIdol : BaseSummon
     {
-        public override int SummonType => NPCID.Medusa;
+        public override int Type => NPCID.Medusa;
+
+        public override string NPCName => "Medusa";
 
         public override void SetStaticDefaults()
         {
