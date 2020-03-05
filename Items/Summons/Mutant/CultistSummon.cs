@@ -1,6 +1,6 @@
 using Terraria.ID;
 
-namespace Fargowiltas.Items.Summons.NewSummons
+namespace Fargowiltas.Items.Summons.Mutant
 {
     public class CultistSummon : BaseSummon
     {

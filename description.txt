@@ -1,4 +1,4 @@
-NEW UPDATE - v 2.0
+NEW UPDATE - v 2.0.0
 -Added Mutant call support
 -refactored several swarm amounts, mostly making less bosses appear at once
 -Destroyer swarm now spawns destroyers with 10 segments each
@@ -14,6 +14,7 @@ NEW UPDATE - v 2.0
 -Added images for all toggles 
 -made almost all summons inherit from the same base class
 -unlims only work in hm
+-added lore to deviantt
 
 -Added Dryads blessing to omnistation and added omnistation plus
 -Fixed some AA summons not appearing
