@@ -745,7 +745,7 @@ namespace Fargowiltas.NPCs
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //int tracker = Fargowiltas.summonTracker.SortedSummons.Capacity;
-            Main.NewText(Fargowiltas.summonTracker.SortedSummons[0].itemName);
+            //Main.NewText(Fargowiltas.summonTracker.SortedSummons[0].itemName);
 
             AddItem(!Main.expertMode, "Fargowiltas", "ExpertToggle", 1000000, ref shop, ref nextSlot);
             AddItem(Main.expertMode, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
