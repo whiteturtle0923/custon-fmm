@@ -5,7 +5,9 @@ NEW UPDATE - v 2.0.0
 -Added Fleshiest Doll and Wally Energizer
 -Added Zealot's Madness and Insanity Energizer
 
-
+-Witch Doctor's fountains now set the biome when active
+-added crates are now the same rarity as vanillas
+-rod and teleport home hotkeys now work better and actually use the item instead of mnually doing things
 -Added several more crate recipes
 -Reduced crates needed for wooden crate recipes
 -Piranha gun, summon variant now has a mana cost
