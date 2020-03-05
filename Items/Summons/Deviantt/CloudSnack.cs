@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class CloudSnack : DevianttSummon
+    public class CloudSnack : BaseSummon
     {
-        public override int SummonType => NPCID.WyvernHead;
+        public override int Type => NPCID.WyvernHead;
+
+        public override string NPCName => "Wyvern";
 
         public override void SetStaticDefaults()
         {

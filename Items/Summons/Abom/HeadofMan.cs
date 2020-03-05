@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class HeadofMan : AbomSummon
+    public class HeadofMan : BaseSummon
     {
-        public override int SummonType => NPCID.HeadlessHorseman;
+        public override int Type => NPCID.HeadlessHorseman;
+
+        public override string NPCName => "Headless Horseman";
 
         public override void SetStaticDefaults()
         {

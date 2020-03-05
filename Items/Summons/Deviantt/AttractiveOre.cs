@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class AttractiveOre : DevianttSummon
+    public class AttractiveOre : BaseSummon
     {
-        public override int SummonType => NPCID.UndeadMiner;
+        public override int Type => NPCID.UndeadMiner;
+
+        public override string NPCName => "Undead Miner";
 
         public override void SetStaticDefaults()
         {

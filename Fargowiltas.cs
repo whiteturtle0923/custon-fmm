@@ -15,6 +15,8 @@ namespace Fargowiltas
 {
     public class Fargowiltas : Mod
     {
+        internal static MutantSummonTracker summonTracker;
+
         // Hotkeys
         internal static ModHotKey CustomKey;
         internal static ModHotKey HomeKey;
@@ -42,9 +44,11 @@ namespace Fargowiltas
 
         public override void Load()
         {
-            HomeKey = RegisterHotKey("Teleport Home", "P");
-            RodKey = RegisterHotKey("Rod of Discord", "E");
-            CustomKey = RegisterHotKey("Custom Hotkey (Bottom Left Inventory Slot)", "K");
+            summonTracker = new MutantSummonTracker();
+
+            HomeKey = RegisterHotKey("Quick Recall/Mirror", "Home");
+            RodKey = RegisterHotKey("Quick Rod of Discord", "E");
+            CustomKey = RegisterHotKey("Quick Use Custom (Bottom Left Inventory Slot)", "K");
 
             mods = new string[]
             {
@@ -56,7 +60,6 @@ namespace Fargowiltas
                 "GRealm", // GRealm
                 "JoostMod", // JoostMod
                 "TrueEater", // Nightmares Unleashed
-                "Pumpking", // Pumpking's Mod
                 "SacredTools", // SacredTools / Shadows of Abaddon
                 "SpiritMod", // Spirit
                 "ThoriumMod", // Thorium
@@ -89,6 +92,8 @@ namespace Fargowiltas
 
         public override void Unload()
         {
+            summonTracker = null;
+
             HomeKey = null;
             RodKey = null;
             CustomKey = null;
@@ -113,25 +118,51 @@ namespace Fargowiltas
             Mod censusMod = ModLoader.GetMod("Census");
             if (censusMod != null)
             {
-                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Use the Mutant's Gift");
-                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any Boss or Miniboss");
-                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), "Hold a Wooden Token in your Inventory");
-                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Defeat any Event");
+                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Defeat any rare enemy or... embrace suffering");
+                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
+                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Have a Wooden Token ([i:{ModContent.ItemType<Items.Tiles.WoodenToken>()}]) in your inventory");
+                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
             }
         }
 
         public override object Call(params object[] args)
         {
-            string code = args[0].ToString();
+            try
+            {
+                string code = args[0].ToString();
 
-            if (code == "SwarmActive")
-                return SwarmActive;
+                switch (code)
+                {
+                    case "SwarmActive":
+                        return SwarmActive;
+                    case "AddSummon":
+
+                        if (summonTracker.SummonsFinalized)
+                            throw new Exception($"Call Error: Summons must be added before AddRecipes");
+
+                        summonTracker.AddSummon(
+                            Convert.ToSingle(args[1]), 
+                            args[2] as string,
+                            args[3] as string,
+                            args[4] as Func<bool>,
+                            Convert.ToInt32(args[5])
+                        );
+                        break;
+                }
+
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Call Error: " + e.StackTrace + e.Message);
+            }
 
             return base.Call(args);
         }
 
         public override void AddRecipes()
         {
+            summonTracker.FinalizeSummonData();
+
             FargoRecipes.AddRecipes();
         }
 
@@ -174,36 +205,8 @@ namespace Fargowiltas
 
                     break;
 
-                // Spawn Deviantt items
-                case 4:
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        Player player = Main.player[reader.ReadByte()];
-                        DropDevianttsGift(player);
-                    }
-
-                    break;
-
                 default:
                     break;
-            }
-        }
-
-        public static void DropDevianttsGift(Player player)
-        {
-            Item.NewItem(player.Center, ItemID.SilverPickaxe);
-            Item.NewItem(player.Center, ItemID.SilverAxe);
-            Item.NewItem(player.Center, ItemID.BugNet);
-            Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
-            Item.NewItem(player.Center, ModContent.ItemType<DevianttsSundial>());
-            Item.NewItem(player.Center, ModContent.ItemType<AutoHouse>(), 3);
-            Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
-
-            if (ModLoader.GetMod("MagicStorage") != null)
-            {
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageHeart"));
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("CraftingAccess"));
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageUnitTerra"));
             }
         }
 

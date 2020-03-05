@@ -20,6 +20,7 @@ namespace Fargowiltas.Items.Weapons.Summon
             item.shoot = ProjectileID.MechanicalPiranha;
             item.ranged = false;
             item.summon = true;
+            item.mana = 20;
         }
 
         public override bool CanRightClick()

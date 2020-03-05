@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class HolyGrail : DevianttSummon
+    public class HolyGrail : BaseSummon
     {
-        public override int SummonType => NPCID.Tim;
+        public override int Type => NPCID.Tim;
+
+        public override string NPCName => "Tim";
 
         public override void SetStaticDefaults()
         {

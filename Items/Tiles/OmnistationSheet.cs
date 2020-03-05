@@ -27,8 +27,11 @@ namespace Fargowiltas.Items.Tiles
 
         public override void NearbyEffects(int i, int j, bool closer)
         {
-            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
-                Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
+            if (closer)
+            {
+                if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
+                    Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
+            }
         }
 
         public override void MouseOver(int i, int j)

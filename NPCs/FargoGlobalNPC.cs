@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
@@ -13,6 +14,9 @@ namespace Fargowiltas.NPCs
     public class FargoGlobalNPC : GlobalNPC
     {
         internal static int[] Bosses = { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, NPCID.MartianSaucerCore, NPCID.Pumpking, NPCID.IceQueen, NPCID.DD2Betsy, NPCID.DD2OgreT3, NPCID.IceGolem, NPCID.SandElemental, NPCID.Paladin, NPCID.Everscream, NPCID.MourningWood, NPCID.SantaNK1, NPCID.HeadlessHorseman, NPCID.PirateShip };
+
+        public static int LastWoFIndex = -1;
+        public static int WoFDirection = 0;
 
         internal bool PillarSpawn = true;
         internal bool SwarmActive;
@@ -29,16 +33,19 @@ namespace Fargowiltas.NPCs
 
         public override void SetDefaults(NPC npc)
         {
-            if (npc.townNPC && npc.type < NPCID.Count && npc.type != NPCID.OldMan)
+            if (GetInstance<FargoConfig>().CatchNPCs)
             {
-                Main.npcCatchable[npc.type] = true;
-                npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty));
-            }
+                if (npc.townNPC && npc.type < NPCID.Count && npc.type != NPCID.OldMan)
+                {
+                    Main.npcCatchable[npc.type] = true;
+                    npc.catchItem = npc.type == NPCID.DD2Bartender ? (short)mod.ItemType("Tavernkeep") : (short)mod.ItemType(NPCID.GetUniqueKey(npc.type).Replace("Terraria ", string.Empty));
+                }
 
-            if (npc.type == NPCID.SkeletonMerchant)
-            {
-                Main.npcCatchable[npc.type] = true;
-                npc.catchItem = (short)mod.ItemType("SkeletonMerchant");
+                if (npc.type == NPCID.SkeletonMerchant)
+                {
+                    Main.npcCatchable[npc.type] = true;
+                    npc.catchItem = (short)mod.ItemType("SkeletonMerchant");
+                }
             }
         }
 
@@ -106,9 +113,11 @@ namespace Fargowiltas.NPCs
             {
                 case NPCID.Clothier:
                     shop.item[nextSlot].SetDefaults(ItemID.PharaohsMask);
+                    shop.item[nextSlot].value = 10000;
                     nextSlot++;
 
                     shop.item[nextSlot].SetDefaults(ItemID.PharaohsRobe);
+                    shop.item[nextSlot].value = 10000;
                     nextSlot++;
 
                     if (player.anglerQuestsFinished >= 10)
@@ -183,16 +192,72 @@ namespace Fargowiltas.NPCs
                     break;
 
                 case NPCID.Painter:
-                    if (player.ZoneDungeon)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.TheGuardiansGaze);
-                        nextSlot++;
-                    }
 
-                    if (player.ZoneUnderworldHeight)
+                    if (player.ZoneRockLayerHeight)
                     {
-                        shop.item[nextSlot].SetDefaults(ItemID.DemonsEye);
-                        nextSlot++;
+                        nextSlot = 19;
+
+                        shop.item[nextSlot++].SetDefaults(ItemID.AmericanExplosive);
+                        shop.item[nextSlot++].SetDefaults(ItemID.CrownoDevoursHisLunch);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Discover);
+                        shop.item[nextSlot++].SetDefaults(ItemID.FatherofSomeone);
+                        shop.item[nextSlot++].SetDefaults(ItemID.FindingGold);
+                        shop.item[nextSlot++].SetDefaults(ItemID.GloriousNight);
+                        shop.item[nextSlot++].SetDefaults(ItemID.GuidePicasso);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Land);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheMerchant);
+                        shop.item[nextSlot++].SetDefaults(ItemID.NurseLisa);
+                        shop.item[nextSlot++].SetDefaults(ItemID.OldMiner);
+                        shop.item[nextSlot++].SetDefaults(ItemID.RareEnchantment);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Sunflowers);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TerrarianGothic);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Waldo);
+                    }
+                    else if (player.ZoneDungeon)
+                    {
+                        nextSlot = 15;
+
+                        shop.item[nextSlot++].SetDefaults(ItemID.BloodMoonRising);
+                        shop.item[nextSlot++].SetDefaults(ItemID.BoneWarp);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheCreationoftheGuide);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheCursedMan);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheDestroyer);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Dryadisque);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheEyeSeestheEnd);
+                        shop.item[nextSlot++].SetDefaults(ItemID.FacingtheCerebralMastermind);
+                        shop.item[nextSlot++].SetDefaults(ItemID.GloryoftheFire);
+                        shop.item[nextSlot++].SetDefaults(ItemID.GoblinsPlayingPoker);
+                        shop.item[nextSlot++].SetDefaults(ItemID.GreatWave);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheGuardiansGaze);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheHangedMan);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Impact);
+                        shop.item[nextSlot++].SetDefaults(ItemID.ThePersistencyofEyes);
+                        shop.item[nextSlot++].SetDefaults(ItemID.PoweredbyBirds);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheScreamer);
+                        shop.item[nextSlot++].SetDefaults(ItemID.SkellingtonJSkellingsworth);
+                        shop.item[nextSlot++].SetDefaults(ItemID.SparkyPainting);
+                        shop.item[nextSlot++].SetDefaults(ItemID.SomethingEvilisWatchingYou);
+                        shop.item[nextSlot++].SetDefaults(ItemID.StarryNight);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TrioSuperHeroes);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheTwinsHaveAwoken);
+                        shop.item[nextSlot++].SetDefaults(ItemID.UnicornCrossingtheHallows);
+                    }
+                    else if (player.ZoneUnderworldHeight)
+                    {
+                        nextSlot = 19;
+
+                        shop.item[nextSlot++].SetDefaults(ItemID.DarkSoulReaper);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Darkness);
+                        shop.item[nextSlot++].SetDefaults(ItemID.DemonsEye);
+                        shop.item[nextSlot++].SetDefaults(ItemID.FlowingMagma);
+                        shop.item[nextSlot++].SetDefaults(ItemID.HandEarth);
+                        shop.item[nextSlot++].SetDefaults(ItemID.ImpFace);
+                        shop.item[nextSlot++].SetDefaults(ItemID.LakeofFire);
+                        shop.item[nextSlot++].SetDefaults(ItemID.LivingGore);
+                        shop.item[nextSlot++].SetDefaults(ItemID.OminousPresence);
+                        shop.item[nextSlot++].SetDefaults(ItemID.ShiningMoon);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Skelehead);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TrappedGhost);
                     }
 
                     break;
@@ -362,9 +427,13 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.SkeletronHead, -1, ItemID.SkeletronBossBag, "EnergizerSkele");
                         break;
 
-                    case NPCID.TheDestroyer:
-                        Swarm(npc, NPCID.TheDestroyer, NPCID.TheDestroyerTail, ItemID.DestroyerBossBag, "EnergizerDestroy");
+                    case NPCID.WallofFlesh:
+                        Swarm(npc, NPCID.WallofFlesh, NPCID.TheHungry, ItemID.WallOfFleshBossBag, "EnergizerWall");
                         break;
+
+                    /*case mod.NPCType(""):
+                        Swarm(npc, mod.NPCType("Destroyer"), mod.NPCType("DestroyerTail"), ItemID.DestroyerBossBag, "EnergizerDestroy");
+                        break;*/
 
                     case NPCID.Retinazer:
                         Swarm(npc, NPCID.Retinazer, -1, ItemID.TwinsBossBag, "EnergizerTwins");
@@ -391,7 +460,7 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.CultistBoss:
-                        Swarm(npc, NPCID.CultistBoss, -1, ItemID.CultistBossBag, string.Empty);
+                        Swarm(npc, NPCID.CultistBoss, -1, ItemID.CultistBossBag, "EnergizerCultist");
                         break;
 
                     case NPCID.MoonLordCore:
@@ -438,6 +507,14 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.DungeonGuardian, -1, ItemID.BoneKey, "EnergizerDG");
                         break;
                 }
+
+                if (npc.type == mod.NPCType("Destroyer"))
+                {
+                    Swarm(npc, mod.NPCType("Destroyer"), mod.NPCType("DestroyerTail"), ItemID.DestroyerBossBag, "EnergizerDestroy");
+                }
+
+
+
 
                 if (Fargowiltas.ModLoaded["ThoriumMod"])
                 {
@@ -962,13 +1039,31 @@ namespace Fargowiltas.NPCs
 
             if (SwarmActive)
             {
-                spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), boss);
-
-                if (spawn < Main.maxNPCs)
+                if (npc.type == NPCID.WallofFlesh)
                 {
+                    NPC currentWoF = Main.npc[LastWoFIndex];
+                    int startingPos = (int)currentWoF.position.X;
+                    spawn = NPC.NewNPC(startingPos + (400 * WoFDirection), (int)currentWoF.position.Y, NPCID.WallofFlesh, 0);
                     Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
-                    NetMessage.SendData(MessageID.SyncNPC, number: boss);
+
+                    LastWoFIndex = spawn;
                 }
+                else
+                {
+                    spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), boss);
+
+                    if (spawn < Main.maxNPCs)
+                    {
+                        Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
+                        NetMessage.SendData(MessageID.SyncNPC, number: boss);
+                    }
+                }
+
+
+
+                
+
+                
             }
             else
             {
@@ -1113,6 +1208,8 @@ namespace Fargowiltas.NPCs
                 }
 
                 Fargowiltas.SwarmActive = false;
+                LastWoFIndex = -1;
+                WoFDirection = 0;
             }
 
             // Make sure theres enough left to beat it
@@ -1169,6 +1266,33 @@ namespace Fargowiltas.NPCs
                     break;
                 }
             }
+        }
+
+        public static void SpawnWalls(Player player)
+        {
+            int startingPos;
+
+            if (LastWoFIndex == -1)
+            {
+                startingPos = (int)player.position.X;
+            }
+            else
+            {
+                startingPos = (int)Main.npc[LastWoFIndex].position.X;
+            }
+
+            Vector2 pos = player.position;
+
+            if (WoFDirection == 0)
+            {
+                //1 is to the right, -1 is left
+                WoFDirection = ((player.position.X / 16) > (Main.maxTilesX / 2)) ? 1 : -1;
+            }
+
+            int wof = NPC.NewNPC(startingPos + (400 * WoFDirection), (int)pos.Y, NPCID.WallofFlesh, 0);
+            Main.npc[wof].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
+
+            LastWoFIndex = wof;
         }
 
         public static bool BossIsAlive(ref int bossID, int bossType)

@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class Eggplant : DevianttSummon
+    public class Eggplant : BaseSummon
     {
-        public override int SummonType => NPCID.DoctorBones;
+        public override int Type => NPCID.DoctorBones;
+
+        public override string NPCName => "Doctor Bones";
 
         public override void SetStaticDefaults()
         {

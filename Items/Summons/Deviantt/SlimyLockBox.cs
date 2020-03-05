@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class SlimyLockBox : DevianttSummon
+    public class SlimyLockBox : BaseSummon
     {
-        public override int SummonType => NPCID.DungeonSlime;
+        public override int Type => NPCID.DungeonSlime;
+
+        public override string NPCName => "Dungeon Slime";
 
         public override void SetStaticDefaults()
         {

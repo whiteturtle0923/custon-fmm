@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class MartianMemoryStick : AbomSummon
+    public class MartianMemoryStick : BaseSummon
     {
-        public override int SummonType => NPCID.MartianSaucer;
+        public override int Type => NPCID.MartianSaucer;
+
+        public override string NPCName => "Martian Saucer";
 
         public override void SetStaticDefaults()
         {

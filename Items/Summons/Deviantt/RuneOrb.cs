@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class RuneOrb : DevianttSummon
+    public class RuneOrb : BaseSummon
     {
-        public override int SummonType => NPCID.RuneWizard;
+        public override int Type => NPCID.RuneWizard;
+
+        public override string NPCName => "Rune Wizard";
 
         public override void SetStaticDefaults()
         {

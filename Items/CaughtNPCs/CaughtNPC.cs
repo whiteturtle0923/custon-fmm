@@ -21,7 +21,7 @@ namespace Fargowiltas.Items.CaughtNPCs
         {
             item.width = 20;
             item.height = 20;
-            item.maxStack = 5;
+            item.maxStack = 10;
             item.rare = 1;
             item.useStyle = 1;
             item.useAnimation = 15;

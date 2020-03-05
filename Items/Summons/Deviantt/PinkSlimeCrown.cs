@@ -2,9 +2,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class PinkSlimeCrown : DevianttSummon
+    public class PinkSlimeCrown : BaseSummon
     {
-        public override int SummonType => NPCID.Pinky;
+        public override int Type => NPCID.Pinky;
+
+        public override string NPCName => "Pinky";
 
         public override void SetStaticDefaults()
         {

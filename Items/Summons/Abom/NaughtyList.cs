@@ -3,9 +3,11 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class NaughtyList : AbomSummon
+    public class NaughtyList : BaseSummon
     {
-        public override int SummonType => NPCID.SantaNK1;
+        public override int Type => NPCID.SantaNK1;
+
+        public override string NPCName => "Santa-NK1";
 
         public override void SetStaticDefaults()
         {
