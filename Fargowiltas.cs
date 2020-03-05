@@ -118,10 +118,10 @@ namespace Fargowiltas
             Mod censusMod = ModLoader.GetMod("Census");
             if (censusMod != null)
             {
-                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Use the Mutant's Gift");
-                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any Boss or Miniboss");
-                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), "Hold a Wooden Token in your Inventory");
-                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Defeat any Event");
+                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Defeat any rare enemy or... embrace suffering");
+                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
+                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Have a Wooden Token ([i:{ModContent.ItemType<Items.Tiles.WoodenToken>()}]) in your inventory");
+                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
             }
         }
 
