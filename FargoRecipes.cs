@@ -370,8 +370,9 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock);
             AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun, 5);
             AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 5);
-            //AddBannerToItemRecipe(ItemID.SlimeBanner, ItemID.Gel, resultAmount: 200);
-            //AddBannerToItemRecipe(ItemID.PinkyBanner, ItemID.PinkGel, resultAmount: 999);
+            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass);
+            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass);
+            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);
 
             AddBannerToItemsRecipe(ItemID.ArmoredSkeletonBanner, new int[] { ItemID.ArmorPolish, ItemID.BeamSword });
             AddBannerToItemsRecipe(ItemID.BoneLeeBanner, new int[] { ItemID.BlackBelt, ItemID.Tabi });
