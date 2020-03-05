@@ -50,15 +50,58 @@ namespace Fargowiltas.Items
 
             if (item.type == ItemID.GoodieBag)
             {
-                TooltipLine line = new TooltipLine(mod, "help", "Also use this to toggle the Halloween season");
+                TooltipLine line = new TooltipLine(mod, "Tooltip1", "Also use this to toggle the Halloween season");
                 tooltips.Add(line);
             }
 
             if (item.type == ItemID.Present)
             {
-                TooltipLine line = new TooltipLine(mod, "help", "Also use this to toggle the Christmas season");
+                TooltipLine line = new TooltipLine(mod, "Tooltip1", "Also use this to toggle the Christmas season");
                 tooltips.Add(line);
             }
+
+            if (item.type == ItemID.PureWaterFountain)
+            {
+                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Ocean upon activation");
+                tooltips.Add(line);
+            }
+
+            if (item.type == ItemID.DesertWaterFountain)
+            {
+                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Desert upon activation");
+                tooltips.Add(line);
+            }
+
+            if (item.type == ItemID.JungleWaterFountain)
+            {
+                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Jungle upon activation");
+                tooltips.Add(line);
+            }
+
+            if (item.type == ItemID.IcyWaterFountain)
+            {
+                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Snow upon activation");
+                tooltips.Add(line);
+            }
+
+            if (item.type == ItemID.CorruptWaterFountain)
+            {
+                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Corruption upon activation");
+                tooltips.Add(line);
+            }
+
+            if (item.type == ItemID.CrimsonWaterFountain)
+            {
+                TooltipLine line = new TooltipLine(mod, "Tooltip1", "Forces surrounding biome state to Crimson upon activation");
+                tooltips.Add(line);
+            }
+
+            if (item.type == ItemID.HallowedWaterFountain)
+            {
+                TooltipLine line = new TooltipLine(mod, "Tooltip1", "In hardmode, forces surrounding biome state to Hallow upon activation");
+                tooltips.Add(line);
+            }
+
         }
 
         public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)

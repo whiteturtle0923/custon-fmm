@@ -69,21 +69,6 @@ namespace Fargowiltas
         public override void PostUpdateEquips()
         {
             Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
-
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
-            {
-                player.ZoneCorrupt = true;
-            }
-
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu))
-            {
-                player.ZoneCrimson = true;
-            }
-
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera))
-            {
-                player.ZoneJungle = true;
-            }
             
             if (Fargowiltas.SwarmActive)
             {
@@ -104,6 +89,52 @@ namespace Fargowiltas
 
         int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.DPSMeter, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone};
 
+        public override void UpdateBiomes()
+        {
+            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
+            {
+                player.ZoneCorrupt = true;
+            }
+
+            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu))
+            {
+                player.ZoneCrimson = true;
+            }
+
+            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera))
+            {
+                player.ZoneJungle = true;
+            }
+
+            switch (Main.fountainColor)
+            {
+                case 0:
+                    player.ZoneBeach = true;
+                    break;
+                case 6:
+                    player.ZoneDesert = true;
+                    break;
+                case 3:
+                    player.ZoneJungle = true;
+                    break;
+                case 5:
+                    player.ZoneSnow = true;
+                    break;
+                case 2:
+                    player.ZoneCorrupt = true;
+                    break;
+                case 10:
+                    player.ZoneCrimson = true;
+                    break;
+                case 4:
+                    if (Main.hardMode)
+                    {
+                        player.ZoneHoly = true;
+                    }
+                    break;
+            }
+
+        }
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
         {
             int num15 = 150;

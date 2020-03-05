@@ -1,5 +1,8 @@
 ﻿using Fargowiltas.Items.CaughtNPCs;
 using Fargowiltas.Items.Summons;
+using Fargowiltas.Items.Summons.Deviantt;
+using Fargowiltas.Items.Summons.Abom;
+using Fargowiltas.Items.Summons.SwarmSummons;
 using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Items.Tiles;
 using Terraria;

@@ -1,4 +1,8 @@
 using System.Collections.Generic;
+using Fargowiltas.Items.Summons;
+using Fargowiltas.Items.Summons.Deviantt;
+using Fargowiltas.Items.Summons.SwarmSummons;
+using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Items.Summons.Abom;
 using Microsoft.Xna.Framework;
 using Terraria;
