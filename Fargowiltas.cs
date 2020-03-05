@@ -46,7 +46,7 @@ namespace Fargowiltas
         {
             summonTracker = new MutantSummonTracker();
 
-            HomeKey = RegisterHotKey("Quick Recall/Mirror", "P");
+            HomeKey = RegisterHotKey("Quick Recall/Mirror", "Home");
             RodKey = RegisterHotKey("Quick Rod of Discord", "E");
             CustomKey = RegisterHotKey("Quick Use Custom (Bottom Left Inventory Slot)", "K");
 
