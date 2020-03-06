@@ -7,6 +7,7 @@ NEW UPDATE - v 2.0.0
 -Removed Mutant siblings from being able to be grinded up
 -Fixed some Ancients Awakened summons not appearing in the Mutant's shop
 -Decreased some prices in Mutant's shop
+-Mutant no longer sells Soul of Eternity, sorry folks!
 -Increased several prices in Abominationn's shop
 -Deviantt summons will not be sold too early if you manage to kill something from Pandora's Box
 -Deviantt gift includes 3 Auto Houses

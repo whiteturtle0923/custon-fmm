@@ -6,6 +6,11 @@ namespace Fargowiltas
 {
     internal class MutantSummonTracker
     {
+        //add your own summons already :bruh:
+        public static bool ThoriumDownedAbyss => ThoriumMod.ThoriumWorld.downedDepthBoss;
+        public static bool ThoriumDownedViscount => ThoriumMod.ThoriumWorld.downedBat;
+        public static bool CalamityDownedLevi => CalamityMod.World.CalamityWorld.downedLeviathan;
+
         public const float KingSlime = 1f;
         public const float EyeOfCthulhu = 2f;
         public const float EaterOfWorlds = 3f;
@@ -42,6 +47,7 @@ namespace Fargowiltas
                 new MutantSummonInfo(QueenBee, "Fargowiltas", "Abeemination2", () => NPC.downedQueenBee, 150000),
                 new MutantSummonInfo(Skeletron, "Fargowiltas", "SuspiciousSkull", () => NPC.downedBoss3, 150000),
                 new MutantSummonInfo(WallOfFlesh, "Fargowiltas", "FleshyDoll", () => Main.hardMode  , 200000),
+                new MutantSummonInfo(WallOfFlesh + 0.01f, "Fargowiltas", "DeathBringerFairy", () => Main.hardMode  , 500000),
                 new MutantSummonInfo(TheTwins, "Fargowiltas", "MechEye", () => NPC.downedMechBoss2, 400000),
                 new MutantSummonInfo(TheDestroyer, "Fargowiltas", "MechWorm", () => NPC.downedMechBoss1, 400000),
                 new MutantSummonInfo(SkeletronPrime, "Fargowiltas", "MechSkull", () => NPC.downedMechBoss3, 400000),
@@ -57,6 +63,17 @@ namespace Fargowiltas
 
         internal void FinalizeSummonData()
         {
+            if (Fargowiltas.ModLoaded["ThoriumMod"])
+            {
+                SortedSummons.Add(new MutantSummonInfo(4.15f, "Fargowiltas", "ViscountSummon", (Func<bool>)(() => ThoriumDownedViscount), 100000));
+                SortedSummons.Add(new MutantSummonInfo(11.2f, "Fargowiltas", "AbyssionSummon", (Func<bool>)(() => ThoriumDownedAbyss), 600000));
+            }
+
+            if (Fargowiltas.ModLoaded["CalamityMod"])
+            {
+                SortedSummons.Add(new MutantSummonInfo(11.3f, "Fargowiltas", "LeviathanSummon", (Func<bool>)(() => CalamityDownedLevi), 400000));
+            }
+
             SortedSummons.Sort((x, y) => x.progression.CompareTo(y.progression));
             SummonsFinalized = true;
         }
