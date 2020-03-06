@@ -16,10 +16,6 @@ namespace Fargowiltas.NPCs
 
         internal bool spawned;
 
-        // Fargo
-        public static bool MutantsDiscountCard = Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantDiscountCard");
-        public static bool MutantsPact = Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantPact");
-
         public override bool Autoload(ref string name)
         {
             name = "Mutant";
@@ -343,12 +339,12 @@ namespace Fargowiltas.NPCs
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
                 float modifier = 1f;
-                if (MutantsDiscountCard)
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantDiscountCard"))
                 {
                     modifier -= 0.2f;
                 }
 
-                if (MutantsPact)
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantPact"))
                 {
                     modifier -= 0.3f;
                 }
