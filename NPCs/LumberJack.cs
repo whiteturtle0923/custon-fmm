@@ -16,8 +16,6 @@ namespace Fargowiltas.NPCs
         private bool nightOver;
         private int woodAmount = 100;
 
-        public static bool SacredToolsDownedSerpent => SacredTools.ModdedWorld.FlariumSpawns;
-
         public override bool Autoload(ref string name)
         {
             name = "LumberJack";
@@ -204,16 +202,6 @@ namespace Fargowiltas.NPCs
                 shop.item[nextSlot].SetDefaults(ItemID.SpookyWood);
                 shop.item[nextSlot].value = 50;
                 nextSlot++;
-            }
-
-            if (Fargowiltas.ModLoaded["SacredTools"])
-            {
-                if (SacredToolsDownedSerpent)
-                {
-                    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("SacredTools").ItemType("FlameWood"));
-                    shop.item[nextSlot].value = 2000;
-                    nextSlot++;
-                }
             }
 
             if (Fargowiltas.ModLoaded["Redemption"])
