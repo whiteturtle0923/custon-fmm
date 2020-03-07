@@ -19,19 +19,13 @@ namespace Fargowiltas.NPCs
         #region Mod Bools
 
         // Fargo
-        public static bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
 
-        public static bool FargoDownedAbom => FargowiltasSouls.FargoSoulsWorld.downedAbom;
-
-        public static bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
-
-        public static bool MutantsDiscountCard => Main.LocalPlayer.GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsDiscountCard;
-
-        public static bool MutantsPact => Main.LocalPlayer.GetModPlayer<FargowiltasSouls.FargoPlayer>().MutantsPact;
+        public static bool MutantsDiscountCard = (bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantDiscountCard");
+        public static bool MutantsPact = (bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantPact");
 
         // Thorium
         public static bool ThoriumDownedBird => ThoriumMod.ThoriumWorld.downedThunderBird;
-
+    
         public static bool ThoriumDownedJelly => ThoriumMod.ThoriumWorld.downedJelly;
 
         public static bool ThoriumDownedStorm => ThoriumMod.ThoriumWorld.downedStorm;
@@ -445,7 +439,7 @@ namespace Fargowiltas.NPCs
             npc.catchItem = (short)mod.ItemType("Mutant");
             npc.buffImmune[BuffID.Suffocation] = true;
 
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoDownedMutant)
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
             {
                 npc.lifeMax = 7700000;
                 npc.defense = 400;
@@ -458,7 +452,7 @@ namespace Fargowiltas.NPCs
             if (!spawned)
             {
                 spawned = true;
-                if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoDownedMutant)
+                if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
                 {
                     npc.lifeMax = 7700000;
                     npc.life = npc.lifeMax;
@@ -467,11 +461,9 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public static bool FargoMutantBossAlive => FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.BossIsAlive(ref FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.mutantBoss, ModLoader.GetMod("FargowiltasSouls").NPCType("MutantBoss"));
-
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoMutantBossAlive)
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive"))
             {
                 return false;
             }
@@ -539,11 +531,11 @@ namespace Fargowiltas.NPCs
             {
                 dialogue.AddWithCondition("Now that you've defeated the big guy, I'd say it's time to start collecting those materials!", NPC.downedMoonlord);
 
-                if (FargoDownedMutant)
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
                 {
                     dialogue.Add("What's that? You want to fight me? ...sure, I guess.");
                 }
-                else if (FargoDownedFishEX || FargoDownedAbom)
+                else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedFishronEX") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
                 {
                     dialogue.Add("What's that? You want to fight me? ...maybe if I had a reason.");
                 }
@@ -1676,19 +1668,19 @@ namespace Fargowiltas.NPCs
                 // Fishron EX
                 if (Fargowiltas.ModLoaded["FargowiltasSouls"])
                 {
-                    AddItem(FargoDownedFishEX, "FargowiltasSouls", "TruffleWormEX", 10000000, ref shop, ref nextSlot);
+                    AddItem((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedFishronEX"), "FargowiltasSouls", "TruffleWormEX", 10000000, ref shop, ref nextSlot);
                 }
 
                 // Abominationn
                 if (Fargowiltas.ModLoaded["FargowiltasSouls"])
                 {
-                    AddItem(FargoDownedAbom, "FargowiltasSouls", "AbomsCurse", 10000000, ref shop, ref nextSlot);
+                    AddItem((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"), "FargowiltasSouls", "AbomsCurse", 10000000, ref shop, ref nextSlot);
                 }
 
                 // Mutant
                 if (Fargowiltas.ModLoaded["FargowiltasSouls"])
                 {
-                    AddItem(FargoDownedMutant, "FargowiltasSouls", "MutantsCurse", 20000000, ref shop, ref nextSlot);
+                    AddItem((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"), "FargowiltasSouls", "MutantsCurse", 20000000, ref shop, ref nextSlot);
                 }
 
                 AddItem(true, "Fargowiltas", "AncientSeal", 100000000, ref shop, ref nextSlot);
@@ -1710,7 +1702,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoDownedMutant)
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
             {
                 damage = 720;
                 knockback = 10f;
@@ -1752,7 +1744,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoDownedMutant)
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
             {
                 projType = ModLoader.GetMod("FargowiltasSouls").ProjectileType("MutantSpearThrownFriendly");
             }
@@ -1774,7 +1766,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && FargoDownedMutant)
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
             {
                 multiplier = 25f;
                 randomOffset = 0f;

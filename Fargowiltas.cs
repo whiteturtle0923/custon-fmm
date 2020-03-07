@@ -205,36 +205,8 @@ namespace Fargowiltas
 
                     break;
 
-                // Spawn Deviantt items
-                case 4:
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        Player player = Main.player[reader.ReadByte()];
-                        DropDevianttsGift(player);
-                    }
-
-                    break;
-
                 default:
                     break;
-            }
-        }
-
-        public static void DropDevianttsGift(Player player)
-        {
-            Item.NewItem(player.Center, ItemID.SilverPickaxe);
-            Item.NewItem(player.Center, ItemID.SilverAxe);
-            Item.NewItem(player.Center, ItemID.BugNet);
-            Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
-            Item.NewItem(player.Center, ModContent.ItemType<DevianttsSundial>());
-            Item.NewItem(player.Center, ModContent.ItemType<AutoHouse>(), 3);
-            Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
-
-            if (ModLoader.GetMod("MagicStorage") != null)
-            {
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageHeart"));
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("CraftingAccess"));
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageUnitTerra"));
             }
         }
 
