@@ -1,53 +1,48 @@
 NEW UPDATE - v 2.0.0
--Added Mutant call support
--refactored several swarm amounts, mostly making less bosses appear at once
--Destroyer swarm now spawns destroyers with 10 segments each
--Added Fleshiest Doll and Wally Energizer
--Added Zealot's Madness and Insanity Energizer
-
-
--Added several more crate recipes
--Reduced crates needed for wooden crate recipes
--Piranha gun, summon variant now has a mana cost
--informational accessories now work from piggy bank
--Added toggles for banner recipes, max stack icrease, catching town npcs, extractinator speed, weapon conversions
--Added images for all toggles 
--made almost all summons inherit from the same base class
--unlims only work in hm
--added lore to deviantt
-
--Added Dryads blessing to omnistation and added omnistation plus
--Fixed some AA summons not appearing
--Increased Slime Staff chance from King Slime's bag to 4% from 2%
--Added soe recipes using boss trophies
--removed mutant siblings from being able to be grinded up
--added Web Slinger recipe
--fixed being able to use the custom hotkey while using another item
--fixed several banner recipe issues with calamity
--Gold Crates drop chest items more often
--Increased caught npc and snow globe stack sizes
--Portable Sundial now cycles through moon phases
--Pharoah vanity is no longer free
--Added banner recipes for Rain Coat
--increased several prices in Aboms shop
--decreased some prices in mutants shop
+-Added Mutant Call support - see the Discord info channel to see how to add your own summons (All manually added summons will be removed in 1 month :echdemon:)
+-Added Fleshiest Doll, Zealot's Madness, Wally Energizer, and Insanity Energizer
 -Added Weather Balloon and Forbidden Scarab
--Rearranged Stat Sheet's stat order and added Max sentries and Armor penetration
--Painter now sells all naturally occurring paintings while in the cavern layer, dungeon, or underworld
--Heavy Work Bench now counts as Workbenches as well
--Fixed invisible npcs spawning from Deviantt summons in multiplayer
--Deviantt summons spawn the enemy slghtly closer
-
--Ammo and consumable items are not used once you have 3996 of them
+-Added Poison, Cursed, Ichor, and Crystal Dart Boxes
+-Added toggles for Banner Recipes, Max Stack Increase, Catching Town NPCs, Extractinator Speed, and Weapon Conversions
+-Removed Mutant siblings from being able to be grinded up
+-Fixed some Ancients Awakened summons not appearing in the Mutant's shop
+-Decreased some prices in Mutant's shop
+-Mutant no longer sells Soul of Eternity, sorry folks!
+-Increased several prices in Abominationn's shop
 -Deviantt summons will not be sold too early if you manage to kill something from Pandora's Box
 -Deviantt gift includes 3 Auto Houses
+-Adjusted Deviantt help dialogue
+-Added Deviantt lore post-Mutant in Masochist Mode
+-All summon items now act the same, spawn enemies slighly closer vertically, and should not spawn invisible NPCs in multiplayer
+-Changed Swarm summons to spawn 10 of a boss at once when used in a stack less than 10
+-Stacks over 10 will always spawn the max size at once which is different depending on the swarm
+-Seismic Actuator now spawns Destroyers with 10 segments each to reduce headless destroyers
+-Painter now sells all naturally occurring paintings while in the Cavern layer, Dungeon, or Underworld
+-Pharoah vanity is no longer free from the Clothier
+-Added several Crate and Boss Trophy recipes
+-Reduced the amount Wooden Crates needed for recipes
 -Conversion recipes moved from Alchemy Station to Bottle
 -Added conversion recipes for Eater's Bone and Bone Rattle
--Adjusted Deviantt help dialogue
+-Added a Web Slinger recipe
+-Added banner recipes for Biome Keys, Rain Coat, and Compass
+-Most Slime banners can be converted into Gel
+-Fixed several banner recipe issues with Calamity
 -Removed Pink Gel recipe (because Deviantt summon)
--All banners for Slimes for that drop Gel can be converted into Gel
--All biome-specific banners can be converted into their biome key at Mythril Anvil
--Added Deviantt lore post-Mutant in Masochist Mode
+-Ammo and consumable items are not used once you have 3996 of them in hard mode
+-Witch Doctor's fountains now change the biome when active
+-Informational accessories now work from a Piggy Bank
+-Added Dryads blessing to Omnistation and added Omnistation Plus
+-Portable Sundial now cycles through moon phases
+-Rearranged Stat Sheet's stat order and added Max sentries, Armor penetration, and Thorium stats
+-Heavy Work Bench now counts as Workbenches as well
+-Increased Slime Staff chance from King Slime's bag to 4% from 2%
+-Gold Crates drop chest items more often
+-Ice Crate and Shadow Crates are now the same rarity as vanilla's
+-Rod of Discord and Teleport Home hotkeys now work better: they actually use the item instead of manually doing things
+-Fixed being able to use the Custom Hotkey while using another item
+-Piranha Gun summon variant now has a mana cost
+-Increased caught npc and snow globe stack sizes
+-Fixed Auto House being weird in multiplayer
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

@@ -75,14 +75,14 @@ namespace Fargowiltas
                 player.buffImmune[BuffID.Horrified] = true;
             }
 
+            
             for (int i = 0; i < player.bank.item.Length; i++)
             {
                 Item item = player.bank.item[i];
 
-                if (Array.IndexOf(Informational, item.type) > -1)
+                if (item.active && Array.IndexOf(Informational, item.type) > -1)
                 {
-                    bool boolean = false;
-                    player.VanillaUpdateAccessory(player.whoAmI, item, true, ref boolean, ref boolean, ref boolean );
+                    player.VanillaUpdateEquip(item);
                 }
             }
         }

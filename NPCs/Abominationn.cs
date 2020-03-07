@@ -16,15 +16,12 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Abominationn : ModNPC
     {
-        public static bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
-
+        //add event mod call later lol
+        /*public static bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
         public static bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
-
         public static bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
-
         public static bool RedePatientZero => Redemption.RedeWorld.downedPatientZero;
-
-        public static bool ChickenArmy => Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ;
+        public static bool ChickenArmy => Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ;*/
 
         public override bool Autoload(ref string name)
         {
@@ -209,29 +206,7 @@ namespace Fargowiltas.NPCs
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
             AddItem(NPC.downedSlimeKing, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
             AddItem(NPC.downedBoss1, ItemType<CursedSextant>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
-
-            if (Fargowiltas.ModLoaded["GRealm"])
-            {
-                AddModItem(GRealmInvasion, "GRealm", "HordeStaff", 50000, ref shop, ref nextSlot);
-            }
-
-            if (Fargowiltas.ModLoaded["Redemption"])
-            {
-                AddModItem(ChickenArmy, "Redemption", "ChickenContract", RedePatientZero ? 100000 : 10000, ref shop, ref nextSlot);
-            }
-
             AddItem(true, ItemID.GoblinBattleStandard, Item.buyPrice(0, 6), ref shop, ref nextSlot);
-
-            if (Fargowiltas.ModLoaded["SpiritMod"])
-            {
-                AddModItem(SpiritInvasion, "SpiritMod", "BlackPearl", 80000, ref shop, ref nextSlot);
-            }
-
-            if (Fargowiltas.ModLoaded["ForgottenMemories"])
-            {
-                AddModItem(BtfaInvasion, "ForgottenMemories", "AncientLog", 80000, ref shop, ref nextSlot);
-            }
-
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedGolemBoss, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
