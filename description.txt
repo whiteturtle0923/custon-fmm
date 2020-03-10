@@ -2,6 +2,7 @@ NEW UPDATE - v 2.0.1.3
 -Fixed summons in Multiplayer
 -Abominationn always sells Slimy Barometer
 -Abominationn no longer sells Overloader (redundant)
+-Updated Omnistation(+) buff sprite
 
 NEW UPDATE - v 2.0.0
 -Added Mutant Call support - see the Discord info channel to see how to add your own summons (All manually added summons will be removed in 1 month :echdemon:)
