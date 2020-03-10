@@ -17,36 +17,17 @@ namespace Fargowiltas.NPCs
             npc.height = 50;
             npc.damage = 0;
             npc.defense = 0;
-            npc.lifeMax = 9999999;
+            npc.lifeMax = 1000;
             npc.HitSound = SoundID.NPCHit15;
             npc.DeathSound = SoundID.NPCDeath2;
             npc.knockBackResist = 0f;
-        }
-
-        public override void UpdateLifeRegen(ref int damage)
-        {
-            npc.lifeRegen += 2000000;
+            npc.aiStyle = -1;
+            npc.immortal = true;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             return false;
-        }
-
-        public override bool PreNPCLoot()
-        {
-            return false;
-        }
-
-        public override bool CheckDead()
-        {
-            if (npc.lifeRegen < 0)
-            {
-                npc.life = npc.lifeMax;
-                return false;
-            }
-
-            return true;
         }
     }
 }
