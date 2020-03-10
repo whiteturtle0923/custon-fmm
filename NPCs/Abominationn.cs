@@ -199,12 +199,12 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            AddItem(Main.expertMode, ItemType<Items.Summons.SwarmSummons.Overloader>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
+            //AddItem(Main.expertMode, ItemType<Items.Summons.SwarmSummons.Overloader>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
 
             // Events
             AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
-            AddItem(NPC.downedSlimeKing, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
+            AddItem(true, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
             AddItem(NPC.downedBoss1, ItemType<CursedSextant>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(true, ItemID.GoblinBattleStandard, Item.buyPrice(0, 6), ref shop, ref nextSlot);
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
