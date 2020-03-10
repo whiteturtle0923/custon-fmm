@@ -30,10 +30,10 @@ namespace Fargowiltas.Items.Summons
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250));
 
-            if (Main.netMode != 1)
-            {
+            //if (Main.netMode != 1)
+            //{
                 Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, Type);
-            }
+            //}
 
             if (Main.netMode == NetmodeID.Server)
             {
