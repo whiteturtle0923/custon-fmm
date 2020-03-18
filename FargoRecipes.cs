@@ -16,9 +16,62 @@ namespace Fargowiltas
     {
         public static void AddRecipeGroups()
         {
+
+
+
             // Evil Wood
             RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Wood", new int[] { ItemID.Ebonwood, ItemID.Shadewood });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
+
+            //iron anvil
+            group = new RecipeGroup(() => "Any Iron Anvil", new int[] { ItemID.IronAnvil, ItemID.LeadAnvil});
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyAnvil", group);
+
+            //anvil HM
+            group = new RecipeGroup(() => "Any Mythril Anvil", ItemID.MythrilAnvil, ItemID.OrichalcumAnvil);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyHMAnvil", group);
+
+            //forge HM
+            group = new RecipeGroup(() => "Any Adamantite Forge", ItemID.AdamantiteForge, ItemID.TitaniumForge);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyForge", group);
+
+            //book cases
+            group = new RecipeGroup(() => "Any Bookcase", new int[]
+            {
+                ItemID.Bookcase,
+                ItemID.BlueDungeonBookcase,
+                ItemID.BoneBookcase,
+                ItemID.BorealWoodBookcase,
+                ItemID.CactusBookcase,
+                ItemID.CrystalBookCase,
+                ItemID.DynastyBookcase,
+                ItemID.EbonwoodBookcase,
+                ItemID.FleshBookcase,
+                ItemID.FrozenBookcase,
+                ItemID.GlassBookcase,
+                ItemID.GoldenBookcase,
+                ItemID.GothicBookcase,
+                ItemID.GraniteBookcase,
+                ItemID.GreenDungeonBookcase,
+                ItemID.HoneyBookcase,
+                ItemID.LivingWoodBookcase,
+                ItemID.MarbleBookcase,
+                ItemID.MeteoriteBookcase,
+                ItemID.MushroomBookcase,
+                ItemID.ObsidianBookcase,
+                ItemID.PalmWoodBookcase,
+                ItemID.PearlwoodBookcase,
+                ItemID.PinkDungeonBookcase,
+                ItemID.PumpkinBookcase,
+                ItemID.RichMahoganyBookcase,
+                ItemID.ShadewoodBookcase,
+                ItemID.SkywareBookcase,
+                ItemID.SlimeBookcase,
+                ItemID.SpookyBookcase,
+                ItemID.SteampunkBookcase
+            });
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyBookcase", group);
+
 
             // Bone Banners
             int[] boneBanners = { ItemID.BlueArmoredBonesBanner, ItemID.HellArmoredBonesBanner, ItemID.RustyArmoredBonesBanner };
@@ -673,22 +726,21 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.SandstorminaBottle, ItemID.GoldenCrate, 5);
             AddGrabBagItemRecipe(ItemID.Sundial, ItemID.GoldenCrate, 10);
             //jungle
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.AnkletoftheWind, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.StaffofRegrowth, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.Boomstick, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.FeralClaws, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.FiberglassFishingPole, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.AnkletoftheWind, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.StaffofRegrowth, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.Boomstick, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.FeralClaws, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.FiberglassFishingPole, ItemID.JungleFishingCrate, 5);
             //sky
             AddGrabBagItemRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.Starfury, ItemID.FloatingIslandFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 5);
             //corrupt
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 5);
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.BandofStarpower, 5);
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.ShadowOrb, 5);
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.Musket, 5);
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.Vilethorn, 5);
+            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.BallOHurt, 5);
+            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.BandofStarpower, 5);
+            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.ShadowOrb, 5);
+            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.Musket, 5);
+            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.Vilethorn, 5);
             //crimson
             AddGrabBagItemRecipe(ItemID.TheUndertaker, ItemID.CrimsonFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.TheRottedFork, ItemID.CrimsonFishingCrate, 5);
