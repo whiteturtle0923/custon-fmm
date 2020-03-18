@@ -269,7 +269,11 @@ namespace Fargowiltas.NPCs
             Player player = Main.LocalPlayer;
 
             //devi gifts
-            ModLoader.GetMod("FargowiltasSouls").Call("DevianttGifts");
+            if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttGifts"))
+            {
+                Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
+                return;
+            }
 
             if (Main.rand.NextBool(4))
             {
