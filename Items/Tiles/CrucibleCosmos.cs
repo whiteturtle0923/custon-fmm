@@ -12,7 +12,7 @@ namespace Fargowiltas.Items.Tiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Crucible of the Cosmos");
-            Tooltip.SetDefault("'It seems to be hiding magnificent power'\nFunctions as nearly every crafting station");
+            Tooltip.SetDefault("'It seems to be hiding magnificent power'\nFunctions as every crafting station");
             DisplayName.AddTranslation(GameCulture.Chinese, "宇宙坩埚");
             Tooltip.AddTranslation(GameCulture.Chinese, "'它似乎隐藏着巨大的力量'\n包含几乎所有制作环境");
         }
@@ -32,6 +32,7 @@ namespace Fargowiltas.Items.Tiles
         {
             item.width = 28;
             item.height = 14;
+            item.rare = 10;
             item.maxStack = 99;
             item.useTurn = true;
             item.autoReuse = true;

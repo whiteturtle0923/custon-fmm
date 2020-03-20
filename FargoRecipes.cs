@@ -9,6 +9,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using ThoriumMod.Items.Banners;
 
 namespace Fargowiltas
 {
@@ -524,10 +525,8 @@ namespace Fargowiltas
                 AddBannerToItemRecipe(thorium.ItemType("WindElementalBanner"), thorium.ItemType("Zapper"));
 
                 AddBannerToItemRecipe(ItemID.AngryBonesBanner, thorium.ItemType("GraveGoods"));
-                AddBannerToItemRecipe(ItemID.BloodZombieBanner, thorium.ItemType("BloodCellStaff"));
                 AddBannerToItemRecipe(ItemID.BoneLeeBanner, thorium.ItemType("TechniqueShadowClone"));
                 AddBannerToItemRecipe(ItemID.BoneSerpentBanner, thorium.ItemType("SpineBreaker"));
-                AddBannerToItemRecipe(ItemID.DripplerBanner, thorium.ItemType("Bagpipe"));
                 AddBannerToItemRecipe(ItemID.FlyingSnakeBanner, thorium.ItemType("Spearmint"));
                 AddBannerToItemRecipe(ItemID.FrankensteinBanner, thorium.ItemType("TeslaDefibrillator"));
                 AddBannerToItemRecipe(ItemID.MartianOfficerBanner, thorium.ItemType("ShieldDroneBeacon"));
@@ -546,7 +545,7 @@ namespace Fargowiltas
                 AddBannerToItemsRecipe(thorium.ItemType("DarksteelKnightBanner"), new int[] { thorium.ItemType("BrokenDarksteelHelmet"), thorium.ItemType("GrayDPaintingItem") });
                 AddBannerToItemsRecipe(thorium.ItemType("InvaderBanner"), new int[] { thorium.ItemType("VegaPhaser"), thorium.ItemType("BioPod") });
                 AddBannerToItemsRecipe(thorium.ItemType("NecroticImbuerBanner"), new int[] { thorium.ItemType("NecroticStaff"), thorium.ItemType("TechniqueBloodLotus") });
-                AddBannerToItemsRecipe(thorium.ItemType("WargBanner"), new int[] { thorium.ItemType("BattleHorn"), thorium.ItemType("BlackCatEars") });
+                AddBannerToItemsRecipe(thorium.ItemType("WargBanner"), new int[] { thorium.ItemType("BattleHorn"), thorium.ItemType("BlackCatEars"), thorium.ItemType("Bagpipe"), thorium.ItemType("BloodCellStaff") });
                 AddBannerToItemsRecipe(ItemID.MimicBanner, new int[] { thorium.ItemType("LargeCoin"), thorium.ItemType("ProofAvarice") });
             }
 
@@ -736,11 +735,11 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.Starfury, ItemID.FloatingIslandFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 5);
             //corrupt
-            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.BallOHurt, 5);
-            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.BandofStarpower, 5);
-            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.ShadowOrb, 5);
-            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.Musket, 5);
-            AddGrabBagItemRecipe(ItemID.CorruptFishingCrate, ItemID.Vilethorn, 5);
+            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.BandofStarpower, ItemID.CorruptFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.ShadowOrb, ItemID.CorruptFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.Musket, ItemID.CorruptFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.Vilethorn, ItemID.CorruptFishingCrate, 5);
             //crimson
             AddGrabBagItemRecipe(ItemID.TheUndertaker, ItemID.CrimsonFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.TheRottedFork, ItemID.CrimsonFishingCrate, 5);
@@ -810,7 +809,7 @@ namespace Fargowiltas
             recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
             recipe.AddTile(TileID.DyeVat);
-            recipe.SetResult(ItemID.DeepRedPaint, 100);
+            recipe.SetResult(ItemID.DeepRedPaint, 25);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
@@ -1009,13 +1008,15 @@ namespace Fargowiltas
         {
             ModRecipe recipe = GetNewRecipe();
             recipe.AddIngredient(item);
-            recipe.AddTile(TileID.Bottles);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(item2);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
             recipe.AddIngredient(item2);
-            recipe.AddTile(TileID.Bottles);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(item);
             recipe.AddRecipe();
         }

@@ -510,7 +510,7 @@ namespace Fargowiltas.NPCs
 
                 if (npc.type == mod.NPCType("Destroyer"))
                 {
-                    Swarm(npc, mod.NPCType("Destroyer"), mod.NPCType("DestroyerTail"), ItemID.DestroyerBossBag, "EnergizerDestroy");
+                    Swarm(npc, mod.NPCType("Destroyer"), -1, ItemID.DestroyerBossBag, "EnergizerDestroy");
                 }
 
 
@@ -810,18 +810,15 @@ namespace Fargowiltas.NPCs
                     break;
 
                 case NPCID.Raven:
-                    if (!Main.halloween)
-                    {
-                        Item.NewItem(npc.Hitbox, ItemID.GoodieBag);
-                    }
+                    Item.NewItem(npc.Hitbox, ItemID.GoodieBag);
 
                     break;
 
                 case NPCID.SlimeRibbonRed:
-                    if (!Main.xMas)
-                    {
-                        Item.NewItem(npc.Hitbox, ItemID.Present);
-                    }
+                case NPCID.SlimeRibbonGreen:
+                case NPCID.SlimeRibbonWhite:
+                case NPCID.SlimeRibbonYellow:
+                    Item.NewItem(npc.Hitbox, ItemID.Present);
 
                     break;
 

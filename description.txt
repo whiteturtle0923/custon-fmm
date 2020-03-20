@@ -6,7 +6,14 @@ NEW UPDATE - v 2.1
 -Abominationn no longer sells Overloader and always sells Slimy Barometer
 -Added extra lures to most vanilla fishing rods (with a toggle)
 -Added sprite for Zealot's Madness
+-Moved conversion recipes back to Alchemy Station as well as Demon Altar
+-Reworked Troll Bomb to never spawn Dungeon Guardian and it has a flat 10% chance for all its bomb types
+-Fixed banner recipes letting you get a few thorium items too soon
+-Reduced the amount of paint you get from grinding npcs
+-Ravens and Present Slimes drop their items always with or without the season turned on
+-Added new Lumberjack option: Tree Treasures, instead of wood you can get various critters from him depending on the biome and time
 
+-refactored renewal projectiles
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

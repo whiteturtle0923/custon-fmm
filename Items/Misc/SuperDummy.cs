@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Fargowiltas;
+using Fargowiltas.Projectiles;
 
 namespace Fargowiltas.Items.Misc
 {
@@ -47,7 +48,9 @@ namespace Fargowiltas.Items.Misc
             else if (player.whoAmI == Main.myPlayer)
             {
                 Vector2 pos = new Vector2((int)Main.MouseWorld.X - 9, (int)Main.MouseWorld.Y - 20);
-                NPC.NewNPC((int)pos.X, (int)pos.Y, ModContent.NPCType<NPCs.SuperDummy>());
+                Projectile.NewProjectile(pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, player.whoAmI, ModContent.NPCType<NPCs.SuperDummy>());
+
+                //NPC.NewNPC((int)pos.X, (int)pos.Y, ModContent.NPCType<NPCs.SuperDummy>());
             }
 
             return true;

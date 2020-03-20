@@ -10,8 +10,7 @@ namespace Fargowiltas.Items.Explosives
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Troll Bomb");
-            Tooltip.SetDefault("'What could go wrong?'" +
-                               "\nOnly Snek knows");
+            Tooltip.SetDefault("'What could go wrong?'");
         }
 
         public override void SetDefaults()
@@ -34,39 +33,40 @@ namespace Fargowiltas.Items.Explosives
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int j = Main.rand.Next(100);
+            int j = Main.rand.Next(10);
 
-            if (j < 25)
+            switch (j)
             {
-                type = ProjectileID.Bomb;
-            }
-            else if (j < 40)
-            {
-                type = ProjectileID.BouncyBomb;
-            }
-            else if (j < 55)
-            {
-                type = ProjectileID.StickyBomb;
-            }
-            else if (j < 60)
-            {
-                type = ProjectileID.SmokeBomb;
-            }
-            else if (j < 75)
-            {
-                type = ProjectileID.Dynamite;
-            }
-            else if (j < 90)
-            {
-                type = ProjectileID.Grenade;
-            }
-            else if (j < 98)
-            {
-                type = ProjectileID.BouncyDynamite;
-            }
-            else
-            {
-                type = mod.ProjectileType("TrollbombProj");
+                case 0:
+                    type = ProjectileID.Bomb;
+                    break;
+                case 1:
+                    type = ProjectileID.BouncyBomb;
+                    break;
+                case 2:
+                    type = ProjectileID.StickyBomb;
+                    break;
+                case 3:
+                    type = ProjectileID.SmokeBomb;
+                    break;
+                case 4:
+                    type = ProjectileID.Dynamite;
+                    break;
+                case 5:
+                    type = ProjectileID.StickyDynamite;
+                    break;
+                case 6:
+                    type = ProjectileID.BouncyDynamite;
+                    break;
+                case 7:
+                    type = ProjectileID.Grenade;
+                    break;
+                case 8:
+                    type = ProjectileID.StickyGrenade;
+                    break;
+                case 9:
+                    type = ProjectileID.BouncyGrenade;
+                    break;
             }
 
             Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, Main.myPlayer);
