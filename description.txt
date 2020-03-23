@@ -15,5 +15,17 @@ NEW UPDATE - v 2.1
 
 -refactored renewal projectiles
 
+
+-Fishing Potions now grant one extra lure as well, this is also toggled with extra lures
+-Added tooltips to all affected rods and the potion
+-Fixed extra lures being off by one in some cases
+-Fixed conversion meme, now works at both Alchemy Station and Demon Altar correctly
+-New tooltip for Troll Bomb
+
+-Fixed Martian Memory Stick not working
+-Fixed Deviantt Help option not working right
+-Reduced the number of banners needed for ancient armors
+-Added a Turtle Shell banner recipe
+
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

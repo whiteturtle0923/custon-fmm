@@ -144,7 +144,7 @@ namespace Fargowiltas.NPCs
             {
                 string quote = "";
 
-                if (player.ZoneDesert)
+                if (player.ZoneDesert && !player.ZoneBeach)
                 {
                     quote = "While I was chopping down a cactus this thing leaped at me, why don't you take care of it?";
                     player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Scorpion, ItemID.BlackScorpion }));
@@ -161,12 +161,16 @@ namespace Fargowiltas.NPCs
                 }
                 else if (player.ZoneGlowshroom && Main.hardMode)
                 {
-                    quote = "Whatever causes these to glow is beyond me, you're probably gonna eat them anyway so have this while youre at it";
+                    quote = "Whatever causes these to glow is beyond me, you're probably gonna eat them anyway so have this while youre at it.";
                     player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.GlowingSnail, ItemID.TruffleWorm }));
 
                 }
+                else if (player.ZoneCorrupt || player.ZoneCrimson)
+                {
+                    quote = "The trees here are probably the toughest in this branch of reality.. Sorry, just tree puns, I haven't found anything interesting here.";
+                }
                 //purity, most common option likely
-                else if(!player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneDungeon && player.position.Y > Main.worldSurface)
+                else if (!player.ZoneSnow && player.position.Y > Main.worldSurface)
                 {
                     if (Main.dayTime)
                     {
@@ -187,6 +191,10 @@ namespace Fargowiltas.NPCs
                         quote = "Chopping trees at night is always relaxing... well except for the flying eyeballs. Have one of these little guys to keep you company.";
                         player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Firefly }));
                     }
+                }
+                else
+                {
+                    quote = "Where am I? I dont see any trees around here.";
                 }
 
                 Main.npcChatText = quote;

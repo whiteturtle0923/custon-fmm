@@ -42,6 +42,8 @@ namespace Fargowiltas.Items
                 tooltips.Add(line);
             }
 
+            //switch soon tm
+
             if (item.type == ItemID.CrystalBall)
             {
                 TooltipLine line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
@@ -101,6 +103,35 @@ namespace Fargowiltas.Items
                 TooltipLine line = new TooltipLine(mod, "Tooltip1", "In hardmode, forces surrounding biome state to Hallow upon activation");
                 tooltips.Add(line);
             }
+
+            if (GetInstance<FargoConfig>().ExtraLures)
+            {
+                if (item.type == ItemID.FishingPotion)
+                {
+                    TooltipLine line = new TooltipLine(mod, "Tooltip1", "Also grants one extra lure");
+                    tooltips.Insert(3, line);
+                }
+
+                if (item.type == ItemID.FiberglassFishingPole || item.type == ItemID.FisherofSouls || item.type == ItemID.Fleshcatcher)
+                {
+                    TooltipLine line = new TooltipLine(mod, "Tooltip1", "This rod fires 2 lures");
+                    tooltips.Insert(3, line);
+                }
+
+                if (item.type == ItemID.MechanicsRod || item.type == ItemID.SittingDucksFishingRod)
+                {
+                    TooltipLine line = new TooltipLine(mod, "Tooltip1", "This rod fires 3 lures");
+                    tooltips.Insert(3, line);
+                }
+
+                if (item.type == ItemID.GoldenFishingRod || item.type == ItemID.HotlineFishingHook)
+                {
+                    TooltipLine line = new TooltipLine(mod, "Tooltip1", "This rod fires 5 lures");
+                    tooltips.Insert(3, line);
+                }
+            }
+
+            
 
         }
 

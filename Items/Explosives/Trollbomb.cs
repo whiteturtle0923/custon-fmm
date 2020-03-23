@@ -10,7 +10,7 @@ namespace Fargowiltas.Items.Explosives
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Troll Bomb");
-            Tooltip.SetDefault("'What could go wrong?'");
+            Tooltip.SetDefault("Summon a random bomb");
         }
 
         public override void SetDefaults()

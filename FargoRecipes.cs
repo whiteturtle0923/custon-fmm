@@ -412,6 +412,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher);
             AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.BoneWand);
             AddBannerToItemRecipe(ItemID.SnowFlinxBanner, ItemID.SnowballLauncher);
+            AddBannerToItemRecipe(ItemID.TortoiseBanner, ItemID.TurtleShell);
             AddBannerToItemRecipe(ItemID.ToxicSludgeBanner, ItemID.Bezoar);
             AddBannerToItemRecipe(ItemID.UmbrellaSlimeBanner, ItemID.UmbrellaHat);
             AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.BonePickaxe);
@@ -448,10 +449,10 @@ namespace Fargowiltas
             AddBannerToItemsRecipe(ItemID.ZombieElfBanner, new int[] { ItemID.ElfHat, ItemID.ElfShirt, ItemID.ElfPants });
             AddBannerToItemsRecipe(ItemID.ZombieEskimoBanner, new int[] { ItemID.EskimoHood, ItemID.EskimoCoat, ItemID.EskimoPants });
             //ancient armors
-            AddBannerToItemsRecipe(ItemID.EaterofSoulsBanner, new int[] { ItemID.AncientShadowHelmet, ItemID.AncientShadowScalemail, ItemID.AncientShadowGreaves }, 5);
-            AddBannerToItemsRecipe(ItemID.HornetBanner, new int[] { ItemID.AncientCobaltHelmet, ItemID.AncientCobaltBreastplate, ItemID.AncientCobaltLeggings }, 5);
+            AddBannerToItemsRecipe(ItemID.EaterofSoulsBanner, new int[] { ItemID.AncientShadowHelmet, ItemID.AncientShadowScalemail, ItemID.AncientShadowGreaves }, 2);
+            AddBannerToItemsRecipe(ItemID.HornetBanner, new int[] { ItemID.AncientCobaltHelmet, ItemID.AncientCobaltBreastplate, ItemID.AncientCobaltLeggings }, 2);
             AddBannerToItemsRecipe(ItemID.SkeletonBanner, new int[] { ItemID.AncientIronHelmet, ItemID.AncientGoldHelmet }, 2);
-            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 5);
+            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 2);
             //gladiator
             AddBannerToItemsRecipe(ItemID.GreekSkeletonBanner, new int[] { ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings });
             
@@ -1009,13 +1010,23 @@ namespace Fargowiltas
             ModRecipe recipe = GetNewRecipe();
             recipe.AddIngredient(item);
             recipe.AddTile(TileID.DemonAltar);
-            recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(item2);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
             recipe.AddIngredient(item2);
             recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(item);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(item);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(item2);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(item2);
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(item);
             recipe.AddRecipe();

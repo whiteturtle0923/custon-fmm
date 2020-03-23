@@ -27,23 +27,35 @@ namespace Fargowiltas.Projectiles
                 {
                     if (GetInstance<FargoConfig>().ExtraLures && projectile.bobber)
                     {
+                        int split = 1;
+
                         switch (projectile.type)
                         {
                             case ProjectileID.BobberFiberglass:
                             case ProjectileID.BobberFisherOfSouls:
                             case ProjectileID.BobberFleshcatcher:
-                                SplitProj(projectile, 2);
+                                split = 2;
                                 break;
 
                             case ProjectileID.BobberMechanics:
                             case ProjectileID.BobbersittingDuck:
-                                SplitProj(projectile, 3);
+                                split = 3;
                                 break;
 
                             case ProjectileID.BobberHotline:
                             case ProjectileID.BobberGolden:
-                                SplitProj(projectile, 5);
+                                split = 5;
                                 break;
+                        }
+
+                        if (Main.player[projectile.owner].HasBuff(BuffID.Fishing))
+                        {
+                            split++;
+                        }
+
+                        if (split > 1)
+                        {
+                            SplitProj(projectile, split);
                         }
                     }
                 }
@@ -92,7 +104,10 @@ namespace Fargowiltas.Projectiles
                 }
             }
 
-           projectile.active = false;
+            if (number % 2 == 0)
+            {
+                projectile.active = false;
+            }
         }
 
         public static Projectile NewProjectileDirectSafe(Vector2 pos, Vector2 vel, int type, int damage, float knockback, int owner = 255, float ai0 = 0f, float ai1 = 0f)
