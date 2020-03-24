@@ -199,8 +199,6 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            //AddItem(Main.expertMode, ItemType<Items.Summons.SwarmSummons.Overloader>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
-
             // Events
             AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);

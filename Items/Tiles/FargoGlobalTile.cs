@@ -1,3 +1,4 @@
+using Fargowiltas.Items.Tiles;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -22,6 +23,12 @@ namespace Fargowiltas.Tiles
                 int[] adjTiles = new int[] { TileID.WorkBenches, TileID.HeavyWorkBench };
 
                 return adjTiles;
+            }
+
+            if (type == ModContent.TileType<CrucibleCosmosSheet>())
+            {
+                Main.LocalPlayer.adjHoney = true;
+                Main.LocalPlayer.adjLava = true;
             }
 
             return base.AdjTiles(type);

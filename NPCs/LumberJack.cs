@@ -14,7 +14,7 @@ namespace Fargowiltas.NPCs
     {
         private bool dayOver;
         private bool nightOver;
-        private int woodAmount = 100;
+        //private int woodAmount = 100;
 
         public override bool Autoload(ref string name)
         {
@@ -100,6 +100,7 @@ namespace Fargowiltas.NPCs
                 "I wonder if there'll be more trees to chop in 1.4.",
                 "Red is one of my favourite colors, right after wood.",
                 "It's always flannel season.",
+                "I'm glad my wood put such a big smile on your face."
             };
 
             int dryad = NPC.FindFirstNPC(NPCID.Dryad);
@@ -126,7 +127,7 @@ namespace Fargowiltas.NPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("LegacyInterface.28");
-            button2 = "Free Wood";
+            button2 = "Tree Treasures";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -141,15 +142,68 @@ namespace Fargowiltas.NPCs
 
             if (dayOver && nightOver)
             {
-                Main.npcChatText = "Here you go. I'm glad my wood put such a big smile on your face.";
-                woodAmount = Main.hardMode ? 500 : NPC.downedBoss1 ? 200 : 100;
-                player.QuickSpawnItem(ItemID.Wood, woodAmount);
+                string quote = "";
+
+                if (player.ZoneDesert && !player.ZoneBeach)
+                {
+                    quote = "While I was chopping down a cactus this thing leaped at me, why don't you take care of it?";
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Scorpion, ItemID.BlackScorpion }));
+                }
+                else if (player.ZoneJungle)
+                {
+                    quote = "These mahogany trees are full of life, but a tree only has one purpose: to be chopped. Oh yea this fell out of the last one.";
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Buggy, ItemID.Sluggy, ItemID.Grubby, ItemID.Frog }));
+                }
+                else if (player.ZoneHoly)
+                {
+                    quote = "This place is a bit fanciful for my tastes, but the wood's as choppable as any. Nighttime has these cool bugs though, take a few.";
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.LightningBug }));
+                }
+                else if (player.ZoneGlowshroom && Main.hardMode)
+                {
+                    quote = "Whatever causes these to glow is beyond me, you're probably gonna eat them anyway so have this while youre at it.";
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.GlowingSnail, ItemID.TruffleWorm }));
+
+                }
+                else if (player.ZoneCorrupt || player.ZoneCrimson)
+                {
+                    quote = "The trees here are probably the toughest in this branch of reality.. Sorry, just tree puns, I haven't found anything interesting here.";
+                }
+                //purity, most common option likely
+                else if (!player.ZoneSnow && player.position.Y > Main.worldSurface)
+                {
+                    if (Main.dayTime)
+                    {
+                        //butterfly
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            quote = "Back in the day, people used to forge butterflies into powerful gear. We try to forget those days... but here have one.";
+                            player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.JuliaButterfly, ItemID.MonarchButterfly, ItemID.PurpleEmperorButterfly, ItemID.RedAdmiralButterfly, ItemID.SulphurButterfly, ItemID.TreeNymphButterfly, ItemID.UlyssesButterfly, ItemID.ZebraSwallowtailButterfly }));
+                        }
+                        else
+                        {
+                            quote = "These little critters are always falling out of the trees I cut down. Maybe you can find a use for them?";
+                            player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Grasshopper, ItemID.Squirrel, ItemID.SquirrelRed }));
+                        }
+                    }
+                    else
+                    {
+                        quote = "Chopping trees at night is always relaxing... well except for the flying eyeballs. Have one of these little guys to keep you company.";
+                        player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Firefly }));
+                    }
+                }
+                else
+                {
+                    quote = "Where am I? I dont see any trees around here.";
+                }
+
+                Main.npcChatText = quote;
                 dayOver = false;
                 nightOver = false;
             }
             else
             {
-                Main.npcChatText = "The trees need time to regrow, come back later for more wood.";
+                Main.npcChatText = "I'm resting after a good day of chopping, come back tomorrow and maybe I'll have something else for you.";
             }
         }
 
