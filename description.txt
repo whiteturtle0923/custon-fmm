@@ -1,3 +1,10 @@
+NEW UPDATE - v 2.1.1
+-Fixed summons in Multiplayer
+-Abominationn always sells Slimy Barometer
+-Abominationn no longer sells Overloader (redundant)
+-Updated Omnistation(+) buff sprite
+-Minor adjustments to accommodate Deviantt boss
+
 NEW UPDATE - v 2.1
 -Added Multitask Center, Elemental Assembler, and Crucible of the Cosmos
 -Added new Lumberjack option: Tree Treasures, instead of wood you can get various critters from him depending on the biome and time
