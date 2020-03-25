@@ -24,6 +24,13 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool AnglerQuestInstantReset { get; set; }
 
+        [Label("[i:2294] Extra Lures on Fishing Rods")]
+        [DefaultValue(true)]
+        public bool ExtraLures
+        {
+            get; set;
+        }
+
         [Label("[i:3213] Stalker Money Trough")]
         [DefaultValue(true)]
         public bool StalkerMoneyTrough { get; set; }

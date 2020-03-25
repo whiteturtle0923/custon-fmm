@@ -51,6 +51,9 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
+                return false;
+
             return FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"));
         }
 
@@ -95,7 +98,7 @@ namespace Fargowiltas.NPCs
             if (mutant != -1)
             {
                 dialogue.Add($"Can you tell {Main.npc[mutant].GivenName} to put some clothes on?");
-                dialogue.Add($"One day, I'll sell a summon for myself! ...Just kidding. That'd be {Main.npc[mutant].GivenName}'s job.");
+                dialogue.Add($"One day, I'll sell a summon for myself! ...Just kidding. That's {Main.npc[mutant].GivenName}'s job.");
                 dialogue.Add($"{Main.npc[mutant].GivenName} is here! That's my big brother!");
             }
 
@@ -188,7 +191,7 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode && FargoWorld.DownedBools["iceGolem"], ItemType<CoreoftheFrostCore>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["sandElemental"], ItemType<ForbiddenForbiddenFragment>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && NPC.downedGoblins && FargoWorld.DownedBools["goblinSummoner"], ItemType<ShadowflameIcon>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
-            AddItem(Main.hardMode && NPC.downedPirates && FargoWorld.DownedBools["pirateCaptain"], ItemType<PirateFlag>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(Main.hardMode && NPC.downedPirates && FargoWorld.DownedBools["pirateCaptain"], ItemType<PirateFlag>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(Main.hardMode && NPC.downedPirates && FargoWorld.DownedBools["flyingDutchman"], ItemType<PlunderedBooty>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && FargoWorld.DownedBools["mothron"], ItemType<MothronEgg>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPlantBoss && FargoWorld.DownedBools["boneLee"], ItemType<LeesHeadband>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
@@ -269,9 +272,12 @@ namespace Fargowiltas.NPCs
             Player player = Main.LocalPlayer;
 
             //devi gifts
-            if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttGifts"))
+            if (!(bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived"))
             {
+                ModLoader.GetMod("FargowiltasSouls").Call("GiveDevianttGifts");
+
                 Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
+
                 return;
             }
 

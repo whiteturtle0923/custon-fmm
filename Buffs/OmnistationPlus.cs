@@ -22,6 +22,12 @@ namespace Fargowiltas.Buffs
             Main.buffNoTimeDisplay[Type] = true;
         }
 
+        public override bool Autoload(ref string name, ref string texture)
+        {
+            texture = "Fargowiltas/Buffs/Omnistation";
+            return true;
+        }
+
         public override void Update(Player player, ref int buffIndex)
         {
             player.buffImmune[BuffType<Buffs.Omnistation>()] = true;
