@@ -124,6 +124,11 @@ namespace Fargowiltas
                 censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
                 censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Have a Wooden Token ([i:{ModContent.ItemType<Items.Tiles.WoodenToken>()}]) in your inventory");
                 censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
+                Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
+                if (fargoSouls != null)
+                {
+                    censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
+                }
             }
         }
 
