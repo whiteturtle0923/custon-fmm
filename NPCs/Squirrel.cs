@@ -81,13 +81,14 @@ namespace Fargowiltas.NPCs
 
 		public override string GetChat()
 		{
-			switch (Main.rand.Next(4))
+            if (Main.rand.Next(10) == 0)
+                return "You will suffer.";
+
+            switch (Main.rand.Next(3))
 			{
 				case 0:
-					return "You will suffer.";
-				case 1:
 					return "*squeak*";
-				case 2:
+				case 1:
 					return "*chitter*";
 				default:
 					return "*crunch crunch*";
@@ -107,9 +108,136 @@ namespace Fargowiltas.NPCs
 			}
 
 		}
+
+        private void TryAddItem(Item item, Chest shop, ref int nextSlot)
+        {
+            if (item.modItem == null || !item.modItem.mod.Name.Equals("FargowiltasSouls"))
+                return;
+
+            bool duplicateItem = false;
+
+            if (item.Name.EndsWith("Enchantment"))
+            {
+                foreach (Item item2 in shop.item)
+                {
+                    if (item2.type == item.type)
+                    {
+                        duplicateItem = true;
+                        break;
+                    }
+                }
+                if (duplicateItem == false)
+                {
+                    shop.item[nextSlot].SetDefaults(item.type);
+                    nextSlot++;
+                }
+            }
+            else if (item.Name.Contains("Force"))
+            {
+                RecipeFinder finder = new RecipeFinder();
+                finder.SetResult(item.type);
+                Recipe exactRecipe = finder.SearchRecipes()[0];
+                foreach (Item item2 in exactRecipe.requiredItem)
+                {
+                    foreach (Item item3 in shop.item)
+                    {
+                        if (item3.type == item.type)
+                        {
+                            duplicateItem = true;
+                            break;
+                        }
+                    }
+                    if (duplicateItem == false)
+                    {
+                        shop.item[nextSlot].SetDefaults(item.type);
+                        nextSlot++;
+                    }
+                }
+            }
+            else if (item.Name.StartsWith("Soul"))
+            {
+                RecipeFinder finder = new RecipeFinder();
+                finder.SetResult(item.type);
+                Recipe exactRecipe = finder.SearchRecipes()[0];
+                foreach (Item item2 in exactRecipe.requiredItem)
+                {
+                    foreach (Item item3 in shop.item)
+                    {
+                        if (item3.type == item2.type)
+                        {
+                            duplicateItem = true;
+                            break;
+                        }
+                    }
+                    if (duplicateItem == false)
+                    {
+                        if (item2.Name.Contains("Force") || item2.Name.Contains("Soul"))
+                        {
+                            shop.item[nextSlot].SetDefaults(item2.type);
+                            nextSlot++;
+                        }
+                    }
+                }
+            }
+            else if (item.Name.EndsWith("Essence"))
+            {
+                foreach (Item item2 in shop.item)
+                {
+                    if (item2.type == item.type)
+                    {
+                        duplicateItem = true;
+                        break;
+                    }
+                }
+                if (duplicateItem == false)
+                {
+                    shop.item[nextSlot].SetDefaults(item.type);
+                    nextSlot++;
+                }
+            }
+            else if (item.Name.EndsWith("Soul"))
+            {
+                RecipeFinder finder = new RecipeFinder();
+                finder.SetResult(item.type);
+                Recipe exactRecipe = finder.SearchRecipes()[0];
+                foreach (Item item2 in exactRecipe.requiredItem)
+                {
+                    foreach (Item item3 in shop.item)
+                    {
+                        if (item3.type == item2.type)
+                        {
+                            duplicateItem = true;
+                            break;
+                        }
+                    }
+                    if (duplicateItem == false)
+                    {
+                        if (item2.Name.EndsWith("Essence"))
+                        {
+                            shop.item[nextSlot].SetDefaults(item2.type);
+                            nextSlot++;
+                        }
+                    }
+                }
+                duplicateItem = false;
+                foreach (Item item4 in shop.item)
+                {
+                    if (item4.type == item.type)
+                    {
+                        duplicateItem = true;
+                        break;
+                    }
+                }
+                if (duplicateItem == false)
+                {
+                    shop.item[nextSlot].SetDefaults(item.type);
+                    nextSlot++;
+                }
+            }
+        }
+
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-			bool duplicateItem;
 			for (int k = 0; k < 255; k++)
 			{
 				Player player = Main.player[k];
@@ -120,251 +248,13 @@ namespace Fargowiltas.NPCs
 
 				foreach (Item item in player.inventory)
 				{
-					duplicateItem = false;
-					if (item.Name.EndsWith("Enchantment"))
-					{
-						foreach (Item item2 in shop.item)
-						{
-							if (item2.type == item.type)
-							{
-								duplicateItem = true;
-								break;
-							}
-						}
-						if (duplicateItem == false)
-						{
-							shop.item[nextSlot].SetDefaults(item.type);
-							nextSlot++;
-						}
-					}
-					else if (item.Name.Contains("Force"))
-					{
-						RecipeFinder finder = new RecipeFinder();
-						finder.SetResult(item.type);
-						Recipe exactRecipe = finder.SearchRecipes()[0];
-						foreach (Item item2 in exactRecipe.requiredItem)
-						{
-							foreach (Item item3 in shop.item)
-							{
-								if (item3.type == item.type)
-								{
-									duplicateItem = true;
-									break;
-								}
-							}
-							if (duplicateItem == false)
-							{
-								shop.item[nextSlot].SetDefaults(item.type);
-								nextSlot++;
-							}
-						}
-					}
-					else if (item.Name.StartsWith("Soul"))
-					{
-						RecipeFinder finder = new RecipeFinder();
-						finder.SetResult(item.type);
-						Recipe exactRecipe = finder.SearchRecipes()[0];
-						foreach (Item item2 in exactRecipe.requiredItem)
-						{
-							foreach (Item item3 in shop.item)
-							{
-								if (item3.type == item2.type)
-								{
-									duplicateItem = true;
-									break;
-								}
-							}
-							if (duplicateItem == false)
-							{
-								if (item2.Name.Contains("Force") || item2.Name.Contains("Soul"))
-								{
-									shop.item[nextSlot].SetDefaults(item2.type);
-									nextSlot++;
-								}
-							}
-						}
-					}
-					else if (item.Name.EndsWith("Essence"))
-					{
-						foreach (Item item2 in shop.item)
-						{
-							if (item2.type == item.type)
-							{
-								duplicateItem = true;
-								break;
-							}
-						}
-						if (duplicateItem == false)
-						{
-							shop.item[nextSlot].SetDefaults(item.type);
-							nextSlot++;
-						}
-					}
-					else if (item.Name.EndsWith("Soul"))
-					{
-						RecipeFinder finder = new RecipeFinder();
-						finder.SetResult(item.type);
-						Recipe exactRecipe = finder.SearchRecipes()[0];
-						foreach (Item item2 in exactRecipe.requiredItem)
-						{
-							foreach (Item item3 in shop.item)
-							{
-								if (item3.type == item2.type)
-								{
-									duplicateItem = true;
-									break;
-								}
-							}
-							if (duplicateItem == false)
-							{
-								if (item2.Name.EndsWith("Essence"))
-								{
-									shop.item[nextSlot].SetDefaults(item2.type);
-									nextSlot++;
-								}
-							}
-						}
-						duplicateItem = false;
-						foreach (Item item4 in shop.item)
-						{
-							if (item4.type == item.type)
-							{
-								duplicateItem = true;
-								break;
-							}
-						}
-						if (duplicateItem == false)
-						{
-							shop.item[nextSlot].SetDefaults(item.type);
-							nextSlot++;
-						}
-					}
-
+                    TryAddItem(item, shop, ref nextSlot);
 				}
 
 				foreach (Item item in player.armor)
 				{
-					duplicateItem = false;
-					if (item.modItem != null && item.modItem.Name.Equals("FargowiltasSouls") && item.Name.EndsWith("Enchantment"))
-					{
-						foreach (Item item2 in shop.item)
-						{
-							if (item2.type == item.type)
-							{
-								duplicateItem = true;
-								break;
-							}
-						}
-						if (duplicateItem == false)
-						{
-							shop.item[nextSlot].SetDefaults(item.type);
-							nextSlot++;
-						}
-					}
-					else if (item.Name.Contains("Force"))
-					{
-						RecipeFinder finder = new RecipeFinder();
-						finder.SetResult(item.type);
-						Recipe exactRecipe = finder.SearchRecipes()[0];
-						foreach (Item item2 in exactRecipe.requiredItem)
-						{
-							foreach (Item item3 in shop.item)
-							{
-								if (item3.type == item.type)
-								{
-									duplicateItem = true;
-									break;
-								}
-							}
-							if (duplicateItem == false)
-							{
-								shop.item[nextSlot].SetDefaults(item.type);
-								nextSlot++;
-							}
-						}
-					}
-					else if (item.Name.StartsWith("Soul"))
-					{
-						RecipeFinder finder = new RecipeFinder();
-						finder.SetResult(item.type);
-						Recipe exactRecipe = finder.SearchRecipes()[0];
-						foreach (Item item2 in exactRecipe.requiredItem)
-						{
-							foreach (Item item3 in shop.item)
-							{
-								if (item3.type == item2.type)
-								{
-									duplicateItem = true;
-									break;
-								}
-							}
-							if (duplicateItem == false)
-							{
-								if (item2.Name.Contains("Force") || item2.Name.Contains("Soul"))
-								{
-									shop.item[nextSlot].SetDefaults(item2.type);
-									nextSlot++;
-								}
-							}
-						}
-					}
-					else if (item.Name.EndsWith("Essence"))
-					{
-						foreach (Item item2 in shop.item)
-						{
-							if (item2.type == item.type)
-							{
-								duplicateItem = true;
-								break;
-							}
-						}
-						if (duplicateItem == false)
-						{
-							shop.item[nextSlot].SetDefaults(item.type);
-							nextSlot++;
-						}
-					}
-					else if (item.Name.EndsWith("Soul"))
-					{
-						RecipeFinder finder = new RecipeFinder();
-						finder.SetResult(item.type);
-						Recipe exactRecipe = finder.SearchRecipes()[0];
-						foreach (Item item2 in exactRecipe.requiredItem)
-						{
-							foreach (Item item3 in shop.item)
-							{
-								if (item3.type == item2.type)
-								{
-									duplicateItem = true;
-									break;
-								}
-							}
-							if (duplicateItem == false)
-							{
-								if (item2.Name.EndsWith("Essence"))
-								{
-									shop.item[nextSlot].SetDefaults(item2.type);
-									nextSlot++;
-								}
-							}
-						}
-						duplicateItem = false;
-						foreach (Item item4 in shop.item)
-						{
-							if (item4.type == item.type)
-							{
-								duplicateItem = true;
-								break;
-							}
-						}
-						if (duplicateItem == false)
-						{
-							shop.item[nextSlot].SetDefaults(item.type);
-							nextSlot++;
-						}
-					}
-
-				}
+                    TryAddItem(item, shop, ref nextSlot);
+                }
 			}
 		}
 	}
