@@ -111,7 +111,9 @@ namespace Fargowiltas.NPCs
 
         private void TryAddItem(Item item, Chest shop, ref int nextSlot)
         {
-            if (item.modItem == null || !item.modItem.mod.Name.Equals("FargowiltasSouls"))
+            const int maxShop = 40;
+
+            if (item.modItem == null || !item.modItem.mod.Name.Equals("FargowiltasSouls") || nextSlot >= maxShop)
                 return;
 
             bool duplicateItem = false;
@@ -126,7 +128,7 @@ namespace Fargowiltas.NPCs
                         break;
                     }
                 }
-                if (duplicateItem == false)
+                if (duplicateItem == false && nextSlot < maxShop)
                 {
                     shop.item[nextSlot].SetDefaults(item.type);
                     nextSlot++;
@@ -141,15 +143,15 @@ namespace Fargowiltas.NPCs
                 {
                     foreach (Item item3 in shop.item)
                     {
-                        if (item3.type == item.type)
+                        if (item3.type == item2.type)
                         {
                             duplicateItem = true;
                             break;
                         }
                     }
-                    if (duplicateItem == false)
+                    if (duplicateItem == false && nextSlot < maxShop)
                     {
-                        shop.item[nextSlot].SetDefaults(item.type);
+                        shop.item[nextSlot].SetDefaults(item2.type);
                         nextSlot++;
                     }
                 }
@@ -169,7 +171,7 @@ namespace Fargowiltas.NPCs
                             break;
                         }
                     }
-                    if (duplicateItem == false)
+                    if (duplicateItem == false && nextSlot < maxShop)
                     {
                         if (item2.Name.Contains("Force") || item2.Name.Contains("Soul"))
                         {
@@ -189,7 +191,7 @@ namespace Fargowiltas.NPCs
                         break;
                     }
                 }
-                if (duplicateItem == false)
+                if (duplicateItem == false && nextSlot < maxShop)
                 {
                     shop.item[nextSlot].SetDefaults(item.type);
                     nextSlot++;
@@ -210,7 +212,7 @@ namespace Fargowiltas.NPCs
                             break;
                         }
                     }
-                    if (duplicateItem == false)
+                    if (duplicateItem == false && nextSlot < maxShop)
                     {
                         if (item2.Name.EndsWith("Essence"))
                         {
@@ -228,7 +230,7 @@ namespace Fargowiltas.NPCs
                         break;
                     }
                 }
-                if (duplicateItem == false)
+                if (duplicateItem == false && nextSlot < maxShop)
                 {
                     shop.item[nextSlot].SetDefaults(item.type);
                     nextSlot++;
@@ -238,6 +240,12 @@ namespace Fargowiltas.NPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            {
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
+                nextSlot++;
+            }
+
 			for (int k = 0; k < 255; k++)
 			{
 				Player player = Main.player[k];
