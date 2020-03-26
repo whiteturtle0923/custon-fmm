@@ -352,6 +352,14 @@ namespace Fargowiltas
                 }
             }
 
+            foreach (MutantSummonInfo summon in summonTracker.EventSummons)
+            {
+                if ((bool)ModLoader.GetMod(summon.modSource).Call("AbominationnClearEvents", canClearEvent))
+                {
+                    eventOccurring = true;
+                }
+            }
+
             if (eventOccurring && canClearEvent)
             {
                 FargoWorld.AbomClearCD = 7200;
