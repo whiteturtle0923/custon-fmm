@@ -197,6 +197,19 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public static void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
+        {
+            if (!check || shop is null)
+            {
+                return;
+            }
+
+            shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
+            shop.item[nextSlot].value = price;
+
+            nextSlot++;
+        }
+
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             // Events
@@ -226,6 +239,11 @@ namespace Fargowiltas.NPCs
             AddItem(NPC.downedChristmasIceQueen, ItemID.NaughtyPresent, Item.buyPrice(0, 50), ref shop, ref nextSlot);
 
             AddItem(NPC.downedTowers, ItemType<PillarSummon>(), Item.buyPrice(0, 75), ref shop, ref nextSlot);
+
+            foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.EventSummons)
+            {
+                AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
+            }
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

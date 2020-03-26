@@ -27,6 +27,7 @@ namespace Fargowiltas
         public const float Moonlord = 14f;
 
         internal List<MutantSummonInfo> SortedSummons;
+        internal List<MutantSummonInfo> EventSummons;
 
         internal bool SummonsFinalized = false;
 
@@ -59,6 +60,8 @@ namespace Fargowiltas
                 new MutantSummonInfo(Moonlord, "Fargowiltas", "CelestialSigil2", () => NPC.downedMoonlord, 1000000),
                 new MutantSummonInfo(Moonlord + 0.01f, "Fargowiltas", "MutantVoodoo", () => NPC.downedMoonlord, 2000000)
             };
+
+            EventSummons = new List<MutantSummonInfo>();
         }
 
         internal void FinalizeSummonData()
@@ -81,6 +84,11 @@ namespace Fargowiltas
         internal void AddSummon(float progression, string modSource, string itemName, Func<bool> downed, int price)
         {
             SortedSummons.Add(new MutantSummonInfo(progression, modSource, itemName, downed, price));
+        }
+
+        internal void AddEventSummon(float progression, string modSource, string itemName, Func<bool> downed, int price)
+        {
+            EventSummons.Add(new MutantSummonInfo(progression, modSource, itemName, downed, price));
         }
     }
 
