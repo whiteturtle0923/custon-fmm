@@ -287,7 +287,7 @@ namespace Fargowiltas.NPCs
                 {
                     Main.npcChatText = "What's that? You want to fight me? ...nah, I can't put up a good fight on my own.";
                 }
-                else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom") && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedFishronEX"))
+                /*else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom") && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedFishronEX"))
                 {
                     if (Main.rand.Next(2) == 0)
                     {
@@ -301,14 +301,16 @@ namespace Fargowiltas.NPCs
                 else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedFishronEX"))
                 {
                     Main.npcChatText = "Big brother Abominationn mentioned he's pretty excited to fight you! Make sure you're really well prepared before taking him on, though!";
-                }
+                }*/
                 else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
                 {
-                    Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
+                    //Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
+                    Main.npcChatText = "What's that? You want to fight my big brother? ...maybe if he had a reason to.";
                 }
                 else if (NPC.downedMoonlord)
                 {
-                    Main.npcChatText = "You've got two options now: a powerful foe's rematch or one of my brothers. Prepare as much as you can before going for either one, though!";
+                    //Main.npcChatText = "You've got two options now: a powerful foe's rematch or one of my brothers. Prepare as much as you can before going for either one, though!";
+                    Main.npcChatText = "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brothers!";
                 }
                 else if (NPC.downedAncientCultist)
                 {
@@ -397,6 +399,9 @@ namespace Fargowiltas.NPCs
 
                 if (player.HeldItem.ranged)
                     dialogue.Add("Just so you know, ammos are less effective. Only a tiny fraction of their damage can contribute to your total output!");
+
+                if (!NPC.AnyNPCs(NPCType<Squirrel>()))
+                    dialogue.Add("Found any Top Hat Squirrels yet? Keep one in your inventory and maybe a special friend will show up!");
 
                 if (!Main.hardMode)
                 {
