@@ -4,6 +4,7 @@ NEW UPDATE - v 2.1.1
 -Abominationn no longer sells Overloader (redundant)
 -Updated Omnistation(+) buff sprite
 -Minor adjustments to accommodate Deviantt boss
+-Added event summon compatability
 
 NEW UPDATE - v 2.1
 -Added Multitask Center, Elemental Assembler, and Crucible of the Cosmos
