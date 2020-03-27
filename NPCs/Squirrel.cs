@@ -239,6 +239,27 @@ namespace Fargowiltas.NPCs
                     nextSlot++;
                 }
             }
+            else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("AeolusBoots"))
+            {
+                foreach (Item item2 in shop.item)
+                {
+                    if (item2.type == ItemID.FrostsparkBoots || item2.type == ItemID.BalloonHorseshoeFart)
+                    {
+                        duplicateItem = true;
+                        break;
+                    }
+                }
+                if (duplicateItem == false && nextSlot < maxShop)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.FrostsparkBoots);
+                    nextSlot++;
+                }
+                if (duplicateItem == false && nextSlot < maxShop)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.BalloonHorseshoeFart);
+                    nextSlot++;
+                }
+            }
         }
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
