@@ -151,8 +151,11 @@ namespace Fargowiltas.NPCs
                     }
                     if (duplicateItem == false && nextSlot < maxShop)
                     {
-                        shop.item[nextSlot].SetDefaults(item2.type);
-                        nextSlot++;
+                        if (item2.Name.Contains("Enchantment"))
+                        {
+                            shop.item[nextSlot].SetDefaults(item2.type);
+                            nextSlot++;
+                        }
                     }
                 }
             }
