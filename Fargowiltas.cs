@@ -124,6 +124,11 @@ namespace Fargowiltas
                 censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
                 censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Have a Wooden Token ([i:{ModContent.ItemType<Items.Tiles.WoodenToken>()}]) in your inventory");
                 censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
+                Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
+                if (fargoSouls != null)
+                {
+                    censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
+                }
             }
         }
 
@@ -137,13 +142,26 @@ namespace Fargowiltas
                 {
                     case "SwarmActive":
                         return SwarmActive;
-                    case "AddSummon":
 
+                    case "AddSummon":
                         if (summonTracker.SummonsFinalized)
                             throw new Exception($"Call Error: Summons must be added before AddRecipes");
 
                         summonTracker.AddSummon(
                             Convert.ToSingle(args[1]), 
+                            args[2] as string,
+                            args[3] as string,
+                            args[4] as Func<bool>,
+                            Convert.ToInt32(args[5])
+                        );
+                        break;
+
+                    case "AddEventSummon":
+                        if (summonTracker.SummonsFinalized)
+                            throw new Exception($"Call Error: Event summons must be added before AddRecipes");
+
+                        summonTracker.AddEventSummon(
+                            Convert.ToSingle(args[1]),
                             args[2] as string,
                             args[3] as string,
                             args[4] as Func<bool>,
