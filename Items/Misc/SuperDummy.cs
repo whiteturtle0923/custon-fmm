@@ -14,6 +14,7 @@ namespace Fargowiltas.Items.Misc
             DisplayName.SetDefault("Super Dummy");
             Tooltip.SetDefault("Spawns a super dummy at your cursor" +
                                "\nSame as regular Target Dummy except minions and projectiles detect and home onto it" +
+                               "\nOn hit effects get triggered as well" +
                                "\nRight click to remove all spawned super dummies");
         }
 
@@ -42,6 +43,7 @@ namespace Fargowiltas.Items.Misc
                     if (Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
                     {
                         Main.npc[i].active = false;
+                        Main.npc[i].netUpdate = true;
                     }
                 }
             }

@@ -23,7 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ThoriumMod">
-      <HintPath>..\folder for wip\ThoriumMod.XNA.dll</HintPath>
+      <HintPath>..\..\references\mods\ThoriumMod.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

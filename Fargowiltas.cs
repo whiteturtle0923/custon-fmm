@@ -88,8 +88,6 @@ namespace Fargowiltas
 
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
-
-            On.Terraria.NPC.CanBeChasedBy += CanBeChasedBy;
         }
 
         public override void Unload()
@@ -440,14 +438,6 @@ namespace Fargowiltas
             }
 
             return 200;
-        }
-
-        public static bool CanBeChasedBy(On.Terraria.NPC.orig_CanBeChasedBy orig, NPC npc, object attacker, bool ignoreDontTakeDamage)
-        {
-            if (npc.active && npc.type == ModContent.NPCType<NPCs.SuperDummy>())
-                return true;
-            else
-                return orig(npc, attacker, ignoreDontTakeDamage);
         }
     }
 }

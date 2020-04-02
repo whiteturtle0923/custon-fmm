@@ -48,13 +48,13 @@ namespace Fargowiltas.Items.Misc
         {
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
             tooltips.Add(new TooltipLine(mod, "info", $"Symphonic Damage: {thoriumPlayer.symphonicDamage * 100}%"));
-            tooltips.Add(new TooltipLine(mod, "info", $"Symphonic Speed: {(thoriumPlayer.symphonicSpeed * 100) + 100}%"));
+            tooltips.Add(new TooltipLine(mod, "info", $"Symphonic Speed: {(thoriumPlayer.symphonicSpeed * 100)}%"));
             tooltips.Add(new TooltipLine(mod, "info", $"Symphonic Crit: {thoriumPlayer.symphonicCrit}%"));
             tooltips.Add(new TooltipLine(mod, "info", $"Inspiration Regen: {thoriumPlayer.inspirationRegenBonus * 100}%"));
             tooltips.Add(new TooltipLine(mod, "info", $"Empowerment Duration: {thoriumPlayer.bardBuffDuration / 60} seconds"));
             tooltips.Add(new TooltipLine(mod, "info", $"Radiant Damage: {thoriumPlayer.radiantBoost * 100}%"));
-            tooltips.Add(new TooltipLine(mod, "info", $"Radiant Speed: {(thoriumPlayer.radiantSpeed * 100) + 100}%"));
-            tooltips.Add(new TooltipLine(mod, "info", $"Healing Speed: {(thoriumPlayer.healingSpeed * 100) + 100}%"));
+            tooltips.Add(new TooltipLine(mod, "info", $"Radiant Speed: {(thoriumPlayer.radiantSpeed * 100)}%"));
+            tooltips.Add(new TooltipLine(mod, "info", $"Healing Speed: {(thoriumPlayer.healingSpeed * 100)}%"));
             tooltips.Add(new TooltipLine(mod, "info", $"Radiant Crit: {thoriumPlayer.radiantCrit}%"));
             tooltips.Add(new TooltipLine(mod, "info", $"Bonus Healing: {thoriumPlayer.healBonus}"));
         }

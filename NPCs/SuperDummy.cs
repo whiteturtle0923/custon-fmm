@@ -13,20 +13,21 @@ namespace Fargowiltas.NPCs
 
         public override void SetDefaults()
         {
+            npc.CloneDefaults(NPCID.TargetDummy);
+            npc.aiStyle = -1;
             npc.width = 28;
             npc.height = 50;
-            npc.damage = 0;
-            npc.defense = 0;
-            npc.lifeMax = 1000;
-            npc.HitSound = SoundID.NPCHit15;
-            npc.DeathSound = SoundID.NPCDeath2;
-            npc.knockBackResist = 0f;
-            npc.aiStyle = -1;
-            npc.immortal = true;
+            npc.immortal = false;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
+            return false;
+        }
+
+        public override bool CheckDead()
+        {
+            npc.life = npc.lifeMax;
             return false;
         }
     }
