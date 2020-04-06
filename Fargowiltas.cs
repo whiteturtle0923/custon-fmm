@@ -177,7 +177,7 @@ namespace Fargowiltas
                         );
                         break;
 
-                    case "DownedDevianttShop":
+                    case "GetDownedEnemy":
                         if (FargoWorld.DownedBools.ContainsKey(args[1] as string) && FargoWorld.DownedBools[args[1] as string])
                             return true;
                         return false;
