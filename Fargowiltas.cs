@@ -176,6 +176,11 @@ namespace Fargowiltas
                             Convert.ToInt32(args[5])
                         );
                         break;
+
+                    case "DownedDevianttShop":
+                        if (FargoWorld.DownedBools.ContainsKey(args[1] as string) && FargoWorld.DownedBools[args[1] as string])
+                            return true;
+                        return false;
                 }
 
             }
