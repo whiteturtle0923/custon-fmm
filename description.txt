@@ -1,5 +1,6 @@
 NEW UPATE - v 2.1.2
 -Added Baby Guardian summon
+-Added Death Fruit (debug item)
 
 NEW UPDATE - v 2.1.1
 -Fixed summons in Multiplayer
