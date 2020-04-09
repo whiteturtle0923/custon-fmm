@@ -1,5 +1,8 @@
 using System.Collections.Generic;
-using Fargowiltas.Items.Summons.NewSummons;
+using Fargowiltas.Items.Summons;
+using Fargowiltas.Items.Summons.Deviantt;
+using Fargowiltas.Items.Summons.SwarmSummons;
+using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Items.Summons.Abom;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -13,15 +16,12 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Abominationn : ModNPC
     {
-        public static bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
-
+        //add event mod call later lol
+        /*public static bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
         public static bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
-
         public static bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
-
         public static bool RedePatientZero => Redemption.RedeWorld.downedPatientZero;
-
-        public static bool ChickenArmy => Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ;
+        public static bool ChickenArmy => Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ;*/
 
         public override bool Autoload(ref string name)
         {
@@ -61,11 +61,9 @@ namespace Fargowiltas.NPCs
             npc.buffImmune[BuffID.Suffocation] = true;
         }
 
-        public static bool FargoAbomBossAlive => FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.BossIsAlive(ref FargowiltasSouls.NPCs.FargoSoulsGlobalNPC.abomBoss, ModLoader.GetMod("FargowiltasSouls").NPCType("AbomBoss"));
-
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (Mutant.FargoMutantBossAlive || FargoAbomBossAlive))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
             {
                 return false;
             }
@@ -199,38 +197,27 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public static void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
+        {
+            if (!check || shop is null)
+            {
+                return;
+            }
+
+            shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
+            shop.item[nextSlot].value = price;
+
+            nextSlot++;
+        }
+
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            AddItem(Main.expertMode, ItemType<Items.Summons.SwarmSummons.Overloader>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
-
             // Events
             AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
-            AddItem(NPC.downedSlimeKing, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
+            AddItem(true, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
             AddItem(NPC.downedBoss1, ItemType<CursedSextant>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
-
-            if (Fargowiltas.ModLoaded["GRealm"])
-            {
-                AddModItem(GRealmInvasion, "GRealm", "HordeStaff", 50000, ref shop, ref nextSlot);
-            }
-
-            if (Fargowiltas.ModLoaded["Redemption"])
-            {
-                AddModItem(ChickenArmy, "Redemption", "ChickenContract", RedePatientZero ? 100000 : 10000, ref shop, ref nextSlot);
-            }
-
             AddItem(true, ItemID.GoblinBattleStandard, Item.buyPrice(0, 6), ref shop, ref nextSlot);
-
-            if (Fargowiltas.ModLoaded["SpiritMod"])
-            {
-                AddModItem(SpiritInvasion, "SpiritMod", "BlackPearl", 80000, ref shop, ref nextSlot);
-            }
-
-            if (Fargowiltas.ModLoaded["ForgottenMemories"])
-            {
-                AddModItem(BtfaInvasion, "ForgottenMemories", "AncientLog", 80000, ref shop, ref nextSlot);
-            }
-
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedGolemBoss, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
@@ -252,6 +239,11 @@ namespace Fargowiltas.NPCs
             AddItem(NPC.downedChristmasIceQueen, ItemID.NaughtyPresent, Item.buyPrice(0, 50), ref shop, ref nextSlot);
 
             AddItem(NPC.downedTowers, ItemType<PillarSummon>(), Item.buyPrice(0, 75), ref shop, ref nextSlot);
+
+            foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.EventSummons)
+            {
+                AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
+            }
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

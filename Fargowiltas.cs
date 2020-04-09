@@ -30,6 +30,7 @@ namespace Fargowiltas
 
         // Mod loaded bools
         internal static Dictionary<string, bool> ModLoaded;
+        internal static Dictionary<int, string> ModRareEnemies = new Dictionary<int, string>();
         private string[] mods;
 
         public Fargowiltas()
@@ -46,7 +47,7 @@ namespace Fargowiltas
         {
             summonTracker = new MutantSummonTracker();
 
-            HomeKey = RegisterHotKey("Quick Recall/Mirror", "P");
+            HomeKey = RegisterHotKey("Quick Recall/Mirror", "Home");
             RodKey = RegisterHotKey("Quick Rod of Discord", "E");
             CustomKey = RegisterHotKey("Quick Use Custom (Bottom Left Inventory Slot)", "K");
 
@@ -118,10 +119,22 @@ namespace Fargowiltas
             Mod censusMod = ModLoader.GetMod("Census");
             if (censusMod != null)
             {
-                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Use the Mutant's Gift");
-                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any Boss or Miniboss");
-                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), "Hold a Wooden Token in your Inventory");
-                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Defeat any Event");
+                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Defeat any rare enemy or... embrace eternity");
+                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
+                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Have a Wooden Token ([i:{ModContent.ItemType<Items.Tiles.WoodenToken>()}]) in your inventory");
+                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
+                Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
+                if (fargoSouls != null)
+                {
+                    censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
+                }
+            }
+
+            Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
+            if (soulsMod != null)
+            {
+                if (!ModRareEnemies.ContainsKey(soulsMod.NPCType("BabyGuardian")))
+                    ModRareEnemies.Add(soulsMod.NPCType("BabyGuardian"), "babyGuardian");
             }
         }
 
@@ -135,8 +148,8 @@ namespace Fargowiltas
                 {
                     case "SwarmActive":
                         return SwarmActive;
-                    case "AddSummon":
 
+                    case "AddSummon":
                         if (summonTracker.SummonsFinalized)
                             throw new Exception($"Call Error: Summons must be added before AddRecipes");
 
@@ -148,6 +161,24 @@ namespace Fargowiltas
                             Convert.ToInt32(args[5])
                         );
                         break;
+
+                    case "AddEventSummon":
+                        if (summonTracker.SummonsFinalized)
+                            throw new Exception($"Call Error: Event summons must be added before AddRecipes");
+
+                        summonTracker.AddEventSummon(
+                            Convert.ToSingle(args[1]),
+                            args[2] as string,
+                            args[3] as string,
+                            args[4] as Func<bool>,
+                            Convert.ToInt32(args[5])
+                        );
+                        break;
+
+                    case "GetDownedEnemy":
+                        if (FargoWorld.DownedBools.ContainsKey(args[1] as string) && FargoWorld.DownedBools[args[1] as string])
+                            return true;
+                        return false;
                 }
 
             }
@@ -205,36 +236,8 @@ namespace Fargowiltas
 
                     break;
 
-                // Spawn Deviantt items
-                case 4:
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        Player player = Main.player[reader.ReadByte()];
-                        DropDevianttsGift(player);
-                    }
-
-                    break;
-
                 default:
                     break;
-            }
-        }
-
-        public static void DropDevianttsGift(Player player)
-        {
-            Item.NewItem(player.Center, ItemID.SilverPickaxe);
-            Item.NewItem(player.Center, ItemID.SilverAxe);
-            Item.NewItem(player.Center, ItemID.BugNet);
-            Item.NewItem(player.Center, ItemID.LifeCrystal, 4);
-            Item.NewItem(player.Center, ModContent.ItemType<DevianttsSundial>());
-            Item.NewItem(player.Center, ModContent.ItemType<AutoHouse>(), 3);
-            Item.NewItem(player.Center, ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
-
-            if (ModLoader.GetMod("MagicStorage") != null)
-            {
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageHeart"));
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("CraftingAccess"));
-                Item.NewItem(player.Center, ModLoader.GetMod("MagicStorage").ItemType("StorageUnitTerra"));
             }
         }
 
@@ -357,6 +360,14 @@ namespace Fargowiltas
                             Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
                         }
                     }
+                }
+            }
+
+            foreach (MutantSummonInfo summon in summonTracker.EventSummons)
+            {
+                if ((bool)ModLoader.GetMod(summon.modSource).Call("AbominationnClearEvents", canClearEvent))
+                {
+                    eventOccurring = true;
                 }
             }
 

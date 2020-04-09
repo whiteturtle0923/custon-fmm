@@ -12,11 +12,6 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Deviantt : ModNPC
     {
-        public static bool MasochistMode => FargowiltasSouls.FargoSoulsWorld.MasochistMode;
-        public static bool FargoDownedAbom => FargowiltasSouls.FargoSoulsWorld.downedAbom;
-        public static bool FargoDownedMutant => FargowiltasSouls.FargoSoulsWorld.downedMutant;
-        public static bool FargoDownedFishEX => FargowiltasSouls.FargoSoulsWorld.downedFishronEX;
-
         public override bool Autoload(ref string name)
         {
             name = "Deviantt";
@@ -56,7 +51,10 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            return FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && MasochistMode);
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
+                return false;
+
+            return FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"));
         }
 
         public override void AI()
@@ -100,7 +98,7 @@ namespace Fargowiltas.NPCs
             if (mutant != -1)
             {
                 dialogue.Add($"Can you tell {Main.npc[mutant].GivenName} to put some clothes on?");
-                dialogue.Add($"One day, I'll sell a summon for myself! ...Just kidding. That'd be {Main.npc[mutant].GivenName}'s job.");
+                dialogue.Add($"One day, I'll sell a summon for myself! ...Just kidding. That's {Main.npc[mutant].GivenName}'s job.");
                 dialogue.Add($"{Main.npc[mutant].GivenName} is here! That's my big brother!");
             }
 
@@ -122,7 +120,7 @@ namespace Fargowiltas.NPCs
                 dialogue.Add($"Have you ever considered throwing {Main.npc[angler].GivenName} back where you found him?");
             }
 
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && MasochistMode)
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
                 dialogue.Add("Embrace suffering... and while you're at it, embrace another purchase!");
             }
@@ -133,9 +131,9 @@ namespace Fargowiltas.NPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("LegacyInterface.28");
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && MasochistMode)
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
-                button2 = FargoDownedMutant ? "Lore" : "Help";
+                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant") ? "Lore" : "Help";
             }
         }
 
@@ -145,9 +143,9 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
             }
-            else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && MasochistMode)
+            else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
-                if (FargoDownedMutant)
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
                     FargosLore();
                 else
                     Fargos();
@@ -181,6 +179,7 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode && FargoWorld.DownedBools["medusa"], ItemType<AthenianIdol>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["clown"], ItemType<ClownLicense>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["nymph"], ItemType<HeartChocolate>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["babyGuardian"], ItemType<InnocuousSkull>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["moth"], ItemType<MothLamp>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["rainbowSlime"], ItemType<DilutedRainbowMatter>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["wyvern"], ItemType<CloudSnack>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
@@ -193,7 +192,7 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode && FargoWorld.DownedBools["iceGolem"], ItemType<CoreoftheFrostCore>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["sandElemental"], ItemType<ForbiddenForbiddenFragment>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && NPC.downedGoblins && FargoWorld.DownedBools["goblinSummoner"], ItemType<ShadowflameIcon>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
-            AddItem(Main.hardMode && NPC.downedPirates && FargoWorld.DownedBools["pirateCaptain"], ItemType<PirateFlag>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(Main.hardMode && NPC.downedPirates && FargoWorld.DownedBools["pirateCaptain"], ItemType<PirateFlag>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(Main.hardMode && NPC.downedPirates && FargoWorld.DownedBools["flyingDutchman"], ItemType<PlunderedBooty>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && FargoWorld.DownedBools["mothron"], ItemType<MothronEgg>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPlantBoss && FargoWorld.DownedBools["boneLee"], ItemType<LeesHeadband>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
@@ -272,34 +271,24 @@ namespace Fargowiltas.NPCs
         private void Fargos()
         {
             Player player = Main.LocalPlayer;
-            FargowiltasSouls.FargoPlayer fargoPlayer = player.GetModPlayer<FargowiltasSouls.FargoPlayer>();
 
-            if (!fargoPlayer.ReceivedMasoGift)
+            //devi gifts
+            if (!(bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived"))
             {
-                fargoPlayer.ReceivedMasoGift = true;
-                if (Main.netMode == NetmodeID.SinglePlayer)
-                {
-                    Fargowiltas.DropDevianttsGift(player);
-                }
-                else if (Main.netMode == NetmodeID.MultiplayerClient)
-                {
-                    var netMessage = mod.GetPacket(); // Broadcast item request to server
-                    netMessage.Write((byte)4);
-                    netMessage.Write((byte)player.whoAmI);
-                    netMessage.Send();
-                }
+                ModLoader.GetMod("FargowiltasSouls").Call("GiveDevianttGifts");
 
                 Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
+
                 return;
             }
 
             if (Main.rand.NextBool(4))
             {
-                if (FargoDownedMutant)
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
                 {
                     Main.npcChatText = "What's that? You want to fight me? ...nah, I can't put up a good fight on my own.";
                 }
-                else if (FargoDownedAbom && FargoDownedFishEX)
+                /*else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom") && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedFishronEX"))
                 {
                     if (Main.rand.Next(2) == 0)
                     {
@@ -310,17 +299,19 @@ namespace Fargowiltas.NPCs
                         Main.npcChatText = "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brothers!";
                     }
                 }
-                else if (FargoDownedFishEX)
+                else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedFishronEX"))
                 {
                     Main.npcChatText = "Big brother Abominationn mentioned he's pretty excited to fight you! Make sure you're really well prepared before taking him on, though!";
-                }
-                else if (FargoDownedAbom)
+                }*/
+                else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
                 {
-                    Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
+                    //Main.npcChatText = "When you're ready, go fishing with a Truffle Worm EX. But until then... yeah, keep farming. So what are you buying today?";
+                    Main.npcChatText = "What's that? You want to fight my big brother? ...maybe if he had a reason to.";
                 }
                 else if (NPC.downedMoonlord)
                 {
-                    Main.npcChatText = "You've got two options now: a powerful foe's rematch or one of my brothers. Prepare as much as you can before going for either one, though!";
+                    //Main.npcChatText = "You've got two options now: a powerful foe's rematch or one of my brothers. Prepare as much as you can before going for either one, though!";
+                    Main.npcChatText = "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brothers!";
                 }
                 else if (NPC.downedAncientCultist)
                 {
@@ -410,13 +401,16 @@ namespace Fargowiltas.NPCs
                 if (player.HeldItem.ranged)
                     dialogue.Add("Just so you know, ammos are less effective. Only a tiny fraction of their damage can contribute to your total output!");
 
+                if (!NPC.AnyNPCs(NPCType<Squirrel>()))
+                    dialogue.Add("Found any Top Hat Squirrels yet? Keep one in your inventory and maybe a special friend will show up!");
+
                 if (!Main.hardMode)
                 {
                     dialogue.Add("I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.");
                     dialogue.Add("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.");
                 }
 
-                if (!player.accFlipper && !player.gills && !fargoPlayer.MutantAntibodies)
+                if (!player.accFlipper && !player.gills && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAntibodies"))
                 {
                     dialogue.Add("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?");
                 }
@@ -426,7 +420,7 @@ namespace Fargowiltas.NPCs
                     dialogue.Add("The underworld has gotten a lot hotter since the last time I visited. I hear an obsidian skull is a good luck charm against burning alive, though.");
                 }
 
-                if (!player.buffImmune[BuffID.Suffocation] && !fargoPlayer.PureHeart)
+                if (!player.buffImmune[BuffID.Suffocation] && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("PureHeart"))
                 {
                     dialogue.Add("Want to have a breath-holding contest? The empty vacuum of space would be perfect.");
                 }
@@ -436,14 +430,14 @@ namespace Fargowiltas.NPCs
                     dialogue.Add("I don't have any more Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share.");
                 }
 
-                if (NPC.downedBoss3 && !fargoPlayer.Graze && !fargoPlayer.SinisterIcon)
+                if (NPC.downedBoss3 && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("SinisterIcon"))
                 {
                     dialogue.Add("Dungeon Guardian sent me photos of their kids earlier. Cute little skull demons hiding in other skeletons, aren't they? Oh, and their drop wards off random boss spawns, I guess.");
                 }
 
                 if (Main.hardMode)
                 {
-                    if (!fargoPlayer.PureHeart)
+                    if (!(bool)ModLoader.GetMod("FargowiltasSouls").Call("PureHeart"))
                     {
                         dialogue.Add("The spirits of light and dark stopped by and they sounded pretty upset with you. Don't be too surprised if something happens to you for entering their territory!");
                     }

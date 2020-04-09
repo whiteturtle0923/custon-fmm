@@ -46,13 +46,13 @@ namespace Fargowiltas
             }
         }
 
-        private void Fargos()
+        /*private void Fargos()
         {
             if (player.GetModPlayer<FargowiltasSouls.FargoPlayer>().NinjaEnchant)
             {
                 player.AddBuff(ModLoader.GetMod("FargowiltasSouls").BuffType("FirstStrike"), 60);
             }
-        }
+        }*/
 
         public override void PostUpdate()
         {
@@ -69,7 +69,28 @@ namespace Fargowiltas
         public override void PostUpdateEquips()
         {
             Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
+            
+            if (Fargowiltas.SwarmActive)
+            {
+                player.buffImmune[BuffID.Horrified] = true;
+            }
 
+            
+            for (int i = 0; i < player.bank.item.Length; i++)
+            {
+                Item item = player.bank.item[i];
+
+                if (item.active && Array.IndexOf(Informational, item.type) > -1)
+                {
+                    player.VanillaUpdateEquip(item);
+                }
+            }
+        }
+
+        int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.DPSMeter, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone};
+
+        public override void UpdateBiomes()
+        {
             if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
             {
                 player.ZoneCorrupt = true;
@@ -84,26 +105,36 @@ namespace Fargowiltas
             {
                 player.ZoneJungle = true;
             }
-            
-            if (Fargowiltas.SwarmActive)
+
+            switch (Main.fountainColor)
             {
-                player.buffImmune[BuffID.Horrified] = true;
+                case 0:
+                    player.ZoneBeach = true;
+                    break;
+                case 6:
+                    player.ZoneDesert = true;
+                    break;
+                case 3:
+                    player.ZoneJungle = true;
+                    break;
+                case 5:
+                    player.ZoneSnow = true;
+                    break;
+                case 2:
+                    player.ZoneCorrupt = true;
+                    break;
+                case 10:
+                    player.ZoneCrimson = true;
+                    break;
+                case 4:
+                    if (Main.hardMode)
+                    {
+                        player.ZoneHoly = true;
+                    }
+                    break;
             }
 
-            for (int i = 0; i < player.bank.item.Length; i++)
-            {
-                Item item = player.bank.item[i];
-
-                if (Array.IndexOf(Informational, item.type) > -1)
-                {
-                    bool boolean = false;
-                    player.VanillaUpdateAccessory(player.whoAmI, item, true, ref boolean, ref boolean, ref boolean );
-                }
-            }
         }
-
-        int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.DPSMeter, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone};
-
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
         {
             int num15 = 150;

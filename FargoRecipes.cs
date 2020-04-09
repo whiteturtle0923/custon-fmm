@@ -1,11 +1,15 @@
 ﻿using Fargowiltas.Items.CaughtNPCs;
 using Fargowiltas.Items.Summons;
-using Fargowiltas.Items.Summons.NewSummons;
+using Fargowiltas.Items.Summons.Deviantt;
+using Fargowiltas.Items.Summons.Abom;
+using Fargowiltas.Items.Summons.SwarmSummons;
+using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Items.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using ThoriumMod.Items.Banners;
 
 namespace Fargowiltas
 {
@@ -13,9 +17,62 @@ namespace Fargowiltas
     {
         public static void AddRecipeGroups()
         {
+
+
+
             // Evil Wood
             RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Wood", new int[] { ItemID.Ebonwood, ItemID.Shadewood });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
+
+            //iron anvil
+            group = new RecipeGroup(() => "Any Iron Anvil", new int[] { ItemID.IronAnvil, ItemID.LeadAnvil});
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyAnvil", group);
+
+            //anvil HM
+            group = new RecipeGroup(() => "Any Mythril Anvil", ItemID.MythrilAnvil, ItemID.OrichalcumAnvil);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyHMAnvil", group);
+
+            //forge HM
+            group = new RecipeGroup(() => "Any Adamantite Forge", ItemID.AdamantiteForge, ItemID.TitaniumForge);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyForge", group);
+
+            //book cases
+            group = new RecipeGroup(() => "Any Bookcase", new int[]
+            {
+                ItemID.Bookcase,
+                ItemID.BlueDungeonBookcase,
+                ItemID.BoneBookcase,
+                ItemID.BorealWoodBookcase,
+                ItemID.CactusBookcase,
+                ItemID.CrystalBookCase,
+                ItemID.DynastyBookcase,
+                ItemID.EbonwoodBookcase,
+                ItemID.FleshBookcase,
+                ItemID.FrozenBookcase,
+                ItemID.GlassBookcase,
+                ItemID.GoldenBookcase,
+                ItemID.GothicBookcase,
+                ItemID.GraniteBookcase,
+                ItemID.GreenDungeonBookcase,
+                ItemID.HoneyBookcase,
+                ItemID.LivingWoodBookcase,
+                ItemID.MarbleBookcase,
+                ItemID.MeteoriteBookcase,
+                ItemID.MushroomBookcase,
+                ItemID.ObsidianBookcase,
+                ItemID.PalmWoodBookcase,
+                ItemID.PearlwoodBookcase,
+                ItemID.PinkDungeonBookcase,
+                ItemID.PumpkinBookcase,
+                ItemID.RichMahoganyBookcase,
+                ItemID.ShadewoodBookcase,
+                ItemID.SkywareBookcase,
+                ItemID.SlimeBookcase,
+                ItemID.SpookyBookcase,
+                ItemID.SteampunkBookcase
+            });
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyBookcase", group);
+
 
             // Bone Banners
             int[] boneBanners = { ItemID.BlueArmoredBonesBanner, ItemID.HellArmoredBonesBanner, ItemID.RustyArmoredBonesBanner };
@@ -161,7 +218,6 @@ namespace Fargowiltas
                 ModContent.ItemType<Tavernkeep>(),
                 ModContent.ItemType<TaxCollector>(),
                 ModContent.ItemType<TravellingMerchant>(),
-                ModContent.ItemType<Truffle>(),
                 ModContent.ItemType<WitchDoctor>(),
                 ModContent.ItemType<Wizard>(),
             };
@@ -285,10 +341,10 @@ namespace Fargowiltas
                 }
             }
 
-            void AddGroupToItemRecipe(string group, int result, int station = TileID.Solidifier, int resultAmount = 1)
+            void AddGroupToItemRecipe(string group, int result, int station = TileID.Solidifier, int resultAmount = 1, int groupAmount = 1)
             {
                 recipe = GetNewRecipe();
-                recipe.AddRecipeGroup(group);
+                recipe.AddRecipeGroup(group, groupAmount);
                 recipe.AddTile(station);
                 recipe.SetResult(result, resultAmount);
                 recipe.AddRecipe();
@@ -355,6 +411,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher);
             AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.BoneWand);
             AddBannerToItemRecipe(ItemID.SnowFlinxBanner, ItemID.SnowballLauncher);
+            AddBannerToItemRecipe(ItemID.TortoiseBanner, ItemID.TurtleShell);
             AddBannerToItemRecipe(ItemID.ToxicSludgeBanner, ItemID.Bezoar);
             AddBannerToItemRecipe(ItemID.UmbrellaSlimeBanner, ItemID.UmbrellaHat);
             AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.BonePickaxe);
@@ -367,8 +424,9 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock);
             AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun, 5);
             AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 5);
-            //AddBannerToItemRecipe(ItemID.SlimeBanner, ItemID.Gel, resultAmount: 200);
-            //AddBannerToItemRecipe(ItemID.PinkyBanner, ItemID.PinkGel, resultAmount: 999);
+            AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass);
+            AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass);
+            AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);
 
             AddBannerToItemsRecipe(ItemID.ArmoredSkeletonBanner, new int[] { ItemID.ArmorPolish, ItemID.BeamSword });
             AddBannerToItemsRecipe(ItemID.BoneLeeBanner, new int[] { ItemID.BlackBelt, ItemID.Tabi });
@@ -390,10 +448,10 @@ namespace Fargowiltas
             AddBannerToItemsRecipe(ItemID.ZombieElfBanner, new int[] { ItemID.ElfHat, ItemID.ElfShirt, ItemID.ElfPants });
             AddBannerToItemsRecipe(ItemID.ZombieEskimoBanner, new int[] { ItemID.EskimoHood, ItemID.EskimoCoat, ItemID.EskimoPants });
             //ancient armors
-            AddBannerToItemsRecipe(ItemID.EaterofSoulsBanner, new int[] { ItemID.AncientShadowHelmet, ItemID.AncientShadowScalemail, ItemID.AncientShadowGreaves }, 5);
-            AddBannerToItemsRecipe(ItemID.HornetBanner, new int[] { ItemID.AncientCobaltHelmet, ItemID.AncientCobaltBreastplate, ItemID.AncientCobaltLeggings }, 5);
+            AddBannerToItemsRecipe(ItemID.EaterofSoulsBanner, new int[] { ItemID.AncientShadowHelmet, ItemID.AncientShadowScalemail, ItemID.AncientShadowGreaves }, 2);
+            AddBannerToItemsRecipe(ItemID.HornetBanner, new int[] { ItemID.AncientCobaltHelmet, ItemID.AncientCobaltBreastplate, ItemID.AncientCobaltLeggings }, 2);
             AddBannerToItemsRecipe(ItemID.SkeletonBanner, new int[] { ItemID.AncientIronHelmet, ItemID.AncientGoldHelmet }, 2);
-            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 5);
+            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 2);
             //gladiator
             AddBannerToItemsRecipe(ItemID.GreekSkeletonBanner, new int[] { ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings });
             
@@ -418,11 +476,11 @@ namespace Fargowiltas
 
             AddGroupToItemRecipe("Fargowiltas:AnySlimes", ItemID.Gel, resultAmount: 200);
 
-            AddGroupToItemRecipe("Fargowiltas:AnyHallows", ItemID.HallowedKey, TileID.MythrilAnvil, 10);
-            AddGroupToItemRecipe("Fargowiltas:AnyCorrupts", ItemID.CorruptionKey, TileID.MythrilAnvil, 10);
-            AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.CrimsonKey, TileID.MythrilAnvil, 10);
-            AddGroupToItemRecipe("Fargowiltas:AnyJungles", ItemID.JungleKey, TileID.MythrilAnvil, 10);
-            AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnyHallows", ItemID.HallowedKey, TileID.MythrilAnvil, 1, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnyCorrupts", ItemID.CorruptionKey, TileID.MythrilAnvil, 1, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.CrimsonKey, TileID.MythrilAnvil, 1, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnyJungles", ItemID.JungleKey, TileID.MythrilAnvil, 1, 10);
+            AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil, 1, 10);
 
             // Thorium
             if (Fargowiltas.ModLoaded["ThoriumMod"])
@@ -467,10 +525,8 @@ namespace Fargowiltas
                 AddBannerToItemRecipe(thorium.ItemType("WindElementalBanner"), thorium.ItemType("Zapper"));
 
                 AddBannerToItemRecipe(ItemID.AngryBonesBanner, thorium.ItemType("GraveGoods"));
-                AddBannerToItemRecipe(ItemID.BloodZombieBanner, thorium.ItemType("BloodCellStaff"));
                 AddBannerToItemRecipe(ItemID.BoneLeeBanner, thorium.ItemType("TechniqueShadowClone"));
                 AddBannerToItemRecipe(ItemID.BoneSerpentBanner, thorium.ItemType("SpineBreaker"));
-                AddBannerToItemRecipe(ItemID.DripplerBanner, thorium.ItemType("Bagpipe"));
                 AddBannerToItemRecipe(ItemID.FlyingSnakeBanner, thorium.ItemType("Spearmint"));
                 AddBannerToItemRecipe(ItemID.FrankensteinBanner, thorium.ItemType("TeslaDefibrillator"));
                 AddBannerToItemRecipe(ItemID.MartianOfficerBanner, thorium.ItemType("ShieldDroneBeacon"));
@@ -489,7 +545,7 @@ namespace Fargowiltas
                 AddBannerToItemsRecipe(thorium.ItemType("DarksteelKnightBanner"), new int[] { thorium.ItemType("BrokenDarksteelHelmet"), thorium.ItemType("GrayDPaintingItem") });
                 AddBannerToItemsRecipe(thorium.ItemType("InvaderBanner"), new int[] { thorium.ItemType("VegaPhaser"), thorium.ItemType("BioPod") });
                 AddBannerToItemsRecipe(thorium.ItemType("NecroticImbuerBanner"), new int[] { thorium.ItemType("NecroticStaff"), thorium.ItemType("TechniqueBloodLotus") });
-                AddBannerToItemsRecipe(thorium.ItemType("WargBanner"), new int[] { thorium.ItemType("BattleHorn"), thorium.ItemType("BlackCatEars") });
+                AddBannerToItemsRecipe(thorium.ItemType("WargBanner"), new int[] { thorium.ItemType("BattleHorn"), thorium.ItemType("BlackCatEars"), thorium.ItemType("Bagpipe"), thorium.ItemType("BloodCellStaff") });
                 AddBannerToItemsRecipe(ItemID.MimicBanner, new int[] { thorium.ItemType("LargeCoin"), thorium.ItemType("ProofAvarice") });
             }
 
@@ -669,22 +725,21 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.SandstorminaBottle, ItemID.GoldenCrate, 5);
             AddGrabBagItemRecipe(ItemID.Sundial, ItemID.GoldenCrate, 10);
             //jungle
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.AnkletoftheWind, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.StaffofRegrowth, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.Boomstick, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.FeralClaws, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.FiberglassFishingPole, 5);
-            AddGrabBagItemRecipe(ItemID.FalconBlade, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.AnkletoftheWind, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.StaffofRegrowth, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.Boomstick, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.FeralClaws, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.FiberglassFishingPole, ItemID.JungleFishingCrate, 5);
             //sky
             AddGrabBagItemRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.Starfury, ItemID.FloatingIslandFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 5);
             //corrupt
             AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 5);
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.BandofStarpower, 5);
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.ShadowOrb, 5);
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.Musket, 5);
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.Vilethorn, 5);
+            AddGrabBagItemRecipe(ItemID.BandofStarpower, ItemID.CorruptFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.ShadowOrb, ItemID.CorruptFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.Musket, ItemID.CorruptFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.Vilethorn, ItemID.CorruptFishingCrate, 5);
             //crimson
             AddGrabBagItemRecipe(ItemID.TheUndertaker, ItemID.CrimsonFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.TheRottedFork, ItemID.CrimsonFishingCrate, 5);
@@ -748,19 +803,25 @@ namespace Fargowiltas
             ModRecipe recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
             recipe.AddTile(TileID.MeatGrinder);
-            recipe.SetResult(ItemID.FleshBlock, 15);
+            recipe.SetResult(ItemID.FleshBlock, 25);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
             recipe.AddTile(TileID.DyeVat);
-            recipe.SetResult(ItemID.DeepRedPaint, 100);
+            recipe.SetResult(ItemID.DeepRedPaint, 20);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ModContent.ItemType<Truffle>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(ItemID.BluePaint, 20);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
             recipe.AddTile(TileID.DyeVat);
-            recipe.SetResult(ItemID.GrimDye, 3);
+            recipe.SetResult(ItemID.GrimDye, 2);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
@@ -953,13 +1014,25 @@ namespace Fargowiltas
         {
             ModRecipe recipe = GetNewRecipe();
             recipe.AddIngredient(item);
-            recipe.AddTile(TileID.Bottles);
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(item2);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
             recipe.AddIngredient(item2);
-            recipe.AddTile(TileID.Bottles);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(item);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(item);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(item2);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(item2);
+            recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(item);
             recipe.AddRecipe();
         }

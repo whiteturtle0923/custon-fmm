@@ -193,27 +193,7 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.Painter:
 
-                    if (player.ZoneRockLayerHeight)
-                    {
-                        nextSlot = 19;
-
-                        shop.item[nextSlot++].SetDefaults(ItemID.AmericanExplosive);
-                        shop.item[nextSlot++].SetDefaults(ItemID.CrownoDevoursHisLunch);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Discover);
-                        shop.item[nextSlot++].SetDefaults(ItemID.FatherofSomeone);
-                        shop.item[nextSlot++].SetDefaults(ItemID.FindingGold);
-                        shop.item[nextSlot++].SetDefaults(ItemID.GloriousNight);
-                        shop.item[nextSlot++].SetDefaults(ItemID.GuidePicasso);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Land);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheMerchant);
-                        shop.item[nextSlot++].SetDefaults(ItemID.NurseLisa);
-                        shop.item[nextSlot++].SetDefaults(ItemID.OldMiner);
-                        shop.item[nextSlot++].SetDefaults(ItemID.RareEnchantment);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Sunflowers);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TerrarianGothic);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Waldo);
-                    }
-                    else if (player.ZoneDungeon)
+                    if (player.ZoneDungeon)
                     {
                         nextSlot = 15;
 
@@ -241,6 +221,26 @@ namespace Fargowiltas.NPCs
                         shop.item[nextSlot++].SetDefaults(ItemID.TrioSuperHeroes);
                         shop.item[nextSlot++].SetDefaults(ItemID.TheTwinsHaveAwoken);
                         shop.item[nextSlot++].SetDefaults(ItemID.UnicornCrossingtheHallows);
+                    }
+                    else if (player.ZoneRockLayerHeight)
+                    {
+                        nextSlot = 19;
+
+                        shop.item[nextSlot++].SetDefaults(ItemID.AmericanExplosive);
+                        shop.item[nextSlot++].SetDefaults(ItemID.CrownoDevoursHisLunch);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Discover);
+                        shop.item[nextSlot++].SetDefaults(ItemID.FatherofSomeone);
+                        shop.item[nextSlot++].SetDefaults(ItemID.FindingGold);
+                        shop.item[nextSlot++].SetDefaults(ItemID.GloriousNight);
+                        shop.item[nextSlot++].SetDefaults(ItemID.GuidePicasso);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Land);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TheMerchant);
+                        shop.item[nextSlot++].SetDefaults(ItemID.NurseLisa);
+                        shop.item[nextSlot++].SetDefaults(ItemID.OldMiner);
+                        shop.item[nextSlot++].SetDefaults(ItemID.RareEnchantment);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Sunflowers);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TerrarianGothic);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Waldo);
                     }
                     else if (player.ZoneUnderworldHeight)
                     {
@@ -510,7 +510,7 @@ namespace Fargowiltas.NPCs
 
                 if (npc.type == mod.NPCType("Destroyer"))
                 {
-                    Swarm(npc, mod.NPCType("Destroyer"), mod.NPCType("DestroyerTail"), ItemID.DestroyerBossBag, "EnergizerDestroy");
+                    Swarm(npc, mod.NPCType("Destroyer"), -1, ItemID.DestroyerBossBag, "EnergizerDestroy");
                 }
 
 
@@ -810,18 +810,15 @@ namespace Fargowiltas.NPCs
                     break;
 
                 case NPCID.Raven:
-                    if (!Main.halloween)
-                    {
-                        Item.NewItem(npc.Hitbox, ItemID.GoodieBag);
-                    }
+                    Item.NewItem(npc.Hitbox, ItemID.GoodieBag);
 
                     break;
 
                 case NPCID.SlimeRibbonRed:
-                    if (!Main.xMas)
-                    {
-                        Item.NewItem(npc.Hitbox, ItemID.Present);
-                    }
+                case NPCID.SlimeRibbonGreen:
+                case NPCID.SlimeRibbonWhite:
+                case NPCID.SlimeRibbonYellow:
+                    Item.NewItem(npc.Hitbox, ItemID.Present);
 
                     break;
 
@@ -987,6 +984,12 @@ namespace Fargowiltas.NPCs
 
                 default:
                     break;
+            }
+
+            if (Fargowiltas.ModRareEnemies.ContainsKey(npc.type))
+            {
+                FargoWorld.DownedBools["rareEnemy"] = true;
+                FargoWorld.DownedBools[Fargowiltas.ModRareEnemies[npc.type]] = true;
             }
         }
 
