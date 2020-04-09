@@ -985,6 +985,12 @@ namespace Fargowiltas.NPCs
                 default:
                     break;
             }
+
+            if (Fargowiltas.ModRareEnemies.ContainsKey(npc.type))
+            {
+                FargoWorld.DownedBools["rareEnemy"] = true;
+                FargoWorld.DownedBools[Fargowiltas.ModRareEnemies[npc.type]] = true;
+            }
         }
 
         public override bool CheckDead(NPC npc)

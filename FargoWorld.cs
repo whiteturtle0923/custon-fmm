@@ -61,7 +61,8 @@ namespace Fargowiltas
             "boneLee",
             "darkMage3",
             "ogre",
-            "headlessHorseman"
+            "headlessHorseman",
+            "babyGuardian"
         };
 
         public override void Initialize()

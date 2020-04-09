@@ -30,6 +30,7 @@ namespace Fargowiltas
 
         // Mod loaded bools
         internal static Dictionary<string, bool> ModLoaded;
+        internal static Dictionary<int, string> ModRareEnemies = new Dictionary<int, string>();
         private string[] mods;
 
         public Fargowiltas()
@@ -128,6 +129,13 @@ namespace Fargowiltas
                     censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
                 }
             }
+
+            Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
+            if (soulsMod != null)
+            {
+                if (!ModRareEnemies.ContainsKey(soulsMod.NPCType("BabyGuardian")))
+                    ModRareEnemies.Add(soulsMod.NPCType("BabyGuardian"), "babyGuardian");
+            }
         }
 
         public override object Call(params object[] args)
@@ -166,6 +174,11 @@ namespace Fargowiltas
                             Convert.ToInt32(args[5])
                         );
                         break;
+
+                    case "GetDownedEnemy":
+                        if (FargoWorld.DownedBools.ContainsKey(args[1] as string) && FargoWorld.DownedBools[args[1] as string])
+                            return true;
+                        return false;
                 }
 
             }
