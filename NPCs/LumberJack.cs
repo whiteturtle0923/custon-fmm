@@ -194,7 +194,8 @@ namespace Fargowiltas.NPCs
                 }
                 else
                 {
-                    quote = "Where am I? I dont see any trees around here.";
+                    quote = "I looked around here for a while and didn't find any trees. I did find this little thing though. Maybe you'll want it?";
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Snail }));
                 }
 
                 Main.npcChatText = quote;

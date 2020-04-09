@@ -218,7 +218,6 @@ namespace Fargowiltas
                 ModContent.ItemType<Tavernkeep>(),
                 ModContent.ItemType<TaxCollector>(),
                 ModContent.ItemType<TravellingMerchant>(),
-                ModContent.ItemType<Truffle>(),
                 ModContent.ItemType<WitchDoctor>(),
                 ModContent.ItemType<Wizard>(),
             };
@@ -804,19 +803,25 @@ namespace Fargowiltas
             ModRecipe recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
             recipe.AddTile(TileID.MeatGrinder);
-            recipe.SetResult(ItemID.FleshBlock, 15);
+            recipe.SetResult(ItemID.FleshBlock, 25);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
             recipe.AddTile(TileID.DyeVat);
-            recipe.SetResult(ItemID.DeepRedPaint, 25);
+            recipe.SetResult(ItemID.DeepRedPaint, 20);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ModContent.ItemType<Truffle>());
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(ItemID.BluePaint, 20);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
             recipe.AddTile(TileID.DyeVat);
-            recipe.SetResult(ItemID.GrimDye, 3);
+            recipe.SetResult(ItemID.GrimDye, 2);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();

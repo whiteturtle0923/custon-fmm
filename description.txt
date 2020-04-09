@@ -1,31 +1,12 @@
 NEW UPDATE - v 2.1.1
--Fixed summons in Multiplayer
--Abominationn always sells Slimy Barometer
--Abominationn no longer sells Overloader (redundant)
--Updated Omnistation(+) buff sprite
--Minor adjustments to accommodate Deviantt boss
--Added event summon compatability
--Added event cancel compatability
-
-NEW UPDATE - v 2.1
--Added Multitask Center, Elemental Assembler, and Crucible of the Cosmos
--Added new Lumberjack option: Tree Treasures, instead of wood you can get various critters from him depending on the biome and time
--Added extra lures to most vanilla fishing rods (with a toggle)
--Fishing Potions now grant one extra lure as well, this is also toggled with extra lures
--Reworked Troll Bomb to never spawn Dungeon Guardian and it has a flat 10% chance for all its bomb types
--Added sprite for Zealot's Madness
--Abominationn no longer sells Overloader and always sells Slimy Barometer
--Fixed Martian Memory Stick not working
--Fixed Deviantt Help option not working right
--Moved conversion recipes back to Alchemy Station as well as Demon Altar
--Reduced the number of banners needed for ancient armors
--Added a Turtle Shell banner recipe
--Fixed banner recipes letting you get a few thorium items too soon
--Fixed jungle and corrupt crate recipes being whack
--Revamped Super Dummy to be more like the regular Target Dummy
--Added Omnistation buff icon
--Ravens and Present Slimes drop their items always with or without the season turned on
--Reduced the amount of paint you get from grinding npcs
+-Added a new town NPC only available with Souls Mod
+-Added event summon and cancel compatability
+-Updated Omnistation buff sprite
+-Painter selling Dungeon paintings takes priority over underground paintings
+-Added one more option to Lumberjack Tree Treasures featuring a Snail
+-Elemental Assembler counts as a Bottle as well
+-Truffle is not inlcuded in town npc recipes, but he can be made into blue paint
+-Reduced town NPC recipes even more
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
