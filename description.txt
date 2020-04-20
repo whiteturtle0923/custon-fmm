@@ -6,6 +6,7 @@ NEW UPATE - v 2.1.2
 	-Heart Chocolate
 	-Lee's Headband
 	-Pirate Flag
+-Expert's Token is now always available and toggles expert mode
 
 NEW UPDATE - v 2.1.1
 -Added a new town NPC only available with Souls Mod
