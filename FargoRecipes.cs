@@ -9,7 +9,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using ThoriumMod.Items.Banners;
 
 namespace Fargowiltas
 {
@@ -17,9 +16,6 @@ namespace Fargowiltas
     {
         public static void AddRecipeGroups()
         {
-
-
-
             // Evil Wood
             RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Wood", new int[] { ItemID.Ebonwood, ItemID.Shadewood });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
@@ -909,18 +905,6 @@ namespace Fargowiltas
         private static void AddMiscRecipes()
         {
             ModRecipe recipe = GetNewRecipe();
-            /*recipe.AddIngredient(ItemID.SillyBalloonPink);
-            recipe.AddIngredient(ItemID.WhiteString);
-            recipe.AddTile(TileID.SkyMill);
-            recipe.SetResult(ItemID.ShinyRedBalloon);
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(ItemID.GoldBar, 10);
-            recipe.AddIngredient(ItemID.Feather, 5);
-            recipe.AddTile(TileID.SkyMill);
-            recipe.SetResult(ItemID.LuckyHorseshoe);
-            recipe.AddRecipe();*/
 
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.IceBlade);
@@ -1008,6 +992,357 @@ namespace Fargowiltas
             recipe.AddTile(TileID.CookingPots);
             recipe.SetResult(ItemID.WebSlinger);
             recipe.AddRecipe();
+
+            //Dungeon furniture pain
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueBrickPlatform, 2);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 14);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonBathtub);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 15);
+            recipe.AddIngredient(ItemID.Silk, 5);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonBed);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 20);
+            recipe.AddIngredient(ItemID.Book, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonBookcase);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 5);
+            recipe.AddIngredient(ItemID.Torch, 3);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonCandelabra);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 4);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonCandle);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 4);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonChair);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 4);
+            recipe.AddIngredient(ItemID.Torch, 4);
+            recipe.AddIngredient(ItemID.Chain, 4);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonChandelier);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar");
+            recipe.AddIngredient(ItemID.Glass, 6);
+            recipe.AddIngredient(ItemID.BlueBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.DungeonClockBlue);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 6);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonDoor);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 16);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonDresser);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddIngredient(ItemID.BlueBrick, 3);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonLamp);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Bone, 4);
+            recipe.AddIngredient(ItemID.BlueBrick, 15);
+            recipe.AddIngredient(ItemID.Book);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonPiano);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 5);
+            recipe.AddIngredient(ItemID.Silk, 2);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonSofa);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 8);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonTable);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonVase);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueDungeonWorkBench);
+            recipe.AddRecipe();
+
+            //green
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenBrickPlatform, 2);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 14);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonBathtub);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 15);
+            recipe.AddIngredient(ItemID.Silk, 5);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonBed);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 20);
+            recipe.AddIngredient(ItemID.Book, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonBookcase);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 5);
+            recipe.AddIngredient(ItemID.Torch, 3);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonCandelabra);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 4);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonCandle);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 4);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonChair);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 4);
+            recipe.AddIngredient(ItemID.Torch, 4);
+            recipe.AddIngredient(ItemID.Chain, 4);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonChandelier);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar");
+            recipe.AddIngredient(ItemID.Glass, 6);
+            recipe.AddIngredient(ItemID.GreenBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.DungeonClockGreen);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 6);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonDoor);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 16);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonDresser);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddIngredient(ItemID.GreenBrick, 3);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonLamp);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Bone, 4);
+            recipe.AddIngredient(ItemID.GreenBrick, 15);
+            recipe.AddIngredient(ItemID.Book);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonPiano);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 5);
+            recipe.AddIngredient(ItemID.Silk, 2);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonSofa);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 8);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonTable);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonVase);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenDungeonWorkBench);
+            recipe.AddRecipe();
+
+            //pink
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkBrickPlatform, 2);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 14);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonBathtub);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 15);
+            recipe.AddIngredient(ItemID.Silk, 5);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonBed);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 20);
+            recipe.AddIngredient(ItemID.Book, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonBookcase);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 5);
+            recipe.AddIngredient(ItemID.Torch, 3);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonCandelabra);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 4);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonCandle);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 4);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonChair);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 4);
+            recipe.AddIngredient(ItemID.Torch, 4);
+            recipe.AddIngredient(ItemID.Chain, 4);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonChandelier);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar");
+            recipe.AddIngredient(ItemID.Glass, 6);
+            recipe.AddIngredient(ItemID.PinkBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.DungeonClockPink);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 6);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonDoor);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 16);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonDresser);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddIngredient(ItemID.PinkBrick, 3);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonLamp);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Bone, 4);
+            recipe.AddIngredient(ItemID.PinkBrick, 15);
+            recipe.AddIngredient(ItemID.Book);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonPiano);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 5);
+            recipe.AddIngredient(ItemID.Silk, 2);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonSofa);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 8);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonTable);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonVase);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkDungeonWorkBench);
+            recipe.AddRecipe();
+
+        }
+
+        private static void AddDungeonFurnitureRecipes()
+        {
+
         }
 
         private static void AddConvertRecipe(int item, int item2)

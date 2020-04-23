@@ -43,7 +43,13 @@ namespace Fargowiltas.NPCs
 
 			animationType = NPCID.Squirrel;
 			npc.aiStyle = 7;
-		}
+
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            {
+                Main.npcCatchable[npc.type] = true;
+                npc.catchItem = (short)ModLoader.GetMod("FargowiltasSouls").ItemType("TophatSquirrel");
+            }
+        }
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{

@@ -59,7 +59,7 @@ namespace Fargowiltas
             "skeletonGun",
             "skeletonMage",
             "boneLee",
-            "darkMage3",
+            "darkMage",
             "ogre",
             "headlessHorseman",
             "babyGuardian"

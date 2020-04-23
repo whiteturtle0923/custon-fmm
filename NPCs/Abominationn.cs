@@ -67,7 +67,7 @@ namespace Fargowiltas.NPCs
             {
                 return false;
             }
-            return NPC.downedGoblins;
+            return GetInstance<FargoConfig>().Abom && NPC.downedGoblins;
         }
 
         public override void AI()
@@ -89,7 +89,6 @@ namespace Fargowiltas.NPCs
                 "I have defeated everything in this land... nothing can beat me.",
                 "Have you ever had a weapon stuck to your hand? It's not very handy.",
                 "What happened to Yoramur? No idea who you're talking about.",
-                "I sure wish I was a boss.",
                 "You wish you could dress like me? Ha! Maybe in 2020.",
                 "You ever read the ancient classics, I love all the fighting in them.",
                 "I'm a world class poet, ever read my piece about impending doom?",
@@ -221,8 +220,8 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedGolemBoss, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
-            AddItem(FargoWorld.DownedBools["darkMage3"], ItemType<ForbiddenTome>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
-            AddItem(FargoWorld.DownedBools["ogre"], ItemType<BatteredClub>(), Item.buyPrice(0, 25), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["darkMage"], ItemType<ForbiddenTome>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["ogre"], ItemType<BatteredClub>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["betsy"], ItemType<BetsyEgg>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
 
             AddItem(NPC.downedMartians, ItemType<MartianMemoryStick>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);

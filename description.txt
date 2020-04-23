@@ -2,15 +2,27 @@ NEW UPATE - v 2.1.2
 -Added Baby Guardian summon
 -Added Death Fruit (debug item)
 
-NEW UPDATE - v 2.1.1
--Added a new town NPC only available with Souls Mod
--Added event summon and cancel compatability
--Updated Omnistation buff sprite
--Painter selling Dungeon paintings takes priority over underground paintings
--Added one more option to Lumberjack Tree Treasures featuring a Snail
--Elemental Assembler counts as a Bottle as well
--Truffle is not inlcuded in town npc recipes, but he can be made into blue paint
--Reduced town NPC recipes even more
+-Fixed Super Dummy not proccing on hit effects
+-Updated Wally and Insanity Energizer sprites
+-Battle Cry is now pre mechs
+-Fixed Elemental Assembler not functioning right for potions and as a Hellforge
+-The Squirrel can now be caught
+-Added toggles for allowing any of the town npcs to move in
+-Fixed Bat Scepter Summon being held wrong
+
+-Changed the Battered Club to be available after you beat ogre in tier 2 and it summons the tier 2, same for dark mage tier 1
+-altered ogres drop table outside ooa, much more common to get things
+-lowered prices of their summons
+ogre drops gold
+
+-demolitionist sells phm ore in hm
+-clothier sells all dungeon brick types
+-added recipes for all dungeon furniture
+-music boxes now work instantly
+
+
+tm
+-Updated all summon variants to increase in effect based on empty minion slots
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

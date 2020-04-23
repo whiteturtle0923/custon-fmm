@@ -54,9 +54,8 @@ namespace Fargowiltas.Items.Misc
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BattlePotion, 15);
             recipe.AddIngredient(ItemID.WaterCandle, 12);
-            recipe.AddIngredient(ItemID.SoulofFright, 10);
-            recipe.AddIngredient(ItemID.SoulofMight, 10);
-            recipe.AddIngredient(ItemID.SoulofSight, 10);
+            recipe.AddIngredient(ItemID.SoulofNight, 10);
+            recipe.AddIngredient(ItemID.SoulofLight, 10);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
