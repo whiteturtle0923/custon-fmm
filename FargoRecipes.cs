@@ -75,6 +75,10 @@ namespace Fargowiltas
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Armored Bones Banner", boneBanners);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyArmoredBones", group);
 
+            int[] pirateBanners = { ItemID.PirateDeadeyeBanner, ItemID.PirateCorsairBanner, ItemID.PirateCrossbowerBanner };
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Pirate Banner", pirateBanners);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyPirateBanner", group);
+
             // Slimes (excluding ones that don't drop gel)
             int[] slimeBanners = {
                 ItemID.SlimeBanner,
@@ -239,6 +243,8 @@ namespace Fargowiltas
             AddContainerLootRecipes();
             AddNPCRecipes();
             AddEmblemRecipes();
+            AddTreasureBagRecipes();
+            AddDungeonFurnitureRecipes();
             AddMiscRecipes();
         }
 
@@ -418,7 +424,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.WolfBanner, ItemID.Amarok);
             AddBannerToItemRecipe(ItemID.WormBanner, ItemID.WhoopieCushion);
             AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock);
-            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun, 5);
+            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun);
             AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 5);
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass);
@@ -434,7 +440,6 @@ namespace Fargowiltas
             AddBannerToItemsRecipe(ItemID.PaladinBanner, new int[] { ItemID.PaladinsHammer, ItemID.PaladinsShield });
             AddBannerToItemsRecipe(ItemID.PenguinBanner, new int[] { ItemID.PedguinHat, ItemID.PedguinShirt, ItemID.PedguinPants });
             AddBannerToItemsRecipe(ItemID.PirateBanner, new int[] { ItemID.SailorHat, ItemID.SailorShirt, ItemID.SailorPants });
-            AddBannerToItemsRecipe(ItemID.PirateCaptainBanner, new int[] { ItemID.Cutlass, ItemID.GoldRing, ItemID.PirateStaff, ItemID.DiscountCard, ItemID.LuckyCoin });
             AddBannerToItemsRecipe(ItemID.RedDevilBanner, new int[] { ItemID.UnholyTrident, ItemID.FireFeather });
 			AddBannerToItemsRecipe(ItemID.SkeletonArcherBanner, new int[] { ItemID.MagicQuiver, ItemID.Marrow});
             AddBannerToItemsRecipe(ItemID.SkeletonSniperBanner, new int[] { ItemID.RifleScope, ItemID.SniperRifle });
@@ -451,9 +456,6 @@ namespace Fargowiltas
             //gladiator
             AddBannerToItemsRecipe(ItemID.GreekSkeletonBanner, new int[] { ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings });
             
-
-
-
             //boss trophy recipes
             AddBannerToItemRecipe(ItemID.KingSlimeTrophy, ItemID.SlimeStaff);
             AddBannerToItemRecipe(ItemID.EyeofCthulhuTrophy, ItemID.Binoculars);
@@ -463,6 +465,12 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.SkeletronTrophy, ItemID.BookofSkulls);
             AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.TheAxe);
 
+            //pirates
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.Cutlass);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.GoldRing);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.PirateStaff);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.DiscountCard);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.LuckyCoin);
 
             AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Keybrand);
             AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Kraken);
@@ -750,6 +758,7 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.Valor, ItemID.DungeonFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.BlueMoon, ItemID.DungeonFishingCrate, 5);
             //ice
             AddGrabBagItemRecipe(ItemID.SnowballCannon, ModContent.ItemType<IceCrate>(), 5);
             AddGrabBagItemRecipe(ItemID.BlizzardinaBottle, ModContent.ItemType<IceCrate>(), 5);
@@ -902,6 +911,252 @@ namespace Fargowiltas
             }
         }
 
+        private static void AddTreasureBagRecipes()
+        {
+            ModRecipe recipe = GetNewRecipe();
+            //QB
+            recipe.AddIngredient(ItemID.QueenBeeBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BeesKnees);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.QueenBeeBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BeeGun);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.QueenBeeBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BeeKeeper);
+            recipe.AddRecipe();
+
+            //WOF
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WallOfFleshBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ClockworkAssaultRifle);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WallOfFleshBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BreakerBlade);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WallOfFleshBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LaserRifle);
+            recipe.AddRecipe();
+
+            //plantera
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PlanteraBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.GrenadeLauncher);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PlanteraBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.VenusMagnum);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PlanteraBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.NettleBurst);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PlanteraBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LeafBlower);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PlanteraBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Seedler);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PlanteraBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.FlowerPow);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PlanteraBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.WaspGun);
+            recipe.AddRecipe();
+
+            //golem
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GolemBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Stynger);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GolemBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PossessedHatchet);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GolemBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SunStone);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GolemBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.EyeoftheGolem);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GolemBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Picksaw);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GolemBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.HeatRay);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GolemBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.StaffofEarth);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GolemBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.GolemFist);
+            recipe.AddRecipe();
+
+            //duke
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FishronBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Flairon);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FishronBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Tsunami);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FishronBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.RazorbladeTyphoon);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FishronBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.TempestStaff);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FishronBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BubbleGun);
+            recipe.AddRecipe();
+
+            //moon lord
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Meowmere);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Terrarian);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.StarWrath);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SDMG);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.FireworksLauncher);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LastPrism);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LunarFlareBook);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.RainbowCrystalStaff);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MoonLordBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MoonlordTurretStaff);
+            recipe.AddRecipe();
+
+            //besty
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossBagBetsy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DD2BetsyBow);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossBagBetsy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DD2SquireBetsySword);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossBagBetsy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ApprenticeStaffT3);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossBagBetsy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MonkStaffT3);
+            recipe.AddRecipe();
+
+
+        }
+
         private static void AddMiscRecipes()
         {
             ModRecipe recipe = GetNewRecipe();
@@ -993,7 +1248,12 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.WebSlinger);
             recipe.AddRecipe();
 
+        }
+
+        private static void AddDungeonFurnitureRecipes()
+        {
             //Dungeon furniture pain
+            ModRecipe recipe = GetNewRecipe();
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.BlueBrick);
             recipe.AddTile(TileID.WorkBenches);
@@ -1337,12 +1597,6 @@ namespace Fargowiltas
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.PinkDungeonWorkBench);
             recipe.AddRecipe();
-
-        }
-
-        private static void AddDungeonFurnitureRecipes()
-        {
-
         }
 
         private static void AddConvertRecipe(int item, int item2)

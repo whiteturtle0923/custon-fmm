@@ -212,6 +212,7 @@ namespace Fargowiltas.NPCs
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             // Events
+            AddItem(true, ItemType<PartyCone>(), 10000, ref shop, ref nextSlot);
             AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
             AddItem(true, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);

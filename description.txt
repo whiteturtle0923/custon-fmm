@@ -1,28 +1,25 @@
-NEW UPATE - v 2.1.2
--Added Baby Guardian summon
--Added Death Fruit (debug item)
-
--Fixed Super Dummy not proccing on hit effects
+NEW UPATE - v 2.2
+-Added toggles for allowing any of the town NPCs to move in
+-Added Innocuous Skull, Death Fruit, Party Cone
+-Changed the Battered Club to be available after you beat Ogre in tier 2 and it summons the tier 2 version, same for Dark Mage tier 1
+-Altered Ogres drop table outside Old One's Army, everything is more common
+-Lowered prices of Ogre and Dark Mage summons, Ogre drops some gold
 -Updated Wally and Insanity Energizer sprites
--Battle Cry is now pre mechs
--Fixed Elemental Assembler not functioning right for potions and as a Hellforge
+-Added a couple of Ancients Awakened swarm summons
 -The Squirrel can now be caught
--Added toggles for allowing any of the town npcs to move in
+-Demolitionist now sells basic ore in Hard Mode
+-Clothier sells all dungeon brick types
+-Added recipes for all dungeon furniture
+-Added Treasure Bag recipes
+-Added Blue Moon Recipe
+-Reduced Coin Gun banner recipe significantly
+-Pirate item banner recipes added for all pirates instead of just the captain
+-Music Boxes now transform instantly when placed in your accessory slots
+-Battle Cry is now pre Mechanical Bosses
+-Present slimes will be much less common now since only blue slimes can become them and not not those from statues
+-Fixed Elemental Assembler not functioning right for potions and as a Hellforge
+-Fixed Super Dummy not proccing on hit effects
 -Fixed Bat Scepter Summon being held wrong
-
--Changed the Battered Club to be available after you beat ogre in tier 2 and it summons the tier 2, same for dark mage tier 1
--altered ogres drop table outside ooa, much more common to get things
--lowered prices of their summons
-ogre drops gold
-
--demolitionist sells phm ore in hm
--clothier sells all dungeon brick types
--added recipes for all dungeon furniture
--music boxes now work instantly
-
-
-tm
--Updated all summon variants to increase in effect based on empty minion slots
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

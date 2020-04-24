@@ -86,7 +86,7 @@ namespace Fargowiltas.NPCs
                 {
                     npc.Transform(NPCID.Raven);
                 }
-                else if (npc.type == NPCID.BlueSlime && !Main.xMas)
+                else if (npc.type == NPCID.BlueSlime && npc.netID == NPCID.BlueSlime && !npc.SpawnedFromStatue && !Main.xMas)
                 {
                     npc.Transform(NPCID.SlimeRibbonRed);
                 }
