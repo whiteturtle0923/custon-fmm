@@ -12,7 +12,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Overloaded Pirate Map");
+            DisplayName.SetDefault("Pirate's Bounty");
             Tooltip.SetDefault("Summons an Overloaded Pirate Invasion\nUse again to stop the event");
         }
 

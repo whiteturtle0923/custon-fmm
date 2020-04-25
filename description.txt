@@ -1,4 +1,7 @@
-NEW UPATE - v 2.2
+NEW UPDATE - V 2.2.1
+-Updated a few sprites and names of items to match the sprites
+
+NEW UPDATE - V 2.2
 -Added toggles for allowing any of the town NPCs to move in
 -Added Innocuous Skull, Death Fruit, Party Cone
 -Changed the Battered Club to be available after you beat Ogre in tier 2 and it summons the tier 2 version, same for Dark Mage tier 1

@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Strider's Tear 2.0");
+            DisplayName.SetDefault("Cryo Egg");
             Tooltip.SetDefault("Summons several Borean Striders");
         }
 
