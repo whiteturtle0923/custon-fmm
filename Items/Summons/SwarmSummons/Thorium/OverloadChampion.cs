@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Blade 2.0");
+            DisplayName.SetDefault("Golden Gladius");
             Tooltip.SetDefault("Summons several Buried Champions");
         }
 

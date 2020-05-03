@@ -8,8 +8,6 @@ namespace Fargowiltas.Items.Misc
 {
     public class ExpertToggle : ModItem
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Expert's Token");

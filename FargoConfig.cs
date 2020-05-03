@@ -8,11 +8,40 @@ namespace Fargowiltas
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-        [Label("[i:771] Unlimited Ammo at 3996+")]
+        [Label("$Mods.Fargowiltas.Mutant")]
+        [DefaultValue(true)]
+        public bool Mutant
+        {
+            get; set;
+        }
+
+        [Label("$Mods.Fargowiltas.Abom")]
+        [DefaultValue(true)]
+        public bool Abom
+        {
+            get; set;
+        }
+
+        [Label("$Mods.Fargowiltas.Devi")]
+        [DefaultValue(true)]
+        public bool Devi
+        {
+            get; set;
+        }
+
+        [Label("$Mods.Fargowiltas.Lumber")]
+        [DefaultValue(true)]
+        public bool Lumber
+        {
+            get; set;
+        }
+
+
+        [Label("[i:771] Unlimited Ammo at 3996+ in Hardmode")]
         [DefaultValue(true)]
         public bool UnlimitedAmmo { get; set; }
 
-        [Label("[i:42] Unlimited Consumable Weapons at 3996+")]
+        [Label("[i:42] Unlimited Consumable Weapons at 3996+ in Hardmode")]
         [DefaultValue(true)]
         public bool UnlimitedConsumableWeapons { get; set; }
 

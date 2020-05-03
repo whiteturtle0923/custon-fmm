@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Fargowiltas.NPCs;
 using System;
+using Terraria.ModLoader.IO;
 
 namespace Fargowiltas
 {
@@ -21,11 +22,63 @@ namespace Fargowiltas
         internal int originalSelectedItem;
         internal bool autoRevertSelectedItem = false;
 
+
+        internal Dictionary<string, bool> FirstDyeIngredients = new Dictionary<string, bool>();
+            
+
+        private readonly string[] tags = new string[]
+       {
+            "RedHusk",
+            "OrangeBloodroot",
+            "YellowMarigold",
+            "LimeKelp",
+            "GreenMushroom",
+            "TealMushroom",
+            "CyanHusk",
+            "SkyBlueFlower",
+            "BlueBerries",
+            "PurpleMucos",
+            "VioletHusk",
+            "PinkPricklyPear",
+            "BlackInk"
+       };
+
+        public override TagCompound Save()
+        {
+            string name = "FargoDyes" + player.name;
+            List<string> dyes = new List<string>();
+            foreach (string tag in tags)
+            {
+                dyes.AddWithCondition(tag, FirstDyeIngredients[tag]);
+            }
+
+            return new TagCompound
+            {
+                { name, dyes },
+            };
+        }
+
+        public override void Load(TagCompound tag)
+        {
+            string name = "FargoDyes" + player.name;
+
+            IList<string> dyes = tag.GetList<string>(name);
+            foreach (string downedTag in tags)
+            {
+                FirstDyeIngredients[downedTag] = dyes.Contains(downedTag);
+            }
+        }
+
         public override void SetupStartInventory(IList<Item> items, bool mediumCoreDeath)
         {
             Item item = new Item();
             item.SetDefaults(ItemType<Items.Misc.Stats>());
             items.Add(item);
+
+            foreach (string tag in tags)
+            {
+                FirstDyeIngredients[tag] = false;
+            }
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)

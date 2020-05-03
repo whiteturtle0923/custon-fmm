@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Grand Flare Gun 2.0");
+            DisplayName.SetDefault("Charged Bird Whistle");
             Tooltip.SetDefault("Summons several Grand Thunder Birds");
         }
 

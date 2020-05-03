@@ -15,7 +15,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fleshiest Doll");
+            DisplayName.SetDefault("Bundle of Dolls");
             Tooltip.SetDefault("Summons several Walls of Flesh");
         }
 

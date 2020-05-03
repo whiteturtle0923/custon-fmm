@@ -11,11 +11,9 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
     {
         private readonly Mod thorium = ModLoader.GetMod("ThoriumMod");
 
-        public override string Texture => "Fargowiltas/Items/Summons/Mutant/AbyssionSummon";
-
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Forgotten Claw 2.0");
+            DisplayName.SetDefault("Abyss Light");
             Tooltip.SetDefault("Summons several Abyssions");
         }
 

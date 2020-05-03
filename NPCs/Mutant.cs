@@ -4,6 +4,8 @@ using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.NPCs
 {
@@ -80,7 +82,7 @@ namespace Fargowiltas.NPCs
             {
                 return false;
             }
-            return FargoWorld.DownedBools["boss"];
+            return GetInstance<FargoConfig>().Mutant && FargoWorld.DownedBools["boss"];
         }
 
         public override string TownNPCName()

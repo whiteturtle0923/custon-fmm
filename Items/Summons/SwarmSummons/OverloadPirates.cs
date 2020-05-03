@@ -8,11 +8,9 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 {
     public class OverloadPirates : ModItem
     {
-        public override string Texture => "Terraria/Item_1315";
-
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Overloaded Pirate Map");
+            DisplayName.SetDefault("Pirate's Bounty");
             Tooltip.SetDefault("Summons an Overloaded Pirate Invasion\nUse again to stop the event");
         }
 

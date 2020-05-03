@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Grim Harvest Sigil 2.0");
+            DisplayName.SetDefault("Necromantic Blade");
             Tooltip.SetDefault("Summons several Liches");
         }
 

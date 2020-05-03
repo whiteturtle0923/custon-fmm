@@ -86,7 +86,7 @@ namespace Fargowiltas.NPCs
                 {
                     npc.Transform(NPCID.Raven);
                 }
-                else if (npc.type == NPCID.BlueSlime && !Main.xMas)
+                else if (npc.type == NPCID.BlueSlime && npc.netID == NPCID.BlueSlime && !npc.SpawnedFromStatue && !Main.xMas)
                 {
                     npc.Transform(NPCID.SlimeRibbonRed);
                 }
@@ -112,31 +112,33 @@ namespace Fargowiltas.NPCs
             switch (type)
             {
                 case NPCID.Clothier:
-                    shop.item[nextSlot].SetDefaults(ItemID.PharaohsMask);
+                    shop.item[nextSlot++].SetDefaults(ItemID.PharaohsMask);
                     shop.item[nextSlot].value = 10000;
-                    nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.PharaohsRobe);
+                    shop.item[nextSlot++].SetDefaults(ItemID.PharaohsRobe);
                     shop.item[nextSlot].value = 10000;
-                    nextSlot++;
 
                     if (player.anglerQuestsFinished >= 10)
                     {
-                        shop.item[nextSlot].SetDefaults(ItemID.AnglerHat);
-                        nextSlot++;
+                        shop.item[nextSlot++].SetDefaults(ItemID.AnglerHat);
 
                         if (player.anglerQuestsFinished >= 15)
                         {
-                            shop.item[nextSlot].SetDefaults(ItemID.AnglerVest);
-                            nextSlot++;
+                            shop.item[nextSlot++].SetDefaults(ItemID.AnglerVest);
 
                             if (player.anglerQuestsFinished >= 20)
                             {
-                                shop.item[nextSlot].SetDefaults(ItemID.AnglerPants);
-                                nextSlot++;
+                                shop.item[nextSlot++].SetDefaults(ItemID.AnglerPants);
                             }
                         }
                     }
+
+                    shop.item[nextSlot++].SetDefaults(ItemID.BlueBrick);
+                    shop.item[nextSlot].value = 100;
+                    shop.item[nextSlot++].SetDefaults(ItemID.GreenBrick);
+                    shop.item[nextSlot].value = 100;
+                    shop.item[nextSlot++].SetDefaults(ItemID.PinkBrick);
+                    shop.item[nextSlot].value = 100;
 
                     break;
 
@@ -262,11 +264,123 @@ namespace Fargowiltas.NPCs
 
                     break;
 
+                case NPCID.Demolitionist:
+                    if (Main.hardMode)
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.CopperOre);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TinOre);
+                        shop.item[nextSlot++].SetDefaults(ItemID.IronOre);
+                        shop.item[nextSlot++].SetDefaults(ItemID.LeadOre);
+                        shop.item[nextSlot++].SetDefaults(ItemID.SilverOre);
+                        shop.item[nextSlot++].SetDefaults(ItemID.TungstenOre);
+                        shop.item[nextSlot++].SetDefaults(ItemID.GoldOre);
+                        shop.item[nextSlot++].SetDefaults(ItemID.PlatinumOre);
+
+                        //gems , remove later if gem trees are epic
+                        shop.item[nextSlot++].SetDefaults(ItemID.Amethyst);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Topaz);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Sapphire);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Emerald);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Ruby);
+                        shop.item[nextSlot++].SetDefaults(ItemID.Diamond);
+
+                    }
+                    
+                    break;
+
                 case NPCID.Steampunker:
-                    shop.item[nextSlot].SetDefaults(WorldGen.crimson ? ItemID.PurpleSolution : ItemID.RedSolution);
-                    nextSlot++;
+                    shop.item[nextSlot++].SetDefaults(WorldGen.crimson ? ItemID.PurpleSolution : ItemID.RedSolution);
+
+                    if (!WorldGen.crimson)
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.FleshCloningVaat);
+                    }
+                    
+                    break;
+
+                case NPCID.Wizard:
+                    shop.item[nextSlot++].SetDefaults(ItemID.Book); //verify price
+                    break;
+
+                case NPCID.DyeTrader:
+                    FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
+                    if (modPlayer.FirstDyeIngredients["RedHusk"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.RedHusk); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["OrangeBloodroot"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.OrangeBloodroot); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["YellowMarigold"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.YellowMarigold); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["LimeKelp"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.LimeKelp); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["GreenMushroom"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.GreenMushroom); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["TealMushroom"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.TealMushroom); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["CyanHusk"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.CyanHusk);
+                    }
+                    if (modPlayer.FirstDyeIngredients["SkyBlueFlower"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.SkyBlueFlower); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["BlueBerries"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.BlueBerries); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["PurpleMucos"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.PurpleMucos);
+                    }
+                    if (modPlayer.FirstDyeIngredients["VioletHusk"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.VioletHusk); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["PinkPricklyPear"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.PinkPricklyPear); 
+                    }
+                    if (modPlayer.FirstDyeIngredients["BlackInk"])
+                    {
+                        shop.item[nextSlot++].SetDefaults(ItemID.BlackInk);
+                    }
 
                     break;
+
+                case NPCID.Dryad:
+                    if (Main.hardMode)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.NaturesGift);
+                        shop.item[nextSlot++].value = 200000;
+                        shop.item[nextSlot].SetDefaults(ItemID.JungleRose);
+                        shop.item[nextSlot++].value = 100000;
+
+                        shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant1); //check price
+                        shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant2);
+                        shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant3);
+                        shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant4);
+                    }
+                    break;
+                
+                /*case NPCID.GoblinTinkerer:
+                    if (Main.hardMode)
+                    {
+                        
+
+                    }
+                    break;*/
             }
         }
 
@@ -748,6 +862,7 @@ namespace Fargowiltas.NPCs
 
                     break;
 
+                case NPCID.DD2OgreT2:
                 case NPCID.DD2OgreT3:
                     FargoWorld.DownedBools["ogre"] = true;
                     if (!DD2Event.Ongoing)
@@ -757,26 +872,16 @@ namespace Fargowiltas.NPCs
                             Item.NewItem(npc.Hitbox, ItemID.BossMaskOgre);
                         }
 
-                        if (Main.rand.NextBool(6))
-                        {
-                            Item.NewItem(npc.Hitbox, Main.rand.Next(new short[] { ItemID.ApprenticeScarf, ItemID.SquireShield, ItemID.HuntressBuckler, ItemID.MonkBelt }));
-                        }
+                        Item.NewItem(npc.Hitbox, Main.rand.Next(new short[] { ItemID.ApprenticeScarf, ItemID.SquireShield, ItemID.HuntressBuckler, ItemID.MonkBelt, ItemID.DD2SquireDemonSword, ItemID.MonkStaffT1, ItemID.MonkStaffT2, ItemID.BookStaff, ItemID.DD2PhoenixBow, ItemID.DD2PetGhost }));
 
-                        if (Main.rand.NextBool(6))
-                        {
-                            Item.NewItem(npc.Hitbox, Main.rand.Next(new short[] { ItemID.DD2SquireDemonSword, ItemID.MonkStaffT1, ItemID.MonkStaffT2, ItemID.BookStaff, ItemID.DD2PhoenixBow }));
-                        }
-
-                        if (Main.rand.NextBool(10))
-                        {
-                            Item.NewItem(npc.Hitbox, ItemID.DD2PetGhost);
-                        }
+                        Item.NewItem(npc.Hitbox, ItemID.GoldCoin, Main.rand.Next(4, 7));
                     }
 
                     break;
 
+                case NPCID.DD2DarkMageT1:
                 case NPCID.DD2DarkMageT3:
-                    FargoWorld.DownedBools["darkMage3"] = true;
+                    FargoWorld.DownedBools["darkMage"] = true;
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.NextBool(14))
@@ -980,6 +1085,15 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.HeadlessHorseman:
                     FargoWorld.DownedBools["headlessHorseman"] = true;
+                    break;
+
+                case NPCID.CursedHammer:
+                case NPCID.CorruptSlime:
+                case NPCID.Corruptor:
+                    if (Main.rand.NextBool(200))
+                    {
+                        Item.NewItem(npc.Hitbox, ItemID.MeatGrinder);
+                    }
                     break;
 
                 default:
