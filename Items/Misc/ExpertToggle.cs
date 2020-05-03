@@ -11,8 +11,7 @@ namespace Fargowiltas.Items.Misc
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Expert's Token");
-            Tooltip.SetDefault(@"Enables Expert mode
-This cannot be reversed!");
+            Tooltip.SetDefault(@"Toggles Expert mode");
         }
 
         public override void SetDefaults()
@@ -24,19 +23,26 @@ This cannot be reversed!");
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = ItemUseStyleID.HoldingUp;
-            item.consumable = true;
+            item.consumable = false;
         }
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.expertMode;
+            for (int i = 0; i < Main.maxNPCs; i++) //cant use while boss alive
+            {
+                if (Main.npc[i].active && Main.npc[i].boss)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public override bool UseItem(Player player)
         {
-            Main.expertMode = true;
+            Main.expertMode = !Main.expertMode;
 
-            string text = "Expert mode is now enabled!";
+            string text = Main.expertMode ? "Expert mode is now enabled!" : "Expert mode is now disabled!";
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 Main.NewText(text, new Color(175, 75, 255));

@@ -359,11 +359,12 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            AddItem(!Main.expertMode, "Fargowiltas", "ExpertToggle", 1000000, ref shop, ref nextSlot);
             AddItem(Main.expertMode, "Fargowiltas", "Overloader", 400000, ref shop, ref nextSlot);
 
             if (prehardmodeShop)
             {
+                AddItem(true, "Fargowiltas", "ExpertToggle", 1000000, ref shop, ref nextSlot);
+
                 if (Fargowiltas.ModLoaded["FargowiltasSouls"])
                 {
                     AddItem(true, "FargowiltasSouls", "Masochist", 10000, ref shop, ref nextSlot); // mutants gift, dam meme namer
