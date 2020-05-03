@@ -244,7 +244,7 @@ namespace Fargowiltas
             AddNPCRecipes();
             AddEmblemRecipes();
             AddTreasureBagRecipes();
-            AddDungeonFurnitureRecipes();
+            AddFurnitureRecipes();
             AddMiscRecipes();
         }
 
@@ -734,10 +734,12 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.Boomstick, ItemID.JungleFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.FeralClaws, ItemID.JungleFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.FiberglassFishingPole, ItemID.JungleFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.HoneyDispenser, ItemID.JungleFishingCrate, 5);
             //sky
             AddGrabBagItemRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.Starfury, ItemID.FloatingIslandFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.SkyMill, ItemID.FloatingIslandFishingCrate, 5);
             //corrupt
             AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.BandofStarpower, ItemID.CorruptFishingCrate, 5);
@@ -759,6 +761,7 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.BlueMoon, ItemID.DungeonFishingCrate, 5);
+            AddGrabBagItemRecipe(ItemID.BoneWelder, ItemID.DungeonFishingCrate, 5);
             //ice
             AddGrabBagItemRecipe(ItemID.SnowballCannon, ModContent.ItemType<IceCrate>(), 5);
             AddGrabBagItemRecipe(ItemID.BlizzardinaBottle, ModContent.ItemType<IceCrate>(), 5);
@@ -766,6 +769,7 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.IceSkates, ModContent.ItemType<IceCrate>(), 5);
             AddGrabBagItemRecipe(ItemID.FlurryBoots, ModContent.ItemType<IceCrate>(), 5);
             AddGrabBagItemRecipe(ItemID.IceBoomerang, ModContent.ItemType<IceCrate>(), 5);
+            AddGrabBagItemRecipe(ItemID.IceMachine, ModContent.ItemType<IceCrate>(), 5);
             AddGrabBagItemRecipe(ItemID.Fish, ModContent.ItemType<IceCrate>(), 10);
             //shadow
             AddGrabBagItemRecipe(ItemID.DarkLance, ModContent.ItemType<ShadowCrate>(), 5);
@@ -1250,7 +1254,7 @@ namespace Fargowiltas
 
         }
 
-        private static void AddDungeonFurnitureRecipes()
+        private static void AddFurnitureRecipes()
         {
             //Dungeon furniture pain
             ModRecipe recipe = GetNewRecipe();
@@ -1368,6 +1372,12 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.BlueDungeonWorkBench);
             recipe.AddRecipe();
 
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueBrickWall, 4);
+            recipe.AddRecipe();
+
             //green
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.GreenBrick);
@@ -1481,6 +1491,12 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.GreenBrick, 10);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.GreenDungeonWorkBench);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenBrickWall, 4);
             recipe.AddRecipe();
 
             //pink
@@ -1597,6 +1613,259 @@ namespace Fargowiltas
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.PinkDungeonWorkBench);
             recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkBrickWall, 4);
+            recipe.AddRecipe();
+
+            //obsidian
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 14);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianBathtub);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 15);
+            recipe.AddIngredient(ItemID.Silk, 5);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianBed);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 20);
+            recipe.AddIngredient(ItemID.Book, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianBookcase);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 5);
+            recipe.AddIngredient(ItemID.Torch, 3);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianCandelabra);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 4);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianCandle);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 4);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianChair);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 4);
+            recipe.AddIngredient(ItemID.Torch, 4);
+            recipe.AddIngredient(ItemID.Chain, 4);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianChandelier);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar");
+            recipe.AddIngredient(ItemID.Glass, 6);
+            recipe.AddIngredient(ItemID.ObsidianBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianClock);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 6);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianDoor);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 16);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianDresser);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddIngredient(ItemID.ObsidianBrick, 3);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianLamp);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Bone, 4);
+            recipe.AddIngredient(ItemID.ObsidianBrick, 15);
+            recipe.AddIngredient(ItemID.Book);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianPiano);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 5);
+            recipe.AddIngredient(ItemID.Silk, 2);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianSofa);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 8);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianTable);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianVase);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.ObsidianBrick, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianWorkBench);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.LihzahrdBrick, 25);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.LihzahrdFurnace);
+            recipe.AddRecipe();
+
+            //banners
+            //dungeon
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Bone, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.MarchingBonesBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Bone, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.NecromanticSign);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Bone, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.RustedCompanyStandard);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Bone, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.RaggedBrotherhoodSigil);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Bone, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.MoltenLegionFlag);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Bone, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.DiabolicSigil);
+            recipe.AddRecipe();
+
+            //sky island
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.SunplateBlock, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.WorldBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.SunplateBlock, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.SunBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.SunplateBlock, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.GravityBanner);
+            recipe.AddRecipe();
+
+            //underworld
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Obsidian, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.HellboundBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Obsidian, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.HellHammerBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Obsidian, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.HelltowerBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Obsidian, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.LostHopesofManBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Obsidian, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.ObsidianWatcherBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.Obsidian, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.LavaEruptsBanner);
+            recipe.AddRecipe();
+
+            //pyramid
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.SandstoneBrick, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.AnkhBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.SandstoneBrick, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.SnakeBanner);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Silk, 3);
+            recipe.AddIngredient(ItemID.SandstoneBrick, 10);
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(ItemID.OmegaBanner);
+            recipe.AddRecipe();
+
         }
 
         private static void AddConvertRecipe(int item, int item2)

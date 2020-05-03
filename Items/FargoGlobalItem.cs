@@ -452,5 +452,60 @@ namespace Fargowiltas.Items
                 return false;
             return true;
         }
+
+        public override bool OnPickup(Item item, Player player)
+        {
+            String dye = "";
+
+            switch (item.type)
+            {
+                case ItemID.RedHusk:
+                    dye = "RedHusk";
+                    break;
+                case ItemID.OrangeBloodroot:
+                    dye = "OrangeBloodroot";
+                    break;
+                case ItemID.YellowMarigold:
+                    dye = "YellowMarigold";
+                    break;
+                case ItemID.LimeKelp:
+                    dye = "LimeKelp";
+                    break;
+                case ItemID.GreenMushroom:
+                    dye = "GreenMushroom";
+                    break;
+                case ItemID.TealMushroom:
+                    dye = "TealMushroom";
+                    break;
+                case ItemID.CyanHusk:
+                    dye = "CyanHusk";
+                    break;
+                case ItemID.SkyBlueFlower:
+                    dye = "SkyBlueFlower";
+                    break;
+                case ItemID.BlueBerries:
+                    dye = "BlueBerries";
+                    break;
+                case ItemID.PurpleMucos:
+                    dye = "PurpleMucos";
+                    break;
+                case ItemID.VioletHusk:
+                    dye = "VioletHusk";
+                    break;
+                case ItemID.PinkPricklyPear:
+                    dye = "PinkPricklyPear";
+                    break;
+                case ItemID.BlackInk:
+                    dye = "BlackInk";
+                    break;
+            }
+
+            if (dye != "")
+            {
+                player.GetModPlayer<FargoPlayer>().FirstDyeIngredients[dye] = true;
+            }
+
+            return base.OnPickup(item, player);
+        }
     }
 }

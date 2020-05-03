@@ -1,28 +1,18 @@
-NEW UPDATE - V 2.2.1
--Updated a few sprites and names of items to match the sprites
+NEW UPDATE - V 2.2.2
+-Updated sprites
+-Fixed ogre and dark mage summons only unlocking if you kill their first tiers
+-Added recipes for all Obsidian furniture
+-Added recipes for Dungeon walls
+-Added recipes for Ice Machine, Sky Mill, Honey Dispenser, Bone Welder, and Lihzahrd Furnace
+-Added recipes for all decorative banners
+-Demolitionist sells gems
+-Wizard sells books
+-Dye Trader sells all dye ingredients after you obtain your first one
+-Dryad sells Nature's Gift, Jungle Rose, and Strange Plants in hardmode
+-Steampunker sells Flesh Cloning Vat in Corruption worlds as well
+-Corruption enemies will drop the Meat Grinder as well
 
-NEW UPDATE - V 2.2
--Added toggles for allowing any of the town NPCs to move in
--Added Innocuous Skull, Death Fruit, Party Cone
--Changed the Battered Club to be available after you beat Ogre in tier 2 and it summons the tier 2 version, same for Dark Mage tier 1
--Altered Ogres drop table outside Old One's Army, everything is more common
--Lowered prices of Ogre and Dark Mage summons, Ogre drops some gold
--Updated Wally and Insanity Energizer sprites
--Added a couple of Ancients Awakened swarm summons
--The Squirrel can now be caught
--Demolitionist now sells basic ore in Hard Mode
--Clothier sells all dungeon brick types
--Added recipes for all dungeon furniture
--Added Treasure Bag recipes
--Added Blue Moon Recipe
--Reduced Coin Gun banner recipe significantly
--Pirate item banner recipes added for all pirates instead of just the captain
--Music Boxes now transform instantly when placed in your accessory slots
--Battle Cry is now pre Mechanical Bosses
--Present slimes will be much less common now since only blue slimes can become them and not not those from statues
--Fixed Elemental Assembler not functioning right for potions and as a Hellforge
--Fixed Super Dummy not proccing on hit effects
--Fixed Bat Scepter Summon being held wrong
+
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

@@ -8,8 +8,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 {
     public class OverloadGoblins : ModItem
     {
-        public override string Texture => "Terraria/Item_361";
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Goblin War Banner");

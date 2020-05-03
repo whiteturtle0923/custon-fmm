@@ -37,11 +37,11 @@ namespace Fargowiltas
         }
 
 
-        [Label("[i:771] Unlimited Ammo at 3996+")]
+        [Label("[i:771] Unlimited Ammo at 3996+ in Hardmode")]
         [DefaultValue(true)]
         public bool UnlimitedAmmo { get; set; }
 
-        [Label("[i:42] Unlimited Consumable Weapons at 3996+")]
+        [Label("[i:42] Unlimited Consumable Weapons at 3996+ in Hardmode")]
         [DefaultValue(true)]
         public bool UnlimitedConsumableWeapons { get; set; }
 

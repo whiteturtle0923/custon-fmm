@@ -8,8 +8,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 {
     public class OverloadPirates : ModItem
     {
-        public override string Texture => "Terraria/Item_1315";
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Pirate's Bounty");
