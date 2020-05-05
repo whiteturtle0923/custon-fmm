@@ -36,7 +36,7 @@ namespace Fargowiltas.Projectiles
             projectile.position = projectile.Center;
             projectile.width = 100;
             projectile.height = 100;
-            projectile.position = projectile.Center;
+            projectile.Center = projectile.position;
 
             for (int i = 0; i < 30; i++)
             {
