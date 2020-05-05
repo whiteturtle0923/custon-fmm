@@ -12,6 +12,7 @@ namespace Fargowiltas.Items.Weapons.Summon
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Summons bats to attack your enemies");
+            Item.staff[item.type] = true;
         }
 
         public override void SetDefaults()
@@ -39,6 +40,8 @@ namespace Fargowiltas.Items.Weapons.Summon
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+
+
             int amount = Main.rand.Next(1, 4);
             for (int i = 0; i < amount; i++)
             {

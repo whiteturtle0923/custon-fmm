@@ -331,6 +331,114 @@ namespace Fargowiltas.Items
             }
         }
 
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+            if (item.type == ItemID.MusicBox && Main.curMusic > 0 && Main.curMusic <= 41)
+            {
+                int itemId = 0;
+
+                //still better than vanilla (fear)
+                switch (Main.curMusic)
+                {
+                    case 1:
+                        itemId = 0 + 562;
+                        break;
+                    case 2:
+                        itemId = 1 + 562;
+                        break;
+                    case 3:
+                        itemId = 2 + 562;
+                        break;
+                    case 4:
+                        itemId = 4 + 562;
+                        break;
+                    case 5:
+                        itemId = 5 + 562;
+                        break;
+                    case 6:
+                        itemId = 3 + 562;
+                        break;
+                    case 7:
+                        itemId = 6 + 562;
+                        break;
+                    case 8:
+                        itemId = 7 + 562;
+                        break;
+                    case 9:
+                        itemId = 9 + 562;
+                        break;
+                    case 10:
+                        itemId = 8 + 562;
+                        break;
+                    case 11:
+                        itemId = 11 + 562;
+                        break;
+                    case 12:
+                        itemId = 10 + 562;
+                        break;
+                    case 13:
+                        itemId = 12 + 562;
+                        break;
+                    case 28:
+                        itemId = 1963;
+                        break;
+                    case 29:
+                        itemId = 1610;
+                        break;
+                    case 30:
+                        itemId = 1963;
+                        break;
+                    case 31:
+                        itemId = 1964;
+                        break;
+                    case 32:
+                        itemId = 1965;
+                        break;
+                    case 33:
+                        itemId = 2742;
+                        break;
+                    case 34:
+                        itemId = 3370;
+                        break;
+                    case 35:
+                        itemId = 3236;
+                        break;
+                    case 36:
+                        itemId = 3237;
+                        break;
+                    case 37:
+                        itemId = 3235;
+                        break;
+                    case 38:
+                        itemId = 3044;
+                        break;
+                    case 39:
+                        itemId = 3371;
+                        break;
+                    case 40:
+                        itemId = 3796;
+                        break;
+                    case 41:
+                        itemId = 3869;
+                        break;
+                    default:
+                        itemId = 1596 + Main.curMusic - 14;
+                        break;
+                }
+
+                for (int i = 0; i < player.armor.Length; i++)
+                {
+                    Item accessory = player.armor[i];
+
+                    if (accessory.accessory && accessory.type == item.type)
+                    {
+                        player.armor[i].SetDefaults(itemId, false);
+                        break;
+                    }
+                }
+            }
+        }
+
         public override bool ConsumeAmmo(Item item, Player player)
         {
             if (GetInstance<FargoConfig>().UnlimitedAmmo && Main.hardMode && item.ammo != 0 && item.stack >= 3996)
@@ -343,6 +451,61 @@ namespace Fargowiltas.Items
             if (GetInstance<FargoConfig>().UnlimitedConsumableWeapons && Main.hardMode && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
                 return false;
             return true;
+        }
+
+        public override bool OnPickup(Item item, Player player)
+        {
+            String dye = "";
+
+            switch (item.type)
+            {
+                case ItemID.RedHusk:
+                    dye = "RedHusk";
+                    break;
+                case ItemID.OrangeBloodroot:
+                    dye = "OrangeBloodroot";
+                    break;
+                case ItemID.YellowMarigold:
+                    dye = "YellowMarigold";
+                    break;
+                case ItemID.LimeKelp:
+                    dye = "LimeKelp";
+                    break;
+                case ItemID.GreenMushroom:
+                    dye = "GreenMushroom";
+                    break;
+                case ItemID.TealMushroom:
+                    dye = "TealMushroom";
+                    break;
+                case ItemID.CyanHusk:
+                    dye = "CyanHusk";
+                    break;
+                case ItemID.SkyBlueFlower:
+                    dye = "SkyBlueFlower";
+                    break;
+                case ItemID.BlueBerries:
+                    dye = "BlueBerries";
+                    break;
+                case ItemID.PurpleMucos:
+                    dye = "PurpleMucos";
+                    break;
+                case ItemID.VioletHusk:
+                    dye = "VioletHusk";
+                    break;
+                case ItemID.PinkPricklyPear:
+                    dye = "PinkPricklyPear";
+                    break;
+                case ItemID.BlackInk:
+                    dye = "BlackInk";
+                    break;
+            }
+
+            if (dye != "")
+            {
+                player.GetModPlayer<FargoPlayer>().FirstDyeIngredients[dye] = true;
+            }
+
+            return base.OnPickup(item, player);
         }
     }
 }

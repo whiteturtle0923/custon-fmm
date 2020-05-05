@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Thorium
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Activated Blood Altar 2.0");
+            DisplayName.SetDefault("Blood Sigil");
             Tooltip.SetDefault("Summons several Viscounts");
         }
 

@@ -1,22 +1,19 @@
-NEW UPATE - v 2.1.2
--Added Baby Guardian summon
--Added Death Fruit (debug item)
--Updated sprites:
-	-Grand Cross
-	-Heart Chocolate
-	-Lee's Headband
-	-Pirate Flag
--Expert's Token is now always available and toggles expert mode
 
-NEW UPDATE - v 2.1.1
--Added a new town NPC only available with Souls Mod
--Added event summon and cancel compatability
--Updated Omnistation buff sprite
--Painter selling Dungeon paintings takes priority over underground paintings
--Added one more option to Lumberjack Tree Treasures featuring a Snail
--Elemental Assembler counts as a Bottle as well
--Truffle is not inlcuded in town npc recipes, but he can be made into blue paint
--Reduced town NPC recipes even more
+NEW UPDATE - V 2.2.2
+-Updated sprites
+-Fixed ogre and dark mage summons only unlocking if you kill their first tiers
+-Added recipes for all Obsidian furniture
+-Added recipes for Dungeon walls
+-Added recipes for Ice Machine, Sky Mill, Honey Dispenser, Bone Welder, and Lihzahrd Furnace
+-Added recipes for all decorative banners
+-Demolitionist sells gems
+-Wizard sells books
+-Dye Trader sells all dye ingredients after you obtain your first one
+-Dryad sells Nature's Gift, Jungle Rose, and Strange Plants in hardmode
+-Steampunker sells Flesh Cloning Vat in Corruption worlds as well
+-Corruption enemies will drop the Meat Grinder as well
+
+
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

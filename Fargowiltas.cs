@@ -33,6 +33,8 @@ namespace Fargowiltas
         internal static Dictionary<int, string> ModRareEnemies = new Dictionary<int, string>();
         private string[] mods;
 
+        internal static Fargowiltas Instance;
+
         public Fargowiltas()
         {
             Properties = new ModProperties()
@@ -43,8 +45,17 @@ namespace Fargowiltas
             };
         }
 
+        public void AddToggle(String toggle, String name, String item, String color)
+        {
+            ModTranslation text = CreateTranslation(toggle);
+            text.SetDefault("[i:" + Instance.ItemType(item) + "][c/" + color + ": " + name + "]");
+            AddTranslation(text);
+        }
+
         public override void Load()
         {
+            Instance = this;
+
             summonTracker = new MutantSummonTracker();
 
             HomeKey = RegisterHotKey("Quick Recall/Mirror", "Home");
@@ -86,6 +97,15 @@ namespace Fargowiltas
             {
                 ModLoaded.Add(mod, false);
             }
+
+            AddToggle("Mutant", "Mutant Can Spawn", "MutantMask", "ffffff");
+            AddToggle("Abom", "Abominationn Can Spawn", "AbominationMask", "ffffff");
+            //AddToggle("Devi", "Deviantt Can Spawn", "LumberHat", "ffffff");
+            ModTranslation text = CreateTranslation("Devi");
+            text.SetDefault("[i:" + ItemID.RuneHat + "][c/ffffff: Deviantt Can Spawn]");
+            AddTranslation(text);
+
+            AddToggle("Lumber", "Lumberjack Can Spawn", "LumberHat", "ffffff");
 
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
