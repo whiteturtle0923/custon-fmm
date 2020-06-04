@@ -311,7 +311,9 @@ namespace Fargowiltas.NPCs
                 else if (NPC.downedMoonlord)
                 {
                     //Main.npcChatText = "You've got two options now: a powerful foe's rematch or one of my brothers. Prepare as much as you can before going for either one, though!";
-                    Main.npcChatText = "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brothers!";
+                    Main.npcChatText = Main.rand.Next(2) == 0
+                        ? "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brothers!"
+                        : "Purity, night, hallow, buried desert, deep snow, caverns, underworld, ocean, space... I'm pretty sure those are where the Sigil of Champions works!";
                 }
                 else if (NPC.downedAncientCultist)
                 {
