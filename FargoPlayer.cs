@@ -25,7 +25,6 @@ namespace Fargowiltas
 
         internal Dictionary<string, bool> FirstDyeIngredients = new Dictionary<string, bool>();
             
-
         private readonly string[] tags = new string[]
        {
             "RedHusk",
@@ -49,7 +48,16 @@ namespace Fargowiltas
             List<string> dyes = new List<string>();
             foreach (string tag in tags)
             {
-                dyes.AddWithCondition(tag, FirstDyeIngredients[tag]);
+                bool value;
+
+                if (FirstDyeIngredients.TryGetValue(tag, out value))
+                {
+                    dyes.AddWithCondition(tag, FirstDyeIngredients[tag]);
+                }
+                else
+                {
+                    dyes.AddWithCondition(tag, false);
+                }
             }
 
             return new TagCompound

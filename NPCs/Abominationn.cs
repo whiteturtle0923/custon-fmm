@@ -220,7 +220,7 @@ namespace Fargowiltas.NPCs
             AddItem(true, ItemID.GoblinBattleStandard, Item.buyPrice(0, 6), ref shop, ref nextSlot);
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
-            AddItem(NPC.downedGolemBoss, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
+            AddItem(NPC.downedMechBossAny, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["darkMage"], ItemType<ForbiddenTome>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["ogre"], ItemType<BatteredClub>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["betsy"], ItemType<BetsyEgg>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);

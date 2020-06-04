@@ -1,17 +1,23 @@
-
 NEW UPDATE - V 2.2.2
 -Updated sprites
 -Fixed ogre and dark mage summons only unlocking if you kill their first tiers
--Added recipes for all Obsidian furniture
--Added recipes for Dungeon walls
+-Added recipes for all Obsidian furniture, Dungeon walls, lanterns, platforms, decorative banners
 -Added recipes for Ice Machine, Sky Mill, Honey Dispenser, Bone Welder, and Lihzahrd Furnace
--Added recipes for all decorative banners
+-Added conversion between Vertebrae and Rotten Chunk
 -Demolitionist sells gems
 -Wizard sells books
 -Dye Trader sells all dye ingredients after you obtain your first one
 -Dryad sells Nature's Gift, Jungle Rose, and Strange Plants in hardmode
 -Steampunker sells Flesh Cloning Vat in Corruption worlds as well
 -Corruption enemies will drop the Meat Grinder as well
+
+
+
+-Expert's Token is now always available and toggles expert mode, also fixed its price being way too high
+
+-Abom sells Solar Tablet post any mech
+
+-Seaweed recipe reduced
 
 
 

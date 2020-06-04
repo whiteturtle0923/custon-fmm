@@ -276,6 +276,7 @@ namespace Fargowiltas
 
         private static void AddEvilConversions()
         {
+            AddConvertRecipe(ItemID.Vertebrae, ItemID.RottenChunk);
             AddConvertRecipe(ItemID.ShadowScale, ItemID.TissueSample);
             AddConvertRecipe(ItemID.PurpleSolution, ItemID.RedSolution);
             AddConvertRecipe(ItemID.Ichor, ItemID.CursedFlame);
@@ -1185,7 +1186,7 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
-            recipe.AddIngredient(ItemID.FishingSeaweed, 10);
+            recipe.AddIngredient(ItemID.FishingSeaweed, 5);
             recipe.AddTile(TileID.LivingLoom);
             recipe.SetResult(ItemID.Seaweed);
             recipe.AddRecipe();
@@ -1378,6 +1379,18 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.BlueBrickWall, 4);
             recipe.AddRecipe();
 
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueSlabWall, 4);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BlueBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BlueTiledWall, 4);
+            recipe.AddRecipe();
+
             //green
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.GreenBrick);
@@ -1497,6 +1510,18 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.GreenBrick);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.GreenBrickWall, 4);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenSlabWall, 4);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GreenBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.GreenTiledWall, 4);
             recipe.AddRecipe();
 
             //pink
@@ -1620,6 +1645,18 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.PinkBrickWall, 4);
             recipe.AddRecipe();
 
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkSlabWall, 4);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PinkBrick);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.PinkTiledWall, 4);
+            recipe.AddRecipe();
+
             //obsidian
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.ObsidianBrick, 14);
@@ -1733,6 +1770,99 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.LihzahrdBrick, 25);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.LihzahrdFurnace);
+            recipe.AddRecipe();
+
+            //lanterns
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar", 6);
+            recipe.AddIngredient(ItemID.Bone, 6);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ChainLantern);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar", 6);
+            recipe.AddIngredient(ItemID.Bone, 6);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BrassLantern);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar", 6);
+            recipe.AddIngredient(ItemID.Bone, 6);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.CagedLantern);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar", 6);
+            recipe.AddIngredient(ItemID.Bone, 6);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.CarriageLantern);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar", 6);
+            recipe.AddIngredient(ItemID.Bone, 6);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.AlchemyLantern);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar", 6);
+            recipe.AddIngredient(ItemID.Bone, 6);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.DiablostLamp);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("IronBar", 6);
+            recipe.AddIngredient(ItemID.Bone, 6);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.OilRagSconse);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Obsidian, 6);
+            recipe.AddIngredient(ItemID.Torch);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.ObsidianLantern);
+            recipe.AddRecipe();
+
+            //platforms
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WoodPlatform, 5);
+            recipe.AddIngredient(ItemID.Bone);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.DungeonShelf, 5);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WoodPlatform, 5);
+            recipe.AddIngredient(ItemID.Bone);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.WoodShelf, 5);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WoodPlatform, 5);
+            recipe.AddIngredient(ItemID.Bone);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.MetalShelf, 5);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WoodPlatform, 5);
+            recipe.AddIngredient(ItemID.Bone);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.BrassShelf, 5);
             recipe.AddRecipe();
 
             //banners
