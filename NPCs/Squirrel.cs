@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -51,7 +53,12 @@ namespace Fargowiltas.NPCs
             }
         }
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override void AI()
+        {
+            npc.dontTakeDamage = Main.bloodMoon;
+        }
+
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
 			for (int k = 0; k < 255; k++)
 			{
@@ -87,7 +94,7 @@ namespace Fargowiltas.NPCs
 
 		public override string GetChat()
 		{
-            if (Main.rand.Next(10) == 0)
+            if (Main.bloodMoon)
                 return "You will suffer.";
 
             switch (Main.rand.Next(3))
@@ -295,5 +302,35 @@ namespace Fargowiltas.NPCs
                 }
 			}
 		}
-	}
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D texture2D13 = Main.npcTexture[npc.type];
+            //int num156 = Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type]; //ypos of lower right corner of sprite to draw
+            //int y3 = num156 * npc.frame.Y; //ypos of upper left corner of sprite to draw
+            Rectangle rectangle = npc.frame;//new Rectangle(0, y3, texture2D13.Width, num156);
+            Vector2 origin2 = rectangle.Size() / 2f;
+
+            Color color26 = lightColor;
+            color26 = npc.GetAlpha(color26);
+
+            SpriteEffects effects = npc.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+            if (Main.bloodMoon)
+            {
+                Texture2D texture2D14 = mod.GetTexture("NPCs/Squirrel_Glow");
+                float scale = (Main.mouseTextColor / 200f - 0.35f) * 0.3f + 0.9f;
+                Main.spriteBatch.Draw(texture2D14, npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * npc.Opacity, npc.rotation, origin2, scale, effects, 0f);
+            }
+
+            Main.spriteBatch.Draw(texture2D13, npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), npc.GetAlpha(lightColor), npc.rotation, origin2, npc.scale, effects, 0f);
+
+            if (Main.bloodMoon)
+            {
+                Texture2D texture2D14 = mod.GetTexture("NPCs/Squirrel_Eyes");
+                Main.spriteBatch.Draw(texture2D14, npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * npc.Opacity, npc.rotation, origin2, npc.scale, effects, 0f);
+            }
+            return false;
+        }
+    }
 }
