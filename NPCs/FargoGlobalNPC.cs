@@ -1068,26 +1068,6 @@ namespace Fargowiltas.NPCs
                 FargoWorld.DownedBools["rareEnemy"] = true;
                 FargoWorld.DownedBools[Fargowiltas.ModRareEnemies[npc.type]] = true;
             }
-
-            if (npc.boss && Main.rand.Next(500) == 0)
-            {
-                int num = Main.rand.Next(3);
-
-                switch (num)
-                {
-                    case 0:
-                        Item.NewItem(npc.Hitbox, ModContent.ItemType<AncientMutantMask>());
-                        break;
-
-                    case 1:
-                        Item.NewItem(npc.Hitbox, ModContent.ItemType<AncientMutantBody>());
-                        break;
-
-                    case 2:
-                        Item.NewItem(npc.Hitbox, ModContent.ItemType<AncientMutantPants>());
-                        break;
-                }
-            }
         }
 
         public override bool CheckDead(NPC npc)

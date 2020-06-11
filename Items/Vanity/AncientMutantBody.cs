@@ -29,7 +29,7 @@ namespace Fargowiltas.Items.Vanity
             recipe.AddIngredient(ItemID.GolemMask);
             //add empress mask
             recipe.AddIngredient(ItemID.BossMaskMoonlord);
-            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

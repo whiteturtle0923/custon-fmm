@@ -18,5 +18,17 @@ namespace Fargowiltas.Items.Vanity
             item.rare = ItemRarityID.Blue;
             item.vanity = true;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+
+            recipe.AddIngredient(ItemID.EyeMask);
+            recipe.AddIngredient(ItemID.BrainMask);
+            recipe.AddIngredient(ItemID.EaterMask);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 namespace Fargowiltas.Items.Vanity
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AbominationnBody : ModItem
+    public class DevianttBody : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Abominationn Body");
+            DisplayName.SetDefault("Deviantt Body");
         }
 
         public override void SetDefaults()
@@ -22,8 +22,9 @@ namespace Fargowiltas.Items.Vanity
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PirateShirt);
-            recipe.AddIngredient(ItemID.ChargedBlasterCannon);
+            recipe.AddIngredient(ItemID.Robe);
+            recipe.AddIngredient(ItemID.PinkGel);
+            recipe.AddIngredient(ItemID.AncientBattleArmorMaterial);
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();

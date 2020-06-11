@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 namespace Fargowiltas.Items.Vanity
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AbominationnBody : ModItem
+    public class MutantBody : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Abominationn Body");
+            DisplayName.SetDefault("Mutant Body");
         }
 
         public override void SetDefaults()
@@ -22,8 +22,13 @@ namespace Fargowiltas.Items.Vanity
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PirateShirt);
-            recipe.AddIngredient(ItemID.ChargedBlasterCannon);
+            recipe.AddIngredient(ItemID.SkeletronMask);
+            recipe.AddIngredient(ItemID.DestroyerMask);
+            recipe.AddIngredient(ItemID.SkeletronPrimeMask);
+            recipe.AddIngredient(ItemID.TwinMask);
+            recipe.AddIngredient(ItemID.GolemMask);
+            //add empress mask
+            recipe.AddIngredient(ItemID.BossMaskMoonlord);
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
