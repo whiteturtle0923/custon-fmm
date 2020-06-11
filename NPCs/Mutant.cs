@@ -61,6 +61,8 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
+
         public override void AI()
         {
             npc.breath = 200;
@@ -363,7 +365,7 @@ namespace Fargowiltas.NPCs
 
             if (prehardmodeShop)
             {
-                AddItem(true, "Fargowiltas", "ExpertToggle", 1000000, ref shop, ref nextSlot);
+                AddItem(true, "Fargowiltas", "ExpertToggle", 100000, ref shop, ref nextSlot);
 
                 if (Fargowiltas.ModLoaded["FargowiltasSouls"])
                 {

@@ -1,4 +1,4 @@
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Vanity
@@ -23,7 +23,11 @@ namespace Fargowiltas.Items.Vanity
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SkeletronMask);
+            recipe.AddIngredient(ItemID.DestroyerMask);
+            recipe.AddIngredient(ItemID.SkeletronPrimeMask);
+            recipe.AddIngredient(ItemID.TwinMask);
             recipe.AddIngredient(ItemID.GolemMask);
+            //add empress mask
             recipe.AddIngredient(ItemID.BossMaskMoonlord);
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);

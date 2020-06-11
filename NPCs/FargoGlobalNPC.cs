@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Fargowiltas.Items.Vanity;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -109,278 +110,258 @@ namespace Fargowiltas.NPCs
         {
             Player player = Main.LocalPlayer;
 
-            switch (type)
+            if (GetInstance<FargoConfig>().NPCSales)
             {
-                case NPCID.Clothier:
-                    shop.item[nextSlot++].SetDefaults(ItemID.PharaohsMask);
-                    shop.item[nextSlot].value = 10000;
+                switch (type)
+                {
+                    case NPCID.Clothier:
+                        shop.item[nextSlot++].SetDefaults(ItemID.PharaohsMask);
+                        shop.item[nextSlot].value = 10000;
 
-                    shop.item[nextSlot++].SetDefaults(ItemID.PharaohsRobe);
-                    shop.item[nextSlot].value = 10000;
-
-                    if (player.anglerQuestsFinished >= 10)
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.AnglerHat);
-
-                        if (player.anglerQuestsFinished >= 15)
-                        {
-                            shop.item[nextSlot++].SetDefaults(ItemID.AnglerVest);
-
-                            if (player.anglerQuestsFinished >= 20)
-                            {
-                                shop.item[nextSlot++].SetDefaults(ItemID.AnglerPants);
-                            }
-                        }
-                    }
-
-                    shop.item[nextSlot++].SetDefaults(ItemID.BlueBrick);
-                    shop.item[nextSlot].value = 100;
-                    shop.item[nextSlot++].SetDefaults(ItemID.GreenBrick);
-                    shop.item[nextSlot].value = 100;
-                    shop.item[nextSlot++].SetDefaults(ItemID.PinkBrick);
-                    shop.item[nextSlot].value = 100;
-
-                    break;
-
-                case NPCID.Merchant:
-                    if (player.anglerQuestsFinished >= 5)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.FuzzyCarrot);
-                        nextSlot++;
+                        shop.item[nextSlot++].SetDefaults(ItemID.PharaohsRobe);
+                        shop.item[nextSlot].value = 10000;
 
                         if (player.anglerQuestsFinished >= 10)
                         {
-                            shop.item[nextSlot].SetDefaults(ItemID.AnglerEarring);
-                            nextSlot++;
+                            shop.item[nextSlot++].SetDefaults(ItemID.AnglerHat);
 
-                            shop.item[nextSlot].SetDefaults(ItemID.HighTestFishingLine);
-                            nextSlot++;
-
-                            shop.item[nextSlot].SetDefaults(ItemID.TackleBox);
-                            nextSlot++;
-
-                            shop.item[nextSlot].SetDefaults(ItemID.GoldenBugNet);
-                            nextSlot++;
-
-                            shop.item[nextSlot].SetDefaults(ItemID.FishHook);
-                            nextSlot++;
-
-                            if (Main.hardMode)
+                            if (player.anglerQuestsFinished >= 15)
                             {
-                                shop.item[nextSlot].SetDefaults(ItemID.FinWings);
-                                nextSlot++;
+                                shop.item[nextSlot++].SetDefaults(ItemID.AnglerVest);
 
-                                shop.item[nextSlot].SetDefaults(ItemID.SuperAbsorbantSponge);
-                                nextSlot++;
-
-                                shop.item[nextSlot].SetDefaults(ItemID.BottomlessBucket);
-                                nextSlot++;
-
-                                if (player.anglerQuestsFinished >= 25)
+                                if (player.anglerQuestsFinished >= 20)
                                 {
-                                    shop.item[nextSlot].SetDefaults(ItemID.HotlineFishingHook);
+                                    shop.item[nextSlot++].SetDefaults(ItemID.AnglerPants);
+                                }
+                            }
+                        }
+
+                        shop.item[nextSlot++].SetDefaults(ItemID.BlueBrick);
+                        shop.item[nextSlot].value = 100;
+                        shop.item[nextSlot++].SetDefaults(ItemID.GreenBrick);
+                        shop.item[nextSlot].value = 100;
+                        shop.item[nextSlot++].SetDefaults(ItemID.PinkBrick);
+                        shop.item[nextSlot].value = 100;
+
+                        break;
+
+                    case NPCID.Merchant:
+                        if (player.anglerQuestsFinished >= 5)
+                        {
+                            shop.item[nextSlot].SetDefaults(ItemID.FuzzyCarrot);
+                            nextSlot++;
+
+                            if (player.anglerQuestsFinished >= 10)
+                            {
+                                shop.item[nextSlot].SetDefaults(ItemID.AnglerEarring);
+                                nextSlot++;
+
+                                shop.item[nextSlot].SetDefaults(ItemID.HighTestFishingLine);
+                                nextSlot++;
+
+                                shop.item[nextSlot].SetDefaults(ItemID.TackleBox);
+                                nextSlot++;
+
+                                shop.item[nextSlot].SetDefaults(ItemID.GoldenBugNet);
+                                nextSlot++;
+
+                                shop.item[nextSlot].SetDefaults(ItemID.FishHook);
+                                nextSlot++;
+
+                                if (Main.hardMode)
+                                {
+                                    shop.item[nextSlot].SetDefaults(ItemID.FinWings);
                                     nextSlot++;
 
-                                    if (player.anglerQuestsFinished >= 30)
+                                    shop.item[nextSlot].SetDefaults(ItemID.SuperAbsorbantSponge);
+                                    nextSlot++;
+
+                                    shop.item[nextSlot].SetDefaults(ItemID.BottomlessBucket);
+                                    nextSlot++;
+
+                                    if (player.anglerQuestsFinished >= 25)
                                     {
-                                        shop.item[nextSlot].SetDefaults(ItemID.GoldenFishingRod);
+                                        shop.item[nextSlot].SetDefaults(ItemID.HotlineFishingHook);
                                         nextSlot++;
+
+                                        if (player.anglerQuestsFinished >= 30)
+                                        {
+                                            shop.item[nextSlot].SetDefaults(ItemID.GoldenFishingRod);
+                                            nextSlot++;
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
 
-                    break;
+                        break;
 
-                case NPCID.Painter:
+                    case NPCID.Painter:
 
-                    if (player.ZoneDungeon)
-                    {
-                        nextSlot = 15;
+                        if (player.ZoneDungeon)
+                        {
+                            nextSlot = 15;
 
-                        shop.item[nextSlot++].SetDefaults(ItemID.BloodMoonRising);
-                        shop.item[nextSlot++].SetDefaults(ItemID.BoneWarp);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheCreationoftheGuide);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheCursedMan);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheDestroyer);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Dryadisque);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheEyeSeestheEnd);
-                        shop.item[nextSlot++].SetDefaults(ItemID.FacingtheCerebralMastermind);
-                        shop.item[nextSlot++].SetDefaults(ItemID.GloryoftheFire);
-                        shop.item[nextSlot++].SetDefaults(ItemID.GoblinsPlayingPoker);
-                        shop.item[nextSlot++].SetDefaults(ItemID.GreatWave);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheGuardiansGaze);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheHangedMan);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Impact);
-                        shop.item[nextSlot++].SetDefaults(ItemID.ThePersistencyofEyes);
-                        shop.item[nextSlot++].SetDefaults(ItemID.PoweredbyBirds);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheScreamer);
-                        shop.item[nextSlot++].SetDefaults(ItemID.SkellingtonJSkellingsworth);
-                        shop.item[nextSlot++].SetDefaults(ItemID.SparkyPainting);
-                        shop.item[nextSlot++].SetDefaults(ItemID.SomethingEvilisWatchingYou);
-                        shop.item[nextSlot++].SetDefaults(ItemID.StarryNight);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TrioSuperHeroes);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheTwinsHaveAwoken);
-                        shop.item[nextSlot++].SetDefaults(ItemID.UnicornCrossingtheHallows);
-                    }
-                    else if (player.ZoneRockLayerHeight)
-                    {
-                        nextSlot = 19;
+                            shop.item[nextSlot++].SetDefaults(ItemID.BloodMoonRising);
+                            shop.item[nextSlot++].SetDefaults(ItemID.BoneWarp);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheCreationoftheGuide);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheCursedMan);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheDestroyer);
+                            shop.item[nextSlot++].SetDefaults(ItemID.Dryadisque);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheEyeSeestheEnd);
+                            shop.item[nextSlot++].SetDefaults(ItemID.FacingtheCerebralMastermind);
+                            shop.item[nextSlot++].SetDefaults(ItemID.GloryoftheFire);
+                            shop.item[nextSlot++].SetDefaults(ItemID.GoblinsPlayingPoker);
+                            shop.item[nextSlot++].SetDefaults(ItemID.GreatWave);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheGuardiansGaze);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheHangedMan);
+                            shop.item[nextSlot++].SetDefaults(ItemID.Impact);
+                            shop.item[nextSlot++].SetDefaults(ItemID.ThePersistencyofEyes);
+                            shop.item[nextSlot++].SetDefaults(ItemID.PoweredbyBirds);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheScreamer);
+                            shop.item[nextSlot++].SetDefaults(ItemID.SkellingtonJSkellingsworth);
+                            shop.item[nextSlot++].SetDefaults(ItemID.SparkyPainting);
+                            shop.item[nextSlot++].SetDefaults(ItemID.SomethingEvilisWatchingYou);
+                            shop.item[nextSlot++].SetDefaults(ItemID.StarryNight);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TrioSuperHeroes);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheTwinsHaveAwoken);
+                            shop.item[nextSlot++].SetDefaults(ItemID.UnicornCrossingtheHallows);
+                        }
+                        else if (player.ZoneRockLayerHeight)
+                        {
+                            nextSlot = 19;
 
-                        shop.item[nextSlot++].SetDefaults(ItemID.AmericanExplosive);
-                        shop.item[nextSlot++].SetDefaults(ItemID.CrownoDevoursHisLunch);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Discover);
-                        shop.item[nextSlot++].SetDefaults(ItemID.FatherofSomeone);
-                        shop.item[nextSlot++].SetDefaults(ItemID.FindingGold);
-                        shop.item[nextSlot++].SetDefaults(ItemID.GloriousNight);
-                        shop.item[nextSlot++].SetDefaults(ItemID.GuidePicasso);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Land);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TheMerchant);
-                        shop.item[nextSlot++].SetDefaults(ItemID.NurseLisa);
-                        shop.item[nextSlot++].SetDefaults(ItemID.OldMiner);
-                        shop.item[nextSlot++].SetDefaults(ItemID.RareEnchantment);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Sunflowers);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TerrarianGothic);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Waldo);
-                    }
-                    else if (player.ZoneUnderworldHeight)
-                    {
-                        nextSlot = 19;
+                            shop.item[nextSlot++].SetDefaults(ItemID.AmericanExplosive);
+                            shop.item[nextSlot++].SetDefaults(ItemID.CrownoDevoursHisLunch);
+                            shop.item[nextSlot++].SetDefaults(ItemID.Discover);
+                            shop.item[nextSlot++].SetDefaults(ItemID.FatherofSomeone);
+                            shop.item[nextSlot++].SetDefaults(ItemID.FindingGold);
+                            shop.item[nextSlot++].SetDefaults(ItemID.GloriousNight);
+                            shop.item[nextSlot++].SetDefaults(ItemID.GuidePicasso);
+                            shop.item[nextSlot++].SetDefaults(ItemID.Land);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TheMerchant);
+                            shop.item[nextSlot++].SetDefaults(ItemID.NurseLisa);
+                            shop.item[nextSlot++].SetDefaults(ItemID.OldMiner);
+                            shop.item[nextSlot++].SetDefaults(ItemID.RareEnchantment);
+                            shop.item[nextSlot++].SetDefaults(ItemID.Sunflowers);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TerrarianGothic);
+                            shop.item[nextSlot++].SetDefaults(ItemID.Waldo);
+                        }
+                        else if (player.ZoneUnderworldHeight)
+                        {
+                            nextSlot = 19;
 
-                        shop.item[nextSlot++].SetDefaults(ItemID.DarkSoulReaper);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Darkness);
-                        shop.item[nextSlot++].SetDefaults(ItemID.DemonsEye);
-                        shop.item[nextSlot++].SetDefaults(ItemID.FlowingMagma);
-                        shop.item[nextSlot++].SetDefaults(ItemID.HandEarth);
-                        shop.item[nextSlot++].SetDefaults(ItemID.ImpFace);
-                        shop.item[nextSlot++].SetDefaults(ItemID.LakeofFire);
-                        shop.item[nextSlot++].SetDefaults(ItemID.LivingGore);
-                        shop.item[nextSlot++].SetDefaults(ItemID.OminousPresence);
-                        shop.item[nextSlot++].SetDefaults(ItemID.ShiningMoon);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Skelehead);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TrappedGhost);
-                    }
+                            shop.item[nextSlot++].SetDefaults(ItemID.DarkSoulReaper);
+                            shop.item[nextSlot++].SetDefaults(ItemID.Darkness);
+                            shop.item[nextSlot++].SetDefaults(ItemID.DemonsEye);
+                            shop.item[nextSlot++].SetDefaults(ItemID.FlowingMagma);
+                            shop.item[nextSlot++].SetDefaults(ItemID.HandEarth);
+                            shop.item[nextSlot++].SetDefaults(ItemID.ImpFace);
+                            shop.item[nextSlot++].SetDefaults(ItemID.LakeofFire);
+                            shop.item[nextSlot++].SetDefaults(ItemID.LivingGore);
+                            shop.item[nextSlot++].SetDefaults(ItemID.OminousPresence);
+                            shop.item[nextSlot++].SetDefaults(ItemID.ShiningMoon);
+                            shop.item[nextSlot++].SetDefaults(ItemID.Skelehead);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TrappedGhost);
+                        }
+                        //deserttt
 
-                    break;
+                        break;
 
-                case NPCID.Demolitionist:
-                    if (Main.hardMode)
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.CopperOre);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TinOre);
-                        shop.item[nextSlot++].SetDefaults(ItemID.IronOre);
-                        shop.item[nextSlot++].SetDefaults(ItemID.LeadOre);
-                        shop.item[nextSlot++].SetDefaults(ItemID.SilverOre);
-                        shop.item[nextSlot++].SetDefaults(ItemID.TungstenOre);
-                        shop.item[nextSlot++].SetDefaults(ItemID.GoldOre);
-                        shop.item[nextSlot++].SetDefaults(ItemID.PlatinumOre);
+                    case NPCID.Demolitionist:
+                        if (Main.hardMode)
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.CopperOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TinOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.IronOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.LeadOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.SilverOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TungstenOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.GoldOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.PlatinumOre);
 
-                        //gems , remove later if gem trees are epic
-                        shop.item[nextSlot++].SetDefaults(ItemID.Amethyst);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Topaz);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Sapphire);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Emerald);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Ruby);
-                        shop.item[nextSlot++].SetDefaults(ItemID.Diamond);
+                        }
 
-                    }
-                    
-                    break;
+                        break;
 
-                case NPCID.Steampunker:
-                    shop.item[nextSlot++].SetDefaults(WorldGen.crimson ? ItemID.PurpleSolution : ItemID.RedSolution);
+                    case NPCID.Steampunker:
+                        shop.item[nextSlot++].SetDefaults(WorldGen.crimson ? ItemID.PurpleSolution : ItemID.RedSolution);
+                        shop.item[nextSlot++].SetDefaults(WorldGen.crimson ? ItemID.FleshCloningVaat : ItemID.FleshCloningVaat); //DECAY CHAMBER
 
-                    if (!WorldGen.crimson)
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.FleshCloningVaat);
-                    }
-                    
-                    break;
+                        break;
 
-                case NPCID.Wizard:
-                    shop.item[nextSlot++].SetDefaults(ItemID.Book); //verify price
-                    break;
+                    case NPCID.DyeTrader:
+                        FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
+                        if (modPlayer.FirstDyeIngredients["RedHusk"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.RedHusk);
+                        }
+                        if (modPlayer.FirstDyeIngredients["OrangeBloodroot"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.OrangeBloodroot);
+                        }
+                        if (modPlayer.FirstDyeIngredients["YellowMarigold"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.YellowMarigold);
+                        }
+                        if (modPlayer.FirstDyeIngredients["LimeKelp"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.LimeKelp);
+                        }
+                        if (modPlayer.FirstDyeIngredients["GreenMushroom"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.GreenMushroom);
+                        }
+                        if (modPlayer.FirstDyeIngredients["TealMushroom"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.TealMushroom);
+                        }
+                        if (modPlayer.FirstDyeIngredients["CyanHusk"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.CyanHusk);
+                        }
+                        if (modPlayer.FirstDyeIngredients["SkyBlueFlower"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.SkyBlueFlower);
+                        }
+                        if (modPlayer.FirstDyeIngredients["BlueBerries"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.BlueBerries);
+                        }
+                        if (modPlayer.FirstDyeIngredients["PurpleMucos"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.PurpleMucos);
+                        }
+                        if (modPlayer.FirstDyeIngredients["VioletHusk"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.VioletHusk);
+                        }
+                        if (modPlayer.FirstDyeIngredients["PinkPricklyPear"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.PinkPricklyPear);
+                        }
+                        if (modPlayer.FirstDyeIngredients["BlackInk"])
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.BlackInk);
+                        }
 
-                case NPCID.DyeTrader:
-                    FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
-                    if (modPlayer.FirstDyeIngredients["RedHusk"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.RedHusk); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["OrangeBloodroot"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.OrangeBloodroot); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["YellowMarigold"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.YellowMarigold); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["LimeKelp"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.LimeKelp); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["GreenMushroom"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.GreenMushroom); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["TealMushroom"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.TealMushroom); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["CyanHusk"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.CyanHusk);
-                    }
-                    if (modPlayer.FirstDyeIngredients["SkyBlueFlower"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.SkyBlueFlower); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["BlueBerries"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.BlueBerries); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["PurpleMucos"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.PurpleMucos);
-                    }
-                    if (modPlayer.FirstDyeIngredients["VioletHusk"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.VioletHusk); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["PinkPricklyPear"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.PinkPricklyPear); 
-                    }
-                    if (modPlayer.FirstDyeIngredients["BlackInk"])
-                    {
-                        shop.item[nextSlot++].SetDefaults(ItemID.BlackInk);
-                    }
+                        break;
 
-                    break;
+                    case NPCID.Dryad:
+                        if (Main.hardMode)
+                        {
+                            shop.item[nextSlot].SetDefaults(ItemID.NaturesGift);
+                            shop.item[nextSlot++].value = 200000;
+                            shop.item[nextSlot].SetDefaults(ItemID.JungleRose);
+                            shop.item[nextSlot++].value = 100000;
 
-                case NPCID.Dryad:
-                    if (Main.hardMode)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.NaturesGift);
-                        shop.item[nextSlot++].value = 200000;
-                        shop.item[nextSlot].SetDefaults(ItemID.JungleRose);
-                        shop.item[nextSlot++].value = 100000;
-
-                        shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant1); //check price
-                        shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant2);
-                        shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant3);
-                        shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant4);
-                    }
-                    break;
-                
-                /*case NPCID.GoblinTinkerer:
-                    if (Main.hardMode)
-                    {
-                        
-
-                    }
-                    break;*/
+                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant1); //check price
+                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant2);
+                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant3);
+                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant4);
+                        }
+                        break;
+                }
             }
         }
 
@@ -518,31 +499,31 @@ namespace Fargowiltas.NPCs
                 switch (npc.type)
                 {
                     case NPCID.KingSlime:
-                        Swarm(npc, NPCID.KingSlime, NPCID.BlueSlime, ItemID.KingSlimeBossBag, "EnergizerSlime");
+                        Swarm(npc, NPCID.KingSlime, NPCID.BlueSlime, ItemID.KingSlimeBossBag, ItemID.KingSlimeTrophy, "EnergizerSlime");
                         break;
 
                     case NPCID.EyeofCthulhu:
-                        Swarm(npc, NPCID.EyeofCthulhu, NPCID.ServantofCthulhu, ItemID.EyeOfCthulhuBossBag, "EnergizerEye");
+                        Swarm(npc, NPCID.EyeofCthulhu, NPCID.ServantofCthulhu, ItemID.EyeOfCthulhuBossBag, ItemID.EyeofCthulhuTrophy, "EnergizerEye");
                         break;
 
                     case NPCID.EaterofWorldsHead:
-                        Swarm(npc, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail, ItemID.EaterOfWorldsBossBag, "EnergizerWorm");
+                        Swarm(npc, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail, ItemID.EaterOfWorldsBossBag, ItemID.EaterofWorldsTrophy, "EnergizerWorm");
                         break;
 
                     case NPCID.BrainofCthulhu:
-                        Swarm(npc, NPCID.BrainofCthulhu, NPCID.Creeper, ItemID.BrainOfCthulhuBossBag, "EnergizerBrain");
+                        Swarm(npc, NPCID.BrainofCthulhu, NPCID.Creeper, ItemID.BrainOfCthulhuBossBag, ItemID.BrainofCthulhuTrophy, "EnergizerBrain");
                         break;
 
                     case NPCID.QueenBee:
-                        Swarm(npc, NPCID.QueenBee, NPCID.BeeSmall, ItemID.QueenBeeBossBag, "EnergizerBee");
+                        Swarm(npc, NPCID.QueenBee, NPCID.BeeSmall, ItemID.QueenBeeBossBag, ItemID.QueenBeeTrophy, "EnergizerBee");
                         break;
 
                     case NPCID.SkeletronHead:
-                        Swarm(npc, NPCID.SkeletronHead, -1, ItemID.SkeletronBossBag, "EnergizerSkele");
+                        Swarm(npc, NPCID.SkeletronHead, -1, ItemID.SkeletronBossBag, ItemID.SkeletronTrophy, "EnergizerSkele");
                         break;
 
                     case NPCID.WallofFlesh:
-                        Swarm(npc, NPCID.WallofFlesh, NPCID.TheHungry, ItemID.WallOfFleshBossBag, "EnergizerWall");
+                        Swarm(npc, NPCID.WallofFlesh, NPCID.TheHungry, ItemID.WallOfFleshBossBag, ItemID.WallofFleshTrophy, "EnergizerWall");
                         break;
 
                     /*case mod.NPCType(""):
@@ -550,38 +531,38 @@ namespace Fargowiltas.NPCs
                         break;*/
 
                     case NPCID.Retinazer:
-                        Swarm(npc, NPCID.Retinazer, -1, ItemID.TwinsBossBag, "EnergizerTwins");
+                        Swarm(npc, NPCID.Retinazer, -1, ItemID.TwinsBossBag, ItemID.RetinazerTrophy, "EnergizerTwins");
                         break;
 
                     case NPCID.Spazmatism:
-                        Swarm(npc, NPCID.Spazmatism, -1, -1, string.Empty);
+                        Swarm(npc, NPCID.Spazmatism, -1, -1, ItemID.SpazmatismTrophy, string.Empty);
                         break;
 
                     case NPCID.SkeletronPrime:
-                        Swarm(npc, NPCID.SkeletronPrime, -1, ItemID.SkeletronPrimeBossBag, "EnergizerPrime");
+                        Swarm(npc, NPCID.SkeletronPrime, -1, ItemID.SkeletronPrimeBossBag, ItemID.SkeletronPrimeTrophy, "EnergizerPrime");
                         break;
 
                     case NPCID.Plantera:
-                        Swarm(npc, NPCID.Plantera, NPCID.PlanterasHook, ItemID.PlanteraBossBag, "EnergizerPlant");
+                        Swarm(npc, NPCID.Plantera, NPCID.PlanterasHook, ItemID.PlanteraBossBag, ItemID.PlanteraTrophy, "EnergizerPlant");
                         break;
 
                     case NPCID.Golem:
-                        Swarm(npc, NPCID.Golem, NPCID.GolemHeadFree, ItemID.GolemBossBag, "EnergizerGolem");
+                        Swarm(npc, NPCID.Golem, NPCID.GolemHeadFree, ItemID.GolemBossBag, ItemID.GolemTrophy, "EnergizerGolem");
                         break;
 
                     case NPCID.DukeFishron:
-                        Swarm(npc, NPCID.DukeFishron, NPCID.Sharkron, ItemID.FishronBossBag, "EnergizerFish");
+                        Swarm(npc, NPCID.DukeFishron, NPCID.Sharkron, ItemID.FishronBossBag, ItemID.DukeFishronTrophy, "EnergizerFish");
                         break;
 
                     case NPCID.CultistBoss:
-                        Swarm(npc, NPCID.CultistBoss, -1, ItemID.CultistBossBag, "EnergizerCultist");
+                        Swarm(npc, NPCID.CultistBoss, -1, ItemID.CultistBossBag, ItemID.AncientCultistTrophy, "EnergizerCultist");
                         break;
 
                     case NPCID.MoonLordCore:
-                        Swarm(npc, NPCID.MoonLordCore, NPCID.MoonLordFreeEye, ItemID.MoonLordBossBag, "EnergizerMoon");
+                        Swarm(npc, NPCID.MoonLordCore, NPCID.MoonLordFreeEye, ItemID.MoonLordBossBag, ItemID.MoonLordTrophy, "EnergizerMoon");
                         break;
 
-                    case NPCID.MourningWood:
+                    /*case NPCID.MourningWood:
                         Swarm(npc, NPCID.MourningWood, -1, -1, string.Empty);
                         break;
 
@@ -615,16 +596,16 @@ namespace Fargowiltas.NPCs
 
                     case NPCID.MartianSaucerCore:
                         Swarm(npc, NPCID.MartianSaucerCore, -1, -1, string.Empty);
-                        break;
+                        break;*/
 
                     case NPCID.DungeonGuardian:
-                        Swarm(npc, NPCID.DungeonGuardian, -1, ItemID.BoneKey, "EnergizerDG");
+                        Swarm(npc, NPCID.DungeonGuardian, -1, -1, ItemID.BoneKey, "EnergizerDG");
                         break;
                 }
 
                 if (npc.type == mod.NPCType("Destroyer"))
                 {
-                    Swarm(npc, mod.NPCType("Destroyer"), -1, ItemID.DestroyerBossBag, "EnergizerDestroy");
+                    Swarm(npc, mod.NPCType("Destroyer"), -1, ItemID.DestroyerBossBag, ItemID.DestroyerTrophy, "EnergizerDestroy");
                 }
 
 
@@ -636,49 +617,49 @@ namespace Fargowiltas.NPCs
 
                     if (npc.type == thorium.NPCType("TheGrandThunderBirdv2"))
                     {
-                        Swarm(npc, thorium.NPCType("TheGrandThunderBirdv2"), thorium.NPCType("Hatchling"), thorium.ItemType("ThunderBirdBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("TheGrandThunderBirdv2"), thorium.NPCType("Hatchling"), thorium.ItemType("ThunderBirdBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("QueenJelly"))
                     {
-                        Swarm(npc, thorium.NPCType("QueenJelly"), thorium.NPCType("ZealousJelly"), thorium.ItemType("JellyFishBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("QueenJelly"), thorium.NPCType("ZealousJelly"), thorium.ItemType("JellyFishBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("GraniteEnergyStorm"))
                     {
-                        Swarm(npc, thorium.NPCType("GraniteEnergyStorm"), thorium.NPCType("EncroachingEnergy"), thorium.ItemType("GraniteBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("GraniteEnergyStorm"), thorium.NPCType("EncroachingEnergy"), thorium.ItemType("GraniteBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("TheBuriedWarrior"))
                     {
-                        Swarm(npc, thorium.NPCType("TheBuriedWarrior"), -1, thorium.ItemType("HeroBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("TheBuriedWarrior"), -1, thorium.ItemType("HeroBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("Viscount"))
                     {
-                        Swarm(npc, thorium.NPCType("Viscount"), -1, thorium.ItemType("CountBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("Viscount"), -1, thorium.ItemType("CountBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("ThePrimeScouter"))
                     {
-                        Swarm(npc, thorium.NPCType("ThePrimeScouter"), -1, thorium.ItemType("ScouterBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("ThePrimeScouter"), -1, thorium.ItemType("ScouterBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("BoreanStriderPopped"))
                     {
-                        Swarm(npc, thorium.NPCType("BoreanStrider"), thorium.ItemType("BoreanMyte1"), thorium.ItemType("BoreanBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("BoreanStrider"), thorium.ItemType("BoreanMyte1"), thorium.ItemType("BoreanBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("FallenDeathBeholder2"))
                     {
-                        Swarm(npc, thorium.NPCType("FallenDeathBeholder"), thorium.ItemType("EnemyBeholder"), thorium.ItemType("BeholderBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("FallenDeathBeholder"), thorium.ItemType("EnemyBeholder"), thorium.ItemType("BeholderBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("LichHeadless"))
                     {
-                        Swarm(npc, thorium.NPCType("Lich"), -1, thorium.ItemType("LichBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("Lich"), -1, thorium.ItemType("LichBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("AbyssionReleased"))
                     {
-                        Swarm(npc, thorium.NPCType("Abyssion"), thorium.NPCType("AbyssalSpawn"), thorium.ItemType("AbyssionBag"), string.Empty);
+                        Swarm(npc, thorium.NPCType("Abyssion"), thorium.NPCType("AbyssalSpawn"), thorium.ItemType("AbyssionBag"), -1, string.Empty);
                     }
                     else if (npc.type == thorium.NPCType("RealityBreaker"))
                     {
-                        Swarm(npc, thorium.NPCType("Aquaius"), thorium.NPCType("AquaiusBubble"), thorium.ItemType("RagBag"), string.Empty);
-                        Swarm(npc, thorium.NPCType("Omnicide"), -1, -1, string.Empty);
-                        Swarm(npc, thorium.NPCType("SlagFury"), -1, -1, string.Empty);
+                        Swarm(npc, thorium.NPCType("Aquaius"), thorium.NPCType("AquaiusBubble"), thorium.ItemType("RagBag"), -1, string.Empty);
+                        Swarm(npc, thorium.NPCType("Omnicide"), -1, -1, -1, string.Empty);
+                        Swarm(npc, thorium.NPCType("SlagFury"), -1, -1, -1, string.Empty);
                     }
                 }
 
@@ -690,7 +671,7 @@ namespace Fargowiltas.NPCs
                 return true;
             }
 
-            Swarm(npc, 0, -1, -1, string.Empty);
+            //Swarm(npc, 0, -1, -1, string.Empty);
 
             return false;
         }
@@ -801,15 +782,6 @@ namespace Fargowiltas.NPCs
                     if (NPC.AnyNPCs(NPCID.MoonLordCore))
                     {
                         Item.NewItem(npc.Hitbox, mod.ItemType("EchPainting"));
-                    }
-
-                    break;
-
-                case NPCID.Angler:
-                    if (Main.rand.NextBool(4))
-                    {
-                        int[] drops = { ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio };
-                        Item.NewItem(npc.Hitbox, Main.rand.Next(drops));
                     }
 
                     break;
@@ -1087,15 +1059,6 @@ namespace Fargowiltas.NPCs
                     FargoWorld.DownedBools["headlessHorseman"] = true;
                     break;
 
-                case NPCID.CursedHammer:
-                case NPCID.CorruptSlime:
-                case NPCID.Corruptor:
-                    if (Main.rand.NextBool(200))
-                    {
-                        Item.NewItem(npc.Hitbox, ItemID.MeatGrinder);
-                    }
-                    break;
-
                 default:
                     break;
             }
@@ -1125,7 +1088,7 @@ namespace Fargowiltas.NPCs
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            if (projectile.type == ProjectileID.RottenEgg && npc.townNPC)
+            if (GetInstance<FargoConfig>().RottenEggs && projectile.type == ProjectileID.RottenEgg && npc.townNPC)
             {
                 damage *= 20;
             }
@@ -1199,7 +1162,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        private void Swarm(NPC npc, int boss, int minion, int bossbag, string reward)
+        private void Swarm(NPC npc, int boss, int minion, int bossbag, int trophy, string reward)
         {
             if (bossbag >= 0)
             {
@@ -1231,6 +1194,12 @@ namespace Fargowiltas.NPCs
             if (Fargowiltas.SwarmKills % 100 == 0 && !string.IsNullOrEmpty(reward))
             {
                 Item.NewItem(npc.Hitbox, mod.ItemType(reward));
+            }
+
+            //drop trphy every 10 killa
+            if (Fargowiltas.SwarmKills % 10 == 0 && trophy != -1)
+            {
+                Item.NewItem(npc.Hitbox, trophy);
             }
 
             if (Main.netMode == NetmodeID.Server)
