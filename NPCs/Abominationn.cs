@@ -10,19 +10,13 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Fargowiltas.Items.Vanity;
 
 namespace Fargowiltas.NPCs
 {
     [AutoloadHead]
     public class Abominationn : ModNPC
     {
-        //add event mod call later lol
-        /*public static bool GRealmInvasion => GRealm.MWorld.downedZombieInvasion;
-        public static bool BtfaInvasion => ForgottenMemories.TGEMWorld.downedForestInvasion;
-        public static bool SpiritInvasion => SpiritMod.MyWorld.downedAncientFlier;
-        public static bool RedePatientZero => Redemption.RedeWorld.downedPatientZero;
-        public static bool ChickenArmy => Redemption.RedeWorld.downedChickenInv || Redemption.RedeWorld.downedChickenInvPZ;*/
-
         public override bool Autoload(ref string name)
         {
             name = "Abominationn";
@@ -69,6 +63,8 @@ namespace Fargowiltas.NPCs
             }
             return GetInstance<FargoConfig>().Abom && NPC.downedGoblins;
         }
+
+        public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
 
         public override void AI()
         {
@@ -216,17 +212,15 @@ namespace Fargowiltas.NPCs
             AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
             AddItem(true, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
-            AddItem(NPC.downedBoss1, ItemType<CursedSextant>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
+            //AddItem(NPC.downedBoss1, ItemType<CursedSextant>(), Item.buyPrice(0, 5), ref shop, ref nextSlot); //Bloody Tear
             AddItem(true, ItemID.GoblinBattleStandard, Item.buyPrice(0, 6), ref shop, ref nextSlot);
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
+            AddItem(NPC.downedPirates && FargoWorld.DownedBools["flyingDutchman"], ItemType<PlunderedBooty>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedMechBossAny, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["darkMage"], ItemType<ForbiddenTome>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["ogre"], ItemType<BatteredClub>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["betsy"], ItemType<BetsyEgg>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
-
-            AddItem(NPC.downedMartians, ItemType<MartianMemoryStick>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(NPC.downedMartians, ItemType<RunawayProbe>(), Item.buyPrice(0, 50), ref shop, ref nextSlot);
 
             AddItem(FargoWorld.DownedBools["headlessHorseman"], ItemType<HeadofMan>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedHalloweenTree, ItemType<SpookyBranch>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
@@ -238,12 +232,17 @@ namespace Fargowiltas.NPCs
             AddItem(NPC.downedChristmasIceQueen, ItemType<IceKingsRemains>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
             AddItem(NPC.downedChristmasIceQueen, ItemID.NaughtyPresent, Item.buyPrice(0, 50), ref shop, ref nextSlot);
 
+            AddItem(NPC.downedMartians, ItemType<MartianMemoryStick>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
+            AddItem(NPC.downedMartians, ItemType<RunawayProbe>(), Item.buyPrice(0, 50), ref shop, ref nextSlot);
+
             AddItem(NPC.downedTowers, ItemType<PillarSummon>(), Item.buyPrice(0, 75), ref shop, ref nextSlot);
 
             foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.EventSummons)
             {
                 AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
             }
+
+            AddItem(NPC.downedTowers, ItemType<AbominationnScythe>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

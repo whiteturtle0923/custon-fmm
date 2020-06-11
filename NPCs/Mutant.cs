@@ -61,6 +61,8 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
+
         public override void AI()
         {
             npc.breath = 200;

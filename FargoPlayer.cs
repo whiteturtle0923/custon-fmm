@@ -193,6 +193,8 @@ namespace Fargowiltas
                         player.ZoneHoly = true;
                     }
                     break;
+
+                    //oasis and cavern fountains
             }
 
         }

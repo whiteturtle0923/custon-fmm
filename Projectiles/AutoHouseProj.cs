@@ -1,3 +1,4 @@
+using Fargowiltas.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -32,7 +33,9 @@ namespace Fargowiltas.Projectiles
                 return;
             }
 
-            // Tile destroy
+            FargoGlobalTile.ClearEverything(xPosition, yPosition);
+
+            /*// Tile destroy
             WorldGen.KillTile(xPosition, yPosition, false, false, false);
             WorldGen.KillWall(xPosition, yPosition);
             Dust.NewDust(position, 22, 22, DustID.Smoke, Alpha: 120);
@@ -47,7 +50,7 @@ namespace Fargowiltas.Projectiles
                 {
                     NetMessage.sendWater(xPosition, yPosition);
                 }
-            }
+            }*/
 
             // Spawn walls
             if (y != -6 && y != -1 && x != (10 * side) && x != (1 * side))

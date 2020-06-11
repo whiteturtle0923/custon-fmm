@@ -58,6 +58,8 @@ namespace Fargowiltas.NPCs
             return GetInstance<FargoConfig>().Lumber && (FargoWorld.MovedLumberjack || Main.player.Where(player => player.active).Any(player => player.HasItem(ItemType<Items.Tiles.WoodenToken>())));
         }
 
+        public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
+
         public override void AI()
         {
             if (!Main.dayTime)
@@ -153,21 +155,29 @@ namespace Fargowiltas.NPCs
                 {
                     quote = "These mahogany trees are full of life, but a tree only has one purpose: to be chopped. Oh yea this fell out of the last one.";
                     player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Buggy, ItemID.Sluggy, ItemID.Grubby, ItemID.Frog }));
+                    //add mango and pineapple
                 }
                 else if (player.ZoneHoly)
                 {
                     quote = "This place is a bit fanciful for my tastes, but the wood's as choppable as any. Nighttime has these cool bugs though, take a few.";
                     player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.LightningBug }));
+                    //add fairies
+                    //add star fruit and dragonfruit
+
+                    //add prismatic lacewing if post plantera
                 }
                 else if (player.ZoneGlowshroom && Main.hardMode)
                 {
                     quote = "Whatever causes these to glow is beyond me, you're probably gonna eat them anyway so have this while youre at it.";
                     player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.GlowingSnail, ItemID.TruffleWorm }));
+                    //add mushroom grass seeds
 
                 }
                 else if (player.ZoneCorrupt || player.ZoneCrimson)
                 {
                     quote = "The trees here are probably the toughest in this branch of reality.. Sorry, just tree puns, I haven't found anything interesting here.";
+                    //add elderberry and blackcurrant for corrupt
+                    //add blood orange and rambutan to crimson
                 }
                 //purity, most common option likely
                 else if (!player.ZoneSnow && player.position.Y > Main.worldSurface)
@@ -184,7 +194,13 @@ namespace Fargowiltas.NPCs
                         {
                             quote = "These little critters are always falling out of the trees I cut down. Maybe you can find a use for them?";
                             player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Grasshopper, ItemID.Squirrel, ItemID.SquirrelRed }));
+                            //add bird, cardinal, blue jay
                         }
+                        //add fruit option
+                        //apple, peach, apricot, grapefruit, lemon
+                        //add eucalyptus sap as some rare meme
+                        //add ladybug if its windy
+                        //add rat if in graveyard
                     }
                     else
                     {
@@ -192,8 +208,19 @@ namespace Fargowiltas.NPCs
                         player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Firefly }));
                     }
                 }
+                //add beach
+                //drop seagull
+                //drop coconut or banana
+
+                //add snow
+                //plum or cherry, penguin
                 else
                 {
+                    //add underground dialogue, he gives you gems and gem critters
+
+                    //move current dialogue to underworld
+
+
                     quote = "I looked around here for a while and didn't find any trees. I did find this little thing though. Maybe you'll want it?";
                     player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Snail }));
                 }

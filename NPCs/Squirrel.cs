@@ -72,7 +72,9 @@ namespace Fargowiltas.NPCs
 			return false;
 		}
 
-		public override string TownNPCName()
+        public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
+
+        public override string TownNPCName()
 		{
 			switch (WorldGen.genRand.Next(3))
 			{

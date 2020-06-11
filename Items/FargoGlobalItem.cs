@@ -11,7 +11,6 @@ namespace Fargowiltas.Items
 {
     public class FargoGlobalItem : GlobalItem
     {
-        private static readonly int[] Thrown = { ItemID.Bananarang, ItemID.BloodyMachete, ItemID.DayBreak, ItemID.EnchantedBoomerang, ItemID.Flamarang, ItemID.FruitcakeChakram, ItemID.IceBoomerang, ItemID.LightDisc, ItemID.MagicDagger, ItemID.PaladinsHammer, ItemID.PossessedHatchet, ItemID.ShadowFlameKnife, ItemID.ThornChakram, ItemID.ToxicFlask, ItemID.VampireKnives, ItemID.WoodenBoomerang, ItemID.WoodYoyo, ItemID.Rally, ItemID.CorruptYoyo, ItemID.CrimsonYoyo, ItemID.JungleYoyo, ItemID.Code1, ItemID.Valor, ItemID.Cascade, ItemID.FormatC, ItemID.Gradient, ItemID.Chik, ItemID.HelFire, ItemID.Amarok, ItemID.Code2, ItemID.Yelets, ItemID.RedsYoyo, ItemID.ValkyrieYoyo, ItemID.Kraken, ItemID.TheEyeOfCthulhu, ItemID.Terrarian, ItemID.FlyingKnife, ItemID.BallOHurt, ItemID.TheMeatball, ItemID.BlueMoon, ItemID.Sunfury, ItemID.DaoofPow, ItemID.FlowerPow, ItemID.ScourgeoftheCorruptor, ItemID.NorthPole };
         private static readonly int[] Summon = { ItemID.NimbusRod, ItemID.CrimsonRod, ItemID.BeeGun, ItemID.WaspGun, ItemID.PiranhaGun, ItemID.BatScepter };
 
         private static readonly int[] Hearts = new int[] { ItemID.Heart, ItemID.CandyApple, ItemID.CandyCane };
@@ -25,157 +24,90 @@ namespace Fargowiltas.Items
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            int[] yoyos = { mod.ItemType("CascadeThrown"), mod.ItemType("ChikThrown"), mod.ItemType("Code1Thrown"), mod.ItemType("Code2Thrown"), mod.ItemType("FormatCThrown"), mod.ItemType("GradientThrown"), mod.ItemType("KrakenThrown"), mod.ItemType("RallyThrown"), mod.ItemType("TerrarianThrown"), mod.ItemType("ValorThrown"), mod.ItemType("YeletsThrown") };
 
             if (GetInstance<FargoConfig>().WeaponConversions)
             {
-                if (Array.IndexOf(Thrown, item.type) > -1 || Array.IndexOf(Summon, item.type) > -1)
+                if (Array.IndexOf(Summon, item.type) > -1)
                 {
-                    TooltipLine line = new TooltipLine(mod, "help", "Right click to convert");
-                    tooltips.Add(line);
+                    TooltipLine helperLine = new TooltipLine(mod, "help", "Right click to convert");
+                    tooltips.Add(helperLine);
                 }
             }
 
-            if (Array.IndexOf(yoyos, item.type) > -1)
-            {
-                TooltipLine line = new TooltipLine(mod, "OneDrop", string.Empty);
-                tooltips.Add(line);
-            }
+            TooltipLine line;
 
-            //switch soon tm
-
-            if (item.type == ItemID.CrystalBall)
+            switch (item.type)
             {
-                TooltipLine line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
-                tooltips.Add(line);
-            }
+                case ItemID.CrystalBall:
+                    line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
+                    tooltips.Add(line);
+                    break;
 
-            if (item.type == ItemID.GoodieBag)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip1", "Also use this to toggle the Halloween season");
-                tooltips.Add(line);
-            }
+                case ItemID.PureWaterFountain:
+                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Ocean upon activation");
+                    tooltips.Add(line);
+                    break;
 
-            if (item.type == ItemID.Present)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip1", "Also use this to toggle the Christmas season");
-                tooltips.Add(line);
-            }
+                case ItemID.DesertWaterFountain:
+                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Desert upon activation");
+                    tooltips.Add(line);
+                    break;
 
-            if (item.type == ItemID.PureWaterFountain)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Ocean upon activation");
-                tooltips.Add(line);
-            }
+                case ItemID.JungleWaterFountain:
+                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Jungle upon activation");
+                    tooltips.Add(line);
+                    break;
 
-            if (item.type == ItemID.DesertWaterFountain)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Desert upon activation");
-                tooltips.Add(line);
-            }
+                case ItemID.IcyWaterFountain:
+                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Snow upon activation");
+                    tooltips.Add(line);
+                    break;
 
-            if (item.type == ItemID.JungleWaterFountain)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Jungle upon activation");
-                tooltips.Add(line);
-            }
+                case ItemID.CorruptWaterFountain:
+                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Corruption upon activation");
+                    tooltips.Add(line);
+                    break;
 
-            if (item.type == ItemID.IcyWaterFountain)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Snow upon activation");
-                tooltips.Add(line);
-            }
+                case ItemID.CrimsonWaterFountain:
+                    line = new TooltipLine(mod, "Tooltip1", "Forces surrounding biome state to Crimson upon activation");
+                    tooltips.Add(line);
+                    break;
 
-            if (item.type == ItemID.CorruptWaterFountain)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Corruption upon activation");
-                tooltips.Add(line);
-            }
+                case ItemID.HallowedWaterFountain:
+                    line = new TooltipLine(mod, "Tooltip1", "In hardmode, forces surrounding biome state to Hallow upon activation");
+                    tooltips.Add(line);
+                    break;
 
-            if (item.type == ItemID.CrimsonWaterFountain)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip1", "Forces surrounding biome state to Crimson upon activation");
-                tooltips.Add(line);
-            }
+                    //oasis and cavern? fountains
 
-            if (item.type == ItemID.HallowedWaterFountain)
-            {
-                TooltipLine line = new TooltipLine(mod, "Tooltip1", "In hardmode, forces surrounding biome state to Hallow upon activation");
-                tooltips.Add(line);
             }
 
             if (GetInstance<FargoConfig>().ExtraLures)
             {
                 if (item.type == ItemID.FishingPotion)
                 {
-                    TooltipLine line = new TooltipLine(mod, "Tooltip1", "Also grants one extra lure");
+                    line = new TooltipLine(mod, "Tooltip1", "Also grants one extra lure");
                     tooltips.Insert(3, line);
                 }
 
                 if (item.type == ItemID.FiberglassFishingPole || item.type == ItemID.FisherofSouls || item.type == ItemID.Fleshcatcher)
                 {
-                    TooltipLine line = new TooltipLine(mod, "Tooltip1", "This rod fires 2 lures");
+                    line = new TooltipLine(mod, "Tooltip1", "This rod fires 2 lures");
                     tooltips.Insert(3, line);
                 }
 
                 if (item.type == ItemID.MechanicsRod || item.type == ItemID.SittingDucksFishingRod)
                 {
-                    TooltipLine line = new TooltipLine(mod, "Tooltip1", "This rod fires 3 lures");
+                    line = new TooltipLine(mod, "Tooltip1", "This rod fires 3 lures");
                     tooltips.Insert(3, line);
                 }
 
                 if (item.type == ItemID.GoldenFishingRod || item.type == ItemID.HotlineFishingHook)
                 {
-                    TooltipLine line = new TooltipLine(mod, "Tooltip1", "This rod fires 5 lures");
+                    line = new TooltipLine(mod, "Tooltip1", "This rod fires 5 lures");
                     tooltips.Insert(3, line);
                 }
             }
-
-            
-
-        }
-
-        public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
-        {
-            if (line.Name != "OneDrop")
-            {
-                return true;
-            }
-
-            int colorValue = (int)(Main.mouseTextColor * 1f);
-            Color color = Color.Black;
-            for (int l = 0; l < 5; l++)
-            {
-                int vecX = 0;
-                int vecY = yOffset;
-
-                switch (l)
-                {
-                    case 0:
-                        vecX--;
-                        break;
-
-                    case 1:
-                        vecX++;
-                        break;
-
-                    case 2:
-                        vecY--;
-                        break;
-
-                    case 3:
-                        vecY++;
-                        break;
-
-                    case 4:
-                        color = new Color(colorValue, colorValue, colorValue, colorValue);
-                        break;
-                }
-
-                Main.spriteBatch.Draw(Main.oneDropLogo, new Vector2(vecX + line.X, vecY + line.Y), color);
-            }
-
-            return true;
         }
 
         public override void SetDefaults(Item item)
@@ -192,32 +124,6 @@ namespace Fargowiltas.Items
                     item.maxStack = 9999;
                 }
             }
-            
-            if (item.type == ItemID.GoodieBag || item.type == ItemID.Present)
-            {
-                item.useAnimation = 30;
-                item.useTime = 30;
-                item.useStyle = ItemUseStyleID.HoldingUp;
-                item.UseSound = SoundID.Item44;
-            }
-        }
-
-        public override bool UseItem(Item item, Player player)
-        {
-            switch (item.type)
-            {
-                case ItemID.GoodieBag:
-                    FargoWorld.DownedBools["halloween"] = !FargoWorld.DownedBools["halloween"];
-                    Main.NewText(FargoWorld.DownedBools["halloween"] ? "Halloween has begun!" : "Halloween has ended!", 175, 75);
-                    return true;
-
-                case ItemID.Present:
-                    FargoWorld.DownedBools["xmas"] = !FargoWorld.DownedBools["xmas"];
-                    Main.NewText(FargoWorld.DownedBools["xmas"] ? "Christmas has begun!" : "Christmas has ended!", 175, 75);
-                    return true;
-            }
-
-            return false;
         }
 
         public override void OpenVanillaBag(string context, Player player, int arg)
@@ -233,7 +139,8 @@ namespace Fargowiltas.Items
                     break;
 
                 case ItemID.WoodenCrate:
-                    if (Main.rand.NextBool(45))
+                //case Pearlwood
+                    if (Main.rand.NextBool(40))
                     {
                         int[] drops = { ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang };
                         player.QuickSpawnItem(Main.rand.Next(drops));
@@ -242,6 +149,7 @@ namespace Fargowiltas.Items
                     break;
 
                 case ItemID.GoldenCrate:
+                //case Titanium
                     if (Main.rand.NextBool(10))
                     {
                         int[] drops = { ItemID.BandofRegeneration, ItemID.MagicMirror, ItemID.CloudinaBottle, ItemID.EnchantedBoomerang, ItemID.ShoeSpikes, ItemID.FlareGun, ItemID.HermesBoots, ItemID.LavaCharm, ItemID.SandstorminaBottle, ItemID.FlyingCarpet };
@@ -264,7 +172,7 @@ namespace Fargowiltas.Items
         {
             if (GetInstance<FargoConfig>().WeaponConversions)
             {
-                return Array.IndexOf(Thrown, item.type) > -1 || Array.IndexOf(Summon, item.type) > -1;
+                return Array.IndexOf(Summon, item.type) > -1;
             }
 
             return base.CanRightClick(item);
@@ -277,10 +185,6 @@ namespace Fargowiltas.Items
             if (Array.IndexOf(Summon, item.type) > -1)
             {
                 newType = mod.ItemType(ItemID.GetUniqueKey(item.type).Replace("Terraria ", string.Empty) + "Summon");
-            }
-            else if (Array.IndexOf(Thrown, item.type) > -1)
-            {
-                newType = mod.ItemType(ItemID.GetUniqueKey(item.type).Replace("Terraria ", string.Empty) + "Thrown");
             }
 
             if (newType != -1)
@@ -296,7 +200,7 @@ namespace Fargowiltas.Items
 
         public override void PostUpdate(Item item)
         {
-            if (FargoWorld.DownedBools["halloween"] && FargoWorld.DownedBools["xmas"] && firstTick)
+            if (GetInstance<FargoConfig>().Halloween && GetInstance<FargoConfig>().Christmas && firstTick)
             {
                 if (Array.IndexOf(Hearts, item.type) >= 0)
                 {
