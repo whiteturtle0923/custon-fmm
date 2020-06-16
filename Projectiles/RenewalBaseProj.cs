@@ -48,7 +48,7 @@ namespace Fargowiltas.Projectiles
         {
             Main.PlaySound(SoundID.Shatter, projectile.Center);
 
-            int radius = 100;
+            int radius = 150;
             float[] speedX = { 0, 0, 5, 5, 5, -5, -5, -5 };
             float[] speedY = { 5, -5, 0, 5, -5, 0, 5, -5 };
 

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,14 +10,13 @@ namespace Fargowiltas.Items.Explosives
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Instabridge");
-            Tooltip.SetDefault("Creates a bridge of platforms instantly" +
+            Tooltip.SetDefault("Creates a bridge of platforms across the whole world" +
                                "\nAlso clears the area right above the platforms" +
                                "\nDo not use if any important building is nearby");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 50;
             item.width = 10;
             item.height = 32;
             item.maxStack = 99;
@@ -30,7 +30,15 @@ namespace Fargowiltas.Items.Explosives
             item.noUseGraphic = true;
             item.noMelee = true;
             item.shoot = mod.ProjectileType("InstabridgeProj");
-            item.shootSpeed = 5f;
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Vector2 mouse = Main.MouseWorld;
+
+            Projectile.NewProjectile(mouse, Vector2.Zero, type, 0, 0, player.whoAmI );
+
+            return false;
         }
 
         public override void AddRecipes()
@@ -38,7 +46,7 @@ namespace Fargowiltas.Items.Explosives
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.FossilOre, 20);
             recipe.AddIngredient(ItemID.Dynamite, 10);
-            recipe.AddIngredient(ItemID.WoodPlatform, 2000);
+            recipe.AddIngredient(ItemID.WoodPlatform, 1000);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

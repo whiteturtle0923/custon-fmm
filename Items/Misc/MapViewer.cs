@@ -76,10 +76,10 @@ namespace Fargowiltas.Items.Summons
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.TrifoldMap);
-            recipe.AddIngredient(ItemID.Goggles, 30);
-            recipe.AddIngredient(ItemID.Sunglasses, 5);
-            recipe.AddIngredient(ItemID.SuspiciousLookingEye, 20);
-            recipe.AddIngredient(ItemID.MechanicalEye, 10);
+            recipe.AddIngredient(ItemID.Goggles);
+            recipe.AddIngredient(ItemID.Sunglasses);
+            recipe.AddIngredient(ItemID.SuspiciousLookingEye);
+            recipe.AddIngredient(ItemID.MechanicalEye);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

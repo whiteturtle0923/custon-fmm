@@ -99,7 +99,7 @@ namespace Fargowiltas
             }
 
             AddToggle("Mutant", "Mutant Can Spawn", "MutantMask", "ffffff");
-            AddToggle("Abom", "Abominationn Can Spawn", "AbominationMask", "ffffff");
+            AddToggle("Abom", "Abominationn Can Spawn", "AbominationnMask", "ffffff");
             //AddToggle("Devi", "Deviantt Can Spawn", "LumberHat", "ffffff");
             ModTranslation text = CreateTranslation("Devi");
             text.SetDefault("[i:" + ItemID.RuneHat + "][c/ffffff: Deviantt Can Spawn]");

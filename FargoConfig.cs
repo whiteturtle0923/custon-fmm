@@ -36,6 +36,19 @@ namespace Fargowiltas
             get; set;
         }
 
+        [Label("[i:1774] Halloween Season Active")]
+        [DefaultValue(false)]
+        public bool Halloween
+        {
+            get; set;
+        }
+
+        [Label("[i:1869] Christmas Season Active")]
+        [DefaultValue(false)]
+        public bool Christmas
+        {
+            get; set;
+        }
 
         [Label("[i:771] Unlimited Ammo at 3996+ in Hardmode")]
         [DefaultValue(true)]
@@ -68,6 +81,20 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool CatchNPCs { get; set; }
 
+        [Label("[i:267] Extra Town NPC sales")]
+        [DefaultValue(true)]
+        public bool NPCSales
+        {
+            get; set;
+        }
+
+        [Label("[i:1809] Powerful Rotten Eggs")]
+        [DefaultValue(true)]
+        public bool RottenEggs
+        {
+            get; set;
+        }
+
         [Label("[i:1683] Banner Recipes")]
         [DefaultValue(true)]
         public bool BannerRecipes { get; set; }
@@ -83,5 +110,6 @@ namespace Fargowiltas
         [Label("[i:997] Increased Extractinator Speed")] 
         [DefaultValue(true)]
         public bool ExtractSpeed { get; set; }
+
     }
 }

@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas
 {
@@ -29,8 +30,6 @@ namespace Fargowiltas
             "lumberjack",
             "betsy",
             "boss",
-            "halloween",
-            "xmas",
             "rareEnemy",
             "pinky",
             "undeadMiner",
@@ -110,10 +109,7 @@ namespace Fargowiltas
         {
             foreach (string tag in tags)
             {
-                if (tag != "lumberjack")
-                {
-                    DownedBools[tag] = reader.ReadBoolean();
-                }
+                DownedBools[tag] = reader.ReadBoolean();
             }
 
             AbomClearCD = reader.ReadInt32();
@@ -123,10 +119,7 @@ namespace Fargowiltas
         {
             foreach (string tag in tags)
             {
-                if (tag != "lumberjack")
-                {
-                    writer.Write(DownedBools[tag]);
-                }
+                writer.Write(DownedBools[tag]);
             }
 
             writer.Write(AbomClearCD);
@@ -135,11 +128,11 @@ namespace Fargowiltas
         public override void PostUpdate()
         {
             // seasonals
-            Main.halloween = DownedBools["halloween"];
-            Main.xMas = DownedBools["xmas"];
+            Main.halloween = GetInstance<FargoConfig>().Halloween;
+            Main.xMas = GetInstance<FargoConfig>().Christmas;
 
             // swarm reset in case something goes wrong
-            if (Fargowiltas.SwarmActive && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead))
+            if (Fargowiltas.SwarmActive && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead) && !NPC.AnyNPCs(NPCID.DungeonGuardian))
             {
                 Fargowiltas.SwarmActive = false;
                 FargoGlobalNPC.LastWoFIndex = -1;
