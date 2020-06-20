@@ -312,9 +312,10 @@ namespace Fargowiltas.NPCs
                 else if (NPC.downedMoonlord)
                 {
                     //Main.npcChatText = "You've got two options now: a powerful foe's rematch or one of my brothers. Prepare as much as you can before going for either one, though!";
-                    Main.npcChatText = Main.rand.Next(2) == 0
+                    /*Main.npcChatText = Main.rand.Next(2) == 0
                         ? "Don't forget you can equip a soul and its components for extra stat boosts! Good luck out there against my big brothers!"
-                        : "Purity, night, hallow, buried desert, deep snow, caverns, underworld, ocean, space... I'm pretty sure those are where the Sigil of Champions works!";
+                        : "Purity, night, hallow, buried desert, deep snow, caverns, underworld, ocean, space... I'm pretty sure those are where the Sigil of Champions works!";*/
+                    Main.npcChatText = "Now's a good time to go for damage on your accessory modifiers. Keep an eye on your enemies and look for patterns!";
                 }
                 else if (NPC.downedAncientCultist)
                 {
@@ -360,9 +361,13 @@ namespace Fargowiltas.NPCs
                         Main.npcChatText = "Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.";
                     }
                 }
-                else if (NPC.downedBoss3)
+                else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
                 {
                     Main.npcChatText = "That thing's mouth is as good as immune to damage, so you'll have to aim for the eyes. What thing? You know, that thing.";
+                }
+                else if (NPC.downedBoss3)
+                {
+                    Main.npcChatText = "Next up is me! Make sure you can recognize whatever attack I'll throw at you. Blocks and turning away can nullify petrification!";
                 }
                 else if (NPC.downedQueenBee)
                 {
@@ -374,7 +379,8 @@ namespace Fargowiltas.NPCs
                 }
                 else if (NPC.downedBoss1)
                 {
-                    Main.npcChatText = WorldGen.crimson ? "When the brain gets mad, it'll confuse you every few seconds. Knowledge is power!" : "When you hurt the world eater, its segments will break off as smaller eaters. Don't let them pile up!";
+                    Main.npcChatText = WorldGen.crimson ? "When the brain gets mad, it'll confuse you every few seconds. Four rings to confuse you, one ring when it wears off!" 
+                        : "When you hurt the world eater, its segments will break off as smaller eaters. Don't let them pile up!";
                 }
                 else if (NPC.downedSlimeKing)
                 {
