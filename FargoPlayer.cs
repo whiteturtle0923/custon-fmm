@@ -167,35 +167,39 @@ namespace Fargowiltas
                 player.ZoneJungle = true;
             }
 
-            switch (Main.fountainColor)
+            if (GetInstance<FargoConfig>().Fountains)
             {
-                case 0:
-                    player.ZoneBeach = true;
-                    break;
-                case 6:
-                    player.ZoneDesert = true;
-                    break;
-                case 3:
-                    player.ZoneJungle = true;
-                    break;
-                case 5:
-                    player.ZoneSnow = true;
-                    break;
-                case 2:
-                    player.ZoneCorrupt = true;
-                    break;
-                case 10:
-                    player.ZoneCrimson = true;
-                    break;
-                case 4:
-                    if (Main.hardMode)
-                    {
-                        player.ZoneHoly = true;
-                    }
-                    break;
+                switch (Main.fountainColor)
+                {
+                    case 0:
+                        player.ZoneBeach = true;
+                        break;
+                    case 6:
+                        player.ZoneDesert = true;
+                        break;
+                    case 3:
+                        player.ZoneJungle = true;
+                        break;
+                    case 5:
+                        player.ZoneSnow = true;
+                        break;
+                    case 2:
+                        player.ZoneCorrupt = true;
+                        break;
+                    case 10:
+                        player.ZoneCrimson = true;
+                        break;
+                    case 4:
+                        if (Main.hardMode)
+                        {
+                            player.ZoneHoly = true;
+                        }
+                        break;
 
-                    //oasis and cavern fountains
+                        //oasis and cavern fountains
+                }
             }
+            
 
         }
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)

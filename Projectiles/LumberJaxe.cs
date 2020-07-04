@@ -16,7 +16,7 @@ namespace Fargowiltas.Projectiles
             projectile.width = 42;
             projectile.height = 40;
             projectile.friendly = true;
-            projectile.thrown = true;
+            projectile.ranged = true;
             projectile.penetrate = 1;
             projectile.aiStyle = 0;
             projectile.timeLeft = 150;

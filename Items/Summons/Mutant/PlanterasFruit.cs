@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Mutant
 {
-    public class Plantera : BaseSummon
+    public class PlanterasFruit : BaseSummon
     {
         public override int Type => NPCID.Plantera;
 
@@ -14,7 +14,7 @@ namespace Fargowiltas.Items.Summons.Mutant
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Plantera's Bulb");
+            DisplayName.SetDefault("Plantera's Fruit");
             Tooltip.SetDefault("Summons Plantera");
         }
 

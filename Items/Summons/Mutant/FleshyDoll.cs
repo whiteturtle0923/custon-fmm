@@ -27,12 +27,7 @@ namespace Fargowiltas.Items.Summons.Mutant
 
         public override bool CanUseItem(Player player)
         {
-            if ((int)(player.position.Y / 16) > Main.maxTilesY - 200 && !NPC.AnyNPCs(NPCID.WallofFlesh))
-            {
-                return true;
-            }
-
-            return false;
+            return player.position.Y / 16 > Main.maxTilesY - 200 && !NPC.AnyNPCs(NPCID.WallofFlesh);
         }
 
         public override bool UseItem(Player player)

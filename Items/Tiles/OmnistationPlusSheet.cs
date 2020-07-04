@@ -105,10 +105,10 @@ namespace Fargowiltas.Items.Tiles
             BardItem bardItem = item.modItem as BardItem;
             ThoriumItem healerItem = item.modItem as ThoriumItem;
 
-            if (item.thrown)
+            /*if (item.thrown)
             {
                 Main.LocalPlayer.AddBuff(thorium.BuffType("NinjaBuff"), 60 * 60 * 10);
-            }
+            }*/
 
             if (bardItem != null && bardItem.item.damage > 0)
             {
@@ -120,7 +120,7 @@ namespace Fargowiltas.Items.Tiles
                 Main.LocalPlayer.AddBuff(thorium.BuffType("SpiritualConnection"), 60 * 60 * 10);
             }
 
-            if (item.thrown || (bardItem != null && bardItem.item.damage > 0) || (healerItem != null && healerItem.isHealer))
+            if (/*item.thrown || */(bardItem != null && bardItem.item.damage > 0) || (healerItem != null && healerItem.isHealer))
             {
                 Main.PlaySound(SoundID.Item44, i * 16 + 8, j * 16 + 8);
             }

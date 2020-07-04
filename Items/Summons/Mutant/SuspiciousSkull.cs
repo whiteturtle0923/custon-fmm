@@ -35,6 +35,15 @@ namespace Fargowiltas.Items.Summons.Mutant
 
             if (!Main.dayTime)
             {
+                if (!NPC.downedBoss3)
+                {
+                    Main.dayTime = false;
+                    Main.time = 0;
+
+                    if (Main.netMode == NetmodeID.Server) //sync time
+                        NetMessage.SendData(MessageID.WorldData, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+                }
+
                 Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.SkeletronHead);
 
                 if (Main.netMode == NetmodeID.Server)

@@ -111,5 +111,12 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool ExtractSpeed { get; set; }
 
+        [Label("[i:909] Fountains Cause Biomes")]
+        [DefaultValue(true)]
+        public bool Fountains
+        {
+            get; set;
+        }
+
     }
 }

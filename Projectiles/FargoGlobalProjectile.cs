@@ -11,14 +11,6 @@ namespace Fargowiltas.Projectiles
         public override bool InstancePerEntity => true;
         private bool firstTick = true;
 
-        public override void SetDefaults(Projectile projectile)
-        {
-            if (projectile.type == ProjectileID.BoneJavelin || projectile.type == ProjectileID.JavelinFriendly)
-            {
-                projectile.thrown = true;
-            }
-        }
-
         public override bool PreAI(Projectile projectile)
         {
             if (projectile.owner == Main.myPlayer)

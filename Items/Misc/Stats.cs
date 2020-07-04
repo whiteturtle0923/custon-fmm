@@ -34,8 +34,6 @@ namespace Fargowiltas.Items.Misc
             tooltips.Add(new TooltipLine(mod, "info", $"Summon Damage: {player.minionDamage * 100}%"));
             tooltips.Add(new TooltipLine(mod, "info", $"Max Minions: {player.maxMinions}"));
             tooltips.Add(new TooltipLine(mod, "info", $"Max Sentries: {player.maxTurrets}"));
-            tooltips.Add(new TooltipLine(mod, "info", $"Throwing Damage: {player.thrownDamage * 100}%"));
-            tooltips.Add(new TooltipLine(mod, "info", $"Throwing Crit: {player.thrownCrit}%"));
             if (Fargowiltas.ModLoaded["ThoriumMod"]) ThoriumStats(tooltips, player);
             tooltips.Add(new TooltipLine(mod, "info", $"Damage Reduction: {player.endurance * 100}%"));
             tooltips.Add(new TooltipLine(mod, "info", $"Life Regen: {player.lifeRegen} HP/second"));
