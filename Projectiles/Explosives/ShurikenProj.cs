@@ -17,7 +17,7 @@ namespace Fargowiltas.Projectiles.Explosives
             projectile.width = 11;
             projectile.height = 11;
             projectile.friendly = true;
-            projectile.thrown = true;
+            projectile.ranged = true;
             projectile.penetrate = 5;
             projectile.aiStyle = 2;
             projectile.timeLeft = 600;

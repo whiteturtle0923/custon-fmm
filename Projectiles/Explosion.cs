@@ -20,7 +20,7 @@ namespace Fargowiltas.Projectiles
             projectile.height = 10;
             projectile.aiStyle = 0;
             projectile.friendly = true;
-            projectile.thrown = true;
+            projectile.ranged = true;
             projectile.penetrate = -1;
             projectile.timeLeft = 10;
             projectile.tileCollide = false;

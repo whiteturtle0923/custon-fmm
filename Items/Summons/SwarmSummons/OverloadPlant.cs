@@ -9,7 +9,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 {
     public class OverloadPlant : SwarmSummonBase
     {
-        public OverloadPlant() : base(NPCID.Plantera, "The jungle beats as one!", 25, "Plantera")
+        public OverloadPlant() : base(NPCID.Plantera, "The jungle beats as one!", 25, "PlanterasFruit")
         {
         }
 

@@ -33,7 +33,7 @@ namespace Fargowiltas.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            if (projectile.ai[1] == 1)
+            if ((int)projectile.ai[0] == NPCID.CultistBoss && NPC.downedAncientCultist)
             {
                 // Lunatic Cultist
                 int npc = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, (int)projectile.ai[0]);

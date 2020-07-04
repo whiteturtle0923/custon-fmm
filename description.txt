@@ -43,13 +43,28 @@ NEW UPDATE - V 2.2.2
 -Changed Enchanted Sword recipe to use Gold Crates
 -Changed Flower Boots and Seaweed recipe to use Jungle Crates
 -Removed Enchanted Boomerang recipe
-
+-Removed all throwing damage support
 
 -Added several new statue recipes (add ecto mist to functional ones)*
 -Added Devi Mask and Pants 
 -Added Mutant Mask and Pants (resprite)
 -Added Ancient Mutant vanity
 -Added Mimic banner recipes
+
+-squirrel becomes evil during blood moon
+
+
+
+
+new in beta
+-Renamed Plantera's Bulb to Plantera's Fruit and updated sprite
+-Fixed cultist summon spawning pillars on death still
+-Cultist summon will spawn pillars if you spawn him with it bfore he is defeated
+-Suspicious Skull will set time to the start of the night if you use it before beating Skeletron
+-Added toggle for fountains causing biome
+
+
+
 
 
 

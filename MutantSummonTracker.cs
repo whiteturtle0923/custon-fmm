@@ -53,7 +53,7 @@ namespace Fargowiltas
                 new MutantSummonInfo(TheDestroyer, "Fargowiltas", "MechWorm", () => NPC.downedMechBoss1, 400000),
                 new MutantSummonInfo(SkeletronPrime, "Fargowiltas", "MechSkull", () => NPC.downedMechBoss3, 400000),
                 new MutantSummonInfo(SkeletronPrime + 0.01f, "Fargowiltas", "MechanicalAmalgam", () => (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3), 1000000),
-                new MutantSummonInfo(Plantera, "Fargowiltas", "Plantera", () => NPC.downedPlantBoss, 500000),
+                new MutantSummonInfo(Plantera, "Fargowiltas", "PlanterasFruit", () => NPC.downedPlantBoss, 500000),
                 new MutantSummonInfo(Golem, "Fargowiltas", "LihzahrdPowerCell2", () => NPC.downedGolemBoss, 600000),
                 new MutantSummonInfo(DukeFishron, "Fargowiltas", "TruffleWorm2", () => NPC.downedFishron, 600000),
                 new MutantSummonInfo(LunaticCultist, "Fargowiltas", "CultistSummon", () => NPC.downedAncientCultist, 750000),
