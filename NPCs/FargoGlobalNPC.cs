@@ -834,6 +834,14 @@ namespace Fargowiltas.NPCs
 
                     break;
 
+                case NPCID.Pumpking:
+
+                    break;
+
+                case NPCID.IceQueen:
+
+                    break;
+
                 case NPCID.DD2OgreT2:
                 case NPCID.DD2OgreT3:
                     FargoWorld.DownedBools["ogre"] = true;

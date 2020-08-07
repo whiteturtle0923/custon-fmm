@@ -100,12 +100,8 @@ namespace Fargowiltas
 
             AddToggle("Mutant", "Mutant Can Spawn", "MutantMask", "ffffff");
             AddToggle("Abom", "Abominationn Can Spawn", "AbominationnMask", "ffffff");
-            //AddToggle("Devi", "Deviantt Can Spawn", "LumberHat", "ffffff");
-            ModTranslation text = CreateTranslation("Devi");
-            text.SetDefault("[i:" + ItemID.RuneHat + "][c/ffffff: Deviantt Can Spawn]");
-            AddTranslation(text);
-
-            AddToggle("Lumber", "Lumberjack Can Spawn", "LumberHat", "ffffff");
+            AddToggle("Devi", "Deviantt Can Spawn", "DevianttMask", "ffffff");
+            AddToggle("Lumber", "Lumberjack Can Spawn", "LumberjackMask", "ffffff");
 
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
