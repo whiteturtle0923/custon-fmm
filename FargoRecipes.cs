@@ -257,7 +257,6 @@ namespace Fargowiltas
             AddStatueRecipes();
             AddContainerLootRecipes();
             AddNPCRecipes();
-            AddEmblemRecipes();
             AddTreasureBagRecipes();
             AddFurnitureRecipes();
             AddMiscRecipes();
@@ -314,6 +313,7 @@ namespace Fargowiltas
             AddConvertRecipe(ItemID.Hemopiranha, ItemID.Ebonkoi);
             AddConvertRecipe(ItemID.BoneRattle, ItemID.EatersBone);
             AddConvertRecipe(ItemID.CrimsonSeeds, ItemID.CorruptSeeds);
+            AddConvertRecipe(ItemID.DeadlandComesAlive, ItemID.LightlessChasms);
         }
 
         private static void AddMetalConversions()
@@ -1085,27 +1085,6 @@ namespace Fargowiltas
             //engineer plus wrench 
         }
 
-        private static void AddEmblemRecipes()
-        {
-            ModRecipe recipe;
-            int[] emblems = { ItemID.SorcererEmblem, ItemID.WarriorEmblem, ItemID.RangerEmblem, ItemID.SummonerEmblem };
-            for (int i = 0; i < emblems.Length; i++)
-            {
-                for (int j = 0; j < emblems.Length; j++)
-                {
-                    if (i != j)
-                    {
-                        recipe = GetNewRecipe();
-                        recipe.AddIngredient(emblems[j]);
-                        recipe.AddIngredient(ItemID.SoulofLight);
-                        recipe.AddTile(TileID.CrystalBall);
-                        recipe.SetResult(emblems[i]);
-                        recipe.AddRecipe();
-                    }
-                }
-            }
-        }
-
         private static void AddTreasureBagRecipes()
         {
             ModRecipe recipe = GetNewRecipe();
@@ -1128,6 +1107,30 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             //WOF
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WallOfFleshBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.RangerEmblem);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WallOfFleshBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SorcererEmblem);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WallOfFleshBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SummonerEmblem);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.WallOfFleshBossBag);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.WarriorEmblem);
+            recipe.AddRecipe();
+
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.WallOfFleshBossBag);
             recipe.AddTile(TileID.Solidifier);

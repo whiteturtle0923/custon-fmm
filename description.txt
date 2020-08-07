@@ -1,4 +1,20 @@
 NEW UPDATE - V 2.2.2
+
+new in beta
+-Added all new town npcs sprites
+-Fixed leg vanities and mutant head vanity 
+-Slimy Crown no longer says 'King Slime has awoken' twice
+-Changed emblem recipes to be from WoF treasure bag instead of swapping them
+-Added recipe to swap evil paintings
+-Updated town npc toggles with new vanity
+
+
+
+
+
+
+
+
 -Updated sprites
 -Fixed ogre and dark mage summons only unlocking if you kill their first tiers
 -Added recipes for all Obsidian furniture, Dungeon walls, lanterns, platforms, decorative banners
@@ -52,16 +68,16 @@ NEW UPDATE - V 2.2.2
 -Added Mimic banner recipes
 
 -squirrel becomes evil during blood moon
-
-
-
-
-new in beta
 -Renamed Plantera's Bulb to Plantera's Fruit and updated sprite
 -Fixed cultist summon spawning pillars on death still
 -Cultist summon will spawn pillars if you spawn him with it bfore he is defeated
 -Suspicious Skull will set time to the start of the night if you use it before beating Skeletron
 -Added toggle for fountains causing biome
+
+
+
+
+
 
 
 
