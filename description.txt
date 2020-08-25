@@ -53,7 +53,7 @@ new in beta
 -Added conversion between crimson and corrupt seeds
 -Added a single Travelling merchant recipe for Angel Halo, more to come
 -Added Abom Mask, Pants, and Scythe vanity
--removed thrown variants, shadow and ice crates, cursed sextant
+-removed thrown variants, shadow and ice crates
 -Added recipe for ice mirror
 -Changed biome crate recipes to only need 1 each
 -Changed Enchanted Sword recipe to use Gold Crates
