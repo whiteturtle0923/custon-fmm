@@ -1,20 +1,18 @@
 NEW UPDATE - V 2.2.2
 
 new in beta
--Added all new town npcs sprites
--Fixed leg vanities and mutant head vanity 
+-Cursed Sex is back
+-Fixed Mutant vanity head
+-Finalized Abom and Devi vanity recipes except Devi pants 
+-Lumberjack sells his vanity
+-Doubled Mini Instabridge length
+-Waterbolt now has a crate recipe
+
+
+
 -Slimy Crown no longer says 'King Slime has awoken' twice
 -Changed emblem recipes to be from WoF treasure bag instead of swapping them
 -Added recipe to swap evil paintings
--Updated town npc toggles with new vanity
-
-
-
-
-
-
-
-
 -Updated sprites
 -Fixed ogre and dark mage summons only unlocking if you kill their first tiers
 -Added recipes for all Obsidian furniture, Dungeon walls, lanterns, platforms, decorative banners

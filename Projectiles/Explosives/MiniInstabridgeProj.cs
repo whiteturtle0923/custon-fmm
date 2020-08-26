@@ -34,7 +34,7 @@ namespace Fargowiltas.Projectiles.Explosives
             }
 
             // All the way across
-            for (int x = -50; x < 50; x++)
+            for (int x = -100; x < 100; x++)
             {
                 int xPosition = (int)(x + position.X / 16.0f);
                 int yPosition = (int)(position.Y / 16.0f);

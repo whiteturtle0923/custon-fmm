@@ -918,6 +918,7 @@ namespace Fargowiltas
             //hematic same ree
 
             //dungeon
+            AddGrabBagItemRecipe(ItemID.WaterBolt, ItemID.DungeonFishingCrate, 1);
             AddGrabBagItemRecipe(ItemID.Muramasa, ItemID.DungeonFishingCrate, 1);
             AddGrabBagItemRecipe(ItemID.CobaltShield, ItemID.DungeonFishingCrate, 1);
             AddGrabBagItemRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, 1);
