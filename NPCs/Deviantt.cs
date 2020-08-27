@@ -287,7 +287,7 @@ namespace Fargowiltas.NPCs
             {
                 if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
                 {
-                    Main.npcChatText = "What's that? You want to fight me? ...nah, I can't put up a good fight on my own.";
+                    Main.npcChatText = "What's that? You want to fight me for real? ...nah, I can't put up a good fight on my own.";
                 }
                 /*else if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom") && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedFishronEX"))
                 {

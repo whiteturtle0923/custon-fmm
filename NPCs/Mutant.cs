@@ -416,7 +416,7 @@ namespace Fargowiltas.NPCs
             }
             else if (NPC.downedMoonlord)
             {
-                damage = 500;
+                damage = 250;
                 knockback = 10f;
             }
             else if (Main.hardMode)

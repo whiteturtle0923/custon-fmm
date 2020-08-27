@@ -247,7 +247,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            damage = NPC.downedMoonlord ? 250 : 20;
+            damage = NPC.downedMoonlord ? 150 : 20;
             knockback = NPC.downedMoonlord ? 10f : 4f;
         }
 

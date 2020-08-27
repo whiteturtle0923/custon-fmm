@@ -25,7 +25,7 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 600;
             projectile.friendly = true;
             projectile.aiStyle = -1;
-            projectile.penetrate = 7;
+            projectile.penetrate = 2;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.usesLocalNPCImmunity = true;
