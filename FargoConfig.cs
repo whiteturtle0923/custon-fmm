@@ -99,10 +99,6 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool BannerRecipes { get; set; }
 
-        [Label("[i:284] Weapon Conversions")]
-        [DefaultValue(true)]
-        public bool WeaponConversions { get; set; }
-
         [Label("[i:2] Increased Max Stacks")]
         [DefaultValue(true)]
         public bool IncreaseMaxStack { get; set; }

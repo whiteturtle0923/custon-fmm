@@ -22,8 +22,8 @@ namespace Fargowiltas.Items.Vanity
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.TopHat);
-            recipe.AddIngredient(ItemID.ChristmasHook); 
+            recipe.AddIngredient(ItemID.SoulofNight, 5);
+            recipe.AddIngredient(ItemID.SoulofFlight, 5); 
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();

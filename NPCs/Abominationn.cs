@@ -61,7 +61,7 @@ namespace Fargowiltas.NPCs
             {
                 return false;
             }
-            return GetInstance<FargoConfig>().Abom && NPC.downedGoblins;
+            return GetInstance<FargoConfig>().Abom && NPC.downedGoblins && !FargoGlobalNPC.AnyBossAlive();
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;

@@ -880,12 +880,12 @@ namespace Fargowiltas
             //same shit recipe group
 
             //jungle
-            AddGrabBagItemRecipe(ItemID.AnkletoftheWind, ItemID.JungleFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.StaffofRegrowth, ItemID.JungleFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.Boomstick, ItemID.JungleFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.FeralClaws, ItemID.JungleFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.FiberglassFishingPole, ItemID.JungleFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.HoneyDispenser, ItemID.JungleFishingCrate, 1);
+            AddGrabBagItemRecipe(ItemID.AnkletoftheWind, ItemID.JungleFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.StaffofRegrowth, ItemID.JungleFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.Boomstick, ItemID.JungleFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.FeralClaws, ItemID.JungleFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.FiberglassFishingPole, ItemID.JungleFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.HoneyDispenser, ItemID.JungleFishingCrate, 3);
             AddGrabBagItemRecipe(ItemID.FlowerBoots, ItemID.JungleFishingCrate, 5);
             AddGrabBagItemRecipe(ItemID.Seaweed, ItemID.JungleFishingCrate, 10);
             //bee minecart
@@ -893,41 +893,41 @@ namespace Fargowiltas
             //same shit
 
             //sky
-            AddGrabBagItemRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.Starfury, ItemID.FloatingIslandFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.SkyMill, ItemID.FloatingIslandFishingCrate, 1);
+            AddGrabBagItemRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.Starfury, ItemID.FloatingIslandFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.SkyMill, ItemID.FloatingIslandFishingCrate, 3);
             //azure
             //same shit
 
             //corrupt
-            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.BandofStarpower, ItemID.CorruptFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.ShadowOrb, ItemID.CorruptFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.Musket, ItemID.CorruptFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.Vilethorn, ItemID.CorruptFishingCrate, 1);
+            AddGrabBagItemRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.BandofStarpower, ItemID.CorruptFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.ShadowOrb, ItemID.CorruptFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.Musket, ItemID.CorruptFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.Vilethorn, ItemID.CorruptFishingCrate, 3);
             //defiled
             //same shit recipe group
 
             //crimson
-            AddGrabBagItemRecipe(ItemID.TheUndertaker, ItemID.CrimsonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.TheRottedFork, ItemID.CrimsonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.CrimsonRod, ItemID.CrimsonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.PanicNecklace, ItemID.CrimsonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.CrimsonHeart, ItemID.CrimsonFishingCrate, 1);
+            AddGrabBagItemRecipe(ItemID.TheUndertaker, ItemID.CrimsonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.TheRottedFork, ItemID.CrimsonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.CrimsonRod, ItemID.CrimsonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.PanicNecklace, ItemID.CrimsonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.CrimsonHeart, ItemID.CrimsonFishingCrate, 3);
             //hematic same ree
 
             //dungeon
-            AddGrabBagItemRecipe(ItemID.WaterBolt, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.Muramasa, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.CobaltShield, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.AquaScepter, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.Valor, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.BlueMoon, ItemID.DungeonFishingCrate, 1);
-            AddGrabBagItemRecipe(ItemID.BoneWelder, ItemID.DungeonFishingCrate, 1);
+            AddGrabBagItemRecipe(ItemID.WaterBolt, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.Muramasa, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.CobaltShield, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.AquaScepter, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.Valor, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.BlueMoon, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.BoneWelder, ItemID.DungeonFishingCrate, 3);
             //stockade
             //same but change recipe to 1 lockbox and 1 key
 

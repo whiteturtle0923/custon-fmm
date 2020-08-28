@@ -52,6 +52,11 @@ namespace Fargowiltas.NPCs
 
         public override bool PreAI(NPC npc)
         {
+            if (npc.boss)
+            {
+                boss = npc.whoAmI;
+            }
+
             switch (npc.type)
             {
                 case NPCID.EaterofWorldsHead:
@@ -1389,7 +1394,7 @@ namespace Fargowiltas.NPCs
             LastWoFIndex = wof;
         }
 
-        public static bool BossIsAlive(ref int bossID, int bossType)
+        public static bool SpecificBossIsAlive(ref int bossID, int bossType)
         {
             if (bossID != -1)
             {
@@ -1407,6 +1412,18 @@ namespace Fargowiltas.NPCs
             {
                 return false;
             }
+        }
+
+        public static int boss = -1;
+
+        public static bool AnyBossAlive()
+        {
+            if (boss == -1)
+                return false;
+            if (Main.npc[boss].active && (Main.npc[boss].boss || Main.npc[boss].type == NPCID.EaterofWorldsHead))
+                return true;
+            boss = -1;
+            return false;
         }
     }
 }

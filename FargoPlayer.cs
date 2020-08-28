@@ -152,17 +152,17 @@ namespace Fargowiltas
 
         public override void UpdateBiomes()
         {
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
             {
                 player.ZoneCorrupt = true;
             }
 
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu))
             {
                 player.ZoneCrimson = true;
             }
 
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera))
             {
                 player.ZoneJungle = true;
             }

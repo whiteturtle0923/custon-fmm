@@ -11,8 +11,6 @@ namespace Fargowiltas.Items
 {
     public class FargoGlobalItem : GlobalItem
     {
-        private static readonly int[] Summon = { ItemID.NimbusRod, ItemID.CrimsonRod, ItemID.BeeGun, ItemID.WaspGun, ItemID.PiranhaGun, ItemID.BatScepter };
-
         private static readonly int[] Hearts = new int[] { ItemID.Heart, ItemID.CandyApple, ItemID.CandyCane };
         private static readonly int[] Stars = new int[] { ItemID.Star, ItemID.SoulCake, ItemID.SugarPlum };
 
@@ -24,16 +22,6 @@ namespace Fargowiltas.Items
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-
-            if (GetInstance<FargoConfig>().WeaponConversions)
-            {
-                if (Array.IndexOf(Summon, item.type) > -1)
-                {
-                    TooltipLine helperLine = new TooltipLine(mod, "help", "Right click to convert");
-                    tooltips.Add(helperLine);
-                }
-            }
-
             TooltipLine line;
 
             switch (item.type)
@@ -164,36 +152,6 @@ namespace Fargowiltas.Items
                 if (Main.rand.NextBool(7))
                 {
                     player.QuickSpawnItem(ItemID.Valor);
-                }
-            }
-        }
-
-        public override bool CanRightClick(Item item)
-        {
-            if (GetInstance<FargoConfig>().WeaponConversions)
-            {
-                return Array.IndexOf(Summon, item.type) > -1;
-            }
-
-            return base.CanRightClick(item);
-        }
-
-        public override void RightClick(Item item, Player player)
-        {
-            int newType = -1;
-
-            if (Array.IndexOf(Summon, item.type) > -1)
-            {
-                newType = mod.ItemType(ItemID.GetUniqueKey(item.type).Replace("Terraria ", string.Empty) + "Summon");
-            }
-
-            if (newType != -1)
-            {
-                int num = Item.NewItem(player.getRect(), newType, prefixGiven: item.prefix);
-
-                if (Main.netMode == NetmodeID.MultiplayerClient)
-                {
-                    NetMessage.SendData(MessageID.SyncItem, number: num, number2: 1f);
                 }
             }
         }

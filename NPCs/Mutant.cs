@@ -71,7 +71,7 @@ namespace Fargowiltas.NPCs
                 spawned = true;
                 if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
                 {
-                    npc.lifeMax = 7700000;
+                    npc.lifeMax = 77000;
                     npc.life = npc.lifeMax;
                     npc.defense = 400;
                 }
@@ -84,7 +84,7 @@ namespace Fargowiltas.NPCs
             {
                 return false;
             }
-            return GetInstance<FargoConfig>().Mutant && FargoWorld.DownedBools["boss"];
+            return GetInstance<FargoConfig>().Mutant && FargoWorld.DownedBools["boss"] && !FargoGlobalNPC.AnyBossAlive();
         }
 
         public override string TownNPCName()
