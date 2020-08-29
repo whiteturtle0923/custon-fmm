@@ -493,5 +493,11 @@ namespace Fargowiltas.NPCs
 
             Main.npcChatText = Main.rand.Next(dialogue);
         }
+
+        public override void NPCLoot()
+        {
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("CosmosChampion")))
+                Item.NewItem(npc.Hitbox, mod.ItemType("WalkingRick"));
+        }
     }
 }
