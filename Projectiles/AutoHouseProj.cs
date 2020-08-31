@@ -15,7 +15,7 @@ namespace Fargowiltas.Projectiles
             projectile.timeLeft = 1;
         }
 
-        public static void PlaceHouse(int x, int y, Vector2 position, int side)
+        public static void PlaceHouse(int x, int y, Vector2 position, int side, Player player)
         {
             int xPosition = (int)((side * -1) + x + position.X / 16.0f);
             int yPosition = (int)(y + position.Y / 16.0f);
@@ -52,20 +52,74 @@ namespace Fargowiltas.Projectiles
                 }
             }*/
 
+            int wallType = WallID.Wood;
+            int tileType = TileID.WoodBlock;
+
+            if (player.ZoneDesert && !player.ZoneBeach)
+            {
+                wallType = WallID.Cactus;
+                tileType = TileID.CactusBlock;
+            }
+            else if (player.ZoneSnow)
+            {
+                wallType = WallID.BorealWood;
+                tileType = TileID.BorealWood;
+            }
+            else if (player.ZoneJungle)
+            {
+                wallType = WallID.RichMaogany;
+                tileType = TileID.RichMahogany;
+            }
+            else if (player.ZoneCorrupt)
+            {
+                wallType = WallID.Ebonwood;
+                tileType = TileID.Ebonwood;
+            }
+            else if (player.ZoneCrimson)
+            {
+                wallType = WallID.Shadewood;
+                tileType = TileID.Shadewood;
+            }
+            else if (player.ZoneBeach)
+            {
+                wallType = WallID.PalmWood;
+                tileType = TileID.PalmWood;
+            }
+            else if (player.ZoneHoly)
+            {
+                wallType = WallID.Pearlwood;
+                tileType = TileID.Pearlwood;
+            }
+            else if (player.ZoneGlowshroom)
+            {
+                wallType = WallID.Mushroom;
+                tileType = TileID.MushroomBlock;
+            }
+            else if (player.ZoneSkyHeight)
+            {
+                wallType = WallID.DiscWall;
+                tileType = TileID.Sunplate;
+            }
+            else if (player.ZoneUnderworldHeight)
+            {
+                wallType = WallID.ObsidianBrick;
+                tileType = TileID.ObsidianBrick;
+            }
+
             // Spawn walls
             if (y != -6 && y != -1 && x != (10 * side) && x != (1 * side))
             {
-                WorldGen.PlaceWall(xPosition, yPosition, WallID.Wood);
+                WorldGen.PlaceWall(xPosition, yPosition, wallType);
             }
 
             // Spawn border
             if ((y == -6) || (y == -1) || (x == (10 * side)) || (x == (1 * side) && y == -5))
             {
-                WorldGen.PlaceTile(xPosition, yPosition, TileID.WoodBlock);
+                WorldGen.PlaceTile(xPosition, yPosition, tileType);
             }
         }
 
-        public static void PlaceFurniture(int x, int y, Vector2 position, int side)
+        public static void PlaceFurniture(int x, int y, Vector2 position, int side, Player player)
         {
             int xPosition = (int)((side * -1) + x + position.X / 16.0f);
             int yPosition = (int)(y + position.Y / 16.0f);
@@ -74,17 +128,146 @@ namespace Fargowiltas.Projectiles
             {
                 if (x == (1 * side))
                 {
-                    WorldGen.PlaceTile(xPosition, yPosition, TileID.ClosedDoor);
+                    int placeStyle = 0;
+
+                    if (player.ZoneDesert && !player.ZoneBeach)
+                    {
+                        placeStyle = 4;
+                    }
+                    else if (player.ZoneSnow)
+                    {
+                        placeStyle = 30;
+                    }
+                    else if (player.ZoneJungle)
+                    {
+                        placeStyle = 2;
+                    }
+                    else if (player.ZoneCorrupt)
+                    {
+                        placeStyle = 1;
+                    }
+                    else if (player.ZoneCrimson)
+                    {
+                        placeStyle = 10;
+                    }
+                    else if (player.ZoneBeach)
+                    {
+                        placeStyle = 29;
+                    }
+                    else if (player.ZoneHoly)
+                    {
+                        placeStyle = 3;
+                    }
+                    else if (player.ZoneGlowshroom)
+                    {
+                        placeStyle = 6;
+                    }
+                    else if (player.ZoneSkyHeight)
+                    {
+                        placeStyle = 9;
+                    }
+                    else if (player.ZoneUnderworldHeight)
+                    {
+                        placeStyle = 19;
+                    }
+
+                    WorldGen.PlaceTile(xPosition, yPosition, TileID.ClosedDoor, style: placeStyle);
                 }
 
                 if (x == (5 * side))
                 {
-                    WorldGen.PlaceObject(xPosition, yPosition, TileID.Chairs, direction: side);
+                    int placeStyle = 0;
+
+                    if (player.ZoneDesert && !player.ZoneBeach)
+                    {
+                        placeStyle = 6;
+                    }
+                    else if (player.ZoneSnow)
+                    {
+                        placeStyle = 30;
+                    }
+                    else if (player.ZoneJungle)
+                    {
+                        placeStyle = 3;
+                    }
+                    else if (player.ZoneCorrupt)
+                    {
+                        placeStyle = 2;
+                    }
+                    else if (player.ZoneCrimson)
+                    {
+                        placeStyle = 11;
+                    }
+                    else if (player.ZoneBeach)
+                    {
+                        placeStyle = 29;
+                    }
+                    else if (player.ZoneHoly)
+                    {
+                        placeStyle = 4;
+                    }
+                    else if (player.ZoneGlowshroom)
+                    {
+                        placeStyle = 9;
+                    }
+                    else if (player.ZoneSkyHeight)
+                    {
+                        placeStyle = 10;
+                    }
+                    else if (player.ZoneUnderworldHeight)
+                    {
+                        placeStyle = 16;
+                    }
+
+                    WorldGen.PlaceObject(xPosition, yPosition, TileID.Chairs, direction: side, style: placeStyle);
                 }
 
                 if (x == (7 * side))
                 {
-                    WorldGen.PlaceTile(xPosition, yPosition, TileID.Tables);
+                    int placeStyle = 0;
+
+                    if (player.ZoneDesert && !player.ZoneBeach)
+                    {
+                        placeStyle = 30;
+                    }
+                    else if (player.ZoneSnow)
+                    {
+                        placeStyle = 28;
+                    }
+                    else if (player.ZoneJungle)
+                    {
+                        placeStyle = 2;
+                    }
+                    else if (player.ZoneCorrupt)
+                    {
+                        placeStyle = 1;
+                    }
+                    else if (player.ZoneCrimson)
+                    {
+                        placeStyle = 8;
+                    }
+                    else if (player.ZoneBeach)
+                    {
+                        placeStyle = 26;
+                    }
+                    else if (player.ZoneHoly)
+                    {
+                        placeStyle = 3;
+                    }
+                    else if (player.ZoneGlowshroom)
+                    {
+                        placeStyle = 27;
+                    }
+                    else if (player.ZoneSkyHeight)
+                    {
+                        placeStyle = 7;
+                    }
+                    else if (player.ZoneUnderworldHeight)
+                    {
+                        placeStyle = 13;
+                    }
+
+                    WorldGen.PlaceTile(xPosition, yPosition, TileID.Tables, style: placeStyle);
                 }
             }
 
@@ -98,8 +281,9 @@ namespace Fargowiltas.Projectiles
         {
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
+            Player player = Main.player[projectile.owner];
 
-            if (Main.player[projectile.owner].Center.X < position.X)
+            if (player.Center.X < position.X)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -111,11 +295,11 @@ namespace Fargowiltas.Projectiles
                         {
                             if (i == 0)
                             {
-                                PlaceHouse(x, y, position, 1);
+                                PlaceHouse(x, y, position, 1, player);
                             }
                             else
                             {
-                                PlaceFurniture(x, y, position, 1);
+                                PlaceFurniture(x, y, position, 1, player);
                             }
                         }
                     }
@@ -133,11 +317,11 @@ namespace Fargowiltas.Projectiles
                         {
                             if (i == 0)
                             {
-                                PlaceHouse(x, y, position, -1);
+                                PlaceHouse(x, y, position, -1, player);
                             }
                             else
                             {
-                                PlaceFurniture(x, y, position, -1);
+                                PlaceFurniture(x, y, position, -1, player);
                             }
                         }
                     }
