@@ -106,6 +106,7 @@ namespace Fargowiltas.Tiles
             FindChestTopLeft(x, y, true);
 
             Tile tile = Main.tile[x, y];
+            WorldGen.KillTile(x, y, noItem: true);
             tile.ClearEverything();
             tile.lava(false);
             tile.honey(false);

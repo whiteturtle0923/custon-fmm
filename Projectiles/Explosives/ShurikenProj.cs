@@ -51,9 +51,11 @@ namespace Fargowiltas.Projectiles.Explosives
                     int yPosition = (int)(y + position.Y / 16.0f);
 
                     Tile tile = Main.tile[xPosition, yPosition];
+                    Player player = Main.player[projectile.owner];
+                    Item bestPickaxe = GetBestPickaxe(player);
 
                     // testing for blocks that should not be destroyed
-                    bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
+                    /*bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
                     bool noDungeon = (tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick || tile.type == TileID.PinkDungeonBrick) && !NPC.downedBoss3;
                     bool noHellstone = tile.type == TileID.Hellstone && !NPC.downedBoss3;
                     bool noHMOre = (tile.type == TileID.Cobalt || tile.type == TileID.Palladium || tile.type == TileID.Mythril || tile.type == TileID.Orichalcum || tile.type == TileID.Adamantite || tile.type == TileID.Titanium) && !NPC.downedMechBossAny;
@@ -63,18 +65,45 @@ namespace Fargowiltas.Projectiles.Explosives
                     if (noFossil || noDungeon || noHMOre || noChloro || noLihzahrd)
                     {
                         continue;
-                    }
+                    }*/
 
                     // Circle
                     if ((x * x + y * y) <= radius)
                     {
-                        WorldGen.KillTile(xPosition, yPosition);
+                        // Hit the tile 5 times, most tiles that you can break will break in 1-3 hits.
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (!tile.active())
+                            {
+                                break;
+                            }
+
+                            player.PickTile(xPosition, yPosition, bestPickaxe != null ? bestPickaxe.pick : 35);
+                        }
+
                         Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
                     }
 
                     // NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
                 }
             }
+        }
+
+        private Item GetBestPickaxe(Player player)
+        {
+            Item item = null;
+
+            for (int i = 0; i < player.inventory.Length; i++)
+            {
+                Item invItem = player.inventory[i];
+
+                if (invItem.stack > 0 && invItem.pick > 0 && (item == null || invItem.pick > item.pick))
+                {
+                    item = invItem;
+                }
+            }
+
+            return item;
         }
     }
 }
