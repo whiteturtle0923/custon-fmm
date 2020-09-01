@@ -1,57 +1,6 @@
-Hotfix
--Thorium bug fixed
--Loot fixed
-
-NEW UPDATE - V 2.2.2
--Updated Mutant, Abominationn, Deviantt, and Lumberjack sprites
--Added vanity for all town NPCS
--Added Mechanical Boss masks to Mutant vanity recipe
--Mutant, Abominationn, and Deviantt will not spawn if a boss is alive
--Fixed Lumberjack spawning for free
--All town npcs can be spawned from King and Queen statues now
--Expert's Token is now always available and toggles expert mode, also fixed its price being way too high
--Slimy Crown no longer says 'King Slime has awoken' twice
--Suspicious Skull will set time to the start of the night if you use it before beating Skeletron
--Renamed Plantera's Bulb to Plantera's Fruit and updated sprite
--Lihzardy Power Cell renamed to Lihzahrd Battery Cell
--Fixed Zealot's Possession spawning pillars on death still
--Swarms now drop their respective trophy every 10 kills
--Fixed Dungeon Guardian swarm not working outside of Eternity mode
--Abominationn sells Solar Tablet post any Mechanical boss
--Fixed Ogre and Dark Mage summons only unlocking if you kill their first tiers
--Moved Flying Dutchman summon to Abom
--Added Mini Instabridge
--Instabridge now instantly explodes right where you click the mouse
--Reduced platforms needed in Instabridge recipes
--Renamed Auto House to Insta House, blocks no longer drop when it is placed
--Dye Trader sells all dye ingredients after you obtain your first one
--Dryad sells Nature's Gift, Jungle Rose, and Strange Plants in hardmode
--Steampunker sells Flesh Cloning Vat in Corruption worlds as well
--Angler no longer drops fishing accessories but you can craft him into them
--Changed Season toggles to be part of the config menu instead of on Goodie Bag and Present
--Added toggles for powerful rotten eggs and extra items added to vanilla npc shops
--Added toggle for fountains causing biome
--Drastically reduced the Ancient Master's Map recipe
--Increased Renewal radius by 50%
--Updated sprites for Multitask Center, Elemental Assembler, some Deviantt Summons, some Energizers
--Removed thrown variants, summon variants, Shadow Crates, and Ice Crates
--Added recipes for all Obsidian furniture, Dungeon walls, lanterns, platforms, decorative banners
--Added recipes for Ice Machine, Sky Mill, Honey Dispenser, Bone Welder, and Lihzahrd Furnace
--Added conversion between Vertebrae and Rotten Chunk and evil paintings
--Waterbolt now has a crate recipe
--Changed emblem recipes to be from WoF treasure bag instead of swapping them
--Added Fishron Wings recipe from the trophy
--Added missing pirate banner to recipe group
--Hornet banner crafts into Bezoar
--Added conversion between crimson and corrupt seeds
--Added a single Travelling merchant recipe for Angel Halo, more to come
--Added recipe for ice mirror
--Changed biome crate recipes to only need 3 each
--Changed Enchanted Sword recipe to use Gold Crates
--Changed Flower Boots and Seaweed recipe to use Jungle Crates
--Removed Enchanted Boomerang recipe
--Added several new statue recipes
--Added Mimic banner recipes
+NEW UPDATE - V 2.2.3
+-Boom Shuriekn now sclaea with your pickaxe
+-tress now break right
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
