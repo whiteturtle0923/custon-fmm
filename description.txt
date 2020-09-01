@@ -1,6 +1,8 @@
 NEW UPDATE - V 2.2.3
 -Boom Shuriekn now sclaea with your pickaxe
 -tress now break right
+-Rick Painting
+-Npc attack reduced
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
