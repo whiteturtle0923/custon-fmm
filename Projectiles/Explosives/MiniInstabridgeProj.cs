@@ -34,7 +34,7 @@ namespace Fargowiltas.Projectiles.Explosives
             }
 
             // All the way across
-            for (int x = -100; x < 100; x++)
+            for (int x = -200; x < 200; x++)
             {
                 int xPosition = (int)(x + position.X / 16.0f);
                 int yPosition = (int)(position.Y / 16.0f);
@@ -45,20 +45,6 @@ namespace Fargowiltas.Projectiles.Explosives
                 {
                     continue;
                 }
-
-                // Testing for blocks that should not be destroyed
-                bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
-                bool noDungeon = (tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick || tile.type == TileID.PinkDungeonBrick) && !NPC.downedBoss3;
-                bool noHMOre = (tile.type == TileID.Cobalt || tile.type == TileID.Palladium || tile.type == TileID.Mythril || tile.type == TileID.Orichalcum || tile.type == TileID.Adamantite || tile.type == TileID.Titanium) && !NPC.downedMechBossAny;
-                bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || !NPC.downedMechBoss3);
-                bool noLihzahrd = tile.type == TileID.LihzahrdBrick && !NPC.downedGolemBoss;
-
-                if (noFossil || noDungeon || noHMOre || noChloro || noLihzahrd)
-                {
-                    continue;
-                }
-
-                FargoGlobalTile.ClearEverything(xPosition, yPosition);
 
                 // Spawn platforms
                 WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms);

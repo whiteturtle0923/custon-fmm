@@ -1,18 +1,18 @@
-﻿using Fargowiltas.Projectiles.Explosives;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Explosives
 {
-    public class MiniInstaBridge : ModItem
+    public class DoubleObsidianInstabridge : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mini Instabridge");
-            Tooltip.SetDefault("Creates a long bridge of platforms" +
-                               "\nWill not break any blocks");
+            DisplayName.SetDefault("Double Obsidian Instabridge");
+            Tooltip.SetDefault("Creates 2 bridges of obsidian platforms across the whole world" +
+                               "\nAlso clears the area between and above the platforms" +
+                               "\nDo not use if any important building is nearby");
         }
 
         public override void SetDefaults()
@@ -29,7 +29,7 @@ namespace Fargowiltas.Items.Explosives
             item.value = Item.buyPrice(0, 0, 3);
             item.noUseGraphic = true;
             item.noMelee = true;
-            item.shoot = ModContent.ProjectileType<MiniInstabridgeProj>();
+            item.shoot = mod.ProjectileType("DoubleObsInstaBridgeProj");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -44,8 +44,7 @@ namespace Fargowiltas.Items.Explosives
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FossilOre, 5);
-            recipe.AddIngredient(ItemID.WoodPlatform, 100);
+            recipe.AddIngredient(ModContent.ItemType<ObsidianInstaBridge>(), 2);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
