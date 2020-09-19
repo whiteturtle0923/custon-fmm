@@ -360,10 +360,14 @@ namespace Fargowiltas.NPCs
                             shop.item[nextSlot].SetDefaults(ItemID.JungleRose);
                             shop.item[nextSlot++].value = 100000;
 
-                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant1); //check price
-                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant2);
-                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant3);
-                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant4);
+                            shop.item[nextSlot].SetDefaults(ItemID.StrangePlant1);
+                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot].SetDefaults(ItemID.StrangePlant2);
+                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot].SetDefaults(ItemID.StrangePlant3);
+                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot].SetDefaults(ItemID.StrangePlant4);
+                            shop.item[nextSlot++].value = 50000;
                         }
                         break;
                 }
@@ -401,6 +405,11 @@ namespace Fargowiltas.NPCs
             {
                 spawnRate = (int)(spawnRate * 0.2);
                 maxSpawns = (int)(maxSpawns * 30f);
+            }
+
+            if (GetInstance<FargoConfig>().BossZen && AnyBossAlive())
+            {
+                maxSpawns = 0;
             }
         }
 

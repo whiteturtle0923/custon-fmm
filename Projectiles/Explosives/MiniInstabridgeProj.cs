@@ -46,6 +46,11 @@ namespace Fargowiltas.Projectiles.Explosives
                     continue;
                 }
 
+                if (tile.type == TileID.Trees || tile.type == TileID.Cactus)
+                {
+                    FargoGlobalTile.ClearEverything(xPosition, yPosition);
+                }
+
                 // Spawn platforms
                 WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms);
 

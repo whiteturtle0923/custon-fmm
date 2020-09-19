@@ -36,8 +36,6 @@ namespace Fargowiltas.Items.Summons.Abom
             Main.StartSlimeRain();
             Main.slimeWarningDelay = 1;
             Main.slimeWarningTime = 1;
-
-            Main.NewText("Slime is falling from the sky!", new Color(175, 75, 255));
             Main.PlaySound(SoundID.Roar, player.position, 0);
 
             return true;

@@ -1162,6 +1162,12 @@ namespace Fargowiltas
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.PlanteraBossBag);
             recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PygmyStaff);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PlanteraBossBag);
+            recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.VenusMagnum);
             recipe.AddRecipe();
 
@@ -1335,7 +1341,87 @@ namespace Fargowiltas
 
             //meowmere minecart here
 
+            //dark mage
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyDarkmage);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DD2PetDragon);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyDarkmage);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DD2PetGato);
+            recipe.AddRecipe();
+
+            //ogre
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ApprenticeScarf);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SquireShield);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.HuntressBuckler);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MonkBelt);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DD2PhoenixBow);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BookStaff);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DD2SquireDemonSword);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MonkStaffT1);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.MonkStaffT2);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossTrophyOgre);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DD2PetGhost);
+            recipe.AddRecipe();
+
             //besty
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.BossBagBetsy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BetsyWings);
+            recipe.AddRecipe();
+
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.BossBagBetsy);
             recipe.AddTile(TileID.Solidifier);
@@ -1359,6 +1445,239 @@ namespace Fargowiltas
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.MonkStaffT3);
             recipe.AddRecipe();
+
+            //mourning wood
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MourningWoodTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SpookyHook);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MourningWoodTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SpookyTwig);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MourningWoodTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.StakeLauncher);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MourningWoodTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.CursedSapling);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MourningWoodTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.NecromanticScroll);
+            recipe.AddRecipe();
+
+            //pumpking
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PumpkingTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.TheHorsemansBlade);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PumpkingTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BatScepter);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PumpkingTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.RavenStaff);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PumpkingTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.CandyCornRifle);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PumpkingTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.JackOLanternLauncher);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.PumpkingTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BlackFairyDust);
+            recipe.AddRecipe();
+
+            //add dark harvest
+
+            //everscream
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.EverscreamTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ChristmasTreeSword);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.EverscreamTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ChristmasHook);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.EverscreamTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Razorpine);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.EverscreamTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.FestiveWings);
+            recipe.AddRecipe();
+
+            //santa nk1
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.SantaNK1Trophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.EldMelter);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.SantaNK1Trophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ChainGun);
+            recipe.AddRecipe();
+
+            //ice queen
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.IceQueenTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BlizzardStaff);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.IceQueenTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.SnowmanCannon);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.IceQueenTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.NorthPole);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.IceQueenTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.BabyGrinchMischiefWhistle);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.IceQueenTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ReindeerBells);
+            recipe.AddRecipe();
+
+            //saucer
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Xenopopper);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.XenoStaff);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LaserMachinegun);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ElectrosphereLauncher);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.InfluxWaver);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.CosmicCarKey);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.AntiGravityHook);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.ChargedBlasterCannon);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.MartianSaucerTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LaserDrill);
+            recipe.AddRecipe();
+
+            //dutchman
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.LuckyCoin);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.DiscountCard);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.CoinGun);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.PirateStaff);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.GoldRing);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
+            recipe.AddTile(TileID.Solidifier);
+            recipe.SetResult(ItemID.Cutlass);
+            recipe.AddRecipe();
+
+            //add the dutchman minecart
 
 
         }

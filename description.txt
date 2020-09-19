@@ -6,5 +6,14 @@ NEW UPDATE - V 2.2.3
 -Doubled mini instabridge size again and it no longer destroys any tiles
 -Added Double Obsidian Instabridge
 
+-No more Dryad's blessing in Omnistation
+-Fixed Ice and Shadow crate still being fishable
+-Added recipe for Pygmy Staff
+-Added Boss Zen with a toggle
+-Fixed Slimy Barometer duplicating summon text
+-Increased Strange Plant price
+-Added Trophy recipes for Dark Mage, Ogre, Flying Dutchman, Mourning Wood, Pumpking, Everscream, Santa NK1, Ice Queen, and Martian Saucer
+-Squirrel will keep moving in after the first time
+
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
