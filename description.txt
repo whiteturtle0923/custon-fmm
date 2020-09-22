@@ -1,19 +1,17 @@
-NEW UPDATE - V 2.2.3
--Boom Shurikens now scale with the strongest pick axe in your inventory, this should fix them destroyin modded tiles when they shouldn't 
+NEW UPDATE - V 2.2.2.3
+-Added Double Obsidian Instabridge and Rick Painting
+-Doubled Mini Instabridge size again and it no longer destroys any tiles
 -Instabridge and other explosives will now break trees correctly 
--Rick Painting
--Npc attack reduced
--Doubled mini instabridge size again and it no longer destroys any tiles
--Added Double Obsidian Instabridge
-
--No more Dryad's blessing in Omnistation
--Fixed Ice and Shadow crate still being fishable
--Added recipe for Pygmy Staff
+-Boom Shurikens now scale with the strongest pick axe in your inventory, this should fix them destroying modded tiles when they shouldn't 
 -Added Boss Zen with a toggle
+-Added Trophy recipes for Dark Mage, Ogre, Flying Dutchman, Mourning Wood, Pumpking, Everscream, Santa NK1, Ice Queen, and Martian Saucer
+-Added recipe for Pygmy Staff
+-No more Dryad's blessing in Omnistation
+-Squirrel will keep moving in after the first time
+-Town NPC attack damage reduced
 -Fixed Slimy Barometer duplicating summon text
 -Increased Strange Plant price
--Added Trophy recipes for Dark Mage, Ogre, Flying Dutchman, Mourning Wood, Pumpking, Everscream, Santa NK1, Ice Queen, and Martian Saucer
--Squirrel will keep moving in after the first time
+-Removed fake Ice and Shadow Crates
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
