@@ -114,5 +114,12 @@ namespace Fargowiltas
             get; set;
         }
 
+        [Label("[i:3117] Boss Zen")]
+        [DefaultValue(true)]
+        public bool BossZen
+        {
+            get; set;
+        }
+
     }
 }

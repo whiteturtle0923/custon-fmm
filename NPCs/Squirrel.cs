@@ -60,6 +60,11 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
+            if (FargoWorld.DownedBools["squirrel"])
+            {
+                return true;
+            }
+
 			for (int k = 0; k < 255; k++)
 			{
 				Player player = Main.player[k];
@@ -304,6 +309,11 @@ namespace Fargowiltas.NPCs
                 }
 			}
 		}
+
+        public override void NPCLoot()
+        {
+            FargoWorld.DownedBools["squirrel"] = true;
+        }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {

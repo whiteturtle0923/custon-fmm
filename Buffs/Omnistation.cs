@@ -29,14 +29,6 @@ namespace Fargowiltas.Buffs
                 Main.campfire = true;
                 Main.heartLantern = true;
                 Main.starInBottle = true;
-
-                //dryad's blessing
-                player.lifeRegen += 6;
-                player.statDefense += 8;
-                if (player.thorns < 1f)
-                {
-                    player.thorns += 0.2f;
-                }
             }
 
             int type = Framing.GetTileSafely(player.Center).type;
