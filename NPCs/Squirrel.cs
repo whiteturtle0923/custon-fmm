@@ -286,7 +286,8 @@ namespace Fargowiltas.NPCs
 		{
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("TophatSquirrel"));
+                shop.item[nextSlot].shopCustomPrice = 100000;
                 nextSlot++;
             }
 

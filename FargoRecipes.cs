@@ -260,6 +260,11 @@ namespace Fargowiltas
             AddTreasureBagRecipes();
             AddFurnitureRecipes();
             AddMiscRecipes();
+            AddVanillaRecipeChanges();
+
+
+            
+
         }
 
         private static void AddSummonConversions()
@@ -2543,6 +2548,20 @@ namespace Fargowiltas
             recipe.AddTile(TileID.AlchemyTable);
             recipe.SetResult(item);
             recipe.AddRecipe();
+        }
+
+        private static void AddVanillaRecipeChanges()
+        {
+            RecipeFinder recipeFinder = new RecipeFinder();
+            recipeFinder.AddIngredient(ItemID.BeetleHusk);
+
+            foreach (Recipe recipe in recipeFinder.SearchRecipes())
+            {
+                RecipeEditor editor = new RecipeEditor(recipe);
+                editor.DeleteIngredient(ItemID.TurtleHelmet);
+                editor.DeleteIngredient(ItemID.TurtleScaleMail);
+                editor.DeleteIngredient(ItemID.TurtleLeggings);
+            }
         }
 
         private static ModRecipe GetNewRecipe()

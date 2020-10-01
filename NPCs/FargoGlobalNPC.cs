@@ -24,8 +24,6 @@ namespace Fargowiltas.NPCs
         internal bool PandoraActive;
         internal bool NoLoot = false;
 
-        private bool transform = true;
-
         public static int eaterBoss = -1;
         public static int brainBoss = -1;
         public static int plantBoss = -1;
@@ -85,20 +83,6 @@ namespace Fargowiltas.NPCs
             {
                 npc.dontTakeDamage = false;
             }
-
-            if (transform && Main.rand.NextBool(10))
-            {
-                if (npc.type == NPCID.DemonEye && !Main.halloween)
-                {
-                    npc.Transform(NPCID.Raven);
-                }
-                else if (npc.type == NPCID.BlueSlime && npc.netID == NPCID.BlueSlime && !npc.SpawnedFromStatue && !Main.xMas)
-                {
-                    npc.Transform(NPCID.SlimeRibbonRed);
-                }
-            }
-
-            transform = false;
 
             if (Fargowiltas.SwarmActive && Fargowiltas.ModLoaded["ThoriumMod"])
             {

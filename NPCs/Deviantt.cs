@@ -168,8 +168,7 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("PandorasBox"));
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 25);
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
                 nextSlot++;
             }
 
