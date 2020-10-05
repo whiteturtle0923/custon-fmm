@@ -43,7 +43,8 @@ namespace Fargowiltas.Items.Misc
                     if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
                     {
                         //Main.npc[i].active = false;
-                        if (Main.netMode == 2)
+                        Main.npc[i].ai[0] = 1;
+                        if (Main.netMode == NetmodeID.Server)
                         {
                             NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, 9999f, 10f, (float)(-(float)Main.npc[i].direction), 0, 0, 0);
                         }
