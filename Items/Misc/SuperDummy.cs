@@ -38,24 +38,21 @@ namespace Fargowiltas.Items.Misc
         {
             if (player.altFunctionUse == ItemAlternativeFunctionID.ActivatedAndUsed)
             {
-                //if (Main.netMode != NetmodeID.MultiplayerClient)
-                //{
-                    for (int i = 0; i < Main.maxNPCs; i++)
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
                     {
-                        if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
-                        {
-                            NPC npc = Main.npc[i];
-                            npc.life = 0;
-                            npc.HitEffect();
-                            Main.npc[i].StrikeNPCNoInteraction(9999, 0, 0, false, false, false);
+                        NPC npc = Main.npc[i];
+                        npc.life = 0;
+                        npc.HitEffect();
+                        Main.npc[i].StrikeNPCNoInteraction(9999, 0, 0, false, false, false);
 
-                            if (Main.netMode == NetmodeID.MultiplayerClient)
-                            {
-                                NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, 9999, 0, 0, 0, 0, 0);
-                            }
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, 9999, 0, 0, 0, 0, 0);
                         }
                     }
-                //}
+                }
             }
             else if (player.whoAmI == Main.myPlayer)
             {
