@@ -99,10 +99,6 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool BannerRecipes { get; set; }
 
-        [Label("[i:284] Weapon Conversions")]
-        [DefaultValue(true)]
-        public bool WeaponConversions { get; set; }
-
         [Label("[i:2] Increased Max Stacks")]
         [DefaultValue(true)]
         public bool IncreaseMaxStack { get; set; }
@@ -114,6 +110,13 @@ namespace Fargowiltas
         [Label("[i:909] Fountains Cause Biomes")]
         [DefaultValue(true)]
         public bool Fountains
+        {
+            get; set;
+        }
+
+        [Label("[i:3117] Boss Zen")]
+        [DefaultValue(true)]
+        public bool BossZen
         {
             get; set;
         }

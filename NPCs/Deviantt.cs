@@ -54,7 +54,7 @@ namespace Fargowiltas.NPCs
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
                 return false;
 
-            return GetInstance<FargoConfig>().Devi && (FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
+            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => !toKingStatue;
@@ -168,8 +168,7 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("PandorasBox"));
-                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 25);
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
                 nextSlot++;
             }
 

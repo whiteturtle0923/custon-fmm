@@ -23,7 +23,6 @@ namespace Fargowiltas.Items.Tiles
             recipe.AddIngredient(ItemID.AmmoBox, 5);
             recipe.AddIngredient(ItemID.CrystalBall, 5);
             recipe.AddIngredient(ItemID.BewitchingTable, 5);
-            recipe.AddIngredient(null, "Dryad", 5);
             recipe.AddIngredient(ItemID.TitaniumBar, 5);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

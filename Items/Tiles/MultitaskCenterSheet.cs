@@ -10,6 +10,7 @@ namespace Fargowiltas.Items.Tiles
     {
         public override void SetDefaults()
         {
+            Main.tileSolidTop[Type] = true;
             Main.tileFrameImportant[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.Width = 4;

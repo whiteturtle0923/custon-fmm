@@ -152,17 +152,17 @@ namespace Fargowiltas
 
         public override void UpdateBiomes()
         {
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
             {
                 player.ZoneCorrupt = true;
             }
 
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu))
             {
                 player.ZoneCrimson = true;
             }
 
-            if (FargoGlobalNPC.BossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera))
             {
                 player.ZoneJungle = true;
             }
@@ -201,36 +201,6 @@ namespace Fargowiltas
             }
             
 
-        }
-        public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
-        {
-            int num15 = 150;
-            int num18 = num15 * 7 / power;
-            if (num18 < 4)
-            {
-                num18 = 4;
-            }
-            bool flag5 = false;
-            if (Main.rand.Next(num18) == 0)
-            {
-                flag5 = true;
-            }
-            int num21 = 10;
-            if (player.cratePotion)
-            {
-                num21 += 10;
-            }
-            if (Main.rand.Next(100) < num21)
-            {
-                if (flag5 && liquidType == 0 && player.ZoneSnow)
-                {
-                    caughtType = mod.ItemType("IceCrate");
-                }
-                else if (flag5 && liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
-                {
-                    caughtType = mod.ItemType("ShadowCrate");
-                }
-            }
         }
 
         public void AutoUseMirror()

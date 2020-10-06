@@ -24,8 +24,6 @@ namespace Fargowiltas.NPCs
         internal bool PandoraActive;
         internal bool NoLoot = false;
 
-        private bool transform = true;
-
         public static int eaterBoss = -1;
         public static int brainBoss = -1;
         public static int plantBoss = -1;
@@ -52,6 +50,11 @@ namespace Fargowiltas.NPCs
 
         public override bool PreAI(NPC npc)
         {
+            if (npc.boss)
+            {
+                boss = npc.whoAmI;
+            }
+
             switch (npc.type)
             {
                 case NPCID.EaterofWorldsHead:
@@ -80,20 +83,6 @@ namespace Fargowiltas.NPCs
             {
                 npc.dontTakeDamage = false;
             }
-
-            if (transform && Main.rand.NextBool(10))
-            {
-                if (npc.type == NPCID.DemonEye && !Main.halloween)
-                {
-                    npc.Transform(NPCID.Raven);
-                }
-                else if (npc.type == NPCID.BlueSlime && npc.netID == NPCID.BlueSlime && !npc.SpawnedFromStatue && !Main.xMas)
-                {
-                    npc.Transform(NPCID.SlimeRibbonRed);
-                }
-            }
-
-            transform = false;
 
             if (Fargowiltas.SwarmActive && Fargowiltas.ModLoaded["ThoriumMod"])
             {
@@ -355,10 +344,14 @@ namespace Fargowiltas.NPCs
                             shop.item[nextSlot].SetDefaults(ItemID.JungleRose);
                             shop.item[nextSlot++].value = 100000;
 
-                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant1); //check price
-                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant2);
-                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant3);
-                            shop.item[nextSlot++].SetDefaults(ItemID.StrangePlant4);
+                            shop.item[nextSlot].SetDefaults(ItemID.StrangePlant1);
+                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot].SetDefaults(ItemID.StrangePlant2);
+                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot].SetDefaults(ItemID.StrangePlant3);
+                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot].SetDefaults(ItemID.StrangePlant4);
+                            shop.item[nextSlot++].value = 50000;
                         }
                         break;
                 }
@@ -396,6 +389,11 @@ namespace Fargowiltas.NPCs
             {
                 spawnRate = (int)(spawnRate * 0.2);
                 maxSpawns = (int)(maxSpawns * 30f);
+            }
+
+            if (GetInstance<FargoConfig>().BossZen && AnyBossAlive())
+            {
+                maxSpawns = 0;
             }
         }
 
@@ -1389,7 +1387,7 @@ namespace Fargowiltas.NPCs
             LastWoFIndex = wof;
         }
 
-        public static bool BossIsAlive(ref int bossID, int bossType)
+        public static bool SpecificBossIsAlive(ref int bossID, int bossType)
         {
             if (bossID != -1)
             {
@@ -1407,6 +1405,18 @@ namespace Fargowiltas.NPCs
             {
                 return false;
             }
+        }
+
+        public static int boss = -1;
+
+        public static bool AnyBossAlive()
+        {
+            if (boss == -1)
+                return false;
+            if (Main.npc[boss].active && (Main.npc[boss].boss || Main.npc[boss].type == NPCID.EaterofWorldsHead))
+                return true;
+            boss = -1;
+            return false;
         }
     }
 }

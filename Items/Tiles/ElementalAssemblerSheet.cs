@@ -40,11 +40,11 @@ namespace Fargowiltas.Items.Tiles
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
             frameCounter++;
-            if (frameCounter >= 6) //replace with duration of frame in ticks
+            if (frameCounter >= 10) //replace with duration of frame in ticks
             {
                 frameCounter = 0;
                 frame++;
-                frame %= 10;
+                frame %= 12;
             }
         }
     }

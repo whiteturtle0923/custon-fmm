@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Fargowiltas.Items.Vanity;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -310,6 +311,18 @@ namespace Fargowiltas.NPCs
 
             shop.item[nextSlot].SetDefaults(ItemID.Cactus);
             shop.item[nextSlot].value = 10;
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackMask>());
+            shop.item[nextSlot].value = 10000;
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackBody>());
+            shop.item[nextSlot].value = 10000;
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackPants>());
+            shop.item[nextSlot].value = 10000;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(mod.ItemType("LumberJaxe"));

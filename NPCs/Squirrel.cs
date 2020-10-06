@@ -60,6 +60,11 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
 		{
+            if (FargoWorld.DownedBools["squirrel"])
+            {
+                return true;
+            }
+
 			for (int k = 0; k < 255; k++)
 			{
 				Player player = Main.player[k];
@@ -281,7 +286,8 @@ namespace Fargowiltas.NPCs
 		{
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("TophatSquirrel"));
+                shop.item[nextSlot].shopCustomPrice = 100000;
                 nextSlot++;
             }
 
@@ -304,6 +310,11 @@ namespace Fargowiltas.NPCs
                 }
 			}
 		}
+
+        public override void NPCLoot()
+        {
+            FargoWorld.DownedBools["squirrel"] = true;
+        }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
