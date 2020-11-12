@@ -469,6 +469,7 @@ namespace Fargowiltas.NPCs
             {
                 pool[NPCID.MartianSaucerCore] = 1f;
                 pool[NPCID.Scutlix] = 3f;
+                pool[NPCID.ScutlixRider] = 2f;
                 pool[NPCID.MartianWalker] = 3f;
                 pool[NPCID.MartianDrone] = 2f;
                 pool[NPCID.GigaZapper] = 1f;

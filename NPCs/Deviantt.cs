@@ -44,8 +44,13 @@ namespace Fargowiltas.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
             animationType = NPCID.Angler;
-            Main.npcCatchable[npc.type] = true;
-            npc.catchItem = (short)mod.ItemType("Deviantt");
+
+            if (GetInstance<FargoConfig>().CatchNPCs)
+            {
+                Main.npcCatchable[npc.type] = true;
+                npc.catchItem = (short)mod.ItemType("Deviantt");
+            }
+                
             npc.buffImmune[BuffID.Suffocation] = true;
         }
 
@@ -166,6 +171,12 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
+            if (Fargowiltas.ModLoaded["FargowiltasSoulsDLC"])
+            {
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSoulsDLC").ItemType("PandorasBox"));
+                nextSlot++;
+            }
+
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));

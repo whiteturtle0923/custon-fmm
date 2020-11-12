@@ -90,6 +90,7 @@ namespace Fargowiltas
                 "Jetshift", // Jetshift
                 "Ocram", // Ocram 'n Stuff
                 "CSkies", // Celestial Skies
+                "FargowiltasSoulsDLC"
             };
 
             ModLoaded = new Dictionary<string, bool>();
@@ -353,7 +354,7 @@ namespace Fargowiltas
                 }
             }
 
-            if (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0)
+            if  (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
             {
                 eventOccurring = true;
                 if (canClearEvent)

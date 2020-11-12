@@ -23,7 +23,7 @@ namespace Fargowiltas.Items.Tiles
             disableSmartCursor = true;
             //counts as
             adjTiles = new int[] { TileID.WorkBenches, TileID.HeavyWorkBench, TileID.Furnaces,  TileID.Anvils,  TileID.Bottles, TileID.Sawmill, TileID.Loom, TileID.Tables, TileID.Chairs, TileID.CookingPots, TileID.Sinks, TileID.Kegs };
-
+            
             animationFrameHeight = 54;
         }
 
