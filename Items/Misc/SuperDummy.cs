@@ -45,11 +45,11 @@ namespace Fargowiltas.Items.Misc
                         NPC npc = Main.npc[i];
                         npc.life = 0;
                         npc.HitEffect();
-                        Main.npc[i].StrikeNPCNoInteraction(9999, 0, 0, false, false, false);
+                        Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0, 0, false, false, false);
 
                         if (Main.netMode == NetmodeID.MultiplayerClient)
                         {
-                            NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, 9999, 0, 0, 0, 0, 0);
+                            NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, int.MaxValue, 0, 0, 0, 0, 0);
                         }
                     }
                 }
