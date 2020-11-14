@@ -15,6 +15,7 @@ namespace Fargowiltas.NPCs
         public override void SetDefaults()
         {
             npc.CloneDefaults(NPCID.TargetDummy);
+            npc.lifeMax = int.MaxValue;
             npc.aiStyle = -1;
             npc.width = 28;
             npc.height = 50;
