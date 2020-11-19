@@ -17,8 +17,8 @@ NEW UPDATE - V 2.2.3
 -Elemental Assembler has Achemy Table effect now
 -Updated travelling merchant item recipes a bit
 
-
--add rocket ammos
+-Added Worm Snack and Unlimited Rocket Bags
+-Boss Zen will no longer stop martians from spawning while a saucer is alive
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants

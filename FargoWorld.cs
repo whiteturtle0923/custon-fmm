@@ -62,7 +62,8 @@ namespace Fargowiltas
             "ogre",
             "headlessHorseman",
             "babyGuardian", 
-            "squirrel"
+            "squirrel",
+            "worm"
         };
 
         public override void Initialize()

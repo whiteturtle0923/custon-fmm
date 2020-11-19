@@ -1414,7 +1414,10 @@ namespace Fargowiltas.NPCs
         {
             if (boss == -1)
                 return false;
-            if (Main.npc[boss].active && (Main.npc[boss].boss || Main.npc[boss].type == NPCID.EaterofWorldsHead))
+
+            NPC npc = Main.npc[boss];
+
+            if (npc.active && npc.type != NPCID.MartianSaucerCore && (npc.boss || npc.type == NPCID.EaterofWorldsHead))
                 return true;
             boss = -1;
             return false;
