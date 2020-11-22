@@ -1,24 +1,16 @@
 NEW UPDATE - V 2.2.3
--Fixed Super Dummy in multiplayer
--Updated Suspicious Looking Chest and Crucible of the Cosmos tooltip
--Renamed toggle for enemeis not spawning during a boss fight
+-Added Worm Snack and Unlimited Rocket Bags
+-Added Travelling Merchant item recipes
+-Abominationn will now sell the Runaway Probe post Golem
+-Abominationn will no longer cancel pillars unless you beat them
 -Deviantt now sells Pandora's Box if the DLC is loaded
 -The Squirrel can now be caught like any other town NPC
 -The Squirrel will also sell DLC Enchantments
 -The Fargo town NPCs will not be catchable if the toggle is off
--Changed Lihzahrd Battery Pack to always spawn Golem right above you so he won't spawn in weird places using it in the temple
--Added travelling Merchant item recipes
--Scutlix Riders will spawn during an Overloaded Martian invasion now
--Abominationn will sell the Runaway Probe post Golem
-
--Updated sprites for: Mini Instabridge, Double Obsidian Instabridge, Forbidden Forbidden Fragment
--Fixed Squirrel not selling Squirrel and not spawning due to Squirrel
--Abom wil no longer cancel pillars unless you beat them
--Elemental Assembler has Achemy Table effect now
--Updated travelling merchant item recipes a bit
-
--Added Worm Snack and Unlimited Rocket Bags
--Boss Zen will no longer stop martians from spawning while a saucer is alive
+-Lihzahrd Battery Pack will always spawn Golem right above you so he won't spawn in weird places using it in the temple
+-Scutlix Riders will spawn during Overloaded Martian invasions now
+-Boss Zen will no longer stop Martians from spawning while a saucer is alive
+-Updated sprites for: Mini Instabridge, Double Obsidian Instabridge, and Forbidden Forbidden Fragment
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, and thrown variants
