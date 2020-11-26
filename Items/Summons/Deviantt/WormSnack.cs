@@ -19,7 +19,7 @@ Only usable underground");
 
         public override bool CanUseItem(Player player)
         {
-            return player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
+            return player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
         }
     }
 }

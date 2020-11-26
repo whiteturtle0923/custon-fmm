@@ -4,6 +4,7 @@ NEW UPDATE - V 2.2.4
 -Added City Buster
 -Fixed Omnistation preventing the player from receiving Dryad's Blessing buff
 -Fixed various bugs around Worm Snack not functioning properly (need to kill one after updating to unlock it)
+-Fixed several of Deviantt's summons not working in the top half of underground when they should
 -Fixed InstaHouse not working in multiplayer
 
 NEW UPDATE - V 2.2.3
