@@ -50,6 +50,9 @@ namespace Fargowiltas.Projectiles.Explosives
                     int xPosition = (int)(x + position.X / 16.0f);
                     int yPosition = (int)(y + position.Y / 16.0f);
 
+                    if (xPosition < 0 || xPosition >= Main.maxTilesX || yPosition < 0 || yPosition >= Main.maxTilesY)
+                        continue;
+
                     Tile tile = Main.tile[xPosition, yPosition];
                     Player player = Main.player[projectile.owner];
                     Item bestPickaxe = GetBestPickaxe(player);

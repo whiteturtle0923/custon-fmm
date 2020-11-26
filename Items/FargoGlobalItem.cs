@@ -112,6 +112,28 @@ namespace Fargowiltas.Items
                     item.maxStack = 9999;
                 }
             }
+
+            switch (item.type)
+            {
+                case ItemID.SharpeningStation:
+                    item.buffType = BuffID.Sharpened;
+                    break;
+
+                case ItemID.AmmoBox:
+                    item.buffType = BuffID.AmmoReservation;
+                    break;
+
+                case ItemID.CrystalBall:
+                    item.buffType = BuffID.Clairvoyance;
+                    break;
+
+                case ItemID.BewitchingTable:
+                    item.buffType = BuffID.Bewitched;
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public override void OpenVanillaBag(string context, Player player, int arg)

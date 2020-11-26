@@ -199,8 +199,8 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode && FargoWorld.DownedBools["runeWizard"], ItemType<RuneOrb>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["mimic"], ItemType<SuspiciousLookingChest>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["mimicHallow"], ItemType<HallowChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(Main.hardMode && FargoWorld.DownedBools["mimicCorrupt"], ItemType<CorruptChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(Main.hardMode && FargoWorld.DownedBools["mimicCrimson"], ItemType<CrimsonChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
+            AddItem(Main.hardMode && (FargoWorld.DownedBools["mimicCorrupt"] || FargoWorld.DownedBools["mimicCrimson"]), ItemType<CorruptChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
+            AddItem(Main.hardMode && (FargoWorld.DownedBools["mimicCrimson"] || FargoWorld.DownedBools["mimicCorrupt"]), ItemType<CrimsonChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["mimicJungle"], ItemType<JungleChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["iceGolem"], ItemType<CoreoftheFrostCore>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["sandElemental"], ItemType<ForbiddenForbiddenFragment>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
