@@ -177,7 +177,7 @@ namespace Fargowiltas.Projectiles
 
                     WorldGen.PlaceTile(xPosition, yPosition, TileID.ClosedDoor, style: placeStyle);
                     if (Main.netMode == NetmodeID.Server)
-                        NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
+                        NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.ClosedDoor, placeStyle);
                 }
 
                 if (x == (5 * side))
@@ -227,7 +227,7 @@ namespace Fargowiltas.Projectiles
 
                     WorldGen.PlaceObject(xPosition, yPosition, TileID.Chairs, direction: side, style: placeStyle);
                     if (Main.netMode == NetmodeID.Server)
-                        NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
+                        NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.Chairs, placeStyle);
                 }
 
                 if (x == (7 * side))
@@ -277,7 +277,7 @@ namespace Fargowiltas.Projectiles
 
                     WorldGen.PlaceTile(xPosition, yPosition, TileID.Tables, style: placeStyle);
                     if (Main.netMode == NetmodeID.Server)
-                        NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
+                        NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.Tables, placeStyle);
                 }
             }
 
@@ -285,7 +285,7 @@ namespace Fargowiltas.Projectiles
             {
                 WorldGen.PlaceTile(xPosition, yPosition, TileID.Torches);
                 if (Main.netMode == NetmodeID.Server)
-                    NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
+                    NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.Torches);
             }
         }
 
