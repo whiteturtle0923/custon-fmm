@@ -30,9 +30,19 @@ namespace Fargowiltas.Items.Summons
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250));
 
-            if(Type == NPCID.Golem)
+            if (Type == NPCID.Golem)
             {
-                pos.X = player.position.X;
+                pos = player.Center;
+                for (int i = 0; i < 30; i++)
+                {
+                    pos.Y -= 16;
+
+                    if (pos.Y <= 0 || WorldGen.SolidTile((int)pos.X / 16, (int)pos.Y / 16))
+                    {
+                        pos.Y += 16;
+                        break;
+                    }
+                }
             }
 
             //if (Main.netMode != 1)
@@ -44,7 +54,7 @@ namespace Fargowiltas.Items.Summons
             {
                 NetMessage.BroadcastChatMessage(NetworkText.FromLiteral($"{NPCName} has awoken!"), new Color(175, 75, 255));
             }
-            else if(Type != NPCID.KingSlime)
+            else if (Type != NPCID.KingSlime)
             {
                 Main.NewText($"{NPCName} has awoken!", new Color(175, 75, 255));
             }
