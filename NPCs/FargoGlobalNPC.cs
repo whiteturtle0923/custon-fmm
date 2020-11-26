@@ -469,6 +469,7 @@ namespace Fargowiltas.NPCs
             {
                 pool[NPCID.MartianSaucerCore] = 1f;
                 pool[NPCID.Scutlix] = 3f;
+                pool[NPCID.ScutlixRider] = 2f;
                 pool[NPCID.MartianWalker] = 3f;
                 pool[NPCID.MartianDrone] = 2f;
                 pool[NPCID.GigaZapper] = 1f;
@@ -1413,7 +1414,10 @@ namespace Fargowiltas.NPCs
         {
             if (boss == -1)
                 return false;
-            if (Main.npc[boss].active && (Main.npc[boss].boss || Main.npc[boss].type == NPCID.EaterofWorldsHead))
+
+            NPC npc = Main.npc[boss];
+
+            if (npc.active && npc.type != NPCID.MartianSaucerCore && (npc.boss || npc.type == NPCID.EaterofWorldsHead))
                 return true;
             boss = -1;
             return false;

@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.NPCs
 {
@@ -46,10 +47,10 @@ namespace Fargowiltas.NPCs
 			animationType = NPCID.Squirrel;
 			npc.aiStyle = 7;
 
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            if (GetInstance<FargoConfig>().CatchNPCs)
             {
                 Main.npcCatchable[npc.type] = true;
-                npc.catchItem = (short)ModLoader.GetMod("FargowiltasSouls").ItemType("TophatSquirrel");
+                npc.catchItem = (short)mod.ItemType("Squirrel");
             }
         }
 
@@ -75,7 +76,7 @@ namespace Fargowiltas.NPCs
 
 				foreach (Item item in player.inventory)
 				{
-					if (item.type == fargosouls.ItemType("TophatSquirrel"))
+					if (item.type == fargosouls.ItemType("TopHatSquirrelCaught"))
 					{
 						return true;
 					}
@@ -88,13 +89,19 @@ namespace Fargowiltas.NPCs
 
         public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(3))
+			switch (WorldGen.genRand.Next(6))
 			{
 				case 0:
 					return "Rick";
 				case 1:
 					return "Acorn";
-				default:
+                case 2:
+                    return "Puff";
+                case 3:
+                    return "Coco";
+                case 4:
+                    return "Truffle";
+                default:
 					return "Squeaks";
 			}
 		}
@@ -133,7 +140,7 @@ namespace Fargowiltas.NPCs
         {
             const int maxShop = 40;
 
-            if (item.modItem == null || !item.modItem.mod.Name.Equals("FargowiltasSouls") || nextSlot >= maxShop)
+            if (item.modItem == null || (!item.modItem.mod.Name.Equals("FargowiltasSouls") && !item.modItem.mod.Name.Equals("FargowiltasSoulsDLC")) || nextSlot >= maxShop)
                 return;
 
             bool duplicateItem = false;
@@ -286,7 +293,7 @@ namespace Fargowiltas.NPCs
 		{
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("TophatSquirrel"));
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("TopHatSquirrelCaught"));
                 shop.item[nextSlot].shopCustomPrice = 100000;
                 nextSlot++;
             }

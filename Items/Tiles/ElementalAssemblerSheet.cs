@@ -47,5 +47,11 @@ namespace Fargowiltas.Items.Tiles
                 frame %= 12;
             }
         }
+
+        public override void NearbyEffects(int i, int j, bool closer)
+        {
+            Player player = Main.player[Main.myPlayer];
+            player.alchemyTable = true;
+        }
     }
 }

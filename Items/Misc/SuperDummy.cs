@@ -40,10 +40,17 @@ namespace Fargowiltas.Items.Misc
             {
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
-                    if (Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
+                    if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
                     {
-                        Main.npc[i].active = false;
-                        Main.npc[i].netUpdate = true;
+                        NPC npc = Main.npc[i];
+                        npc.life = 0;
+                        npc.HitEffect();
+                        Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0, 0, false, false, false);
+
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, int.MaxValue, 0, 0, 0, 0, 0);
+                        }
                     }
                 }
             }

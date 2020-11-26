@@ -114,7 +114,7 @@ namespace Fargowiltas
             get; set;
         }
 
-        [Label("[i:3117] Boss Zen")]
+        [Label("[i:3117] No enemies spawn during boss fights")]
         [DefaultValue(true)]
         public bool BossZen
         {

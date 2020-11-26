@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using Fargowiltas.Items.Summons;
 using Fargowiltas.Items.Summons.Deviantt;
-using Fargowiltas.Items.Summons.SwarmSummons;
-using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Items.Summons.Abom;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -50,8 +47,13 @@ namespace Fargowiltas.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
             animationType = NPCID.Guide;
-            Main.npcCatchable[npc.type] = true;
-            npc.catchItem = (short)mod.ItemType("Abominationn");
+
+            if (GetInstance<FargoConfig>().CatchNPCs)
+            {
+                Main.npcCatchable[npc.type] = true;
+                npc.catchItem = (short)mod.ItemType("Abominationn");
+            }
+                
             npc.buffImmune[BuffID.Suffocation] = true;
         }
 
@@ -222,18 +224,19 @@ namespace Fargowiltas.NPCs
             AddItem(FargoWorld.DownedBools["ogre"], ItemType<BatteredClub>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["betsy"], ItemType<BetsyEgg>(), Item.buyPrice(0, 40), ref shop, ref nextSlot);
 
+            AddItem(NPC.downedHalloweenKing, ItemID.PumpkinMoonMedallion, Item.buyPrice(0, 50), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["headlessHorseman"], ItemType<HeadofMan>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedHalloweenTree, ItemType<SpookyBranch>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedHalloweenKing, ItemType<SuspiciousLookingScythe>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(NPC.downedHalloweenKing, ItemID.PumpkinMoonMedallion, Item.buyPrice(0, 50), ref shop, ref nextSlot);
-
+            
+            AddItem(NPC.downedChristmasIceQueen, ItemID.NaughtyPresent, Item.buyPrice(0, 50), ref shop, ref nextSlot);
             AddItem(NPC.downedChristmasTree, ItemType<FestiveOrnament>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedChristmasSantank, ItemType<NaughtyList>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedChristmasIceQueen, ItemType<IceKingsRemains>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(NPC.downedChristmasIceQueen, ItemID.NaughtyPresent, Item.buyPrice(0, 50), ref shop, ref nextSlot);
-
+            
+            AddItem(NPC.downedGolemBoss, ItemType<RunawayProbe>(), Item.buyPrice(0, 50), ref shop, ref nextSlot);
             AddItem(NPC.downedMartians, ItemType<MartianMemoryStick>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
-            AddItem(NPC.downedMartians, ItemType<RunawayProbe>(), Item.buyPrice(0, 50), ref shop, ref nextSlot);
+            
 
             AddItem(NPC.downedTowers, ItemType<PillarSummon>(), Item.buyPrice(0, 75), ref shop, ref nextSlot);
 

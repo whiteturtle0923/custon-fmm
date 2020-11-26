@@ -270,6 +270,23 @@ namespace Fargowiltas.Items.CaughtNPCs
         }
     }
 
+    public class Squirrel : BaseCaughtNPC
+    {
+        public override string Texture => "Fargowiltas/NPCs/Squirrel";
+
+        public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("*squeak*");
+        }
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            item.makeNPC = (short)mod.NPCType("Squirrel");
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 6));
+        }
+    }
+
     public class Steampunker : BaseCaughtNPC
     {
         public override int Type => NPCID.Steampunker;
