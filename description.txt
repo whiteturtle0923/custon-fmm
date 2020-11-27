@@ -10,6 +10,7 @@ NEW UPDATE - V 2.2.3
 -Lihzahrd Battery Pack will always spawn Golem right above you so he won't spawn in weird places using it in the temple
 -Scutlix Riders will spawn during Overloaded Martian invasions now
 -Boss Zen will no longer stop Martians from spawning while a saucer is alive
+-Fixed Super Dummy issues in multiplayer
 -Updated sprites for: Mini Instabridge, Double Obsidian Instabridge, and Forbidden Forbidden Fragment
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
