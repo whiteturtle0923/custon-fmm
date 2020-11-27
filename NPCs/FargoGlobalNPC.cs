@@ -841,6 +841,11 @@ namespace Fargowiltas.NPCs
 
                     break;
 
+                case NPCID.GiantWormHead:
+                case NPCID.DiggerHead:
+                    FargoWorld.DownedBools["worm"] = true;
+                    break;
+
                 case NPCID.DD2OgreT2:
                 case NPCID.DD2OgreT3:
                     FargoWorld.DownedBools["ogre"] = true;

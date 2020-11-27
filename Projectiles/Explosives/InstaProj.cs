@@ -52,6 +52,10 @@ namespace Fargowiltas.Projectiles.Explosives
                 for (int y = (int)(1 + position.Y / 16.0f); y <= (Main.maxTilesY - 40); y++)
                 {
                     int xPosition = (int)(x + position.X / 16.0f);
+
+                    if (xPosition < 0 || xPosition >= Main.maxTilesX || y < 0 || y >= Main.maxTilesY)
+                        continue;
+
                     Tile tile = Main.tile[xPosition, y];
 
                     if (tile == null)

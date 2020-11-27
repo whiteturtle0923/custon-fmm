@@ -21,7 +21,6 @@ namespace Fargowiltas.Buffs
             player.buffImmune[BuffID.Campfire] = true;
             player.buffImmune[BuffID.HeartLamp] = true;
             player.buffImmune[BuffID.StarInBottle] = true;
-            player.buffImmune[BuffID.DryadsWard] = true;
 
             if (player.whoAmI == Main.myPlayer)
             {

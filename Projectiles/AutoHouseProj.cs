@@ -110,12 +110,16 @@ namespace Fargowiltas.Projectiles
             if (y != -6 && y != -1 && x != (10 * side) && x != (1 * side))
             {
                 WorldGen.PlaceWall(xPosition, yPosition, wallType);
+                if (Main.netMode == NetmodeID.Server)
+                    NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
             }
 
             // Spawn border
             if ((y == -6) || (y == -1) || (x == (10 * side)) || (x == (1 * side) && y == -5))
             {
                 WorldGen.PlaceTile(xPosition, yPosition, tileType);
+                if (Main.netMode == NetmodeID.Server)
+                    NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
             }
         }
 
@@ -172,6 +176,8 @@ namespace Fargowiltas.Projectiles
                     }
 
                     WorldGen.PlaceTile(xPosition, yPosition, TileID.ClosedDoor, style: placeStyle);
+                    if (Main.netMode == NetmodeID.Server)
+                        NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.ClosedDoor, placeStyle);
                 }
 
                 if (x == (5 * side))
@@ -220,6 +226,8 @@ namespace Fargowiltas.Projectiles
                     }
 
                     WorldGen.PlaceObject(xPosition, yPosition, TileID.Chairs, direction: side, style: placeStyle);
+                    if (Main.netMode == NetmodeID.Server)
+                        NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.Chairs, placeStyle);
                 }
 
                 if (x == (7 * side))
@@ -268,12 +276,16 @@ namespace Fargowiltas.Projectiles
                     }
 
                     WorldGen.PlaceTile(xPosition, yPosition, TileID.Tables, style: placeStyle);
+                    if (Main.netMode == NetmodeID.Server)
+                        NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.Tables, placeStyle);
                 }
             }
 
             if (x == (7 * side) && y == -5)
             {
                 WorldGen.PlaceTile(xPosition, yPosition, TileID.Torches);
+                if (Main.netMode == NetmodeID.Server)
+                    NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.Torches);
             }
         }
 
@@ -282,6 +294,9 @@ namespace Fargowiltas.Projectiles
             Vector2 position = projectile.Center;
             Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
             Player player = Main.player[projectile.owner];
+
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+                return;
 
             if (player.Center.X < position.X)
             {
