@@ -8,6 +8,7 @@ NEW UPDATE - V 2.2.4
 -Fixed various bugs around Worm Snack not functioning properly (need to kill one after updating to unlock it)
 -Fixed several of Deviantt's summons not working in the top half of underground when they should
 -Fixed InstaHouse not working in multiplayer
+-Fixed Snowman Cannon firing Snowman Rocket IV no matter which Endless Rocket Bag is used
 
 NEW UPDATE - V 2.2.3
 -Added Worm Snack and Unlimited Rocket Bags

@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Fargowiltas.Items.Ammos.Rockets;
 
 namespace Fargowiltas.Items
 {
@@ -320,6 +321,21 @@ namespace Fargowiltas.Items
                         break;
                     }
                 }
+            }
+        }
+
+        public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed, ref int damage, ref float knockback)
+        {
+            if (weapon.type == ItemID.SnowmanCannon)
+            {
+                if (ammo.type == ItemType<Rocket1Bag>())
+                    type = ProjectileID.RocketSnowmanI;
+                else if (ammo.type == ItemType<Rocket2Bag>())
+                    type = ProjectileID.RocketSnowmanII;
+                else if (ammo.type == ItemType<Rocket3Bag>())
+                    type = ProjectileID.RocketSnowmanIII;
+                else if (ammo.type == ItemType<Rocket4Bag>())
+                    type = ProjectileID.RocketSnowmanIV;
             }
         }
 
