@@ -823,10 +823,12 @@ namespace Fargowiltas
             }
 
             // Goodie Bag / Present recipes
-            void AddGrabBagItemRecipe(int result, int grabBag = ItemID.Present, int grabBagAmount = 50)
+            void AddGrabBagItemRecipe(int result, int grabBag = ItemID.Present, int grabBagAmount = 50, int item2type = -1, int item2amount = 1)
             {
                 recipe = GetNewRecipe();
                 recipe.AddIngredient(grabBag, grabBagAmount);
+                if (item2type > -1)
+                    recipe.AddIngredient(item2type, item2amount);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(result);
                 recipe.AddRecipe();
@@ -923,16 +925,16 @@ namespace Fargowiltas
             //hematic same ree
 
             //dungeon
-            AddGrabBagItemRecipe(ItemID.WaterBolt, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.Muramasa, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.CobaltShield, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.AquaScepter, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.Valor, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.BlueMoon, ItemID.DungeonFishingCrate, 3);
-            AddGrabBagItemRecipe(ItemID.BoneWelder, ItemID.DungeonFishingCrate, 3);
+            AddGrabBagItemRecipe(ItemID.WaterBolt, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.Muramasa, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.CobaltShield, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.AquaScepter, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.Valor, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.BlueMoon, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
+            AddGrabBagItemRecipe(ItemID.BoneWelder, ItemID.DungeonFishingCrate, 3, ItemID.GoldenKey);
             //stockade
             //same but change recipe to 1 lockbox and 1 key
 
