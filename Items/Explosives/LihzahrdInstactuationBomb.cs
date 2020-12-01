@@ -71,7 +71,8 @@ Only works in the Jungle Temple and after Plantera is defeated");
         public override bool CanUseItem(Player player)
         {
             Point altar = FindAltar(player.Center);
-            return altar.X != -1 && altar.Y != -1 && Collision.CanHitLine(player.Center, 0, 0, new Vector2(altar.X * 16, altar.Y * 16), 0, 0);
+            return altar.X != -1 && altar.Y != -1 && Collision.CanHitLine(player.Center, 0, 0, new Vector2(altar.X * 16, altar.Y * 16), 0, 0)
+                && NPC.downedPlantBoss;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
