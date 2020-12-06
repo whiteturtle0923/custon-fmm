@@ -143,7 +143,10 @@ namespace Fargowiltas
 
                 if (item.active && Array.IndexOf(Informational, item.type) > -1)
                 {
-                    player.VanillaUpdateEquip(item);
+                    Item item2 = new Item();
+                    item2.SetDefaults(item.type);
+
+                    player.VanillaUpdateEquip(item2);
                 }
             }
         }
