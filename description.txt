@@ -3,7 +3,7 @@ NEW UPDATE - V 2.2.5
 
 NEW UPDATE - V 2.2.4
 -Deviantt will sell both evil biome mimic items after beating either
--Sharpening Station, Ammo Box, Crystal Ball, Bewitching Table can be stacked for unlimited buffs
+-Sharpening Station, Ammo Box, Crystal Ball, and Bewitching Table can be stacked for unlimited buffs
 -Adjusted how Golem spawn position is calculated
 -Dungeon Crate recipes require a Golden Key
 -Added City Buster
@@ -12,20 +12,7 @@ NEW UPDATE - V 2.2.4
 -Fixed several of Deviantt's summons not working in the top half of underground when they should
 -Fixed InstaHouse not working in multiplayer
 -Fixed Snowman Cannon firing Snowman Rocket IV no matter which Endless Rocket Bag is used
-
-NEW UPDATE - V 2.2.3
--Added Worm Snack and Unlimited Rocket Bags
--Added Travelling Merchant item recipes
--Abominationn will now sell the Runaway Probe post Golem
--Abominationn will no longer cancel pillars unless you beat them
--Deviantt now sells Pandora's Box if the DLC is loaded
--The Squirrel can now be caught like any other town NPC
--The Squirrel will also sell DLC Enchantments
--The Fargo town NPCs will not be catchable if the toggle is off
--Lihzahrd Battery Pack will always spawn Golem right above you so he won't spawn in weird places using it in the temple
--Scutlix Riders will spawn during Overloaded Martian invasions now
--Boss Zen will no longer stop Martians from spawning while a saucer is alive
--Updated sprites for: Mini Instabridge, Double Obsidian Instabridge, and Forbidden Forbidden Fragment
+-Fixed Informational acessories in your piggy bank granting the effects of their reforges
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
-There are several other items such as infinite ammos, an instant hellevator, and thrown variants
+There are several other items such as infinite ammos, an instant hellevator, ..........................................

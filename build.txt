@@ -1,4 +1,4 @@
-author = Fargowilta
+author = Fargowilta and Terry N. Muse
 version = 2.2.5
 displayName = Fargo's Mutant Mod
 homepage = http://forums.terraria.org/index.php?threads/fargos-mutant-mod-summons-and-souls.42291/
