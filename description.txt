@@ -1,5 +1,8 @@
 NEW UPDATE - V 2.2.5
 -Added Lihzahrd Instactuation Bomb
+-Added Instatrack
+-Added Dragon Egg Tray
+-Added Draco Energizer
 
 NEW UPDATE - V 2.2.4
 -Deviantt will sell both evil biome mimic items after beating either
