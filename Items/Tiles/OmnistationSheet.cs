@@ -29,8 +29,8 @@ namespace Fargowiltas.Items.Tiles
         {
             if (closer)
             {
-                if (Main.LocalPlayer.active && !Main.LocalPlayer.dead)
-                    Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 10);
+                if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Main.LocalPlayer.ghost)
+                    Main.LocalPlayer.AddBuff(BuffType<Buffs.Omnistation>(), 30);
             }
         }
 

@@ -1,4 +1,7 @@
 NEW UPDATE - V 2.2.5
+-Deviantt Help button replaced with Receive Gift until you receive gift
+-Increased duration of Omnistation buff from 10 to 30 ticks to reduce flickering issue
+-Renamed Forbidden Forbidden Fragment to Illegal Shard
 -Added Lihzahrd Instactuation Bomb
 -Added Instatrack
 -Added Dragon Egg Tray
@@ -18,4 +21,4 @@ NEW UPDATE - V 2.2.4
 -Fixed Informational acessories in your piggy bank granting the effects of their reforges
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
-There are several other items such as infinite ammos, an instant hellevator, ..........................................
+There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
