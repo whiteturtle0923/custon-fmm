@@ -1,15 +1,5 @@
-NEW UPDATE - V 2.2.4
--Deviantt will sell both evil biome mimic items after beating either
--Sharpening Station, Ammo Box, Crystal Ball, and Bewitching Table can be stacked for unlimited buffs
--Adjusted how Golem spawn position is calculated
--Dungeon Crate recipes require a Golden Key
--Added City Buster
--Fixed Omnistation preventing the player from receiving Dryad's Blessing buff
--Fixed various bugs around Worm Snack not functioning properly (need to kill one after updating to unlock it)
--Fixed several of Deviantt's summons not working in the top half of underground when they should
--Fixed InstaHouse not working in multiplayer
--Fixed Snowman Cannon firing Snowman Rocket IV no matter which Endless Rocket Bag is used
--Fixed Informational acessories in your piggy bank granting the effects of their reforges
+NEW UPDATE - V 2.2.5
+
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, ..........................................
