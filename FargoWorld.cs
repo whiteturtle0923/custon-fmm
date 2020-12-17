@@ -20,6 +20,7 @@ namespace Fargowiltas
         internal static bool OverloadPumpkinMoon;
         internal static bool OverloadFrostMoon;
         internal static bool OverloadMartians;
+        internal static bool OverloadedSlimeRain;
 
         internal static bool[] CurrentSpawnRateTile;
         internal static Dictionary<string, bool> DownedBools = new Dictionary<string, bool>();
@@ -80,6 +81,7 @@ namespace Fargowiltas
             OverloadPumpkinMoon = false;
             OverloadFrostMoon = false;
             OverloadMartians = false;
+            OverloadedSlimeRain = false;
 
             CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
         }
@@ -169,6 +171,11 @@ namespace Fargowiltas
             if (OverloadMartians && Main.invasionType != InvasionID.MartianMadness)
             {
                 OverloadMartians = false;
+            }
+
+            if (OverloadedSlimeRain && !Main.slimeRain)
+            {
+                OverloadedSlimeRain = false;
             }
         }
 

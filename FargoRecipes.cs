@@ -453,7 +453,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);
 
             AddBannerToItemsRecipe(ItemID.MimicBanner, new int[] { ItemID.DualHook, ItemID.MagicDagger, ItemID.TitanGlove, ItemID.PhilosophersStone, ItemID.CrossNecklace, ItemID.StarCloak, ItemID.Frostbrand, ItemID.IceBow, ItemID.FlowerofFrost, ItemID.ToySled });
-            AddBannerToItemsRecipe(ItemID.ArmoredSkeletonBanner, new int[] { ItemID.ArmorPolish, ItemID.BeamSword });
+            AddBannerToItemsRecipe(ItemID.ArmoredSkeletonBanner, new int[] { ItemID.ArmorPolish, ItemID.BeamSword, ItemID.BoneSword, ItemID.AncientGoldHelmet, ItemID.AncientIronHelmet });
             AddBannerToItemsRecipe(ItemID.BoneLeeBanner, new int[] { ItemID.BlackBelt, ItemID.Tabi });
             AddBannerToItemsRecipe(ItemID.DesertDjinnBanner, new int[] { ItemID.DjinnLamp, ItemID.DjinnsCurse });
             AddBannerToItemsRecipe(ItemID.DesertLamiaBanner, new int[] { ItemID.LamiaHat, ItemID.LamiaShirt, ItemID.LamiaPants, ItemID.MoonMask, ItemID.SunMask });
@@ -487,6 +487,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.QueenBeeTrophy, ItemID.HoneyedGoggles);
             AddBannerToItemRecipe(ItemID.SkeletronTrophy, ItemID.BookofSkulls);
             AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.TheAxe);
+            AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.Seedling);
             AddBannerToItemRecipe(ItemID.DukeFishronTrophy, ItemID.FishronWings);
             //empress of light trophy = stellar tune or empress wings
             //dutchamn trophy = the dutchman cart
@@ -823,7 +824,7 @@ namespace Fargowiltas
             }
 
             // Goodie Bag / Present recipes
-            void AddGrabBagItemRecipe(int result, int grabBag = ItemID.Present, int grabBagAmount = 50, int item2type = -1, int item2amount = 1)
+            void AddGrabBagItemRecipe(int result, int grabBag = ItemID.Present, int grabBagAmount = 10, int item2type = -1, int item2amount = 1)
             {
                 recipe = GetNewRecipe();
                 recipe.AddIngredient(grabBag, grabBagAmount);
@@ -843,7 +844,7 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.FruitcakeChakram);
             AddGrabBagItemRecipe(ItemID.CnadyCanePickaxe);
             AddGrabBagItemRecipe(ItemID.UnluckyYarn, ItemID.GoodieBag);
-            AddGrabBagItemRecipe(ItemID.BatHook, ItemID.GoodieBag, 100);
+            AddGrabBagItemRecipe(ItemID.BatHook, ItemID.GoodieBag, 25);
 
             //wooden
             AddGrabBagItemRecipe(ItemID.SailfishBoots, ItemID.WoodenCrate, 5);

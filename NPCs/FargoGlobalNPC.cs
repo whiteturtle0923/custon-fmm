@@ -23,6 +23,7 @@ namespace Fargowiltas.NPCs
         internal bool SwarmActive;
         internal bool PandoraActive;
         internal bool NoLoot = false;
+        internal bool DestroyerSwarm = false;
 
         public static int eaterBoss = -1;
         public static int brainBoss = -1;
@@ -67,6 +68,48 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.Plantera:
                     plantBoss = npc.whoAmI;
+                    break;
+
+                case NPCID.TheDestroyer:
+                    if (DestroyerSwarm && npc.ai[0] == 0)
+                    {
+                        npc.lifeMax /= 4;
+                        npc.ai[3] = npc.whoAmI;
+                        npc.realLife = npc.whoAmI;
+                        int num2 = npc.whoAmI;
+                        int bodySegments = 8;
+                        for (int j = 0; j <= bodySegments; j++)
+                        {
+                            int num4 = NPCID.TheDestroyerBody;
+                            if (j == bodySegments)
+                            {
+                                num4 = NPCID.TheDestroyerTail;
+                            }
+
+                            int num5 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + npc.height), num4, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                            Main.npc[num5].ai[3] = (float)npc.whoAmI;
+                            Main.npc[num5].realLife = npc.whoAmI;
+                            Main.npc[num5].ai[1] = (float)num2;
+                            Main.npc[num2].ai[0] = (float)num5;
+                            NetMessage.SendData(23, -1, -1, null, num5, 0f, 0f, 0f, 0, 0, 0);
+                            num2 = num5;
+                        }
+
+                        return false;
+                    }
+                    break;
+
+                case NPCID.BlueSlime:
+                    if (FargoWorld.OverloadedSlimeRain && npc.netID == NPCID.GreenSlime)
+                    {
+                        int[] slimes = { NPCID.BlueSlime, NPCID.RedSlime, NPCID.PurpleSlime, NPCID.YellowSlime, NPCID.BlackSlime, NPCID.JungleSlime };
+
+                        npc.SetDefaults(slimes[Main.rand.Next(slimes.Length)]);
+
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npc.whoAmI);
+                    }
+
                     break;
 
                 default:
@@ -412,8 +455,7 @@ namespace Fargowiltas.NPCs
                 pool[NPCID.GoblinThief] = 5f;
                 pool[NPCID.GoblinScout] = 3f;
             }
-
-            if (FargoWorld.OverloadPirates && player.position.X > Main.invasionX * 16.0 - 3000 && player.position.X < Main.invasionX * 16.0 + 3000)
+            else if (FargoWorld.OverloadPirates && player.position.X > Main.invasionX * 16.0 - 3000 && player.position.X < Main.invasionX * 16.0 + 3000)
             {
                 // Literally nothing in the pool in the invasion so set everything to custom
                 if (NPC.CountNPCS(NPCID.PirateShip) < 4)
@@ -429,7 +471,7 @@ namespace Fargowiltas.NPCs
                 pool[NPCID.PirateDeckhand] = 5f;
             }
 
-            if (FargoWorld.OverloadPumpkinMoon)
+            else if (FargoWorld.OverloadPumpkinMoon)
             {
                 pool[NPCID.Pumpking] = 4f;
                 pool[NPCID.MourningWood] = 4f;
@@ -525,9 +567,9 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.WallofFlesh, NPCID.TheHungry, ItemID.WallOfFleshBossBag, ItemID.WallofFleshTrophy, "EnergizerWall");
                         break;
 
-                    /*case mod.NPCType(""):
-                        Swarm(npc, mod.NPCType("Destroyer"), mod.NPCType("DestroyerTail"), ItemID.DestroyerBossBag, "EnergizerDestroy");
-                        break;*/
+                    case NPCID.TheDestroyer:
+                        Swarm(npc, NPCID.TheDestroyer, -1, ItemID.DestroyerBossBag, ItemID.DestroyerTrophy, "EnergizerDestroy");
+                        break;
 
                     case NPCID.Retinazer:
                         Swarm(npc, NPCID.Retinazer, -1, ItemID.TwinsBossBag, ItemID.RetinazerTrophy, "EnergizerTwins");
@@ -600,11 +642,6 @@ namespace Fargowiltas.NPCs
                     case NPCID.DungeonGuardian:
                         Swarm(npc, NPCID.DungeonGuardian, -1, -1, ItemID.BoneKey, "EnergizerDG");
                         break;
-                }
-
-                if (npc.type == mod.NPCType("Destroyer"))
-                {
-                    Swarm(npc, mod.NPCType("Destroyer"), -1, ItemID.DestroyerBossBag, ItemID.DestroyerTrophy, "EnergizerDestroy");
                 }
 
 

@@ -2,6 +2,15 @@ NEW UPDATE - V 2.2.5
 
 -Added Lihzahrd Instactuation Bomb
 
+-Removed Cheapskate's End
+-Destroyer swarm no longer uses custom destroyers, but the Destroyers spawned are still only 10 segments long
+-Added Slimy Stormcaller
+-Reduced Present and Goodie Bag recipes from 50 to 10
+-Armored Skeleton banners can craft into regular skeleton drops (Bone Sword, Ancient Gold and Ancient Iron Helmets)
+-Added Seedling recipe from Plantera's Trophy
+
+
+
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, an instant hellevator, ..........................................

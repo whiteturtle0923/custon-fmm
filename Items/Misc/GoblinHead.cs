@@ -8,6 +8,11 @@ namespace Fargowiltas.Items.Misc
 {
     public class GoblinHead : ModItem
     {
+        public override bool Autoload(ref string name)
+        {
+            return false;
+        }
+
         private static Item target;
         private static bool weapon = false;
         private static bool accessory = false;

@@ -125,6 +125,33 @@ namespace Fargowiltas
                     autoRevertSelectedItem = false;
                 }
             }
+
+            if (FargoWorld.OverloadedSlimeRain && Main.rand.Next(20) == 0)
+            {
+                SlimeRainSpawns();
+            }
+        }
+
+        public void SlimeRainSpawns()
+        {
+            int type = NPCID.GreenSlime;
+
+            int[] slimes = { NPCID.SlimeSpiked, NPCID.SandSlime, NPCID.IceSlime, NPCID.SpikedIceSlime, NPCID.MotherSlime, NPCID.SpikedJungleSlime, NPCID.DungeonSlime, NPCID.UmbrellaSlime, NPCID.ToxicSludge, NPCID.CorruptSlime, NPCID.Crimslime, NPCID.IlluminantSlime };
+
+            int rand = Main.rand.Next(50);
+
+            if (rand == 0)
+            {
+                type = NPCID.Pinky;
+            }
+            else  if(rand < 20)
+            {
+                type = slimes[Main.rand.Next(slimes.Length)];
+            }
+
+            Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250));
+
+            Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, type);
         }
 
         public override void PostUpdateEquips()
