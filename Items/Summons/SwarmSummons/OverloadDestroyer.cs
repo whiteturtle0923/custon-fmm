@@ -1,5 +1,4 @@
 using Fargowiltas.NPCs;
-using Fargowiltas.NPCs.Destroyer;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -10,7 +9,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 {
     public class OverloadDestroyer : SwarmSummonBase
     {
-        public OverloadDestroyer() : base(ModContent.NPCType<Destroyer>(), "The planet trembles from the core!", 10, "MechWorm")
+        public OverloadDestroyer() : base(NPCID.TheDestroyer, "The planet trembles from the core!", 10, "MechWorm")
         {
         }
 
