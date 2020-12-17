@@ -140,7 +140,7 @@ namespace Fargowiltas.NPCs
             button = Language.GetTextValue("LegacyInterface.28");
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
-                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant") ? "Lore" : "Help";
+                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "Receive Gift";
             }
         }
 
@@ -152,9 +152,9 @@ namespace Fargowiltas.NPCs
             }
             else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
-                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
+                /*if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
                     FargosLore();
-                else
+                else*/
                     Fargos();
             }
         }

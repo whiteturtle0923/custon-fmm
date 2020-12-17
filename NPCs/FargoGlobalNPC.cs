@@ -591,6 +591,10 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.Golem, NPCID.GolemHeadFree, ItemID.GolemBossBag, ItemID.GolemTrophy, "EnergizerGolem");
                         break;
 
+                    case NPCID.DD2Betsy:
+                        Swarm(npc, NPCID.DD2Betsy, NPCID.DD2WyvernT3, ItemID.BossBagBetsy, ItemID.BossTrophyBetsy, "EnergizerBetsy");
+                        break;
+
                     case NPCID.DukeFishron:
                         Swarm(npc, NPCID.DukeFishron, NPCID.Sharkron, ItemID.FishronBossBag, ItemID.DukeFishronTrophy, "EnergizerFish");
                         break;

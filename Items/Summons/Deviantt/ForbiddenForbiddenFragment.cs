@@ -10,7 +10,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Forbidden Forbidden Fragment");
+            DisplayName.SetDefault("Illegal Shard");
             Tooltip.SetDefault("Summons Sand Elemental");
         }
     }
