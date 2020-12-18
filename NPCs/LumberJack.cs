@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Fargowiltas.Items.Tiles;
 using Fargowiltas.Items.Vanity;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -15,7 +16,6 @@ namespace Fargowiltas.NPCs
     {
         private bool dayOver;
         private bool nightOver;
-        //private int woodAmount = 100;
 
         public override bool Autoload(ref string name)
         {
@@ -60,7 +60,7 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownnpcs, int money)
         {
-            return GetInstance<FargoConfig>().Lumber && (FargoWorld.MovedLumberjack || Main.player.Where(player => player.active).Any(player => player.HasItem(ItemType<Items.Tiles.WoodenToken>())));
+            return GetInstance<FargoConfig>().Lumber && FargoWorld.MovedLumberjack;
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
@@ -335,6 +335,10 @@ namespace Fargowiltas.NPCs
 
             shop.item[nextSlot].SetDefaults(ItemID.SharpeningStation);
             shop.item[nextSlot].value = 100000;
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<WoodenToken>());
+            shop.item[nextSlot].value = 10000;
             nextSlot++;
         }
 

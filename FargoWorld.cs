@@ -14,6 +14,7 @@ namespace Fargowiltas
     {
         internal static int AbomClearCD;
         internal static bool MovedLumberjack;
+        internal static int WoodChopped;
 
         internal static bool OverloadGoblins;
         internal static bool OverloadPirates;
@@ -75,6 +76,7 @@ namespace Fargowiltas
             }
 
             AbomClearCD = 0;
+            WoodChopped = 0;
 
             OverloadGoblins = false;
             OverloadPirates = false;
@@ -117,6 +119,7 @@ namespace Fargowiltas
             }
 
             AbomClearCD = reader.ReadInt32();
+            WoodChopped = reader.ReadInt32();
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -127,6 +130,7 @@ namespace Fargowiltas
             }
 
             writer.Write(AbomClearCD);
+            writer.Write(WoodChopped);
         }
 
         public override void PostUpdate()

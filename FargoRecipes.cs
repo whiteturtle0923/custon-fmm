@@ -227,7 +227,6 @@ namespace Fargowiltas
                 ModContent.ItemType<PartyGirl>(),
                 ModContent.ItemType<Pirate>(),
                 ModContent.ItemType<SantaClaus>(),
-                ModContent.ItemType<SkeletonMerchant>(),
                 ModContent.ItemType<Steampunker>(),
                 ModContent.ItemType<Stylist>(),
                 ModContent.ItemType<Tavernkeep>(),
@@ -1005,7 +1004,7 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
-            recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
+            recipe.AddIngredient(ModContent.ItemType<SkeletonMerchant>());
             recipe.AddTile(TileID.BoneWelder);
             recipe.SetResult(ItemID.Bone, 25);
             recipe.AddRecipe();
@@ -1083,7 +1082,13 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             //travelling merch recipes 
-            
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Wood, 500);
+            recipe.AddIngredient(ModContent.ItemType<TravellingMerchant>());
+            recipe.AddTile(TileID.CookingPots);
+            recipe.SetResult(ItemID.DynastyWood, 500);
+            recipe.AddRecipe();
+
             //common items - 1 merchant, 2x price
             recipe = GetNewRecipe();
             recipe.AddIngredient(null, "TravellingMerchant");

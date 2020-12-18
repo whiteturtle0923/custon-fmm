@@ -138,7 +138,7 @@ namespace Fargowiltas
             {
                 censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Defeat any rare enemy or... embrace eternity");
                 censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
-                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Have a Wooden Token ([i:{ModContent.ItemType<Items.Tiles.WoodenToken>()}]) in your inventory");
+                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Chop down enough trees");
                 censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
                 Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
                 if (fargoSouls != null)
