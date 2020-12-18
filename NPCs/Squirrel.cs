@@ -140,10 +140,27 @@ namespace Fargowiltas.NPCs
         {
             const int maxShop = 40;
 
+            bool duplicateItem = false;
+
+            if (item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield)
+            {
+                foreach (Item item2 in shop.item)
+                {
+                    if (item2.type == ItemID.CellPhone || item2.type == ItemID.AnkhShield)
+                    {
+                        duplicateItem = true;
+                        break;
+                    }
+                }
+                if (duplicateItem == false && nextSlot < maxShop)
+                {
+                    shop.item[nextSlot].SetDefaults(item.type);
+                    nextSlot++;
+                }
+            }
+
             if (item.modItem == null || (!item.modItem.mod.Name.Equals("FargowiltasSouls") && !item.modItem.mod.Name.Equals("FargowiltasSoulsDLC")) || nextSlot >= maxShop)
                 return;
-
-            bool duplicateItem = false;
 
             if (item.Name.EndsWith("Enchantment"))
             {
@@ -284,6 +301,22 @@ namespace Fargowiltas.NPCs
                 if (duplicateItem == false && nextSlot < maxShop)
                 {
                     shop.item[nextSlot].SetDefaults(ItemID.BalloonHorseshoeFart);
+                    nextSlot++;
+                }
+            }
+            else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("BionomicCluster"))
+            {
+                foreach (Item item2 in shop.item)
+                {
+                    if (item2.type == item.type)
+                    {
+                        duplicateItem = true;
+                        break;
+                    }
+                }
+                if (duplicateItem == false && nextSlot < maxShop)
+                {
+                    shop.item[nextSlot].SetDefaults(item.type);
                     nextSlot++;
                 }
             }

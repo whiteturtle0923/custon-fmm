@@ -18,12 +18,19 @@ NEW UPDATE - V 2.2.5
 -Lumberjack now moves in after gathering 500 wood from chopped trees
 -Wooden Token is no longer crafted, sold by Lumberjack as vanity only
 
+-Fixed summons not always being sold immediately for some enemies after being unlocked in multiplayer
+-Fixed Super Dummy right click not working in multiplayer
+-Fixed Desert Fountain not classifying the player as in underground Desert when underground
+-Squirrel sells duplicates for Ankh Shield, Cell Phone, and Bionomic Cluster
+-Cascade recipe requires a single Bone, making it post-Skeletron
+
 -Updated Lumberjack Census
 -Painter sells underground paintings in all of the dirt layer as well now
 -Re added Ice Crate, Shadow Crate, Shadow Lock Box
 -Skeleton Merchant can no longer craft into flesh or paint, now he is the only npc that can craft into bones
 -Construction accessories will work fromm piggy bank as well
 -Added toggle for anything working in piggy bank
+
 
 
 

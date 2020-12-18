@@ -208,6 +208,8 @@ namespace Fargowiltas
                         break;
                     case 6:
                         player.ZoneDesert = true;
+                        if (player.Center.Y > 3200f)
+                            player.ZoneUndergroundDesert = true;
                         break;
                     case 3:
                         player.ZoneJungle = true;

@@ -147,12 +147,12 @@ namespace Fargowiltas
                 }
             }
 
-            Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
+            /*Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
             if (soulsMod != null)
             {
                 if (!ModRareEnemies.ContainsKey(soulsMod.NPCType("BabyGuardian")))
                     ModRareEnemies.Add(soulsMod.NPCType("BabyGuardian"), "babyGuardian");
-            }
+            }*/
         }
 
         public override object Call(params object[] args)
