@@ -7,18 +7,31 @@ NEW UPDATE - V 2.2.5
 -Added Dragon Egg Tray
 -Added Draco Energizer
 
+-Added Slimy Stormcaller
 -Removed Cheapskate's End
 -Destroyer swarm no longer uses custom destroyers, but the Destroyers spawned are still only 10 segments long
--Added Slimy Stormcaller
 -Reduced Present and Goodie Bag recipes from 50 to 10
 -Armored Skeleton banners can craft into regular skeleton drops (Bone Sword, Ancient Gold and Ancient Iron Helmets)
 -Added Seedling recipe from Plantera's Trophy
+-Added recipe converting Wood to Dynasty Wood
+-Forbidden Forbidden Fragment returns
+-Lumberjack now moves in after gathering 500 wood from chopped trees
+-Wooden Token is no longer crafted, sold by Lumberjack as vanity only
 
 -Fixed summons not always being sold immediately for some enemies after being unlocked in multiplayer
 -Fixed Super Dummy right click not working in multiplayer
 -Fixed Desert Fountain not classifying the player as in underground Desert when underground
 -Squirrel sells duplicates for Ankh Shield, Cell Phone, and Bionomic Cluster
 -Cascade recipe requires a single Bone, making it post-Skeletron
+
+-Updated Lumberjack Census
+-Painter sells underground paintings in all of the dirt layer as well now
+-Re added Ice Crate, Shadow Crate, Shadow Lock Box
+-Skeleton Merchant can no longer craft into flesh or paint, now he is the only npc that can craft into bones
+-Construction accessories will work fromm piggy bank as well
+-Added toggle for anything working in piggy bank
+
+
 
 
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod

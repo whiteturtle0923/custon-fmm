@@ -156,29 +156,31 @@ namespace Fargowiltas
 
         public override void PostUpdateEquips()
         {
-            Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
-            
             if (Fargowiltas.SwarmActive)
             {
                 player.buffImmune[BuffID.Horrified] = true;
             }
 
-            
-            for (int i = 0; i < player.bank.item.Length; i++)
+            if (GetInstance<FargoConfig>().PiggyBankAcc)
             {
-                Item item = player.bank.item[i];
-
-                if (item.active && Array.IndexOf(Informational, item.type) > -1)
+                for (int i = 0; i < player.bank.item.Length; i++)
                 {
-                    Item item2 = new Item();
-                    item2.SetDefaults(item.type);
+                    Item item = player.bank.item[i];
 
-                    player.VanillaUpdateEquip(item2);
+                    if (item.active && Array.IndexOf(Informational, item.type) > -1)
+                    {
+                        Item item2 = new Item();
+                        item2.SetDefaults(item.type);
+
+                        player.VanillaUpdateEquip(item2);
+                    }
                 }
             }
+            
+            
         }
 
-        int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.DPSMeter, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone};
+        int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.DPSMeter, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone, ItemID.Toolbelt, ItemID.Toolbox, ItemID.ArchitectGizmoPack, ItemID.ExtendoGrip, ItemID.PaintSprayer, ItemID.BrickLayer, ItemID.PortableCementMixer, ItemID.ActuationAccessory};
 
         public override void UpdateBiomes()
         {
@@ -274,6 +276,37 @@ namespace Fargowiltas
                 if (use)
                 {
                     player.ItemCheck(Main.myPlayer);
+                }
+            }
+        }
+
+        public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
+        {
+            int num15 = 150;
+            int num18 = num15 * 7 / power;
+            if (num18 < 4)
+            {
+                num18 = 4;
+            }
+            bool flag5 = false;
+            if (Main.rand.Next(num18) == 0)
+            {
+                flag5 = true;
+            }
+            int num21 = 10;
+            if (player.cratePotion)
+            {
+                num21 += 10;
+            }
+            if (Main.rand.Next(100) < num21)
+            {
+                if (flag5 && liquidType == 0 && player.ZoneSnow)
+                {
+                    caughtType = mod.ItemType("IceCrate");
+                }
+                else if (flag5 && liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
+                {
+                    caughtType = mod.ItemType("ShadowCrate");
                 }
             }
         }

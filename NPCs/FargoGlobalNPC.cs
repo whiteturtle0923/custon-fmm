@@ -259,7 +259,7 @@ namespace Fargowiltas.NPCs
                             shop.item[nextSlot++].SetDefaults(ItemID.TheTwinsHaveAwoken);
                             shop.item[nextSlot++].SetDefaults(ItemID.UnicornCrossingtheHallows);
                         }
-                        else if (player.ZoneRockLayerHeight)
+                        else if (player.ZoneRockLayerHeight || player.ZoneDirtLayerHeight)
                         {
                             nextSlot = 19;
 

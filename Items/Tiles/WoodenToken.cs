@@ -26,7 +26,7 @@ namespace Fargowiltas.Items.Tiles
             item.createTile = mod.TileType("WoodenTokenSheet");
         }
 
-        public override void AddRecipes()
+        /*public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Wood, 25);
@@ -37,6 +37,6 @@ namespace Fargowiltas.Items.Tiles
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
+        }*/
     }
 }

@@ -34,6 +34,19 @@ namespace Fargowiltas.Tiles
             return base.AdjTiles(type);
         }
 
+        public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
+        {
+            if (type == TileID.Trees && !FargoWorld.MovedLumberjack && !fail)
+            {
+                FargoWorld.WoodChopped++;
+
+                if (FargoWorld.WoodChopped > 500)
+                {
+                    FargoWorld.MovedLumberjack = true;
+                }
+            }
+        }
+
         internal static void DestroyChest(int x, int y)
         {
             int chestType = 1;
