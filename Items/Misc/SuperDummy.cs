@@ -48,9 +48,7 @@ namespace Fargowiltas.Items.Misc
                         Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0, 0, false, false, false);
 
                         if (Main.netMode == NetmodeID.MultiplayerClient)
-                        {
-                            NetMessage.SendData(MessageID.StrikeNPC, -1, -1, null, i, int.MaxValue, 0, 0, 0, 0, 0);
-                        }
+                            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, i);
                     }
                 }
             }

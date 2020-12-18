@@ -344,10 +344,12 @@ namespace Fargowiltas
         private static void AddBannerToItemRecipes()
         {
             ModRecipe recipe;
-            void AddBannerToItemRecipe(int banner, int result, int bannerAmount = 1, int resultAmount = 1)
+            void AddBannerToItemRecipe(int banner, int result, int bannerAmount = 1, int resultAmount = 1, int item2type = -1, int item2amount = 1)
             {
                 recipe = GetNewRecipe();
                 recipe.AddIngredient(banner, bannerAmount);
+                if (item2type > -1)
+                    recipe.AddIngredient(item2type, item2amount);
                 recipe.AddTile(TileID.Solidifier);
                 recipe.SetResult(result, resultAmount);
                 recipe.AddRecipe();
@@ -414,7 +416,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.JungleBatBanner, ItemID.DepthMeter);
             AddBannerToItemRecipe(ItemID.JungleCreeperBanner, ItemID.Yelets);
             AddBannerToItemRecipe(ItemID.LavaBatBanner, ItemID.HelFire);
-            AddBannerToItemRecipe(ItemID.LavaSlimeBanner, ItemID.Cascade);
+            AddBannerToItemRecipe(ItemID.LavaSlimeBanner, ItemID.Cascade, item2type: ItemID.Bone);
             AddBannerToItemRecipe(ItemID.LihzahrdBanner, ItemID.LizardEgg);
             AddBannerToItemRecipe(ItemID.MartianScutlixGunnerBanner, ItemID.BrainScrambler);
             AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.MothronWings);

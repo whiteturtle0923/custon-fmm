@@ -718,6 +718,23 @@ namespace Fargowiltas.NPCs
 
         public override void NPCLoot(NPC npc)
         {
+            void TryDowned(params string[] names)
+            {
+                bool update = false;
+
+                foreach (string name in names)
+                {
+                    if (!FargoWorld.DownedBools[name])
+                    {
+                        FargoWorld.DownedBools[name] = true;
+                        update = true;
+                    }
+                }
+
+                if (update && Main.netMode == NetmodeID.Server)
+                    NetMessage.SendData(MessageID.WorldData); //sync world
+            };
+
             // Lumber Jaxe
             if (npc.FindBuffIndex(mod.BuffType("WoodDrop")) != -1)
             {
@@ -884,12 +901,12 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.GiantWormHead:
                 case NPCID.DiggerHead:
-                    FargoWorld.DownedBools["worm"] = true;
+                    TryDowned("worm");
                     break;
 
                 case NPCID.DD2OgreT2:
                 case NPCID.DD2OgreT3:
-                    FargoWorld.DownedBools["ogre"] = true;
+                    TryDowned("ogre");
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.NextBool(14))
@@ -906,7 +923,7 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.DD2DarkMageT1:
                 case NPCID.DD2DarkMageT3:
-                    FargoWorld.DownedBools["darkMage"] = true;
+                    TryDowned("darkMage");
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.NextBool(14))
@@ -963,134 +980,108 @@ namespace Fargowiltas.NPCs
                 case NPCID.Clown:
                     Item.NewItem(npc.Hitbox, ItemID.Bananarang);
 
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["clown"] = true;
+                    TryDowned("rareEnemy", "clown");
                     break;
 
                 case NPCID.BlueSlime:
                     if (npc.netID == NPCID.Pinky)
                     {
-                        FargoWorld.DownedBools["rareEnemy"] = true;
-                        FargoWorld.DownedBools["pinky"] = true;
+                        TryDowned("rareEnemy", "pinky");
                     }
-
                     break;
 
                 case NPCID.UndeadMiner:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["undeadMiner"] = true;
+                    TryDowned("rareEnemy", "undeadMiner");
                     break;
 
                 case NPCID.Tim:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["tim"] = true;
+                    TryDowned("rareEnemy", "tim");
                     break;
 
                 case NPCID.DoctorBones:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["doctorBones"] = true;
+                    TryDowned("rareEnemy", "doctorBones");
                     break;
 
                 case NPCID.Mimic:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["mimic"] = true;
+                    TryDowned("rareEnemy", "mimic");
                     break;
 
                 case NPCID.WyvernHead:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["wyvern"] = true;
+                    TryDowned("rareEnemy", "wyvern");
                     break;
 
                 case NPCID.RuneWizard:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["runeWizard"] = true;
+                    TryDowned("rareEnemy", "runeWizard");
                     break;
 
                 case NPCID.Nymph:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["nymph"] = true;
+                    TryDowned("rareEnemy", "nymph");
                     break;
 
                 case NPCID.Moth:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["moth"] = true;
+                    TryDowned("rareEnemy", "moth");
                     break;
 
                 case NPCID.RainbowSlime:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["rainbowSlime"] = true;
+                    TryDowned("rareEnemy", "rainbowSlime");
                     break;
 
                 case NPCID.Paladin:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["paladin"] = true;
+                    TryDowned("rareEnemy", "paladin");
                     break;
 
                 case NPCID.Medusa:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["medusa"] = true;
+                    TryDowned("rareEnemy", "medusa");
                     break;
 
                 case NPCID.IceGolem:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["iceGolem"] = true;
+                    TryDowned("rareEnemy", "iceGolem");
                     break;
 
                 case NPCID.SandElemental:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["sandElemental"] = true;
+                    TryDowned("rareEnemy", "sandElemental");
                     break;
 
                 case NPCID.Mothron:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["mothron"] = true;
+                    TryDowned("rareEnemy", "mothron");
                     break;
 
                 case NPCID.BigMimicCorruption:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["mimicCorrupt"] = true;
+                    TryDowned("rareEnemy", "mimicCorrupt");
                     break;
 
                 case NPCID.BigMimicHallow:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["mimicHallow"] = true;
+                    TryDowned("rareEnemy", "mimicHallow");
                     break;
 
                 case NPCID.BigMimicCrimson:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["mimicCrimson"] = true;
+                    TryDowned("rareEnemy", "mimicCrimson");
                     break;
 
                 case NPCID.BigMimicJungle:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["mimicJungle"] = true;
+                    TryDowned("rareEnemy", "mimicJungle");
                     break;
 
                 case NPCID.GoblinSummoner:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["goblinSummoner"] = true;
+                    TryDowned("rareEnemy", "goblinSummoner");
                     break;
 
                 case NPCID.PirateShip:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["flyingDutchman"] = true;
+                    TryDowned("rareEnemy", "flyingDutchman");
                     break;
 
                 case NPCID.DungeonSlime:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["dungeonSlime"] = true;
+                    TryDowned("rareEnemy", "dungeonSlime");
                     break;
 
                 case NPCID.PirateCaptain:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["pirateCaptain"] = true;
+                    TryDowned("rareEnemy", "pirateCaptain");
                     break;
 
                 case NPCID.SkeletonSniper:
                 case NPCID.TacticalSkeleton:
                 case NPCID.SkeletonCommando:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["skeletonGun"] = true;
+                    TryDowned("rareEnemy", "skeletonGun");
                     break;
 
                 case NPCID.Necromancer:
@@ -1099,17 +1090,15 @@ namespace Fargowiltas.NPCs
                 case NPCID.DiabolistWhite:
                 case NPCID.RaggedCaster:
                 case NPCID.RaggedCasterOpenCoat:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["skeletonMage"] = true;
+                    TryDowned("rareEnemy", "skeletonMage");
                     break;
 
                 case NPCID.BoneLee:
-                    FargoWorld.DownedBools["rareEnemy"] = true;
-                    FargoWorld.DownedBools["boneLee"] = true;
+                    TryDowned("rareEnemy", "boneLee");
                     break;
 
                 case NPCID.HeadlessHorseman:
-                    FargoWorld.DownedBools["headlessHorseman"] = true;
+                    TryDowned("headlessHorseman");
                     break;
 
                 default:
@@ -1118,8 +1107,7 @@ namespace Fargowiltas.NPCs
 
             if (Fargowiltas.ModRareEnemies.ContainsKey(npc.type))
             {
-                FargoWorld.DownedBools["rareEnemy"] = true;
-                FargoWorld.DownedBools[Fargowiltas.ModRareEnemies[npc.type]] = true;
+                TryDowned("rareEnemy", Fargowiltas.ModRareEnemies[npc.type]);
             }
         }
 
