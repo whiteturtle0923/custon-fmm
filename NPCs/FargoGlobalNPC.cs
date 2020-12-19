@@ -23,7 +23,7 @@ namespace Fargowiltas.NPCs
         internal bool SwarmActive;
         internal bool PandoraActive;
         internal bool NoLoot = false;
-        internal bool DestroyerSwarm = false;
+        //internal bool DestroyerSwarm = false;
 
         public static int eaterBoss = -1;
         public static int brainBoss = -1;
@@ -71,31 +71,141 @@ namespace Fargowiltas.NPCs
                     break;
 
                 case NPCID.TheDestroyer:
-                    if (DestroyerSwarm && npc.ai[0] == 0)
+                    if (SwarmActive)
                     {
-                        npc.lifeMax /= 4;
-                        npc.ai[3] = npc.whoAmI;
-                        npc.realLife = npc.whoAmI;
-                        int num2 = npc.whoAmI;
-                        int bodySegments = 8;
-                        for (int j = 0; j <= bodySegments; j++)
+                        if (npc.ai[0] == 0)
                         {
-                            int num4 = NPCID.TheDestroyerBody;
-                            if (j == bodySegments)
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                                return false;
+
+                            for (int i = 0; i < Main.maxNPCs; i++) //purge segments i shouldn't have
                             {
-                                num4 = NPCID.TheDestroyerTail;
+                                if (Main.npc[i].active && (Main.npc[i].type == NPCID.TheDestroyerBody || Main.npc[i].type == NPCID.TheDestroyerTail) && Main.npc[i].realLife == npc.whoAmI)
+                                {
+                                    npc.life = 0;
+                                    npc.HitEffect();
+                                    npc.active = false;
+                                    if (Main.netMode == NetmodeID.Server)
+                                        NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                                }
                             }
 
-                            int num5 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + npc.height), num4, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                            Main.npc[num5].ai[3] = (float)npc.whoAmI;
-                            Main.npc[num5].realLife = npc.whoAmI;
-                            Main.npc[num5].ai[1] = (float)num2;
-                            Main.npc[num2].ai[0] = (float)num5;
-                            NetMessage.SendData(23, -1, -1, null, num5, 0f, 0f, 0f, 0, 0, 0);
-                            num2 = num5;
+                            npc.lifeMax /= 4;
+                            if (npc.life > npc.lifeMax)
+                                npc.life = npc.lifeMax;
+                            npc.ai[3] = npc.whoAmI;
+                            npc.realLife = npc.whoAmI;
+                            int prev = npc.whoAmI;
+                            int bodySegments = 9;
+                            for (int j = 0; j < bodySegments; j++)
+                            {
+                                int type = NPCID.TheDestroyerBody;
+                                if (j == bodySegments - 1)
+                                {
+                                    type = NPCID.TheDestroyerTail;
+                                }
+
+                                int n = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + npc.height), type, npc.whoAmI);
+                                Main.npc[n].ai[3] = npc.whoAmI;
+                                Main.npc[n].realLife = npc.whoAmI;
+                                Main.npc[n].ai[1] = prev;
+                                Main.npc[prev].ai[0] = n;
+                                Main.npc[n].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
+                                if (Main.netMode == NetmodeID.Server)
+                                    NetMessage.SendData(MessageID.SyncNPC, number: n);
+                                prev = n;
+                            }
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                            return false;
+                        }
+                        /*else
+                        {
+                            int count = 0;
+                            for (int i = 0; i < Main.maxNPCs; i++) //confirm i have exactly the right number of segments behind me
+                            {
+                                if (Main.npc[i].active && (Main.npc[i].type == NPCID.TheDestroyerBody || Main.npc[i].type == NPCID.TheDestroyerTail) && Main.npc[i].realLife == npc.whoAmI)
+                                {
+                                    count++;
+                                    if (count > 9)
+                                        break;
+                                }
+                            }
+
+                            if (count != 9) //if not exactly the right pieces, die
+                            {
+                                Main.NewText("head killed by wrong count, " + count.ToString());
+                                npc.life = 0;
+                                npc.HitEffect();
+                                npc.active = false;
+                                if (Main.netMode == NetmodeID.Server)
+                                    NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                            }
+                        }*/
+                    }
+                    break;
+
+                case NPCID.TheDestroyerBody:
+                case NPCID.TheDestroyerTail:
+                    if (SwarmActive)// && Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        //kill if real life is invalid
+                        if (!(npc.realLife > -1 && npc.realLife < Main.maxNPCs && Main.npc[npc.realLife].active && Main.npc[npc.realLife].type == NPCID.TheDestroyer))
+                        {
+                            //Main.NewText("body realLife invalid, die");
+                            npc.life = 0;
+                            npc.HitEffect();
+                            npc.active = false;
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                            return false;
                         }
 
-                        return false;
+                        int prev = npc.whoAmI;
+                        int segment = (int)npc.ai[1];
+                        int i = 0;
+                        const int maxLength = 9;
+                        for (; i < maxLength; i++) //iterate upwards along destroyer's body
+                        {
+                            if (segment > -1 && segment < Main.maxNPCs && Main.npc[segment].active && Main.npc[segment].type == NPCID.TheDestroyerBody
+                                && Main.npc[segment].ai[3] == npc.ai[3] && Main.npc[segment].ai[0] == Main.npc[prev].whoAmI)
+                            {
+                                prev = segment;
+                                segment = (int)Main.npc[segment].ai[1]; //continue if next is a valid BODY segment
+                            }
+                            else
+                            {
+                                break; //stop otherwise (this includes if head is found early, which is okay!)
+                            }
+                        }
+
+                        //if last segment seen is indeed destroyer head
+                        if (segment > -1 && segment < Main.maxNPCs && Main.npc[segment].active && Main.npc[segment].type == NPCID.TheDestroyer)
+                        {
+                            if (i == maxLength && npc.type != NPCID.TheDestroyerTail) //i am the furthest possible segment, become tail
+                            {
+                                //Main.NewText("body: become tail");
+                                npc.type = NPCID.TheDestroyerTail;
+                                npc.ai[0] = 0f;
+                                npc.ai[2] = 0f;
+                                npc.localAI[0] = 0f;
+                                npc.localAI[1] = 0f;
+                                npc.localAI[2] = 0f;
+                                npc.localAI[3] = 0f;
+                                if (Main.netMode == NetmodeID.Server)
+                                    NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                            }
+                        }
+                        else //last segment seen isn't destroyer head, die
+                        {
+                            //Main.NewText("body killed by wrong lead");
+                            npc.life = 0;
+                            npc.HitEffect();
+                            npc.active = false;
+                            if (Main.netMode == NetmodeID.Server)
+                                NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                            return false;
+                        }
                     }
                     break;
 
@@ -535,7 +645,7 @@ namespace Fargowiltas.NPCs
                 return false;
             }
 
-            if (SwarmActive && Fargowiltas.SwarmActive)
+            if (SwarmActive && Fargowiltas.SwarmActive && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 switch (npc.type)
                 {
@@ -568,7 +678,7 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.TheDestroyer:
-                        Swarm(npc, NPCID.TheDestroyer, -1, ItemID.DestroyerBossBag, ItemID.DestroyerTrophy, "EnergizerDestroy");
+                        Swarm(npc, NPCID.TheDestroyer, NPCID.Probe, ItemID.DestroyerBossBag, ItemID.DestroyerTrophy, "EnergizerDestroy");
                         break;
 
                     case NPCID.Retinazer:

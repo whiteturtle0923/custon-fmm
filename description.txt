@@ -32,6 +32,7 @@ NEW UPDATE - V 2.2.5
 
 -Restored Ice/Shadow Crate recipes
 -Squirrel sells duplicates for Ankh Shield, Cell Phone, and Bionomic Cluster
+-Fixed(?) Destroyer swarm
 
 
 

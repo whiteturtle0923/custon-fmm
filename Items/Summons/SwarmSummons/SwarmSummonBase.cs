@@ -99,7 +99,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                     }
                     else if (npcType == NPCID.TheDestroyer)
                     {
-                        Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().DestroyerSwarm = true;
+                        //Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().DestroyerSwarm = true;
                     }
                 }
             }
