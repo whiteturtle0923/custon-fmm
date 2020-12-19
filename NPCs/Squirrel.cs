@@ -146,7 +146,7 @@ namespace Fargowiltas.NPCs
             {
                 foreach (Item item2 in shop.item)
                 {
-                    if (item2.type == ItemID.CellPhone || item2.type == ItemID.AnkhShield)
+                    if (item2.type == item.type)
                     {
                         duplicateItem = true;
                         break;

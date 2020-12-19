@@ -21,7 +21,6 @@ NEW UPDATE - V 2.2.5
 -Fixed summons not always being sold immediately for some enemies after being unlocked in multiplayer
 -Fixed Super Dummy right click not working in multiplayer
 -Fixed Desert Fountain not classifying the player as in underground Desert when underground
--Squirrel sells duplicates for Ankh Shield, Cell Phone, and Bionomic Cluster
 -Cascade recipe requires a single Bone, making it post-Skeletron
 
 -Updated Lumberjack Census
@@ -30,6 +29,9 @@ NEW UPDATE - V 2.2.5
 -Skeleton Merchant can no longer craft into flesh or paint, now he is the only npc that can craft into bones
 -Construction accessories will work fromm piggy bank as well
 -Added toggle for anything working in piggy bank
+
+-Restored Ice/Shadow Crate recipes
+-Squirrel sells duplicates for Ankh Shield, Cell Phone, and Bionomic Cluster
 
 
 

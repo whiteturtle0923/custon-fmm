@@ -4,6 +4,7 @@ using Fargowiltas.Items.Summons.Deviantt;
 using Fargowiltas.Items.Summons.Abom;
 using Fargowiltas.Items.Summons.SwarmSummons;
 using Fargowiltas.Items.Summons.Mutant;
+using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Terraria;
 using Terraria.ID;
@@ -941,15 +942,15 @@ namespace Fargowiltas
             //same but change recipe to 1 lockbox and 1 key
 
             //frozen crate
-            /*AddGrabBagItemRecipe(ItemID.SnowballCannon, ModContent.ItemType<IceCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.BlizzardinaBottle, ModContent.ItemType<IceCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.IceBlade, ModContent.ItemType<IceCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.IceSkates, ModContent.ItemType<IceCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.IceMirror, ModContent.ItemType<IceCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.FlurryBoots, ModContent.ItemType<IceCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.IceBoomerang, ModContent.ItemType<IceCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.IceMachine, ModContent.ItemType<IceCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.Fish, ModContent.ItemType<IceCrate>(), 10);*/
+            AddGrabBagItemRecipe(ItemID.SnowballCannon, ModContent.ItemType<IceCrate>(), 3);
+            AddGrabBagItemRecipe(ItemID.BlizzardinaBottle, ModContent.ItemType<IceCrate>(), 3);
+            AddGrabBagItemRecipe(ItemID.IceBlade, ModContent.ItemType<IceCrate>(), 3);
+            AddGrabBagItemRecipe(ItemID.IceSkates, ModContent.ItemType<IceCrate>(), 3);
+            AddGrabBagItemRecipe(ItemID.IceMirror, ModContent.ItemType<IceCrate>(), 3);
+            AddGrabBagItemRecipe(ItemID.FlurryBoots, ModContent.ItemType<IceCrate>(), 3);
+            AddGrabBagItemRecipe(ItemID.IceBoomerang, ModContent.ItemType<IceCrate>(), 3);
+            AddGrabBagItemRecipe(ItemID.IceMachine, ModContent.ItemType<IceCrate>(), 3);
+            AddGrabBagItemRecipe(ItemID.Fish, ModContent.ItemType<IceCrate>(), 3);
             //boreal crate (same stuff)
 
             //oasis crate
@@ -965,11 +966,11 @@ namespace Fargowiltas
             //10 for slice of hell cake and ornate shadow key
             //5 for lava charm
             //1 for lavaproof fishing hook, superheated blood, flame waker boots, demonic hellcart
-            /*AddGrabBagItemRecipe(ItemID.DarkLance, ModContent.ItemType<ShadowCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.HellwingBow, ModContent.ItemType<ShadowCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.Flamelash, ModContent.ItemType<ShadowCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.FlowerofFire, ModContent.ItemType<ShadowCrate>(), 1);
-            AddGrabBagItemRecipe(ItemID.Sunfury, ModContent.ItemType<ShadowCrate>(), 1);*/
+            AddGrabBagItemRecipe(ItemID.DarkLance, ModContent.ItemType<ShadowCrate>(), 3, ItemID.ShadowKey);
+            AddGrabBagItemRecipe(ItemID.HellwingBow, ModContent.ItemType<ShadowCrate>(), 3, ItemID.ShadowKey);
+            AddGrabBagItemRecipe(ItemID.Flamelash, ModContent.ItemType<ShadowCrate>(), 3, ItemID.ShadowKey);
+            AddGrabBagItemRecipe(ItemID.FlowerofFire, ModContent.ItemType<ShadowCrate>(), 3, ItemID.ShadowKey);
+            AddGrabBagItemRecipe(ItemID.Sunfury, ModContent.ItemType<ShadowCrate>(), 3, ItemID.ShadowKey);
             //treasure magnet
             //hellstone (same)
 
