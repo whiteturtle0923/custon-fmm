@@ -19,7 +19,6 @@ NEW UPDATE - V 2.2.5
 -Wooden Token is no longer crafted, sold by Lumberjack as vanity only
 
 -Fixed summons not always being sold immediately for some enemies after being unlocked in multiplayer
--Fixed Super Dummy right click not working in multiplayer
 -Fixed Desert Fountain not classifying the player as in underground Desert when underground
 -Cascade recipe requires a single Bone, making it post-Skeletron
 
@@ -32,7 +31,10 @@ NEW UPDATE - V 2.2.5
 
 -Restored Ice/Shadow Crate recipes
 -Squirrel sells duplicates for Ankh Shield, Cell Phone, and Bionomic Cluster
+
+-Fixed Super Dummy right click not working in multiplayer
 -Fixed(?) Destroyer swarm
+-Fixed Golem swarm being annoyingly invincible
 
 
 

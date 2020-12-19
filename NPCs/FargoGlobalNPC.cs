@@ -126,7 +126,7 @@ namespace Fargowiltas.NPCs
                             }
                             return false;
                         }
-                        /*else
+                        else if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             int count = 0;
                             for (int i = 0; i < Main.maxNPCs; i++) //confirm i have exactly the right number of segments behind me
@@ -141,14 +141,20 @@ namespace Fargowiltas.NPCs
 
                             if (count != 9) //if not exactly the right pieces, die
                             {
-                                Main.NewText("head killed by wrong count, " + count.ToString());
                                 npc.life = 0;
                                 npc.HitEffect();
                                 npc.active = false;
                                 if (Main.netMode == NetmodeID.Server)
+                                {
+                                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("head killed by wrong count, " + count.ToString()), Color.White);
                                     NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                                }
+                                else
+                                {
+                                    Main.NewText("head killed by wrong count, " + count.ToString());
+                                }
                             }
-                        }*/
+                        }
                     }
                     break;
 
@@ -253,6 +259,12 @@ namespace Fargowiltas.NPCs
                     SwarmActive = true;
                 }
             }
+        }
+
+        public override void PostAI(NPC npc)
+        {
+            if (SwarmActive && npc.type == NPCID.Golem)
+                npc.dontTakeDamage = false; //always vulnerable in swarm
         }
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
