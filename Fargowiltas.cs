@@ -250,7 +250,16 @@ namespace Fargowiltas
                     {
                         Main.AnglerQuestSwap();
                     }
+                    break;
 
+                // Sync npc max life
+                case 4:
+                    {
+                        int n = reader.ReadInt32();
+                        int lifeMax = reader.ReadInt32();
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                            Main.npc[n].lifeMax = lifeMax;
+                    }
                     break;
 
                 default:

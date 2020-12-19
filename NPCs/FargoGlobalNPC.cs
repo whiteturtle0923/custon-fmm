@@ -116,7 +116,14 @@ namespace Fargowiltas.NPCs
                                 prev = n;
                             }
                             if (Main.netMode == NetmodeID.Server)
+                            {
                                 NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                                var netMessage = mod.GetPacket();
+                                netMessage.Write((byte)4);
+                                netMessage.Write(npc.whoAmI);
+                                netMessage.Write(npc.lifeMax);
+                                netMessage.Send();
+                            }
                             return false;
                         }
                         /*else
@@ -1444,9 +1451,14 @@ namespace Fargowiltas.NPCs
                     }
                 }
 
-                Fargowiltas.SwarmActive = false;
-                LastWoFIndex = -1;
-                WoFDirection = 0;
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    Fargowiltas.SwarmActive = false;
+                    LastWoFIndex = -1;
+                    WoFDirection = 0;
+                    if (Main.netMode == NetmodeID.Server)
+                        NetMessage.SendData(MessageID.WorldData);
+                }
             }
 
             // Make sure theres enough left to beat it
