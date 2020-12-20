@@ -35,6 +35,7 @@ NEW UPDATE - V 2.2.5
 -Fixed Super Dummy right click not working in multiplayer
 -Fixed(?) Destroyer swarm
 -Fixed Golem swarm being annoyingly invincible
+-Fixed array index issues with Brain of Cthulhu swarm
 
 
 

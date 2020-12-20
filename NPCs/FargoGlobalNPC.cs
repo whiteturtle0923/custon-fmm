@@ -1294,26 +1294,22 @@ namespace Fargowiltas.NPCs
                     NPC currentWoF = Main.npc[LastWoFIndex];
                     int startingPos = (int)currentWoF.position.X;
                     spawn = NPC.NewNPC(startingPos + (400 * WoFDirection), (int)currentWoF.position.Y, NPCID.WallofFlesh, 0);
-                    Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
-
-                    LastWoFIndex = spawn;
+                    if (spawn != Main.maxNPCs)
+                    {
+                        Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
+                        LastWoFIndex = spawn;
+                    }
                 }
                 else
                 {
                     spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), boss);
 
-                    if (spawn < Main.maxNPCs)
+                    if (spawn != Main.maxNPCs)
                     {
                         Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
                         NetMessage.SendData(MessageID.SyncNPC, number: boss);
                     }
                 }
-
-
-
-                
-
-                
             }
             else
             {
@@ -1327,8 +1323,11 @@ namespace Fargowiltas.NPCs
                 while (NPC.CountNPCS(random) >= 4);
 
                 spawn = NPC.NewNPC((int)npc.position.X + Main.rand.Next(-1000, 1000), (int)npc.position.Y + Main.rand.Next(-400, -100), random);
-                Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().PandoraActive = true;
-                NetMessage.SendData(MessageID.SyncNPC, number: random);
+                if (spawn != Main.maxNPCs)
+                {
+                    Main.npc[spawn].GetGlobalNPC<FargoGlobalNPC>().PandoraActive = true;
+                    NetMessage.SendData(MessageID.SyncNPC, number: random);
+                }
             }
         }
 
