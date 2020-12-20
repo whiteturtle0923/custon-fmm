@@ -146,12 +146,12 @@ namespace Fargowiltas.NPCs
                                 npc.active = false;
                                 if (Main.netMode == NetmodeID.Server)
                                 {
-                                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("head killed by wrong count, " + count.ToString()), Color.White);
+                                    //NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("head killed by wrong count, " + count.ToString()), Color.White);
                                     NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
                                 }
                                 else
                                 {
-                                    Main.NewText("head killed by wrong count, " + count.ToString());
+                                    //Main.NewText("head killed by wrong count, " + count.ToString());
                                 }
                             }
                         }
