@@ -120,6 +120,7 @@ namespace Fargowiltas
 
             AbomClearCD = reader.ReadInt32();
             WoodChopped = reader.ReadInt32();
+            Fargowiltas.SwarmActive = reader.ReadBoolean();
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -131,6 +132,7 @@ namespace Fargowiltas
 
             writer.Write(AbomClearCD);
             writer.Write(WoodChopped);
+            writer.Write(Fargowiltas.SwarmActive);
         }
 
         public override void PostUpdate()
@@ -140,11 +142,14 @@ namespace Fargowiltas
             Main.xMas = GetInstance<FargoConfig>().Christmas;
 
             // swarm reset in case something goes wrong
-            if (Fargowiltas.SwarmActive && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead) && !NPC.AnyNPCs(NPCID.DungeonGuardian))
+            if (Main.netMode != NetmodeID.MultiplayerClient && Fargowiltas.SwarmActive 
+                && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead) && !NPC.AnyNPCs(NPCID.DungeonGuardian))
             {
                 Fargowiltas.SwarmActive = false;
                 FargoGlobalNPC.LastWoFIndex = -1;
                 FargoGlobalNPC.WoFDirection = 0;
+                if (Main.netMode == NetmodeID.Server)
+                    NetMessage.SendData(MessageID.WorldData);
             }
 
             if (AbomClearCD > 0)

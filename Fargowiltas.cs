@@ -250,7 +250,36 @@ namespace Fargowiltas
                     {
                         Main.AnglerQuestSwap();
                     }
+                    break;
 
+                // Sync npc max life
+                case 4:
+                    {
+                        int n = reader.ReadInt32();
+                        int lifeMax = reader.ReadInt32();
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                            Main.npc[n].lifeMax = lifeMax;
+                    }
+                    break;
+
+                // Kill super dummies
+                case 5:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        for (int i = 0; i < Main.maxNPCs; i++)
+                        {
+                            if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
+                            {
+                                NPC npc = Main.npc[i];
+                                npc.life = 0;
+                                npc.HitEffect();
+                                Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0, 0, false, false, false);
+
+                                if (Main.netMode == NetmodeID.Server)
+                                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, i);
+                            }
+                        }
+                    }
                     break;
 
                 default:

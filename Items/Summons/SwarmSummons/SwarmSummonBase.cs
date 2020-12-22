@@ -99,7 +99,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                     }
                     else if (npcType == NPCID.TheDestroyer)
                     {
-                        Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().DestroyerSwarm = true;
+                        //Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().DestroyerSwarm = true;
                     }
                 }
             }
@@ -107,11 +107,12 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             // Kill whole stack
             player.inventory[player.selectedItem].stack = 0;
 
-            if (Main.netMode == 2)
+            if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(spawnMessage), new Color(175, 75, 255));
+                NetMessage.SendData(MessageID.WorldData);
             }
-            else
+            else if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 Main.NewText(spawnMessage, 175, 75, 255);
             }

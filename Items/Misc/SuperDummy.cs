@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Fargowiltas;
 using Fargowiltas.Projectiles;
+using Terraria.Localization;
 
 namespace Fargowiltas.Items.Misc
 {
@@ -36,28 +37,37 @@ namespace Fargowiltas.Items.Misc
 
         public override bool UseItem(Player player)
         {
-            if (player.altFunctionUse == ItemAlternativeFunctionID.ActivatedAndUsed)
+            if (player.whoAmI == Main.myPlayer)
             {
-                for (int i = 0; i < Main.maxNPCs; i++)
+                if (player.altFunctionUse == ItemAlternativeFunctionID.ActivatedAndUsed)
                 {
-                    if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
+                    if (Main.netMode == NetmodeID.SinglePlayer)
                     {
-                        NPC npc = Main.npc[i];
-                        npc.life = 0;
-                        npc.HitEffect();
-                        Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0, 0, false, false, false);
-
-                        if (Main.netMode == NetmodeID.MultiplayerClient)
-                            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, i);
+                        for (int i = 0; i < Main.maxNPCs; i++)
+                        {
+                            if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
+                            {
+                                NPC npc = Main.npc[i];
+                                npc.life = 0;
+                                npc.HitEffect();
+                                Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0, 0, false, false, false);
+                            }
+                        }
+                    }
+                    else if (Main.netMode == NetmodeID.MultiplayerClient) //tell server to clear
+                    {
+                        var netMessage = mod.GetPacket();
+                        netMessage.Write((byte)5);
+                        netMessage.Send();
                     }
                 }
-            }
-            else if (player.whoAmI == Main.myPlayer)
-            {
-                Vector2 pos = new Vector2((int)Main.MouseWorld.X - 9, (int)Main.MouseWorld.Y - 20);
-                Projectile.NewProjectile(pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, player.whoAmI, ModContent.NPCType<NPCs.SuperDummy>());
+                else
+                {
+                    Vector2 pos = new Vector2((int)Main.MouseWorld.X - 9, (int)Main.MouseWorld.Y - 20);
+                    Projectile.NewProjectile(pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, player.whoAmI, ModContent.NPCType<NPCs.SuperDummy>());
 
-                //NPC.NewNPC((int)pos.X, (int)pos.Y, ModContent.NPCType<NPCs.SuperDummy>());
+                    //NPC.NewNPC((int)pos.X, (int)pos.Y, ModContent.NPCType<NPCs.SuperDummy>());
+                }
             }
 
             return true;
