@@ -170,6 +170,7 @@ namespace Fargowiltas
                 ItemID.SpikedJungleSlimeBanner,
                 ItemID.JungleCreeperBanner,
                 ItemID.MothBanner,
+                ItemID.ManEaterBanner
             };
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Jungle Banner", jungleBanners);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyJungles", group);
@@ -413,7 +414,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.IceTortoiseBanner, ItemID.FrozenTurtleShell);
             AddBannerToItemRecipe(ItemID.IcyMermanBanner, ItemID.FrostStaff);
             AddBannerToItemRecipe(ItemID.JungleBatBanner, ItemID.DepthMeter);
-            AddBannerToItemRecipe(ItemID.JungleCreeperBanner, ItemID.Yelets);
+            AddBannerToItemRecipe(ItemID.JungleCreeperBanner, ItemID.Yelets, item2type: ItemID.HallowedBar);
             AddBannerToItemRecipe(ItemID.LavaBatBanner, ItemID.HelFire);
             AddBannerToItemRecipe(ItemID.LavaSlimeBanner, ItemID.Cascade, item2type: ItemID.Bone);
             AddBannerToItemRecipe(ItemID.LihzahrdBanner, ItemID.LizardEgg);
@@ -486,6 +487,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.EaterofWorldsTrophy, ItemID.EatersBone);
             AddBannerToItemRecipe(ItemID.BrainofCthulhuTrophy, ItemID.BoneRattle);
             AddBannerToItemRecipe(ItemID.QueenBeeTrophy, ItemID.HoneyedGoggles);
+            AddBannerToItemRecipe(ItemID.QueenBeeTrophy, ItemID.Nectar);
             AddBannerToItemRecipe(ItemID.SkeletronTrophy, ItemID.BookofSkulls);
             AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.TheAxe);
             AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.Seedling);

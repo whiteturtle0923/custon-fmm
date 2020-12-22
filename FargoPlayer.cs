@@ -174,13 +174,60 @@ namespace Fargowiltas
 
                         player.VanillaUpdateEquip(item2);
                     }
+                    else
+                    {
+                        switch (item.type)
+                        {
+                            case ItemID.Toolbelt:
+                                player.blockRange = 1;
+                                break;
+                            case ItemID.Toolbox:
+                                if (player.whoAmI == Main.myPlayer)
+                                {
+                                    Player.tileRangeX++;
+                                    Player.tileRangeY++;
+                                }
+                                break;
+                            case ItemID.ExtendoGrip:
+                                if (player.whoAmI == Main.myPlayer)
+                                {
+                                    Player.tileRangeX += 3;
+                                    Player.tileRangeY += 2;
+                                }
+                                break;
+                            case ItemID.PaintSprayer:
+                                player.autoPaint = true;
+                                break;
+                            case ItemID.BrickLayer:
+                                player.tileSpeed += 0.5f;
+                                break;
+                            case ItemID.PortableCementMixer:
+                                player.wallSpeed += 0.5f;
+                                break;
+                            case ItemID.ActuationAccessory:
+                                player.autoActuator = true;
+                                break;
+                            case ItemID.ArchitectGizmoPack:
+                                player.autoPaint = true;
+                                player.tileSpeed += 0.5f;
+                                player.wallSpeed += 0.5f;
+
+                                if (player.whoAmI == Main.myPlayer)
+                                {
+                                    Player.tileRangeX += 3;
+                                    Player.tileRangeY += 2;
+                                }
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
                 }
             }
-            
-            
         }
 
-        int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.DPSMeter, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone, ItemID.Toolbelt, ItemID.Toolbox, ItemID.ArchitectGizmoPack, ItemID.ExtendoGrip, ItemID.PaintSprayer, ItemID.BrickLayer, ItemID.PortableCementMixer, ItemID.ActuationAccessory};
+        int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.DPSMeter, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone }; 
 
         public override void UpdateBiomes()
         {

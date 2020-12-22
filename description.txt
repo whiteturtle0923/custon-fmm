@@ -1,14 +1,16 @@
 NEW UPDATE - V 2.2.5
+-Added Lihzahrd Instactuation Bomb and Instatrack
+-Added Dragon Egg Tray, Draco Energizer, and Slimy Stormcaller
+-Removed Cheapskate's End
+
+
 
 -Deviantt Help button replaced with Receive Gift until you receive gift
 -Increased duration of Omnistation buff from 10 to 30 ticks to reduce flickering issue
--Added Lihzahrd Instactuation Bomb
--Added Instatrack
--Added Dragon Egg Tray
--Added Draco Energizer
 
--Added Slimy Stormcaller
--Removed Cheapskate's End
+
+
+
 -Destroyer swarm no longer uses custom destroyers, but the Destroyers spawned are still only 10 segments long
 -Reduced Present and Goodie Bag recipes from 50 to 10
 -Armored Skeleton banners can craft into regular skeleton drops (Bone Sword, Ancient Gold and Ancient Iron Helmets)
@@ -28,8 +30,18 @@ NEW UPDATE - V 2.2.5
 -Painter sells underground paintings in all of the dirt layer as well now
 -Re added Ice Crate, Shadow Crate, Shadow Lock Box
 -Skeleton Merchant can no longer craft into flesh or paint, now he is the only npc that can craft into bones
--Construction accessories will work fromm piggy bank as well
+-Construction accessories will work from piggy bank as well
 -Added toggle for anything working in piggy bank
+
+
+
+
+
+-Increased Elemental Assembler animation speed
+-Add one Hallowed Bar to Yelets recipe
+-Man Eater banner is considered "any jungle banner"
+-Queen bee trophy crafts into Nectar
+-Fixed construction accessories not working right in piggy
 
 
 
