@@ -113,28 +113,6 @@ namespace Fargowiltas.Items
                     item.maxStack = 9999;
                 }
             }
-
-            switch (item.type)
-            {
-                case ItemID.SharpeningStation:
-                    item.buffType = BuffID.Sharpened;
-                    break;
-
-                case ItemID.AmmoBox:
-                    item.buffType = BuffID.AmmoReservation;
-                    break;
-
-                case ItemID.CrystalBall:
-                    item.buffType = BuffID.Clairvoyance;
-                    break;
-
-                case ItemID.BewitchingTable:
-                    item.buffType = BuffID.Bewitched;
-                    break;
-
-                default:
-                    break;
-            }
         }
 
         public override void OpenVanillaBag(string context, Player player, int arg)
@@ -210,9 +188,19 @@ namespace Fargowiltas.Items
 
         public override void UpdateInventory(Item item, Player player)
         {
-            if (item.buffType != 0 && item.stack >= 60 && GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            if (item.stack >= 60 && GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
             {
-                player.AddBuff(item.buffType, 2);
+                if (item.buffType != 0)
+                    player.AddBuff(item.buffType, 2);
+
+                if (item.type == ItemID.SharpeningStation)
+                    player.AddBuff(BuffID.Sharpened, 2);
+                else if (item.type == ItemID.AmmoBox)
+                    player.AddBuff(BuffID.AmmoBox, 2);
+                else if (item.type == ItemID.CrystalBall)
+                    player.AddBuff(BuffID.Clairvoyance, 2);
+                else if (item.type == ItemID.BewitchingTable)
+                    player.AddBuff(BuffID.Bewitched, 2);
             }
         }
 
