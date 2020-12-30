@@ -1,5 +1,7 @@
 NEW UPDATE - V 2.2.6
 -Fixed class buff stations sometimes disappearing when used
+-Fixed most instant builds being able to do 1 damage to the player when used while standing directly on it
+-Adjusted implementation of Lihzahrd Instactuation Bomb to fix glitch where certain structures around altar prevented it from working
 
 NEW UPDATE - V 2.2.5
 -Added Lihzahrd Instactuation Bomb and Instatrack
