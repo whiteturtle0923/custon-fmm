@@ -25,6 +25,11 @@ namespace Fargowiltas.Projectiles.Explosives
             projectile.timeLeft = 1;
         }
 
+        public override bool CanDamage()
+        {
+            return false;
+        }
+
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.Center);

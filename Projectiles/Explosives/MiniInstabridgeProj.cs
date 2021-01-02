@@ -23,6 +23,11 @@ namespace Fargowiltas.Projectiles.Explosives
             projectile.timeLeft = 1;
         }
 
+        public override bool CanDamage()
+        {
+            return false;
+        }
+
         public override void Kill(int timeLeft)
         {
             Vector2 position = projectile.Center;

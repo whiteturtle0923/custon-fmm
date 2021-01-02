@@ -23,6 +23,11 @@ namespace Fargowiltas.Projectiles.Explosives
             projectile.timeLeft = 170;
         }
 
+        public override bool CanDamage()
+        {
+            return false;
+        }
+
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
         {
             fallThrough = false;
