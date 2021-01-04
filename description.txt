@@ -1,4 +1,5 @@
 NEW UPDATE - V 2.2.7
+-Dragon Egg Tray tooltip says Betsys
 -Double Obsidian Instabridge provides more space above top platform
 -City Buster now removes all liquid in its blast range
 -Giant Bat Banner can be used to craft Chain Knife
