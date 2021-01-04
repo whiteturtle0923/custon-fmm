@@ -1,3 +1,7 @@
+NEW UPDATE - V 2.2.7
+-Double Obsidian Instabridge provides more space above top platform
+-City Buster now removes all liquid in its blast range
+
 NEW UPDATE - V 2.2.6
 -Fixed class buff stations sometimes disappearing when used
 -Fixed most instant builds being able to do 1 damage to the player when used while standing directly on it

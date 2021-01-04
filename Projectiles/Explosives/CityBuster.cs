@@ -71,6 +71,7 @@ namespace Fargowiltas.Projectiles.Explosives
                         FargoGlobalTile.FindChestTopLeft(xPosition, yPosition, true);
                         
                         WorldGen.KillTile(xPosition, yPosition, noItem: true);
+                        tile.liquid = 0;
                         tile.lava(false);
                         tile.honey(false);
 

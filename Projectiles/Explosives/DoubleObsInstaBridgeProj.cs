@@ -39,10 +39,10 @@ namespace Fargowiltas.Projectiles.Explosives
             }
 
             // All the way across
-            for (int x = 1; x <= Main.maxTilesX; x++)
+            for (int x = 1; x < Main.maxTilesX; x++)
             {
                 // Six down, last is platforms
-                for (int y = -25; y <= 0; y++)
+                for (int y = -40; y <= 0; y++)
                 {
                     int xPosition = x;
                     int yPosition = (int)(y + position.Y / 16.0f);
@@ -77,7 +77,8 @@ namespace Fargowiltas.Projectiles.Explosives
                         WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms, false, false, -1, 13);
                     }
 
-                    NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
+                    if (Main.netMode == NetmodeID.Server)
+                        NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
                 }
             }
         }
