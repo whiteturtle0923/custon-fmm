@@ -52,12 +52,9 @@ namespace Fargowiltas
             WeightedRandom<string> dialogueChooser = new WeightedRandom<string>();
             (List<HelpDialogue> sortedDialogue, int type) = SortDialogue(deviName);
 
-            Main.NewText("type: " + type);
-
             foreach (HelpDialogue dialogue in sortedDialogue)
             {
                 dialogueChooser.Add(dialogue.Message);
-                Main.NewText(dialogue.Message);
             }
 
             lastDialogueType = type;
@@ -77,7 +74,6 @@ namespace Fargowiltas
                 {
                     sortedDialogue = PossibleDialogue.Where((dialogue) => dialogue.Type == typeChoice && dialogue.CanDisplay(deviName)).ToList();
 
-                    Main.NewText(sortedDialogue.Count);
                     if (sortedDialogue.Count != 0)
                         break;
                 }
