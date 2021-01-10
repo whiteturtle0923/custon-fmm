@@ -16,6 +16,7 @@ namespace Fargowiltas
     public class Fargowiltas : Mod
     {
         internal static MutantSummonTracker summonTracker;
+        internal static DevianttDialogueTracker dialogueTracker;
 
         // Hotkeys
         internal static ModHotKey CustomKey;
@@ -57,6 +58,8 @@ namespace Fargowiltas
             Instance = this;
 
             summonTracker = new MutantSummonTracker();
+            dialogueTracker = new DevianttDialogueTracker();
+            dialogueTracker.AddVanillaDialogue();
 
             HomeKey = RegisterHotKey("Quick Recall/Mirror", "Home");
             RodKey = RegisterHotKey("Quick Rod of Discord", "E");
@@ -111,6 +114,7 @@ namespace Fargowiltas
         public override void Unload()
         {
             summonTracker = null;
+            dialogueTracker = null;
 
             HomeKey = null;
             RodKey = null;
@@ -196,6 +200,13 @@ namespace Fargowiltas
                         if (FargoWorld.DownedBools.ContainsKey(args[1] as string) && FargoWorld.DownedBools[args[1] as string])
                             return true;
                         return false;
+                    case "AddDevianttHelpDialogue":
+                        dialogueTracker.AddDialogue(
+                            args[1] as string,
+                            (byte)args[2],
+                            args[3] as Predicate<string>
+                        );
+                        break;
                 }
 
             }
