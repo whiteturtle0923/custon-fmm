@@ -7,6 +7,8 @@ NEW UPDATE - V 2.2.7
 -City Buster now removes all liquid in its blast range
 -Giant Bat Banner can be used to craft Chain Knife
 -All Hardmode banner recipes now require a Mythril/Orichalcum Anvil instead of Solidifier
+-Nerfed Deviantt's post-Moon Lord attack
+-Adjusted Deviantt's Help dialogue
 
 NEW UPDATE - V 2.2.6
 -Fixed class buff stations sometimes disappearing when used
