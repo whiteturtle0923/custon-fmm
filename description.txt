@@ -9,6 +9,7 @@ NEW UPDATE - V 2.2.7
 -All Hardmode banner recipes now require a Mythril/Orichalcum Anvil instead of Solidifier
 -Nerfed Deviantt's post-Moon Lord attack
 -Adjusted Deviantt's Help dialogue
+-Bosses only prevent enemies from spawning when you are near the boss
 
 NEW UPDATE - V 2.2.6
 -Fixed class buff stations sometimes disappearing when used
