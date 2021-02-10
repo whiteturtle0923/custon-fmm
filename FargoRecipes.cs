@@ -345,24 +345,24 @@ namespace Fargowiltas
         private static void AddBannerToItemRecipes()
         {
             ModRecipe recipe;
-            void AddBannerToItemRecipe(int banner, int result, int bannerAmount = 1, int resultAmount = 1, int item2type = -1, int item2amount = 1)
+            void AddBannerToItemRecipe(int banner, int result, int bannerAmount = 1, int resultAmount = 1, int item2type = -1, int item2amount = 1, int tile = TileID.Solidifier)
             {
                 recipe = GetNewRecipe();
                 recipe.AddIngredient(banner, bannerAmount);
                 if (item2type > -1)
                     recipe.AddIngredient(item2type, item2amount);
-                recipe.AddTile(TileID.Solidifier);
+                recipe.AddTile(tile);
                 recipe.SetResult(result, resultAmount);
                 recipe.AddRecipe();
             }
 
-            void AddBannerToItemsRecipe(int banner, int[] results, int bannerAmount = 1)
+            void AddBannerToItemsRecipe(int banner, int[] results, int bannerAmount = 1, int tile = TileID.Solidifier)
             {
                 foreach (int result in results)
                 {
                     recipe = GetNewRecipe();
                     recipe.AddIngredient(banner, bannerAmount);
-                    recipe.AddTile(TileID.Solidifier);
+                    recipe.AddTile(tile);
                     recipe.SetResult(result);
                     recipe.AddRecipe();
                 }
@@ -377,106 +377,112 @@ namespace Fargowiltas
                 recipe.AddRecipe();
             }
 
+<<<<<<< HEAD
             AddBannerToItemRecipe(ItemID.MeteorHeadBanner, ItemID.Meteorite, 1, 25);
             AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage);
             AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.AdhesiveBandage);
+=======
+            AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.AdhesiveBandage, tile: TileID.MythrilAnvil);
+>>>>>>> 826500e80204aa2276f68870b5b21b13a5978acc
             AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.TallyCounter);
-            AddBannerToItemRecipe(ItemID.AngryNimbusBanner, ItemID.NimbusRod);
-            AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.Uzi);
-            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.IceSickle);
+            AddBannerToItemRecipe(ItemID.AngryNimbusBanner, ItemID.NimbusRod, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.Uzi, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.IceSickle, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.BatBanner, ItemID.ChainKnife);
-            AddBannerToItemRecipe(ItemID.BlackRecluseBanner, ItemID.PoisonStaff);
+            AddBannerToItemRecipe(ItemID.BlackRecluseBanner, ItemID.PoisonStaff, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.SharkToothNecklace);
             AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.KOCannon, 4, 1, ItemID.SoulofNight);
             AddBannerToItemRecipe(ItemID.BunnyBanner, ItemID.BunnyHood);
-            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButchersChainsaw);
-            AddBannerToItemRecipe(ItemID.CorruptorBanner, ItemID.Vitamins);
-            AddBannerToItemRecipe(ItemID.CorruptSlimeBanner, ItemID.Blindfold);
+            AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButchersChainsaw, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.CorruptorBanner, ItemID.Vitamins, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.CorruptSlimeBanner, ItemID.Blindfold, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Rally);
-            AddBannerToItemRecipe(ItemID.CreatureFromTheDeepBanner, ItemID.NeptunesShell);
+            AddBannerToItemRecipe(ItemID.CreatureFromTheDeepBanner, ItemID.NeptunesShell, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.Nazar);
-            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.Blindfold);
             AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.DarkShard, 1, 5);
             AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.LightShard, 1, 5);
-            AddBannerToItemRecipe(ItemID.DeadlySphereBanner, ItemID.DeadlySphereStaff);
+            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.Blindfold, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.DeadlySphereBanner, ItemID.DeadlySphereStaff, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.DemonBanner, ItemID.DemonScythe);
             AddBannerToItemRecipe(ItemID.DemonEyeBanner, ItemID.BlackLens);
-            AddBannerToItemRecipe(ItemID.DesertBasiliskBanner, ItemID.AncientHorn);
-            AddBannerToItemRecipe(ItemID.DiablolistBanner, ItemID.InfernoFork);
+            AddBannerToItemRecipe(ItemID.DesertBasiliskBanner, ItemID.AncientHorn, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.DiablolistBanner, ItemID.InfernoFork, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.DripplerBanner, ItemID.MoneyTrough);
-            AddBannerToItemRecipe(ItemID.DrManFlyBanner, ItemID.ToxicFlask);
-            AddBannerToItemRecipe(ItemID.EyezorBanner, ItemID.EyeSpring);
+            AddBannerToItemRecipe(ItemID.DrManFlyBanner, ItemID.ToxicFlask, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.EyezorBanner, ItemID.EyeSpring, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.FireImpBanner, ItemID.ObsidianRose);
-            AddBannerToItemRecipe(ItemID.GastropodBanner, ItemID.BlessedApple);
-            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.TrifoldMap);
+            AddBannerToItemRecipe(ItemID.GastropodBanner, ItemID.BlessedApple, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.TrifoldMap, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.ChainKnife, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Rally);
             AddBannerToItemRecipe(ItemID.GoblinArcherBanner, ItemID.Harpoon);
             AddBannerToItemRecipe(ItemID.GraniteFlyerBanner, ItemID.NightVisionHelmet);
-            AddBannerToItemRecipe(ItemID.HarpyBanner, ItemID.GiantHarpyFeather);
+            AddBannerToItemRecipe(ItemID.HarpyBanner, ItemID.GiantHarpyFeather, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.HellbatBanner, ItemID.MagmaStone);
-            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.TatteredBeeWing);
+            AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.TatteredBeeWing, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.IceBatBanner, ItemID.DepthMeter);
-            AddBannerToItemRecipe(ItemID.IceTortoiseBanner, ItemID.FrozenTurtleShell);
-            AddBannerToItemRecipe(ItemID.IcyMermanBanner, ItemID.FrostStaff);
+            AddBannerToItemRecipe(ItemID.IceTortoiseBanner, ItemID.FrozenTurtleShell, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.IcyMermanBanner, ItemID.FrostStaff, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.JungleBatBanner, ItemID.DepthMeter);
             AddBannerToItemRecipe(ItemID.JungleCreeperBanner, ItemID.Yelets, item2type: ItemID.HallowedBar);
-            AddBannerToItemRecipe(ItemID.LavaBatBanner, ItemID.HelFire);
+            AddBannerToItemRecipe(ItemID.LavaBatBanner, ItemID.HelFire, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.LavaSlimeBanner, ItemID.Cascade, item2type: ItemID.Bone);
-            AddBannerToItemRecipe(ItemID.LihzahrdBanner, ItemID.LizardEgg);
-            AddBannerToItemRecipe(ItemID.MartianScutlixGunnerBanner, ItemID.BrainScrambler);
-            AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.MothronWings);
-            AddBannerToItemRecipe(ItemID.NailheadBanner, ItemID.NailGun);
-            AddBannerToItemRecipe(ItemID.NecromancerBanner, ItemID.ShadowbeamStaff);
+            AddBannerToItemRecipe(ItemID.LihzahrdBanner, ItemID.LizardEgg, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.MartianScutlixGunnerBanner, ItemID.BrainScrambler, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.MothronBanner, ItemID.MothronWings, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.NailheadBanner, ItemID.NailGun, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.NecromancerBanner, ItemID.ShadowbeamStaff, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.PinkJellyfishBanner, ItemID.JellyfishNecklace);
             AddBannerToItemRecipe(ItemID.PiranhaBanner, ItemID.RobotHat);
-            AddBannerToItemRecipe(ItemID.PixieBanner, ItemID.Megaphone);
-            AddBannerToItemRecipe(ItemID.PsychoBanner, ItemID.PsychoKnife);
-            AddBannerToItemRecipe(ItemID.RaggedCasterBanner, ItemID.SpectreStaff);
+            AddBannerToItemRecipe(ItemID.PixieBanner, ItemID.Megaphone, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.PsychoBanner, ItemID.PsychoKnife, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.RaggedCasterBanner, ItemID.SpectreStaff, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainHat);
             AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainCoat);
-            AddBannerToItemRecipe(ItemID.ReaperBanner, ItemID.DeathSickle);
+            AddBannerToItemRecipe(ItemID.ReaperBanner, ItemID.DeathSickle, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Rally);
             AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.DivingHelmet);
             AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.BoneSword);
-            AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher);
+            AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.BoneWand);
             AddBannerToItemRecipe(ItemID.SnowFlinxBanner, ItemID.SnowballLauncher);
-            AddBannerToItemRecipe(ItemID.TortoiseBanner, ItemID.TurtleShell);
+            AddBannerToItemRecipe(ItemID.TortoiseBanner, ItemID.TurtleShell, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.HornetBanner, ItemID.Bezoar);
             AddBannerToItemRecipe(ItemID.ToxicSludgeBanner, ItemID.Bezoar);
             AddBannerToItemRecipe(ItemID.UmbrellaSlimeBanner, ItemID.UmbrellaHat);
             AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.BonePickaxe);
             AddBannerToItemRecipe(ItemID.UndeadVikingBanner, ItemID.VikingHelmet);
-            AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.UnicornonaStick);
+            AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.UnicornonaStick, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.WalkingAntlionBanner, ItemID.AntlionClaw);
-            AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.MoonCharm);
-            AddBannerToItemRecipe(ItemID.WolfBanner, ItemID.Amarok);
+            AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.MoonCharm, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.WolfBanner, ItemID.Amarok, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.WormBanner, ItemID.WhoopieCushion);
-            AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock);
-            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun);
-            AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 5);
+            AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 5, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);
 
-            AddBannerToItemsRecipe(ItemID.MimicBanner, new int[] { ItemID.DualHook, ItemID.MagicDagger, ItemID.TitanGlove, ItemID.PhilosophersStone, ItemID.CrossNecklace, ItemID.StarCloak, ItemID.Frostbrand, ItemID.IceBow, ItemID.FlowerofFrost, ItemID.ToySled });
-            AddBannerToItemsRecipe(ItemID.ArmoredSkeletonBanner, new int[] { ItemID.ArmorPolish, ItemID.BeamSword, ItemID.BoneSword, ItemID.AncientGoldHelmet, ItemID.AncientIronHelmet });
-            AddBannerToItemsRecipe(ItemID.BoneLeeBanner, new int[] { ItemID.BlackBelt, ItemID.Tabi });
-            AddBannerToItemsRecipe(ItemID.DesertDjinnBanner, new int[] { ItemID.DjinnLamp, ItemID.DjinnsCurse });
-            AddBannerToItemsRecipe(ItemID.DesertLamiaBanner, new int[] { ItemID.LamiaHat, ItemID.LamiaShirt, ItemID.LamiaPants, ItemID.MoonMask, ItemID.SunMask });
-            AddBannerToItemsRecipe(ItemID.FloatyGrossBanner, new int[] { ItemID.Vitamins, ItemID.MeatGrinder });
-            AddBannerToItemsRecipe(ItemID.MedusaBanner, new int[] { ItemID.MedusaHead, ItemID.PocketMirror });
-            AddBannerToItemsRecipe(ItemID.MummyBanner, new int[] { ItemID.MummyMask, ItemID.MummyShirt, ItemID.MummyPants });
-            AddBannerToItemsRecipe(ItemID.PaladinBanner, new int[] { ItemID.PaladinsHammer, ItemID.PaladinsShield });
+            AddBannerToItemsRecipe(ItemID.MimicBanner, new int[] { ItemID.DualHook, ItemID.MagicDagger, ItemID.TitanGlove, ItemID.PhilosophersStone, ItemID.CrossNecklace, ItemID.StarCloak, ItemID.Frostbrand, ItemID.IceBow, ItemID.FlowerofFrost, ItemID.ToySled }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.ArmoredSkeletonBanner, new int[] { ItemID.ArmorPolish, ItemID.BeamSword, ItemID.BoneSword, ItemID.AncientGoldHelmet, ItemID.AncientIronHelmet }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.BoneLeeBanner, new int[] { ItemID.BlackBelt, ItemID.Tabi }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.DesertDjinnBanner, new int[] { ItemID.DjinnLamp, ItemID.DjinnsCurse }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.DesertLamiaBanner, new int[] { ItemID.LamiaHat, ItemID.LamiaShirt, ItemID.LamiaPants, ItemID.MoonMask, ItemID.SunMask }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.FloatyGrossBanner, new int[] { ItemID.Vitamins, ItemID.MeatGrinder }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.MedusaBanner, new int[] { ItemID.MedusaHead, ItemID.PocketMirror }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.MummyBanner, new int[] { ItemID.MummyMask, ItemID.MummyShirt, ItemID.MummyPants }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.PaladinBanner, new int[] { ItemID.PaladinsHammer, ItemID.PaladinsShield }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.PenguinBanner, new int[] { ItemID.PedguinHat, ItemID.PedguinShirt, ItemID.PedguinPants });
-            AddBannerToItemsRecipe(ItemID.PirateBanner, new int[] { ItemID.SailorHat, ItemID.SailorShirt, ItemID.SailorPants });
-            AddBannerToItemsRecipe(ItemID.RedDevilBanner, new int[] { ItemID.UnholyTrident, ItemID.FireFeather });
-			AddBannerToItemsRecipe(ItemID.SkeletonArcherBanner, new int[] { ItemID.MagicQuiver, ItemID.Marrow});
-            AddBannerToItemsRecipe(ItemID.SkeletonSniperBanner, new int[] { ItemID.RifleScope, ItemID.SniperRifle });
-            AddBannerToItemsRecipe(ItemID.TacticalSkeletonBanner, new int[] { ItemID.TacticalShotgun, ItemID.SWATHelmet });
-            AddBannerToItemsRecipe(ItemID.VampireBanner, new int[] { ItemID.BrokenBatWing, ItemID.MoonStone });
+            AddBannerToItemsRecipe(ItemID.PirateBanner, new int[] { ItemID.SailorHat, ItemID.SailorShirt, ItemID.SailorPants }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.RedDevilBanner, new int[] { ItemID.UnholyTrident, ItemID.FireFeather }, tile: TileID.MythrilAnvil);
+			AddBannerToItemsRecipe(ItemID.SkeletonArcherBanner, new int[] { ItemID.MagicQuiver, ItemID.Marrow}, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.SkeletonSniperBanner, new int[] { ItemID.RifleScope, ItemID.SniperRifle }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.TacticalSkeletonBanner, new int[] { ItemID.TacticalShotgun, ItemID.SWATHelmet }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.VampireBanner, new int[] { ItemID.BrokenBatWing, ItemID.MoonStone }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.ZombieBanner, new int[] { ItemID.ZombieArm, ItemID.Shackle });
-            AddBannerToItemsRecipe(ItemID.ZombieElfBanner, new int[] { ItemID.ElfHat, ItemID.ElfShirt, ItemID.ElfPants });
+            AddBannerToItemsRecipe(ItemID.ZombieElfBanner, new int[] { ItemID.ElfHat, ItemID.ElfShirt, ItemID.ElfPants }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.ZombieEskimoBanner, new int[] { ItemID.EskimoHood, ItemID.EskimoCoat, ItemID.EskimoPants });
             //ancient armors
             AddBannerToItemsRecipe(ItemID.EaterofSoulsBanner, new int[] { ItemID.AncientShadowHelmet, ItemID.AncientShadowScalemail, ItemID.AncientShadowGreaves }, 2);
@@ -501,17 +507,17 @@ namespace Fargowiltas
             //dutchamn trophy = the dutchman cart
 
             //pirates
-            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.Cutlass);
-            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.GoldRing);
-            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.PirateStaff);
-            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.DiscountCard);
-            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.LuckyCoin);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.Cutlass, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.GoldRing, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.PirateStaff, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.DiscountCard, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.LuckyCoin, TileID.MythrilAnvil);
 
-            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Keybrand);
-            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Kraken);
-            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.MagnetSphere);
-            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.WispinaBottle);
-            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.BoneFeather);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Keybrand, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.Kraken, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.MagnetSphere, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.WispinaBottle, TileID.MythrilAnvil);
+            AddGroupToItemRecipe("Fargowiltas:AnyArmoredBones", ItemID.BoneFeather, TileID.MythrilAnvil);
             //morning star recipe here
 
             AddGroupToItemRecipe("Fargowiltas:AnySlimes", ItemID.Gel, resultAmount: 200);
