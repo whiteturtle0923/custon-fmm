@@ -44,10 +44,8 @@ namespace Fargowiltas.Projectiles.Explosives
 
             for (int x = -radius; x <= (radius); x++)
             {
-                for (int y = -radius; y <= (radius); y++)
+                for (int y = -radius * 2; y <= 0; y++)
                 {
-                    if (Math.Sqrt(x * x + y * y) <= radius)   //circle
-                    {
                         int xPosition = (int)(x + position.X / 16.0f);
                         int yPosition = (int)(y + position.Y / 16.0f);
 
@@ -79,7 +77,6 @@ namespace Fargowiltas.Projectiles.Explosives
                             NetMessage.sendWater(xPosition, yPosition);
                             NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
                         }
-                    }
                 }
             }
 

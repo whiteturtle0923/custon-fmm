@@ -1,7 +1,15 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
-NEW UPDATE - V 2.2.6
--Fixed class buff stations sometimes disappearing when used
--Fixed most instant builds being able to do 1 damage to the player when used while standing directly on it
--Adjusted implementation of Lihzahrd Instactuation Bomb to fix glitch where certain structures around altar prevented it from working
+NEW UPDATE - V 2.2.7
+-Abominationn will always sell Cursed Sextant
+-Abominationn will sell Forbidden Tome post any Mechanical Boss and Battered Club post Golem
+-Lumberjack now sells Living Wood Wand instead of it being crafted
+-Lumberjack now gives 5 critters and 50 of the respective wood each Tree Treasures use
+-Added banner recipes for KO Cannon, Light and Dark Shards, and Meteorite
+-Added recipe for Rotten Eggs
+-City Buster explosion is now square and it starts where you throw it and goes up
+-Fixed Lumber Jaxe tooltip
+-Fixed Thorium compatability issue
+
+-Added some Skeleton Merchant item recipes 

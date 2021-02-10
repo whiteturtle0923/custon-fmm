@@ -10,8 +10,8 @@ namespace Fargowiltas.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Lumber Jaxe");
-            Tooltip.SetDefault("'The former weapon of a true axe wielding hero'" +
-                               "\nHit enemies may drop wood when killed");
+            Tooltip.SetDefault("Hit enemies may drop wood when killed" +
+                               "\n'The former weapon of a true axe wielding hero'");
         }
 
         public override void SetDefaults()
