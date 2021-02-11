@@ -377,14 +377,9 @@ namespace Fargowiltas
                 recipe.AddRecipe();
             }
 
-<<<<<<< HEAD
             AddBannerToItemRecipe(ItemID.MeteorHeadBanner, ItemID.Meteorite, 1, 25);
-            AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage);
-            AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.AdhesiveBandage);
-=======
             AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.AdhesiveBandage, tile: TileID.MythrilAnvil);
->>>>>>> 826500e80204aa2276f68870b5b21b13a5978acc
             AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.TallyCounter);
             AddBannerToItemRecipe(ItemID.AngryNimbusBanner, ItemID.NimbusRod, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.Uzi, tile: TileID.MythrilAnvil);

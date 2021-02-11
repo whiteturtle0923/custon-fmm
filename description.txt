@@ -6,18 +6,14 @@ NEW UPDATE - V 2.2.7
 -Abominationn will sell Forbidden Tome post any Mechanical Boss and Battered Club post Golem
 -Lumberjack now sells Living Wood Wand instead of it being crafted
 -Lumberjack now gives 5 critters and 50 of the respective wood each Tree Treasures use
--Added banner recipes for KO Cannon, Light and Dark Shards, and Meteorite
--Added recipe for Rotten Eggs
--City Buster explosion is now square and it starts where you throw it and goes up
--Fixed Lumber Jaxe tooltip
--Fixed Thorium compatability issue
-
 -Added some Skeleton Merchant item recipes 
-
-
--Dragon Egg Tray tooltip says Betsys
--Double Obsidian Instabridge provides more space above top platform
--City Buster now removes all liquid in its blast range
+-Added banner recipes for KO Cannon, Light and Dark Shards, and Meteorite
 -Giant Bat Banner can be used to craft Chain Knife
 -All Hardmode banner recipes now require a Mythril/Orichalcum Anvil instead of Solidifier
-
+-Added recipe for Rotten Eggs
+-Double Obsidian Instabridge provides more space above top platform
+-City Buster explosion is now square and it starts where you throw it and goes up
+-City Buster now removes all liquid in its blast range
+-Dragon Egg Tray tooltip says Betsys
+-Fixed Lumber Jaxe tooltip
+-Fixed Thorium compatability issue
