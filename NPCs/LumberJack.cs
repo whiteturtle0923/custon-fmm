@@ -203,7 +203,6 @@ namespace Fargowiltas.NPCs
                         {
                             quote = "These little critters are always falling out of the trees I cut down. Maybe you can find a use for them?";
                             player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Grasshopper, ItemID.Squirrel, ItemID.SquirrelRed, ItemID.Bird, ItemID.BlueJay, ItemID.Cardinal }), 5);
-                            //add bird, cardinal, blue jay
                         }
 
                         //add fruit option
