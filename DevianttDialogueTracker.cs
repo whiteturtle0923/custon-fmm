@@ -94,11 +94,14 @@ namespace Fargowiltas
             AddDialogue("What's that? You want to fight me for real? ...nah, I can't put up a good fight on my own.",
                 HelpDialogueType.BossOrEvent, (name) => (bool)(ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant") ?? false));
 
-            AddDialogue("What's that? You want to fight my big brother? ...maybe if he had a reason to.",
+            AddDialogue("Hey, you've almost made it to the end! Got all your Soul accessories ready? What's that? You want to fight my big brother? ...maybe if he had a reason to.",
                 HelpDialogueType.BossOrEvent, (name) => (bool)(ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom") ?? false) && !(bool)(ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant") ?? false));
 
-            AddDialogue("Now's a good time to go for damage on your accessory modifiers. Keep an eye on your enemies and look for patterns!",
-                HelpDialogueType.Misc, (name) => NPC.downedMoonlord && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"));
+            AddDialogue("Ready to fight my big brother? Remember how you've learned to learn. Stay focused, look for patterns, and don't panic. Good luck!",
+                HelpDialogueType.Misc, (name) => (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedEridanus") && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"));
+
+            AddDialogue("Wanna craft Forces, but missing Enchantments? Craft the Sigil of Champions and they'll give you what you want, so long as you earn it.",
+                HelpDialogueType.BossOrEvent, (name) => NPC.downedMoonlord && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedEridanus"));
 
             AddDialogue("Only a specific type of weapon will work against each specific pillar. As for that moon guy, his weakness will keep changing.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedAncientCultist && !NPC.downedMoonlord);
@@ -166,7 +169,7 @@ namespace Fargowiltas
             AddDialogue("There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once!",
                 HelpDialogueType.Misc, (name) => true);
 
-            AddDialogue("Don't forget you can turn off your soul toggles! They're all in that little wrench button right below your inventory.",
+            AddDialogue("Don't forget you can turn off your soul toggles! They're all in that little wrench button right below your inventory. Those small buttons at the very bottom of the list include a recommended low-lag preset!",
                 HelpDialogueType.Misc, (name) => true);
 
             AddDialogue("Just so you know, ammos are less effective. Only a bit of their damage contributes to your total output!",
