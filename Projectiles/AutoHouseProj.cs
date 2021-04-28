@@ -1,5 +1,6 @@
 using Fargowiltas.Tiles;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,77 +34,76 @@ namespace Fargowiltas.Projectiles
                 return;
             }
 
-            FargoGlobalTile.ClearEverything(xPosition, yPosition);
-
-            /*// Tile destroy
-            WorldGen.KillTile(xPosition, yPosition, false, false, false);
-            WorldGen.KillWall(xPosition, yPosition);
-            Dust.NewDust(position, 22, 22, DustID.Smoke, Alpha: 120);
-
-            // Kill liquids
-            if (tile != null)
+            if (y == -1 && tile.type == TileID.Platforms)
             {
-                tile.liquid = 0;
-                tile.lava(false);
-                tile.honey(false);
-                if (Main.netMode == NetmodeID.Server)
-                {
-                    NetMessage.sendWater(xPosition, yPosition);
-                }
-            }*/
+                return;
+            }
+
+            FargoGlobalTile.ClearEverything(xPosition, yPosition);
 
             int wallType = WallID.Wood;
             int tileType = TileID.WoodBlock;
+            int platformStyle = 0;
 
             if (player.ZoneDesert && !player.ZoneBeach)
             {
                 wallType = WallID.Cactus;
                 tileType = TileID.CactusBlock;
+                platformStyle = 25;
             }
             else if (player.ZoneSnow)
             {
                 wallType = WallID.BorealWood;
                 tileType = TileID.BorealWood;
+                platformStyle = 19;
             }
             else if (player.ZoneJungle)
             {
                 wallType = WallID.RichMaogany;
                 tileType = TileID.RichMahogany;
+                platformStyle = 2;
             }
             else if (player.ZoneCorrupt)
             {
                 wallType = WallID.Ebonwood;
                 tileType = TileID.Ebonwood;
+                platformStyle = 1;
             }
             else if (player.ZoneCrimson)
             {
                 wallType = WallID.Shadewood;
                 tileType = TileID.Shadewood;
+                platformStyle = 5;
             }
             else if (player.ZoneBeach)
             {
                 wallType = WallID.PalmWood;
                 tileType = TileID.PalmWood;
+                platformStyle = 17;
             }
             else if (player.ZoneHoly)
             {
                 wallType = WallID.Pearlwood;
                 tileType = TileID.Pearlwood;
+                platformStyle = 3;
             }
             else if (player.ZoneGlowshroom)
             {
                 wallType = WallID.Mushroom;
                 tileType = TileID.MushroomBlock;
+                platformStyle = 18;
             }
             else if (player.ZoneSkyHeight)
             {
                 wallType = WallID.DiscWall;
                 tileType = TileID.Sunplate;
+                platformStyle = 22;
             }
             else if (player.ZoneUnderworldHeight)
             {
                 wallType = WallID.ObsidianBrick;
                 tileType = TileID.ObsidianBrick;
+                platformStyle = 13;
             }
 
             // Spawn walls
@@ -114,8 +114,15 @@ namespace Fargowiltas.Projectiles
                     NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
             }
 
+            //platforms on top
+            if (y == -6 && Math.Abs(x) >= 4 && Math.Abs(x) <= 7)
+            {
+                WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms, style: platformStyle);
+                if (Main.netMode == NetmodeID.Server)
+                    NetMessage.SendTileSquare(-1, xPosition, yPosition, platformStyle);
+            }
             // Spawn border
-            if ((y == -6) || (y == -1) || (x == (10 * side)) || (x == (1 * side) && y == -5))
+            else if ((y == -6) || (y == -1) || (x == (10 * side)) || (x == (1 * side) && y == -5))
             {
                 WorldGen.PlaceTile(xPosition, yPosition, tileType);
                 if (Main.netMode == NetmodeID.Server)
@@ -130,7 +137,7 @@ namespace Fargowiltas.Projectiles
 
             if (y == -2)
             {
-                if (x == (1 * side))
+                if (Math.Abs(x) == 1)
                 {
                     int placeStyle = 0;
 

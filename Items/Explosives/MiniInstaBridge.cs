@@ -44,8 +44,10 @@ namespace Fargowiltas.Items.Explosives
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FossilOre, 5);
+            recipe.AddIngredient(ItemID.Dynamite);
             recipe.AddIngredient(ItemID.WoodPlatform, 100);
+            recipe.AddIngredient(ItemID.FallenStar);
+            
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

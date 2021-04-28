@@ -242,6 +242,9 @@ namespace Fargowiltas
 
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Omnistation", ModContent.ItemType<Omnistation>(), ModContent.ItemType<Omnistation2>());
             RecipeGroup.RegisterGroup("Fargowiltas:AnyOmnistation", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Cooking Pot", ItemID.CookingPot, ItemID.Cauldron);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyCookingPot", group);
         }
 
         public static void AddRecipes()
@@ -377,6 +380,7 @@ namespace Fargowiltas
                 recipe.AddRecipe();
             }
 
+            AddBannerToItemRecipe(ItemID.MeteorHeadBanner, ItemID.Meteorite, 1, 25);
             AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.AdhesiveBandage, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.TallyCounter);
@@ -386,6 +390,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.BatBanner, ItemID.ChainKnife);
             AddBannerToItemRecipe(ItemID.BlackRecluseBanner, ItemID.PoisonStaff, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.SharkToothNecklace);
+            AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.KOCannon, 4, 1, ItemID.SoulofNight);
             AddBannerToItemRecipe(ItemID.BunnyBanner, ItemID.BunnyHood);
             AddBannerToItemRecipe(ItemID.ButcherBanner, ItemID.ButchersChainsaw, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.CorruptorBanner, ItemID.Vitamins, tile: TileID.MythrilAnvil);
@@ -393,6 +398,8 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Rally);
             AddBannerToItemRecipe(ItemID.CreatureFromTheDeepBanner, ItemID.NeptunesShell, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.Nazar);
+            AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.DarkShard, 1, 5);
+            AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.LightShard, 1, 5);
             AddBannerToItemRecipe(ItemID.DarkMummyBanner, ItemID.Blindfold, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.DeadlySphereBanner, ItemID.DeadlySphereStaff, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.DemonBanner, ItemID.DemonScythe);
@@ -443,6 +450,8 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.ToxicSludgeBanner, ItemID.Bezoar);
             AddBannerToItemRecipe(ItemID.UmbrellaSlimeBanner, ItemID.UmbrellaHat);
             AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.BonePickaxe);
+            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningShirt);
+            AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningPants);
             AddBannerToItemRecipe(ItemID.UndeadVikingBanner, ItemID.VikingHelmet);
             AddBannerToItemRecipe(ItemID.UnicornBanner, ItemID.UnicornonaStick, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.WalkingAntlionBanner, ItemID.AntlionClaw);
@@ -455,6 +464,16 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);
+            //critters
+            AddBannerToItemRecipe(ItemID.BirdBanner, ItemID.Bird, 1, 100);
+            AddBannerToItemRecipe(ItemID.BirdBanner, ItemID.BlueJay, 1, 100);
+            AddBannerToItemRecipe(ItemID.BirdBanner, ItemID.Cardinal, 1, 100);
+            AddBannerToItemRecipe(ItemID.BunnyBanner, ItemID.Bunny, 1, 100);
+            //gem bunnies
+            AddBannerToItemRecipe(ItemID.PenguinBanner, ItemID.Penguin, 1, 100);
+            AddBannerToItemRecipe(ItemID.GoldfishBanner, ItemID.Goldfish, 1, 100);
+
+
 
             AddBannerToItemsRecipe(ItemID.MimicBanner, new int[] { ItemID.DualHook, ItemID.MagicDagger, ItemID.TitanGlove, ItemID.PhilosophersStone, ItemID.CrossNecklace, ItemID.StarCloak, ItemID.Frostbrand, ItemID.IceBow, ItemID.FlowerofFrost, ItemID.ToySled }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.ArmoredSkeletonBanner, new int[] { ItemID.ArmorPolish, ItemID.BeamSword, ItemID.BoneSword, ItemID.AncientGoldHelmet, ItemID.AncientIronHelmet }, tile: TileID.MythrilAnvil);
@@ -519,6 +538,9 @@ namespace Fargowiltas
             AddGroupToItemRecipe("Fargowiltas:AnyJungles", ItemID.JungleKey, TileID.MythrilAnvil, 1, 10);
             AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil, 1, 10);
             //desert key
+
+
+            
 
             //FOOD
             //chaos ele, illum slime, illum bat = apple pie
@@ -636,7 +658,7 @@ namespace Fargowiltas
                 AddBannerToItemRecipe(ItemID.SwampThingBanner, thorium.ItemType("SwampSpike"));
                 AddBannerToItemRecipe(ItemID.WyvernBanner, thorium.ItemType("CloudyChewToy"));
 
-                AddBannerToItemsRecipe(thorium.ItemType("DarksteelKnightBanner"), new int[] { thorium.ItemType("BrokenDarksteelHelmet"), thorium.ItemType("GrayDPaintingItem") });
+                //AddBannerToItemsRecipe(thorium.ItemType("DarksteelKnightBanner"), new int[] { thorium.ItemType("BrokenDarksteelHelmet"), thorium.ItemType("GrayDPaintingItem") });
                 AddBannerToItemsRecipe(thorium.ItemType("InvaderBanner"), new int[] { thorium.ItemType("VegaPhaser"), thorium.ItemType("BioPod") });
                 AddBannerToItemsRecipe(thorium.ItemType("NecroticImbuerBanner"), new int[] { thorium.ItemType("NecroticStaff"), thorium.ItemType("TechniqueBloodLotus") });
                 AddBannerToItemsRecipe(thorium.ItemType("WargBanner"), new int[] { thorium.ItemType("BattleHorn"), thorium.ItemType("BlackCatEars"), thorium.ItemType("Bagpipe"), thorium.ItemType("BloodCellStaff") });
@@ -851,6 +873,25 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.UnluckyYarn, ItemID.GoodieBag);
             AddGrabBagItemRecipe(ItemID.BatHook, ItemID.GoodieBag, 25);
 
+            //herb bags
+            void AddHerbBagRecipe(int result)
+            {
+                recipe = GetNewRecipe();
+                recipe.AddIngredient(ItemID.HerbBag);
+                recipe.AddTile(TileID.WorkBenches);
+                recipe.SetResult(result, 5);
+                recipe.AddRecipe();
+            }
+
+            AddHerbBagRecipe(ItemID.Daybloom);
+            AddHerbBagRecipe(ItemID.Moonglow);
+            AddHerbBagRecipe(ItemID.Blinkroot);
+            AddHerbBagRecipe(ItemID.Waterleaf);
+            AddHerbBagRecipe(ItemID.Deathweed);
+            AddHerbBagRecipe(ItemID.Fireblossom);
+            AddHerbBagRecipe(ItemID.Shiverthorn);
+            AddHerbBagRecipe(ItemID.Daybloom);
+
             //wooden
             AddGrabBagItemRecipe(ItemID.SailfishBoots, ItemID.WoodenCrate, 5);
             AddGrabBagItemRecipe(ItemID.TsunamiInABottle, ItemID.WoodenCrate, 5);
@@ -866,7 +907,7 @@ namespace Fargowiltas
             AddGrabBagItemRecipe(ItemID.Blowpipe, ItemID.WoodenCrate, 5);
             //step stool and finch staff here, ladybug and sunflower cart, finch staff
             //pearlwood /////////////////////////////////////////////////
-            AddGrabBagItemRecipe(ItemID.Anchor, ItemID.WoodenCrate, 5);
+            AddGrabBagItemRecipe(ItemID.Anchor, ItemID.WoodenCrate, 5, ItemID.SoulofLight);
             //all else is the same except no extractinator? recipe group
             
             //iron
@@ -978,6 +1019,8 @@ namespace Fargowiltas
             //hellstone (same)
 
             // ocean crate
+            AddGrabBagItemRecipe(ItemID.Trident, ItemID.WoodenCrate, 5);
+            AddGrabBagItemRecipe(ItemID.BreathingReed, ItemID.WoodenCrate, 5);
             //breathing reed, flipper, trident, inner tube for 1
             //shark bait and water walking boots for 5?
             //seaside crate (same)
@@ -1010,6 +1053,13 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
+            recipe.AddIngredient(ModContent.ItemType<TravellingMerchant>());
+            recipe.AddIngredient(ItemID.Bone, 5);
+            recipe.AddTile(TileID.BoneWelder);
+            recipe.SetResult(ModContent.ItemType<SkeletonMerchant>());
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
             recipe.AddIngredient(ModContent.ItemType<SkeletonMerchant>());
             recipe.AddTile(TileID.BoneWelder);
             recipe.SetResult(ItemID.Bone, 25);
@@ -1019,12 +1069,6 @@ namespace Fargowiltas
             recipe.AddIngredient(null, "Dryad");
             recipe.AddTile(TileID.LivingLoom);
             recipe.SetResult(ItemID.LeafWand);
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(null, "Dryad");
-            recipe.AddTile(TileID.LivingLoom);
-            recipe.SetResult(ItemID.LivingWoodWand);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
@@ -1320,6 +1364,61 @@ namespace Fargowiltas
             recipe.SetResult(ItemID.AngelHalo);
             recipe.AddRecipe();
 
+            //skeleton merchant recipes
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "SkeletonMerchant");
+            recipe.AddIngredient(ItemID.GoldCoin, 10);
+            recipe.AddIngredient(ItemID.BlueDye);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(ItemID.BlueCounterweight);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "SkeletonMerchant");
+            recipe.AddIngredient(ItemID.GoldCoin, 10);
+            recipe.AddIngredient(ItemID.RedDye);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(ItemID.RedCounterweight);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "SkeletonMerchant");
+            recipe.AddIngredient(ItemID.GoldCoin, 10);
+            recipe.AddIngredient(ItemID.PurpleDye);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(ItemID.PurpleCounterweight);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "SkeletonMerchant");
+            recipe.AddIngredient(ItemID.GoldCoin, 10);
+            recipe.AddIngredient(ItemID.GreenDye);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(ItemID.GreenCounterweight);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "SkeletonMerchant");
+            recipe.AddIngredient(ItemID.GoldCoin, 40);
+            recipe.AddIngredient(ItemID.SoulofNight, 5);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(ItemID.Gradient);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "SkeletonMerchant");
+            recipe.AddIngredient(ItemID.GoldCoin, 40);
+            recipe.AddIngredient(ItemID.SoulofLight, 5);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(ItemID.FormatC);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "SkeletonMerchant", 2);
+            recipe.AddIngredient(ItemID.GoldCoin, 20);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(ItemID.MagicLantern);
+            recipe.AddRecipe();
 
 
             //engineers combat rench recipe
@@ -1949,6 +2048,12 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.FishingSeaweed, 5);
             recipe.AddTile(TileID.LivingLoom);
             recipe.SetResult(ItemID.Seaweed);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GoodieBag, 2);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.RottenEgg, 25);
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
@@ -2754,6 +2859,67 @@ namespace Fargowiltas
             recipe.AddIngredient(ItemID.SandstoneBrick, 10);
             recipe.AddTile(TileID.Loom);
             recipe.SetResult(ItemID.OmegaBanner);
+            recipe.AddRecipe();
+
+            //ancient armor recipes 
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.DemoniteBar, 15);
+            recipe.AddIngredient(ItemID.ShadowScale, 10);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientShadowHelmet);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.DemoniteBar, 25);
+            recipe.AddIngredient(ItemID.ShadowScale, 20);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientShadowScalemail);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.DemoniteBar, 20);
+            recipe.AddIngredient(ItemID.ShadowScale, 15);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientShadowGreaves);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.IronBar, 15);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientIronHelmet);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.GoldBar, 20);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientGoldHelmet);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.Bone, 40);
+            recipe.AddIngredient(ItemID.Cobweb, 40);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientNecroHelmet);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.JungleSpores, 8);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientCobaltHelmet);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.JungleSpores, 16);
+            recipe.AddIngredient(ItemID.Stinger, 10);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientCobaltBreastplate);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.JungleSpores, 8);
+            recipe.AddIngredient(ItemID.Vine, 2);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(ItemID.AncientCobaltLeggings);
             recipe.AddRecipe();
 
         }

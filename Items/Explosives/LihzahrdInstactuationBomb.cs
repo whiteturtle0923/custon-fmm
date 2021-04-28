@@ -54,7 +54,6 @@ Only works in the Jungle Temple and after Plantera is defeated");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Actuator, 500);
             recipe.AddIngredient(ItemID.Dynamite, 25);
-            recipe.AddIngredient(ItemID.FossilOre, 20);
             recipe.AddIngredient(ItemID.LunarTabletFragment, 10);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

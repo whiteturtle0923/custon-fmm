@@ -57,6 +57,9 @@ namespace Fargowiltas.Items.Summons.Mutant
             }
             else
             {
+                pos.X = player.position.X;
+                pos.Y = player.position.Y - 500;
+
                 Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, NPCID.DungeonGuardian);
 
                 if (Main.netMode == NetmodeID.Server)

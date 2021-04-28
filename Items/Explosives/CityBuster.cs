@@ -36,7 +36,7 @@ Use at your own risk");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Dynamite, 50);
-            recipe.AddIngredient(ItemID.FossilOre, 25);
+            recipe.AddIngredient(ItemID.FallenStar, 5);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

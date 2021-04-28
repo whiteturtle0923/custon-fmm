@@ -153,19 +153,22 @@ namespace Fargowiltas.NPCs
 
                 if (player.ZoneDesert && !player.ZoneBeach)
                 {
-                    quote = "While I was chopping down a cactus this thing leaped at me, why don't you take care of it?";
-                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Scorpion, ItemID.BlackScorpion }));
+                    quote = "While I was chopping down a cactus these things leaped at me, why don't you take care of them?";
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Scorpion, ItemID.BlackScorpion }), 5);
+                    player.QuickSpawnItem(ItemID.Cactus, 50);
                 }
                 else if (player.ZoneJungle)
                 {
                     quote = "These mahogany trees are full of life, but a tree only has one purpose: to be chopped. Oh yea this fell out of the last one.";
-                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Buggy, ItemID.Sluggy, ItemID.Grubby, ItemID.Frog }));
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Buggy, ItemID.Sluggy, ItemID.Grubby, ItemID.Frog }), 5);
+                    player.QuickSpawnItem(ItemID.RichMahogany, 50);
                     //add mango and pineapple
                 }
                 else if (player.ZoneHoly)
                 {
                     quote = "This place is a bit fanciful for my tastes, but the wood's as choppable as any. Nighttime has these cool bugs though, take a few.";
-                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.LightningBug }));
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.LightningBug }), 5);
+                    player.QuickSpawnItem(ItemID.Pearlwood, 50);
                     //add fairies
                     //add star fruit and dragonfruit
 
@@ -174,7 +177,8 @@ namespace Fargowiltas.NPCs
                 else if (player.ZoneGlowshroom && Main.hardMode)
                 {
                     quote = "Whatever causes these to glow is beyond me, you're probably gonna eat them anyway so have this while youre at it.";
-                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.GlowingSnail, ItemID.TruffleWorm }));
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.GlowingSnail, ItemID.TruffleWorm }), 5);
+                    player.QuickSpawnItem(ItemID.GlowingMushroom, 50);
                     //add mushroom grass seeds
 
                 }
@@ -184,8 +188,26 @@ namespace Fargowiltas.NPCs
                     //add elderberry and blackcurrant for corrupt
                     //add blood orange and rambutan to crimson
                 }
+                //plum or cherry, penguin
+                else if (player.ZoneSnow)
+                {
+                    quote = "This neck of the woods is pretty eh? Here I've got some of my favorite wood for you.";
+
+                    player.QuickSpawnItem(ItemID.BorealWood, 50);
+                }
+                else if (player.ZoneRockLayerHeight || player.ZoneDirtLayerHeight)
+                {
+                    //add underground dialogue, he gives you gems and gem critters
+
+                    //move current dialogue to underworld
+
+
+                    quote = "I looked around here for a while and didn't find any trees. I did find this little thing though. Maybe you'll want it?";
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Snail }));
+                    //add gem tree thing
+                }
                 //purity, most common option likely
-                else if (!player.ZoneSnow && player.position.Y > Main.worldSurface)
+                else// if (player.position.Y > Main.worldSurface)
                 {
                     if (Main.dayTime)
                     {
@@ -193,14 +215,15 @@ namespace Fargowiltas.NPCs
                         if (Main.rand.Next(2) == 0)
                         {
                             quote = "Back in the day, people used to forge butterflies into powerful gear. We try to forget those days... but here have one.";
-                            player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.JuliaButterfly, ItemID.MonarchButterfly, ItemID.PurpleEmperorButterfly, ItemID.RedAdmiralButterfly, ItemID.SulphurButterfly, ItemID.TreeNymphButterfly, ItemID.UlyssesButterfly, ItemID.ZebraSwallowtailButterfly }));
+                            player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.JuliaButterfly, ItemID.MonarchButterfly, ItemID.PurpleEmperorButterfly, ItemID.RedAdmiralButterfly, ItemID.SulphurButterfly, ItemID.TreeNymphButterfly, ItemID.UlyssesButterfly, ItemID.ZebraSwallowtailButterfly }), 5);
                         }
                         else
                         {
                             quote = "These little critters are always falling out of the trees I cut down. Maybe you can find a use for them?";
-                            player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Grasshopper, ItemID.Squirrel, ItemID.SquirrelRed }));
+                            player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Grasshopper, ItemID.Squirrel, ItemID.SquirrelRed }), 5);
                             //add bird, cardinal, blue jay
                         }
+
                         //add fruit option
                         //apple, peach, apricot, grapefruit, lemon
                         //add eucalyptus sap as some rare meme
@@ -212,23 +235,13 @@ namespace Fargowiltas.NPCs
                         quote = "Chopping trees at night is always relaxing... well except for the flying eyeballs. Have one of these little guys to keep you company.";
                         player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Firefly }));
                     }
+
+                    player.QuickSpawnItem(ItemID.Wood, 50);
                 }
                 //add beach
                 //drop seagull
                 //drop coconut or banana
-
-                //add snow
-                //plum or cherry, penguin
-                else
-                {
-                    //add underground dialogue, he gives you gems and gem critters
-
-                    //move current dialogue to underworld
-
-
-                    quote = "I looked around here for a while and didn't find any trees. I did find this little thing though. Maybe you'll want it?";
-                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Snail }));
-                }
+               
 
                 Main.npcChatText = quote;
                 dayOver = false;
@@ -315,6 +328,10 @@ namespace Fargowiltas.NPCs
 
             shop.item[nextSlot].SetDefaults(ItemID.Cactus);
             shop.item[nextSlot].value = 10;
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ItemID.LivingWoodWand);
+            shop.item[nextSlot].value = 10000;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackMask>());

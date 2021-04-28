@@ -129,8 +129,8 @@ namespace Fargowiltas
             AddDialogue("That thing's mouth is as good as immune to damage, so you'll have to aim for the eye. Only one of them is vulnerable at a time, though. What thing? You know, that thing!",
                 HelpDialogueType.BossOrEvent, (name) => (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi") && !Main.hardMode);
 
-            AddDialogue("Next up is me! Make sure you learn to recognize whatever attack I'll throw at you. Quick tip: you won't turn to stone if I can't see your eyes!",
-                HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss3 && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"));
+            AddDialogue("Next up is me! Make sure you can recognize whatever attack I'll throw at you. Blocks and turning away can nullify petrification!",
+                HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss3 && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"));
 
             AddDialogue("The master of the dungeon can revive itself with a sliver of life for a last stand. Be ready to run for it when you make the killing blow!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedQueenBee && !NPC.downedBoss3);
@@ -174,8 +174,6 @@ namespace Fargowiltas
 
             AddDialogue("I don't have any more Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share!",
                 HelpDialogueType.Misc, (name) => Main.LocalPlayer.statLifeMax < 400);
-
-            //AddDialogue("I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.", HelpDialogueType.Misc, (name) => !Main.hardMode);
 
             AddDialogue("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.",
                 HelpDialogueType.Misc, (name) => !Main.hardMode);

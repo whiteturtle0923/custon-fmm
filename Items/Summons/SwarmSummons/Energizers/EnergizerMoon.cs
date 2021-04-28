@@ -7,7 +7,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lunar Energizer");
-            Tooltip.SetDefault("'You enjoy cheese'");
+            Tooltip.SetDefault("Formed after using 10 Runic Conscriptions\n'You enjoy cheese'");
         }
 
         public override void SetDefaults()

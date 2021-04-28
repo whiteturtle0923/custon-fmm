@@ -17,7 +17,7 @@ namespace Fargowiltas.Items.Summons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Red Stained Spine");
-            Tooltip.SetDefault("Summons the Brain of Cthulhu");
+            Tooltip.SetDefault("Summons the Brain of Cthulhu in any biome");
         }
 
         public override void AddRecipes()

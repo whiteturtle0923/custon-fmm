@@ -10,6 +10,8 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
+using Fargowilta;
+using Terraria.UI;
 
 namespace Fargowiltas
 {
@@ -22,6 +24,11 @@ namespace Fargowiltas
         internal static ModHotKey CustomKey;
         internal static ModHotKey HomeKey;
         internal static ModHotKey RodKey;
+
+        internal static ModHotKey StatKey;
+
+        public static UIManager UserInterfaceManager => Instance._userInterfaceManager;
+        private UIManager _userInterfaceManager;
 
         // Swarms
         internal static bool SwarmActive;
@@ -64,6 +71,11 @@ namespace Fargowiltas
             HomeKey = RegisterHotKey("Quick Recall/Mirror", "Home");
             RodKey = RegisterHotKey("Quick Rod of Discord", "E");
             CustomKey = RegisterHotKey("Quick Use Custom (Bottom Left Inventory Slot)", "K");
+
+            StatKey = RegisterHotKey("Open Stat Sheet", "M");
+
+            _userInterfaceManager = new UIManager();
+            _userInterfaceManager.LoadUI();
 
             mods = new string[]
             {
@@ -508,6 +520,18 @@ namespace Fargowiltas
             }
 
             return 200;
+        }
+
+        public override void UpdateUI(GameTime gameTime)
+        {
+            base.UpdateUI(gameTime);
+            UserInterfaceManager.UpdateUI(gameTime);
+        }
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+            base.ModifyInterfaceLayers(layers);
+            UserInterfaceManager.ModifyInterfaceLayers(layers);
         }
     }
 }
