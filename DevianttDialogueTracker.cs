@@ -107,7 +107,10 @@ namespace Fargowiltas
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedFishron && !NPC.downedAncientCultist);
 
             AddDialogue("Did you beat that fish pig dragon yet? He reduces your maximum life a little on every hit. He's also strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?",
-                HelpDialogueType.BossOrEvent, (name) => NPC.downedGolemBoss && !NPC.downedFishron);
+                HelpDialogueType.BossOrEvent, (name) => FargoWorld.DownedBools["betsy"] && !NPC.downedFishron);
+
+            AddDialogue("Now's a good time to go for Betsy! Don't worry. If you reach the last wave and lose, you won't have to retry the event for more attempts at her. Careful not to slip up before then, and mind her debuffs!",
+                HelpDialogueType.BossOrEvent, (name) => NPC.downedGolemBoss && !FargoWorld.DownedBools["betsy"]);
 
             AddDialogue("That golem? It gets upset when you leave the temple, so fighting in there is best. Platforms won't work, but a Lihzahrd Instactuation Bomb can help clear space!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedPlantBoss && !NPC.downedGolemBoss);
