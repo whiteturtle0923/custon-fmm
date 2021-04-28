@@ -15,7 +15,7 @@ namespace Fargowiltas.Items.Summons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wormy Food");
-            Tooltip.SetDefault("Summons the Eater of Worlds");
+            Tooltip.SetDefault("Summons the Eater of Worlds in any biome");
         }
 
         public override void AddRecipes()

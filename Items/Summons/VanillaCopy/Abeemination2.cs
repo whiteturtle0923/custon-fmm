@@ -17,7 +17,7 @@ namespace Fargowiltas.Items.Summons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("A Bee In My Nation");
-            Tooltip.SetDefault("Summons Queen Bee");
+            Tooltip.SetDefault("Summons Queen Bee in any biome");
         }
 
         public override void AddRecipes()

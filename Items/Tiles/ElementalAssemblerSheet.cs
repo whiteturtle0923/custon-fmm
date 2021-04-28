@@ -10,6 +10,7 @@ namespace Fargowiltas.Items.Tiles
     {
         public override void SetDefaults()
         {
+            Main.tileLighted[Type] = true;
             Main.tileFrameImportant[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.Width = 4;
@@ -25,6 +26,13 @@ namespace Fargowiltas.Items.Tiles
 
             animationFrameHeight = 54;
 
+        }
+
+        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+        {
+            r = 1f;
+            g = 1f;
+            b = 1f;
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num)
@@ -45,6 +53,15 @@ namespace Fargowiltas.Items.Tiles
                 frameCounter = 0;
                 frame++;
                 frame %= 12;
+            }
+
+            if ((frame >= 1 && frame <= 4))// || frame == 6 || frame == 8)
+            {
+                Main.tileLighted[Type] = true;
+            }
+            else
+            {
+                Main.tileLighted[Type] = false;
             }
         }
 

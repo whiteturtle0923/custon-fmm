@@ -440,7 +440,17 @@ namespace Fargowiltas.NPCs
                             shop.item[nextSlot++].SetDefaults(ItemID.TungstenOre);
                             shop.item[nextSlot++].SetDefaults(ItemID.GoldOre);
                             shop.item[nextSlot++].SetDefaults(ItemID.PlatinumOre);
+                        }
 
+                        if (NPC.downedMoonlord)
+                        {
+                            shop.item[nextSlot++].SetDefaults(ItemID.CobaltOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.PalladiumOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.MythrilOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.OrichalcumOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.AdamantiteOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.TitaniumOre);
+                            shop.item[nextSlot++].SetDefaults(ItemID.ChlorophyteOre);
                         }
 
                         break;
@@ -1036,6 +1046,9 @@ namespace Fargowiltas.NPCs
                 case NPCID.DD2OgreT2:
                 case NPCID.DD2OgreT3:
                     TryDowned("ogre");
+
+                    Item.NewItem(npc.Hitbox, ItemID.DefenderMedal, 20);
+
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.NextBool(14))
@@ -1053,6 +1066,9 @@ namespace Fargowiltas.NPCs
                 case NPCID.DD2DarkMageT1:
                 case NPCID.DD2DarkMageT3:
                     TryDowned("darkMage");
+
+                    Item.NewItem(npc.Hitbox, ItemID.DefenderMedal, 5);
+
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.NextBool(14))

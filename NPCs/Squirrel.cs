@@ -89,7 +89,7 @@ namespace Fargowiltas.NPCs
 
         public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(6))
+			switch (WorldGen.genRand.Next(7))
 			{
 				case 0:
 					return "Rick";
@@ -101,6 +101,8 @@ namespace Fargowiltas.NPCs
                     return "Coco";
                 case 4:
                     return "Truffle";
+                case 5:
+                    return "Furgo";
                 default:
 					return "Squeaks";
 			}

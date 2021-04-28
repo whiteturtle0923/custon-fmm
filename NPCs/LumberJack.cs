@@ -188,8 +188,26 @@ namespace Fargowiltas.NPCs
                     //add elderberry and blackcurrant for corrupt
                     //add blood orange and rambutan to crimson
                 }
+                //plum or cherry, penguin
+                else if (player.ZoneSnow)
+                {
+                    quote = "This neck of the woods is pretty eh? Here I've got some of my favorite wood for you.";
+
+                    player.QuickSpawnItem(ItemID.BorealWood, 50);
+                }
+                else if (player.ZoneRockLayerHeight || player.ZoneDirtLayerHeight)
+                {
+                    //add underground dialogue, he gives you gems and gem critters
+
+                    //move current dialogue to underworld
+
+
+                    quote = "I looked around here for a while and didn't find any trees. I did find this little thing though. Maybe you'll want it?";
+                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Snail }));
+                    //add gem tree thing
+                }
                 //purity, most common option likely
-                else if (!player.ZoneSnow && player.position.Y > Main.worldSurface)
+                else// if (player.position.Y > Main.worldSurface)
                 {
                     if (Main.dayTime)
                     {
@@ -223,20 +241,7 @@ namespace Fargowiltas.NPCs
                 //add beach
                 //drop seagull
                 //drop coconut or banana
-
-                //add snow
-                //plum or cherry, penguin
-                else
-                {
-                    //add underground dialogue, he gives you gems and gem critters
-
-                    //move current dialogue to underworld
-
-
-                    quote = "I looked around here for a while and didn't find any trees. I did find this little thing though. Maybe you'll want it?";
-                    player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Snail }));
-                    //add gem tree thing
-                }
+               
 
                 Main.npcChatText = quote;
                 dayOver = false;

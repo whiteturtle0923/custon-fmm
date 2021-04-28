@@ -103,7 +103,7 @@ namespace Fargowiltas
             AddDialogue("Only a specific type of weapon will work against each specific pillar. As for that moon guy, his weakness will keep changing.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedAncientCultist && !NPC.downedMoonlord);
 
-            AddDialogue("Some powerful enemies like that dungeon guy can create their own arenas.You won't be able to escape, so make full use of the room you do have.",
+            AddDialogue("Some powerful enemies like that dungeon guy can create their own arenas. You won't be able to escape, so make full use of the room you do have.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedFishron && !NPC.downedAncientCultist);
 
             AddDialogue("Did you beat that fish pig dragon yet? He's strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?",
@@ -131,7 +131,7 @@ namespace Fargowiltas
                 HelpDialogueType.BossOrEvent, (name) => (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi") && !Main.hardMode);
 
             AddDialogue("Next up is me! Make sure you can recognize whatever attack I'll throw at you. Blocks and turning away can nullify petrification!",
-                HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss3 && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"));
+                HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss3 && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"));
 
             AddDialogue("The master of the dungeon can revive itself with a sliver of life for a last stand. Be ready to run for it when you make the killing blow.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedQueenBee && !NPC.downedBoss3);
@@ -175,9 +175,6 @@ namespace Fargowiltas
 
             AddDialogue("I don't have any more Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share.",
                 HelpDialogueType.Misc, (name) => Main.LocalPlayer.statLifeMax < 400);
-
-            AddDialogue("I've always wondered why those other monsters never bothered to carry any healing potions. Well, you probably shouldn't wait and see if they actually do.",
-                HelpDialogueType.Misc, (name) => !Main.hardMode);
 
             AddDialogue("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.",
                 HelpDialogueType.Misc, (name) => !Main.hardMode);

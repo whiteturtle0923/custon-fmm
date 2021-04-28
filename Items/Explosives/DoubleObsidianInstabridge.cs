@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Fargowiltas.Projectiles.Explosives;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,7 +30,7 @@ namespace Fargowiltas.Items.Explosives
             item.value = Item.buyPrice(0, 0, 3);
             item.noUseGraphic = true;
             item.noMelee = true;
-            item.shoot = mod.ProjectileType("DoubleObsInstaBridgeProj");
+            item.shoot = ModContent.ProjectileType<DoubleObsInstaBridgeProj>();
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

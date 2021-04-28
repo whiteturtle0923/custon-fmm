@@ -38,7 +38,7 @@ namespace Fargowiltas.Items.Tiles
             recipe.AddIngredient(ItemID.Loom);
             recipe.AddIngredient(ItemID.WoodenTable);
             recipe.AddIngredient(ItemID.WoodenChair);
-            recipe.AddIngredient(ItemID.CookingPot);
+            recipe.AddRecipeGroup("Fargowiltas:AnyCookingPot");
             recipe.AddIngredient(ItemID.WoodenSink);
             recipe.AddIngredient(ItemID.Keg);
             recipe.AddTile(TileID.DemonAltar);

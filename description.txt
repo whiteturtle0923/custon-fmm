@@ -1,19 +1,49 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
-NEW UPDATE - V 2.2.7
--Abominationn will always sell Cursed Sextant
--Abominationn will sell Forbidden Tome post any Mechanical Boss and Battered Club post Golem
--Lumberjack now sells Living Wood Wand instead of it being crafted
--Lumberjack now gives 5 critters and 50 of the respective wood each Tree Treasures use
--Added some Skeleton Merchant item recipes 
--Added banner recipes for KO Cannon, Light and Dark Shards, and Meteorite
--Giant Bat Banner can be used to craft Chain Knife
--All Hardmode banner recipes now require a Mythril/Orichalcum Anvil instead of Solidifier
--Added recipe for Rotten Eggs
--Double Obsidian Instabridge provides more space above top platform
--City Buster explosion is now square and it starts where you throw it and goes up
--City Buster now removes all liquid in its blast range
--Dragon Egg Tray tooltip says Betsys
--Fixed Lumber Jaxe tooltip
--Fixed Thorium compatability issue
+NEW UPDATE - V 2.3
+
+-Multitask Center recipe can use the Cauldron or the Cooking Pot
+-Pirate Flag can be used during the day
+-Adjusted recipes of all insta items: replaced desert fossils with fallen stars
+-Critter banners craft into 100 of the respective critter (too bad not every critter has a banner..)
+-Breathing Reed and Trident can be crafted from Wooden Crates
+-Anchor recipe requires a Soul of Light
+-Moved Furgo from Mutant name options, added to Squirrel
+-Lumberjack will now give you Snails correctly
+-Added a Tree Treasures option for the Snow biome
+-Suspicious Skull spawns Dungeon Guardian consistently above you now
+-Demolitionist will sell hard mode ores post Moon Lord
+-Skeleton Merchant can be crafted from a caught Travelling Merchant and Bones
+-Added tooltips to Overloader and all Energizers to make it clear what they do
+-Added Herb recipes using Herb Bags
+-Added better Ancient armor recipes using the original armor recipes at a Demon Altar
+-InstaHouse now spawns a few platforms on top. When placing an InstaHouse it will not overwrite any platforms on the bottom level meaning you can easily stack and connect them with no extra work
+-InstaHouse now has a visual indicator of its size and where it will be placed
+-Fixed Herb Bag recipe being backwards
+-Removed and updated several Deviantt Help quotes
+-Updated Gorey Spine, Wormy Food, A Bee in My Nation tooltips for increased clarity
+-Multitask Center now glows, Elemental Assembler will flash when the lightning goes off
+-Dark Mages and Ogres now always drop some Defender Medals (moved from Eternity Mode)
+-Undead Miner banner can be crafted into Mining armor pieces
+
+FOR BETA
+-TRULY fixed Herb Bag recipes
+-Pirate Flag can be used at any time
+-Stat Sheet UI
+
+
+
+TODO
+
+Stat sheet but in mp, make epic UI using pbone toggles?
+Please add mana regen to the Stat Sheet item. It'd be nice to know how much man I can regenerate in a certain amount of time as a mage.
+
+:squirrel: can be detected by lifeform analyzer
+
+add "can catch town NPCs" to bug net and golden bug net tooltip
+
+Right click with instabridge to destroy a line of platforms
+
+Nymph summon phm (might be sousl mod)
+-Antimage Crystal
