@@ -109,40 +109,39 @@ namespace Fargowiltas
             AddDialogue("Did you beat that fish pig dragon yet? He's strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedGolemBoss && !NPC.downedFishron);
 
-            AddDialogue("That golem? It gets upset when you leave the temple, so fighting in there is best. It'll also try to take the high ground against you...",
+            AddDialogue("That golem? It gets upset when you leave the temple, so fighting in there is best. Platforms won't work, but a Lihzahrd Instactuation Bomb can help clear space!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedPlantBoss && !NPC.downedGolemBoss);
 
             AddDialogue("That overgrown plant inflicts a special venom that works her into an enraged frenzy. She also has a ring of crystal leaves, but minions go through it.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !NPC.downedPlantBoss);
 
-            AddDialogue("Watch out when you break your fourth altar! It might attract the pirates, so be sure you're ready when you do it.",
-                HelpDialogueType.BossOrEvent, (name) => Main.hardMode && !NPC.downedPirates);
+            //AddDialogue("Watch out when you break your fourth altar! It might attract the pirates, so be sure you're ready when you do it.", HelpDialogueType.BossOrEvent, (name) => Main.hardMode && !NPC.downedPirates);
 
-            AddDialogue("That metal worm has a few upgrades. It'll start shooting dark stars and flying. When it coils around you, don't try to escape!",
+            AddDialogue("That metal worm has a few upgrades, but its probes were downgraded to compensate. It'll start shooting homing dark stars and flying. When it coils around you, don't try to escape!",
                 HelpDialogueType.BossOrEvent, (name) => Main.hardMode && !NPC.downedMechBoss1);
 
-            AddDialogue("I saw that metal eye spinning while firing a huge laser the other day. Too bad you can't teleport through an attack like that on command, right?",
+            AddDialogue("I saw that metal eye spinning while firing a huge laser the other day. Also, even if you kill them, they won't die until they're both killed!",
                 HelpDialogueType.BossOrEvent, (name) => Main.hardMode && !NPC.downedMechBoss2);
 
-            AddDialogue("You'll have to destroy the limbs before you can hurt that metal skull. But once it reveals its true form, focus on taking down the head instead.",
+            AddDialogue("Focus on taking down that metal skull, not its limbs. Don't try to outrun its spinning limbs! Keep your eyes open and learn to recognize what's doing what.",
                 HelpDialogueType.BossOrEvent, (name) => Main.hardMode && !NPC.downedMechBoss3);
 
-            AddDialogue("That thing's mouth is as good as immune to damage, so you'll have to aim for the eyes. What thing? You know, that thing.",
+            AddDialogue("That thing's mouth is as good as immune to damage, so you'll have to aim for the eye. Only one of them is vulnerable at a time, though. What thing? You know, that thing!",
                 HelpDialogueType.BossOrEvent, (name) => (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi") && !Main.hardMode);
 
             AddDialogue("Next up is me! Make sure you can recognize whatever attack I'll throw at you. Blocks and turning away can nullify petrification!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss3 && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"));
 
-            AddDialogue("The master of the dungeon can revive itself with a sliver of life for a last stand. Be ready to run for it when you make the killing blow.",
+            AddDialogue("The master of the dungeon can revive itself with a sliver of life for a last stand. Be ready to run for it when you make the killing blow!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedQueenBee && !NPC.downedBoss3);
 
-            AddDialogue("The queen bee will summon her progeny for backup. She's harder to hurt while they're there, so take them out first.",
+            AddDialogue("The queen bee will summon her progeny for backup. She's harder to hurt while they're there, so take them out first. Oh, and her swarm can't hit right above or below her!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss2 && !NPC.downedQueenBee);
 
-            AddDialogue("When the brain gets mad, it'll confuse you every few seconds. Four rings to confuse you, one ring when it wears off!",
+            AddDialogue("Focus on how the ichor moves and don't get overwhelmed! When the brain gets mad, it'll confuse you every few seconds. Four rings to confuse you, one ring when it wears off!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss1 && !NPC.downedBoss2 && WorldGen.crimson);
 
-            AddDialogue("When you hurt the world eater, its segments will break off as smaller eaters. Don't let them pile up!",
+            AddDialogue("The more the world eater splits, the more worms can rush you at once. The head is extra sturdy now, but don't let them pile up too much!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss1 && !NPC.downedBoss2 && !WorldGen.crimson);
 
             AddDialogue("Watch out when you break your second Crimson Heart! It might attract the goblins, so prepare before you do it.",
@@ -152,28 +151,28 @@ namespace Fargowiltas
                 HelpDialogueType.BossOrEvent, (name) => !NPC.downedGoblins && !WorldGen.crimson);
 
             // I added this because, if there isn't always dialogue available for a boss, the dialogue chooser self destructs
-            AddDialogue("If that big floating eyeball hits you, some of its anger rubs off and you can't stop attacking! Make sure you aren't holding any mirrors if this happens.",
+            AddDialogue("That big eyeball has the power of the moon, but it's too flashy for its own good! Learn to notice and focus only on the bits that threaten to hurt you.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedSlimeKing && !NPC.downedBoss1);
 
             AddDialogue("Gonna fight that slime king soon? Don't spend too long up and out of his reach or he'll get mad. Very, very mad.",
                 HelpDialogueType.BossOrEvent, (name) => !NPC.downedSlimeKing);
 
-            AddDialogue("Seems like everyone's learning to project auras these days. If you look at the particles, you can see whether it'll affect you at close range or a distance.",
+            AddDialogue("Seems like everyone's learning to project auras these days. If you look at the particles, you can see whether it'll affect you at close range or a distance!",
                 HelpDialogueType.Misc, (name) => true);
 
-            AddDialogue("There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once.",
+            AddDialogue("There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once!",
                 HelpDialogueType.Misc, (name) => true);
 
             AddDialogue("Don't forget you can turn off your soul toggles in the Mod Configurations menu!",
                 HelpDialogueType.Misc, (name) => true);
 
-            AddDialogue("Just so you know, ammos are less effective. Only a tiny fraction of their damage can contribute to your total output!",
+            AddDialogue("Just so you know, ammos are less effective. Only a bit of their damage contributes to your total output!",
                 HelpDialogueType.Misc, (name) => Main.LocalPlayer.HeldItem.ranged);
 
             AddDialogue("Found any Top Hat Squirrels yet? Keep one in your inventory and maybe a special friend will show up!",
                 HelpDialogueType.Misc, (name) => !NPC.AnyNPCs(ModContent.NPCType<Squirrel>()));
 
-            AddDialogue("I don't have any more Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share.",
+            AddDialogue("I don't have any more Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share!",
                 HelpDialogueType.Misc, (name) => Main.LocalPlayer.statLifeMax < 400);
 
             AddDialogue("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.",
@@ -182,26 +181,21 @@ namespace Fargowiltas
             AddDialogue("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?",
                 HelpDialogueType.Environment, (name) => !Main.LocalPlayer.accFlipper && !Main.LocalPlayer.gills && !(bool)(ModLoader.GetMod("FargowiltasSouls").Call("MutantAntibodies") ?? false));
 
-            AddDialogue("The underworld has gotten a lot hotter since the last time I visited. I hear an obsidian skull is a good luck charm against burning alive, though.",
-                HelpDialogueType.Environment, (name) => !Main.LocalPlayer.fireWalk && !Main.LocalPlayer.buffImmune[BuffID.OnFire]);
+            AddDialogue("The underworld has gotten a lot hotter since the last time I visited. I hear an obsidian skull is a good luck charm against burning alive, though!",
+                HelpDialogueType.Environment, (name) => !Main.LocalPlayer.fireWalk && !(Main.LocalPlayer.lavaMax > 0) && !Main.LocalPlayer.buffImmune[BuffID.OnFire] && !(bool)(ModLoader.GetMod("FargowiltasSouls").Call("PureHeart") ?? false));
 
-            AddDialogue("Want to have a breath-holding contest? The empty vacuum of space would be perfect.",
+            AddDialogue("Want to have a breath-holding contest? The empty vacuum of space would be perfect. No, I won't cheat by breathing water instead of air!",
                 HelpDialogueType.Environment, (name) => !Main.LocalPlayer.buffImmune[BuffID.Suffocation] && !(bool)(ModLoader.GetMod("FargowiltasSouls").Call("PureHeart") ?? false));
 
-            AddDialogue("The spirits of light and dark stopped by and they sounded pretty upset with you. Don't be too surprised if something happens to you for entering their territory!",
+            //AddDialogue("The spirits of light and dark stopped by and they sounded pretty upset with you. Don't be too surprised if something happens to you for entering their territory!", HelpDialogueType.Environment, (name) => Main.hardMode && !(bool)(ModLoader.GetMod("FargowiltasSouls").Call("PureHeart") ?? false));
+
+            //AddDialogue("Why not go hunting for some rare monsters every once in a while? Plenty of treasure to be looted and all that.", HelpDialogueType.Misc, (name) => Main.hardMode);
+
+            AddDialogue("That's a funny face you're making... Is the underground Hallow too disorienting? Try controlling gravity on your own and maybe it can't flip you by force!",
                 HelpDialogueType.Environment, (name) => Main.hardMode && !(bool)(ModLoader.GetMod("FargowiltasSouls").Call("PureHeart") ?? false));
-
-            AddDialogue("Why not go hunting for some rare monsters every once in a while? Plenty of treasure to be looted and all that.",
-                HelpDialogueType.Misc, (name) => Main.hardMode);
-
-            AddDialogue("Why're you so sad? Has the underground hallow been disorientating? Try turning that frown upside-down, I hear that gravity potions can help!",
-                HelpDialogueType.Environment, (name) => Main.hardMode);
 
             AddDialogue("If you ask me, Plantera is really letting herself go. Chlorophyte and Life Fruit aren't THAT healthy!",
                 HelpDialogueType.Misc, (name) => Main.hardMode && Main.LocalPlayer.statLifeMax2 < 500);
-
-            AddDialogue("Trick or treat? Merry Christmas? I don't have anything for you, but go ask Pumpking or Ice Queen!",
-                HelpDialogueType.Misc, (name) => NPC.downedPlantBoss);
 
             // This is much more possible than before because of how branching works, so I just decided to remove it.
             //AddDialogue("Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.",

@@ -28,8 +28,8 @@ namespace Fargowiltas.Projectiles
             projectile.penetrate = 2;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 20;
+            //projectile.usesLocalNPCImmunity = true;
+            //projectile.localNPCHitCooldown = 20;
             projectile.extraUpdates = 1;
         }
 
@@ -111,6 +111,7 @@ namespace Fargowiltas.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            target.immune[projectile.owner] = 5;
             target.AddBuff(BuffID.Lovestruck, 600);
         }
 
