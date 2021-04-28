@@ -176,7 +176,7 @@ namespace Fargowiltas.NPCs
                 }
                 else if (player.ZoneGlowshroom && Main.hardMode)
                 {
-                    quote = "Whatever causes these to glow is beyond me, you're probably gonna eat them anyway so have this while youre at it.";
+                    quote = "Whatever causes these to glow is beyond me, you're probably gonna eat them anyway so have this while you're at it.";
                     player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.GlowingSnail, ItemID.TruffleWorm }), 5);
                     player.QuickSpawnItem(ItemID.GlowingMushroom, 50);
                     //add mushroom grass seeds
@@ -220,8 +220,7 @@ namespace Fargowiltas.NPCs
                         else
                         {
                             quote = "These little critters are always falling out of the trees I cut down. Maybe you can find a use for them?";
-                            player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Grasshopper, ItemID.Squirrel, ItemID.SquirrelRed }), 5);
-                            //add bird, cardinal, blue jay
+                            player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Grasshopper, ItemID.Squirrel, ItemID.SquirrelRed, ItemID.Bird, ItemID.BlueJay, ItemID.Cardinal }), 5);
                         }
 
                         //add fruit option
