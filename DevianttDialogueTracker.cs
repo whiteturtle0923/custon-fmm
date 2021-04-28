@@ -106,13 +106,13 @@ namespace Fargowiltas
             AddDialogue("Some powerful enemies like that dungeon guy can create their own arenas. You won't be able to escape, so make full use of the room you do have.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedFishron && !NPC.downedAncientCultist);
 
-            AddDialogue("Did you beat that fish pig dragon yet? He's strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?",
+            AddDialogue("Did you beat that fish pig dragon yet? He reduces your maximum life a little on every hit. He's also strong enough to break defenses in one hit. Too bad you don't have any reinforced plating to prevent that, right?",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedGolemBoss && !NPC.downedFishron);
 
             AddDialogue("That golem? It gets upset when you leave the temple, so fighting in there is best. Platforms won't work, but a Lihzahrd Instactuation Bomb can help clear space!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedPlantBoss && !NPC.downedGolemBoss);
 
-            AddDialogue("That overgrown plant inflicts a special venom that works her into an enraged frenzy. She also has a ring of crystal leaves, but minions go through it.",
+            AddDialogue("That overgrown plant inflicts a special venom that works her into an enraged frenzy if she stacks enough hits on you. She also has a ring of crystal leaves, but minions go through it.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !NPC.downedPlantBoss);
 
             //AddDialogue("Watch out when you break your fourth altar! It might attract the pirates, so be sure you're ready when you do it.", HelpDialogueType.BossOrEvent, (name) => Main.hardMode && !NPC.downedPirates);
@@ -132,7 +132,7 @@ namespace Fargowiltas
             AddDialogue("Next up is me! Make sure you can recognize whatever attack I'll throw at you. Blocks and turning away can nullify petrification!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedBoss3 && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"));
 
-            AddDialogue("The master of the dungeon can revive itself with a sliver of life for a last stand. Be ready to run for it when you make the killing blow!",
+            AddDialogue("The master of the dungeon can use its babies to attack! Which attack it uses depends on whether or not it's spinning. It'll also take a last stand, so be ready to run when you make the kill!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedQueenBee && !NPC.downedBoss3);
 
             AddDialogue("The queen bee will summon her progeny for backup. She's harder to hurt while they're there, so take them out first. Oh, and her swarm can't hit right above or below her!",
@@ -163,7 +163,7 @@ namespace Fargowiltas
             AddDialogue("There's probably a thousand items to protect against all these debuffs. It's a shame you don't have a thousand hands to carry them all at once!",
                 HelpDialogueType.Misc, (name) => true);
 
-            AddDialogue("Don't forget you can turn off your soul toggles in the Mod Configurations menu!",
+            AddDialogue("Don't forget you can turn off your soul toggles! They're all in that little wrench button right below your inventory.",
                 HelpDialogueType.Misc, (name) => true);
 
             AddDialogue("Just so you know, ammos are less effective. Only a bit of their damage contributes to your total output!",
@@ -172,10 +172,10 @@ namespace Fargowiltas
             AddDialogue("Found any Top Hat Squirrels yet? Keep one in your inventory and maybe a special friend will show up!",
                 HelpDialogueType.Misc, (name) => !NPC.AnyNPCs(ModContent.NPCType<Squirrel>()));
 
-            AddDialogue("I don't have any more Life Crystals for you, but Cthulhu's eye is going on a new diet of them. Not that they would share!",
+            AddDialogue("I don't have any more Life Crystals for you, but I think my big brother left some in the fat slime king. Maybe he'll share if you beat it up!",
                 HelpDialogueType.Misc, (name) => Main.LocalPlayer.statLifeMax < 400);
 
-            AddDialogue("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood.",
+            AddDialogue("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood. They can jump out of water to get you!",
                 HelpDialogueType.Misc, (name) => !Main.hardMode);
 
             AddDialogue("The water is bogging you down? Never had an issue with it, personally... Have you tried breathing water instead of air?",
@@ -194,8 +194,8 @@ namespace Fargowiltas
             AddDialogue("That's a funny face you're making... Is the underground Hallow too disorienting? Try controlling gravity on your own and maybe it can't flip you by force!",
                 HelpDialogueType.Environment, (name) => Main.hardMode && !(bool)(ModLoader.GetMod("FargowiltasSouls").Call("PureHeart") ?? false));
 
-            AddDialogue("If you ask me, Plantera is really letting herself go. Chlorophyte and Life Fruit aren't THAT healthy!",
-                HelpDialogueType.Misc, (name) => Main.hardMode && Main.LocalPlayer.statLifeMax2 < 500);
+            AddDialogue("If you ask me, Plantera is really letting herself go. A diet of Chlorophyte Ore and Life Fruit isn't THAT healthy! Why don't you help her slim down?",
+                HelpDialogueType.Misc, (name) => Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && Main.LocalPlayer.statLifeMax2 < 500);
 
             // This is much more possible than before because of how branching works, so I just decided to remove it.
             //AddDialogue("Ever tried out those 'enchantment' thingies? Try breaking a couple altars and see what you can make.",
