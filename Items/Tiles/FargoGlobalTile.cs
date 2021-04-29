@@ -11,13 +11,6 @@ namespace Fargowiltas.Tiles
     {
         public override int[] AdjTiles(int type)
         {
-            if (type == TileID.CrystalBall)
-            {
-                int[] adjTiles = new int[] { TileID.DemonAltar, TileID.CrystalBall };
-
-                return adjTiles;
-            }
-
             if (type == TileID.HeavyWorkBench)
             {
                 int[] adjTiles = new int[] { TileID.WorkBenches, TileID.HeavyWorkBench };

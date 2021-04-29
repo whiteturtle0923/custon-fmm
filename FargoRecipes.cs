@@ -440,6 +440,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainCoat);
             AddBannerToItemRecipe(ItemID.ReaperBanner, ItemID.DeathSickle, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Rally);
+            AddBannerToItemRecipe(ItemID.ScutlixBanner, ItemID.BrainScrambler);
             AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.DivingHelmet);
             AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.BoneSword);
             AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher, tile: TileID.MythrilAnvil);

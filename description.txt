@@ -31,20 +31,8 @@ FOR BETA
 -TRULY fixed Herb Bag recipes
 -Pirate Flag can be used at any time
 -Stat Sheet UI
-
-
-
-TODO
-
-Stat sheet but in mp, make epic UI using pbone toggles?
-Please add mana regen to the Stat Sheet item. It'd be nice to know how much man I can regenerate in a certain amount of time as a mage.
-
-:squirrel: can be detected by lifeform analyzer
-
-add "can catch town NPCs" to bug net and golden bug net tooltip
-
-Right click with instabridge to destroy a line of platforms
-
-Nymph summon phm (might be sousl mod)
--Antimage Crystal
+-Added craftable Demon Altars crafted from evil boss drops
+-Crystal Ball no longer functions as a Demon Altar
+-Bug Net and Golden Bug Net now mention that they can catch town npcs
+-Scutlix banner also crafts into Brain Scrambler
 

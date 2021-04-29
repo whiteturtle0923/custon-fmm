@@ -27,11 +27,6 @@ namespace Fargowiltas.Items
 
             switch (item.type)
             {
-                case ItemID.CrystalBall:
-                    line = new TooltipLine(mod, "Altar", "Functions as a Demon altar as well");
-                    tooltips.Add(line);
-                    break;
-
                 case ItemID.PureWaterFountain:
                     line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Ocean upon activation");
                     tooltips.Add(line);
@@ -67,7 +62,13 @@ namespace Fargowiltas.Items
                     tooltips.Add(line);
                     break;
 
-                    //oasis and cavern? fountains
+                //oasis and cavern? fountains
+
+                case ItemID.BugNet:
+                case ItemID.GoldenBugNet:
+                    line = new TooltipLine(mod, "Tooltip0", "Can also catch townsfolk");
+                    tooltips.Add(line);
+                    break;
 
             }
 
