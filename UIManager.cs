@@ -6,40 +6,32 @@ using Fargowiltas.UI;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Fargowiltas;
 
 namespace Fargowilta
 {
     public class UIManager
     {
         public UserInterface StatSheetUserInterface;
-        public UserInterface TogglerToggleUserInterface;
+        public UserInterface StatSheetTogglerUserInterface;
         public StatSheetUI StatSheet;
         public StatButton StatButton;
         private GameTime _lastUpdateUIGameTime;
 
-        public Texture2D CheckMark;
-        public Texture2D CheckBox;
         public Texture2D StatsButtonTexture;
         public Texture2D StatsButton_MouseOverTexture;
-        public Texture2D PresetButtonOutline;
-        public Texture2D PresetOffButton;
-        public Texture2D PresetOnButton;
-        public Texture2D PresetMinimalButton;
 
         public void LoadUI()
         {
             if (!Main.dedServ)
             {
                 // Load textures
-                CheckMark = ModContent.GetTexture("Fargowiltas/UI/Assets/CheckMark");
-                CheckBox = ModContent.GetTexture("Fargowiltas/UI/Assets/CheckBox");
                 StatsButtonTexture = ModContent.GetTexture("Fargowiltas/UI/Assets/StatsButton");
                 StatsButton_MouseOverTexture = ModContent.GetTexture("Fargowiltas/UI/Assets/StatsButton_MouseOver");
 
-
                 // Initialize UserInterfaces
                 StatSheetUserInterface = new UserInterface();
-                TogglerToggleUserInterface = new UserInterface();
+                StatSheetTogglerUserInterface = new UserInterface();
 
                 // Activate UIs
                 StatSheet = new StatSheetUI();
@@ -47,7 +39,7 @@ namespace Fargowilta
                 StatButton = new StatButton();
                 StatButton.Activate();
 
-                TogglerToggleUserInterface.SetState(StatButton);
+                StatSheetTogglerUserInterface.SetState(StatButton);
             }
         }
 
@@ -60,8 +52,8 @@ namespace Fargowilta
 
             if (StatSheetUserInterface?.CurrentState != null)
                 StatSheetUserInterface.Update(gameTime);
-            if (TogglerToggleUserInterface?.CurrentState != null)
-                TogglerToggleUserInterface.Update(gameTime);
+            if (StatSheetTogglerUserInterface?.CurrentState != null)
+                StatSheetTogglerUserInterface.Update(gameTime);
         }
 
         public bool IsStatSheetOpen() => StatSheetUserInterface?.CurrentState == null;
@@ -88,7 +80,7 @@ namespace Fargowilta
             int index = layers.FindIndex((layer) => layer.Name == "Vanilla: Inventory");
             if (index != -1)
             {
-                layers.Insert(index - 1, new LegacyGameInterfaceLayer("Fargos: Soul Toggler", delegate
+                layers.Insert(index - 1, new LegacyGameInterfaceLayer("Fargos: Stat Sheet", delegate
                 {
                     if (_lastUpdateUIGameTime != null && StatSheetUserInterface?.CurrentState != null)
                         StatSheetUserInterface.Draw(Main.spriteBatch, _lastUpdateUIGameTime);
@@ -101,8 +93,8 @@ namespace Fargowilta
             {
                 layers.Insert(index, new LegacyGameInterfaceLayer("Fargos: Stat Sheet Toggler", delegate
                 {
-                    if (_lastUpdateUIGameTime != null && TogglerToggleUserInterface?.CurrentState != null)
-                        TogglerToggleUserInterface.Draw(Main.spriteBatch, _lastUpdateUIGameTime);
+                    if (_lastUpdateUIGameTime != null && StatSheetTogglerUserInterface?.CurrentState != null)
+                        StatSheetTogglerUserInterface.Draw(Main.spriteBatch, _lastUpdateUIGameTime);
 
                     return true;
                 }, InterfaceScaleType.UI));
