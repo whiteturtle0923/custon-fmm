@@ -53,6 +53,12 @@ namespace Fargowiltas.UI
                 }
             }
 
+            if (PlayerInput.Triggers.Current.MouseRight)
+            {
+                Focused = true;
+                Input = "";
+            }
+
             if (PlayerInput.Triggers.Current.Inventory)
             {
                 Focused = false;
