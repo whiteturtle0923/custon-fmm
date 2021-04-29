@@ -1,7 +1,6 @@
-﻿using Fargowiltas.Tiles;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -42,15 +41,19 @@ namespace Fargowiltas.Projectiles.Explosives
             int xPos = (int)projectile.Center.X / 16;
             int yPos = (int)projectile.Center.Y / 16;
 
-            for (int i = -45; i <= 45; i++)
+            bool WipeColumn(int i)
             {
-                for (int j = -50; j <= 0; j++)
+                for (int j = 0; j >= -50; j--)
                 {
                     int tileX = xPos + i;
                     int tileY = yPos + j;
 
                     if (tileX < 0 || tileX > Main.maxTilesX || tileY <= 0 || tileY > Main.maxTilesY)
+                    {
+                        if (j == 0)
+                            return false;
                         continue;
+                    }
 
                     Tile tile = Framing.GetTileSafely(tileX, tileY);
 
@@ -58,7 +61,11 @@ namespace Fargowiltas.Projectiles.Explosives
                         continue;
 
                     if (tile.wall != WallID.LihzahrdBrickUnsafe)
+                    {
+                        if (j == 0)
+                            return false;
                         continue;
+                    }
 
                     //check for chest above this block
                     Tile tileAbove = Framing.GetTileSafely(tileX, tileY - 1);
@@ -102,6 +109,37 @@ namespace Fargowiltas.Projectiles.Explosives
                     WorldGen.KillTile(tileX, tileY);
                     if (Main.netMode == NetmodeID.Server)
                         NetMessage.SendTileSquare(-1, tileX, tileY, 1);
+                }
+
+                return true;
+            }
+
+            int leftMax = 50;
+            int rightMax = 50;
+
+            int leftTry = 0;
+            for (; leftTry >= -leftMax; leftTry--) //try clearing left side
+            {
+                if (!WipeColumn(leftTry)) //if went OOB or exited temple before reaching normal left limit, give up
+                {
+                    rightMax += leftMax - Math.Abs(leftTry); //try to extend right side by this much
+                    Main.NewText($"Extended right max to {rightMax}");
+                    break;
+                }
+            }
+            
+            for (int rightTry = 0; rightTry <= rightMax; rightTry++) //try clearing right side
+            {
+                if (!WipeColumn(rightTry)) //if went OOB or exited temple before reaching normal right limit, give up
+                {
+                    leftMax += rightMax - rightTry; //try to extend left side by this much
+                    Main.NewText($"Extended left max to {leftMax}");
+                    for (; leftTry >= -leftMax; leftTry--) //try left one more time with the new extended limit
+                    {
+                        if (!WipeColumn(leftTry))
+                            break;
+                    }
+                    break;
                 }
             }
         }
