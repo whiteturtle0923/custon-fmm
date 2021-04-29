@@ -94,9 +94,9 @@ namespace Fargowiltas
 
         public override void SetupStartInventory(IList<Item> items, bool mediumCoreDeath)
         {
-            Item item = new Item();
+            /*Item item = new Item();
             item.SetDefaults(ItemType<Items.Misc.Stats>());
-            items.Add(item);
+            items.Add(item);*/
 
             foreach (string tag in tags)
             {
