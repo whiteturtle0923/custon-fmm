@@ -102,22 +102,28 @@ namespace Fargowiltas.UI
             ui.Top.Set(top, 0f);
 
             string[] words = text.Split(' ');
-            if (!SearchBar.IsEmpty && words.Any(s => s.StartsWith(SearchBar.Input, StringComparison.OrdinalIgnoreCase)))
+            if (!SearchBar.IsEmpty)
             {
-                float fade = MathHelper.Lerp(0.1f, 0.9f, (float)(Math.Sin(Main.GameUpdateCount / 10f) + 1f) / 2f);
-                Color color = Color.Lerp(Color.Yellow, Color.Goldenrod, fade);
-                ui.TextColor = color;
+                if (words.Any(s => s.StartsWith(SearchBar.Input, StringComparison.OrdinalIgnoreCase)))
+                {
+                    float fade = MathHelper.Lerp(0.1f, 0.9f, (float)(Math.Sin(Main.GameUpdateCount / 10f) + 1f) / 2f);
+                    Color color = Color.Lerp(Color.Yellow, Color.Goldenrod, fade);
+                    ui.TextColor = color;
+                }
+                else
+                    // Gray out text when filtered by search
+                    ui.TextColor = Color.Gray;
             }
 
             InnerPanel.Append(ui);
         }
 
-        public void SetPositionToPoint(Point point)
+        /*public void SetPositionToPoint(Point point)
         {
             BackPanel.Left.Set(point.X, 0f);
             BackPanel.Top.Set(point.Y, 0f);
         }
 
-        public Point GetPositinAsPoint() => new Point((int)BackPanel.Left.Pixels, (int)BackPanel.Top.Pixels);
+        public Point GetPositinAsPoint() => new Point((int)BackPanel.Left.Pixels, (int)BackPanel.Top.Pixels);*/
     }
 }
