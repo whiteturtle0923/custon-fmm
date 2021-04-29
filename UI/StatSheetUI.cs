@@ -1,86 +1,29 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Linq;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
-using Terraria.GameInput;
+using Terraria.ID;
 using Terraria.UI;
-using System;
-using Terraria.Localization;
-using Terraria.UI.Chat;
-using System.Text.RegularExpressions;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Fargowiltas.UI
 {
     public class StatSheetUI : UIState
     {
-        public static Regex RemoveItemTags = new Regex(@"\[[^\[\]]*\]");
+        public const int BackWidth = 660;
+        public const int BackHeight = 251 + 28; // 28 = search bar height (26) + padding (2)
+        public const int HowManyPerColumn = 10;
+        public const int HowManyColumns = 3;
 
-        public bool NeedsToggleListBuilding;
-        public string DisplayMod;
-        public string SortCatagory;
+        public int LineCounter;
+        public int ColumnCounter;
 
-        public const int BackWidth = 400;
-        public const int BackHeight = 658;
-
+        public UISearchBar SearchBar;
         public UIDragablePanel BackPanel;
         public UIPanel InnerPanel;
 
-        public List<UIText> stats;
-
-        private void addStat(string text)
-        {
-            UIText stat = new UIText(text);
-            stats.Add(stat);
-        }
-
         public override void OnInitialize()
         {
-            NeedsToggleListBuilding = true;
-            DisplayMod = "";
-            SortCatagory = "";
-
-            // This entire layout is cancerous and dangerous to your health because red protected UIElements children
-            // If I want to give extra non-children to BackPanel to count as children when seeing if it should drag, I have to abandon
-            // all semblence of organization in favour of making it work. Enjoy my write only UI laying out.
-            // Oh well, at least it works...
-
-
-            Player player = Main.player[Main.myPlayer];
-            stats = new List<UIText>();
-
-            addStat($"Melee Damage: {player.meleeDamage * 100}%");
-            addStat($"Melee Crit: {player.meleeCrit}%");
-            addStat($"Ranged Damage: {player.rangedDamage * 100}%");
-            addStat($"Ranged Crit: {player.rangedCrit}%");
-            addStat($"Magic Damage: {player.magicDamage * 100}%");
-            addStat($"Magic Crit: {player.magicCrit}%");
-            addStat($"Summon Damage: {player.minionDamage * 100}%");
-            addStat($"Max Minions: {player.maxMinions}");
-            addStat($"Max Sentries: {player.maxTurrets}");
-            addStat($"Damage Reduction: {player.endurance * 100}%");
-            addStat($"Life Regen: {player.lifeRegen} HP/second");
-            addStat($"Armor Pen: {player.armorPenetration}");
-            addStat($"Max Speed: {(player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6} mph");
-            addStat($"Wing Time: {player.wingTimeMax / 60} seconds");
-
-
-
-            //aggro
-            //attack speed
-            //hp
-            //mana
-            //defense
-            //mana regen
-            //luck
-
-
-
-
-
-           
-
             BackPanel = new UIDragablePanel();
             BackPanel.Left.Set(0, 0f);
             BackPanel.Top.Set(0, 0f);
@@ -88,122 +31,85 @@ namespace Fargowiltas.UI
             BackPanel.Height.Set(BackHeight, 0f);
             BackPanel.PaddingLeft = BackPanel.PaddingRight = BackPanel.PaddingTop = BackPanel.PaddingBottom = 0;
             BackPanel.BackgroundColor = new Color(29, 33, 70) * 0.7f;
+            Append(BackPanel);
+
+            SearchBar = new UISearchBar(BackWidth - 8, 26);
+            SearchBar.Left.Set(4, 0f);
+            SearchBar.Top.Set(6, 0f); // 6 so padding lines up
+            BackPanel.Append(SearchBar);
 
             InnerPanel = new UIPanel();
-            InnerPanel.Width.Set(BackWidth - 12, 0f);
-            InnerPanel.Height.Set(BackHeight - 70, 0);
             InnerPanel.Left.Set(6, 0f);
-            InnerPanel.Top.Set(32, 0f);
+            InnerPanel.Top.Set(6 + 28, 0f); // 28 for search bar
+            InnerPanel.Width.Set(BackWidth - 12, 0f);
+            InnerPanel.Height.Set(BackHeight - 12 - 28, 0);
+            InnerPanel.PaddingLeft = InnerPanel.PaddingRight = InnerPanel.PaddingTop = InnerPanel.PaddingBottom = 0;
             InnerPanel.BackgroundColor = new Color(73, 94, 171) * 0.9f;
-
-            Append(BackPanel);
             BackPanel.Append(InnerPanel);
 
-            //add stats, but they dont update NOOOOOOOOOOO pbone
-            int left = 20;
-            int top = 6;
-
-            foreach (UIText text in stats)
-            {
-                text.Top.Set(top, 0f);
-                text.Left.Set(left, 0f);
-
-                top += 25;
-
-                InnerPanel.Append(text);
-            }
-
             base.OnInitialize();
-        }
-
-        private void SearchBar_OnTextChange(string oldText, string currentText)
-        {
-            NeedsToggleListBuilding = true;
-        }
-
-        private void hotbarScrollFix(UIScrollWheelEvent evt, UIElement listeningElement)
-        {
-            Main.LocalPlayer.ScrollHotbar(PlayerInput.ScrollWheelDelta / 120);
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            /*if (NeedsToggleListBuilding)
+            if (Main.GameUpdateCount % (!SearchBar.IsEmpty ? 2 : 4) == 0) // 15 times a second, or 30 times a second if searchbar has text
             {
-                BuildList();
-                NeedsToggleListBuilding = false;
-            }*/
+                RebuildStatList();
+            }
         }
 
-        /*public void BuildList()
+        public void RebuildStatList()
         {
-            ToggleList.Clear();
             Player player = Main.LocalPlayer;
-            ToggleBackend toggler = player.GetModPlayer<FargoPlayer>().Toggler;
 
-            IEnumerable<Toggle> displayToggles = toggler.Toggles.Values.Where((toggle) => {
-                string[] words = GetRawToggleName(toggle.InternalName).Split(' ');
-                return
-                (string.IsNullOrEmpty(DisplayMod) || toggle.Mod == DisplayMod) &&
-                (string.IsNullOrEmpty(SortCatagory) || toggle.Catagory == SortCatagory) &&
-                (string.IsNullOrEmpty(SearchBar.Input) || words.Any(s => s.StartsWith(SearchBar.Input, StringComparison.OrdinalIgnoreCase)));
-            });
+            InnerPanel.RemoveAllChildren();
+            ColumnCounter = LineCounter = 0;
 
-            HashSet<string> usedHeaders = new HashSet<string>();
-            List<Toggle> togglesAsLists = ToggleLoader.LoadedToggles.Values.ToList();
+            AddStat($"Melee Damage: {player.meleeDamage * 100}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Crit: {player.meleeCrit}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Speed: {player.meleeSpeed * 100}%", ItemID.CopperBroadsword);
+            AddStat($"Ranged Damage: {player.rangedDamage * 100}%", ItemID.CopperBow);
+            AddStat($"Ranged Crit: {player.rangedCrit}%", ItemID.CopperBow);
+            AddStat($"Magic Damage: {player.magicDamage * 100}%", ItemID.WandofSparking);
+            AddStat($"Magic Crit: {player.magicCrit}%", ItemID.WandofSparking);
+            //AddStat($"Mana Regen: {player.manaRegen}/second"); Find the algorithm to calculate mana/second
+            AddStat($"Summon Damage: {player.minionDamage * 100}%", ItemID.SlimeStaff);
+            AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
+            AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
 
-            foreach (Toggle toggle in displayToggles)
-            {
-                if (ToggleLoader.LoadedHeaders.ContainsKey(toggle.InternalName) && SearchBar.IsEmpty)
-                {
-                    if (ToggleList.Count > 0) // Don't add for the first header
-                        ToggleList.Add(new UIText("", 0.2f)); // Blank line
+            AddStat($"Armor Penetration: {player.armorPenetration}", ItemID.SharkToothNecklace);
+            AddStat($"Damage Reduction: {player.endurance * 100}%", ItemID.CobaltShield);
+            AddStat($"Life Regen: {player.lifeRegen} HP/second", ItemID.BandofRegeneration);
+            AddStat($"Aggro: {player.aggro}", ItemID.FleshKnuckles);
+            AddStat($"Max Speed: {(player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6} mph", ItemID.HermesBoots);
+            AddStat($"Wing Time: {player.wingTimeMax / 60} seconds", ItemID.AngelWings);
+        }
 
-                    (string name, int item) header = ToggleLoader.LoadedHeaders[toggle.InternalName];
-                    ToggleList.Add(new UIHeader(header.name, header.item, (BackWidth - 16, 20)));
-                }
-                else if (!SearchBar.IsEmpty)
-                {
-                    int index = togglesAsLists.FindIndex(t => t.InternalName == toggle.InternalName);
-                    int closestHeader = ToggleLoader.HeaderToggles.OrderBy(i =>
-                        Math.Abs(index - i)).First();
-
-                    if (closestHeader > index)
-                        closestHeader = ToggleLoader.HeaderToggles[ToggleLoader.HeaderToggles.FindIndex(i => i == closestHeader) - 1];
-
-                    (string name, int item) header = ToggleLoader.LoadedHeaders[togglesAsLists[closestHeader].InternalName];
-
-                    if (!usedHeaders.Contains(header.name))
-                    {
-                        if (ToggleList.Count > 0) // Don't add for the first header
-                            ToggleList.Add(new UIText("", 0.2f)); // Blank line
-
-                        ToggleList.Add(new UIHeader(header.name, header.item, (BackWidth - 16, 20)));
-                        usedHeaders.Add(header.name);
-                    }
-                }
-
-                ToggleList.Add(new UIToggle(toggle.InternalName));
-            }
-        }*/
-
-        public string GetRawToggleName(string key)
+        public void AddStat(string text, int item = -1)
         {
-            string baseText = Language.GetTextValue($"Mods.FargowiltasSouls.{key}Config");
-            List<TextSnippet> parsedText = ChatManager.ParseMessage(baseText, Color.White);
-            string rawText = "";
-
-            foreach (TextSnippet snippet in parsedText)
+            int left = 8 + ColumnCounter * ((BackWidth - 8) / HowManyColumns);
+            int top = 8 + LineCounter * (23); // I don't know why but 23 works perfectly
+            if (++LineCounter == HowManyPerColumn)
             {
-                if (!snippet.Text.StartsWith("["))
-                {
-                    rawText += snippet.Text.Trim();
-                }
+                ColumnCounter++;
+                LineCounter = 0;
             }
 
-            return rawText;
+            UIText ui = new UIText(item > -1 ? $"[i:{item}] {text}" : text);
+            ui.Left.Set(left, 0f);
+            ui.Top.Set(top, 0f);
+
+            string[] words = text.Split(' ');
+            if (!SearchBar.IsEmpty && words.Any(s => s.StartsWith(SearchBar.Input, StringComparison.OrdinalIgnoreCase)))
+            {
+                float fade = MathHelper.Lerp(0.1f, 0.9f, (float)(Math.Sin(Main.GameUpdateCount / 10f) + 1f) / 2f);
+                Color color = Color.Lerp(Color.Yellow, Color.Goldenrod, fade);
+                ui.TextColor = color;
+            }
+
+            InnerPanel.Append(ui);
         }
 
         public void SetPositionToPoint(Point point)
@@ -212,6 +118,6 @@ namespace Fargowiltas.UI
             BackPanel.Top.Set(point.Y, 0f);
         }
 
-        public Point GetPositionAsPoint() => new Point((int)BackPanel.Left.Pixels, (int)BackPanel.Top.Pixels);
+        public Point GetPositinAsPoint() => new Point((int)BackPanel.Left.Pixels, (int)BackPanel.Top.Pixels);
     }
 }
