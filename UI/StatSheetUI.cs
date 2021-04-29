@@ -112,7 +112,7 @@ namespace Fargowiltas.UI
                 }
                 else
                     // Gray out text when filtered by search
-                    ui.TextColor = Color.Gray;
+                    ui.TextColor = Color.Gray * 1.5f;
             }
 
             InnerPanel.Append(ui);
