@@ -8,13 +8,13 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.CaughtNPCs
 {
-    public sealed class CaughtNPCItem : ModItem
+    public class CaughtNPCItem : ModItem
     {
         public static List<int> CaughtNPCs = new List<int>();
 
         public int npcId;
         public string quote;
-
+        
         public CaughtNPCItem(int npcId, string quote = "")
         {
             this.npcId = npcId;
@@ -25,13 +25,18 @@ namespace Fargowiltas.Items.CaughtNPCs
             ? $"Terraria/NPC_{npcId}" 
             : NPCLoader.GetNPC(npcId).Texture;
 
+        public override bool Autoload(ref string name) => false;
+
+        public override bool CloneNewInstances => true;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault($"The {Regex.Replace(Name, "([A-Z])", " $1").Trim()}");
 
             try
             {
-                quote = $"'{NPCLoader.GetNPC(npcId).GetChat()}'";
+                if (string.IsNullOrEmpty(quote)) 
+                    quote = $"'{NPCLoader.GetNPC(npcId).GetChat()}'";
             }
             catch
             {
@@ -80,6 +85,8 @@ namespace Fargowiltas.Items.CaughtNPCs
             item.TurnToAir();
         }
 
+        public override ModItem Clone() => new CaughtNPCItem(npcId, quote);
+
         public static void RegisterItems(Mod mod)
         {
             CaughtNPCs = new List<int>();
@@ -104,17 +111,17 @@ namespace Fargowiltas.Items.CaughtNPCs
             Add("GoblinTinkerer", NPCID.GoblinTinkerer, "'Looking for a gadgets expert? I'm your goblin!'");
             // Golfer
             Add("Guide", NPCID.Guide, "'They say there is a person who will tell you how to survive in this land.'");
-            Add("LumberJack", ModContent.NPCType<NPCs.LumberJack>(), "'I eat a bowl of woodchips for breakfast... without any milk.'");
+            Add("LumberJack", ModContent.NPCType<LumberJack>(), "'I eat a bowl of woodchips for breakfast... without any milk.'");
             Add("Mechanic", NPCID.Mechanic, "'Always buy more wire than you need!'");
             Add("Merchant", NPCID.Merchant, "'Did you say gold? I'll take that off of ya.'");
-            Add("Mutant", ModContent.NPCType<NPCs.Mutant>(), "'You're lucky I'm on your side.'");
+            Add("Mutant", ModContent.NPCType<Mutant>(), "'You're lucky I'm on your side.'");
             Add("Nurse", NPCID.Nurse, "'Show me where it hurts.'");
             Add("Painter", NPCID.Painter, "'I know the difference between turquoise and blue-green. But I won't tell you.'");
             Add("PartyGirl", NPCID.PartyGirl, "'We have to talk. It's... it's about parties.'");
             Add("Pirate", NPCID.Pirate, "'Stay off me booty, ya scallywag!'");
             Add("SantaClaus", NPCID.SantaClaus, "'What? You thought I wasn't real?'");
             Add("SkeletonMerchant", NPCID.SkeletonMerchant, "'You would not believe some of the things people throw at me... Wanna buy some of it?'");
-            Add("Squirrel", ModContent.NPCType<NPCs.Squirrel>(), "*squeak*");
+            Add("Squirrel", ModContent.NPCType<Squirrel>(), "*squeak*");
             Add("Steampunker", NPCID.Steampunker, "'Show me some gears!'");
             Add("Stylist", NPCID.Stylist, "'Did you even try to brush your hair today?'");
             Add("Tavernkeep", NPCID.DD2Bartender, "'What am I doing here...'");
