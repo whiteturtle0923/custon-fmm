@@ -210,7 +210,7 @@ namespace Fargowiltas
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDeserts", group);
 
             // Caught NPCs
-            int[] caughtNPCs = new int[]
+            /*int[] caughtNPCs = new int[]
             {
                 ModContent.ItemType<Guide>(),
                 ModContent.ItemType<Angler>(),
@@ -236,8 +236,8 @@ namespace Fargowiltas
                 ModContent.ItemType<TravellingMerchant>(),
                 ModContent.ItemType<WitchDoctor>(),
                 ModContent.ItemType<Wizard>(),
-            };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", caughtNPCs);
+            };*/
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", CaughtNPCItem.CaughtNPCs.ToArray());
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
 
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Omnistation", ModContent.ItemType<Omnistation>(), ModContent.ItemType<Omnistation2>());
@@ -1029,6 +1029,7 @@ namespace Fargowiltas
 
         private static void AddNPCRecipes()
         {
+            Fargowiltas mod = ModLoader.GetMod("Fargowiltas") as Fargowiltas;
             ModRecipe recipe = GetNewRecipe();
             recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
             recipe.AddTile(TileID.MeatGrinder);
@@ -1042,7 +1043,7 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
-            recipe.AddIngredient(ModContent.ItemType<Truffle>());
+            recipe.AddIngredient(mod?.GetItem("Truffle"));
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(ItemID.BluePaint, 20);
             recipe.AddRecipe();
@@ -1054,14 +1055,14 @@ namespace Fargowiltas
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
-            recipe.AddIngredient(ModContent.ItemType<TravellingMerchant>());
+            recipe.AddIngredient(mod?.GetItem("TravellingMerchant"));
             recipe.AddIngredient(ItemID.Bone, 5);
             recipe.AddTile(TileID.BoneWelder);
-            recipe.SetResult(ModContent.ItemType<SkeletonMerchant>());
+            recipe.SetResult(mod?.GetItem("SkeletonMerchant"));
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
-            recipe.AddIngredient(ModContent.ItemType<SkeletonMerchant>());
+            recipe.AddIngredient(mod?.GetItem("SkeletonMerchant"));
             recipe.AddTile(TileID.BoneWelder);
             recipe.SetResult(ItemID.Bone, 25);
             recipe.AddRecipe();
@@ -1135,7 +1136,7 @@ namespace Fargowiltas
             //travelling merch recipes 
             recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.Wood, 500);
-            recipe.AddIngredient(ModContent.ItemType<TravellingMerchant>());
+            recipe.AddIngredient(mod?.GetItem("TravellingMerchant"));
             recipe.AddTile(TileID.CookingPots);
             recipe.SetResult(ItemID.DynastyWood, 500);
             recipe.AddRecipe();

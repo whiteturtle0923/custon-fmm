@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Fargowiltas.NPCs;
 using Terraria;
 using Terraria.DataStructures;
@@ -9,6 +10,8 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public sealed class CaughtNPCItem : ModItem
     {
+        public static List<int> CaughtNPCs = new List<int>();
+
         public int npcId;
         public string quote;
 
@@ -79,8 +82,14 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public static void RegisterItems(Mod mod)
         {
-            void Add(string name, int id, string quote) => mod.AddItem(name, new CaughtNPCItem(id, quote));
-            void AddAutomatic(string name, int id) => mod.AddItem($"Caught{name}", new CaughtNPCItem(id));
+            CaughtNPCs = new List<int>();
+
+            void Add(string name, int id, string quote)
+            {
+                mod.AddItem(name, new CaughtNPCItem(id, quote));
+                CaughtNPCs.Add(mod.ItemType(name));
+            }
+            void AddAutomatic(string name, int id) => Add($"Caught{name}", id, "");
             
             // manually register mutant and vanillas
             Add("Abominationn", ModContent.NPCType<Abominationn>(), "'I sure wish I was a boss.'");
