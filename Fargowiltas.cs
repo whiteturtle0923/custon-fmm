@@ -11,6 +11,7 @@ using Terraria.ModLoader;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Fargowilta;
+using Fargowiltas.Items.CaughtNPCs;
 using Terraria.UI;
 
 namespace Fargowiltas
@@ -118,6 +119,8 @@ namespace Fargowiltas
             AddToggle("Abom", "Abominationn Can Spawn", "AbominationnMask", "ffffff");
             AddToggle("Devi", "Deviantt Can Spawn", "DevianttMask", "ffffff");
             AddToggle("Lumber", "Lumberjack Can Spawn", "LumberjackMask", "ffffff");
+
+            CaughtNPCItem.RegisterItems(this);
 
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
