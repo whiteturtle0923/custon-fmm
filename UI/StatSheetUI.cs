@@ -69,22 +69,30 @@ namespace Fargowiltas.UI
 
             AddStat($"Melee Damage: {player.meleeDamage * 100}%", ItemID.CopperBroadsword);
             AddStat($"Melee Crit: {player.meleeCrit}%", ItemID.CopperBroadsword);
-            AddStat($"Melee Speed: {player.meleeSpeed * 100}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Speed: {(int)(player.meleeSpeed * 100)}%", ItemID.CopperBroadsword);
             AddStat($"Ranged Damage: {player.rangedDamage * 100}%", ItemID.CopperBow);
             AddStat($"Ranged Crit: {player.rangedCrit}%", ItemID.CopperBow);
             AddStat($"Magic Damage: {player.magicDamage * 100}%", ItemID.WandofSparking);
             AddStat($"Magic Crit: {player.magicCrit}%", ItemID.WandofSparking);
-            //AddStat($"Mana Regen: {player.manaRegen}/second"); Find the algorithm to calculate mana/second
             AddStat($"Summon Damage: {player.minionDamage * 100}%", ItemID.SlimeStaff);
             AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
             AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
 
-            AddStat($"Armor Penetration: {player.armorPenetration}", ItemID.SharkToothNecklace);
-            AddStat($"Damage Reduction: {player.endurance * 100}%", ItemID.CobaltShield);
+
+            AddStat($"HP: {player.statLifeMax2}", ItemID.LifeCrystal);
+            AddStat($"Defense: {player.statDefense}", ItemID.CobaltShield);
+            AddStat($"Damage Reduction: {player.endurance * 100}%", ItemID.WormScarf);
             AddStat($"Life Regen: {player.lifeRegen} HP/second", ItemID.BandofRegeneration);
+            AddStat($"Mana: {player.statManaMax2}", ItemID.ManaCrystal);
+            AddStat($"Mana Regen: {player.manaRegen / 2}/second", ItemID.ManaCrystal);
+
+            AddStat($"Armor Penetration: {player.armorPenetration}", ItemID.SharkToothNecklace);
             AddStat($"Aggro: {player.aggro}", ItemID.FleshKnuckles);
             AddStat($"Max Speed: {(player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6} mph", ItemID.HermesBoots);
             AddStat($"Wing Time: {player.wingTimeMax / 60} seconds", ItemID.AngelWings);
+
+            //luck
+
         }
 
         public void AddStat(string text, int item = -1)

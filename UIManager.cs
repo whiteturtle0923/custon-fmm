@@ -47,8 +47,8 @@ namespace Fargowilta
         {
             _lastUpdateUIGameTime = gameTime;
 
-            //if (!Main.playerInventory)// && SoulConfig.Instance.HideTogglerWhenInventoryIsClosed)
-            //    CloseStatSheet();
+            if (!Main.playerInventory)
+                CloseStatSheet();
 
             if (StatSheetUserInterface?.CurrentState != null)
                 StatSheetUserInterface.Update(gameTime);
