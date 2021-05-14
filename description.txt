@@ -27,12 +27,26 @@ NEW UPDATE - V 2.3
 -Dark Mages and Ogres now always drop some Defender Medals (moved from Eternity Mode)
 -Undead Miner banner can be crafted into Mining armor pieces
 
-FOR BETA
+various deviantt dialogue changes, BETSY TEXT, ERIDANUS TEXT
+receive button is rainbows
+instactuation bomb will compensate if your altar doesn't have enough space on one side by attempting to extend the other side by that much (should always give you ~100 blocks of space horizontally, also test in mp)
+
 -TRULY fixed Herb Bag recipes
 -Pirate Flag can be used at any time
--Stat Sheet UI
+-Added Stat Sheet UI
+-Removed Stat Sheet
 -Added craftable Demon Altars crafted from evil boss drops
 -Crystal Ball no longer functions as a Demon Altar
 -Bug Net and Golden Bug Net now mention that they can catch town npcs
 -Scutlix banner also crafts into Brain Scrambler
 
+FOR BETA
+-Added banner recipes to craft Bones
+-Reduced Rod of Discord recipe by 1 banner
+-Stat sheet UI will close when you close the inventory
+-Rearranged Stat Sheet a bit. Added HP, Defense, Mana, Mana Regen. Fixed Melee Speed having a million decimal places
+-Mech boss summons will now reset the night like the Skeletron summon. Only happens before you beat them
+
+
+
+-fix demon altar not mineable
