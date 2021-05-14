@@ -14,7 +14,13 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public int npcId;
         public string quote;
-        
+
+        public CaughtNPCItem()
+        {
+            npcId = NPCID.None;
+            quote = "";
+        }
+
         public CaughtNPCItem(int npcId, string quote = "")
         {
             this.npcId = npcId;
@@ -25,9 +31,9 @@ namespace Fargowiltas.Items.CaughtNPCs
             ? $"Terraria/NPC_{npcId}" 
             : NPCLoader.GetNPC(npcId).Texture;
 
-        public override bool Autoload(ref string name) => false;
+        public override bool Autoload(ref string name) => true;
 
-        public override bool CloneNewInstances => true;
+        public override bool CloneNewInstances => false;
 
         public override void SetStaticDefaults()
         {
@@ -35,12 +41,14 @@ namespace Fargowiltas.Items.CaughtNPCs
 
             try
             {
-                if (string.IsNullOrEmpty(quote)) 
+                if (string.IsNullOrEmpty(quote) && npcId != 0) 
                     quote = $"'{NPCLoader.GetNPC(npcId).GetChat()}'";
+                else if (npcId == 0)
+                    quote = "nil";
             }
             catch
             {
-                quote = "";
+                quote = "'I have little to say.'";
                 // catch and ignore any thrown errors
             }
 
@@ -84,6 +92,10 @@ namespace Fargowiltas.Items.CaughtNPCs
             NPC.SpawnWOF(item.position);
             item.TurnToAir();
         }
+
+        //public override ModItem NewInstance(Item itemClone) => new CaughtNPCItem(npcId, quote);
+
+        //public override ModItem Clone(Item item) => new CaughtNPCItem(npcId, quote);
 
         public override ModItem Clone() => new CaughtNPCItem(npcId, quote);
 
