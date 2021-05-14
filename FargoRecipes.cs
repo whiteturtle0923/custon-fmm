@@ -1,6 +1,8 @@
-﻿using System.Linq;
-using Fargowiltas.Items.CaughtNPCs;
+﻿using Fargowiltas.Items.CaughtNPCs;
 using Fargowiltas.Items.Summons;
+using Fargowiltas.Items.Summons.Deviantt;
+using Fargowiltas.Items.Summons.Abom;
+using Fargowiltas.Items.Summons.SwarmSummons;
 using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
@@ -235,7 +237,7 @@ namespace Fargowiltas
                 ModContent.ItemType<WitchDoctor>(),
                 ModContent.ItemType<Wizard>(),
             };*/
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", CaughtNPCItem.CaughtNPCs.Keys.ToArray());
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", CaughtNPCItem.CaughtNPCs.ToArray());
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
 
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Omnistation", ModContent.ItemType<Omnistation>(), ModContent.ItemType<Omnistation2>());
