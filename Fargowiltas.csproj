@@ -17,4 +17,12 @@
     <Folder Include="Items\Potions\" />
     <Folder Include="Items\Weapons\Thrown\" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CalamityMod">
+      <HintPath>..\..\Mods\CalamityMod.XNA.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoriumMod">
+      <HintPath>..\..\Mods\ThoriumMod.XNA.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

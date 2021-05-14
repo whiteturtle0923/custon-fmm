@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Fargowiltas.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -12,6 +13,7 @@ using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Fargowilta;
 using Fargowiltas.Items.CaughtNPCs;
+using Terraria.DataStructures;
 using Terraria.UI;
 
 namespace Fargowiltas
@@ -165,6 +167,9 @@ namespace Fargowiltas
                     censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
                 }
             }
+
+            foreach (KeyValuePair<int, int> npc in CaughtNPCItem.CaughtNPCs)
+                Main.RegisterItemAnimation(npc.Key, new DrawAnimationVertical(6, Main.npcFrameCount[npc.Value]));
 
             /*Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
             if (soulsMod != null)
