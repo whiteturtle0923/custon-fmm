@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using Fargowiltas.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -8,10 +10,10 @@ using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Fargowiltas.Items.Misc;
-using Fargowiltas.Items.Tiles;
 using Fargowilta;
 using Fargowiltas.Items.CaughtNPCs;
+using MonoMod.Cil;
+using MonoMod.RuntimeDetour.HookGen;
 using Terraria.DataStructures;
 using Terraria.UI;
 
@@ -55,11 +57,59 @@ namespace Fargowiltas
             };
         }
 
+        static Fargowiltas()
+        {
+            HookContentLoad += (context) =>
+            {
+                ILCursor c = new ILCursor(context);
+
+                c.TryGotoNext(x => x.MatchLdstr("tModLoader.MSSettingUp"));
+
+                c.Index -= 2;
+
+                c.EmitDelegate<Action>(() =>
+                {
+                    typeof(Mod).GetField("loading", BindingFlags.NonPublic | BindingFlags.Instance)?.SetValue(ModLoader.GetMod("Fargowiltas"), true);
+
+                    for (int i = 0; i < NPCLoader.NPCCount; i++)
+                    {
+                        try
+                        {
+                            ModNPC modNPC = NPCLoader.GetNPC(i);
+                            NPC npc = new NPC();
+                            npc.SetDefaults(i);
+
+                            if (modNPC == null || modNPC.mod.Name == ModLoader.GetMod("Fargowiltas").Name || !npc.townNPC)
+                                continue;
+
+                            CaughtNPCItem.AddAutomatic(modNPC.Name, i);
+                        }
+                        catch
+                        {
+                            // ignore
+                        }
+                    }
+
+                    typeof(Mod).GetField("loading", BindingFlags.NonPublic | BindingFlags.Instance)?.SetValue(ModLoader.GetMod("Fargowiltas"), false);
+                });
+            };
+        }
+
         public void AddToggle(String toggle, String name, String item, String color)
         {
             ModTranslation text = CreateTranslation(toggle);
             text.SetDefault("[i:" + Instance.ItemType(item) + "][c/" + color + ": " + name + "]");
             AddTranslation(text);
+        }
+
+        private static MethodInfo LoadInfo =>
+            typeof(ModContent).GetMethod("Load", BindingFlags.Static | BindingFlags.NonPublic);
+
+        private static event ILContext.Manipulator HookContentLoad
+        {
+            add => HookEndpointManager.Modify(LoadInfo, value);
+
+            remove => HookEndpointManager.Unmodify(LoadInfo, value);
         }
 
         public override void Load()
@@ -167,7 +217,7 @@ namespace Fargowiltas
                 }
             }
 
-            foreach (KeyValuePair<int, int> npc in CaughtNPCItem.CaughtNPCs)
+            foreach (KeyValuePair<int, int> npc in CaughtNPCItem.CaughtNPCs.Where(x => Main.npcFrameCount.Contains(x.Value)))
                 Main.RegisterItemAnimation(npc.Key, new DrawAnimationVertical(6, Main.npcFrameCount[npc.Value]));
 
             /*Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
