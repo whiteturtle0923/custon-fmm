@@ -384,6 +384,9 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.AnglerFishBanner, ItemID.AdhesiveBandage, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.WerewolfBanner, ItemID.AdhesiveBandage, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.TallyCounter);
+            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.Bone, 1, 100);
+            AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemID.Bone, 1, 100);
+            AddBannerToItemRecipe(ItemID.CursedSkullBanner, ItemID.Bone, 1, 100);
             AddBannerToItemRecipe(ItemID.AngryNimbusBanner, ItemID.NimbusRod, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.AngryTrapperBanner, ItemID.Uzi, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.IceSickle, tile: TileID.MythrilAnvil);
@@ -440,6 +443,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainCoat);
             AddBannerToItemRecipe(ItemID.ReaperBanner, ItemID.DeathSickle, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Rally);
+            AddBannerToItemRecipe(ItemID.ScutlixBanner, ItemID.BrainScrambler);
             AddBannerToItemRecipe(ItemID.SharkBanner, ItemID.DivingHelmet);
             AddBannerToItemRecipe(ItemID.SkeletonBanner, ItemID.BoneSword);
             AddBannerToItemRecipe(ItemID.SkeletonCommandoBanner, ItemID.RocketLauncher, tile: TileID.MythrilAnvil);
@@ -460,7 +464,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.WormBanner, ItemID.WhoopieCushion);
             AddBannerToItemRecipe(ItemID.WraithBanner, ItemID.FastClock, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemID.CoinGun, tile: TileID.MythrilAnvil);
-            AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 5, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.ChaosElementalBanner, ItemID.RodofDiscord, 4, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);

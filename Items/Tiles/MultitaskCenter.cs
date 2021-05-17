@@ -41,7 +41,8 @@ namespace Fargowiltas.Items.Tiles
             recipe.AddRecipeGroup("Fargowiltas:AnyCookingPot");
             recipe.AddIngredient(ItemID.WoodenSink);
             recipe.AddIngredient(ItemID.Keg);
-            recipe.AddTile(TileID.DemonAltar);
+
+            recipe.AddTile(TileID.WorkBenches);
 
             recipe.SetResult(this);
             recipe.AddRecipe();
