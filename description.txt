@@ -40,13 +40,20 @@ instactuation bomb will compensate if your altar doesn't have enough space on on
 -Bug Net and Golden Bug Net now mention that they can catch town npcs
 -Scutlix banner also crafts into Brain Scrambler
 
-FOR BETA
 -Added banner recipes to craft Bones
 -Reduced Rod of Discord recipe by 1 banner
 -Stat sheet UI will close when you close the inventory
 -Rearranged Stat Sheet a bit. Added HP, Defense, Mana, Mana Regen. Fixed Melee Speed having a million decimal places
 -Mech boss summons will now reset the night like the Skeletron summon. Only happens before you beat them
 
+-All stat Sheet stats will round now
+-Demon Altar items can actually be mined
+-The Angler now commonly drops fishing trash on death
+-Super Dummies now all die if a boss is alive
+-Infinite station buffs now only need 20 instead of 60
+-Omnistation recipe reduced a bit and they give off a good amount of light
+
+FOR BETA
 
 
--fix demon altar not mineable
+
