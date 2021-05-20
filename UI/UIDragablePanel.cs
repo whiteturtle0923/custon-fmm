@@ -5,7 +5,7 @@ using System.Linq;
 using Terraria.UI;
 using Terraria;
 
-namespace FargowiltasSouls.UI
+namespace Fargowiltas.UI
 {
     // From ExampleMod
     public class UIDragablePanel : UIPanel

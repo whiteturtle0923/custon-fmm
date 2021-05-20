@@ -54,6 +54,7 @@ instactuation bomb will compensate if your altar doesn't have enough space on on
 -Omnistation recipe reduced a bit and they give off a good amount of light
 
 FOR BETA
-
+-Stat sheet speed also rounds,
+-Bettified the UI (fixed that funny bug :tm:) - pbone
 
 

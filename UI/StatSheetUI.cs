@@ -88,7 +88,7 @@ namespace Fargowiltas.UI
 
             AddStat($"Armor Penetration: {player.armorPenetration}", ItemID.SharkToothNecklace);
             AddStat($"Aggro: {player.aggro}", ItemID.FleshKnuckles);
-            AddStat($"Max Speed: {(player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6} mph", ItemID.HermesBoots);
+            AddStat($"Max Speed: {(int)((player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6)} mph", ItemID.HermesBoots);
             AddStat($"Wing Time: {player.wingTimeMax / 60} seconds", ItemID.AngelWings);
 
             //luck
