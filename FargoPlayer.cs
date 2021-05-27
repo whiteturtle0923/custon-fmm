@@ -21,7 +21,7 @@ namespace Fargowiltas
 
 
 
-
+        public bool extractSpeed;
         internal bool BattleCry;
 
         private int oldSelected;
@@ -98,6 +98,11 @@ namespace Fargowiltas
             {
                 FirstDyeIngredients[tag] = false;
             }
+        }
+
+        public override void ResetEffects()
+        {
+            extractSpeed = false;
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)

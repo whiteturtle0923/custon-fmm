@@ -39,3 +39,7 @@ NEW UPDATE - V 2.3
 -Super Dummies now all die if a boss is alive
 -Bug Net and Golden Bug Net now mention that they can catch town npcs
 -Infinite station buffs now only need 20 instead of 60
+
+ beta
+ -Fixed stat sheet crashes and it no longer works in auto pause because redcode
+ -Increased silt and slush speed is now only at an extractinator opposed to all the time
