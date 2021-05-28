@@ -7,94 +7,88 @@ using Terraria;
 
 namespace Fargowiltas.UI
 {
-	// From ExampleMod
-	public class UIDragablePanel : UIPanel
-	{
-		// Stores the offset from the top left of the UIPanel while dragging.
-		private Vector2 offset;
-		public bool dragging;
-		public UIElement[] ExtraChildren;
+    // From ExampleMod
+    public class UIDragablePanel : UIPanel
+    {
+        // Stores the offset from the top left of the UIPanel while dragging.
+        private Vector2 offset;
+        public bool dragging;
+        public UIElement[] ExtraChildren;
 
-		public UIDragablePanel()
-		{
-		}
-		public UIDragablePanel(params UIElement[] countMeAsChildren)
-		{
-			ExtraChildren = countMeAsChildren;
-		}
+        public UIDragablePanel() { }
+        public UIDragablePanel(params UIElement[] countMeAsChildren)
+        {
+            ExtraChildren = countMeAsChildren;
+        }
 
-		public override void MouseDown(UIMouseEvent evt)
-		{
-			base.MouseDown(evt);
+        private void DragStart(Vector2 pos)
+        {
+            offset = new Vector2(pos.X - Left.Pixels, pos.Y - Top.Pixels);
+            dragging = true;
+        }
 
-			bool upperMost = true;
-			/*IEnumerable<UIElement> children = Elements.Concat(ExtraChildren);
-			foreach (UIElement element in children)
-			{
-				if (element.ContainsPoint(evt.MousePosition) && element as UIPanel == null)
-				{
-					upperMost = false;
-					break;
-				}
-			}*/
+        private void DragEnd(Vector2 pos)
+        {
+            Vector2 end = pos;
+            dragging = false;
 
-			if (upperMost)
-				DragStart(evt);
-		}
+            Left.Set(end.X - offset.X, 0f);
+            Top.Set(end.Y - offset.Y, 0f);
 
-		public override void MouseUp(UIMouseEvent evt)
-		{
-			base.MouseUp(evt);
-			if (dragging)
-				DragEnd(evt);
-		}
+            Recalculate();
+        }
 
-		private void DragStart(UIMouseEvent evt)
-		{
-			offset = new Vector2(evt.MousePosition.X - Left.Pixels, evt.MousePosition.Y - Top.Pixels);
-			dragging = true;
-		}
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime); // don't remove.
 
-		private void DragEnd(UIMouseEvent evt)
-		{
-			Vector2 end = evt.MousePosition;
-			string top = GetDimensions().Position().ToString();
-			dragging = false;
+            // Checking ContainsPoint and then setting mouseInterface to true is very common. This causes clicks on this UIElement to not cause the player to use current items. 
+            if (ContainsPoint(Main.MouseScreen))
+            {
+                Main.LocalPlayer.mouseInterface = true;
+            }
 
-			Left.Set(end.X - offset.X, 0f);
-			Top.Set(end.Y - offset.Y, 0f);
+            if (!dragging && ContainsPoint(Main.MouseScreen) && Main.mouseLeft)
+            {
+                bool upperMost = true;
+                if (ExtraChildren != null)
+                {
+                    IEnumerable<UIElement> children = Elements.Concat(ExtraChildren);
 
-			Recalculate();
-			top = GetDimensions().Position().ToString();
-			int brdeak = 0;
-		}
+                    foreach (UIElement element in children)
+                    {
+                        if (element.ContainsPoint(Main.MouseScreen) && element as UIPanel == null)
+                        {
+                            upperMost = false;
+                            break;
+                        }
+                    }
+                }
 
-		public override void Update(GameTime gameTime)
-		{
-			base.Update(gameTime); // don't remove.
+                if (upperMost)
+                    DragStart(Main.MouseScreen);
+            }
+            else if (dragging && !Main.mouseLeft)
+            {
+                DragEnd(Main.MouseScreen);
+            }
 
-			// Checking ContainsPoint and then setting mouseInterface to true is very common. This causes clicks on this UIElement to not cause the player to use current items. 
-			if (ContainsPoint(Main.MouseScreen))
-			{
-				Main.LocalPlayer.mouseInterface = true;
-			}
+            if (dragging)
+            {
+                Left.Set(Main.mouseX - offset.X, 0f); // Main.MouseScreen.X and Main.mouseX are the same.
+                Top.Set(Main.mouseY - offset.Y, 0f);
+                Recalculate();
+            }
 
-			if (dragging)
-			{
-				Left.Set(Main.mouseX - offset.X, 0f); // Main.MouseScreen.X and Main.mouseX are the same.
-				Top.Set(Main.mouseY - offset.Y, 0f);
-				Recalculate();
-			}
-
-			// Here we check if the DragableUIPanel is outside the Parent UIElement rectangle. 
-			var parentSpace = Parent.GetDimensions().ToRectangle();
-			if (!GetDimensions().ToRectangle().Intersects(parentSpace))
-			{
-				Left.Pixels = Utils.Clamp(Left.Pixels, 0, parentSpace.Right - Width.Pixels);
-				Top.Pixels = Utils.Clamp(Top.Pixels, 0, parentSpace.Bottom - Height.Pixels);
-				// Recalculate forces the UI system to do the positioning math again.
-				Recalculate();
-			}
-		}
-	}
+            // Here we check if the DragableUIPanel is outside the Parent UIElement rectangle. 
+            var parentSpace = Parent.GetDimensions().ToRectangle();
+            if (!GetDimensions().ToRectangle().Intersects(parentSpace))
+            {
+                Left.Pixels = Utils.Clamp(Left.Pixels, 0, parentSpace.Right - Width.Pixels);
+                Top.Pixels = Utils.Clamp(Top.Pixels, 0, parentSpace.Bottom - Height.Pixels);
+                // Recalculate forces the UI system to do the positioning math again.
+                Recalculate();
+            }
+        }
+    }
 }

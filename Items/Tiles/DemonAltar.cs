@@ -26,7 +26,7 @@ namespace Fargowiltas.Items.Tiles
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = TileID.DemonAltar;
+            item.createTile = ModContent.TileType<DemonAltarSheet>();
             //item.placeStyle = 1;
         }
 
@@ -62,8 +62,8 @@ namespace Fargowiltas.Items.Tiles
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = TileID.DemonAltar;
-            item.placeStyle = 1;
+            item.createTile = ModContent.TileType<CrimsonAltarSheet>();
+            //item.placeStyle = 1;
         }
 
         public override void AddRecipes()

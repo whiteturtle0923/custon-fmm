@@ -27,6 +27,14 @@ namespace Fargowiltas.Tiles
             return base.AdjTiles(type);
         }
 
+        public override void MouseOver(int i, int j, int type)
+        {
+            if (type == TileID.Extractinator)
+            {
+                Main.player[Main.myPlayer].GetModPlayer<FargoPlayer>().extractSpeed = true;
+            }
+        }
+
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
             if (type == TileID.Trees && !FargoWorld.MovedLumberjack && !fail)
