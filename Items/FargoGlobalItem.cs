@@ -178,15 +178,18 @@ namespace Fargowiltas.Items
 
         public override bool CanUseItem(Item item, Player player)
         {
-            if (GetInstance<FargoConfig>().ExtractSpeed && player.GetModPlayer<FargoPlayer>().extractSpeed && (item.type == ItemID.SiltBlock || item.type == ItemID.SlushBlock || item.type == ItemID.DesertFossil))
+            if (item.type == ItemID.SiltBlock || item.type == ItemID.SlushBlock || item.type == ItemID.DesertFossil)
             {
-                item.useTime = 2;
-                item.useAnimation = 3;
-            }
-            else
-            {
-                item.useTime = 10;
-                item.useAnimation = 15;
+                if (GetInstance<FargoConfig>().ExtractSpeed && player.GetModPlayer<FargoPlayer>().extractSpeed)
+                {
+                    item.useTime = 2;
+                    item.useAnimation = 3;
+                }
+                else
+                {
+                    item.useTime = 10;
+                    item.useAnimation = 15;
+                }  
             }
 
             return base.CanUseItem(item, player);
