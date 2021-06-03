@@ -36,6 +36,8 @@ namespace Fargowiltas.Projectiles.Explosives
             {
                 projectile.Kill();
             }
+
+            projectile.hide = projectile.owner != Main.myPlayer;
         }
     }
 }
