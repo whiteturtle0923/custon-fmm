@@ -24,9 +24,11 @@ namespace Fargowiltas.UI
 
         public override void OnInitialize()
         {
+            Vector2 offset = new Vector2(Main.screenWidth / 2 - BackWidth * 0.75f, Main.screenHeight / 2 - BackHeight * 0.75f);
+
             BackPanel = new UIDragablePanel();
-            BackPanel.Left.Set(0, 0f);
-            BackPanel.Top.Set(0, 0f);
+            BackPanel.Left.Set(offset.X, 0f);
+            BackPanel.Top.Set(offset.Y, 0f);
             BackPanel.Width.Set(BackWidth, 0f);
             BackPanel.Height.Set(BackHeight, 0f);
             BackPanel.PaddingLeft = BackPanel.PaddingRight = BackPanel.PaddingTop = BackPanel.PaddingBottom = 0;

@@ -2,7 +2,10 @@ This is a Quality of life mod that adds the Mutant town NPC who sells boss summo
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
 NEW UPDATE - V 2.3.1
--Fixed Instahouse visual appearing for all players
+-InstaHouse visual no longer appearing for everyone in multiplayer
+-InstaHouse now sinks into the floor slightly so it can be effortlessly stacked
+-InstaHouse code improved for even better stacking and some multiplayer sync fixes
+-Stat Sheet now appears in middle of screen by default
 
 NEW UPDATE - V 2.3
 -Added Stat Sheet UI
