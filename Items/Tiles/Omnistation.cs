@@ -29,11 +29,11 @@ Right click while holding a weapon for its respective buff");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Sunflower, 30);
-            recipe.AddIngredient(ItemID.Campfire, 30);
-            recipe.AddIngredient(ItemID.HeartLantern, 30);
-            recipe.AddIngredient(ItemID.StarinaBottle, 30);
-            recipe.AddIngredient(ItemID.HoneyBucket, 30);
+            recipe.AddIngredient(ItemID.Sunflower, 20);
+            recipe.AddIngredient(ItemID.Campfire, 20);
+            recipe.AddIngredient(ItemID.HeartLantern, 20);
+            recipe.AddIngredient(ItemID.StarinaBottle, 20);
+            recipe.AddIngredient(ItemID.HoneyBucket, 20);
             recipe.AddIngredient(ItemID.SharpeningStation, 5);
             recipe.AddIngredient(ItemID.AmmoBox, 5);
             recipe.AddIngredient(ItemID.CrystalBall, 5);

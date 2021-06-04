@@ -29,6 +29,11 @@ namespace Fargowiltas.UI
 
         private void IconHighlight_OnClick(UIMouseEvent evt, UIElement listeningElement)
         {
+            if (!Main.playerInventory)
+            {
+                return;
+            }
+
             Fargowiltas.UserInterfaceManager.ToggleStatSheet();
         }
 

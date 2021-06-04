@@ -27,6 +27,13 @@ namespace Fargowiltas.NPCs
         public override void AI()
         {
             npc.life = npc.lifeMax;
+
+            if (FargoGlobalNPC.AnyBossAlive())
+            {
+                npc.life = 0;
+                npc.HitEffect();
+                npc.StrikeNPCNoInteraction(int.MaxValue, 0, 0, false, false, false);
+            }
         }
 
         public override bool CheckDead() => false;

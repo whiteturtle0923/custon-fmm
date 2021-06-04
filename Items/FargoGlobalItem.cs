@@ -178,10 +178,18 @@ namespace Fargowiltas.Items
 
         public override bool CanUseItem(Item item, Player player)
         {
-            if (GetInstance<FargoConfig>().ExtractSpeed && (item.type == ItemID.SiltBlock || item.type == ItemID.SlushBlock || item.type == ItemID.DesertFossil))
+            if (item.type == ItemID.SiltBlock || item.type == ItemID.SlushBlock || item.type == ItemID.DesertFossil)
             {
-                item.useTime = 2;
-                item.useAnimation = 3;
+                if (GetInstance<FargoConfig>().ExtractSpeed && player.GetModPlayer<FargoPlayer>().extractSpeed)
+                {
+                    item.useTime = 2;
+                    item.useAnimation = 3;
+                }
+                else
+                {
+                    item.useTime = 10;
+                    item.useAnimation = 15;
+                }  
             }
 
             return base.CanUseItem(item, player);
@@ -189,19 +197,24 @@ namespace Fargowiltas.Items
 
         public override void UpdateInventory(Item item, Player player)
         {
-            if (item.stack >= 60 && GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
             {
-                if (item.buffType != 0)
+                if (item.stack >= 60 && item.buffType != 0)
                     player.AddBuff(item.buffType, 2);
 
-                if (item.type == ItemID.SharpeningStation)
-                    player.AddBuff(BuffID.Sharpened, 2);
-                else if (item.type == ItemID.AmmoBox)
-                    player.AddBuff(BuffID.AmmoBox, 2);
-                else if (item.type == ItemID.CrystalBall)
-                    player.AddBuff(BuffID.Clairvoyance, 2);
-                else if (item.type == ItemID.BewitchingTable)
-                    player.AddBuff(BuffID.Bewitched, 2);
+                if (item.stack >= 20)
+                {
+                    if (item.type == ItemID.SharpeningStation)
+                        player.AddBuff(BuffID.Sharpened, 2);
+                    else if (item.type == ItemID.AmmoBox)
+                        player.AddBuff(BuffID.AmmoBox, 2);
+                    else if (item.type == ItemID.CrystalBall)
+                        player.AddBuff(BuffID.Clairvoyance, 2);
+                    else if (item.type == ItemID.BewitchingTable)
+                        player.AddBuff(BuffID.Bewitched, 2);
+                }
+
+                
             }
         }
 

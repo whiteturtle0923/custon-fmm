@@ -1022,12 +1022,13 @@ namespace Fargowiltas.NPCs
 
                     break;
 
-                case NPCID.GoblinTinkerer:
-                    if (Main.rand.NextBool(10))
+                case NPCID.Angler:
+                    if (Main.rand.NextBool(2))
                     {
-                        Item.NewItem(npc.Hitbox, mod.ItemType("GoblinHead"));
-                    }
+                        int[] fishingTrash = new int[] { ItemID.OldShoe, ItemID.TinCan, ItemID.FishingSeaweed };
 
+                        Item.NewItem(npc.Hitbox, Main.rand.Next(fishingTrash));
+                    }
                     break;
 
                 case NPCID.Pumpking:

@@ -34,13 +34,6 @@ namespace Fargowiltas.Projectiles
                 return;
             }
 
-            if (y == -1 && tile.type == TileID.Platforms)
-            {
-                return;
-            }
-
-            FargoGlobalTile.ClearEverything(xPosition, yPosition);
-
             int wallType = WallID.Wood;
             int tileType = TileID.WoodBlock;
             int platformStyle = 0;
@@ -106,8 +99,31 @@ namespace Fargowiltas.Projectiles
                 platformStyle = 13;
             }
 
+            //dont act if the right blocks already above
+            if ((y == -5) && (tile.type == TileID.Platforms || tile.type == tileType))
+                return;
+
+            if ((x == 10 * side || x == 1 * side))
+            {
+                //dont act on correct block above/below door, destroying them will break it
+                if ((y == -4 || y == 0) && tile.type == tileType)
+                    return;
+
+                bool isADoor = (tile.type == TileID.ClosedDoor || tile.type == TileID.OpenDoor);
+                //Main.NewText($"edge: {x}, type: {tile.type}, check: {isADoor}");
+                if ((y == -1 || y == -2 || y == -3) && isADoor)
+                    return;
+            }
+            else //for blocks besides those on the left/right edges where doors are placed, its okay to have platform as floor
+            {
+                if (y == 0 && (tile.type == TileID.Platforms || tile.type == tileType))
+                    return;
+            }
+
+            FargoGlobalTile.ClearEverything(xPosition, yPosition);
+
             // Spawn walls
-            if (y != -6 && y != -1 && x != (10 * side) && x != (1 * side))
+            if (y != -5 && y != 0 && x != (10 * side) && x != (1 * side))
             {
                 WorldGen.PlaceWall(xPosition, yPosition, wallType);
                 if (Main.netMode == NetmodeID.Server)
@@ -115,14 +131,14 @@ namespace Fargowiltas.Projectiles
             }
 
             //platforms on top
-            if (y == -6 && Math.Abs(x) >= 4 && Math.Abs(x) <= 7)
+            if (y == -5 && Math.Abs(x) >= 4 && Math.Abs(x) <= 7)
             {
                 WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms, style: platformStyle);
                 if (Main.netMode == NetmodeID.Server)
-                    NetMessage.SendTileSquare(-1, xPosition, yPosition, platformStyle);
+                    NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.Platforms, platformStyle);
             }
             // Spawn border
-            else if ((y == -6) || (y == -1) || (x == (10 * side)) || (x == (1 * side) && y == -5))
+            else if ((y == -5) || (y == 0) || (x == (10 * side)) || (x == (1 * side) && y == -4))
             {
                 WorldGen.PlaceTile(xPosition, yPosition, tileType);
                 if (Main.netMode == NetmodeID.Server)
@@ -135,7 +151,7 @@ namespace Fargowiltas.Projectiles
             int xPosition = (int)((side * -1) + x + position.X / 16.0f);
             int yPosition = (int)(y + position.Y / 16.0f);
 
-            if (y == -2)
+            if (y == -1)
             {
                 if (Math.Abs(x) == 1)
                 {
@@ -288,7 +304,7 @@ namespace Fargowiltas.Projectiles
                 }
             }
 
-            if (x == (7 * side) && y == -5)
+            if (x == (7 * side) && y == -4)
             {
                 WorldGen.PlaceTile(xPosition, yPosition, TileID.Torches);
                 if (Main.netMode == NetmodeID.Server)
@@ -313,7 +329,7 @@ namespace Fargowiltas.Projectiles
                     for (int x = 10; x > 0; x--)
                     {
                         // Six tall
-                        for (int y = -6; y < 0; y++)
+                        for (int y = -5; y <= 0; y++)
                         {
                             if (i == 0)
                             {
@@ -335,7 +351,7 @@ namespace Fargowiltas.Projectiles
                     for (int x = -10; x < 0; x++)
                     {
                         // Six tall
-                        for (int y = -6; y < 0; y++)
+                        for (int y = -5; y <= 0; y++)
                         {
                             if (i == 0)
                             {

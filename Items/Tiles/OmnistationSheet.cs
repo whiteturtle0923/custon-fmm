@@ -14,6 +14,7 @@ namespace Fargowiltas.Items.Tiles
 
         public override void SetDefaults()
         {
+            Main.tileLighted[Type] = true;
             Main.tileFrameImportant[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
             TileObjectData.newTile.Height = 4;
@@ -23,6 +24,13 @@ namespace Fargowiltas.Items.Tiles
             name.SetDefault("Omnistation");
             AddMapEntry(color, name);
             disableSmartCursor = true;
+        }
+
+        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+        {
+            r = 1f;
+            g = 1f;
+            b = 1f;
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
