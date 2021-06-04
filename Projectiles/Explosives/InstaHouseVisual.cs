@@ -12,6 +12,7 @@ namespace Fargowiltas.Projectiles.Explosives
             projectile.width = 160;
             projectile.height = 96;
             projectile.timeLeft = 10;
+            projectile.tileCollide = false;
         }
 
         public override void AI()
@@ -22,12 +23,12 @@ namespace Fargowiltas.Projectiles.Explosives
             if (player.position.X > mouse.X)
             {
                 projectile.position.X = mouse.X - projectile.width + 4;
-                projectile.position.Y = mouse.Y - projectile.height + 8;
+                projectile.position.Y = mouse.Y - projectile.height + 8 + 16;
             }
             else
             {
                 projectile.position.X = mouse.X - 4;
-                projectile.position.Y = mouse.Y - projectile.height + 8;
+                projectile.position.Y = mouse.Y - projectile.height + 8 + 16;
             }
 
             projectile.timeLeft++;
@@ -36,6 +37,8 @@ namespace Fargowiltas.Projectiles.Explosives
             {
                 projectile.Kill();
             }
+
+            projectile.hide = projectile.owner != Main.myPlayer;
         }
     }
 }

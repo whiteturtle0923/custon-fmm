@@ -31,7 +31,7 @@ namespace Fargowiltas.Items.Explosives
 
         public override void HoldItem(Player player)
         {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<InstaHouseVisual>()] < 1)
+            if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[ModContent.ProjectileType<InstaHouseVisual>()] < 1)
             {
                 Vector2 mouse = Main.MouseWorld;
                 Projectile.NewProjectile(mouse, Vector2.Zero, ModContent.ProjectileType<InstaHouseVisual>(), 0, 0, player.whoAmI);
