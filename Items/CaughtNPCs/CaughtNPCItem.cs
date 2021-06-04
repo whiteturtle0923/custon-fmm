@@ -10,27 +10,26 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class CaughtNPCItem : ModItem
     {
-        public static Dictionary<int, int> CaughtNPCs = new Dictionary<int, int>(); // lol
-
-        // todo: eventually turn back to int lol
-        public int getId;
-        public string quote;
+        public static Dictionary<int, int> CaughtTownies = new Dictionary<int, int>(); // lol
+        
+        public int AssociatedNpcId { get; }
+        public string NpcQuote { get; protected set; }
 
         public CaughtNPCItem()
         {
-            getId = NPCID.None;
-            quote = "nil";
+            AssociatedNpcId = NPCID.None;
+            NpcQuote = "nil";
         }
 
-        public CaughtNPCItem(int getId, string quote = "")
+        public CaughtNPCItem(int associatedNpcId, string npcQuote = "")
         {
-            this.getId = getId;
-            this.quote = quote;
+            AssociatedNpcId = associatedNpcId;
+            NpcQuote = npcQuote;
         }
 
-        public override string Texture => getId < NPCID.Count
-            ? $"Terraria/NPC_{getId}"
-            : NPCLoader.GetNPC(getId).Texture;
+        public override string Texture => AssociatedNpcId < NPCID.Count
+            ? $"Terraria/NPC_{AssociatedNpcId}"
+            : NPCLoader.GetNPC(AssociatedNpcId).Texture;
 
         public override bool Autoload(ref string name) => true;
 
@@ -42,17 +41,17 @@ namespace Fargowiltas.Items.CaughtNPCs
 
             try
             {
-                if (string.IsNullOrEmpty(quote))
-                    quote = $"'{NPCLoader.GetNPC(getId).GetChat()}'";
+                if (string.IsNullOrEmpty(NpcQuote))
+                    NpcQuote = $"'{NPCLoader.GetNPC(AssociatedNpcId).GetChat()}'";
             }
             catch
             {
-                quote = "'I have little to say.'";
+                NpcQuote = "'I have little to say.'";
                 // catch and ignore any thrown errors
             }
 
-            if (!string.IsNullOrEmpty(quote))
-                Tooltip.SetDefault(quote);
+            if (!string.IsNullOrEmpty(NpcQuote))
+                Tooltip.SetDefault(NpcQuote);
 
             // loaded in post-load yawn: Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, Main.npcFrameCount[getId()]));
         }
@@ -71,7 +70,7 @@ namespace Fargowiltas.Items.CaughtNPCs
             item.noUseGraphic = true;
             item.UseSound = SoundID.Item44;
 
-            switch (getId)
+            switch (AssociatedNpcId)
             {
                 case NPCID.Angler:
                     item.bait = 15;
@@ -81,12 +80,12 @@ namespace Fargowiltas.Items.CaughtNPCs
                     return;
             }
 
-            item.makeNPC = (short)getId;
+            item.makeNPC = (short)AssociatedNpcId;
         }
 
         public override void PostUpdate()
         {
-            if (getId != NPCID.Guide || !item.lavaWet || NPC.AnyNPCs(NPCID.WallofFlesh))
+            if (AssociatedNpcId != NPCID.Guide || !item.lavaWet || NPC.AnyNPCs(NPCID.WallofFlesh))
                 return;
 
             NPC.SpawnWOF(item.position);
@@ -97,11 +96,11 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         //public override ModItem Clone(Item item) => new CaughtNPCItem(getId, quote);
 
-        public override ModItem Clone() => new CaughtNPCItem(getId, quote);
+        public override ModItem Clone() => new CaughtNPCItem(AssociatedNpcId, NpcQuote);
 
         public static void RegisterItems(Mod mod)
         {
-            CaughtNPCs = new Dictionary<int, int>();
+            CaughtTownies = new Dictionary<int, int>();
 
             // manually register mutant and vanillas
             Add("Abominationn", ModContent.NPCType<Abominationn>(), "'I sure wish I was a boss.'");
@@ -146,7 +145,7 @@ namespace Fargowiltas.Items.CaughtNPCs
                 mod = ModLoader.GetMod("Fargowiltas");
 
             mod.AddItem(name, new CaughtNPCItem(id, quote));
-            CaughtNPCs.Add(mod.ItemType(name), id);
+            CaughtTownies.Add(mod.ItemType(name), id);
         }
 
         public static void AddAutomatic(string name, int id, Mod mod = null) => Add($"Caught{name}", id, "", mod);
