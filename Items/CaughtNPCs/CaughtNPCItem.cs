@@ -15,7 +15,21 @@ namespace Fargowiltas.Items.CaughtNPCs
     {
         public static Dictionary<int, int> CaughtTownies = new Dictionary<int, int>(); // lol
 
-        public int AssociatedNpcId { get; }
+        private int realNpcId;
+
+        public int AssociatedNpcId
+        {
+            get
+            {
+                if (realNpcId > 0 || !CaughtTownies.ContainsKey(item.type))
+                    return realNpcId;
+
+                return CaughtTownies[item.type];
+            }
+
+            private set => realNpcId = value;
+        }
+
         public string NpcQuote { get; protected set; }
 
         public CaughtNPCItem()
@@ -72,6 +86,8 @@ namespace Fargowiltas.Items.CaughtNPCs
             item.noMelee = true;
             item.noUseGraphic = true;
             item.UseSound = SoundID.Item44;
+            item.makeNPC = (short) AssociatedNpcId;
+            item.shoot = ModContent.ProjectileType<SpawnProj>();
 
             switch (AssociatedNpcId)
             {
@@ -82,9 +98,6 @@ namespace Fargowiltas.Items.CaughtNPCs
                 case NPCID.None:
                     return;
             }
-
-            // item.makeNPC = (short) AssociatedNpcId;
-            item.shoot = ModContent.ProjectileType<SpawnProj>();
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY,
@@ -106,7 +119,7 @@ namespace Fargowiltas.Items.CaughtNPCs
             item.TurnToAir();
         }
 
-        // public override bool UseItem(Player player) => true;
+        public override bool UseItem(Player player) => true;
 
         //public override ModItem NewInstance(Item itemClone) => new CaughtNPCItem(getId, quote);
 
