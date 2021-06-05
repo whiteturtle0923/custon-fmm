@@ -146,7 +146,12 @@ namespace Fargowiltas.Items
                         player.QuickSpawnItem(Main.rand.Next(drops));
                     }
 
-                    break;
+                    if (Main.rand.NextBool(20) && !Main.hardMode)
+                    {
+                        player.QuickSpawnItem(ItemID.Sundial);
+                    }
+
+                        break;
             }
 
             if (context == "lockBox")
