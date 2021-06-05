@@ -12,6 +12,7 @@ NEW UPDATE - V 2.3.1
 -Lumberjack sells Wood Platforms at half price of Wood so you can get them at the speed of buying instead of crafting
 -Cheaper unlimited buffs at 30/15, was 60/20
 -Added Brittle Bone to Clothier shop if you have a Bone-consuming weapon
+-Ruler can work from the Piggy Bank
 
 NEW UPDATE - V 2.3
 -Added Stat Sheet UI
