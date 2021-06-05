@@ -18,7 +18,7 @@ namespace Fargowiltas.Items.Misc
         {
             item.width = 20;
             item.height = 20;
-            item.value = Item.sellPrice(0, 0, 2);
+            item.value = Item.sellPrice(0, 5);
             item.rare = ItemRarityID.LightRed;
             item.useAnimation = 30;
             item.useTime = 30;
