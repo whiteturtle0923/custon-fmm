@@ -358,7 +358,7 @@ namespace Fargowiltas.NPCs
                     modifier -= 0.3f;
                 }
 
-                shop.item[nextSlot].shopCustomPrice = (int)(shop.item[nextSlot].value * modifier);
+                shop.item[nextSlot].shopCustomPrice = (int)(shop.item[nextSlot].shopCustomPrice * modifier);
             }
 
             nextSlot++;
