@@ -7,6 +7,7 @@ NEW UPDATE - V 2.3.1
 -InstaHouse code improved for even better stacking and some multiplayer sync fixes
 -Stat Sheet now appears in middle of screen by default
 -Bosses disabling enemy spawns is global again
+-Squirrel sells Portable Sundial duplicates for 100 Defender Medals
 
 NEW UPDATE - V 2.3
 -Added Stat Sheet UI
