@@ -255,106 +255,110 @@ namespace Fargowiltas.NPCs
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             shop.item[nextSlot].SetDefaults(ItemID.Wood);
-            shop.item[nextSlot].value = 10;
+            shop.item[nextSlot].shopCustomPrice = 10;
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ItemID.WoodPlatform);
+            shop.item[nextSlot].shopCustomPrice = 5;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ItemID.BorealWood);
-            shop.item[nextSlot].value = 10;
+            shop.item[nextSlot].shopCustomPrice = 10;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ItemID.RichMahogany);
-            shop.item[nextSlot].value = 15;
+            shop.item[nextSlot].shopCustomPrice = 15;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ItemID.PalmWood);
-            shop.item[nextSlot].value = 15;
+            shop.item[nextSlot].shopCustomPrice = 15;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ItemID.Ebonwood);
-            shop.item[nextSlot].value = 15;
+            shop.item[nextSlot].shopCustomPrice = 15;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ItemID.Shadewood);
-            shop.item[nextSlot].value = 15;
+            shop.item[nextSlot].shopCustomPrice = 15;
             nextSlot++;
 
             if (Fargowiltas.ModLoaded["CrystiliumMod"])
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CrystiliumMod").ItemType("CrystalWood"));
-                shop.item[nextSlot].value = 20;
+                shop.item[nextSlot].shopCustomPrice = 20;
                 nextSlot++;
             }
 
             if (ModLoader.GetMod("CosmeticVariety") != null && NPC.downedBoss2)
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("CosmeticVariety").ItemType("Starwood"));
-                shop.item[nextSlot].value = 20;
+                shop.item[nextSlot].shopCustomPrice = 20;
                 nextSlot++;
             }
 
             shop.item[nextSlot].SetDefaults(ItemID.Pearlwood);
-            shop.item[nextSlot].value = 20;
+            shop.item[nextSlot].shopCustomPrice = 20;
             nextSlot++;
 
             if (NPC.downedHalloweenKing)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.SpookyWood);
-                shop.item[nextSlot].value = 50;
+                shop.item[nextSlot].shopCustomPrice = 50;
                 nextSlot++;
             }
 
             if (Fargowiltas.ModLoaded["Redemption"])
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("Redemption").ItemType("AncientWood"));
-                shop.item[nextSlot].value = 20;
+                shop.item[nextSlot].shopCustomPrice = 20;
                 nextSlot++;
             }
 
             if (Fargowiltas.ModLoaded["AAMod"])
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("Razewood"));
-                shop.item[nextSlot].value = 50;
+                shop.item[nextSlot].shopCustomPrice = 50;
                 nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("Bogwood"));
-                shop.item[nextSlot].value = 50;
+                shop.item[nextSlot].shopCustomPrice = 50;
                 nextSlot++;
 
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("AAmod").ItemType("OroborosWood"));
-                shop.item[nextSlot].value = 50;
+                shop.item[nextSlot].shopCustomPrice = 50;
                 nextSlot++;
             }
 
             shop.item[nextSlot].SetDefaults(ItemID.Cactus);
-            shop.item[nextSlot].value = 10;
+            shop.item[nextSlot].shopCustomPrice = 10;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ItemID.LivingWoodWand);
-            shop.item[nextSlot].value = 10000;
+            shop.item[nextSlot].shopCustomPrice = 10000;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackMask>());
-            shop.item[nextSlot].value = 10000;
+            shop.item[nextSlot].shopCustomPrice = 10000;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackBody>());
-            shop.item[nextSlot].value = 10000;
+            shop.item[nextSlot].shopCustomPrice = 10000;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackPants>());
-            shop.item[nextSlot].value = 10000;
+            shop.item[nextSlot].shopCustomPrice = 10000;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(mod.ItemType("LumberJaxe"));
-            shop.item[nextSlot].value = 10000;
+            shop.item[nextSlot].shopCustomPrice = 10000;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ItemID.SharpeningStation);
-            shop.item[nextSlot].value = 100000;
+            shop.item[nextSlot].shopCustomPrice = 100000;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<WoodenToken>());
-            shop.item[nextSlot].value = 10000;
+            shop.item[nextSlot].shopCustomPrice = 10000;
             nextSlot++;
         }
 

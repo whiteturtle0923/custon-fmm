@@ -342,7 +342,7 @@ namespace Fargowiltas.NPCs
             }
 
             shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
-            shop.item[nextSlot].value = price;
+            shop.item[nextSlot].shopCustomPrice = price;
 
             // Lowered prices with discount card and pact
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
@@ -358,7 +358,7 @@ namespace Fargowiltas.NPCs
                     modifier -= 0.3f;
                 }
 
-                shop.item[nextSlot].value = (int)(shop.item[nextSlot].value * modifier);
+                shop.item[nextSlot].shopCustomPrice = (int)(shop.item[nextSlot].value * modifier);
             }
 
             nextSlot++;

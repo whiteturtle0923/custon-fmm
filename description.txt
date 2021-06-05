@@ -8,6 +8,8 @@ NEW UPDATE - V 2.3.1
 -Stat Sheet now appears in middle of screen by default
 -Bosses disabling enemy spawns is global again
 -Squirrel sells Portable Sundial duplicates for 100 Defender Medals
+-Internal adjustment to how shop prices for items sold by Abominationn, Lumberjack, and Mutant are handled
+-Lumberjack sells Wood Platforms at half price of Wood so you can get them at the speed of buying instead of crafting
 
 NEW UPDATE - V 2.3
 -Added Stat Sheet UI
