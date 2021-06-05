@@ -254,12 +254,12 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            shop.item[nextSlot].SetDefaults(ItemID.Wood);
-            shop.item[nextSlot].shopCustomPrice = 10;
-            nextSlot++;
-
             shop.item[nextSlot].SetDefaults(ItemID.WoodPlatform);
             shop.item[nextSlot].shopCustomPrice = 5;
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(ItemID.Wood);
+            shop.item[nextSlot].shopCustomPrice = 10;
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(ItemID.BorealWood);
