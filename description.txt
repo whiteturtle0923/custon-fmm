@@ -6,6 +6,7 @@ NEW UPDATE - V 2.3.1
 -InstaHouse now sinks into the floor slightly so it can be effortlessly stacked
 -InstaHouse code improved for even better stacking and some multiplayer sync fixes
 -Stat Sheet now appears in middle of screen by default
+-Ruler can work from the Piggy Bank
 
 NEW UPDATE - V 2.3
 -Added Stat Sheet UI
