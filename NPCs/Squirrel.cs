@@ -161,24 +161,24 @@ namespace Fargowiltas.NPCs
                 }
             }
 
-            if (item.type == ModContent.ItemType<Items.Misc.PortableSundial>())
-            {
-                foreach (Item item2 in shop.item)
-                {
-                    if (item2.type == item.type)
-                    {
-                        duplicateItem = true;
-                        break;
-                    }
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(item.type);
-                    shop.item[nextSlot].shopCustomPrice = 100;
-                    shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
-                    nextSlot++;
-                }
-            }
+            //if (item.type == ModContent.ItemType<Items.Misc.PortableSundial>())
+            //{
+            //    foreach (Item item2 in shop.item)
+            //    {
+            //        if (item2.type == item.type)
+            //        {
+            //            duplicateItem = true;
+            //            break;
+            //        }
+            //    }
+            //    if (duplicateItem == false && nextSlot < maxShop)
+            //    {
+            //        shop.item[nextSlot].SetDefaults(item.type);
+            //        shop.item[nextSlot].shopCustomPrice = 100;
+            //        shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
+            //        nextSlot++;
+            //    }
+            //}
 
             if (item.modItem == null || (!item.modItem.mod.Name.Equals("FargowiltasSouls") && !item.modItem.mod.Name.Equals("FargowiltasSoulsDLC")) || nextSlot >= maxShop)
                 return;

@@ -7,12 +7,13 @@ NEW UPDATE - V 2.3.1
 -InstaHouse code improved for even better stacking and some multiplayer sync fixes
 -Stat Sheet now appears in middle of screen by default
 -Bosses disabling enemy spawns is global again
--Squirrel sells Portable Sundial duplicates for 100 Defender Medals
 -Internal adjustment to how shop prices for items sold by Abominationn, Lumberjack, and Mutant are handled
 -Lumberjack sells Wood Platforms at half price of Wood so you can get them at the speed of buying instead of crafting
 -Cheaper unlimited buffs at 30/15, was 60/20
 -Added Brittle Bone to Clothier shop if you have a Bone-consuming weapon
 -Ruler can work from the Piggy Bank
+-Moved Regal Statue, Battle Cry, and Portable Sundial to pre boss.
+-Enchanted Sundial can drop from Golden Crates in phm 5% chance like Hard Mode
 
 NEW UPDATE - V 2.3
 -Added Stat Sheet UI
