@@ -15,8 +15,20 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults(Projectile projectile)
         {
-            if (projectile.minion)
+            if (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type])
                 lowRender = true;
+            switch (projectile.type)
+            {
+                case ProjectileID.FlowerPetal:
+                case ProjectileID.HallowStar:
+                case ProjectileID.RainbowFront:
+                case ProjectileID.RainbowBack:
+                    lowRender = true;
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public override bool PreAI(Projectile projectile)
