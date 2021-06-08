@@ -78,7 +78,12 @@ namespace Fargowiltas.Projectiles
             }
 
             if (firstTick)
+            {
                 firstTick = false;
+
+                if (projectile.owner != Main.myPlayer)
+                    lowRender = true;
+            }
 
             return true;
         }
