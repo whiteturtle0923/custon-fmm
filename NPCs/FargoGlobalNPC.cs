@@ -49,6 +49,13 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public override bool? CanHitNPC(NPC npc, NPC target)
+        {
+            if (target.dontTakeDamage && target.type == NPCType<Squirrel>())
+                return false;
+            return base.CanHitNPC(npc, target);
+        }
+
         public override bool PreAI(NPC npc)
         {
             if (npc.boss)
