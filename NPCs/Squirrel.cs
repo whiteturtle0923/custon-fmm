@@ -566,7 +566,7 @@ namespace Fargowiltas.NPCs
 			}
             else
             {
-                if (Main.hardMode) //ask player why they don't have biocluster
+                /*if (Main.hardMode) //ask player why they don't have biocluster
                 {
                     bool playerHasBiocluster = false;
                     int type = ModLoader.GetMod("FargowiltasSouls").ItemType("BionomicCluster");
@@ -590,7 +590,7 @@ namespace Fargowiltas.NPCs
                     {
                         CombatText.NewText(npc.Hitbox, Color.White, $"[i:{type}]?", true);
                     }
-                }
+                }*/
 
                 string dialogue = "";
                 GetBossHelp(ref dialogue);
