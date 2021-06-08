@@ -11,7 +11,7 @@ namespace Fargowiltas.Items.Summons.Mutant
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zealot's Possession");
-            Tooltip.SetDefault("Summons the Lunatic Cultist\nDoes not spawn the pillars on death");
+            Tooltip.SetDefault("Summons the Lunatic Cultist\nDoes not spawn the pillars if Lunatic Cultist has been defeated before");
         }
     }
 }

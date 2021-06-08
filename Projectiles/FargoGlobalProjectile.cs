@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,6 +11,13 @@ namespace Fargowiltas.Projectiles
     {
         public override bool InstancePerEntity => true;
         private bool firstTick = true;
+        public bool lowRender;
+
+        public override void SetDefaults(Projectile projectile)
+        {
+            if (projectile.minion)
+                lowRender = true;
+        }
 
         public override bool PreAI(Projectile projectile)
         {
@@ -105,7 +113,17 @@ namespace Fargowiltas.Projectiles
         public static Projectile NewProjectileDirectSafe(Vector2 pos, Vector2 vel, int type, int damage, float knockback, int owner = 255, float ai0 = 0f, float ai1 = 0f)
         {
             int p = Projectile.NewProjectile(pos, vel, type, damage, knockback, owner, ai0, ai1);
-            return (p < 1000) ? Main.projectile[p] : null;
+            return (p < Main.maxProjectiles) ? Main.projectile[p] : null;
+        }
+
+        public override Color? GetAlpha(Projectile projectile, Color lightColor)
+        {
+            if (lowRender && GetInstance<FargoConfig>().TransparentMinions)
+            {
+                lightColor *= 0.25f;
+                return lightColor;
+            }
+            return base.GetAlpha(projectile, lightColor);
         }
     }
 }

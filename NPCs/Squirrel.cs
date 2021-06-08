@@ -111,7 +111,7 @@ namespace Fargowiltas.NPCs
 		public override string GetChat()
 		{
             if (Main.bloodMoon)
-                return "You will suffer.";
+                return $"[c/ff0000:You will suffer.]";
 
             switch (Main.rand.Next(3))
 			{
@@ -161,24 +161,24 @@ namespace Fargowiltas.NPCs
                 }
             }
 
-            //if (item.type == ModContent.ItemType<Items.Misc.PortableSundial>())
-            //{
-            //    foreach (Item item2 in shop.item)
-            //    {
-            //        if (item2.type == item.type)
-            //        {
-            //            duplicateItem = true;
-            //            break;
-            //        }
-            //    }
-            //    if (duplicateItem == false && nextSlot < maxShop)
-            //    {
-            //        shop.item[nextSlot].SetDefaults(item.type);
-            //        shop.item[nextSlot].shopCustomPrice = 100;
-            //        shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
-            //        nextSlot++;
-            //    }
-            //}
+            if (item.type == ItemID.RodofDiscord)
+            {
+                foreach (Item item2 in shop.item)
+                {
+                    if (item2.type == item.type)
+                    {
+                        duplicateItem = true;
+                        break;
+                    }
+                }
+                if (duplicateItem == false && nextSlot < maxShop)
+                {
+                    shop.item[nextSlot].SetDefaults(item.type);
+                    shop.item[nextSlot].shopCustomPrice = 200;
+                    shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
+                    nextSlot++;
+                }
+            }
 
             if (item.modItem == null || (!item.modItem.mod.Name.Equals("FargowiltasSouls") && !item.modItem.mod.Name.Equals("FargowiltasSoulsDLC")) || nextSlot >= maxShop)
                 return;
@@ -222,6 +222,7 @@ namespace Fargowiltas.NPCs
                             nextSlot++;
                         }
                     }
+                    duplicateItem = false;
                 }
             }
             else if (item.Name.StartsWith("Soul"))
@@ -246,7 +247,18 @@ namespace Fargowiltas.NPCs
                             shop.item[nextSlot].SetDefaults(item2.type);
                             nextSlot++;
                         }
+                        else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("MasochistSoul"))
+                        {
+                            RecipeFinder ingredientFinder = new RecipeFinder();
+                            finder.SetResult(item2.type);
+                            if (finder.SearchRecipes().Count > 0) //only put in materials that have recipes themselves
+                            {
+                                shop.item[nextSlot].SetDefaults(item2.type);
+                                nextSlot++;
+                            }
+                        }
                     }
+                    duplicateItem = false;
                 }
             }
             else if (item.Name.EndsWith("Essence"))
@@ -288,8 +300,8 @@ namespace Fargowiltas.NPCs
                             nextSlot++;
                         }
                     }
+                    duplicateItem = false;
                 }
-                duplicateItem = false;
                 foreach (Item item4 in shop.item)
                 {
                     if (item4.type == item.type)
@@ -304,41 +316,45 @@ namespace Fargowiltas.NPCs
                     nextSlot++;
                 }
             }
-            else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("AeolusBoots"))
+            else if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
-                foreach (Item item2 in shop.item)
+                if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("AeolusBoots"))
                 {
-                    if (item2.type == ItemID.FrostsparkBoots || item2.type == ItemID.BalloonHorseshoeFart)
+                    foreach (Item item2 in shop.item)
                     {
-                        duplicateItem = true;
-                        break;
+                        if (item2.type == ItemID.FrostsparkBoots || item2.type == ItemID.BalloonHorseshoeFart)
+                        {
+                            duplicateItem = true;
+                            break;
+                        }
+                    }
+                    if (duplicateItem == false && nextSlot < maxShop)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.FrostsparkBoots);
+                        nextSlot++;
+                    }
+                    if (duplicateItem == false && nextSlot < maxShop)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.BalloonHorseshoeFart);
+                        nextSlot++;
                     }
                 }
-                if (duplicateItem == false && nextSlot < maxShop)
+                else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("BionomicCluster")
+                    || item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("HeartoftheMasochist"))
                 {
-                    shop.item[nextSlot].SetDefaults(ItemID.FrostsparkBoots);
-                    nextSlot++;
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.BalloonHorseshoeFart);
-                    nextSlot++;
-                }
-            }
-            else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("BionomicCluster"))
-            {
-                foreach (Item item2 in shop.item)
-                {
-                    if (item2.type == item.type)
+                    foreach (Item item2 in shop.item)
                     {
-                        duplicateItem = true;
-                        break;
+                        if (item2.type == item.type)
+                        {
+                            duplicateItem = true;
+                            break;
+                        }
                     }
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(item.type);
-                    nextSlot++;
+                    if (duplicateItem == false && nextSlot < maxShop)
+                    {
+                        shop.item[nextSlot].SetDefaults(item.type);
+                        nextSlot++;
+                    }
                 }
             }
         }

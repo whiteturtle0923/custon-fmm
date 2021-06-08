@@ -10,6 +10,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
+using Fargowiltas.Projectiles;
 using Fargowilta;
 using Terraria.UI;
 
@@ -218,6 +219,10 @@ namespace Fargowiltas
                             (byte)args[2],
                             args[3] as Predicate<string>
                         );
+                        break;
+
+                    case "LowRenderProj":
+                        ((Projectile)args[1]).GetGlobalProjectile<FargoGlobalProjectile>().lowRender = true;
                         break;
                 }
 
