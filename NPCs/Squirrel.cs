@@ -184,8 +184,8 @@ namespace Fargowiltas.NPCs
             {
                 summonType = ItemID.SuspiciousLookingEye;
                 build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.HermesBoots : ItemID.SailfishBoots,
-                    Main.rand.Next(new int[] { ItemID.CloudinaBottle, ItemID.TsunamiInABottle, ItemID.SandstorminaBottle })
+                    Main.rand.Next(new int[] { ItemID.HermesBoots, ItemID.SailfishBoots, ItemID.FlurryBoots }),
+                    Main.rand.Next(new int[] { ItemID.CloudinaBottle, ItemID.TsunamiInABottle, ItemID.SandstorminaBottle, ItemID.BlizzardinaBottle })
                 ) + GetBuildTextRandom(
                     3,
                     ItemID.CharmofMyths,
@@ -254,13 +254,13 @@ namespace Fargowiltas.NPCs
                 build = GetBuildText(
                     ItemID.EoCShield,
                     ItemID.FrostsparkBoots,
-                    ItemID.BalloonHorseshoeFart
+                    ItemID.BalloonHorseshoeFart,
+                    fargosouls.ItemType("NymphsPerfume")
                 ) + GetBuildTextRandom(
-                    2,
+                    1,
                     ItemID.CharmofMyths,
                     fargosouls.ItemType("GuttedHeart"),
                     fargosouls.ItemType("QueenStinger"),
-                    fargosouls.ItemType("NymphsPerfume"),
                     fargosouls.ItemType("NecromanticBrew"),
                     fargosouls.ItemType("IronEnchant")
                 );
@@ -294,6 +294,7 @@ namespace Fargowiltas.NPCs
                     3,
                     ItemID.CharmofMyths,
                     ItemID.CrossNecklace,
+                    ItemID.AnkhShield,
                     fargosouls.ItemType("SparklingAdoration"),
                     fargosouls.ItemType("SupremeDeathbringerFairy"),
                     fargosouls.ItemType("PalladiumEnchant"),
@@ -313,6 +314,7 @@ namespace Fargowiltas.NPCs
                     3,
                     ItemID.CharmofMyths,
                     ItemID.CrossNecklace,
+                    ItemID.FrogLeg,
                     fargosouls.ItemType("SparklingAdoration"),
                     fargosouls.ItemType("SupremeDeathbringerFairy"),
                     fargosouls.ItemType("PalladiumEnchant"),
@@ -370,7 +372,7 @@ namespace Fargowiltas.NPCs
                     Main.rand.Next(new int[] { ItemID.SpookyWings, ItemID.TatteredFairyWings, ItemID.Hoverboard})
                 ) + GetBuildTextRandom(
                     2,
-                    ItemID.ArmorPolish,
+                    ItemID.AnkhShield,
                     ItemID.CharmofMyths,
                     ItemID.CrossNecklace,
                     ItemID.AvengerEmblem,
@@ -410,6 +412,7 @@ namespace Fargowiltas.NPCs
                 ) + GetBuildTextRandom(
                     2,
                     ItemID.CharmofMyths,
+                    ItemID.FrogLeg,
                     ItemID.AnkhShield,
                     ItemID.DestroyerEmblem,
                     fargosouls.ItemType("PureHeart"),
@@ -499,14 +502,15 @@ namespace Fargowiltas.NPCs
                     fargosouls.ItemType("CosmoForce"),
                     fargosouls.ItemType("FlightMasterySoul"),
                     fargosouls.ItemType("ColossusSoul"),
-                    fargosouls.ItemType("SparklingAdoration"),
+                    fargosouls.ItemType("TerraForce"),
                     fargosouls.ItemType("HeartoftheMasochist"),
                     Main.rand.Next(new int[] { fargosouls.ItemType("GladiatorsSoul"), fargosouls.ItemType("SnipersSoul"), fargosouls.ItemType("ArchWizardsSoul"), fargosouls.ItemType("ConjuristsSoul") })
                 ) + GetBuildTextRandom(
                     1,
-                    fargosouls.ItemType("TerraForce"),
+                    fargosouls.ItemType("SparklingAdoration"),
                     fargosouls.ItemType("LifeForce"),
-                    fargosouls.ItemType("EarthForce")
+                    fargosouls.ItemType("EarthForce"),
+                    fargosouls.ItemType("NatureForce")
                 );
             }
             else if (!(bool)fargoSouls.Call("DownedMutant"))
