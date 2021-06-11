@@ -11,6 +11,7 @@ NEW UPDATE - V 2.3.2
 -Fixed a bug where Squirrel wouldn't sell some recipe components if the shop already had another item in that recipe
 -Fixed a bug where Squirrel could be killed while invincible
 -In Eternity Mode, Squirrel provides recommended builds for you
+-Fixed instant builds being able to overwrite Dungeon and Temple so long as the respective brick wasn't there
 
 NEW UPDATE - V 2.3.1
 -InstaHouse visual no longer appearing for everyone in multiplayer

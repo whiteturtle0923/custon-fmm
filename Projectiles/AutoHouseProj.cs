@@ -23,16 +23,8 @@ namespace Fargowiltas.Projectiles
             Tile tile = Main.tile[xPosition, yPosition];
 
             // Testing for blocks that should not be destroyed
-            bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
-            bool noDungeon = (tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick || tile.type == TileID.PinkDungeonBrick) && !NPC.downedBoss3;
-            bool noHMOre = (tile.type == TileID.Cobalt || tile.type == TileID.Palladium || tile.type == TileID.Mythril || tile.type == TileID.Orichalcum || tile.type == TileID.Adamantite || tile.type == TileID.Titanium) && !NPC.downedMechBossAny;
-            bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || NPC.downedMechBoss3);
-            bool noLihzahrd = tile.type == TileID.LihzahrdBrick && !NPC.downedGolemBoss;
-
-            if (noFossil || noDungeon || noHMOre || noChloro || noLihzahrd)
-            {
+            if (!FargoGlobalProjectile.OkayToDestroyTile(tile))
                 return;
-            }
 
             int wallType = WallID.Wood;
             int tileType = TileID.WoodBlock;
@@ -103,15 +95,18 @@ namespace Fargowiltas.Projectiles
             if ((y == -5) && (tile.type == TileID.Platforms || tile.type == tileType))
                 return;
 
-            if ((x == 10 * side || x == 1 * side))
+            if (x == 10 * side || x == 1 * side)
             {
                 //dont act on correct block above/below door, destroying them will break it
                 if ((y == -4 || y == 0) && tile.type == tileType)
                     return;
-
-                bool isADoor = (tile.type == TileID.ClosedDoor || tile.type == TileID.OpenDoor);
-                //Main.NewText($"edge: {x}, type: {tile.type}, check: {isADoor}");
-                if ((y == -1 || y == -2 || y == -3) && isADoor)
+                
+                if ((y == -1 || y == -2 || y == -3) && (tile.type == TileID.ClosedDoor || tile.type == TileID.OpenDoor))
+                    return;
+            }
+            else if (x == 9 * side || x == 2 * side)
+            {
+                if ((y == -1 || y == -2 || y == -3) && tile.type == TileID.OpenDoor)
                     return;
             }
             else //for blocks besides those on the left/right edges where doors are placed, its okay to have platform as floor
