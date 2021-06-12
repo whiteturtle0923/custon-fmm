@@ -6,16 +6,26 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Fargowiltas.Items.Summons;
-using Fargowiltas.Items.Summons.Abom;
-using Fargowiltas.Items.Summons.Mutant;
 
 namespace Fargowiltas.NPCs
 {
 	[AutoloadHead]
 	public class Squirrel : ModNPC
 	{
-		public override bool Autoload(ref string name)
+        private static int shopNum;
+        private static bool showCycleShop;
+
+        private enum ShopGroups
+        {
+            Enchant,
+            Essence,
+            Force,
+            Soul,
+            Potion,
+            Other
+        }
+
+        public override bool Autoload(ref string name)
 		{
 			name = "Squirrel";
 			return ModLoader.GetMod("FargowiltasSouls") != null;
@@ -35,6 +45,7 @@ namespace Fargowiltas.NPCs
 			NPCID.Sets.AttackAverageChance[npc.type] = 30;
 			NPCID.Sets.HatOffsetY[npc.type] = 4;
 		}
+
 		public override void SetDefaults()
 		{
 			npc.townNPC = true;
@@ -70,7 +81,7 @@ namespace Fargowiltas.NPCs
                 return true;
             }
 
-			for (int k = 0; k < 255; k++)
+			for (int k = 0; k < Main.maxPlayers; k++)
 			{
 				Player player = Main.player[k];
 				if (!player.active)
@@ -114,6 +125,8 @@ namespace Fargowiltas.NPCs
 
 		public override string GetChat()
 		{
+            showCycleShop = GetSellableItems().Count / 40 > 0;
+
             if (Main.bloodMoon)
                 return $"[c/ff0000:You will suffer.]";
 
@@ -128,437 +141,13 @@ namespace Fargowiltas.NPCs
 			}
 		}
 
-        private string GetBuildText(params int[] args)
-        {
-            string text = "";
-            foreach (int itemType in args)
-                text += $"[i:{itemType}]";
-            return text;
-        }
-
-        private string GetBuildTextRandom(params int[] args) //takes number of accs to use as first param and list of accs as the rest
-        {
-            List<int> choices = new List<int>();
-            int maxSize = args.Length - 1;
-            for (int i = 0; i < args[0]; i++)
-            {
-                int attempt = Main.rand.Next(maxSize) + 1; //skip the first number
-                if (choices.Contains(args[attempt])) //if already chose this acc, try to choose the next in line
-                {
-                    for (int j = 0; j < maxSize; j++)
-                    {
-                        if (++attempt >= maxSize) //wrap around at end of array
-                            attempt = 1;
-                        if (!choices.Contains(args[attempt]))
-                            break;
-                    }
-                }
-                choices.Add(args[attempt]);
-            }
-            return GetBuildText(choices.ToArray());
-        }
-
-        private int GetBossHelp(ref string build)
-        {
-            Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
-            int summonType = -1;
-
-            if (!NPC.downedSlimeKing)
-            {
-                summonType = ItemID.SlimeCrown;
-                build = GetBuildText(
-                    fargosouls.ItemType("EurusSock"),
-                    fargosouls.ItemType("PuffInABottle")
-                ) + GetBuildTextRandom(
-                    3,
-                    ItemID.ShinyRedBalloon,
-                    ItemID.BandofRegeneration,
-                    ItemID.SharkToothNecklace,
-                    fargosouls.ItemType("IronEnchant"),
-                    fargosouls.ItemType("EbonwoodEnchant"),
-                    fargosouls.ItemType("CactusEnchant"),
-                    fargosouls.ItemType("PalmWoodEnchant")
-                );
-            }
-            else if (!NPC.downedBoss1)
-            {
-                summonType = ItemID.SuspiciousLookingEye;
-                build = GetBuildText(
-                    Main.rand.Next(new int[] { ItemID.HermesBoots, ItemID.SailfishBoots, ItemID.FlurryBoots }),
-                    Main.rand.Next(new int[] { ItemID.CloudinaBottle, ItemID.TsunamiInABottle, ItemID.SandstorminaBottle, ItemID.BlizzardinaBottle })
-                ) + GetBuildTextRandom(
-                    3,
-                    ItemID.CharmofMyths,
-                    ItemID.CrossNecklace,
-                    ItemID.SharkToothNecklace,
-                    fargosouls.ItemType("SlimyShield"),
-                    fargosouls.ItemType("BorealWoodEnchant"),
-                    fargosouls.ItemType("IronEnchant"),
-                    fargosouls.ItemType("PalmWoodEnchant"),
-                    fargosouls.ItemType("CactusEnchant")
-                );
-            }
-            else if (!NPC.downedBoss2)
-            {
-                summonType = WorldGen.crimson ? ItemID.BloodySpine : ItemID.WormFood;
-                build = GetBuildText(
-                    ItemID.EoCShield,
-                    ItemID.SpectreBoots,
-                    Main.rand.Next(new int[] { ItemID.BalloonHorseshoeFart, ItemID.BalloonHorseshoeSharkron, ItemID.WhiteHorseshoeBalloon })
-                ) + GetBuildTextRandom(
-                    2,
-                    ItemID.CharmofMyths,
-                    ItemID.CrossNecklace,
-                    fargosouls.ItemType("AgitatingLens"),
-                    fargosouls.ItemType("LeadEnchant"),
-                    fargosouls.ItemType("JungleEnchant"),
-                    fargosouls.ItemType("ShadewoodEnchant"),
-                    fargosouls.ItemType("EbonwoodEnchant")
-                );
-            }
-            else if (!NPC.downedQueenBee)
-            {
-                summonType = ItemID.Abeemination;
-                build = GetBuildText(
-                    ItemID.EoCShield,
-                    ItemID.SpectreBoots,
-                    ItemID.Bezoar,
-                    Main.rand.Next(new int[] { ItemID.BalloonHorseshoeFart, ItemID.BalloonHorseshoeSharkron, ItemID.WhiteHorseshoeBalloon }),
-                    Main.rand.Next(new int[] {
-                        ItemID.CharmofMyths,
-                        ItemID.WormScarf,
-                        Main.rand.NextBool() ? fargosouls.ItemType("GuttedHeart") : fargosouls.ItemType("CorruptHeart"),
-                        fargosouls.ItemType("NymphsPerfume"),
-                        fargosouls.ItemType("ShadowEnchant")})
-                );
-            }
-            else if (!NPC.downedBoss3)
-            {
-                summonType = ItemType<SuspiciousSkull>();
-                build = GetBuildText(
-                    ItemID.EoCShield,
-                    ItemID.LightningBoots,
-                    ItemID.BalloonHorseshoeFart
-                ) + GetBuildTextRandom(
-                    2,
-                    ItemID.CharmofMyths,
-                    Main.rand.NextBool() ? fargosouls.ItemType("GuttedHeart") : fargosouls.ItemType("CorruptHeart"),
-                    fargosouls.ItemType("QueenStinger"),
-                    fargosouls.ItemType("ShadowEnchant"),
-                    fargosouls.ItemType("IronEnchant")
-                );
-            }
-            else if (!(bool)fargoSouls.Call("DownedDeviantt"))
-            {
-                summonType = fargoSouls.ItemType("DevisCurse");
-                build = GetBuildText(
-                    ItemID.EoCShield,
-                    ItemID.FrostsparkBoots,
-                    ItemID.BalloonHorseshoeFart,
-                    fargosouls.ItemType("NymphsPerfume")
-                ) + GetBuildTextRandom(
-                    1,
-                    ItemID.CharmofMyths,
-                    fargosouls.ItemType("GuttedHeart"),
-                    fargosouls.ItemType("QueenStinger"),
-                    fargosouls.ItemType("NecromanticBrew"),
-                    fargosouls.ItemType("IronEnchant")
-                );
-            }
-            else if (!Main.hardMode)
-            {
-                summonType = ItemType<FleshyDoll>();
-                build = GetBuildText(
-                    ItemID.EoCShield,
-                    fargosouls.ItemType("AeolusBoots"),
-                    fargosouls.ItemType("SupremeDeathbringerFairy")
-                ) + GetBuildTextRandom(
-                    2,
-                    ItemID.CharmofMyths,
-                    ItemID.CrossNecklace,
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("GuttedHeart"),
-                    fargosouls.ItemType("ObsidianEnchant"),
-                    fargosouls.ItemType("ShadowEnchant"),
-                    fargosouls.ItemType("IronEnchant")
-                );
-            }
-            else if (!NPC.downedMechBoss1)
-            {
-                summonType = ItemID.MechanicalWorm;
-                build = GetBuildText(
-                    ItemID.EoCShield,
-                    fargosouls.ItemType("AeolusBoots"),
-                    Main.rand.NextBool() ? ItemID.LeafWings : ItemID.FrozenWings
-                ) + GetBuildTextRandom(
-                    3,
-                    ItemID.CharmofMyths,
-                    ItemID.CrossNecklace,
-                    ItemID.AnkhShield,
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("SupremeDeathbringerFairy"),
-                    fargosouls.ItemType("PalladiumEnchant"),
-                    fargosouls.ItemType("MythrilEnchant"),
-                    fargosouls.ItemType("TitaniumEnchant"),
-                    Main.rand.Next(new int[] { ItemID.WarriorEmblem, ItemID.RangerEmblem, ItemID.SorcererEmblem, ItemID.SummonerEmblem })
-                );
-            }
-            else if (!NPC.downedMechBoss2)
-            {
-                summonType = ItemID.MechanicalEye;
-                build = GetBuildText(
-                    ItemID.EoCShield,
-                    fargosouls.ItemType("AeolusBoots"),
-                    Main.rand.NextBool() ? ItemID.LeafWings : ItemID.FrozenWings
-                ) + GetBuildTextRandom(
-                    3,
-                    ItemID.CharmofMyths,
-                    ItemID.CrossNecklace,
-                    ItemID.FrogLeg,
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("SupremeDeathbringerFairy"),
-                    fargosouls.ItemType("PalladiumEnchant"),
-                    fargosouls.ItemType("MythrilEnchant"),
-                    fargosouls.ItemType("TitaniumEnchant"),
-                    Main.rand.Next(new int[] { ItemID.WarriorEmblem, ItemID.RangerEmblem, ItemID.SorcererEmblem, ItemID.SummonerEmblem })
-                );
-            }
-            else if (!NPC.downedMechBoss3)
-            {
-                summonType = ItemID.MechanicalSkull;
-                build = GetBuildText(
-                    ItemID.EoCShield,
-                    fargosouls.ItemType("AeolusBoots"),
-                    Main.rand.NextBool() ? ItemID.LeafWings : ItemID.FrozenWings
-                ) + GetBuildTextRandom(
-                    3,
-                    ItemID.CharmofMyths,
-                    ItemID.CrossNecklace,
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("SupremeDeathbringerFairy"),
-                    fargosouls.ItemType("PalladiumEnchant"),
-                    fargosouls.ItemType("MythrilEnchant"),
-                    fargosouls.ItemType("TitaniumEnchant"),
-                    Main.rand.Next(new int[] { ItemID.WarriorEmblem, ItemID.RangerEmblem, ItemID.SorcererEmblem, ItemID.SummonerEmblem })
-                );
-            }
-            else if (!NPC.downedPlantBoss)
-            {
-                summonType = ItemType<PlanterasFruit>();
-                build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.EoCShield : fargosouls.ItemType("MonkEnchant"),
-                    fargosouls.ItemType("AeolusBoots"),
-                    Main.rand.Next(new int[] { ItemID.LeafWings, ItemID.FrozenWings, ItemID.FlameWings }),
-                    Main.rand.Next(new int[] { ItemID.AnkhShield, fargosouls.ItemType("SupremeDeathbringerFairy"), fargosouls.ItemType("DubiousCircuitry") })
-                ) + GetBuildTextRandom(
-                    2,
-                    ItemID.CharmofMyths,
-                    ItemID.CrossNecklace,
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("PureHeart"),
-                    fargosouls.ItemType("PalladiumEnchant"),
-                    fargosouls.ItemType("MythrilEnchant"),
-                    fargosouls.ItemType("HallowEnchant"),
-                    ItemID.AvengerEmblem
-                );
-            }
-            else if (!NPC.downedGolemBoss)
-            {
-                summonType = ItemID.LihzahrdPowerCell;
-                build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargosouls.ItemType("MonkEnchant"),
-                    fargosouls.ItemType("AeolusBoots"),
-                    fargosouls.ItemType("DubiousCircuitry"),
-                    Main.rand.Next(new int[] { ItemID.SpookyWings, ItemID.TatteredFairyWings, ItemID.Hoverboard})
-                ) + GetBuildTextRandom(
-                    2,
-                    ItemID.AnkhShield,
-                    ItemID.CharmofMyths,
-                    ItemID.CrossNecklace,
-                    ItemID.AvengerEmblem,
-                    fargosouls.ItemType("PureHeart"),
-                    fargosouls.ItemType("PalladiumEnchant"),
-                    fargosouls.ItemType("HallowEnchant"),
-                    fargosouls.ItemType("MagicalBulb"),
-                    fargosouls.ItemType("LumpOfFlesh")
-                );
-            }
-            else if (!FargoWorld.DownedBools["betsy"])
-            {
-                summonType = ItemType<BetsyEgg>();
-                build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargosouls.ItemType("ShinobiEnchant"),
-                    fargosouls.ItemType("AeolusBoots"),
-                    fargosouls.ItemType("LihzahrdTreasureBox"),
-                    ItemID.SteampunkWings
-                ) + GetBuildTextRandom(
-                    2,
-                    fargosouls.ItemType("PureHeart"),
-                    fargosouls.ItemType("DubiousCircuitry"),
-                    fargosouls.ItemType("BeetleEnchant"),
-                    fargosouls.ItemType("SpectreEnchant"),
-                    fargosouls.ItemType("SaucerControlConsole"),
-                    fargosouls.ItemType("LumpOfFlesh")
-                );
-            }
-            else if (!NPC.downedFishron)
-            {
-                summonType = ItemType<TruffleWorm2>();
-                build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargosouls.ItemType("ShinobiEnchant"),
-                    fargosouls.ItemType("AeolusBoots"),
-                    fargosouls.ItemType("DubiousCircuitry"),
-                    Main.rand.Next(new int[] { ItemID.SteampunkWings, ItemID.BetsyWings, ItemID.Hoverboard })
-                ) + GetBuildTextRandom(
-                    2,
-                    ItemID.CharmofMyths,
-                    ItemID.FrogLeg,
-                    ItemID.AnkhShield,
-                    ItemID.DestroyerEmblem,
-                    fargosouls.ItemType("PureHeart"),
-                    fargosouls.ItemType("BeetleEnchant"),
-                    fargosouls.ItemType("AdamantiteEnchant"),
-                    fargosouls.ItemType("LumpOfFlesh"),
-                    fargosouls.ItemType("LihzahrdTreasureBox"),
-                    fargosouls.ItemType("IronEnchant"),
-                    fargosouls.ItemType("BetsysHeart")
-                );
-            }
-            else if (!NPC.downedAncientCultist)
-            {
-                summonType = ItemType<CultistSummon>();
-                build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargosouls.ItemType("ShinobiEnchant"),
-                    fargosouls.ItemType("AeolusBoots"),
-                    Main.rand.NextBool() ? ItemID.BetsyWings : ItemID.FishronWings
-                ) + GetBuildTextRandom(
-                    3,
-                    ItemID.CharmofMyths,
-                    ItemID.DestroyerEmblem,
-                    fargosouls.ItemType("PureHeart"),
-                    fargosouls.ItemType("DubiousCircuitry"),
-                    fargosouls.ItemType("BeetleEnchant"),
-                    fargosouls.ItemType("MythrilEnchant"),
-                    fargosouls.ItemType("PalladiumEnchant"),
-                    fargosouls.ItemType("SpectreEnchant"),
-                    fargosouls.ItemType("HallowEnchant"),
-                    fargosouls.ItemType("MutantAntibodies"),
-                    fargosouls.ItemType("LihzahrdTreasureBox"),
-                    fargosouls.ItemType("BetsysHeart")
-                );
-            }
-            else if (!NPC.downedMoonlord)
-            {
-                summonType = ItemType<CelestialSigil2>();
-                build = GetBuildText(
-                    fargosouls.ItemType("GaiaHelmet"),
-                    fargosouls.ItemType("GaiaPlate"),
-                    fargosouls.ItemType("GaiaGreaves")
-                ) + " " + GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargosouls.ItemType("ShinobiEnchant"),
-                    fargosouls.ItemType("AeolusBoots"),
-                    Main.rand.NextBool() ? ItemID.BetsyWings : ItemID.FishronWings
-                ) + GetBuildTextRandom(
-                    3,
-                    ItemID.CharmofMyths,
-                    ItemID.DestroyerEmblem,
-                    fargosouls.ItemType("DubiousCircuitry"),
-                    fargosouls.ItemType("BeetleEnchant"),
-                    fargosouls.ItemType("MutantAntibodies"),
-                    fargosouls.ItemType("BetsysHeart"),
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("CelestialRune")
-                );
-            }
-            else if (!(bool)fargoSouls.Call("DownedEridanus"))
-            {
-                summonType = fargoSouls.ItemType("SigilOfChampions");
-                build = GetBuildText(
-                    fargosouls.ItemType("GaiaHelmet"),
-                    fargosouls.ItemType("GaiaPlate"),
-                    fargosouls.ItemType("GaiaGreaves")
-                ) + " " + GetBuildText(
-                    Main.rand.NextBool() ? fargosouls.ItemType("SolarEnchant") : fargosouls.ItemType("SupersonicSoul"),
-                    fargosouls.ItemType("FlightMasterySoul"),
-                    fargosouls.ItemType("ColossusSoul"),
-                    Main.rand.Next(new int[] { fargosouls.ItemType("GladiatorsSoul"), fargosouls.ItemType("SnipersSoul"), fargosouls.ItemType("ArchWizardsSoul"), fargosouls.ItemType("ConjuristsSoul") })
-                ) + GetBuildTextRandom(
-                    3,
-                    fargosouls.ItemType("NebulaEnchant"),
-                    fargosouls.ItemType("PureHeart"),
-                    fargosouls.ItemType("HeartoftheMasochist"),
-                    fargosouls.ItemType("MutantAntibodies"),
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("TerraForce"),
-                    fargosouls.ItemType("LifeForce"),
-                    fargosouls.ItemType("SpiritForce"),
-                    fargosouls.ItemType("EarthForce")
-                );
-            }
-            else if (!(bool)fargoSouls.Call("DownedAbominationn"))
-            {
-                summonType = fargoSouls.ItemType("AbomsCurse");
-                build = GetBuildText(
-                    fargosouls.ItemType("CosmoForce"),
-                    fargosouls.ItemType("FlightMasterySoul"),
-                    fargosouls.ItemType("ColossusSoul"),
-                    fargosouls.ItemType("TerraForce"),
-                    fargosouls.ItemType("HeartoftheMasochist"),
-                    Main.rand.Next(new int[] { fargosouls.ItemType("GladiatorsSoul"), fargosouls.ItemType("SnipersSoul"), fargosouls.ItemType("ArchWizardsSoul"), fargosouls.ItemType("ConjuristsSoul") })
-                ) + GetBuildTextRandom(
-                    1,
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("LifeForce"),
-                    fargosouls.ItemType("EarthForce"),
-                    fargosouls.ItemType("NatureForce")
-                );
-            }
-            else if (!(bool)fargoSouls.Call("DownedMutant"))
-            {
-                summonType = fargoSouls.ItemType("AbominationnVoodooDoll");
-                build = GetBuildText(
-                    fargosouls.ItemType("TerrariaSoul"),
-                    fargosouls.ItemType("MasochistSoul"),
-                    fargosouls.ItemType("UniverseSoul"),
-                    fargosouls.ItemType("DimensionSoul"),
-                    Main.rand.Next(new int[] { fargosouls.ItemType("GladiatorsSoul"), fargosouls.ItemType("SnipersSoul"), fargosouls.ItemType("ArchWizardsSoul"), fargosouls.ItemType("ConjuristsSoul") }),
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("CyclonicFin")
-                );
-            }
-            else
-            {
-                summonType = fargoSouls.ItemType("MutantsCurse");
-                build = GetBuildText(
-                    fargosouls.ItemType("MutantMask"),
-                    fargosouls.ItemType("MutantBody"),
-                    fargosouls.ItemType("MutantPants")
-                ) + " " + GetBuildText(
-                    fargosouls.ItemType("EternitySoul"),
-                    fargosouls.ItemType("MasochistSoul"),
-                    fargosouls.ItemType("UniverseSoul"),
-                    Main.rand.Next(new int[] { fargosouls.ItemType("GladiatorsSoul"), fargosouls.ItemType("SnipersSoul"), fargosouls.ItemType("ArchWizardsSoul"), fargosouls.ItemType("ConjuristsSoul") }),
-                    fargosouls.ItemType("SparklingAdoration"),
-                    fargosouls.ItemType("CyclonicFin"),
-                    fargosouls.ItemType("MutantEye")
-                );
-            }
-
-            build += $" [i:{summonType}]";
-
-            return summonType;
-        }
-
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
-			button = Language.GetTextValue("LegacyInterface.28");
-
-            if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            button = Language.GetTextValue("LegacyInterface.28");
+            if (showCycleShop)
             {
-                button2 = "Advice";
-                /*string dummy = "";
-                int summonType = GetBossHelp(ref dummy);
-                button2 = $"Advice [i:{summonType}]";*/
+                button += $" {shopNum + 1}";
+                button2 = "Cycle Shop";
             }
         }
 
@@ -596,97 +185,56 @@ namespace Fargowiltas.NPCs
                     }
                 }*/
 
-                string dialogue = "";
-                GetBossHelp(ref dialogue);
-                Main.npcChatText = dialogue + "\n";
+                shopNum++;
             }
-		}
+            
+            if (shopNum > GetSellableItems().Count / 40) //check this when just opening shop too in case shop shrinks
+                shopNum = 0;
+        }
 
-        private void TryAddItem(Item item, Chest shop, ref int nextSlot)
+        private void TryAddItem(Item item, List<int>[] itemCollections)
         {
-            const int maxShop = 40;
-
-            bool duplicateItem = false;
-
-            if (item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield)
+            void AddToCollection(int type, ShopGroups group)
             {
-                foreach (Item item2 in shop.item)
-                {
-                    if (item2.type == item.type)
-                    {
-                        duplicateItem = true;
-                        break;
-                    }
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(item.type);
-                    nextSlot++;
-                }
+                int groupCast = (int)group;
+                if (!itemCollections[groupCast].Contains(type))
+                    itemCollections[groupCast].Add(type);
+            };
+
+            if (item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield || item.type == ItemID.RodofDiscord)
+            {
+                AddToCollection(item.type, ShopGroups.Other);
+            }
+            else if (item.stack >= 30 && item.buffType != 0)
+            {
+                AddToCollection(item.type, ShopGroups.Potion);
             }
 
-            if (item.type == ItemID.RodofDiscord)
-            {
-                foreach (Item item2 in shop.item)
-                {
-                    if (item2.type == item.type)
-                    {
-                        duplicateItem = true;
-                        break;
-                    }
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(item.type);
-                    shop.item[nextSlot].shopCustomPrice = 200;
-                    shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
-                    nextSlot++;
-                }
-            }
-
-            if (item.modItem == null || (!item.modItem.mod.Name.Equals("FargowiltasSouls") && !item.modItem.mod.Name.Equals("FargowiltasSoulsDLC")) || nextSlot >= maxShop)
+            if (item.modItem == null || (!item.modItem.mod.Name.Equals("FargowiltasSouls") && !item.modItem.mod.Name.Equals("FargowiltasSoulsDLC")))
                 return;
 
             if (item.Name.EndsWith("Enchantment"))
             {
-                foreach (Item item2 in shop.item)
-                {
-                    if (item2.type == item.type)
-                    {
-                        duplicateItem = true;
-                        break;
-                    }
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(item.type);
-                    nextSlot++;
-                }
+                AddToCollection(item.type, ShopGroups.Enchant);
+            }
+            else if (item.Name.EndsWith("Essence"))
+            {
+                AddToCollection(item.type, ShopGroups.Essence);
+            }
+            else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("BionomicCluster")
+                || item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("HeartoftheMasochist"))
+            {
+                AddToCollection(item.type, ShopGroups.Other);
             }
             else if (item.Name.Contains("Force"))
             {
                 RecipeFinder finder = new RecipeFinder();
                 finder.SetResult(item.type);
                 Recipe exactRecipe = finder.SearchRecipes()[0];
-                foreach (Item item2 in exactRecipe.requiredItem)
+                foreach (Item material in exactRecipe.requiredItem)
                 {
-                    foreach (Item item3 in shop.item)
-                    {
-                        if (item3.type == item2.type)
-                        {
-                            duplicateItem = true;
-                            break;
-                        }
-                    }
-                    if (duplicateItem == false && nextSlot < maxShop)
-                    {
-                        if (item2.Name.Contains("Enchantment"))
-                        {
-                            shop.item[nextSlot].SetDefaults(item2.type);
-                            nextSlot++;
-                        }
-                    }
-                    duplicateItem = false;
+                    if (material.Name.EndsWith("Enchantment"))
+                        AddToCollection(material.type, ShopGroups.Enchant);
                 }
             }
             else if (item.Name.StartsWith("Soul"))
@@ -694,164 +242,118 @@ namespace Fargowiltas.NPCs
                 RecipeFinder finder = new RecipeFinder();
                 finder.SetResult(item.type);
                 Recipe exactRecipe = finder.SearchRecipes()[0];
-                foreach (Item item2 in exactRecipe.requiredItem)
+                foreach (Item material in exactRecipe.requiredItem)
                 {
-                    foreach (Item item3 in shop.item)
+                    if (material.Name.Contains("Force"))
                     {
-                        if (item3.type == item2.type)
+                        AddToCollection(material.type, ShopGroups.Force);
+                    }
+                    else if (material.Name.Contains("Soul"))
+                    {
+                        AddToCollection(material.type, ShopGroups.Soul);
+                    }
+                    else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("MasochistSoul") && material.type != ItemID.None)
+                    {
+                        RecipeFinder ingredientFinder = new RecipeFinder();
+                        finder.SetResult(material.type);
+                        if (finder.SearchRecipes().Count > 0) //only put in materials that have recipes themselves
                         {
-                            duplicateItem = true;
-                            break;
+                            AddToCollection(material.type, ShopGroups.Other);
                         }
                     }
-                    if (duplicateItem == false && nextSlot < maxShop)
-                    {
-                        if (item2.Name.Contains("Force") || item2.Name.Contains("Soul"))
-                        {
-                            shop.item[nextSlot].SetDefaults(item2.type);
-                            nextSlot++;
-                        }
-                        else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("MasochistSoul"))
-                        {
-                            RecipeFinder ingredientFinder = new RecipeFinder();
-                            finder.SetResult(item2.type);
-                            if (finder.SearchRecipes().Count > 0) //only put in materials that have recipes themselves
-                            {
-                                shop.item[nextSlot].SetDefaults(item2.type);
-                                nextSlot++;
-                            }
-                        }
-                    }
-                    duplicateItem = false;
-                }
-            }
-            else if (item.Name.EndsWith("Essence"))
-            {
-                foreach (Item item2 in shop.item)
-                {
-                    if (item2.type == item.type)
-                    {
-                        duplicateItem = true;
-                        break;
-                    }
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(item.type);
-                    nextSlot++;
                 }
             }
             else if (item.Name.EndsWith("Soul"))
             {
+                AddToCollection(item.type, ShopGroups.Soul);
+
                 RecipeFinder finder = new RecipeFinder();
                 finder.SetResult(item.type);
                 Recipe exactRecipe = finder.SearchRecipes()[0];
-                foreach (Item item2 in exactRecipe.requiredItem)
+                foreach (Item material in exactRecipe.requiredItem)
                 {
-                    foreach (Item item3 in shop.item)
-                    {
-                        if (item3.type == item2.type)
-                        {
-                            duplicateItem = true;
-                            break;
-                        }
-                    }
-                    if (duplicateItem == false && nextSlot < maxShop)
-                    {
-                        if (item2.Name.EndsWith("Essence"))
-                        {
-                            shop.item[nextSlot].SetDefaults(item2.type);
-                            nextSlot++;
-                        }
-                    }
-                    duplicateItem = false;
-                }
-                foreach (Item item4 in shop.item)
-                {
-                    if (item4.type == item.type)
-                    {
-                        duplicateItem = true;
-                        break;
-                    }
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(item.type);
-                    nextSlot++;
+                    if (material.Name.EndsWith("Essence"))
+                        AddToCollection(material.type, ShopGroups.Essence);
                 }
             }
             else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("AeolusBoots"))
             {
-                foreach (Item item2 in shop.item)
-                {
-                    if (item2.type == ItemID.FrostsparkBoots || item2.type == ItemID.BalloonHorseshoeFart)
-                    {
-                        duplicateItem = true;
-                        break;
-                    }
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.FrostsparkBoots);
-                    nextSlot++;
-                }
-                if (duplicateItem == false && nextSlot < maxShop)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.BalloonHorseshoeFart);
-                    nextSlot++;
-                }
+                AddToCollection(ItemID.FrostsparkBoots, ShopGroups.Other);
+                AddToCollection(ItemID.BalloonHorseshoeFart, ShopGroups.Other);
             }
-            else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("BionomicCluster")
-                || item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("HeartoftheMasochist"))
+        }
+        
+        private List<int> GetSellableItems()
+        {
+            List<int>[] itemCollections = new List<int>[6]; //so they can be grouped by category
+            for (int i = 0; i < itemCollections.Length; i++)
+                itemCollections[i] = new List<int>();
+
+            for (int i = 0; i < Main.maxPlayers; i++)
             {
-                foreach (Item item2 in shop.item)
+                Player player = Main.player[i];
+                if (!player.active)
+                    continue;
+
+                foreach (Item item in player.inventory)
+                    TryAddItem(item, itemCollections);
+
+                foreach (Item item in player.armor)
+                    TryAddItem(item, itemCollections);
+            }
+
+            List<int> sellableItems = new List<int>();
+            for (int i = 0; i < itemCollections.Length; i++)
+            {
+                sellableItems.AddRange(itemCollections[i]);
+            }
+            return sellableItems;
+        }
+
+        public override void SetupShop(Chest shop, ref int nextSlot)
+		{
+            if (shopNum == 0 && Fargowiltas.ModLoaded["FargowiltasSouls"]) //only on page 1
+            {
+                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("TopHatSquirrelCaught"));
+                shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 10);
+                nextSlot++;
+            }
+            
+            List<int> sellableItems = GetSellableItems();
+            int i = 0;
+            int startOffset = shopNum * 40;
+            const int maxShop = 40;
+
+            foreach (int type in sellableItems)
+            {
+                if (++i < startOffset) //skip up to the minimum
+                    continue;
+
+                if (nextSlot >= maxShop) //only fill shop up to capacity
+                    break;
+
+                shop.item[nextSlot].SetDefaults(type);
+                if (type == ItemID.RodofDiscord)
                 {
-                    if (item2.type == item.type)
-                    {
-                        duplicateItem = true;
-                        break;
-                    }
+                    shop.item[nextSlot].shopCustomPrice = 250;
+                    shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
                 }
-                if (duplicateItem == false && nextSlot < maxShop)
+                else
                 {
-                    shop.item[nextSlot].SetDefaults(item.type);
-                    nextSlot++;
+                    shop.item[nextSlot].shopCustomPrice = shop.item[nextSlot].value * 5;
                 }
+                nextSlot++;
             }
         }
 
-		public override void SetupShop(Chest shop, ref int nextSlot)
-		{
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
-            {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("TopHatSquirrelCaught"));
-                shop.item[nextSlot].shopCustomPrice = 100000;
-                nextSlot++;
-            }
-
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (!player.active)
-				{
-					continue;
-				}
-
-				foreach (Item item in player.inventory)
-				{
-                    TryAddItem(item, shop, ref nextSlot);
-				}
-
-				foreach (Item item in player.armor)
-				{
-                    TryAddItem(item, shop, ref nextSlot);
-                }
-			}
-		}
-
         public override void NPCLoot()
         {
-            FargoWorld.DownedBools["squirrel"] = true;
+            if (!FargoWorld.DownedBools["squirrel"])
+            {
+                FargoWorld.DownedBools["squirrel"] = true;
+                if (Main.netMode == NetmodeID.Server)
+                    NetMessage.SendData(MessageID.WorldData); //sync world
+            }
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

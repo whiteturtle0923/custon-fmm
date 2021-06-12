@@ -6,12 +6,15 @@ NEW UPDATE - V 2.3.2
 -New toggle for transparent minions
 -Squirrel can sell some Soul of the Siblings components
 -Squirrel can sell Heart of the Eternal copies
--Squirrel can sell Rod of Discord for 200 Defender Medals
+-Squirrel can sell potions if you have stacks of 30 or more in inventory
+-Squirrel can sell Rod of Discord for Defender Medals
+-Squirrel can cycle shops
+-Squirrel prices are highway robbery
 -Squirrel Blood Moon dialogue updated
 -Fixed a bug where Squirrel wouldn't sell some recipe components if the shop already had another item in that recipe
 -Fixed a bug where Squirrel could be killed while invincible
--In Eternity Mode, Squirrel provides recommended builds for you
 -Fixed instant builds being able to overwrite Dungeon and Temple so long as the respective brick wasn't there
+-In Eternity Mode, Deviantt sells an item that provides recommended builds for you (also included in starting gift)
 
 NEW UPDATE - V 2.3.1
 -InstaHouse visual no longer appearing for everyone in multiplayer

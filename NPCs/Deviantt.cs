@@ -183,6 +183,13 @@ namespace Fargowiltas.NPCs
             {
                 shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
                 nextSlot++;
+
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+                {
+                    shop.item[nextSlot].SetDefaults(ItemType<Items.Misc.EternityAdvisor>());
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 1);
+                    nextSlot++;
+                }
             }
 
             AddItem(FargoWorld.DownedBools["worm"], ItemType<WormSnack>(), Item.buyPrice(0, 2), ref shop, ref nextSlot);
