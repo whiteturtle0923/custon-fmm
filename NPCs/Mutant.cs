@@ -56,13 +56,13 @@ namespace Fargowiltas.NPCs
                 Main.npcCatchable[npc.type] = true;
                 npc.catchItem = (short)mod.ItemType("Mutant");
             }
-                
+
             npc.buffImmune[BuffID.Suffocation] = true;
 
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
             {
-                npc.lifeMax = 7700000;
-                npc.defense = 400;
+                npc.lifeMax = 77000;
+                npc.defense = 360;
             }
         }
 
@@ -78,7 +78,7 @@ namespace Fargowiltas.NPCs
                 {
                     npc.lifeMax = 77000;
                     npc.life = npc.lifeMax;
-                    npc.defense = 400;
+                    npc.defense = 360;
                 }
             }
         }
@@ -416,13 +416,13 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
             {
-                damage = 720;
-                knockback = 10f;
+                damage = 700;
+                knockback = 7f;
             }
             else if (NPC.downedMoonlord)
             {
                 damage = 250;
-                knockback = 10f;
+                knockback = 6f;
             }
             else if (Main.hardMode)
             {
