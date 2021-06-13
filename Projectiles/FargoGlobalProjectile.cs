@@ -15,7 +15,7 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults(Projectile projectile)
         {
-            if (projectile.minion || ProjectileID.Sets.MinionShot[projectile.type])
+            if (projectile.minion || projectile.sentry || projectile.minionSlots > 0 || ProjectileID.Sets.MinionShot[projectile.type])
                 lowRender = true;
             switch (projectile.type)
             {

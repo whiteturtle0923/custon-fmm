@@ -104,18 +104,15 @@ namespace Fargowiltas.Projectiles
                 if ((y == -1 || y == -2 || y == -3) && (tile.type == TileID.ClosedDoor || tile.type == TileID.OpenDoor))
                     return;
             }
-            else if (x == 9 * side || x == 2 * side)
-            {
-                if ((y == -1 || y == -2 || y == -3) && tile.type == TileID.OpenDoor)
-                    return;
-            }
             else //for blocks besides those on the left/right edges where doors are placed, its okay to have platform as floor
             {
                 if (y == 0 && (tile.type == TileID.Platforms || tile.type == tileType))
                     return;
             }
 
-            FargoGlobalTile.ClearEverything(xPosition, yPosition);
+            //doing it this way so the code still runs to place bg walls behind open door
+            if (!((x == 9 * side || x == 2 * side) && (y == -1 || y == -2 || y == -3) && tile.type == TileID.OpenDoor))
+                FargoGlobalTile.ClearEverything(xPosition, yPosition);
 
             // Spawn walls
             if (y != -5 && y != 0 && x != (10 * side) && x != (1 * side))
