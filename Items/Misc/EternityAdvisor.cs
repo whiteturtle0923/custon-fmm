@@ -457,6 +457,8 @@ namespace Fargowiltas.Items.Misc
                 );
             }
 
+            build += $" [i:{summonType}]";
+
             if (Main.hardMode)
             {
                 bool playerHasOmnistation = false;
@@ -473,14 +475,11 @@ namespace Fargowiltas.Items.Misc
                 }
                 if (!playerHasOmnistation)
                 {
-                    Main.NewText($"print");
                     build += Main.rand.NextBool()
                         ? $" [i:{ItemType<Omnistation>()}]"
                         : $" [i:{ItemType<Omnistation2>()}]";
                 }
             }
-
-            build += $" [i:{summonType}]";
 
             return summonType;
         }
