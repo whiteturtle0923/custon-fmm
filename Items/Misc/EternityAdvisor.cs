@@ -464,7 +464,8 @@ namespace Fargowiltas.Items.Misc
                     playerHasOmnistation = true;
                 foreach (Item item in player.inventory)
                 {
-                    if (item.type == ItemType<Omnistation>() || item.type == ItemType<Omnistation2>() || item.type == ItemType <OmnistationPlus>())
+                    if (item.type == ItemType<Omnistation>() || item.type == ItemType<Omnistation2>() ||
+                        ((ModLoader.GetMod("ThoriumMod") != null || ModLoader.GetMod("CalamityMod") != null) && item.type == ItemType<OmnistationPlus>()))
                     {
                         playerHasOmnistation = true;
                         break;
@@ -472,6 +473,7 @@ namespace Fargowiltas.Items.Misc
                 }
                 if (!playerHasOmnistation)
                 {
+                    Main.NewText($"print");
                     build += Main.rand.NextBool()
                         ? $" [i:{ItemType<Omnistation>()}]"
                         : $" [i:{ItemType<Omnistation2>()}]";
