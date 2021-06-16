@@ -6,6 +6,7 @@ using static Terraria.ModLoader.ModContent;
 using Fargowiltas.Items.Summons;
 using Fargowiltas.Items.Summons.Abom;
 using Fargowiltas.Items.Summons.Mutant;
+using Fargowiltas.Items.Tiles;
 
 namespace Fargowiltas.Items.Misc
 {
@@ -70,7 +71,7 @@ namespace Fargowiltas.Items.Misc
             return GetBuildText(choices.ToArray());
         }
 
-        private int GetBossHelp(ref string build)
+        private int GetBossHelp(ref string build, Player player)
         {
             Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
             int summonType = -1;
@@ -456,6 +457,27 @@ namespace Fargowiltas.Items.Misc
                 );
             }
 
+            if (Main.hardMode)
+            {
+                bool playerHasOmnistation = false;
+                if (player.HasBuff(BuffType<Buffs.Omnistation>()) || player.HasBuff(BuffType<Buffs.OmnistationPlus>()))
+                    playerHasOmnistation = true;
+                foreach (Item item in player.inventory)
+                {
+                    if (item.type == ItemType<Omnistation>() || item.type == ItemType<Omnistation2>() || item.type == ItemType <OmnistationPlus>())
+                    {
+                        playerHasOmnistation = true;
+                        break;
+                    }
+                }
+                if (!playerHasOmnistation)
+                {
+                    build += Main.rand.NextBool()
+                        ? $" [i:{ItemType<Omnistation>()}]"
+                        : $" [i:{ItemType<Omnistation2>()}]";
+                }
+            }
+
             build += $" [i:{summonType}]";
 
             return summonType;
@@ -464,7 +486,7 @@ namespace Fargowiltas.Items.Misc
         public override bool UseItem(Player player)
         {
             string dialogue = "";
-            GetBossHelp(ref dialogue);
+            GetBossHelp(ref dialogue, player);
             Main.NewText(dialogue);
 
             Main.PlaySound(SoundID.Meowmere, player.Center, 5 + Main.rand.Next(5)); //meow
