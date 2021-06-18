@@ -15,6 +15,7 @@ NEW UPDATE - V 2.3.2
 -Fixed a bug where Squirrel could be killed while invincible
 -Fixed instant builds being able to overwrite Dungeon and Temple so long as the respective brick wasn't there
 -In Eternity Mode, Deviantt sells an item that provides recommended builds for you (also included in starting gift)
+-Boom Shuriken is classless
 
 NEW UPDATE - V 2.3.1
 -InstaHouse visual no longer appearing for everyone in multiplayer

@@ -16,12 +16,12 @@ namespace Fargowiltas.Items.Explosives
             item.width = 11;
             item.height = 11;
             item.damage = 16;
-            item.ranged = true;
+            //item.ranged = true;
             item.noMelee = true;
             item.consumable = true;
             item.noUseGraphic = true;
             item.scale = 0.75f;
-            item.crit = 5;
+            //item.crit = 5;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTime = 10;
             item.useAnimation = 10;
