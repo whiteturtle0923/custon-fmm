@@ -551,6 +551,11 @@ namespace Fargowiltas.NPCs
                             shop.item[nextSlot++].shopCustomPrice = 50000;
                         }
                         break;
+
+                    case NPCID.Wizard:
+                        if (NPC.downedGolemBoss)
+                            shop.item[nextSlot].SetDefaults(ItemID.SuperManaPotion);
+                        break;
                 }
             }
         }
