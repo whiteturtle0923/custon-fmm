@@ -123,7 +123,7 @@ namespace Fargowiltas.Projectiles
             }
 
             //platforms on top
-            if (y == -5 && Math.Abs(x) >= 4 && Math.Abs(x) <= 7)
+            if (y == -5 && Math.Abs(x) >= 3 && Math.Abs(x) <= 5)
             {
                 WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms, style: platformStyle);
                 if (Main.netMode == NetmodeID.Server)

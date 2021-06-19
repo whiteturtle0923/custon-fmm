@@ -16,6 +16,7 @@ NEW UPDATE - V 2.3.2
 -Fixed instant builds being able to overwrite Dungeon and Temple so long as the respective brick wasn't there
 -In Eternity Mode, Deviantt sells an item that provides recommended builds for you (also included in starting gift)
 -Boom Shuriken is classless
+-Shrunk Instahouse top platform slightly to fix vanilla detection bug where opening a door made the house invalid
 
 NEW UPDATE - V 2.3.1
 -InstaHouse visual no longer appearing for everyone in multiplayer
