@@ -1208,6 +1208,10 @@ namespace Fargowiltas.NPCs
                     TryDowned("rareEnemy", "sandElemental");
                     break;
 
+                case NPCID.Nailhead:
+                    TryDowned("rareEnemy", "nailhead");
+                    break;
+
                 case NPCID.Mothron:
                     TryDowned("rareEnemy", "mothron");
                     break;
