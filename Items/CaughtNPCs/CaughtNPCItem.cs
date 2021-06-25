@@ -54,7 +54,22 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault($"The {Regex.Replace(Name, "([A-Z])", " $1").Replace("Caught ", "").Trim()}");
+            string GetNameWithRegex() => $"The {Regex.Replace(Name, "([A-Z])", " $1").Replace("Caught ", "").Trim()}";
+
+            if (AssociatedNpcId < NPCID.Count) 
+                DisplayName.SetDefault(GetNameWithRegex());
+            else
+            {
+                try
+                {
+                    ModNPC npc = NPCLoader.GetNPC(AssociatedNpcId);
+                    DisplayName.SetDefault($"The Caught {npc.DisplayName.GetDefault()}");
+                }
+                catch
+                {
+                    DisplayName.SetDefault(GetNameWithRegex());
+                }
+            }
 
             try
             {
