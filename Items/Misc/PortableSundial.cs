@@ -18,7 +18,7 @@ namespace Fargowiltas.Items.Misc
         {
             item.width = 20;
             item.height = 20;
-            item.value = Item.sellPrice(0, 0, 2);
+            item.value = Item.sellPrice(0, 5);
             item.rare = ItemRarityID.LightRed;
             item.useAnimation = 30;
             item.useTime = 30;
@@ -72,10 +72,10 @@ namespace Fargowiltas.Items.Misc
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Sundial);
-            recipe.AddIngredient(ItemID.SoulofLight, 10);
-            recipe.AddIngredient(ItemID.SoulofNight, 10);
-            recipe.AddIngredient(ItemID.SoulofFlight, 10);
-            recipe.AddTile(TileID.Anvils);
+            //recipe.AddIngredient(ItemID.SoulofLight, 10);
+            //recipe.AddIngredient(ItemID.SoulofNight, 10);
+            //recipe.AddIngredient(ItemID.SoulofFlight, 10);
+            recipe.AddTile(TileID.SkyMill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

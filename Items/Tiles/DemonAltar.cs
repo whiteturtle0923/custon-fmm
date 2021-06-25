@@ -54,7 +54,7 @@ namespace Fargowiltas.Items.Tiles
         {
             item.width = 28;
             item.height = 14;
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
             item.maxStack = 99;
             item.useTurn = true;
             item.autoReuse = true;

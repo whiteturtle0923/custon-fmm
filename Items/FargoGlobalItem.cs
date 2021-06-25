@@ -146,7 +146,12 @@ namespace Fargowiltas.Items
                         player.QuickSpawnItem(Main.rand.Next(drops));
                     }
 
-                    break;
+                    if (Main.rand.NextBool(20) && !Main.hardMode)
+                    {
+                        player.QuickSpawnItem(ItemID.Sundial);
+                    }
+
+                        break;
             }
 
             if (context == "lockBox")
@@ -199,10 +204,10 @@ namespace Fargowiltas.Items
         {
             if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
             {
-                if (item.stack >= 60 && item.buffType != 0)
+                if (item.stack >= 30 && item.buffType != 0)
                     player.AddBuff(item.buffType, 2);
 
-                if (item.stack >= 20)
+                if (item.stack >= 15)
                 {
                     if (item.type == ItemID.SharpeningStation)
                         player.AddBuff(BuffID.Sharpened, 2);
@@ -213,8 +218,6 @@ namespace Fargowiltas.Items
                     else if (item.type == ItemID.BewitchingTable)
                         player.AddBuff(BuffID.Bewitched, 2);
                 }
-
-                
             }
         }
 

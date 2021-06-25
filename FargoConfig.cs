@@ -40,7 +40,7 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool UnlimitedConsumableWeapons;
 
-        [Label("[i:292] Unlimited Potion Buffs for 60+ Potions")]
+        [Label("[i:292] Unlimited Potion/Class Station Buffs at 30/15+ Stack")]
         [DefaultValue(true)]
         public bool UnlimitedPotionBuffsOn120;
 

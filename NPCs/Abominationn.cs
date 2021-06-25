@@ -202,7 +202,7 @@ namespace Fargowiltas.NPCs
             }
 
             shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
-            shop.item[nextSlot].value = price;
+            shop.item[nextSlot].shopCustomPrice = price;
 
             nextSlot++;
         }

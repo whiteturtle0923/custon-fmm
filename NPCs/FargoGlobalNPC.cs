@@ -276,11 +276,11 @@ namespace Fargowiltas.NPCs
                 switch (type)
                 {
                     case NPCID.Clothier:
-                        shop.item[nextSlot++].SetDefaults(ItemID.PharaohsMask);
-                        shop.item[nextSlot].value = 10000;
+                        shop.item[nextSlot].SetDefaults(ItemID.PharaohsMask);
+                        shop.item[nextSlot++].shopCustomPrice = 10000;
 
-                        shop.item[nextSlot++].SetDefaults(ItemID.PharaohsRobe);
-                        shop.item[nextSlot].value = 10000;
+                        shop.item[nextSlot].SetDefaults(ItemID.PharaohsRobe);
+                        shop.item[nextSlot++].shopCustomPrice = 10000;
 
                         if (player.anglerQuestsFinished >= 10)
                         {
@@ -297,13 +297,21 @@ namespace Fargowiltas.NPCs
                             }
                         }
 
-                        shop.item[nextSlot++].SetDefaults(ItemID.BlueBrick);
-                        shop.item[nextSlot].value = 100;
-                        shop.item[nextSlot++].SetDefaults(ItemID.GreenBrick);
-                        shop.item[nextSlot].value = 100;
-                        shop.item[nextSlot++].SetDefaults(ItemID.PinkBrick);
-                        shop.item[nextSlot].value = 100;
-
+                        shop.item[nextSlot].SetDefaults(ItemID.BlueBrick);
+                        shop.item[nextSlot++].shopCustomPrice = 100;
+                        shop.item[nextSlot].SetDefaults(ItemID.GreenBrick);
+                        shop.item[nextSlot++].shopCustomPrice = 100;
+                        shop.item[nextSlot].SetDefaults(ItemID.PinkBrick);
+                        shop.item[nextSlot++].shopCustomPrice = 100;
+                        
+                        foreach (Item item in Main.LocalPlayer.inventory)
+                        {
+                            if (item.stack > 0 && item.useAmmo == ItemID.Bone)
+                            {
+                                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Ammos.BrittleBone>());
+                                break;
+                            }
+                        }
                         break;
 
                     case NPCID.Merchant:
@@ -522,18 +530,18 @@ namespace Fargowiltas.NPCs
                         if (Main.hardMode)
                         {
                             shop.item[nextSlot].SetDefaults(ItemID.NaturesGift);
-                            shop.item[nextSlot++].value = 200000;
+                            shop.item[nextSlot++].shopCustomPrice = 200000;
                             shop.item[nextSlot].SetDefaults(ItemID.JungleRose);
-                            shop.item[nextSlot++].value = 100000;
+                            shop.item[nextSlot++].shopCustomPrice = 100000;
 
                             shop.item[nextSlot].SetDefaults(ItemID.StrangePlant1);
-                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot++].shopCustomPrice = 50000;
                             shop.item[nextSlot].SetDefaults(ItemID.StrangePlant2);
-                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot++].shopCustomPrice = 50000;
                             shop.item[nextSlot].SetDefaults(ItemID.StrangePlant3);
-                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot++].shopCustomPrice = 50000;
                             shop.item[nextSlot].SetDefaults(ItemID.StrangePlant4);
-                            shop.item[nextSlot++].value = 50000;
+                            shop.item[nextSlot++].shopCustomPrice = 50000;
                         }
                         break;
                 }
@@ -573,7 +581,7 @@ namespace Fargowiltas.NPCs
                 maxSpawns = (int)(maxSpawns * 30f);
             }
 
-            if (GetInstance<FargoConfig>().BossZen && AnyBossAlive() && Main.LocalPlayer.Distance(Main.npc[boss].Center) < 3000f)
+            if (GetInstance<FargoConfig>().BossZen && AnyBossAlive())
             {
                 maxSpawns = 0;
             }
