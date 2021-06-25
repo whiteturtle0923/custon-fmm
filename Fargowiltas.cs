@@ -56,11 +56,7 @@ namespace Fargowiltas
                 Autoload = true,
                 AutoloadGores = true,
                 AutoloadSounds = true,
-            };
-        }
-
-        static Fargowiltas()
-        {
+            }; 
             HookIntoLoad();
         }
 
@@ -553,7 +549,8 @@ namespace Fargowiltas
         private static void HookIntoLoad()
         {
             MonoModHooks.RequestNativeAccess();
-            new Hook(typeof(ModContent).GetMethod("LoadModContent", BindingFlags.NonPublic | BindingFlags.Static),
+            new Hook(
+                typeof(ModContent).GetMethod("LoadModContent", BindingFlags.NonPublic | BindingFlags.Static),
                 typeof(Fargowiltas).GetMethod(nameof(LoadHook), BindingFlags.NonPublic | BindingFlags.Static)).Apply();
 
             HookEndpointManager.Modify(
