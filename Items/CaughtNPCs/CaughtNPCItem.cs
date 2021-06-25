@@ -63,7 +63,11 @@ namespace Fargowiltas.Items.CaughtNPCs
                 try
                 {
                     ModNPC npc = NPCLoader.GetNPC(AssociatedNpcId);
-                    DisplayName.SetDefault($"The Caught {npc.DisplayName.GetDefault()}");
+
+                    if (npc.mod.Name.Equals("Fargowiltas"))
+                        DisplayName.SetDefault(GetNameWithRegex());
+                    else
+                        DisplayName.SetDefault($"The Caught {npc.DisplayName.GetDefault()}");
                 }
                 catch
                 {
