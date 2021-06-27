@@ -20,6 +20,8 @@ namespace Fargowiltas.NPCs
             npc.width = 28;
             npc.height = 50;
             npc.immortal = false;
+            npc.npcSlots = 0;
+            npc.dontCountMe = true;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;

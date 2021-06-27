@@ -3,6 +3,7 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 NEW UPDATE - V 2.3.3
 -Added Pincushion to Deviantt shop
+-Fixed Super Dummy taking up enemy slots
 
 NEW UPDATE - V 2.3.2
 -Corrected Zealot's Possession tooltip to clarify that pillars are only blocked post-Cultist
