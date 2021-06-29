@@ -714,6 +714,10 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.BrainofCthulhu, NPCID.Creeper, ItemID.BrainOfCthulhuBossBag, ItemID.BrainofCthulhuTrophy, "EnergizerBrain");
                         break;
 
+                    case NPCID.DD2DarkMageT1:
+                        Swarm(npc, NPCID.DD2DarkMageT1, -1, ItemID.DefenderMedal, ItemID.BossTrophyDarkmage, "EnergizerDarkMage");
+                        break;
+
                     case NPCID.QueenBee:
                         Swarm(npc, NPCID.QueenBee, NPCID.BeeSmall, ItemID.QueenBeeBossBag, ItemID.QueenBeeTrophy, "EnergizerBee");
                         break;
@@ -1374,9 +1378,13 @@ namespace Fargowiltas.NPCs
 
         private void Swarm(NPC npc, int boss, int minion, int bossbag, int trophy, string reward)
         {
-            if (bossbag >= 0)
+            if (bossbag >= 0 && bossbag != ItemID.DefenderMedal)
             {
                 npc.DropItemInstanced(npc.Center, npc.Size, bossbag);
+            }
+            else if (bossbag >= 0 && bossbag == ItemID.DefenderMedal)
+            {
+                npc.DropItemInstanced(npc.Center, npc.Size, bossbag, 5);
             }
 
             int count = 0;

@@ -144,7 +144,7 @@ namespace Fargowiltas
 
             // swarm reset in case something goes wrong
             if (Main.netMode != NetmodeID.MultiplayerClient && Fargowiltas.SwarmActive 
-                && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead) && !NPC.AnyNPCs(NPCID.DungeonGuardian))
+                && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead) && !NPC.AnyNPCs(NPCID.DungeonGuardian) && !NPC.AnyNPCs(NPCID.DD2DarkMageT1))
             {
                 Fargowiltas.SwarmActive = false;
                 FargoGlobalNPC.LastWoFIndex = -1;

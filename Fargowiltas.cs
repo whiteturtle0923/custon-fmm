@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
 using Fargowiltas.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -12,6 +15,11 @@ using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.Projectiles;
 using Fargowilta;
+using Fargowiltas.Items.CaughtNPCs;
+using MonoMod.Cil;
+using MonoMod.RuntimeDetour;
+using MonoMod.RuntimeDetour.HookGen;
+using Terraria.DataStructures;
 using Terraria.UI;
 
 namespace Fargowiltas
@@ -51,7 +59,8 @@ namespace Fargowiltas
                 Autoload = true,
                 AutoloadGores = true,
                 AutoloadSounds = true,
-            };
+            }; 
+            HookIntoLoad();
         }
 
         public void AddToggle(String toggle, String name, String item, String color)
@@ -120,6 +129,8 @@ namespace Fargowiltas
             AddToggle("Devi", "Deviantt Can Spawn", "DevianttMask", "ffffff");
             AddToggle("Lumber", "Lumberjack Can Spawn", "LumberjackMask", "ffffff");
 
+            CaughtNPCItem.RegisterItems(this);
+
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
         }
@@ -163,6 +174,9 @@ namespace Fargowiltas
                     censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
                 }
             }
+
+            foreach (KeyValuePair<int, int> npc in CaughtNPCItem.CaughtTownies)
+                Main.RegisterItemAnimation(npc.Key, new DrawAnimationVertical(6, Main.npcFrameCount[npc.Value]));
 
             /*Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
             if (soulsMod != null)
@@ -537,6 +551,87 @@ namespace Fargowiltas
         {
             base.ModifyInterfaceLayers(layers);
             UserInterfaceManager.ModifyInterfaceLayers(layers);
+        }
+
+        private static void HookIntoLoad()
+        {
+            MonoModHooks.RequestNativeAccess();
+            new Hook(
+                typeof(ModContent).GetMethod("LoadModContent", BindingFlags.NonPublic | BindingFlags.Static),
+                typeof(Fargowiltas).GetMethod(nameof(LoadHook), BindingFlags.NonPublic | BindingFlags.Static)).Apply();
+
+            HookEndpointManager.Modify(
+                typeof(ModContent).GetMethod("Load", BindingFlags.NonPublic | BindingFlags.Static),
+                Delegate.CreateDelegate(typeof(ILContext.Manipulator),
+                    typeof(Fargowiltas).GetMethod(nameof(ModifyLoading),
+                        BindingFlags.NonPublic | BindingFlags.Static) ?? throw new Exception("Couldn't create IL manipulator.")));
+        }
+
+        private static void ModifyLoading(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            c.GotoNext(x => x.MatchCall(typeof(ModContent), "ResizeArrays"));
+            c.Index++;
+
+            c.EmitDelegate<Action>(() =>
+            {
+                FieldInfo loadInfo = typeof(Mod).GetField("loading", BindingFlags.Instance | BindingFlags.NonPublic);
+                loadInfo?.SetValue(ModLoader.GetMod("Fargowiltas"), true);
+
+                foreach (Mod mod in ModLoader.Mods.Where(x => x != ModLoader.GetMod("Fargowiltas")))
+                {
+                    foreach (ModNPC npc in (typeof(Mod).GetField("npcs", BindingFlags.Instance | BindingFlags.NonPublic)
+                        ?.GetValue(mod) as IDictionary<string, ModNPC>)?.Values ?? new ModNPC[0])
+                    {
+                        try
+                        {
+                            npc.SetDefaults();
+
+                            if (npc.npc.townNPC)
+                                CaughtNPCItem.AddAutomatic(npc.Name, npc.npc.type);
+                        }
+                        catch
+                        {
+                            // ignore
+                        }
+                    }
+                }
+                loadInfo?.SetValue(ModLoader.GetMod("Fargowiltas"), false);
+
+                typeof(ModContent).GetMethod("ResizeArrays", BindingFlags.NonPublic | BindingFlags.Static)?
+                    .Invoke(null, new object[] {false});
+            });
+        }
+
+        private static void LoadHook(Action<CancellationToken, Action<Mod>> orig, CancellationToken token,
+            Action<Mod> loadAction)
+        {
+            PropertyInfo modsArray = typeof(ModLoader).GetProperty("Mods", BindingFlags.Public | BindingFlags.Static);
+
+            if (modsArray is null)
+            {
+                orig(token, loadAction);
+                return;
+            }
+
+            // Mod[] cachedArray = modsArray.GetValue(null) as Mod[];
+            List<Mod> tempMods = (modsArray.GetValue(null) as Mod[])?.ToList();
+
+            if (tempMods is null)
+            {
+                orig(token, loadAction);
+                return;
+            }
+
+            Mod mod = tempMods.First(x => x.Name.Equals("Fargowiltas"));
+            tempMods.Remove(mod);
+            tempMods.Add(mod);
+            modsArray.SetValue(null, tempMods.ToArray());
+            
+            orig(token, loadAction);
+
+            // modsArray.SetValue(null, cachedArray);
         }
     }
 }
