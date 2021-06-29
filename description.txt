@@ -1,6 +1,8 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+-Added Caught NPC items for any loaded mod
+
 NEW UPDATE - V 2.3.1
 -NEW ICON
 -InstaHouse visual no longer appearing for everyone in multiplayer
@@ -15,42 +17,3 @@ NEW UPDATE - V 2.3.1
 -Ruler can work from the Piggy Bank
 -Moved Regal Statue, Battle Cry, and Portable Sundial to pre boss.
 -Enchanted Sundial can drop from Golden Crates in phm 5% chance like Hard Mode
-
-NEW UPDATE - V 2.3
--Added Stat Sheet UI
--Removed Stat Sheet
--Updated Wormy Food, Gorey Spine, and A Bee in My Nation tooltips for increased clarity
--Suspicious Skull spawns Dungeon Guardian consistently above you now
--Mech boss summons will now reset the night like the Skeletron summon. Only happens before you beat them
--Added tooltips to Overloader and all Energizers to make it clear what they do
--Pirate Flag can be used during the day
--Dark Mages and Ogres now always drop some Defender Medals (moved from Eternity Mode)
--Added craftable Demon Altars crafted from evil boss drops
--Crystal Ball no longer functions as a Demon Altar
--Multitask Center recipe can use the Cauldron or the Cooking Pot in its recipe
--Multitask Center now glows, Elemental Assembler will flash when the lightning goes off
--Omnistation recipe reduced a bit and they give off a good amount of light
--InstaHouse now spawns a few platforms on top. When placing an InstaHouse it will not overwrite any platforms on the bottom level meaning you can easily stack and connect them with little extra work
--InstaHouse now has a visual indicator of its size and where it will be placed
--Instactuation Bomb will compensate if your altar doesn't have enough space on one side by attempting to extend the other side by that much
--Adjusted recipes of all insta items: replaced Desert Fossils with Fallen Stars
--Added some critter banner recipes
--Breathing Reed and Trident can be crafted from Wooden Crates
--Anchor recipe requires a Soul of Light
--Added Herb recipes using Herb Bags
--Added better Ancient armor recipes using the original armor recipes at a Demon Altar
--Undead Miner banner can be crafted into Mining armor pieces
--Scutlix banner also crafts into Brain Scrambler
--Added banner recipes to craft Bones
--Reduced Rod of Discord recipe by 1 banner
--Skeleton Merchant can be crafted from a caught Travelling Merchant and Bones
--Deviantt's Receive Gift button is now rainbow
--Removed and updated several Deviantt Help quotes
--Moved Furgo from Mutant name options to the Squirrel
--Lumberjack will now give you Snails correctly
--Added a Tree Treasures option for the Snow biome
--Demolitionist will sell hard mode ores post Moon Lord
--The Angler now commonly drops fishing trash on death
--Super Dummies now all die if a boss is alive
--Bug Net and Golden Bug Net now mention that they can catch town npcs
--Infinite station buffs now only need 20 instead of 60
