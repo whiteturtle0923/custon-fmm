@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -196,6 +197,7 @@ namespace Fargowiltas.NPCs
         {
             void AddToCollection(int type, ShopGroups group)
             {
+                Main.NewText($"add {type} {group.ToString()}");
                 int groupCast = (int)group;
                 if (!itemCollections[groupCast].Contains(type))
                     itemCollections[groupCast].Add(type);
@@ -213,11 +215,11 @@ namespace Fargowiltas.NPCs
             if (item.modItem == null || (!item.modItem.mod.Name.Equals("FargowiltasSouls") && !item.modItem.mod.Name.Equals("FargowiltasSoulsDLC")))
                 return;
 
-            if (item.Name.EndsWith("Enchantment"))
+            if (item.modItem.Name.EndsWith("Enchant"))
             {
                 AddToCollection(item.type, ShopGroups.Enchant);
             }
-            else if (item.Name.EndsWith("Essence"))
+            else if (item.modItem.Name.EndsWith("Essence"))
             {
                 AddToCollection(item.type, ShopGroups.Essence);
             }
@@ -226,29 +228,33 @@ namespace Fargowiltas.NPCs
             {
                 AddToCollection(item.type, ShopGroups.Other);
             }
-            else if (item.Name.Contains("Force"))
+            else if (item.modItem.Name.EndsWith("Force"))
             {
                 RecipeFinder finder = new RecipeFinder();
                 finder.SetResult(item.type);
                 Recipe exactRecipe = finder.SearchRecipes()[0];
                 foreach (Item material in exactRecipe.requiredItem)
                 {
-                    if (material.Name.EndsWith("Enchantment"))
+                    if (material.modItem.Name.EndsWith("Enchant"))
                         AddToCollection(material.type, ShopGroups.Enchant);
                 }
             }
-            else if (item.Name.StartsWith("Soul"))
+            else if (item.modItem.Name.EndsWith("Soul"))
             {
                 RecipeFinder finder = new RecipeFinder();
                 finder.SetResult(item.type);
                 Recipe exactRecipe = finder.SearchRecipes()[0];
                 foreach (Item material in exactRecipe.requiredItem)
                 {
-                    if (material.Name.Contains("Force"))
+                    if (material.modItem.Name.EndsWith("Essence"))
+                    {
+                        AddToCollection(material.type, ShopGroups.Essence);
+                    }
+                    else if (material.modItem.Name.EndsWith("Force"))
                     {
                         AddToCollection(material.type, ShopGroups.Force);
                     }
-                    else if (material.Name.Contains("Soul"))
+                    else if (material.modItem.Name.EndsWith("Soul"))
                     {
                         AddToCollection(material.type, ShopGroups.Soul);
                     }
@@ -261,19 +267,6 @@ namespace Fargowiltas.NPCs
                             AddToCollection(material.type, ShopGroups.Other);
                         }
                     }
-                }
-            }
-            else if (item.Name.EndsWith("Soul"))
-            {
-                AddToCollection(item.type, ShopGroups.Soul);
-
-                RecipeFinder finder = new RecipeFinder();
-                finder.SetResult(item.type);
-                Recipe exactRecipe = finder.SearchRecipes()[0];
-                foreach (Item material in exactRecipe.requiredItem)
-                {
-                    if (material.Name.EndsWith("Essence"))
-                        AddToCollection(material.type, ShopGroups.Essence);
                 }
             }
             else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("AeolusBoots"))
