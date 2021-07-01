@@ -197,7 +197,6 @@ namespace Fargowiltas.NPCs
         {
             void AddToCollection(int type, ShopGroups group)
             {
-                Main.NewText($"add {type} {group.ToString()}");
                 int groupCast = (int)group;
                 if (!itemCollections[groupCast].Contains(type))
                     itemCollections[groupCast].Add(type);
@@ -235,7 +234,7 @@ namespace Fargowiltas.NPCs
                 Recipe exactRecipe = finder.SearchRecipes()[0];
                 foreach (Item material in exactRecipe.requiredItem)
                 {
-                    if (material.modItem.Name.EndsWith("Enchant"))
+                    if (material.modItem != null && material.modItem.Name.EndsWith("Enchant"))
                         AddToCollection(material.type, ShopGroups.Enchant);
                 }
             }
@@ -246,17 +245,20 @@ namespace Fargowiltas.NPCs
                 Recipe exactRecipe = finder.SearchRecipes()[0];
                 foreach (Item material in exactRecipe.requiredItem)
                 {
-                    if (material.modItem.Name.EndsWith("Essence"))
+                    if (material.modItem != null)
                     {
-                        AddToCollection(material.type, ShopGroups.Essence);
-                    }
-                    else if (material.modItem.Name.EndsWith("Force"))
-                    {
-                        AddToCollection(material.type, ShopGroups.Force);
-                    }
-                    else if (material.modItem.Name.EndsWith("Soul"))
-                    {
-                        AddToCollection(material.type, ShopGroups.Soul);
+                        if (material.modItem.Name.EndsWith("Essence"))
+                        {
+                            AddToCollection(material.type, ShopGroups.Essence);
+                        }
+                        else if (material.modItem.Name.EndsWith("Force"))
+                        {
+                            AddToCollection(material.type, ShopGroups.Force);
+                        }
+                        else if (material.modItem.Name.EndsWith("Soul"))
+                        {
+                            AddToCollection(material.type, ShopGroups.Soul);
+                        }
                     }
                     else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("MasochistSoul") && material.type != ItemID.None)
                     {
