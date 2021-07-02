@@ -4,9 +4,11 @@ There are several other items such as infinite ammos, craftable instant builds f
 NEW UPDATE - V 2.3.3
 -Added Pincushion to Deviantt shop
 -Fixed Super Dummy taking up enemy slots
+-First step of fixing Squirrel not selling most items if you have translation mod on
 
 
 -Added Caught NPC items for any loaded mod
+
 -Added Really Forbidden Tome and Mysterious Energizer
 -Removed damage stat from Instavator
 -Added Demon Altar to Elemental Assembler
