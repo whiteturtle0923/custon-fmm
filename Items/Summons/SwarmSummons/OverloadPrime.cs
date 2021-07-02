@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Primal Control Chip");
-            Tooltip.SetDefault("Summons several Skeletron Primes");
+            Tooltip.SetDefault("Summons several Skeletron Primes\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)

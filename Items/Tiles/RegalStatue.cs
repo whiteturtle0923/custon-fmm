@@ -31,7 +31,6 @@ namespace Fargowiltas.Items.Tiles
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.KingStatue);
             recipe.AddIngredient(ItemID.QueenStatue);
-            //recipe.AddIngredient(ItemID.Bone, 15);
             recipe.AddTile(TileID.HeavyWorkBench);
             recipe.SetResult(this);
             recipe.AddRecipe();

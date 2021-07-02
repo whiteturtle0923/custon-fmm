@@ -18,7 +18,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             DisplayName.SetDefault("Skull Chain Necklace");
             Tooltip.SetDefault(
 @"Summons several Skeletrons during the night
-Summons several Dungeon Guardians during the day");
+Summons several Dungeon Guardians during the day\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)

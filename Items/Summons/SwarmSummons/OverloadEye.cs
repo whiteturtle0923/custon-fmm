@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eyemalgamation");
-            Tooltip.SetDefault("Summons several Eyes of Cthulhu");
+            Tooltip.SetDefault("Summons several Eyes of Cthulhu\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)

@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Runic Inscription");
-            Tooltip.SetDefault("Summons several Moon Lords");
+            Tooltip.SetDefault("Summons several Moon Lords\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)

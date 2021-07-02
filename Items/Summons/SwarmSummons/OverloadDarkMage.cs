@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Really Forbidden Tome");
-            Tooltip.SetDefault("Summons several Dark Mages");
+            Tooltip.SetDefault("Summons several Dark Mages\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)
