@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Heart of the Jungle");
-            Tooltip.SetDefault("Summons several Planteras");
+            Tooltip.SetDefault("Summons several Planteras\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)

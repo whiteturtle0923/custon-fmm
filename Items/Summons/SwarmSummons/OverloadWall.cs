@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bundle of Dolls");
-            Tooltip.SetDefault("Summons several Walls of Flesh");
+            Tooltip.SetDefault("Summons several Walls of Flesh\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)

@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Seismic Actuator");
-            Tooltip.SetDefault("Summons several Destroyers");
+            Tooltip.SetDefault("Summons several Destroyers\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)

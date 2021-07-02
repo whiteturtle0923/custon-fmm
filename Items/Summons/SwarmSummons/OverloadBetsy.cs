@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon Egg Tray");
-            Tooltip.SetDefault("Summons several Betsys");
+            Tooltip.SetDefault("Summons several Betsys\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)

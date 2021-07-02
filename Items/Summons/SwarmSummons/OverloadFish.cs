@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Truffle Worm Clump");
-            Tooltip.SetDefault("Summons several Duke Fishrons");
+            Tooltip.SetDefault("Summons several Duke Fishrons\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)
