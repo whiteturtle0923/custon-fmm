@@ -21,6 +21,10 @@ namespace Fargowiltas
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
 
             //iron anvil
+            group = new RecipeGroup(() => "Any Demon Altar", new int[] { ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() });
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyDemonAltar", group);
+
+            //iron anvil
             group = new RecipeGroup(() => "Any Iron Anvil", new int[] { ItemID.IronAnvil, ItemID.LeadAnvil});
             RecipeGroup.RegisterGroup("Fargowiltas:AnyAnvil", group);
 
@@ -1047,6 +1051,13 @@ namespace Fargowiltas
             recipe.AddIngredient(mod?.GetItem("Truffle"));
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(ItemID.BluePaint, 20);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(mod?.GetItem("Merchant"));
+            recipe.AddIngredient(ItemID.DynastyWood);
+            recipe.AddTile(TileID.AlchemyTable);
+            recipe.SetResult(mod?.GetItem("TravellingMerchant"));
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();

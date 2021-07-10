@@ -5,8 +5,16 @@ NEW UPDATE - V 2.3.3
 -Added Pincushion to Deviantt shop
 -Fixed Super Dummy taking up enemy slots
 -First step of fixing Squirrel not selling most items if you have translation mod on
+
+
 -Added Caught NPC items for any loaded mod
--Added toggleable dedicated debuff display
+
+-Added Really Forbidden Tome and Mysterious Energizer
+-Removed damage stat from Instavator
+-Added Demon Altar to Elemental Assembler
+-Ice Slimes, Penguins, and Eskimo Zombies now drop the Eskimo pieces 5% of the time
+-Added to all swarm tooltips that they only drop treasure bags
+-Added recipe to craft a Merchant into a Travelling Merchant
 
 
 NEW UPDATE - V 2.3.2

@@ -790,10 +790,6 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.IceQueen, -1, -1, string.Empty);
                         break;
 
-                    case NPCID.DD2Betsy:
-                        Swarm(npc, NPCID.DD2Betsy, -1, -1, string.Empty);
-                        break;
-
                     case NPCID.DD2OgreT3:
                         Swarm(npc, NPCID.DD2OgreT3, -1, -1, string.Empty);
                         break;
@@ -926,6 +922,32 @@ namespace Fargowiltas.NPCs
                     }
 
                     break;
+
+                case NPCID.ZombieEskimo:
+                case NPCID.ArmedZombieEskimo:
+                case NPCID.Penguin:
+                case NPCID.IceSlime:
+                case NPCID.SpikedIceSlime:
+                    if (Main.rand.NextBool(20))
+                    {
+                        int i = Main.rand.Next(3);
+                        switch (i)
+                        {
+                            case 0:
+                                Item.NewItem(npc.Hitbox, ItemID.EskimoHood);
+                                break;
+
+                            case 1:
+                                Item.NewItem(npc.Hitbox, ItemID.EskimoCoat);
+                                break;
+
+                            default:
+                                Item.NewItem(npc.Hitbox, ItemID.EskimoPants);
+                                break;
+                        }
+                    }
+                    break;
+
 
                 case NPCID.GreekSkeleton:
                     if (Main.rand.NextBool(15))
@@ -1291,6 +1313,7 @@ namespace Fargowiltas.NPCs
             {
                 Main.NewText("Betsy has been defeated!", 175, 75);
                 FargoWorld.DownedBools["betsy"] = true;
+                //DD2Event.DownedInvasionT3 = true;
             }
 
             if (npc.boss)

@@ -16,7 +16,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Overstuffed Larva");
-            Tooltip.SetDefault("Summons several Queen Bees");
+            Tooltip.SetDefault("Summons several Queen Bees\nOnly Treasure Bags will be dropped");
         }
 
         public override bool CanUseItem(Player player)
