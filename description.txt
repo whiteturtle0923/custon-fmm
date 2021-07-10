@@ -6,7 +6,7 @@ NEW UPDATE - V 2.3.3
 -Fixed Super Dummy taking up enemy slots
 -First step of fixing Squirrel not selling most items if you have translation mod on
 -Added Caught NPC items for any loaded mod
-
+-Added toggleable dedicated debuff display
 
 
 NEW UPDATE - V 2.3.2
