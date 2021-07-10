@@ -8,6 +8,7 @@ NEW UPDATE - V 2.3.3
 
 
 -Added Caught NPC items for any loaded mod
+-Added toggleable dedicated debuff display, making them easier to see in a fight
 
 -Added Really Forbidden Tome and Mysterious Energizer
 -Removed damage stat from Instavator
