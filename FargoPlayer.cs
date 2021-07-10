@@ -396,7 +396,7 @@ namespace Fargowiltas
                 for (int i = 0; i < maxForThisLine; i++)
                 {
                     Texture2D buffIcon = Main.buffTexture[debuffs[j + i]];
-                    Color buffColor = Color.White * 0.2f; //WHY CAN I MAKE THE OPACITY SO LOW AND IT STILL LOOKS OK????????????
+                    Color buffColor = Color.White;
                     Vector2 drawPos = drawPlayer.Top - Main.screenPosition;
                     drawPos.Y -= 32f + yOffset;
                     drawPos.X += 32f * (i - midpoint);
