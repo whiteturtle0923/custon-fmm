@@ -5,7 +5,8 @@ NEW UPDATE - V 2.3.3
 -Added Pincushion to Deviantt shop
 -Fixed Super Dummy taking up enemy slots
 -First step of fixing Squirrel not selling most items if you have translation mod on
-
+-Adjusted Deviantt dialogue for King Slime
+-Mini Instabridge now extends in the direction you place it at
 
 -Added Caught NPC items for any loaded mod
 -Added toggleable dedicated debuff display, making them easier to see in a fight

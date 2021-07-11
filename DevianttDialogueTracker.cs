@@ -160,7 +160,7 @@ namespace Fargowiltas
             AddDialogue("That big eyeball has the power of the moon, but it's too flashy for its own good! Learn to notice and focus only on the bits that threaten to hurt you.",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedSlimeKing && !NPC.downedBoss1);
 
-            AddDialogue("Gonna fight that slime king soon? Don't spend too long up and out of his reach or he'll get mad. Very, very mad.",
+            AddDialogue("Gonna fight that slime king soon? Crafting a Mini Instabridge or two might help, and mind the spike rain. Don't stay up and out of his range or he'll get mad, though!",
                 HelpDialogueType.BossOrEvent, (name) => !NPC.downedSlimeKing);
 
             AddDialogue("Seems like everyone's learning to project auras these days. If you look at the particles, you can see whether it'll affect you at close range or a distance!",

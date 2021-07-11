@@ -396,7 +396,7 @@ namespace Fargowiltas
                 for (int i = 0; i < maxForThisLine; i++)
                 {
                     Texture2D buffIcon = Main.buffTexture[debuffs[j + i]];
-                    Color buffColor = Color.White;
+                    Color buffColor = Color.White * GetInstance<FargoConfig>().DebuffOpacity;
                     Vector2 drawPos = drawPlayer.Top - Main.screenPosition;
                     drawPos.Y -= 32f + yOffset;
                     drawPos.X += 32f * (i - midpoint);

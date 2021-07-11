@@ -39,7 +39,11 @@ namespace Fargowiltas.Projectiles.Explosives
             }
 
             // All the way across
-            for (int x = -200; x < 200; x++)
+            const int length = 400;
+            bool goLeft = projectile.Center.X < Main.player[projectile.owner].Center.X;
+            int min = goLeft ? -length : 0;
+            int max = goLeft ? 0 : length;
+            for (int x = min; x < max; x++)
             {
                 int xPosition = (int)(x + position.X / 16.0f);
                 int yPosition = (int)(position.Y / 16.0f);
