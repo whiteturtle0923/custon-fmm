@@ -383,7 +383,7 @@ namespace Fargowiltas
             Player drawPlayer = drawInfo.drawPlayer;
             if (drawPlayer.whoAmI != Main.myPlayer)
                 return;
-            int[] debuffsToIgnore = { BuffID.Campfire, BuffID.HeartLamp, BuffID.Sunflower, BuffID.PeaceCandle, BuffID.StarInBottle, BuffID.Tipsy };
+            int[] debuffsToIgnore = { BuffID.Campfire, BuffID.HeartLamp, BuffID.Sunflower, BuffID.PeaceCandle, BuffID.StarInBottle, BuffID.Tipsy, BuffID.MonsterBanner };
             List<int> debuffs = drawPlayer.buffType.Where(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)).ToList();
             if (debuffs.Count == 0)
                 return;
