@@ -545,8 +545,11 @@ namespace Fargowiltas
             AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil, 1, 10);
             //desert key
 
+            AddGroupToItemRecipe("Fargowiltas:AnyCorrupts", ItemID.MeatGrinder, TileID.MythrilAnvil, 1, 5);
+            AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.MeatGrinder, TileID.MythrilAnvil, 1, 5);
 
-            
+
+
 
             //FOOD
             //chaos ele, illum slime, illum bat = apple pie

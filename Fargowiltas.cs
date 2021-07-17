@@ -579,7 +579,7 @@ namespace Fargowiltas
                 FieldInfo loadInfo = typeof(Mod).GetField("loading", BindingFlags.Instance | BindingFlags.NonPublic);
                 loadInfo?.SetValue(ModLoader.GetMod("Fargowiltas"), true);
 
-                foreach (Mod mod in ModLoader.Mods.Where(x => x != ModLoader.GetMod("Fargowiltas")))
+                /*foreach (Mod mod in ModLoader.Mods.Where(x => x != ModLoader.GetMod("Fargowiltas")))
                 {
                     foreach (ModNPC npc in (typeof(Mod).GetField("npcs", BindingFlags.Instance | BindingFlags.NonPublic)
                         ?.GetValue(mod) as IDictionary<string, ModNPC>)?.Values ?? new ModNPC[0])
@@ -596,7 +596,7 @@ namespace Fargowiltas
                             // ignore
                         }
                     }
-                }
+                }*/
                 loadInfo?.SetValue(ModLoader.GetMod("Fargowiltas"), false);
 
                 typeof(ModContent).GetMethod("ResizeArrays", BindingFlags.NonPublic | BindingFlags.Static)?

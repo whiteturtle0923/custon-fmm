@@ -92,6 +92,14 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool PiggyBankAcc;
 
+        [Label("[i:1612] Debuffs render above player")]
+        [DefaultValue(true)]
+        public bool DebuffDisplay;
+
+        [Label("[i:1612] Debuff Display Opacity")]
+        [DefaultValue(1f)] [Slider]
+        public float DebuffOpacity;
+
         [Label("[i:1309] Transparent Minions & Support Attacks")]
         [DefaultValue(false)]
         public bool TransparentMinions;

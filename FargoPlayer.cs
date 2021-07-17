@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameInput;
@@ -8,6 +9,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Fargowiltas.NPCs;
 using System;
+using System.Linq;
 using Terraria.ModLoader.IO;
 
 //using Fargowiltas.Toggler;
@@ -373,6 +375,44 @@ namespace Fargowiltas
                 {
                     caughtType = mod.ItemType("ShadowCrate");
                 }
+            }
+        }
+
+        public static readonly PlayerLayer DebuffsLayer = new PlayerLayer("FargowiltasSouls", "MiscEffects", PlayerLayer.MiscEffectsFront, delegate (PlayerDrawInfo drawInfo)
+        {
+            Player drawPlayer = drawInfo.drawPlayer;
+            if (drawPlayer.whoAmI != Main.myPlayer || !drawPlayer.active || drawPlayer.dead || drawPlayer.ghost)
+                return;
+            int[] debuffsToIgnore = { BuffID.Campfire, BuffID.HeartLamp, BuffID.Sunflower, BuffID.PeaceCandle, BuffID.StarInBottle, BuffID.Tipsy, BuffID.MonsterBanner };
+            List<int> debuffs = drawPlayer.buffType.Where(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)).ToList();
+            if (debuffs.Count == 0)
+                return;
+            const int maxPerLine = 10;
+            int yOffset = 0;
+            for (int j = 0; j < debuffs.Count; j += maxPerLine)
+            {
+                int maxForThisLine = Math.Min(maxPerLine, debuffs.Count - j);
+                float midpoint = maxForThisLine / 2f - 0.5f;
+                for (int i = 0; i < maxForThisLine; i++)
+                {
+                    Texture2D buffIcon = Main.buffTexture[debuffs[j + i]];
+                    Color buffColor = Color.White * GetInstance<FargoConfig>().DebuffOpacity;
+                    Vector2 drawPos = drawPlayer.Top - Main.screenPosition;
+                    drawPos.Y -= 32f + yOffset;
+                    drawPos.X += 32f * (i - midpoint);
+                    DrawData data = new DrawData(buffIcon, drawPos, buffIcon.Bounds, buffColor, 0f, buffIcon.Bounds.Size() / 2, 1f, SpriteEffects.None, 0);
+                    Main.playerDrawData.Add(data);
+                }
+                yOffset += 32;
+            }
+        });
+
+        public override void ModifyDrawLayers(List<PlayerLayer> layers)
+        {
+            if (player.whoAmI == Main.myPlayer && GetInstance<FargoConfig>().DebuffDisplay)
+            {
+                DebuffsLayer.visible = true;
+                layers.Add(DebuffsLayer);
             }
         }
 
