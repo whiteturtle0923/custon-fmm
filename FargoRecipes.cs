@@ -2952,17 +2952,17 @@ namespace Fargowiltas
             recipe.SetResult(item);
             recipe.AddRecipe();
 
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(item);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(item2);
-            recipe.AddRecipe();
+            //recipe = GetNewRecipe();
+            //recipe.AddIngredient(item);
+            //recipe.AddTile(TileID.AlchemyTable);
+            //recipe.SetResult(item2);
+            //recipe.AddRecipe();
 
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(item2);
-            recipe.AddTile(TileID.AlchemyTable);
-            recipe.SetResult(item);
-            recipe.AddRecipe();
+            //recipe = GetNewRecipe();
+            //recipe.AddIngredient(item2);
+            //recipe.AddTile(TileID.AlchemyTable);
+            //recipe.SetResult(item);
+            //recipe.AddRecipe();
         }
 
         private static void AddVanillaRecipeChanges()
