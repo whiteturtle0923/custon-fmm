@@ -18,6 +18,8 @@ namespace Fargowiltas.NPCs
 
         internal bool spawned;
 
+        private bool saidDefeatQuote;
+
         public override bool Autoload(ref string name)
         {
             name = "Mutant";
@@ -100,6 +102,16 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
+            if (npc.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
+            {
+                saidDefeatQuote = true;
+
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+                    return "Congratulations. You truly embraced eternity... at least, I think you did? So what happens next? Ascend from this plane of existence? Fight a transcendant cat-like entity? Destroy the world? All the power's in your hands now.";
+                else
+                    return "Good work beating me, I guess. I still feel like stretching my wings... Why don't we go at it for real next time?";
+            }
+
             List<string> dialogue = new List<string>
             {
                 "Savagery, barbarism, bloodthirst, that's what I like seeing in people.",

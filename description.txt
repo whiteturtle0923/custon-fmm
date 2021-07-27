@@ -9,6 +9,7 @@ NEW UPDATE - V 2.3.3.1
 -Updated Eternity Advisor recommendations
 -Caught NPCs can only be deployed if they aren't already in the world somewhere
 -Deviantt Golem dialogue mentions Lihzahrd Blessing mechanic
+-Added post-defeat quotes for Deviantt, Abominationn, Mutant (for Souls mod)
 
 NEW UPDATE - V 2.3.3
 -Added Pincushion to Deviantt shop

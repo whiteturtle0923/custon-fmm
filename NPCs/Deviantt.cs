@@ -12,6 +12,8 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Deviantt : ModNPC
     {
+        private bool saidDefeatQuote;
+
         public override bool Autoload(ref string name)
         {
             name = "Deviantt";
@@ -79,6 +81,12 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
+            if (npc.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
+            {
+                saidDefeatQuote = true;
+                return "Good work getting one over on me! Hope I didn't make you sweat too much. Keep at the grind - I wanna see how far you can go!";
+            }
+
             if (Main.bloodMoon && Main.rand.NextBool(2))
             {
                 return "The blood moon's effects? I'm not human anymore, so nope!";
