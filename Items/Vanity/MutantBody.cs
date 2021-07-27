@@ -22,6 +22,7 @@ namespace Fargowiltas.Items.Vanity
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.KingSlimeMask);
             recipe.AddIngredient(ItemID.SkeletronMask);
             recipe.AddIngredient(ItemID.DestroyerMask);
             recipe.AddIngredient(ItemID.SkeletronPrimeMask);
