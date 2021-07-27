@@ -870,7 +870,14 @@ namespace Fargowiltas.NPCs
                 return true;
             }
 
-            //Swarm(npc, 0, -1, -1, string.Empty);
+            switch (npc.type)
+            {
+                case NPCID.GreekSkeleton:
+                    NPCLoader.blockLoot.Add(ItemID.GladiatorHelmet);
+                    NPCLoader.blockLoot.Add(ItemID.GladiatorBreastplate);
+                    NPCLoader.blockLoot.Add(ItemID.GladiatorLeggings);
+                    break;
+            }
 
             return false;
         }
@@ -928,7 +935,7 @@ namespace Fargowiltas.NPCs
                 case NPCID.Penguin:
                 case NPCID.IceSlime:
                 case NPCID.SpikedIceSlime:
-                    if (Main.rand.NextBool(20))
+                    if (Main.rand.NextBool(10))
                     {
                         int i = Main.rand.Next(3);
                         switch (i)
@@ -950,7 +957,7 @@ namespace Fargowiltas.NPCs
 
 
                 case NPCID.GreekSkeleton:
-                    if (Main.rand.NextBool(15))
+                    if (Main.rand.NextBool(10))
                     {
                         int i = Main.rand.Next(3);
                         switch (i)

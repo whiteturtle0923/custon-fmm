@@ -19,6 +19,12 @@ NEW UPDATE - V 2.3.3
 -Added to all swarm tooltips that they only drop treasure bags
 -Added recipe to craft a Merchant into a Travelling Merchant
 
+-Removed conversion recipes that use Alchemy table since Demon Altar is crafted now
+-Added King Slime Mask to Mutant Body
+
+-Removed Hoplites and Eskimo Zombie vanilla armor drop chance so they won't drop 2 at once
+-Gladiator armor drop chance is now 10%
+-Eskimo armor drop chance is now 10%
 
 NEW UPDATE - V 2.3.2
 -Corrected Zealot's Possession tooltip to clarify that pillars are only blocked post-Cultist
