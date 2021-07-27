@@ -141,7 +141,6 @@ namespace Fargowiltas.Items.Misc
                         ItemID.CharmofMyths,
                         ItemID.WormScarf,
                         Main.rand.NextBool() ? fargoSouls.ItemType("GuttedHeart") : fargoSouls.ItemType("CorruptHeart"),
-                        fargoSouls.ItemType("NymphsPerfume"),
                         fargoSouls.ItemType("ShadowEnchant")})
                 );
             }
@@ -380,7 +379,7 @@ namespace Fargowiltas.Items.Misc
                     fargoSouls.ItemType("MutantAntibodies"),
                     fargoSouls.ItemType("BetsysHeart"),
                     fargoSouls.ItemType("SparklingAdoration"),
-                    fargoSouls.ItemType("CelestialRune")
+                    fargoSouls.ItemType("ChaliceoftheMoon")
                 );
             }
             else if (!(bool)fargoSouls.Call("DownedEridanus"))

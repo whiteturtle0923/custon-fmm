@@ -383,7 +383,7 @@ namespace Fargowiltas
             Player drawPlayer = drawInfo.drawPlayer;
             if (drawPlayer.whoAmI != Main.myPlayer || !drawPlayer.active || drawPlayer.dead || drawPlayer.ghost)
                 return;
-            int[] debuffsToIgnore = { BuffID.Campfire, BuffID.HeartLamp, BuffID.Sunflower, BuffID.PeaceCandle, BuffID.StarInBottle, BuffID.Tipsy, BuffID.MonsterBanner };
+            int[] debuffsToIgnore = { BuffID.Campfire, BuffID.HeartLamp, BuffID.Sunflower, BuffID.PeaceCandle, BuffID.StarInBottle, BuffID.Tipsy, BuffID.MonsterBanner, BuffID.Werewolf, BuffID.Merfolk };
             List<int> debuffs = drawPlayer.buffType.Where(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)).ToList();
             if (debuffs.Count == 0)
                 return;
@@ -397,19 +397,19 @@ namespace Fargowiltas
                 {
                     Texture2D buffIcon = Main.buffTexture[debuffs[j + i]];
                     Color buffColor = Color.White * GetInstance<FargoConfig>().DebuffOpacity;
-                    Vector2 drawPos = drawPlayer.Top - Main.screenPosition;
-                    drawPos.Y -= 32f + yOffset;
+                    Vector2 drawPos = (drawPlayer.gravDir > 0 ? drawPlayer.Top : drawPlayer.Bottom) - Main.screenPosition;
+                    drawPos.Y -= (32f + yOffset) * drawPlayer.gravDir;
                     drawPos.X += 32f * (i - midpoint);
-                    DrawData data = new DrawData(buffIcon, drawPos, buffIcon.Bounds, buffColor, 0f, buffIcon.Bounds.Size() / 2, 1f, SpriteEffects.None, 0);
+                    DrawData data = new DrawData(buffIcon, drawPos, buffIcon.Bounds, buffColor, drawPlayer.gravDir > 0 ? 0 : MathHelper.Pi, buffIcon.Bounds.Size() / 2, 1f, SpriteEffects.None, 0);
                     Main.playerDrawData.Add(data);
                 }
-                yOffset += 32;
+                yOffset += (int)(32 * drawPlayer.gravDir);
             }
         });
 
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
         {
-            if (player.whoAmI == Main.myPlayer && GetInstance<FargoConfig>().DebuffDisplay)
+            if (player.whoAmI == Main.myPlayer && GetInstance<FargoConfig>().DebuffDisplay && !Main.hideUI)
             {
                 DebuffsLayer.visible = true;
                 layers.Add(DebuffsLayer);
