@@ -90,7 +90,8 @@ namespace Fargowiltas.Items.Misc
                     fargoSouls.ItemType("IronEnchant"),
                     fargoSouls.ItemType("EbonwoodEnchant"),
                     fargoSouls.ItemType("CactusEnchant"),
-                    fargoSouls.ItemType("PalmWoodEnchant")
+                    fargoSouls.ItemType("PalmWoodEnchant"),
+                    fargoSouls.ItemType("JungleEnchant")
                 );
             }
             else if (!NPC.downedBoss1)
@@ -108,7 +109,8 @@ namespace Fargowiltas.Items.Misc
                     fargoSouls.ItemType("BorealWoodEnchant"),
                     fargoSouls.ItemType("IronEnchant"),
                     fargoSouls.ItemType("PalmWoodEnchant"),
-                    fargoSouls.ItemType("CactusEnchant")
+                    fargoSouls.ItemType("CactusEnchant"),
+                    fargoSouls.ItemType("JungleEnchant")
                 );
             }
             else if (!NPC.downedBoss2)
@@ -141,7 +143,9 @@ namespace Fargowiltas.Items.Misc
                         ItemID.CharmofMyths,
                         ItemID.WormScarf,
                         Main.rand.NextBool() ? fargoSouls.ItemType("GuttedHeart") : fargoSouls.ItemType("CorruptHeart"),
-                        fargoSouls.ItemType("ShadowEnchant")})
+                        fargoSouls.ItemType("ShadowEnchant"),
+                        fargoSouls.ItemType("JungleEnchant")
+                    })
                 );
             }
             else if (!NPC.downedBoss3)
@@ -157,7 +161,8 @@ namespace Fargowiltas.Items.Misc
                     Main.rand.NextBool() ? fargoSouls.ItemType("GuttedHeart") : fargoSouls.ItemType("CorruptHeart"),
                     fargoSouls.ItemType("QueenStinger"),
                     fargoSouls.ItemType("ShadowEnchant"),
-                    fargoSouls.ItemType("IronEnchant")
+                    fargoSouls.ItemType("IronEnchant"),
+                    fargoSouls.ItemType("AgitatingLens")
                 );
             }
             else if (!(bool)fargoSouls.Call("DownedDeviantt"))
@@ -189,6 +194,7 @@ namespace Fargowiltas.Items.Misc
                     ItemID.CharmofMyths,
                     ItemID.CrossNecklace,
                     fargoSouls.ItemType("SparklingAdoration"),
+                    fargoSouls.ItemType("CorruptHeart"),
                     fargoSouls.ItemType("GuttedHeart"),
                     fargoSouls.ItemType("ObsidianEnchant"),
                     fargoSouls.ItemType("ShadowEnchant"),
@@ -209,8 +215,9 @@ namespace Fargowiltas.Items.Misc
                     ItemID.AnkhShield,
                     fargoSouls.ItemType("SparklingAdoration"),
                     fargoSouls.ItemType("SupremeDeathbringerFairy"),
+                    fargoSouls.ItemType("FrostEnchant"),
+                    fargoSouls.ItemType("MeteorEnchant"),
                     fargoSouls.ItemType("PalladiumEnchant"),
-                    fargoSouls.ItemType("MythrilEnchant"),
                     fargoSouls.ItemType("TitaniumEnchant"),
                     Main.rand.Next(new int[] { ItemID.WarriorEmblem, ItemID.RangerEmblem, ItemID.SorcererEmblem, ItemID.SummonerEmblem })
                 );
@@ -229,8 +236,10 @@ namespace Fargowiltas.Items.Misc
                     ItemID.FrogLeg,
                     fargoSouls.ItemType("SparklingAdoration"),
                     fargoSouls.ItemType("SupremeDeathbringerFairy"),
+                    fargoSouls.ItemType("MeteorEnchant"),
+                    fargoSouls.ItemType("FrostEnchant"),
+                    fargoSouls.ItemType("CobaltEnchant"),
                     fargoSouls.ItemType("PalladiumEnchant"),
-                    fargoSouls.ItemType("MythrilEnchant"),
                     fargoSouls.ItemType("TitaniumEnchant"),
                     Main.rand.Next(new int[] { ItemID.WarriorEmblem, ItemID.RangerEmblem, ItemID.SorcererEmblem, ItemID.SummonerEmblem })
                 );
@@ -248,8 +257,9 @@ namespace Fargowiltas.Items.Misc
                     ItemID.CrossNecklace,
                     fargoSouls.ItemType("SparklingAdoration"),
                     fargoSouls.ItemType("SupremeDeathbringerFairy"),
+                    fargoSouls.ItemType("FrostEnchant"),
+                    fargoSouls.ItemType("CobaltEnchant"),
                     fargoSouls.ItemType("PalladiumEnchant"),
-                    fargoSouls.ItemType("MythrilEnchant"),
                     fargoSouls.ItemType("TitaniumEnchant"),
                     Main.rand.Next(new int[] { ItemID.WarriorEmblem, ItemID.RangerEmblem, ItemID.SorcererEmblem, ItemID.SummonerEmblem })
                 );
@@ -258,7 +268,7 @@ namespace Fargowiltas.Items.Misc
             {
                 summonType = ItemType<PlanterasFruit>();
                 build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.EoCShield : fargoSouls.ItemType("MonkEnchant"),
+                    Main.rand.Next(new int[] { ItemID.EoCShield, fargoSouls.ItemType("MonkEnchant"), fargoSouls.ItemType("ChlorophyteEnchant") }),
                     fargoSouls.ItemType("AeolusBoots"),
                     Main.rand.Next(new int[] { ItemID.LeafWings, ItemID.FrozenWings, ItemID.FlameWings }),
                     Main.rand.Next(new int[] { ItemID.AnkhShield, fargoSouls.ItemType("SupremeDeathbringerFairy"), fargoSouls.ItemType("DubiousCircuitry") })
@@ -268,7 +278,6 @@ namespace Fargowiltas.Items.Misc
                     ItemID.CrossNecklace,
                     fargoSouls.ItemType("SparklingAdoration"),
                     fargoSouls.ItemType("PureHeart"),
-                    fargoSouls.ItemType("PalladiumEnchant"),
                     fargoSouls.ItemType("MythrilEnchant"),
                     fargoSouls.ItemType("HallowEnchant"),
                     ItemID.AvengerEmblem
@@ -278,7 +287,7 @@ namespace Fargowiltas.Items.Misc
             {
                 summonType = ItemID.LihzahrdPowerCell;
                 build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargoSouls.ItemType("MonkEnchant"),
+                    Main.rand.Next(new int[] { ItemID.Tabi, fargoSouls.ItemType("MonkEnchant"), fargoSouls.ItemType("ChlorophyteEnchant") }),
                     fargoSouls.ItemType("AeolusBoots"),
                     fargoSouls.ItemType("DubiousCircuitry"),
                     Main.rand.Next(new int[] { ItemID.SpookyWings, ItemID.TatteredFairyWings, ItemID.Hoverboard })
@@ -299,7 +308,7 @@ namespace Fargowiltas.Items.Misc
             {
                 summonType = ItemType<BetsyEgg>();
                 build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargoSouls.ItemType("ShinobiEnchant"),
+                    Main.rand.Next(new int[] { ItemID.Tabi, fargoSouls.ItemType("ShinobiEnchant"), fargoSouls.ItemType("ChlorophyteEnchant") }),
                     fargoSouls.ItemType("AeolusBoots"),
                     fargoSouls.ItemType("LihzahrdTreasureBox"),
                     ItemID.SteampunkWings
@@ -307,6 +316,7 @@ namespace Fargowiltas.Items.Misc
                     2,
                     fargoSouls.ItemType("PureHeart"),
                     fargoSouls.ItemType("DubiousCircuitry"),
+                    fargoSouls.ItemType("FrostEnchant"),
                     fargoSouls.ItemType("BeetleEnchant"),
                     fargoSouls.ItemType("SpectreEnchant"),
                     fargoSouls.ItemType("SaucerControlConsole"),
@@ -317,7 +327,7 @@ namespace Fargowiltas.Items.Misc
             {
                 summonType = ItemType<TruffleWorm2>();
                 build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargoSouls.ItemType("ShinobiEnchant"),
+                    Main.rand.Next(new int[] { ItemID.Tabi, fargoSouls.ItemType("ShinobiEnchant"), fargoSouls.ItemType("ChlorophyteEnchant") }),
                     fargoSouls.ItemType("AeolusBoots"),
                     fargoSouls.ItemType("DubiousCircuitry"),
                     Main.rand.Next(new int[] { ItemID.SteampunkWings, ItemID.BetsyWings, ItemID.Hoverboard })
@@ -328,6 +338,7 @@ namespace Fargowiltas.Items.Misc
                     ItemID.AnkhShield,
                     ItemID.DestroyerEmblem,
                     fargoSouls.ItemType("PureHeart"),
+                    fargoSouls.ItemType("FrostEnchant"),
                     fargoSouls.ItemType("BeetleEnchant"),
                     fargoSouls.ItemType("AdamantiteEnchant"),
                     fargoSouls.ItemType("LumpOfFlesh"),
@@ -340,7 +351,7 @@ namespace Fargowiltas.Items.Misc
             {
                 summonType = ItemType<CultistSummon>();
                 build = GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargoSouls.ItemType("ShinobiEnchant"),
+                    Main.rand.Next(new int[] { ItemID.Tabi, fargoSouls.ItemType("ShinobiEnchant"), fargoSouls.ItemType("ChlorophyteEnchant") }),
                     fargoSouls.ItemType("AeolusBoots"),
                     Main.rand.NextBool() ? ItemID.BetsyWings : ItemID.FishronWings
                 ) + GetBuildTextRandom(
@@ -367,7 +378,7 @@ namespace Fargowiltas.Items.Misc
                     fargoSouls.ItemType("GaiaPlate"),
                     fargoSouls.ItemType("GaiaGreaves")
                 ) + " " + GetBuildText(
-                    Main.rand.NextBool() ? ItemID.Tabi : fargoSouls.ItemType("ShinobiEnchant"),
+                    Main.rand.Next(new int[] { ItemID.Tabi, fargoSouls.ItemType("ShinobiEnchant"), fargoSouls.ItemType("ChlorophyteEnchant") }),
                     fargoSouls.ItemType("AeolusBoots"),
                     Main.rand.NextBool() ? ItemID.BetsyWings : ItemID.FishronWings
                 ) + GetBuildTextRandom(
