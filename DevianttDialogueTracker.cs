@@ -115,7 +115,7 @@ namespace Fargowiltas
             AddDialogue("Now's a good time to go for Betsy! Don't worry. If you reach the last wave and lose, you won't have to retry the event for more attempts at her. Careful not to slip up before then, and mind her debuffs!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedGolemBoss && !FargoWorld.DownedBools["betsy"]);
 
-            AddDialogue("That golem? It gets upset when you leave the temple, so fighting in there is best. Platforms won't work, but a Lihzahrd Instactuation Bomb can help clear space!",
+            AddDialogue("That temple? Reach the altar to regain wire control! The golem gets upset when you leave, so fighting in there is best. Platforms won't work, but a Lihzahrd Instactuation Bomb can help clear space!",
                 HelpDialogueType.BossOrEvent, (name) => NPC.downedPlantBoss && !NPC.downedGolemBoss);
 
             AddDialogue("That overgrown plant inflicts a special venom that works her into an enraged frenzy if she stacks enough hits on you. She also has a ring of crystal leaves, but minions go through it.",

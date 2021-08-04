@@ -93,7 +93,7 @@ namespace Fargowiltas
         public bool PiggyBankAcc;
 
         [Label("[i:1612] Debuffs render above player")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool DebuffDisplay;
 
         [Label("[i:1612] Debuff Display Opacity")]

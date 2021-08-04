@@ -138,6 +138,8 @@ namespace Fargowiltas.Items.CaughtNPCs
             item.TurnToAir();
         }
 
+        public override bool CanUseItem(Player player) => NPC.CountNPCS(AssociatedNpcId) < 1;
+
         public override bool UseItem(Player player) => true;
 
         //public override ModItem NewInstance(Item itemClone) => new CaughtNPCItem(getId, quote);
