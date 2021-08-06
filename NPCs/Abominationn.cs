@@ -14,6 +14,8 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Abominationn : ModNPC
     {
+        private bool saidDefeatQuote;
+
         public override bool Autoload(ref string name)
         {
             name = "Abominationn";
@@ -81,6 +83,12 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
+            if (npc.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
+            {
+                saidDefeatQuote = true;
+                return "You really defeated me... not bad. Now do it again without getting hit. Oh, and Copper Shortsword only.";
+            }
+
             List<string> dialogue = new List<string>
             {
                 "Where'd I get my scythe from? " + (!Main.hardMode ? "Ask me later." : "You'll figure it out."),
