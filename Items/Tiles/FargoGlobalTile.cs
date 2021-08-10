@@ -18,11 +18,11 @@ namespace Fargowiltas.Tiles
                 return adjTiles;
             }
 
-            if (type == ModContent.TileType<CrucibleCosmosSheet>())
-            {
-                Main.LocalPlayer.adjHoney = true;
-                Main.LocalPlayer.adjLava = true;
-            }
+            //if (type == ModContent.TileType<CrucibleCosmosSheet>())
+            //{
+            //    Main.LocalPlayer.adjHoney = true;
+            //    Main.LocalPlayer.adjLava = true;
+            //}
 
             return base.AdjTiles(type);
         }
@@ -122,8 +122,9 @@ namespace Fargowiltas.Tiles
             Tile tile = Main.tile[x, y];
             WorldGen.KillTile(x, y, noItem: true);
             tile.ClearEverything();
-            tile.lava(false);
-            tile.honey(false);
+
+            //tile.lava(false);
+            //tile.honey(false);
 
             if (Main.netMode == NetmodeID.Server)
             {

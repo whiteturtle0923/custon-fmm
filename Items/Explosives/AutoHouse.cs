@@ -16,17 +16,17 @@ namespace Fargowiltas.Items.Explosives
 
         public override void SetDefaults()
         {
-            item.width = 10;
-            item.height = 32;
-            item.maxStack = 99;
-            item.consumable = true;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.rare = ItemRarityID.Blue;
-            item.UseSound = SoundID.Item1;
-            item.useAnimation = 20;
-            item.useTime = 20;
-            item.value = Item.buyPrice(0, 0, 3);
-            item.createTile = ModContent.TileType<AutoHouseTile>();
+            Item.width = 10;
+            Item.height = 32;
+            Item.maxStack = 99;
+            Item.consumable = true;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.rare = ItemRarityID.Blue;
+            Item.UseSound = SoundID.Item1;
+            Item.useAnimation = 20;
+            Item.useTime = 20;
+            Item.value = Item.buyPrice(0, 0, 3);
+            Item.createTile = ModContent.TileType<AutoHouseTile>();
         }
 
         public override void HoldItem(Player player)
@@ -34,21 +34,17 @@ namespace Fargowiltas.Items.Explosives
             if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[ModContent.ProjectileType<InstaHouseVisual>()] < 1)
             {
                 Vector2 mouse = Main.MouseWorld;
-                Projectile.NewProjectile(mouse, Vector2.Zero, ModContent.ProjectileType<InstaHouseVisual>(), 0, 0, player.whoAmI);
+                Projectile.NewProjectile(player.GetProjectileSource_Item(Item), mouse, Vector2.Zero, ModContent.ProjectileType<InstaHouseVisual>(), 0, 0, player.whoAmI);
             }
-
-            //Player.tileRangeX += 20;
-            //Player.tileRangeY += 20;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("Wood", 50);
-            recipe.AddIngredient(ItemID.Torch);
-            recipe.AddTile(TileID.Sawmill);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddRecipeGroup("Wood", 50)
+                .AddIngredient(ItemID.Torch)
+                .AddTile(TileID.Sawmill)
+                .Register();
         }
     }
 }

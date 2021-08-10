@@ -1,5 +1,4 @@
 using Fargowiltas.NPCs;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,44 +16,44 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 2;
-            projectile.height = 2;
-            projectile.aiStyle = -1;
-            projectile.timeLeft = 1;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
-            projectile.hide = true;
+            Projectile.width = 2;
+            Projectile.height = 2;
+            Projectile.aiStyle = -1;
+            Projectile.timeLeft = 1;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
+            Projectile.hide = true;
         }
 
-        public override bool CanDamage()
+        public override bool? CanDamage()
         {
             return false;
         }
 
         public override void Kill(int timeLeft)
         {
-            if ((int)projectile.ai[0] == NPCID.CultistBoss && NPC.downedAncientCultist)
+            if ((int)Projectile.ai[0] == NPCID.CultistBoss && NPC.downedAncientCultist)
             {
                 // Lunatic Cultist
-                int npc = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, (int)projectile.ai[0]);
+                int npc = NPC.NewNPC((int)Projectile.Center.X, (int)Projectile.Center.Y, (int)Projectile.ai[0]);
                 Main.npc[npc].GetGlobalNPC<FargoGlobalNPC>().PillarSpawn = false;
             }
-            else if (projectile.ai[1] == 2)
+            else if (Projectile.ai[1] == 2)
             {
                 // Death Fairy (Pre-Hardmode bosses)
                 for (int i = 0; i < 6; i++)
                 {
-                    NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, bosses[i]);
+                    NPC.NewNPC((int)Projectile.Center.X, (int)Projectile.Center.Y, bosses[i]);
                 }
 
-                NPC.SpawnWOF(Main.player[projectile.owner].Center);
+                NPC.SpawnWOF(Main.player[Projectile.owner].Center);
             }
-            else if (projectile.ai[1] == 3)
+            else if (Projectile.ai[1] == 3)
             {
                 // Mutant Voodoo (All bosses)
                 foreach (int boss in bosses)
                 {
-                    int spawn = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, boss);
+                    int spawn = NPC.NewNPC((int)Projectile.Center.X, (int)Projectile.Center.Y, boss);
 
                     if (boss == NPCID.CultistBoss)
                     {
@@ -62,11 +61,11 @@ namespace Fargowiltas.Projectiles
                     }
                 }
 
-                NPC.SpawnWOF(Main.player[projectile.owner].Center);
+                NPC.SpawnWOF(Main.player[Projectile.owner].Center);
             }
             else
             {
-                NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, (int)projectile.ai[0]);
+                NPC.NewNPC((int)Projectile.Center.X, (int)Projectile.Center.Y, (int)Projectile.ai[0]);
             }
         }
     }

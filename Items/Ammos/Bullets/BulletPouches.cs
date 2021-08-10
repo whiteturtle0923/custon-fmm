@@ -117,7 +117,7 @@ namespace Fargowiltas.Items.Ammos.Bullets
         public override void SetDefaults()
         {
             base.SetDefaults();
-            item.shootSpeed = 28f;
+            Item.shootSpeed = 28f;
         }
     }
 

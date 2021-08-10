@@ -17,16 +17,16 @@ namespace Fargowiltas.Items.Misc
 
 		public override void SetDefaults()
 		{
-            item.width = 18;
-			item.height = 18;
-			item.maxStack = 99;
-			item.rare = 1;
-			item.useStyle = 4;
-			item.useAnimation = 30;
-			item.useTime = 30;
-			item.consumable = true;
+			Item.width = 18;
+			Item.height = 18;
+			Item.maxStack = 99;
+			Item.rare = 1;
+			Item.useStyle = 4;
+			Item.useAnimation = 30;
+			Item.useTime = 30;
+			Item.consumable = true;
 
-			item.UseSound = SoundID.Item27;
+			Item.UseSound = SoundID.Item27;
 		}
 
 		public override bool ConsumeItem (Player player)
@@ -37,7 +37,7 @@ namespace Fargowiltas.Items.Misc
 			return true;
 		}
 
-		public override bool UseItem(Player player)
+		public override bool? UseItem(Player player)
 		{
 			if (player.itemAnimation > 0 && player.statLifeMax > 20 && player.itemTime == 0)
 			{

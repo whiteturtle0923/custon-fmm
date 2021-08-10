@@ -20,13 +20,12 @@ namespace Fargowiltas.Items.Summons.Mutant
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 2);
-            recipe.AddIngredient(ItemID.Moonglow, 5);
-            recipe.AddIngredient(ItemID.Blinkroot, 5);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+               .AddIngredient(ItemID.ChlorophyteBar, 2)
+               .AddIngredient(ItemID.Moonglow, 5)
+               .AddIngredient(ItemID.Blinkroot, 5)
+               .AddTile(TileID.DemonAltar)
+               .Register();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Fargowiltas.Items.Summons
 {
     public class GoreySpine : BaseSummon
     {
-        public override string Texture => "Terraria/Item_1331";
+        public override string Texture => "Terraria/Images/Item_1331";
 
         public override int Type => NPCID.BrainofCthulhu;
 
@@ -22,11 +22,10 @@ namespace Fargowiltas.Items.Summons
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BloodySpine);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+               .AddIngredient(ItemID.BloodySpine)
+               .AddTile(TileID.WorkBenches)
+               .Register();
         }
     }
 }

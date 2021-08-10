@@ -8,7 +8,7 @@ namespace Fargowiltas.Items.Summons
 {
     public class TruffleWorm2 : BaseSummon
     {
-        public override string Texture => "Terraria/Item_2673";
+        public override string Texture => "Terraria/Images/Item_2673";
 
         public override int Type => NPCID.DukeFishron;
 
@@ -22,11 +22,10 @@ namespace Fargowiltas.Items.Summons
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.TruffleWorm);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+               .AddIngredient(ItemID.TruffleWorm)
+               .AddTile(TileID.WorkBenches)
+               .Register();
         }
     }
 }

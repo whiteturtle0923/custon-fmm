@@ -8,7 +8,9 @@ namespace Fargowiltas.Items.Summons
 {
     public class Abeemination2 : BaseSummon
     {
-        public override string Texture => "Terraria/Item_1133";
+        public override string Texture => "Terraria/Images/Item_1133";
+
+
 
         public override int Type => NPCID.QueenBee;
 
@@ -22,11 +24,10 @@ namespace Fargowiltas.Items.Summons
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Abeemination);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.Abeemination)
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
     }
 }

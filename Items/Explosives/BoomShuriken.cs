@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿using Fargowiltas.Projectiles.Explosives;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Explosives
@@ -13,35 +14,32 @@ namespace Fargowiltas.Items.Explosives
 
         public override void SetDefaults()
         {
-            item.width = 11;
-            item.height = 11;
-            item.damage = 16;
-            //item.ranged = true;
-            item.noMelee = true;
-            item.consumable = true;
-            item.noUseGraphic = true;
-            item.scale = 0.75f;
-            //item.crit = 5;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.useTime = 10;
-            item.useAnimation = 10;
-            item.knockBack = 3f;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
-            item.maxStack = 999;
-            item.rare = ItemRarityID.Blue;
-            item.shoot = mod.ProjectileType("ShurikenProj");
-            item.shootSpeed = 11f;
+            Item.width = 11;
+            Item.height = 11;
+            Item.damage = 16;
+            Item.noMelee = true;
+            Item.consumable = true;
+            Item.noUseGraphic = true;
+            Item.scale = 0.75f;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.knockBack = 3f;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
+            Item.maxStack = 999;
+            Item.rare = ItemRarityID.Blue;
+            Item.shoot = ModContent.ProjectileType<ShurikenProj>();
+            Item.shootSpeed = 11f;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Shuriken, 20);
-            recipe.AddIngredient(ItemID.Dynamite, 5);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 20);
-            recipe.AddRecipe();
+            CreateRecipe(20)
+                .AddIngredient(ItemID.Shuriken, 20)
+                .AddIngredient(ItemID.Dynamite, 5)
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }

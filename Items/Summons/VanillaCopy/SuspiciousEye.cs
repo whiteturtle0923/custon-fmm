@@ -8,7 +8,7 @@ namespace Fargowiltas.Items.Summons
 {
     public class SuspiciousEye : BaseSummon
     {
-        public override string Texture => "Terraria/Item_43";
+        public override string Texture => "Terraria/Images/Item_43";
 
         public override int Type => NPCID.EyeofCthulhu;
 
@@ -27,11 +27,10 @@ namespace Fargowiltas.Items.Summons
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SuspiciousLookingEye);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+               .AddIngredient(ItemID.SuspiciousLookingEye)
+               .AddTile(TileID.WorkBenches)
+               .Register();
         }
     }
 }

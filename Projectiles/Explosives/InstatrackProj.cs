@@ -1,6 +1,7 @@
 ﻿using Fargowiltas.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,23 +16,23 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 36;
-            projectile.aiStyle = 16;
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 1;
+            Projectile.width = 20;
+            Projectile.height = 36;
+            Projectile.aiStyle = 16;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 1;
         }
 
-        public override bool CanDamage()
+        public override bool? CanDamage()
         {
             return false;
         }
 
         public override void Kill(int timeLeft)
         {
-            Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
+            Vector2 position = Projectile.Center;
+            SoundEngine.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {

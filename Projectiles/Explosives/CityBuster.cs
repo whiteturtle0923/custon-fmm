@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,30 +17,30 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void SetDefaults()
         {
-            projectile.width = 30;
-            projectile.height = 30;
-            projectile.aiStyle = 16;
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 300;
+            Projectile.width = 30;
+            Projectile.height = 30;
+            Projectile.aiStyle = 16;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 300;
         }
 
-        public override bool CanDamage()
+        public override bool? CanDamage()
         {
             return false;
         }
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(SoundID.Item15, projectile.Center);
-            Main.PlaySound(SoundID.Item14, projectile.Center);
+            SoundEngine.PlaySound(SoundID.Item15, Projectile.Center);
+            SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 return;
             }
 
-            Vector2 position = projectile.Center;
+            Vector2 position = Projectile.Center;
             int radius = 60;     //bigger = boomer
 
             for (int x = -radius; x <= (radius); x++)
@@ -62,9 +63,10 @@ namespace Fargowiltas.Projectiles.Explosives
                     FargoGlobalTile.FindChestTopLeft(xPosition, yPosition, true);
 
                     WorldGen.KillTile(xPosition, yPosition, noItem: true);
-                    tile.liquid = 0;
-                    tile.lava(false);
-                    tile.honey(false);
+                    tile.LiquidType = 0;
+                    tile.LiquidAmount = 0;
+                    //tile.lava(false);
+                    //tile.honey(false);
 
                     if (Main.netMode == NetmodeID.Server)
                     {

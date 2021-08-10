@@ -1,16 +1,16 @@
-using Fargowiltas.NPCs;
+//using Fargowiltas.NPCs;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+//using System.IO;
+//using System.Linq;
 using Terraria;
-using Terraria.ID;
+//using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using static Terraria.ModLoader.ModContent;
+//using Terraria.ModLoader.IO;
+//using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas
 {
-    public class FargoWorld : ModWorld
+    public class FargoWorld : ModSystem
     {
         internal static int AbomClearCD;
         internal static bool MovedLumberjack;
@@ -63,175 +63,177 @@ namespace Fargowiltas
             "darkMage",
             "ogre",
             "headlessHorseman",
-            "babyGuardian", 
+            "babyGuardian",
             "squirrel",
             "worm",
             "nailhead"
-        };
+       };
 
-        public override void Initialize()
-        {
-            foreach (string tag in tags)
-            {
-                DownedBools[tag] = false;
-            }
+        
 
-            AbomClearCD = 0;
-            WoodChopped = 0;
+        //public override void Initialize()
+        //{
+        //    foreach (string tag in tags)
+        //    {
+        //        DownedBools[tag] = false;
+        //    }
 
-            OverloadGoblins = false;
-            OverloadPirates = false;
-            OverloadPumpkinMoon = false;
-            OverloadFrostMoon = false;
-            OverloadMartians = false;
-            OverloadedSlimeRain = false;
+//            AbomClearCD = 0;
+//            WoodChopped = 0;
 
-            CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
-        }
+//            OverloadGoblins = false;
+//            OverloadPirates = false;
+//            OverloadPumpkinMoon = false;
+//            OverloadFrostMoon = false;
+//            OverloadMartians = false;
+//            OverloadedSlimeRain = false;
 
-        public override TagCompound Save()
-        {
-            List<string> downed = new List<string>();
-            foreach (string tag in tags)
-            {
-                downed.AddWithCondition(tag, DownedBools[tag]);
-            }
+//            CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
+        //}
 
-            return new TagCompound
-            {
-                { "downed", downed },
-            };
-        }
+//        public override TagCompound Save()
+//        {
+//            List<string> downed = new List<string>();
+//            foreach (string tag in tags)
+//            {
+//                downed.AddWithCondition(tag, DownedBools[tag]);
+//            }
 
-        public override void Load(TagCompound tag)
-        {
-            IList<string> downed = tag.GetList<string>("downed");
-            foreach (string downedTag in tags)
-            {
-                DownedBools[downedTag] = downed.Contains(downedTag);
-            }
-        }
+//            return new TagCompound
+//            {
+//                { "downed", downed },
+//            };
+//        }
 
-        public override void NetReceive(BinaryReader reader)
-        {
-            foreach (string tag in tags)
-            {
-                DownedBools[tag] = reader.ReadBoolean();
-            }
+//        public override void Load(TagCompound tag)
+//        {
+//            IList<string> downed = tag.GetList<string>("downed");
+//            foreach (string downedTag in tags)
+//            {
+//                DownedBools[downedTag] = downed.Contains(downedTag);
+//            }
+//        }
 
-            AbomClearCD = reader.ReadInt32();
-            WoodChopped = reader.ReadInt32();
-            Fargowiltas.SwarmActive = reader.ReadBoolean();
-        }
+//        public override void NetReceive(BinaryReader reader)
+//        {
+//            foreach (string tag in tags)
+//            {
+//                DownedBools[tag] = reader.ReadBoolean();
+//            }
 
-        public override void NetSend(BinaryWriter writer)
-        {
-            foreach (string tag in tags)
-            {
-                writer.Write(DownedBools[tag]);
-            }
+//            AbomClearCD = reader.ReadInt32();
+//            WoodChopped = reader.ReadInt32();
+//            Fargowiltas.SwarmActive = reader.ReadBoolean();
+//        }
 
-            writer.Write(AbomClearCD);
-            writer.Write(WoodChopped);
-            writer.Write(Fargowiltas.SwarmActive);
-        }
+//        public override void NetSend(BinaryWriter writer)
+//        {
+//            foreach (string tag in tags)
+//            {
+//                writer.Write(DownedBools[tag]);
+//            }
 
-        public override void PostUpdate()
-        {
-            // seasonals
-            Main.halloween = GetInstance<FargoConfig>().Halloween;
-            Main.xMas = GetInstance<FargoConfig>().Christmas;
+//            writer.Write(AbomClearCD);
+//            writer.Write(WoodChopped);
+//            writer.Write(Fargowiltas.SwarmActive);
+//        }
 
-            // swarm reset in case something goes wrong
-            if (Main.netMode != NetmodeID.MultiplayerClient && Fargowiltas.SwarmActive 
-                && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead) && !NPC.AnyNPCs(NPCID.DungeonGuardian) && !NPC.AnyNPCs(NPCID.DD2DarkMageT1))
-            {
-                Fargowiltas.SwarmActive = false;
-                FargoGlobalNPC.LastWoFIndex = -1;
-                FargoGlobalNPC.WoFDirection = 0;
-                if (Main.netMode == NetmodeID.Server)
-                    NetMessage.SendData(MessageID.WorldData);
-            }
+//        public override void PostUpdate()
+//        {
+//            // seasonals
+//            Main.halloween = GetInstance<FargoConfig>().Halloween;
+//            Main.xMas = GetInstance<FargoConfig>().Christmas;
 
-            if (AbomClearCD > 0)
-            {
-                AbomClearCD--;
-            }
+//            // swarm reset in case something goes wrong
+//            if (Main.netMode != NetmodeID.MultiplayerClient && Fargowiltas.SwarmActive 
+//                && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead) && !NPC.AnyNPCs(NPCID.DungeonGuardian) && !NPC.AnyNPCs(NPCID.DD2DarkMageT1))
+//            {
+//                Fargowiltas.SwarmActive = false;
+//                FargoGlobalNPC.LastWoFIndex = -1;
+//                FargoGlobalNPC.WoFDirection = 0;
+//                if (Main.netMode == NetmodeID.Server)
+//                    NetMessage.SendData(MessageID.WorldData);
+//            }
 
-            if (OverloadGoblins && Main.invasionType != InvasionID.GoblinArmy)
-            {
-                OverloadGoblins = false;
-            }
+//            if (AbomClearCD > 0)
+//            {
+//                AbomClearCD--;
+//            }
 
-            if (OverloadPirates && Main.invasionType != InvasionID.PirateInvasion)
-            {
-                OverloadPirates = false;
-            }
+//            if (OverloadGoblins && Main.invasionType != InvasionID.GoblinArmy)
+//            {
+//                OverloadGoblins = false;
+//            }
 
-            if (OverloadPumpkinMoon && !Main.pumpkinMoon)
-            {
-                OverloadPumpkinMoon = false;
-            }
+//            if (OverloadPirates && Main.invasionType != InvasionID.PirateInvasion)
+//            {
+//                OverloadPirates = false;
+//            }
 
-            if (OverloadFrostMoon && !Main.snowMoon)
-            {
-                OverloadFrostMoon = false;
-            }
+//            if (OverloadPumpkinMoon && !Main.pumpkinMoon)
+//            {
+//                OverloadPumpkinMoon = false;
+//            }
 
-            if (OverloadMartians && Main.invasionType != InvasionID.MartianMadness)
-            {
-                OverloadMartians = false;
-            }
+//            if (OverloadFrostMoon && !Main.snowMoon)
+//            {
+//                OverloadFrostMoon = false;
+//            }
 
-            if (OverloadedSlimeRain && !Main.slimeRain)
-            {
-                OverloadedSlimeRain = false;
-            }
-        }
+//            if (OverloadMartians && Main.invasionType != InvasionID.MartianMadness)
+//            {
+//                OverloadMartians = false;
+//            }
 
-        public override void TileCountsAvailable(int[] tileCounts)
-        {
-            ref bool current = ref CurrentSpawnRateTile[0];
-            bool oldSpawnRateTile = current;
-            current = tileCounts[mod.TileType("RegalStatueSheet")] > 0;
+//            if (OverloadedSlimeRain && !Main.slimeRain)
+//            {
+//                OverloadedSlimeRain = false;
+//            }
+//        }
 
-            if (Main.netMode == NetmodeID.MultiplayerClient && current != oldSpawnRateTile)
-            {
-                ModPacket packet = ModContent.GetInstance<Fargowiltas>().GetPacket();
-                packet.Write((byte)1);
-                packet.Write(current);
-                packet.Send();
-            }
-        }
+//        public override void TileCountsAvailable(int[] tileCounts)
+//        {
+//            ref bool current = ref CurrentSpawnRateTile[0];
+//            bool oldSpawnRateTile = current;
+//            current = tileCounts[mod.TileType("RegalStatueSheet")] > 0;
 
-        public override void PreUpdate()
-        {
-            bool rate = false;
-            for (int i = 0; i < CurrentSpawnRateTile.Length; i++)
-            {
-                if (CurrentSpawnRateTile[i])
-                {
-                    Player player = Main.player[i];
-                    if (player.active)
-                    {
-                        if (!player.dead)
-                        {
-                            rate = true;
-                        }
-                    }
-                    else
-                    {
-                        CurrentSpawnRateTile[i] = false;
-                    }
-                }
-            }
+//            if (Main.netMode == NetmodeID.MultiplayerClient && current != oldSpawnRateTile)
+//            {
+//                ModPacket packet = ModContent.GetInstance<Fargowiltas>().GetPacket();
+//                packet.Write((byte)1);
+//                packet.Write(current);
+//                packet.Send();
+//            }
+//        }
 
-            if (rate)
-            {
-                Main.checkForSpawns += 81;
-            }
-        }
+//        public override void PreUpdate()
+//        {
+//            bool rate = false;
+//            for (int i = 0; i < CurrentSpawnRateTile.Length; i++)
+//            {
+//                if (CurrentSpawnRateTile[i])
+//                {
+//                    Player player = Main.player[i];
+//                    if (player.active)
+//                    {
+//                        if (!player.dead)
+//                        {
+//                            rate = true;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        CurrentSpawnRateTile[i] = false;
+//                    }
+//                }
+//            }
 
-        private bool NoBosses() => Main.npc.All(i => !i.active || !i.boss);
+//            if (rate)
+//            {
+//                Main.checkForSpawns += 81;
+//            }
+//        }
+
+//        private bool NoBosses() => Main.npc.All(i => !i.active || !i.boss);
     }
 }

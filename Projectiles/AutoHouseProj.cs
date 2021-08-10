@@ -2,6 +2,7 @@ using Fargowiltas.Tiles;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,9 +12,9 @@ namespace Fargowiltas.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.width = 1;
-            projectile.height = 1;
-            projectile.timeLeft = 1;
+            Projectile.width = 1;
+            Projectile.height = 1;
+            Projectile.timeLeft = 1;
         }
 
         public static void PlaceHouse(int x, int y, Vector2 position, int side, Player player)
@@ -66,7 +67,7 @@ namespace Fargowiltas.Projectiles
                 tileType = TileID.PalmWood;
                 platformStyle = 17;
             }
-            else if (player.ZoneHoly)
+            else if (player.ZoneHallow)
             {
                 wallType = WallID.Pearlwood;
                 tileType = TileID.Pearlwood;
@@ -173,7 +174,7 @@ namespace Fargowiltas.Projectiles
                     {
                         placeStyle = 29;
                     }
-                    else if (player.ZoneHoly)
+                    else if (player.ZoneHallow)
                     {
                         placeStyle = 3;
                     }
@@ -223,7 +224,7 @@ namespace Fargowiltas.Projectiles
                     {
                         placeStyle = 29;
                     }
-                    else if (player.ZoneHoly)
+                    else if (player.ZoneHallow)
                     {
                         placeStyle = 4;
                     }
@@ -273,7 +274,7 @@ namespace Fargowiltas.Projectiles
                     {
                         placeStyle = 26;
                     }
-                    else if (player.ZoneHoly)
+                    else if (player.ZoneHallow)
                     {
                         placeStyle = 3;
                     }
@@ -306,9 +307,9 @@ namespace Fargowiltas.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
-            Player player = Main.player[projectile.owner];
+            Vector2 position = Projectile.Center;
+            SoundEngine.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
+            Player player = Main.player[Projectile.owner];
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
                 return;

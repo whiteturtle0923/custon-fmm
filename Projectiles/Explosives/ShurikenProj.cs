@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,33 +15,33 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void SetDefaults()
         {
-            projectile.width = 11;
-            projectile.height = 11;
-            projectile.friendly = true;
-            projectile.ranged = true;
-            projectile.penetrate = 5;
-            projectile.aiStyle = 2;
-            projectile.timeLeft = 600;
-            aiType = 48;
+            Projectile.width = 11;
+            Projectile.height = 11;
+            Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.penetrate = 5;
+            Projectile.aiStyle = 2;
+            Projectile.timeLeft = 600;
+            AIType = 48;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            projectile.Kill();
+            Projectile.Kill();
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            projectile.Kill();
+            Projectile.Kill();
             return false;
         }
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("Explosion"), 0, projectile.knockBack, projectile.owner);
+            Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Explosion>(), 0, Projectile.knockBack, Projectile.owner);
 
-            Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
+            Vector2 position = Projectile.Center;
+            SoundEngine.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
             int radius = 16;     // bigger = boomer
 
             for (int x = -radius; x <= radius; x++)
@@ -54,7 +55,7 @@ namespace Fargowiltas.Projectiles.Explosives
                         continue;
 
                     Tile tile = Main.tile[xPosition, yPosition];
-                    Player player = Main.player[projectile.owner];
+                    Player player = Main.player[Projectile.owner];
                     Item bestPickaxe = GetBestPickaxe(player);
 
                     // testing for blocks that should not be destroyed
@@ -76,7 +77,7 @@ namespace Fargowiltas.Projectiles.Explosives
                         // Hit the tile 5 times, most tiles that you can break will break in 1-3 hits.
                         for (int i = 0; i < 5; i++)
                         {
-                            if (!tile.active())
+                            if (!tile.IsActive)
                             {
                                 break;
                             }

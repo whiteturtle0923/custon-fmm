@@ -8,7 +8,7 @@ namespace Fargowiltas.Items.Tiles
 {
     public class DemonAltarSheet : ModTile
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             Main.tileLighted[Type] = true;
             Main.tileFrameImportant[Type] = true;
@@ -19,9 +19,9 @@ namespace Fargowiltas.Items.Tiles
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Demon Altar");
             AddMapEntry(new Color(200, 200, 200), name);
-            disableSmartCursor = true;
+            TileID.Sets.DisableSmartCursor[Type] = true;
             //counts as
-            adjTiles = new int[] { TileID.DemonAltar };
+            AdjTiles = new int[] { TileID.DemonAltar };
         }
 
         //public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -38,13 +38,13 @@ namespace Fargowiltas.Items.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("DemonAltar"));
+            Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<DemonAltar>());
         }
     }
 
     public class CrimsonAltarSheet : ModTile
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             Main.tileLighted[Type] = true;
             Main.tileFrameImportant[Type] = true;
@@ -55,9 +55,9 @@ namespace Fargowiltas.Items.Tiles
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Crimson Altar");
             AddMapEntry(new Color(200, 200, 200), name);
-            disableSmartCursor = true;
+            TileID.Sets.DisableSmartCursor[Type] = true;
             //counts as
-            adjTiles = new int[] { TileID.DemonAltar };
+            AdjTiles = new int[] { TileID.DemonAltar };
         }
 
         //public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -74,7 +74,7 @@ namespace Fargowiltas.Items.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("CrimsonAltar"));
+            Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<CrimsonAltar>());
         }
     }
 }

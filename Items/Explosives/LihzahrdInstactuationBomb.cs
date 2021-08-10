@@ -1,6 +1,7 @@
 ﻿using Fargowiltas.Projectiles.Explosives;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,19 +19,19 @@ Only works in the Jungle Temple and after Plantera is defeated");
 
         public override void SetDefaults()
         {
-            item.width = 10;
-            item.height = 32;
-            item.maxStack = 99;
-            item.consumable = true;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.rare = ItemRarityID.Yellow;
-            item.UseSound = SoundID.Item1;
-            item.useAnimation = 20;
-            item.useTime = 20;
-            item.value = Item.buyPrice(0, 0, 3);
-            item.noUseGraphic = true;
-            item.noMelee = true;
-            item.shoot = ModContent.ProjectileType<LihzahrdInstactuationBombProj>();
+            Item.width = 10;
+            Item.height = 32;
+            Item.maxStack = 99;
+            Item.consumable = true;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.rare = ItemRarityID.Yellow;
+            Item.UseSound = SoundID.Item1;
+            Item.useAnimation = 20;
+            Item.useTime = 20;
+            Item.value = Item.buyPrice(0, 0, 3);
+            Item.noUseGraphic = true;
+            Item.noMelee = true;
+            Item.shoot = ModContent.ProjectileType<LihzahrdInstactuationBombProj>();
         }
 
         public override bool CanUseItem(Player player)
@@ -39,25 +40,24 @@ Only works in the Jungle Temple and after Plantera is defeated");
             return tile.type == TileID.LihzahrdAltar && tile.wall == WallID.LihzahrdBrickUnsafe && NPC.downedPlantBoss;
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Tile tile = Framing.GetTileSafely(player.Center);
             if (tile.type == TileID.LihzahrdAltar && tile.wall == WallID.LihzahrdBrickUnsafe && NPC.downedPlantBoss)
             {
-                Projectile.NewProjectile(player.Bottom - Vector2.UnitY * 8f, Vector2.Zero, type, 0, 0, player.whoAmI);
+                Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), player.Bottom - Vector2.UnitY * 8f, Vector2.Zero, type, 0, 0, player.whoAmI);
             }
             return false;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Actuator, 500);
-            recipe.AddIngredient(ItemID.Dynamite, 25);
-            recipe.AddIngredient(ItemID.LunarTabletFragment, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.Actuator, 500)
+                .AddIngredient(ItemID.Dynamite, 25)
+                .AddIngredient(ItemID.LunarTabletFragment, 10)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

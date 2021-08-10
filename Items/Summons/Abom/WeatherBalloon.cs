@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,15 +16,15 @@ namespace Fargowiltas.Items.Summons.Abom
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 20;
-            item.value = Item.sellPrice(0, 0, 2);
-            item.rare = ItemRarityID.Blue;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.consumable = true;
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 20;
+            Item.value = Item.sellPrice(0, 0, 2);
+            Item.rare = ItemRarityID.Blue;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.consumable = true;
         }
 
         public override bool CanUseItem(Player player)
@@ -31,7 +32,7 @@ namespace Fargowiltas.Items.Summons.Abom
             return !Main.raining;
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
             //starts rain for 12 hours
             int day = 86400;
@@ -41,7 +42,7 @@ namespace Fargowiltas.Items.Summons.Abom
 
             NetMessage.SendData(MessageID.WorldData);
             Main.NewText("Rain clouds cover the sky.", new Color(175, 75, 255));
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
 
             return true;
         }

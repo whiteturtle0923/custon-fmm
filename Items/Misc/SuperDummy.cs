@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Fargowiltas;
 using Fargowiltas.Projectiles;
 using Terraria.Localization;
+using Terraria.DataStructures;
 
 namespace Fargowiltas.Items.Misc
 {
@@ -21,13 +22,13 @@ namespace Fargowiltas.Items.Misc
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 30;
-            item.useTime = 15;
-            item.useAnimation = 15;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.useTurn = true;
-            item.rare = ItemRarityID.Blue;
+            Item.width = 20;
+            Item.height = 30;
+            Item.useTime = 15;
+            Item.useAnimation = 15;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useTurn = true;
+            Item.rare = ItemRarityID.Blue;
         }
 
         public override bool AltFunctionUse(Player player)
@@ -35,7 +36,7 @@ namespace Fargowiltas.Items.Misc
             return true;
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
             if (player.whoAmI == Main.myPlayer)
             {
@@ -56,7 +57,7 @@ namespace Fargowiltas.Items.Misc
                     }
                     else if (Main.netMode == NetmodeID.MultiplayerClient) //tell server to clear
                     {
-                        var netMessage = mod.GetPacket();
+                        var netMessage = Mod.GetPacket();
                         netMessage.Write((byte)5);
                         netMessage.Send();
                     }
@@ -64,7 +65,7 @@ namespace Fargowiltas.Items.Misc
                 else
                 {
                     Vector2 pos = new Vector2((int)Main.MouseWorld.X - 9, (int)Main.MouseWorld.Y - 20);
-                    Projectile.NewProjectile(pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, player.whoAmI, ModContent.NPCType<NPCs.SuperDummy>());
+                    Projectile.NewProjectile(player.GetProjectileSource_Item(Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, player.whoAmI, ModContent.NPCType<NPCs.SuperDummy>());
 
                     //NPC.NewNPC((int)pos.X, (int)pos.Y, ModContent.NPCType<NPCs.SuperDummy>());
                 }
@@ -75,12 +76,11 @@ namespace Fargowiltas.Items.Misc
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.TargetDummy);
-            recipe.AddIngredient(ItemID.FallenStar);
-            recipe.AddTile(TileID.CookingPots);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.TargetDummy)
+                .AddIngredient(ItemID.FallenStar)
+                .AddTile(TileID.CookingPots)
+                .Register();
         }
     }
 }

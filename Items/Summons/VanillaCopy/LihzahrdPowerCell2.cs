@@ -25,11 +25,10 @@ namespace Fargowiltas.Items.Summons.VanillaCopy
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LihzahrdPowerCell);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+               .AddIngredient(ItemID.LihzahrdPowerCell)
+               .AddTile(TileID.WorkBenches)
+               .Register();
         }
     }
 }

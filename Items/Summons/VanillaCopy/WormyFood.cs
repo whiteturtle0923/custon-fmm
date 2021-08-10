@@ -6,7 +6,7 @@ namespace Fargowiltas.Items.Summons
 {
     public class WormyFood : BaseSummon
     {
-        public override string Texture => "Terraria/Item_70";
+        public override string Texture => "Terraria/Images/Item_70";
 
         public override int Type => NPCID.EaterofWorldsHead;
 
@@ -20,11 +20,10 @@ namespace Fargowiltas.Items.Summons
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.WormFood);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+               .AddIngredient(ItemID.WormFood)
+               .AddTile(TileID.WorkBenches)
+               .Register();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -16,30 +17,30 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 36;
-            projectile.aiStyle = 16;
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 1;
+            Projectile.width = 20;
+            Projectile.height = 36;
+            Projectile.aiStyle = 16;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 1;
         }
 
-        public override bool CanDamage()
+        public override bool? CanDamage()
         {
             return false;
         }
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(SoundID.Item14, projectile.Center);
+            SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 return;
             }
 
-            int xPos = (int)projectile.Center.X / 16;
-            int yPos = (int)projectile.Center.Y / 16;
+            int xPos = (int)Projectile.Center.X / 16;
+            int yPos = (int)Projectile.Center.Y / 16;
 
             bool WipeColumn(int i)
             {
@@ -99,7 +100,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     if (tile.type == TileID.LihzahrdBrick)
                     {
-                        tile.inActive(true); //actuate it
+                        tile.IsActuated = true; //actuate it
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendTileSquare(-1, tileX, tileY, 1);
 

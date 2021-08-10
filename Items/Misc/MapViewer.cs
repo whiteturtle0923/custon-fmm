@@ -7,7 +7,7 @@ namespace Fargowiltas.Items.Summons
 {
     public class MapViewer : ModItem
     {
-        public override string Texture => "Terraria/Map_4";
+        public override string Texture => "Terraria/Images/Map_4";
 
         public override void SetStaticDefaults()
         {
@@ -25,16 +25,16 @@ namespace Fargowiltas.Items.Summons
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.value = Item.sellPrice(0, 0, 2);
-            item.rare = ItemRarityID.White;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = ItemUseStyleID.HoldingUp;
+            Item.width = 20;
+            Item.height = 20;
+            Item.value = Item.sellPrice(0, 0, 2);
+            Item.rare = ItemRarityID.White;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = ItemUseStyleID.Shoot;
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
@@ -74,15 +74,14 @@ namespace Fargowiltas.Items.Summons
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.TrifoldMap);
-            recipe.AddIngredient(ItemID.Goggles);
-            recipe.AddIngredient(ItemID.Sunglasses);
-            recipe.AddIngredient(ItemID.SuspiciousLookingEye);
-            recipe.AddIngredient(ItemID.MechanicalEye);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.TrifoldMap)
+                .AddIngredient(ItemID.Goggles)
+                .AddIngredient(ItemID.Sunglasses)
+                .AddIngredient(ItemID.SuspiciousLookingEye)
+                .AddIngredient(ItemID.MechanicalEye)
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
     }
 }
