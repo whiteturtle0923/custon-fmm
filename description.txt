@@ -1,6 +1,12 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+ALPHA UPDATE - V 2.5.1
+-Readded Abominationn, Deviantt, and Lumberjack
+-Readded crafting stations and other tiles
+-Readded most recipes
+-Fixed InstaHouse
+
 ALPHA UPDATE - V 2.5.0
 -Updated to tmod 1.4 (PARTIALLY)
 
