@@ -1,7 +1,8 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
-NEW UPDATE - V 2.3.3.1
+
+NEW UPDATE - V 2.4.1
 -Werewolf and Merfolk won't appear on debuff display
 -Fixed debuff display not flipping when player flips
 -Debuff display defaults to off
@@ -10,46 +11,3 @@ NEW UPDATE - V 2.3.3.1
 -Caught NPCs can only be deployed if they aren't already in the world somewhere
 -Deviantt Golem dialogue mentions Lihzahrd Blessing mechanic
 -Added post-defeat quotes for Deviantt, Abominationn, Mutant (for Souls mod)
-
-NEW UPDATE - V 2.3.3
--Added Pincushion to Deviantt shop
--Fixed Super Dummy taking up enemy slots
--First step of fixing Squirrel not selling most items if you have translation mod on
--Adjusted Deviantt dialogue for King Slime
--Mini Instabridge now extends in the direction you place it at
--Added another recipe for Meat Grinder
-
--Added Caught NPC items for any loaded mod
--Added toggleable dedicated debuff display, making them easier to see in a fight
-
--Added Really Forbidden Tome and Mysterious Energizer
--Removed damage stat from Instavator
--Added Demon Altar to Elemental Assembler
--Ice Slimes, Penguins, and Eskimo Zombies now drop the Eskimo pieces 5% of the time
--Added to all swarm tooltips that they only drop treasure bags
--Added recipe to craft a Merchant into a Travelling Merchant
-
--Removed conversion recipes that use Alchemy table since Demon Altar is crafted now
--Added King Slime Mask to Mutant Body
-
--Removed Hoplites and Eskimo Zombie vanilla armor drop chance so they won't drop 2 at once
--Gladiator armor drop chance is now 10%
--Eskimo armor drop chance is now 10%
-
-NEW UPDATE - V 2.3.2
--Corrected Zealot's Possession tooltip to clarify that pillars are only blocked post-Cultist
--New toggle for transparent minions
--Squirrel can sell some Soul of the Siblings components
--Squirrel can sell Heart of the Eternal copies
--Squirrel can sell potions if you have stacks of 30 or more in inventory
--Squirrel can sell Rod of Discord for Defender Medals
--Squirrel can cycle shops
--Squirrel prices are highway robbery
--Squirrel Blood Moon dialogue updated
--Fixed a bug where Squirrel wouldn't sell some recipe components if the shop already had another item in that recipe
--Fixed a bug where Squirrel could be killed while invincible
--Fixed instant builds being able to overwrite Dungeon and Temple so long as the respective brick wasn't there
--In Eternity Mode, Deviantt sells an item that provides recommended builds for you (also included in starting gift)
--Boom Shuriken is classless
--Shrunk Instahouse top platform slightly to fix vanilla detection bug where opening a door made the house invalid
--Wizard sells Super Mana Potion post-Golem
