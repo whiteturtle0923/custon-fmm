@@ -135,10 +135,11 @@ namespace Fargowiltas.Projectiles
 
         public override Color? GetAlpha(Projectile projectile, Color lightColor)
         {
-            if (lowRender && !projectile.hostile && GetInstance<FargoConfig>().TransparentMinions)
+            if (lowRender && !projectile.hostile)
             {
-                lightColor *= 0.25f;
-                return lightColor;
+                float opacity = GetInstance<FargoConfig>().TransparentMinions;
+                if (opacity < 1)
+                    return lightColor * opacity;
             }
             return base.GetAlpha(projectile, lightColor);
         }
