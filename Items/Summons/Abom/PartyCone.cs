@@ -45,7 +45,7 @@ namespace Fargowiltas.Items.Summons.Abom
             }
 
             Main.NewText("Looks like someone's throwing a Party!", new Color(255, 0, 160));
-            SoundEngine.PlaySound(28, player.position);
+            //SoundEngine.PlaySound(28, player.position);
 
             return true;
         }

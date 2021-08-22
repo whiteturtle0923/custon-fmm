@@ -37,13 +37,13 @@ namespace Fargowiltas.Tiles
 
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
-            if (type == TileID.Trees && !FargoWorld.MovedLumberjack && !fail)
+            if (type == TileID.Trees && !FargoWorld.DownedBools["lumberjack"] && !fail)
             {
                 FargoWorld.WoodChopped++;
 
                 if (FargoWorld.WoodChopped > 500)
                 {
-                    FargoWorld.MovedLumberjack = true;
+                    FargoWorld.DownedBools["lumberjack"] = true;
                 }
             }
         }

@@ -8,7 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-//using Fargowiltas.Items.Vanity;
+using Fargowiltas.Items.Vanity;
 
 namespace Fargowiltas.NPCs
 {
@@ -62,10 +62,10 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
-            {
-                return false;
-            }
+            //if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
+            //{
+            //    return false;
+            //}
             return GetInstance<FargoConfig>().Abom && NPC.downedGoblins && !FargoGlobalNPC.AnyBossAlive();
         }
 
@@ -223,7 +223,7 @@ namespace Fargowiltas.NPCs
             AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
             AddItem(true, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
-            AddItem(true, ItemType<CursedSextant>(), Item.buyPrice(0, 5), ref shop, ref nextSlot); //Remove Cursed Sextant & replace with Bloody Tear in 1.4
+            AddItem(true, ItemID.BloodMoonStarter, Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(true, ItemID.GoblinBattleStandard, Item.buyPrice(0, 6), ref shop, ref nextSlot);
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
@@ -254,7 +254,7 @@ namespace Fargowiltas.NPCs
             //    AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
             //}
 
-            //AddItem(NPC.downedTowers, ItemType<AbominationnScythe>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
+            AddItem(NPC.downedTowers, ItemType<AbominationnScythe>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -284,31 +284,31 @@ namespace Fargowiltas.NPCs
             randomOffset = 2f;
         }
 
-        //public override void HitEffect(int hitDirection, double damage)
-        //{
-        //    if (NPC.life <= 0)
-        //    {
-        //        for (int k = 0; k < 8; k++)
-        //        {
-        //            Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hitDirection, -2.5f, Scale: 0.8f);
-        //        }
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)
+            {
+                for (int k = 0; k < 8; k++)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hitDirection, -2.5f, Scale: 0.8f);
+                }
 
-        //        Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-        //        Gore.NewGore(pos, NPC.velocity, mod.GetGoreSlot("Gores/AbomGore3"));
+                Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore3").Type);
 
-        //        pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-        //        Gore.NewGore(pos, NPC.velocity, mod.GetGoreSlot("Gores/AbomGore2"));
+                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore2").Type);
 
-        //        pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-        //        Gore.NewGore(pos, NPC.velocity, mod.GetGoreSlot("Gores/AbomGore1"));
-        //    }
-        //    else
-        //    {
-        //        for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
-        //        {
-        //            Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, Scale: 0.6f);
-        //        }
-        //    }
-        //}
+                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore1").Type);
+            }
+            else
+            {
+                for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, Scale: 0.6f);
+                }
+            }
+        }
     }
 }

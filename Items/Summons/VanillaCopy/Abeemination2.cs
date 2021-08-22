@@ -10,8 +10,6 @@ namespace Fargowiltas.Items.Summons
     {
         public override string Texture => "Terraria/Images/Item_1133";
 
-
-
         public override int Type => NPCID.QueenBee;
 
         public override string NPCName => "Queen Bee";
