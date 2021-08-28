@@ -897,8 +897,19 @@ namespace Fargowiltas.NPCs
                     }
                 }
 
-                if (update && Main.netMode == NetmodeID.Server)
-                    NetMessage.SendData(MessageID.WorldData); //sync world
+                if (update)
+                {
+                    string text = $"The spawner for {Lang.GetNPCNameValue(npc.netID)} has been unlocked!";
+                    if (Main.netMode == NetmodeID.SinglePlayer)
+                    {
+                        Main.NewText(text, Color.LimeGreen);
+                    }
+                    else if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(text), Color.LimeGreen);
+                        NetMessage.SendData(MessageID.WorldData); //sync world
+                    }
+                }
             };
 
             // Lumber Jaxe
