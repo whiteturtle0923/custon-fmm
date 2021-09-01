@@ -16,7 +16,8 @@ namespace Fargowiltas.Items.Misc
             Tooltip.SetDefault("Spawns a super dummy at your cursor" +
                                "\nSame as regular Target Dummy except minions and projectiles detect and home onto it" +
                                "\nOn hit effects get triggered as well" +
-                               "\nRight click to remove all spawned super dummies");
+                               "\nRight click to remove all spawned super dummies" +
+                               "\nCan spawn up to 50 super dummies at once");
         }
 
         public override void SetDefaults()
@@ -61,7 +62,7 @@ namespace Fargowiltas.Items.Misc
                         netMessage.Send();
                     }
                 }
-                else
+                else if (NPC.CountNPCS(ModContent.NPCType<NPCs.SuperDummy>()) < 50)
                 {
                     Vector2 pos = new Vector2((int)Main.MouseWorld.X - 9, (int)Main.MouseWorld.Y - 20);
                     Projectile.NewProjectile(pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, player.whoAmI, ModContent.NPCType<NPCs.SuperDummy>());

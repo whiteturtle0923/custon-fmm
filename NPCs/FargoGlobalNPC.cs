@@ -884,7 +884,7 @@ namespace Fargowiltas.NPCs
 
         public override void NPCLoot(NPC npc)
         {
-            void TryDowned(params string[] names)
+            void TryDowned(string seller, Color color, params string[] names)
             {
                 bool update = false;
 
@@ -897,8 +897,19 @@ namespace Fargowiltas.NPCs
                     }
                 }
 
-                if (update && Main.netMode == NetmodeID.Server)
-                    NetMessage.SendData(MessageID.WorldData); //sync world
+                if (update)
+                {
+                    string text = $"A new item has been unlocked in {seller}'s shop!";
+                    if (Main.netMode == NetmodeID.SinglePlayer)
+                    {
+                        Main.NewText(text, color);
+                    }
+                    else if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(text), color);
+                        NetMessage.SendData(MessageID.WorldData); //sync world
+                    }
+                }
             };
 
             // Lumber Jaxe
@@ -1094,12 +1105,12 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.GiantWormHead:
                 case NPCID.DiggerHead:
-                    TryDowned("worm");
+                    TryDowned("Deviantt", Color.HotPink, "worm");
                     break;
 
                 case NPCID.DD2OgreT2:
                 case NPCID.DD2OgreT3:
-                    TryDowned("ogre");
+                    TryDowned("Abominationn", Color.Orange, "ogre");
 
                     Item.NewItem(npc.Hitbox, ItemID.DefenderMedal, 20);
 
@@ -1119,7 +1130,7 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.DD2DarkMageT1:
                 case NPCID.DD2DarkMageT3:
-                    TryDowned("darkMage");
+                    TryDowned("Abominationn", Color.Orange, "darkMage");
 
                     Item.NewItem(npc.Hitbox, ItemID.DefenderMedal, 5);
 
@@ -1179,112 +1190,112 @@ namespace Fargowiltas.NPCs
                 case NPCID.Clown:
                     Item.NewItem(npc.Hitbox, ItemID.Bananarang);
 
-                    TryDowned("rareEnemy", "clown");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "clown");
                     break;
 
                 case NPCID.BlueSlime:
                     if (npc.netID == NPCID.Pinky)
                     {
-                        TryDowned("rareEnemy", "pinky");
+                        TryDowned("Deviantt", Color.HotPink, "rareEnemy", "pinky");
                     }
                     break;
 
                 case NPCID.UndeadMiner:
-                    TryDowned("rareEnemy", "undeadMiner");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "undeadMiner");
                     break;
 
                 case NPCID.Tim:
-                    TryDowned("rareEnemy", "tim");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "tim");
                     break;
 
                 case NPCID.DoctorBones:
-                    TryDowned("rareEnemy", "doctorBones");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "doctorBones");
                     break;
 
                 case NPCID.Mimic:
-                    TryDowned("rareEnemy", "mimic");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimic");
                     break;
 
                 case NPCID.WyvernHead:
-                    TryDowned("rareEnemy", "wyvern");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "wyvern");
                     break;
 
                 case NPCID.RuneWizard:
-                    TryDowned("rareEnemy", "runeWizard");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "runeWizard");
                     break;
 
                 case NPCID.Nymph:
-                    TryDowned("rareEnemy", "nymph");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "nymph");
                     break;
 
                 case NPCID.Moth:
-                    TryDowned("rareEnemy", "moth");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "moth");
                     break;
 
                 case NPCID.RainbowSlime:
-                    TryDowned("rareEnemy", "rainbowSlime");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "rainbowSlime");
                     break;
 
                 case NPCID.Paladin:
-                    TryDowned("rareEnemy", "paladin");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "paladin");
                     break;
 
                 case NPCID.Medusa:
-                    TryDowned("rareEnemy", "medusa");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "medusa");
                     break;
 
                 case NPCID.IceGolem:
-                    TryDowned("rareEnemy", "iceGolem");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "iceGolem");
                     break;
 
                 case NPCID.SandElemental:
-                    TryDowned("rareEnemy", "sandElemental");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "sandElemental");
                     break;
 
                 case NPCID.Nailhead:
-                    TryDowned("rareEnemy", "nailhead");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "nailhead");
                     break;
 
                 case NPCID.Mothron:
-                    TryDowned("rareEnemy", "mothron");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mothron");
                     break;
 
                 case NPCID.BigMimicCorruption:
-                    TryDowned("rareEnemy", "mimicCorrupt");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimicCorrupt");
                     break;
 
                 case NPCID.BigMimicHallow:
-                    TryDowned("rareEnemy", "mimicHallow");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimicHallow");
                     break;
 
                 case NPCID.BigMimicCrimson:
-                    TryDowned("rareEnemy", "mimicCrimson");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimicCrimson");
                     break;
 
                 case NPCID.BigMimicJungle:
-                    TryDowned("rareEnemy", "mimicJungle");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimicJungle");
                     break;
 
                 case NPCID.GoblinSummoner:
-                    TryDowned("rareEnemy", "goblinSummoner");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "goblinSummoner");
                     break;
 
                 case NPCID.PirateShip:
-                    TryDowned("rareEnemy", "flyingDutchman");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "flyingDutchman");
                     break;
 
                 case NPCID.DungeonSlime:
-                    TryDowned("rareEnemy", "dungeonSlime");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "dungeonSlime");
                     break;
 
                 case NPCID.PirateCaptain:
-                    TryDowned("rareEnemy", "pirateCaptain");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "pirateCaptain");
                     break;
 
                 case NPCID.SkeletonSniper:
                 case NPCID.TacticalSkeleton:
                 case NPCID.SkeletonCommando:
-                    TryDowned("rareEnemy", "skeletonGun");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "skeletonGun");
                     break;
 
                 case NPCID.Necromancer:
@@ -1293,15 +1304,15 @@ namespace Fargowiltas.NPCs
                 case NPCID.DiabolistWhite:
                 case NPCID.RaggedCaster:
                 case NPCID.RaggedCasterOpenCoat:
-                    TryDowned("rareEnemy", "skeletonMage");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "skeletonMage");
                     break;
 
                 case NPCID.BoneLee:
-                    TryDowned("rareEnemy", "boneLee");
+                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "boneLee");
                     break;
 
                 case NPCID.HeadlessHorseman:
-                    TryDowned("headlessHorseman");
+                    TryDowned("Abominationn", Color.Orange, "headlessHorseman");
                     break;
 
                 default:
@@ -1310,7 +1321,7 @@ namespace Fargowiltas.NPCs
 
             if (Fargowiltas.ModRareEnemies.ContainsKey(npc.type))
             {
-                TryDowned("rareEnemy", Fargowiltas.ModRareEnemies[npc.type]);
+                TryDowned("Deviantt", Color.HotPink, "rareEnemy", Fargowiltas.ModRareEnemies[npc.type]);
             }
         }
 
