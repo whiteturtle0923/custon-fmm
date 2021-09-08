@@ -1124,7 +1124,7 @@ namespace Fargowiltas
         //    recipe = GetNewRecipe();
         //    recipe.AddIngredient(null, "TravellingMerchant");
         //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.IronBar, 5);
+        //    recipe.AddRecipeGroup("IronBar", 5);
         //    recipe.AddTile(TileID.TinkerersWorkbench);
         //    recipe.SetResult(ItemID.Stopwatch);
         //    recipe.AddRecipe();
@@ -1132,7 +1132,7 @@ namespace Fargowiltas
         //    recipe = GetNewRecipe();
         //    recipe.AddIngredient(null, "TravellingMerchant");
         //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.IronBar, 5);
+        //    recipe.AddRecipeGroup("IronBar", 5);
         //    recipe.AddTile(TileID.TinkerersWorkbench);
         //    recipe.SetResult(ItemID.LifeformAnalyzer);
         //    recipe.AddRecipe();
@@ -1140,7 +1140,7 @@ namespace Fargowiltas
         //    recipe = GetNewRecipe();
         //    recipe.AddIngredient(null, "TravellingMerchant");
         //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.IronBar, 5);
+        //    recipe.AddRecipeGroup("IronBar", 5);
         //    recipe.AddTile(TileID.TinkerersWorkbench);
         //    recipe.SetResult(ItemID.DPSMeter);
         //    recipe.AddRecipe();
@@ -1149,7 +1149,7 @@ namespace Fargowiltas
         //    recipe = GetNewRecipe();
         //    recipe.AddIngredient(null, "TravellingMerchant");
         //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddIngredient(ItemID.IronBar, 5);
+        //    recipe.AddRecipeGroup("IronBar", 5);
         //    recipe.AddTile(TileID.TinkerersWorkbench);
         //    recipe.SetResult(ItemID.Katana);
         //    recipe.AddRecipe();
