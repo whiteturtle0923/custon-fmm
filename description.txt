@@ -7,7 +7,6 @@ ALPHA UPDATE - V 2.5.4
 -Added unsafe spider walls, craftable
 -Added unsafe marble/granite walls, craftable
 -Refactored vanilla town NPC sellings
--Fixed renewals being unavailable
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose
