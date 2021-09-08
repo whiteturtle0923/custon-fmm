@@ -40,20 +40,33 @@ namespace Fargowiltas.Buffs
                 player.buffImmune[BuffID.StarInBottle] = true;
                 player.manaRegenBonus += 2;
 
+                //gnome (kinda, it jitters and turns off for 1 tick every 3 ticks)
                 Main.SceneMetrics.HasGardenGnome = true;
 
                 //bast
                 Main.SceneMetrics.HasCatBast = false;
                 player.buffImmune[BuffID.CatBast] = true;
                 player.statDefense += 5;
+
+                //ladybug (also jitters for some reason)
+                player.ladyBugLuckTimeLeft = 24 * 60 * 60;
+
+                //honey
+                player.buffImmune[BuffID.Honey] = true;
+                player.honey = true;
+
+                //sugar rush
+                player.buffImmune[BuffID.SugarRush] = true;
+                player.moveSpeed += 0.2f;
+                player.pickSpeed += 0.2f;
             }
 
-            int type = Framing.GetTileSafely(player.Center).type;
+            /*int type = Framing.GetTileSafely(player.Center).type;
             if (type == ModContent.TileType<OmnistationSheet>() || type == ModContent.TileType<OmnistationSheet2>())
             {
                 player.AddBuff(BuffID.Honey, 30 * 60 - 1);
                 player.AddBuff(BuffID.SugarRush, 120 * 60 - 1);
-            }
+            }*/
         }
     }
 }

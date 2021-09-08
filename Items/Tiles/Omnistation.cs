@@ -16,7 +16,6 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault("Omnistation");
             Tooltip.SetDefault(@"Effects of all vanilla buff stations
-Grants Honey and Sugar Rush when touched
 Right click while holding a weapon for its respective buff");
         }
 
@@ -48,6 +47,7 @@ Right click while holding a weapon for its respective buff");
                 .AddIngredient(ItemID.GardenGnome, 5)
                 .AddIngredient(ItemID.CatBast, 5)
                 .AddIngredient(ItemID.SliceOfCake, 5)
+                .AddIngredient(ItemID.GoldLadyBug, 5)
                 .AddIngredient(bar, 5)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
