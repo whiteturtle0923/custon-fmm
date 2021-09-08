@@ -1,0 +1,22 @@
+﻿using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace Fargowiltas.Items.Vanity
+{
+    [AutoloadEquip(EquipType.Head)]
+    public class LumberjackMask : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Lumberjack Mask");
+        }
+
+        public override void SetDefaults()
+        {
+            Item.width = 18;
+            Item.height = 18;
+            Item.rare = ItemRarityID.Blue;
+            Item.vanity = true;
+        }
+    }
+}

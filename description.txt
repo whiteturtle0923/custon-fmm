@@ -1,6 +1,33 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+ALPHA UPDATE - V 2.5.4
+-Added Jelly Crystal and Prismatic Primrose
+-Readded Expert Token but renamed to World Token and it now cycles through Normal, Expert, Master, and Journey
+-Added new critters and tree shaking drops to Lumberjack's Tree Treasures
+-Added Underworld, Ocean, and updated Caverns Tree Treasures drops
+-Added missing items, quotes, and gore back to the town NPCs
+-Fixed Crucible tile animation being whack
+-Fixed Renewals not doing anything
+-Fixed Party Cone error
+
+ALPHA UPDATE - V 2.5.3
+-Readded swarm summons
+-Readded vanilla NPC sales
+-Readded Angler Quest reset, rotten egg bonus damage, season toggles
+-Readded Informational accessories working in piggy bank
+-Readded EoW and BoC summonable in any biome
+-Battle Cry, Regal Statue, and Omnistation now work correctly
+-Deviantt summons will now sell correctly
+-Added Queen Slime and Empress of Light to the Mutant Voodoo Doll and Ancient Seal
+
+ALPHA UPDATE - V 2.5.2
+-Added back Hotkeys, Renewals, and Vanity
+-Removed Cursed Sextant, Abom now sells Bloody Tear
+-Updated crate recipes to also use the Hard Mode versions and to be much cheaper
+-Added new crate recipes for all new chest items
+-Added new banner recipes
+
 ALPHA UPDATE - V 2.5.1
 -Readded Abominationn, Deviantt, and Lumberjack
 -Readded crafting stations and other tiles

@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.Projectiles;
-//using Fargowilta;
+using Fargowilta;
 //using Fargowiltas.Items.CaughtNPCs;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
@@ -22,6 +22,7 @@ using MonoMod.RuntimeDetour.HookGen;
 using Terraria.DataStructures;
 using Terraria.UI;
 using Terraria.Chat;
+using Fargowiltas.Items.Vanity;
 
 namespace Fargowiltas
 {
@@ -30,28 +31,28 @@ namespace Fargowiltas
         internal static MutantSummonTracker summonTracker;
         internal static DevianttDialogueTracker dialogueTracker;
 
-//        // Hotkeys
-//        internal static ModHotKey CustomKey;
-//        internal static ModHotKey HomeKey;
-//        internal static ModHotKey RodKey;
+        // Hotkeys
+        internal static ModKeybind CustomKey;
+        internal static ModKeybind HomeKey;
+        internal static ModKeybind RodKey;
 
-//        internal static ModHotKey StatKey;
+        internal static ModKeybind StatKey;
 
-//        public static UIManager UserInterfaceManager => Instance._userInterfaceManager;
-//        private UIManager _userInterfaceManager;
+        public static UIManager UserInterfaceManager => Instance._userInterfaceManager;
+        private UIManager _userInterfaceManager;
 
-//        // Swarms
-//        internal static bool SwarmActive;
-//        internal static int SwarmKills;
-//        internal static int SwarmTotal;
-//        internal static int SwarmSpawned;
+        // Swarms
+        internal static bool SwarmActive;
+        internal static int SwarmKills;
+        internal static int SwarmTotal;
+        internal static int SwarmSpawned;
 
         // Mod loaded bools
         internal static Dictionary<string, bool> ModLoaded;
-//        internal static Dictionary<int, string> ModRareEnemies = new Dictionary<int, string>();
+        internal static Dictionary<int, string> ModRareEnemies = new Dictionary<int, string>();
         private string[] mods;
 
-//        internal static Fargowiltas Instance;
+        internal static Fargowiltas Instance;
 
         public Fargowiltas()
         {
@@ -64,58 +65,34 @@ namespace Fargowiltas
 //            HookIntoLoad();
         }
 
-//        public void AddToggle(String toggle, String name, String item, String color)
-//        {
-//            ModTranslation text = CreateTranslation(toggle);
-//            text.SetDefault("[i:" + Instance.ItemType(item) + "][c/" + color + ": " + name + "]");
-//            AddTranslation(text);
-//        }
+        public void AddToggle(String toggle, String name, int item, String color)
+        {
+            ModTranslation text = LocalizationLoader.CreateTranslation(toggle);
+            text.SetDefault("[i:" + item + "][c/" + color + ": " + name + "]");
+
+            LocalizationLoader.AddTranslation(text);
+        }
 
         public override void Load()
         {
-//            Instance = this;
+            Instance = this;
 
             summonTracker = new MutantSummonTracker();
             dialogueTracker = new DevianttDialogueTracker();
             dialogueTracker.AddVanillaDialogue();
 
-//            HomeKey = RegisterHotKey("Quick Recall/Mirror", "Home");
-//            RodKey = RegisterHotKey("Quick Rod of Discord", "E");
-//            CustomKey = RegisterHotKey("Quick Use Custom (Bottom Left Inventory Slot)", "K");
+            HomeKey = KeybindLoader.RegisterKeybind(this, "Quick Recall/Mirror", "Home");
+            RodKey = KeybindLoader.RegisterKeybind(this, "Quick Rod of Discord", "E");
+            CustomKey = KeybindLoader.RegisterKeybind(this, "Quick Use Custom (Bottom Left Inventory Slot)", "K");
 
-//            StatKey = RegisterHotKey("Open Stat Sheet", "M");
+            StatKey = KeybindLoader.RegisterKeybind(this, "Open Stat Sheet", "M");
 
-//            _userInterfaceManager = new UIManager();
-//            _userInterfaceManager.LoadUI();
+            _userInterfaceManager = new UIManager();
+            _userInterfaceManager.LoadUI();
 
             mods = new string[]
             {
                 "FargowiltasSouls", // Fargo's Souls
-//                "Bluemagic", // Elemental Unleash / Blushiemagic's Mod
-//                "CalamityMod", // Calamity
-//                "CookieMod", // Cookie Mod
-//                "CrystiliumMod", // Crystilium
-//                "GRealm", // GRealm
-//                "JoostMod", // JoostMod
-//                "TrueEater", // Nightmares Unleashed
-//                "SacredTools", // SacredTools / Shadows of Abaddon
-//                "SpiritMod", // Spirit
-//                "ThoriumMod", // Thorium
-//                "W1KModRedux", // W1K's Mod Redux
-//                "EchoesoftheAncients", // Echoes of the Ancients
-//                "ForgottenMemories", // Beyond the Forgotten Ages
-//                "Disarray", // Disarray
-//                "ElementsAwoken", // Elements Awoken
-//                "Laugicality", // Enigma
-//                "Split", // Split
-//                "Antiaris", // Antiaris
-//                "AAMod", // Ancients Awakened
-//                "TrelamiumMod", // Trelamium
-//                "pinkymod", // Pinkymod
-//                "Redemption", // Mod of Redemption
-//                "Jetshift", // Jetshift
-//                "Ocram", // Ocram 'n Stuff
-//                "CSkies", // Celestial Skies
 //                "FargowiltasSoulsDLC"
             };
 
@@ -125,15 +102,15 @@ namespace Fargowiltas
                 ModLoaded.Add(mod, false);
             }
 
-//            AddToggle("Mutant", "Mutant Can Spawn", "MutantMask", "ffffff");
-//            AddToggle("Abom", "Abominationn Can Spawn", "AbominationnMask", "ffffff");
-//            AddToggle("Devi", "Deviantt Can Spawn", "DevianttMask", "ffffff");
-//            AddToggle("Lumber", "Lumberjack Can Spawn", "LumberjackMask", "ffffff");
+            //AddToggle("Mutant", "Mutant Can Spawn", ModContent.ItemType<MutantMask>(), "ffffff");
+            //AddToggle("Abom", "Abominationn Can Spawn", ModContent.ItemType<AbominationnMask>(), "ffffff");
+            //AddToggle("Devi", "Deviantt Can Spawn", ModContent.ItemType<DevianttMask>(), "ffffff");
+            //AddToggle("Lumber", "Lumberjack Can Spawn", ModContent.ItemType<LumberjackMask>(), "ffffff");
 
-//            CaughtNPCItem.RegisterItems(this);
+            //            CaughtNPCItem.RegisterItems(this);
 
-//            // DD2 Banner Effect hack
-//            ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
+            // DD2 Banner Effect hack
+            ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
         }
 
         public override void Unload()
@@ -141,9 +118,9 @@ namespace Fargowiltas
             summonTracker = null;
             dialogueTracker = null;
 
-//            HomeKey = null;
-//            RodKey = null;
-//            CustomKey = null;
+            HomeKey = null;
+            RodKey = null;
+            CustomKey = null;
             mods = null;
             ModLoaded = null;
         }
@@ -472,91 +449,79 @@ namespace Fargowiltas
             return eventOccurring && canClearEvent;
         }
 
-        //        // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);
-        //        internal static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
-        //        {
-        //            if (overrideDirection == 0)
-        //            {
-        //                overrideDirection = Main.rand.NextBool(2) ? -1 : 1;
-        //            }
+        // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);
+        internal static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        {
+            if (overrideDirection == 0)
+            {
+                overrideDirection = Main.rand.NextBool(2) ? -1 : 1;
+            }
 
-        //            if (overrideDirectionY == 0)
-        //            {
-        //                overrideDirectionY = -1;
-        //            }
+            if (overrideDirectionY == 0)
+            {
+                overrideDirectionY = -1;
+            }
 
-        //            Vector2 npcCenter = player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
-        //            SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
-        //        }
+            Vector2 npcCenter = player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
+            SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
+        }
 
-        //        // SpawnBoss(player, mod.NPCType("MyBoss"), true, player.Center + new Vector2(0, 800f), "DerpFromBelow", false);
-        //        internal static int SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default, string overrideDisplayName = "", bool namePlural = false)
-        //        {
-        //            if (npcCenter == default)
-        //            {
-        //                npcCenter = player.Center;
-        //            }
+        // SpawnBoss(player, mod.NPCType("MyBoss"), true, player.Center + new Vector2(0, 800f), "DerpFromBelow", false);
+        internal static int SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default, string overrideDisplayName = "", bool namePlural = false)
+        {
+            if (npcCenter == default)
+            {
+                npcCenter = player.Center;
+            }
 
-        //            if (Main.netMode != NetmodeID.MultiplayerClient)
-        //            {
-        //                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType);
-        //                Main.npc[npcID].Center = npcCenter;
-        //                Main.npc[npcID].netUpdate2 = true;
+            if (Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType);
+                Main.npc[npcID].Center = npcCenter;
+                Main.npc[npcID].netUpdate2 = true;
 
-        //                if (spawnMessage)
-        //                {
-        //                    string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
-        //                    if ((npcName == null || string.IsNullOrEmpty(npcName)) && Main.npc[npcID].modNPC != null)
-        //                    {
-        //                        npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
-        //                    }
+                if (spawnMessage)
+                {
+                    string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
+                    //if ((npcName == null || string.IsNullOrEmpty(npcName)) && Main.npc[npcID].modNPC != null)
+                    //{
+                    //    npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
+                    //}
 
-        //                    if (namePlural)
-        //                    {
-        //                        if (Main.netMode == NetmodeID.SinglePlayer)
-        //                        {
-        //                            Main.NewText(npcName + " have awoken!", 175, 75);
-        //                        }
-        //                        else
-        //                        if (Main.netMode == NetmodeID.Server)
-        //                        {
-        //                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255));
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        if (Main.netMode == NetmodeID.SinglePlayer)
-        //                        {
-        //                            Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75);
-        //                        }
-        //                        else
-        //                        if (Main.netMode == NetmodeID.Server)
-        //                        {
-        //                            NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[] { NetworkText.FromLiteral(npcName) }), new Color(175, 75, 255));
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                // I have no idea how to convert this to the standard system so im gonna post this method too lol
-        //                FargoNet.SendNetMessage(FargoNet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, spawnMessage, npcCenter.X, npcCenter.Y, overrideDisplayName, namePlural);
-        //            }
+                    if (namePlural)
+                    {
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Main.NewText(npcName + " have awoken!", 175, 75);
+                        }
+                        else
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255));
+                        }
+                    }
+                    else
+                    {
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75);
+                        }
+                        else
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[] { NetworkText.FromLiteral(npcName) }), new Color(175, 75, 255));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // I have no idea how to convert this to the standard system so im gonna post this method too lol
+                FargoNet.SendNetMessage(FargoNet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, spawnMessage, npcCenter.X, npcCenter.Y, overrideDisplayName, namePlural);
+            }
 
-        //            return 200;
-        //        }
-
-        //        public override void UpdateUI(GameTime gameTime)
-        //        {
-        //            base.UpdateUI(gameTime);
-        //            UserInterfaceManager.UpdateUI(gameTime);
-        //        }
-
-        //        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-        //        {
-        //            base.ModifyInterfaceLayers(layers);
-        //            UserInterfaceManager.ModifyInterfaceLayers(layers);
-        //        }
+            return 200;
+        }
 
         //        private static void HookIntoLoad()
         //        {

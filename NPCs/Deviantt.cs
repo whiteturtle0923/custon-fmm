@@ -61,10 +61,10 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
-                return false;
+            //if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
+            //    return false;
 
-            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
+            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"]); //|| //(Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => !toKingStatue;
@@ -272,32 +272,32 @@ namespace Fargowiltas.NPCs
             randomOffset = 0f;
         }
 
-        //public override void HitEffect(int hitDirection, double damage)
-        //{
-        //    if (NPC.life <= 0)
-        //    {
-        //        for (int k = 0; k < 8; k++)
-        //        {
-        //            Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default, 0.8f);
-        //        }
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (NPC.life <= 0)
+            {
+                for (int k = 0; k < 8; k++)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default, 0.8f);
+                }
 
-        //        Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-        //        Gore.NewGore(pos, NPC.velocity, mod.GetGoreSlot("Gores/DevianttGore3"));
+                Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore3").Type);
 
-        //        pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-        //        Gore.NewGore(pos, NPC.velocity, mod.GetGoreSlot("Gores/DevianttGore2"));
+                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore2").Type);
 
-        //        pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-        //        Gore.NewGore(pos, NPC.velocity, mod.GetGoreSlot("Gores/DevianttGore1"));
-        //    }
-        //    else
-        //    {
-        //        for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
-        //        {
-        //            Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, 0, default, 0.6f);
-        //        }
-        //    }
-        //}
+                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore1").Type);
+            }
+            else
+            {
+                for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, 0, default, 0.6f);
+                }
+            }
+        }
 
         private void Fargos()
         {
