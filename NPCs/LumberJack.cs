@@ -5,6 +5,7 @@ using Fargowiltas.Items.Vanity;
 using Fargowiltas.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -27,7 +28,9 @@ namespace Fargowiltas.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("LumberJack");
+
             Main.npcFrameCount[NPC.type] = 25;
+
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
             NPCID.Sets.AttackFrameCount[NPC.type] = 4;
             NPCID.Sets.DangerDetectRange[NPC.type] = 700;
@@ -35,6 +38,21 @@ namespace Fargowiltas.NPCs
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
             NPCID.Sets.HatOffsetY[NPC.type] = 2;
+
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                Velocity = -1f,
+                Direction = -1
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+				new FlavorTextBestiaryInfoElement("A wholly ordinary lumberjack that loves chopping wood. But could there be more to him than meets the eye? ...Probably not.")
+            });
         }
 
         public override void SetDefaults()
@@ -61,7 +79,7 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            return GetInstance<FargoConfig>().Lumber && (FargoWorld.DownedBools["lumberjack"]);
+            return GetInstance<FargoConfig>().Lumber && FargoWorld.DownedBools["lumberjack"];
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;

@@ -93,7 +93,9 @@ namespace Fargowiltas
             mods = new string[]
             {
                 "FargowiltasSouls", // Fargo's Souls
-//                "FargowiltasSoulsDLC"
+                "FargowiltasSoulsDLC",
+                "ThoriumMod",
+                "CalamityMod"
             };
 
             ModLoaded = new Dictionary<string, bool>();

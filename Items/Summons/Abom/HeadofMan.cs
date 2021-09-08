@@ -13,12 +13,12 @@ namespace Fargowiltas.Items.Summons.Abom
         {
             DisplayName.SetDefault("Head of Man");
             Tooltip.SetDefault("Summons Headless Horseman" +
-                               "\nOnly usable at night");
+                               "\nOnly usable during Pumpkin Moon");
         }
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime;
+            return Main.pumpkinMoon;
         }
     }
 }

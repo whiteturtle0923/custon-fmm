@@ -7,6 +7,13 @@ ALPHA UPDATE - V 2.5.4
 -Added unsafe spider walls, craftable
 -Added unsafe marble/granite walls, craftable
 -Refactored vanilla town NPC sellings
+-Improved visuals for Mutant post-ML attack
+-NPC bestiary entries
+-Fixed Lumberjack crash
+-Super Dummies cap at 50
+-Transparent Minions is a slider
+-Frost/Pumpkin Moon summons only work during the event since their loot is wave-based, meaning summoning at night doesn't give drops
+-Text prints in chat when most Abom/Deviantt enemy spawners are unlocked to better communicate them to player
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose

@@ -20,6 +20,7 @@ namespace Fargowiltas.Projectiles
             Projectile.height = 12;
             Projectile.timeLeft = 600;
             Projectile.friendly = true;
+            Projectile.npcProj = true;
             Projectile.aiStyle = -1;
 
             Projectile.tileCollide = false;
@@ -60,7 +61,7 @@ namespace Fargowiltas.Projectiles
                 Projectile.ai[0] = -1;
             }
 
-            if (Projectile.ai[0] >= 0 && Projectile.ai[0] < 200)
+            if (Projectile.ai[0] >= 0 && Projectile.ai[0] < Main.maxNPCs)
             {
                 int ai0 = (int)Projectile.ai[0];
                 if (Main.npc[ai0].CanBeChasedBy())
@@ -91,10 +92,10 @@ namespace Fargowiltas.Projectiles
                     Projectile.localAI[1] = 0f;
                     float maxDistance = 700f;
                     int possibleTarget = -1;
-                    for (int i = 0; i < 200; i++)
+                    for (int i = 0; i < Main.maxNPCs; i++)
                     {
                         NPC npc = Main.npc[i];
-                        if (npc.CanBeChasedBy())
+                        if (npc.CanBeChasedBy() && Collision.CanHitLine(Projectile.Center, 0, 0, npc.Center, 0, 0))
                         {
                             float npcDistance = Projectile.Distance(npc.Center);
                             if (npcDistance < maxDistance)
@@ -120,7 +121,7 @@ namespace Fargowiltas.Projectiles
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(255, lightColor.G, lightColor.B, lightColor.A);
+            return new Color(255, lightColor.G, lightColor.B, lightColor.A) * Projectile.Opacity;
         }
 
         //public override bool PreDraw(ref Color lightColor)

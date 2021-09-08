@@ -62,7 +62,7 @@ namespace Fargowiltas.Items.Misc
                         netMessage.Send();
                     }
                 }
-                else
+                else if (NPC.CountNPCS(ModContent.NPCType<NPCs.SuperDummy>()) < 50)
                 {
                     Vector2 pos = new Vector2((int)Main.MouseWorld.X - 9, (int)Main.MouseWorld.Y - 20);
                     Projectile.NewProjectile(player.GetProjectileSource_Item(Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, player.whoAmI, ModContent.NPCType<NPCs.SuperDummy>());
