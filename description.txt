@@ -2,6 +2,13 @@ This is a Quality of life mod that adds the Mutant town NPC who sells boss summo
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
 ALPHA UPDATE - V 2.5.4
+-Added unsafe Dungeon walls, sold at Clothier
+-Added unsafe Lihzahrd walls, craftable
+-Added unsafe spider walls, craftable
+-Added unsafe marble/granite walls, craftable
+-Refactored vanilla town NPC sellings
+
+ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose
 -Readded Expert Token but renamed to World Token and it now cycles through Normal, Expert, Master, and Journey
 -Added new critters and tree shaking drops to Lumberjack's Tree Treasures
