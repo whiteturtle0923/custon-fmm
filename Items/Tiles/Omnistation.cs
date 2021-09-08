@@ -3,13 +3,20 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Tiles
 {
-    public class Omnistation : ModItem
+    public abstract class BaseOmnistation : ModItem
     {
+        protected int bar;
+
+        public BaseOmnistation(int bar)
+        {
+            this.bar = bar;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Omnistation");
             Tooltip.SetDefault(@"Effects of all vanilla buff stations
-Grants Honey when touched
+Grants Honey and Sugar Rush when touched
 Right click while holding a weapon for its respective buff");
         }
 
@@ -38,9 +45,28 @@ Right click while holding a weapon for its respective buff");
                 .AddIngredient(ItemID.AmmoBox, 5)
                 .AddIngredient(ItemID.CrystalBall, 5)
                 .AddIngredient(ItemID.BewitchingTable, 5)
-                .AddIngredient(ItemID.AdamantiteBar, 5)
+                .AddIngredient(ItemID.GardenGnome, 5)
+                .AddIngredient(ItemID.CatBast, 5)
+                .AddIngredient(ItemID.SliceOfCake, 5)
+                .AddIngredient(bar, 5)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
+        }
+    }
+
+    public class Omnistation : BaseOmnistation
+    {
+        public Omnistation() : base(ItemID.AdamantiteBar) { }
+    }
+
+    public class Omnistation2 : BaseOmnistation
+    {
+        public Omnistation2() : base(ItemID.TitaniumBar) { }
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            Item.createTile = ModContent.TileType<OmnistationSheet2>();
         }
     }
 }

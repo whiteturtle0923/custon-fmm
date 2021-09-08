@@ -14,6 +14,7 @@ ALPHA UPDATE - V 2.5.4
 -Transparent Minions is a slider
 -Frost/Pumpkin Moon summons only work during the event since their loot is wave-based, meaning summoning at night doesn't give drops
 -Text prints in chat when most Abom/Deviantt enemy spawners are unlocked to better communicate them to player
+-Omnistation glowmask restored, gives Gnome and Bast when nearby, Sugar Rush when touched
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose
