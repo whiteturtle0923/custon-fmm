@@ -290,7 +290,7 @@ namespace Fargowiltas.NPCs
                     if (next >= 40)
                         return;
 
-                    shop.item[next].SetDefaults(ItemID.PharaohsMask);
+                    shop.item[next].SetDefaults(itemID);
                     if (customPrice != -1)
                         shop.item[next].shopCustomPrice = customPrice;
 

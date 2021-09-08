@@ -7,7 +7,7 @@ using Terraria;
 
 namespace Fargowiltas.Items.Tiles
 {
-    public class UnsafeWall : ModItem
+    public abstract class UnsafeWall : ModItem
     {
         private readonly string name;
         private readonly int createWall;
@@ -19,7 +19,7 @@ namespace Fargowiltas.Items.Tiles
             this.name = name;
             this.createWall = createWall;
             this.wall = wall;
-            this.tile = wall;
+            this.tile = tile;
         }
 
         public override void SetStaticDefaults()
@@ -47,15 +47,17 @@ namespace Fargowiltas.Items.Tiles
         {
             if (wall != -1)
             {
-                var recipe = Mod.CreateRecipe(Type);
-                recipe.AddIngredient(wall);
-                recipe.AddTile(TileID.WorkBenches);
+                Mod.CreateRecipe(Type)
+                    .AddIngredient(wall)
+                    .AddTile(TileID.WorkBenches)
+                    .Register();
             }
             if (tile != -1)
             {
-                var recipe = Mod.CreateRecipe(Type, 4);
-                recipe.AddIngredient(tile);
-                recipe.AddTile(TileID.WorkBenches);
+                Mod.CreateRecipe(Type, 4)
+                    .AddIngredient(tile)
+                    .AddTile(TileID.WorkBenches)
+                    .Register();
             }
         }
     }
@@ -69,7 +71,7 @@ namespace Fargowiltas.Items.Tiles
     public class UnsafeBlueTileWall : UnsafeWall
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.BlueTiledWall}";
-        public UnsafeBlueTileWall() : base("Unsafe Blue Slab Wall", WallID.BlueDungeonTileUnsafe) { }
+        public UnsafeBlueTileWall() : base("Unsafe Blue Tile Wall", WallID.BlueDungeonTileUnsafe) { }
     }
 
     public class UnsafeBlueBrickWall : UnsafeWall
@@ -87,7 +89,7 @@ namespace Fargowiltas.Items.Tiles
     public class UnsafeGreenTileWall : UnsafeWall
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.GreenTiledWall}";
-        public UnsafeGreenTileWall() : base("Unsafe Green Slab Wall", WallID.GreenDungeonTileUnsafe) { }
+        public UnsafeGreenTileWall() : base("Unsafe Green Tile Wall", WallID.GreenDungeonTileUnsafe) { }
     }
 
     public class UnsafeGreenBrickWall : UnsafeWall
@@ -105,13 +107,19 @@ namespace Fargowiltas.Items.Tiles
     public class UnsafePinkTileWall : UnsafeWall
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.PinkTiledWall}";
-        public UnsafePinkTileWall() : base("Unsafe Pink Slab Wall", WallID.PinkDungeonTileUnsafe) { }
+        public UnsafePinkTileWall() : base("Unsafe Pink Tile Wall", WallID.PinkDungeonTileUnsafe) { }
     }
 
     public class UnsafePinkBrickWall : UnsafeWall
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.PinkBrickWall}";
         public UnsafePinkBrickWall() : base("Unsafe Pink Brick Wall", WallID.PinkDungeonUnsafe) { }
+    }
+
+    public class UnsafeLihzahrdBrickWall : UnsafeWall
+    {
+        public override string Texture => $"Terraria/Images/Item_{ItemID.LihzahrdBrickWall}";
+        public UnsafeLihzahrdBrickWall() : base("Unsafe Lihzahrd Brick Wall", WallID.LihzahrdBrickUnsafe, ItemID.LihzahrdBrickWall, ItemID.LihzahrdBrick) { }
     }
 
     public class UnsafeSpiderWall : UnsafeWall
