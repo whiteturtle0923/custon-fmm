@@ -113,11 +113,6 @@ namespace Fargowiltas.Items
                 {
                     item.maxStack = 9999;
                 }
-
-                if (item.type == ItemID.PirateMap || item.type == ItemID.SnowGlobe)
-                {
-                    item.maxStack = 9999;
-                }
             }
         }
 

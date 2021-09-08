@@ -19,7 +19,38 @@ namespace Fargowiltas.NPCs
 {
     public class FargoGlobalNPC : GlobalNPC
     {
-                internal static int[] Bosses = { NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.SkeletronHead, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Retinazer, NPCID.Spazmatism, NPCID.Plantera, NPCID.Golem, NPCID.DukeFishron, NPCID.CultistBoss, NPCID.MoonLordCore, NPCID.MartianSaucerCore, NPCID.Pumpking, NPCID.IceQueen, NPCID.DD2Betsy, NPCID.DD2OgreT3, NPCID.IceGolem, NPCID.SandElemental, NPCID.Paladin, NPCID.Everscream, NPCID.MourningWood, NPCID.SantaNK1, NPCID.HeadlessHorseman, NPCID.PirateShip };
+        internal static int[] Bosses = { 
+            NPCID.KingSlime,
+            NPCID.EyeofCthulhu,
+            //NPCID.EaterofWorldsHead,
+            NPCID.BrainofCthulhu,
+            NPCID.QueenBee,
+            NPCID.SkeletronHead,
+            NPCID.QueenSlimeBoss,
+            NPCID.TheDestroyer,
+            NPCID.SkeletronPrime,
+            NPCID.Retinazer,
+            NPCID.Spazmatism,
+            NPCID.Plantera,
+            NPCID.Golem,
+            NPCID.DukeFishron,
+            NPCID.HallowBoss,
+            NPCID.CultistBoss,
+            NPCID.MoonLordCore,
+            NPCID.MartianSaucerCore,
+            NPCID.Pumpking,
+            NPCID.IceQueen,
+            NPCID.DD2Betsy,
+            NPCID.DD2OgreT3,
+            NPCID.IceGolem,
+            NPCID.SandElemental,
+            NPCID.Paladin,
+            NPCID.Everscream,
+            NPCID.MourningWood,
+            NPCID.SantaNK1,
+            NPCID.HeadlessHorseman,
+            NPCID.PirateShip 
+        };
 
         public static int LastWoFIndex = -1;
         public static int WoFDirection = 0;
@@ -723,6 +754,10 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.WallofFlesh, NPCID.TheHungry, ItemID.WallOfFleshBossBag, ItemID.WallofFleshTrophy, ItemType<EnergizerWall>());
                         break;
 
+                    case NPCID.QueenSlimeBoss:
+                        Swarm(npc, NPCID.QueenSlimeBoss, NPCID.QueenSlimeMinionPink, ItemID.QueenSlimeBossBag, ItemID.QueenSlimeTrophy, ItemType<EnergizerQueenSlime>());
+                        break;
+
                     case NPCID.TheDestroyer:
                         Swarm(npc, NPCID.TheDestroyer, NPCID.Probe, ItemID.DestroyerBossBag, ItemID.DestroyerTrophy, ItemType<EnergizerDestroy>());
                         break;
@@ -753,6 +788,10 @@ namespace Fargowiltas.NPCs
 
                     case NPCID.DukeFishron:
                         Swarm(npc, NPCID.DukeFishron, NPCID.Sharkron, ItemID.FishronBossBag, ItemID.DukeFishronTrophy, ItemType<EnergizerFish>());
+                        break;
+
+                    case NPCID.HallowBoss:
+                        Swarm(npc, NPCID.HallowBoss, -1, ItemID.FairyQueenBossBag, ItemID.FairyQueenTrophy, ItemType<EnergizerEmpress>());
                         break;
 
                     case NPCID.CultistBoss:

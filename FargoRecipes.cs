@@ -270,6 +270,8 @@ namespace Fargowiltas
             AddSummonConversion(ModContent.ItemType<Abeemination2>(), ItemID.Abeemination);
             AddSummonConversion(ModContent.ItemType<WormyFood>(), ItemID.WormFood);
             AddSummonConversion(ModContent.ItemType<SuspiciousEye>(), ItemID.SuspiciousLookingEye);
+            AddSummonConversion(ModContent.ItemType<PrismaticPrimrose>(), ItemID.EmpressButterfly);
+            AddSummonConversion(ModContent.ItemType<JellyCrystal>(), ItemID.QueenSlimeCrystal);
         }
 
         private void AddEvilConversions()

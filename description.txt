@@ -17,6 +17,11 @@ ALPHA UPDATE - V 2.5.4
 -Omnistation glowmask restored
 -Omnistation now gives Honey by proximity instead of on touch
 -Omnistation includes Bast, Gnome, Gold Ladybug, Cake
+-Added Endless Star Pouch
+-Added Swarm Crystal
+-Added Jar of Lacewings
+-Added Empress/Queen Slime swarm spawners
+-Empress/Queen Slime spawners can be crafted back and forth
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose

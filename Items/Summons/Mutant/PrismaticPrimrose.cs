@@ -18,14 +18,12 @@ namespace Fargowiltas.Items.Summons.Mutant
             Tooltip.SetDefault("Summons the Empress of Light");
         }
 
-        //public override void AddRecipes()
-        //{
-        //    CreateRecipe()
-        //       .AddIngredient(ItemID.ChlorophyteBar, 2)
-        //       .AddIngredient(ItemID.Moonglow, 5)
-        //       .AddIngredient(ItemID.Blinkroot, 5)
-        //       .AddTile(TileID.DemonAltar)
-        //       .Register();
-        //}
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+               .AddIngredient(ItemID.EmpressButterfly)
+               .AddTile(TileID.WorkBenches)
+               .Register();
+        }
     }
 }

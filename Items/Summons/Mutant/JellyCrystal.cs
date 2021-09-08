@@ -20,14 +20,12 @@ namespace Fargowiltas.Items.Summons.Mutant
             Tooltip.SetDefault("Summons Queen Slime");
         }
 
-        //public override void AddRecipes()
-        //{
-        //    CreateRecipe()
-        //       .AddIngredient(ItemID.ChlorophyteBar, 2)
-        //       .AddIngredient(ItemID.Moonglow, 5)
-        //       .AddIngredient(ItemID.Blinkroot, 5)
-        //       .AddTile(TileID.DemonAltar)
-        //       .Register();
-        //}
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+               .AddIngredient(ItemID.QueenSlimeCrystal)
+               .AddTile(TileID.WorkBenches)
+               .Register();
+        }
     }
 }
