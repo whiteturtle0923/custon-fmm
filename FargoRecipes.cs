@@ -322,7 +322,7 @@ namespace Fargowiltas
             //AddNPCRecipes();
             AddTreasureBagRecipes();
             //AddFurnitureRecipes();
-            //AddMiscRecipes();
+            AddMiscRecipes();
             AddVanillaRecipes();
         }
 
