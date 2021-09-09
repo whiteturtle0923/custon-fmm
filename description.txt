@@ -36,6 +36,13 @@ ALPHA UPDATE - V 2.5.4
 -Added Faster Lava Fishing option
 -Added Endless Tungsten Pouch
 -Added Endless Rocket Bags for 1.4 Rockets
+-Added recipes for Desert Key, Desert Tiger Staff
+-Restored boss bag recipes
+-Restored cheaper recipe for Beetle armor (but uses Chlorophyte armor now)
+-Restored ancient armor recipes
+-Restored miscellaneous recipes
+-Added The Dutchman recipe
+-Added recipes for Empress/Queen Slime drops
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose
