@@ -6,11 +6,9 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Slimier Energizer");
+            DisplayName.SetDefault("Crystalline Energizer");
             Tooltip.SetDefault("Formed after using 10 Swarm Crystals\n'It feels very slimy'");
         }
-
-        public override string Texture => "Fargowiltas/Items/Placeholder";
 
         public override void SetDefaults()
         {
