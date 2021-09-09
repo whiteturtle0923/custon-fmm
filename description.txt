@@ -45,6 +45,7 @@ ALPHA UPDATE - V 2.5.4
 -Added Universal Pylon recipe
 -Added recipes for Empress/Queen Slime drops
 -Attempted fixing Lumberjack world save glitch
+-Moon Lord has 1% chance to drop Moon Lord Legs
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose

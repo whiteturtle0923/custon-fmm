@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Chat;
 using Terraria.GameContent.Events;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -1119,6 +1120,11 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.Clown:
                     Item.NewItem(npc.Hitbox, ItemID.Bananarang);
+                    break;
+
+                case NPCID.MoonLordCore:
+                    if (Main.rand.NextBool(100))
+                        Item.NewItem(npc.Hitbox, ItemID.MoonLordLegs);
                     break;
             }
 
