@@ -42,6 +42,7 @@ ALPHA UPDATE - V 2.5.4
 -Restored ancient armor recipes
 -Restored miscellaneous recipes
 -Added The Dutchman recipe
+-Added Universal Pylon recipe
 -Added recipes for Empress/Queen Slime drops
 -Attempted fixing Lumberjack world save glitch
 

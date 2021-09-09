@@ -2605,6 +2605,19 @@ namespace Fargowiltas
                 .AddIngredient(ItemID.Vine, 2)
                 .AddTile(TileID.DemonAltar)
                 .Register();
+
+            mod.CreateRecipe(ItemID.TeleportationPylonVictory)
+                .AddIngredient(ItemID.TeleportationPylonDesert)
+                .AddIngredient(ItemID.TeleportationPylonHallow)
+                .AddIngredient(ItemID.TeleportationPylonJungle)
+                .AddIngredient(ItemID.TeleportationPylonMushroom)
+                .AddIngredient(ItemID.TeleportationPylonOcean)
+                .AddIngredient(ItemID.TeleportationPylonPurity)
+                .AddIngredient(ItemID.TeleportationPylonSnow)
+                .AddIngredient(ItemID.TeleportationPylonUnderground)
+                .AddIngredient(ItemID.PlatinumCoin)
+                .AddTile(TileID.DemonAltar)
+                .Register();
         }
     }
 }
