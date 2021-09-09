@@ -33,6 +33,7 @@ ALPHA UPDATE - V 2.5.4
 -Added Golden Dipping Vat
 -Party Cone can be used to get Party Girl Cake
 -Lowered cost of Omnistation recipe
+-Added Faster Lava Fishing option
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose

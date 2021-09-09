@@ -98,6 +98,12 @@ namespace Fargowiltas.Projectiles
                     lowRender = true;
             }
 
+            if (projectile.bobber && projectile.lavaWet && GetInstance<FargoConfig>().FasterLavaFishing)
+            {
+                if (projectile.ai[0] == 0 && projectile.ai[1] == 0 && projectile.localAI[1] < 600)
+                    projectile.localAI[1]++;
+            }
+
             return true;
         }
 
