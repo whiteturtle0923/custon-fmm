@@ -43,6 +43,7 @@ ALPHA UPDATE - V 2.5.4
 -Restored miscellaneous recipes
 -Added The Dutchman recipe
 -Added recipes for Empress/Queen Slime drops
+-Attempted fixing Lumberjack world save glitch
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose

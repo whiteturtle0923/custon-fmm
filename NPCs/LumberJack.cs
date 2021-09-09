@@ -79,7 +79,7 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            return GetInstance<FargoConfig>().Lumber && FargoWorld.DownedBools["lumberjack"];
+            return GetInstance<FargoConfig>().Lumber && FargoWorld.DownedBools.TryGetValue("lumberjack", out bool down) && down;
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;

@@ -133,7 +133,7 @@ namespace Fargowiltas
             {
                 foreach (string mod in mods)
                 {
-                    ModLoaded[mod] = ModLoader.GetMod(mod) != null;
+                    ModLoaded[mod] = ModLoader.TryGetMod(mod, out Mod otherMod);
                 }
             }
             catch (Exception e)

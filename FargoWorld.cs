@@ -103,7 +103,8 @@ namespace Fargowiltas
             List<string> downed = new List<string>();
             foreach (string tag in tags)
             {
-                downed.AddWithCondition(tag, DownedBools[tag]);
+                if (DownedBools.TryGetValue(tag, out bool down) && down)
+                    downed.AddWithCondition(tag, down);
             }
 
             return new TagCompound

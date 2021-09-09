@@ -37,7 +37,7 @@ namespace Fargowiltas.Tiles
 
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
-            if (type == TileID.Trees && !FargoWorld.DownedBools["lumberjack"] && !fail)
+            if (type == TileID.Trees && !fail && !(FargoWorld.DownedBools.TryGetValue("lumberjack", out bool down) && down))
             {
                 FargoWorld.WoodChopped++;
 
