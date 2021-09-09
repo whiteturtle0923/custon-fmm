@@ -34,6 +34,8 @@ ALPHA UPDATE - V 2.5.4
 -Party Cone can be used to get Party Girl Cake
 -Lowered cost of Omnistation recipe
 -Added Faster Lava Fishing option
+-Added Endless Tungsten Pouch
+-Added Endless Rocket Bags for 1.4 Rockets
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose
