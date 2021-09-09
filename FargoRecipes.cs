@@ -857,12 +857,11 @@ namespace Fargowiltas
             AddHerbBagRecipe(ItemID.Shiverthorn);
             AddHerbBagRecipe(ItemID.Daybloom);
 
-            void AddCrateRecipe(int result, int crate, int crateAmount, int hardCrate, int hardCrateAmount = 1, int extraItem = -1)
+            void AddCrateRecipe(int result, int crate, int crateAmount, int hardCrate, int extraItem = -1)
             {
-                var recipe = mod.CreateRecipe(result);
-
                 if (crate != -1)
                 {
+                    var recipe = mod.CreateRecipe(result);
                     recipe.AddIngredient(crate, crateAmount);
                     if (extraItem != -1)
                     {
@@ -871,45 +870,45 @@ namespace Fargowiltas
                     recipe.AddTile(TileID.WorkBenches);
                     recipe.Register();
                 }
-                
-                recipe = mod.CreateRecipe(result);
-                recipe.AddIngredient(hardCrate, hardCrateAmount);
-                if (extraItem != -1)
+
+                if (hardCrate != -1)
                 {
-                    recipe.AddIngredient(extraItem);
+                    var recipe = mod.CreateRecipe(result);
+                    recipe.AddIngredient(hardCrate, crateAmount);
+                    if (extraItem != -1)
+                    {
+                        recipe.AddIngredient(extraItem);
+                    }
+                    recipe.AddTile(TileID.WorkBenches);
+                    recipe.Register();
                 }
-                recipe.AddTile(TileID.WorkBenches);
-                recipe.Register();
             }
 
             //wooden
-            AddCrateRecipe(ItemID.SailfishBoots, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.TsunamiInABottle, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Extractinator, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Aglet, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.CordageGuide, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Umbrella, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.ClimbingClaws, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Radar, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.WoodenBoomerang, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.WandofSparking, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Spear, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Blowpipe, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.PortableStool, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.BabyBirdStaff, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.SunflowerMinecart, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.LadybugMinecart, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Anchor, -1, 0, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.SailfishBoots, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.TsunamiInABottle, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Extractinator, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Aglet, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.CordageGuide, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Umbrella, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.ClimbingClaws, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Radar, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.WoodenBoomerang, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.WandofSparking, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Spear, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Blowpipe, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.PortableStool, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.BabyBirdStaff, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.SunflowerMinecart, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.LadybugMinecart, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Anchor, -1, 3, ItemID.WoodenCrateHard);
 
             //iron
-            AddCrateRecipe(ItemID.FalconBlade, ItemID.IronCrate, 1, ItemID.IronCrateHard);
-            AddCrateRecipe(ItemID.TartarSauce, ItemID.IronCrate, 1, ItemID.IronCrateHard);
-            AddCrateRecipe(ItemID.GingerBeard, ItemID.IronCrate, 1, ItemID.IronCrateHard);
+            AddCrateRecipe(ItemID.FalconBlade, ItemID.IronCrate, 3, ItemID.IronCrateHard);
+            AddCrateRecipe(ItemID.TartarSauce, ItemID.IronCrate, 3, ItemID.IronCrateHard);
+            AddCrateRecipe(ItemID.GingerBeard, ItemID.IronCrate, 3, ItemID.IronCrateHard);
 
             //gold
-            AddCrateRecipe(ItemID.HardySaddle, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
-            AddCrateRecipe(ItemID.Sundial, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
-            AddCrateRecipe(ItemID.EnchantedSword, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.BandofRegeneration, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.MagicMirror, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.FlareGun, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
@@ -918,6 +917,11 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.CloudinaBottle, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.Mace, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.LuckyHorseshoe, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
+            AddCrateRecipe(ItemID.LifeCrystal, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
+            AddCrateRecipe(ItemID.HardySaddle, -1, 5, ItemID.GoldenCrateHard);
+            AddCrateRecipe(ItemID.EnchantedSword, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
+
+            AddCrateRecipe(ItemID.Sundial, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard); //actually should be hm but fuck it
 
             //jungle
             AddCrateRecipe(ItemID.AnkletoftheWind, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
@@ -925,9 +929,9 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.FeralClaws, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
             AddCrateRecipe(ItemID.StaffofRegrowth, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
             AddCrateRecipe(ItemID.FiberglassFishingPole, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
-            AddCrateRecipe(ItemID.FlowerBoots, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
-            AddCrateRecipe(ItemID.Seaweed, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
             AddCrateRecipe(ItemID.BeeMinecart, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
+            AddCrateRecipe(ItemID.Seaweed, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
+            AddCrateRecipe(ItemID.FlowerBoots, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
 
             //sky
             AddCrateRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
@@ -948,6 +952,8 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.CrimsonRod, ItemID.CrimsonFishingCrate, 1, ItemID.CrimsonFishingCrateHard);
             AddCrateRecipe(ItemID.PanicNecklace, ItemID.CrimsonFishingCrate, 1, ItemID.CrimsonFishingCrateHard);
             AddCrateRecipe(ItemID.CrimsonHeart, ItemID.CrimsonFishingCrate, 1, ItemID.CrimsonFishingCrateHard);
+
+            //hallow
 
             //dungeon
             AddCrateRecipe(ItemID.WaterBolt, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
@@ -973,8 +979,6 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.Fish, ItemID.FrozenCrate, 5, ItemID.FrozenCrateHard);
 
             //oasis crate
-            AddCrateRecipe(ItemID.FlyingCarpet, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
-            AddCrateRecipe(ItemID.SandstorminaBottle, ItemID.GoldenCrate, 3, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.AncientChisel, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.ThunderSpear, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.ScarabFishingRod, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
@@ -984,22 +988,24 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.MysticCoilSnake, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.DesertMinecart, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.EncumberingStone, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
+            AddCrateRecipe(ItemID.FlyingCarpet, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
+            AddCrateRecipe(ItemID.SandstorminaBottle, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
 
             //obsidian
-            AddCrateRecipe(ItemID.HellCake, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.OrnateShadowKey, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.SuperheatedBlood, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.SuperheatedBlood, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.FlameWakerBoots, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.HellMinecart, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.LavaFishingHook, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
-
             AddCrateRecipe(ItemID.DarkLance, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.HellwingBow, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.Flamelash, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.FlowerofFire, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.Sunfury, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.TreasureMagnet, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
+
+            AddCrateRecipe(ItemID.LavaCharm, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.HellCake, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.OrnateShadowKey, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.SuperheatedBlood, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.FlameWakerBoots, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.LavaFishingHook, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.HellMinecart, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
 
             // ocean crate
             AddCrateRecipe(ItemID.Trident, ItemID.OceanCrate, 1, ItemID.OceanCrateHard);
