@@ -24,6 +24,7 @@ ALPHA UPDATE - V 2.5.4
 -Empress/Queen Slime spawners can be crafted back and forth
 -Fixed crate recipes requiring several hundred hardmode crates to craft the same thing as 1 or 5 pre-Hardmode crates
 -Recalculated crate recipes
+-Added bestiary mod icon
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose

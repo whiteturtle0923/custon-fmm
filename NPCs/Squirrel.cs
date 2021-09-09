@@ -48,7 +48,7 @@ namespace Fargowiltas.NPCs
 
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
-                Velocity = 0f,
+                Velocity = -1f,
                 Direction = -1
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
@@ -371,32 +371,32 @@ namespace Fargowiltas.NPCs
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D texture2D13 = Request<Texture2D>(Texture).Value;
+            //Texture2D texture2D13 = Request<Texture2D>(Texture).Value;
             //int num156 = Main.NPCTexture[NPC.type].Height / Main.NPCFrameCount[NPC.type]; //ypos of lower right corner of sprite to draw
             //int y3 = num156 * NPC.frame.Y; //ypos of upper left corner of sprite to draw
             Rectangle rectangle = NPC.frame;//new Rectangle(0, y3, texture2D13.Width, num156);
             Vector2 origin2 = rectangle.Size() / 2f;
-
-            Color color26 = drawColor;
-            color26 = NPC.GetAlpha(color26);
-
             SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-
             if (Main.bloodMoon)
             {
                 Texture2D texture2D14 = Request<Texture2D>(Texture + "_Glow").Value;
                 float scale = (Main.mouseTextColor / 200f - 0.35f) * 0.3f + 0.9f;
                 Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, scale, effects, 0f);
             }
+            //Main.spriteBatch.Draw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), color26, NPC.rotation, origin2, NPC.scale, effects, 0f);
+            return true;
+        }
 
-            Main.spriteBatch.Draw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), color26, NPC.rotation, origin2, NPC.scale, effects, 0f);
-
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
             if (Main.bloodMoon)
             {
                 Texture2D texture2D14 = Request<Texture2D>(Texture + "_Eyes").Value;
+                Rectangle rectangle = NPC.frame;
+                Vector2 origin2 = rectangle.Size() / 2f;
+                SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
                 Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, NPC.scale, effects, 0f);
             }
-            return false;
         }
     }
 }
