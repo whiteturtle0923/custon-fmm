@@ -10,12 +10,13 @@ namespace Fargowiltas.Items.Summons
     {
         public override string Texture => "Terraria/Images/Item_43";
 
-        public override int Type => NPCID.EyeofCthulhu;
+        public override int NPCType => NPCID.EyeofCthulhu;
 
         public override string NPCName => "Eye of Cthulhu";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Eye That Could Be Seen As Suspicious");
             Tooltip.SetDefault("Summons the Eye of Cthulhu");
         }

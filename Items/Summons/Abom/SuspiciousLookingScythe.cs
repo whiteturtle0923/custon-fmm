@@ -5,12 +5,13 @@ namespace Fargowiltas.Items.Summons.Abom
 {
     public class SuspiciousLookingScythe : BaseSummon
     {
-        public override int Type => NPCID.Pumpking;
+        public override int NPCType => NPCID.Pumpking;
 
         public override string NPCName => "Pumpking";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Suspicious Looking Scythe");
             Tooltip.SetDefault("Summons Pumpking" +
                                "\nOnly usable during Pumpkin Moon");

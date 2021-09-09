@@ -12,6 +12,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
     {
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Amalgamated Skull");
             Tooltip.SetDefault("Summons the skeleton gunners" +
                                "\nOnly usable at night or underground");

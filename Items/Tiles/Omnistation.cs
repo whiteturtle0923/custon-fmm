@@ -15,8 +15,10 @@ namespace Fargowiltas.Items.Tiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Omnistation");
-            Tooltip.SetDefault(@"Effects of all vanilla buff stations
+            Tooltip.SetDefault(@"Can be reused infinitely
+Effects of all vanilla buff stations
 Right click while holding a weapon for its respective buff");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

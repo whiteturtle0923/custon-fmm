@@ -15,6 +15,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                                "A Trophy will drop every 10 kills\n" +
                                "An Energizer will drop every 100 kills");
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 4));
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()

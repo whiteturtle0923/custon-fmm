@@ -9,6 +9,7 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault("Regal Statue");
             Tooltip.SetDefault("Town NPCs respawn extremely quickly when nearby");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

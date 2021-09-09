@@ -29,6 +29,7 @@ namespace Fargowiltas.Items.Renewals
         {
             DisplayName.SetDefault(name);
             Tooltip.SetDefault(tooltip);
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
         }
 
         public override void SetDefaults()

@@ -10,6 +10,7 @@ namespace Fargowiltas.Items.Explosives
         {
             DisplayName.SetDefault("Boom Shuriken");
             Tooltip.SetDefault("Rapid firing explosives");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 999;
         }
 
         public override void SetDefaults()

@@ -18,6 +18,7 @@ namespace Fargowiltas.Items.Misc
                                "\nSame as regular Target Dummy except minions and projectiles detect and home onto it" +
                                "\nOn hit effects get triggered as well" +
                                "\nRight click to remove all spawned super dummies");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

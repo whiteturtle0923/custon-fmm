@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -12,6 +13,7 @@ namespace Fargowiltas.Items.Weapons
             DisplayName.SetDefault("The Lumber Jaxe");
             Tooltip.SetDefault("Hit enemies may drop wood when killed" +
                                "\n'The former weapon of a true axe wielding hero'");
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

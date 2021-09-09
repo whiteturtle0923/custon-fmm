@@ -17,6 +17,7 @@ namespace Fargowiltas.Items.Summons.Mutant
             DisplayName.SetDefault("Death Bringer Fairy");
             Tooltip.SetDefault("Summons all pre-hardmode bosses" +
                                "\nCertain bosses will only spawn if you're in their specific biome");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()

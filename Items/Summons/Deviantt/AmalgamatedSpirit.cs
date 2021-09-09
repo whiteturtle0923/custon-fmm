@@ -12,6 +12,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
     {
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Amalgamated Spirit");
             Tooltip.SetDefault("Summons the skeleton mages" +
                                "\nOnly usable at night or underground");

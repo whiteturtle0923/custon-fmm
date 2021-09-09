@@ -13,6 +13,7 @@ namespace Fargowiltas.Items.Misc
             Tooltip.SetDefault("Left click to instantly switch from day to night" +
                                "\nRight click to activate the Enchanted Sundial effect" +
                                "\nThis will also reset travelling merchant's shops");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

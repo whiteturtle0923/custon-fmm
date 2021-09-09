@@ -17,6 +17,7 @@ namespace Fargowiltas.Items.Summons.Mutant
             DisplayName.SetDefault("Suspicious Skull");
             Tooltip.SetDefault("Summons Skeletron without killing the Clothier" +
                                "\nSummons the Dungeon Guardian during the day");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()

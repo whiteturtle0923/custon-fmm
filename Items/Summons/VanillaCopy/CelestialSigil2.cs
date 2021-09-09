@@ -10,12 +10,13 @@ namespace Fargowiltas.Items.Summons
     {
         public override string Texture => "Terraria/Images/Item_3601";
 
-        public override int Type => NPCID.MoonLordCore;
+        public override int NPCType => NPCID.MoonLordCore;
 
         public override string NPCName => "Moon Lord";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Celestially Sigil");
             Tooltip.SetDefault("Summons the Moon Lord instantly");
         }

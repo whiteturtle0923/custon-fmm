@@ -5,12 +5,13 @@ namespace Fargowiltas.Items.Summons.Abom
 {
     public class SpookyBranch : BaseSummon
     {
-        public override int Type => NPCID.MourningWood;
+        public override int NPCType => NPCID.MourningWood;
 
         public override string NPCName => "Mourning Wood";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Spooky Branch");
             Tooltip.SetDefault("Summons Mourning Wood" +
                                "\nOnly usable during Pumpkin Moon");

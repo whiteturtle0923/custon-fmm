@@ -11,6 +11,7 @@ namespace Fargowiltas.Items.Explosives
         {
             DisplayName.SetDefault("Instavator");
             Tooltip.SetDefault("Creates a hellevator instantly\nDo not use if any important building is below");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
         }
 
         public override void SetDefaults()

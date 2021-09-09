@@ -1,8 +1,5 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Terraria;
 
 namespace Fargowiltas.Items.Tiles
@@ -26,6 +23,7 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault(name);
             Tooltip.SetDefault("Allows area-specific enemies to spawn");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 400;
         }
 
         public override void SetDefaults()

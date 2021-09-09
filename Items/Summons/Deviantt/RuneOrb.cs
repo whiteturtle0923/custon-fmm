@@ -5,12 +5,13 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class RuneOrb : BaseSummon
     {
-        public override int Type => NPCID.RuneWizard;
+        public override int NPCType => NPCID.RuneWizard;
 
         public override string NPCName => "Rune Wizard";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Rune Orb");
             Tooltip.SetDefault("Summons Rune Wizard" +
                                "\nOnly usable at night or underground");

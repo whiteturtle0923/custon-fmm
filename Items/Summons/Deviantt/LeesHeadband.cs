@@ -5,12 +5,13 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class LeesHeadband : BaseSummon
     {
-        public override int Type => NPCID.BoneLee;
+        public override int NPCType => NPCID.BoneLee;
 
         public override string NPCName => "Bone Lee";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Lee's Headband");
             Tooltip.SetDefault("Summons Bone Lee" +
                                "\nOnly usable at night or underground");

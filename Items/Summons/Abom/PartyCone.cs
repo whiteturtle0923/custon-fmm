@@ -13,6 +13,7 @@ namespace Fargowiltas.Items.Summons.Abom
         {
             DisplayName.SetDefault("Party Cone");
             Tooltip.SetDefault("Starts a Party!");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()
