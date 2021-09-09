@@ -33,6 +33,8 @@ namespace Fargowiltas.Projectiles
             Projectile.tileCollide = false;
             Projectile.penetrate = 50;
             Projectile.timeLeft = 600;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
