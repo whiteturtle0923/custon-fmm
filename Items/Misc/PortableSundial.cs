@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -65,6 +66,11 @@ namespace Fargowiltas.Items.Misc
                 {
                     Main.moonPhase = 0;
                 }
+
+                if (Main.dayTime)
+                    BirthdayParty.CheckMorning();
+                else
+                    BirthdayParty.CheckNight();
             }
 
             return true;

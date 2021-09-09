@@ -1300,6 +1300,27 @@ namespace Fargowiltas.NPCs
                     FargoUtils.TryDowned(npc, "Abominationn", Color.Orange, "headlessHorseman");
                     break;
 
+                case NPCID.ZombieMerman:
+                case NPCID.EyeballFlyingFish:
+                    FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, NPC.downedPlantBoss, "rareEnemy", "zombieMerman", "eyeFish");
+                    break;
+
+                case NPCID.BloodEelHead:
+                    FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, NPC.downedPlantBoss, "rareEnemy", "bloodEel");
+                    break;
+
+                case NPCID.GoblinShark:
+                    FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, NPC.downedPlantBoss, "rareEnemy", "goblinShark");
+                    break;
+
+                case NPCID.BloodNautilus:
+                    FargoUtils.TryDowned(npc, "Abominationn", Color.Orange, "dreadnautilus");
+                    break;
+
+                case NPCID.Gnome:
+                    FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "gnome");
+                    break;
+
                 default:
                     break;
             }

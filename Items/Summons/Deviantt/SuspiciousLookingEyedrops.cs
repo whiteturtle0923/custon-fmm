@@ -8,19 +8,19 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class AmalgamatedSkull : ModItem
+    public class SuspiciousLookingEyedrops : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Amalgamated Skull");
-            Tooltip.SetDefault("Summons the skeleton gunners" +
-                               "\nOnly usable at night or underground");
+            DisplayName.SetDefault("Suspicious Looking Eyedrops");
+            Tooltip.SetDefault("Summons Wandering Eye Fish and Zombie Merman" +
+                               "\nOnly usable at night");
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime || player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight;
+            return !Main.dayTime;
         }
 
         public override void SetDefaults()
@@ -40,13 +40,10 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
-            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCID.SkeletonSniper);
+            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCID.EyeballFlyingFish);
 
             pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
-            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCID.TacticalSkeleton);
-
-            pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
-            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCID.SkeletonCommando);
+            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCID.ZombieMerman);
 
             SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
 

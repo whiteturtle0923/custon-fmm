@@ -27,24 +27,28 @@ namespace Fargowiltas
             RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Wood", new int[] { ItemID.Ebonwood, ItemID.Shadewood });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
 
-            //iron anvil
-            group = new RecipeGroup(() => "Any Demon Altar", new int[] { ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() });
+            //gold bar
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Gold Bar", new int[] { ItemID.GoldBar, ItemID.PlatinumBar });
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyGoldBar", group);
+
+            //demon altar
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Demon Altar", new int[] { ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDemonAltar", group);
 
             //iron anvil
-            group = new RecipeGroup(() => "Any Iron Anvil", new int[] { ItemID.IronAnvil, ItemID.LeadAnvil});
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Iron Anvil", new int[] { ItemID.IronAnvil, ItemID.LeadAnvil});
             RecipeGroup.RegisterGroup("Fargowiltas:AnyAnvil", group);
 
             //anvil HM
-            group = new RecipeGroup(() => "Any Mythril Anvil", ItemID.MythrilAnvil, ItemID.OrichalcumAnvil);
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mythril Anvil", ItemID.MythrilAnvil, ItemID.OrichalcumAnvil);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyHMAnvil", group);
 
             //forge HM
-            group = new RecipeGroup(() => "Any Adamantite Forge", ItemID.AdamantiteForge, ItemID.TitaniumForge);
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Adamantite Forge", ItemID.AdamantiteForge, ItemID.TitaniumForge);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyForge", group);
 
             //book cases
-            group = new RecipeGroup(() => "Any Bookcase", new int[]
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Bookcase", new int[]
             {
                 ItemID.Bookcase,
                 ItemID.BlueDungeonBookcase,
@@ -226,6 +230,66 @@ namespace Fargowiltas
 
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Cooking Pot", ItemID.CookingPot, ItemID.Cauldron);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCookingPot", group);
+
+            //vanilla butterflies
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Butterfly",
+                //ItemID.GoldButterfly,
+                ItemID.JuliaButterfly,
+                ItemID.MonarchButterfly,
+                ItemID.PurpleEmperorButterfly,
+                ItemID.RedAdmiralButterfly,
+                ItemID.SulphurButterfly,
+                ItemID.TreeNymphButterfly,
+                ItemID.UlyssesButterfly,
+                ItemID.ZebraSwallowtailButterfly,
+                ItemID.HellButterfly);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyButterfly", group);
+
+            //vanilla squirrels
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Squirrel",
+                //ItemID.SquirrelGold,
+                ItemID.Squirrel,
+                ItemID.SquirrelRed,
+                ItemID.GemSquirrelAmber,
+                ItemID.GemSquirrelAmethyst,
+                ItemID.GemSquirrelDiamond,
+                ItemID.GemSquirrelEmerald,
+                ItemID.GemSquirrelRuby,
+                ItemID.GemSquirrelSapphire,
+                ItemID.GemSquirrelTopaz);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnySquirrel", group);
+
+            //vanilla squirrels
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Common Fish",
+                //ItemID.GoldenCarp,
+                ItemID.AtlanticCod,
+                ItemID.Bass,
+                ItemID.Trout,
+                ItemID.RedSnapper,
+                ItemID.Salmon,
+                ItemID.Tuna);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyCommonFish", group);
+
+            //vanilla birds
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Bird",
+                //ItemID.GoldBird,
+                ItemID.Bird,
+                ItemID.BlueJay,
+                ItemID.Cardinal,
+                ItemID.Duck,
+                ItemID.MallardDuck);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyBird", group);
+
+            //vanilla dragonfly
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Dragonfly",
+                //ItemID.GoldDragonfly,
+                ItemID.BlackDragonfly,
+                ItemID.BlueDragonfly,
+                ItemID.GreenDragonfly,
+                ItemID.OrangeDragonfly,
+                ItemID.RedDragonfly,
+                ItemID.YellowDragonfly);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyDragonfly", group);
         }
 
         public void AddRecipes()

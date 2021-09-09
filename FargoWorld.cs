@@ -69,7 +69,13 @@ namespace Fargowiltas
             "babyGuardian",
             "squirrel",
             "worm",
-            "nailhead"
+            "nailhead",
+            "zombieMerman",
+            "eyeFish",
+            "bloodEel",
+            "goblinShark",
+            "dreadnautilus",
+            "gnome"
        };
 
         public override void OnWorldLoad()

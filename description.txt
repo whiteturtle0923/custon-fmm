@@ -20,12 +20,19 @@ ALPHA UPDATE - V 2.5.4
 -Added Endless Star Pouch
 -Added Swarm Crystal
 -Added Jar of Lacewings
--Added Empress/Queen Slime swarm spawners
 -Empress/Queen Slime spawners can be crafted back and forth
 -Fixed crate recipes requiring several hundred hardmode crates to craft the same thing as 1 or 5 pre-Hardmode crates
 -Recalculated crate recipes
 -Added bestiary mod icon
 -Added Journey research values for almost all items
+-Added Hemoclaw Crab
+-Added Suspicious Looking Eyedrops
+-Added Blood Urchin
+-Added Blood Shrimp
+-Added Gnome Hat
+-Added Golden Dipping Vat
+-Party Cone can be used to get Party Girl Cake
+-Lowered cost of Omnistation recipe
 
 ALPHA UPDATE - V 2.5.4
 -Added Jelly Crystal and Prismatic Primrose
