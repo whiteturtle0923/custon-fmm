@@ -10,8 +10,6 @@ namespace Fargowiltas.Items.Summons.SwarmSummons.Energizers
             Tooltip.SetDefault("Formed after using 10 Jars of Lacewings\n'Wear eye protection when looking'");
         }
 
-        public override string Texture => "Fargowiltas/Items/Placeholder";
-
         public override void SetDefaults()
         {
             Item.width = 20;
