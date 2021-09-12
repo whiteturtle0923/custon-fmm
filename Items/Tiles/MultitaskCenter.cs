@@ -9,6 +9,7 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault("Multitask Center");
             Tooltip.SetDefault("Functions as several basic crafting stations");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

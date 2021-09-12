@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Renewals
 {
-    public class BaseRenewalItem : ModItem
+    public abstract class BaseRenewalItem : ModItem
     {
         private readonly string name;
         private readonly string tooltip;
@@ -29,6 +29,7 @@ namespace Fargowiltas.Items.Renewals
         {
             DisplayName.SetDefault(name);
             Tooltip.SetDefault(tooltip);
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
         }
 
         public override void SetDefaults()
@@ -51,7 +52,7 @@ namespace Fargowiltas.Items.Renewals
 
         public override void AddRecipes()
         {
-            var recipe = Mod.CreateRecipe(this.Type);
+            var recipe = Mod.CreateRecipe(Type);
 
             if (supreme)
             {
@@ -65,6 +66,8 @@ namespace Fargowiltas.Items.Renewals
                 recipe.AddIngredient(material, 100);
                 recipe.AddTile(TileID.Bottles);
             }
+
+            recipe.Register();
         }
     }
 }

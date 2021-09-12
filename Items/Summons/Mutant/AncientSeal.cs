@@ -17,6 +17,7 @@ namespace Fargowiltas.Items.Summons.Mutant
             DisplayName.SetDefault("Ancient Seal");
             Tooltip.SetDefault("Summons ALL the bosses modded included" +
                                "\n'Use at your own risk'");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()

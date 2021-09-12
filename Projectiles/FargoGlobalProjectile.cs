@@ -98,6 +98,12 @@ namespace Fargowiltas.Projectiles
                     lowRender = true;
             }
 
+            if (projectile.bobber && projectile.lavaWet && GetInstance<FargoConfig>().FasterLavaFishing)
+            {
+                if (projectile.ai[0] == 0 && projectile.ai[1] == 0 && projectile.localAI[1] < 600)
+                    projectile.localAI[1]++;
+            }
+
             return true;
         }
 
@@ -136,18 +142,23 @@ namespace Fargowiltas.Projectiles
 
         public override Color? GetAlpha(Projectile projectile, Color lightColor)
         {
+<<<<<<< HEAD
             if (lowRender && !projectile.hostile)
             {
                 float opacity = GetInstance<FargoConfig>().TransparentMinions;
                 if (opacity < 1)
                     return lightColor * opacity;
+=======
+            if (lowRender && !projectile.hostile && GetInstance<FargoConfig>().TransparentMinions < 1)
+            {
+                lightColor *= GetInstance<FargoConfig>().TransparentMinions;
+>>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
             }
             return base.GetAlpha(projectile, lightColor);
         }
 
         public static bool OkayToDestroyTile(Tile tile) // Testing for blocks that should not be destroyed
         {
-            bool noFossil = tile.type == TileID.DesertFossil && !NPC.downedBoss2;
             bool noDungeon = !NPC.downedBoss3 &&
                 (tile.type == TileID.BlueDungeonBrick || tile.type == TileID.GreenDungeonBrick || tile.type == TileID.PinkDungeonBrick
                 || tile.wall == WallID.BlueDungeonSlabUnsafe || tile.wall == WallID.BlueDungeonTileUnsafe || tile.wall == WallID.BlueDungeonUnsafe
@@ -155,10 +166,10 @@ namespace Fargowiltas.Projectiles
                 || tile.wall == WallID.PinkDungeonSlabUnsafe || tile.wall == WallID.PinkDungeonTileUnsafe || tile.wall == WallID.PinkDungeonUnsafe
             );
             bool noHMOre = (tile.type == TileID.Cobalt || tile.type == TileID.Palladium || tile.type == TileID.Mythril || tile.type == TileID.Orichalcum || tile.type == TileID.Adamantite || tile.type == TileID.Titanium) && !NPC.downedMechBossAny;
-            bool noChloro = tile.type == TileID.Chlorophyte && (!NPC.downedMechBoss1 || !NPC.downedMechBoss2 || NPC.downedMechBoss3);
+            bool noChloro = tile.type == TileID.Chlorophyte && !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             bool noLihzahrd = (tile.type == TileID.LihzahrdBrick || tile.wall == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
 
-            if (noFossil || noDungeon || noHMOre || noChloro || noLihzahrd)
+            if (noDungeon || noHMOre || noChloro || noLihzahrd)
                 return false;
 
             return true;

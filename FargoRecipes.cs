@@ -27,24 +27,28 @@ namespace Fargowiltas
             RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Wood", new int[] { ItemID.Ebonwood, ItemID.Shadewood });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
 
-            //iron anvil
-            group = new RecipeGroup(() => "Any Demon Altar", new int[] { ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() });
+            //gold bar
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Gold Bar", new int[] { ItemID.GoldBar, ItemID.PlatinumBar });
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyGoldBar", group);
+
+            //demon altar
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Demon Altar", new int[] { ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() });
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDemonAltar", group);
 
             //iron anvil
-            group = new RecipeGroup(() => "Any Iron Anvil", new int[] { ItemID.IronAnvil, ItemID.LeadAnvil});
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Iron Anvil", new int[] { ItemID.IronAnvil, ItemID.LeadAnvil});
             RecipeGroup.RegisterGroup("Fargowiltas:AnyAnvil", group);
 
             //anvil HM
-            group = new RecipeGroup(() => "Any Mythril Anvil", ItemID.MythrilAnvil, ItemID.OrichalcumAnvil);
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mythril Anvil", ItemID.MythrilAnvil, ItemID.OrichalcumAnvil);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyHMAnvil", group);
 
             //forge HM
-            group = new RecipeGroup(() => "Any Adamantite Forge", ItemID.AdamantiteForge, ItemID.TitaniumForge);
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Adamantite Forge", ItemID.AdamantiteForge, ItemID.TitaniumForge);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyForge", group);
 
             //book cases
-            group = new RecipeGroup(() => "Any Bookcase", new int[]
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Bookcase", new int[]
             {
                 ItemID.Bookcase,
                 ItemID.BlueDungeonBookcase,
@@ -206,14 +210,28 @@ namespace Fargowiltas
 
             // Any Crimson enemy
             int[] desertBanners = {
+                ItemID.VultureBanner,
+                ItemID.BloodMummyBanner,
+                ItemID.DarkMummyBanner,
+                ItemID.LightMummyBanner,
                 ItemID.FlyingAntlionBanner,
                 ItemID.WalkingAntlionBanner,
+                ItemID.LarvaeAntlionBanner,
                 ItemID.AntlionBanner,
-                ItemID.DesertDjinnBanner,
+                ItemID.SandSlimeBanner,
+                ItemID.TombCrawlerBanner,
                 ItemID.DesertBasiliskBanner,
+                ItemID.RavagerScorpionBanner,
                 ItemID.DesertLamiaBanner,
                 ItemID.DesertGhoulBanner,
-                //fill in more
+                ItemID.DesertDjinnBanner,
+                ItemID.DuneSplicerBanner,
+                ItemID.SandElementalBanner,
+                ItemID.SandsharkBanner,
+                ItemID.SandsharkCorruptBanner,
+                ItemID.SandsharkCrimsonBanner,
+                ItemID.SandsharkHallowedBanner,
+                ItemID.TumbleweedBanner,
             };
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Desert Banner", desertBanners);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDeserts", group);
@@ -226,6 +244,66 @@ namespace Fargowiltas
 
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Cooking Pot", ItemID.CookingPot, ItemID.Cauldron);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCookingPot", group);
+
+            //vanilla butterflies
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Butterfly",
+                //ItemID.GoldButterfly,
+                ItemID.JuliaButterfly,
+                ItemID.MonarchButterfly,
+                ItemID.PurpleEmperorButterfly,
+                ItemID.RedAdmiralButterfly,
+                ItemID.SulphurButterfly,
+                ItemID.TreeNymphButterfly,
+                ItemID.UlyssesButterfly,
+                ItemID.ZebraSwallowtailButterfly,
+                ItemID.HellButterfly);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyButterfly", group);
+
+            //vanilla squirrels
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Squirrel",
+                //ItemID.SquirrelGold,
+                ItemID.Squirrel,
+                ItemID.SquirrelRed,
+                ItemID.GemSquirrelAmber,
+                ItemID.GemSquirrelAmethyst,
+                ItemID.GemSquirrelDiamond,
+                ItemID.GemSquirrelEmerald,
+                ItemID.GemSquirrelRuby,
+                ItemID.GemSquirrelSapphire,
+                ItemID.GemSquirrelTopaz);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnySquirrel", group);
+
+            //vanilla squirrels
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Common Fish",
+                //ItemID.GoldenCarp,
+                ItemID.AtlanticCod,
+                ItemID.Bass,
+                ItemID.Trout,
+                ItemID.RedSnapper,
+                ItemID.Salmon,
+                ItemID.Tuna);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyCommonFish", group);
+
+            //vanilla birds
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Bird",
+                //ItemID.GoldBird,
+                ItemID.Bird,
+                ItemID.BlueJay,
+                ItemID.Cardinal,
+                ItemID.Duck,
+                ItemID.MallardDuck);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyBird", group);
+
+            //vanilla dragonfly
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Dragonfly",
+                //ItemID.GoldDragonfly,
+                ItemID.BlackDragonfly,
+                ItemID.BlueDragonfly,
+                ItemID.GreenDragonfly,
+                ItemID.OrangeDragonfly,
+                ItemID.RedDragonfly,
+                ItemID.YellowDragonfly);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyDragonfly", group);
         }
 
         public void AddRecipes()
@@ -242,10 +320,10 @@ namespace Fargowiltas
             AddStatueRecipes();
             AddContainerLootRecipes();
             //AddNPCRecipes();
-            //AddTreasureBagRecipes();
+            AddTreasureBagRecipes();
             //AddFurnitureRecipes();
-            //AddMiscRecipes();
-            //AddVanillaRecipeChanges();
+            AddMiscRecipes();
+            AddVanillaRecipes();
         }
 
         private void AddSummonConversions()
@@ -270,6 +348,8 @@ namespace Fargowiltas
             AddSummonConversion(ModContent.ItemType<Abeemination2>(), ItemID.Abeemination);
             AddSummonConversion(ModContent.ItemType<WormyFood>(), ItemID.WormFood);
             AddSummonConversion(ModContent.ItemType<SuspiciousEye>(), ItemID.SuspiciousLookingEye);
+            AddSummonConversion(ModContent.ItemType<PrismaticPrimrose>(), ItemID.EmpressButterfly);
+            AddSummonConversion(ModContent.ItemType<JellyCrystal>(), ItemID.QueenSlimeCrystal);
         }
 
         private void AddEvilConversions()
@@ -459,7 +539,7 @@ namespace Fargowiltas
             AddBannerToItemsRecipe(ItemID.BoneLeeBanner, new int[] { ItemID.BlackBelt, ItemID.Tabi }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.DesertDjinnBanner, new int[] { ItemID.DjinnLamp, ItemID.DjinnsCurse }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.DesertLamiaBanner, new int[] { ItemID.LamiaHat, ItemID.LamiaShirt, ItemID.LamiaPants, ItemID.MoonMask, ItemID.SunMask }, tile: TileID.MythrilAnvil);
-            AddBannerToItemsRecipe(ItemID.FloatyGrossBanner, new int[] { ItemID.Vitamins, ItemID.MeatGrinder }, tile: TileID.MythrilAnvil);
+            AddBannerToItemsRecipe(ItemID.FloatyGrossBanner, new int[] { ItemID.Vitamins }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.MedusaBanner, new int[] { ItemID.MedusaHead, ItemID.PocketMirror }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.MummyBanner, new int[] { ItemID.MummyMask, ItemID.MummyShirt, ItemID.MummyPants }, tile: TileID.MythrilAnvil);
             AddBannerToItemsRecipe(ItemID.PaladinBanner, new int[] { ItemID.PaladinsHammer, ItemID.PaladinsShield }, tile: TileID.MythrilAnvil);
@@ -492,8 +572,10 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.TheAxe);
             AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.Seedling);
             AddBannerToItemRecipe(ItemID.DukeFishronTrophy, ItemID.FishronWings);
-            //empress of light trophy = stellar tune or empress wings
-            //dutchamn trophy = the dutchman cart
+            AddBannerToItemRecipe(ItemID.MoonLordTrophy, ItemID.MeowmereMinecart);
+            AddBannerToItemRecipe(ItemID.FairyQueenTrophy, ItemID.SparkleGuitar);
+            AddBannerToItemRecipe(ItemID.FairyQueenTrophy, ItemID.RainbowCursor);
+            AddBannerToItemRecipe(ItemID.FairyQueenTrophy, ItemID.RainbowWings);
 
             //pirates
             AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.Cutlass, TileID.MythrilAnvil);
@@ -516,7 +598,7 @@ namespace Fargowiltas
             AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.CrimsonKey, TileID.MythrilAnvil, 1, 10);
             AddGroupToItemRecipe("Fargowiltas:AnyJungles", ItemID.JungleKey, TileID.MythrilAnvil, 1, 10);
             AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil, 1, 10);
-            //desert key
+            AddGroupToItemRecipe("Fargowiltas:AnyDeserts", ItemID.DungeonDesertKey, TileID.MythrilAnvil, 1, 10);
 
             AddGroupToItemRecipe("Fargowiltas:AnyCorrupts", ItemID.MeatGrinder, TileID.MythrilAnvil, 1, 5);
             AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.MeatGrinder, TileID.MythrilAnvil, 1, 5);
@@ -812,7 +894,7 @@ namespace Fargowiltas
             KeyToItemRecipe(ItemID.JungleKey, ItemID.PiranhaGun);
             KeyToItemRecipe(ItemID.FrozenKey, ItemID.StaffoftheFrostHydra);
             KeyToItemRecipe(ItemID.HallowedKey, ItemID.RainbowGun);
-            //Desert key
+            KeyToItemRecipe(ItemID.DungeonDesertKey, ItemID.StormTigerStaff);
 
 
             // Goodie Bag / Present recipes
@@ -855,12 +937,11 @@ namespace Fargowiltas
             AddHerbBagRecipe(ItemID.Shiverthorn);
             AddHerbBagRecipe(ItemID.Daybloom);
 
-            void AddCrateRecipe(int result, int crate, int crateAmount, int hardCrate, int hardCrateAmount = 1, int extraItem = -1)
+            void AddCrateRecipe(int result, int crate, int crateAmount, int hardCrate, int extraItem = -1)
             {
-                var recipe = mod.CreateRecipe(result);
-
                 if (crate != -1)
                 {
+                    var recipe = mod.CreateRecipe(result);
                     recipe.AddIngredient(crate, crateAmount);
                     if (extraItem != -1)
                     {
@@ -869,45 +950,45 @@ namespace Fargowiltas
                     recipe.AddTile(TileID.WorkBenches);
                     recipe.Register();
                 }
-                
-                recipe = mod.CreateRecipe(result);
-                recipe.AddIngredient(hardCrate, hardCrateAmount);
-                if (extraItem != -1)
+
+                if (hardCrate != -1)
                 {
-                    recipe.AddIngredient(extraItem);
+                    var recipe = mod.CreateRecipe(result);
+                    recipe.AddIngredient(hardCrate, crateAmount);
+                    if (extraItem != -1)
+                    {
+                        recipe.AddIngredient(extraItem);
+                    }
+                    recipe.AddTile(TileID.WorkBenches);
+                    recipe.Register();
                 }
-                recipe.AddTile(TileID.WorkBenches);
-                recipe.Register();
             }
 
             //wooden
-            AddCrateRecipe(ItemID.SailfishBoots, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.TsunamiInABottle, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Extractinator, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Aglet, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.CordageGuide, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Umbrella, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.ClimbingClaws, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Radar, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.WoodenBoomerang, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.WandofSparking, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Spear, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Blowpipe, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.PortableStool, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.BabyBirdStaff, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.SunflowerMinecart, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.LadybugMinecart, ItemID.WoodenCrate, 1, ItemID.WoodenCrateHard);
-            AddCrateRecipe(ItemID.Anchor, -1, 0, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.SailfishBoots, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.TsunamiInABottle, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Extractinator, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Aglet, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.CordageGuide, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Umbrella, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.ClimbingClaws, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Radar, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.WoodenBoomerang, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.WandofSparking, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Spear, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Blowpipe, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.PortableStool, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.BabyBirdStaff, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.SunflowerMinecart, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.LadybugMinecart, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            AddCrateRecipe(ItemID.Anchor, -1, 3, ItemID.WoodenCrateHard);
 
             //iron
-            AddCrateRecipe(ItemID.FalconBlade, ItemID.IronCrate, 1, ItemID.IronCrateHard);
-            AddCrateRecipe(ItemID.TartarSauce, ItemID.IronCrate, 1, ItemID.IronCrateHard);
-            AddCrateRecipe(ItemID.GingerBeard, ItemID.IronCrate, 1, ItemID.IronCrateHard);
+            AddCrateRecipe(ItemID.FalconBlade, ItemID.IronCrate, 3, ItemID.IronCrateHard);
+            AddCrateRecipe(ItemID.TartarSauce, ItemID.IronCrate, 3, ItemID.IronCrateHard);
+            AddCrateRecipe(ItemID.GingerBeard, ItemID.IronCrate, 3, ItemID.IronCrateHard);
 
             //gold
-            AddCrateRecipe(ItemID.HardySaddle, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
-            AddCrateRecipe(ItemID.Sundial, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
-            AddCrateRecipe(ItemID.EnchantedSword, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.BandofRegeneration, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.MagicMirror, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.FlareGun, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
@@ -916,6 +997,11 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.CloudinaBottle, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.Mace, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.LuckyHorseshoe, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
+            AddCrateRecipe(ItemID.LifeCrystal, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
+            AddCrateRecipe(ItemID.HardySaddle, -1, 5, ItemID.GoldenCrateHard);
+            AddCrateRecipe(ItemID.EnchantedSword, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
+
+            AddCrateRecipe(ItemID.Sundial, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard); //actually should be hm but fuck it
 
             //jungle
             AddCrateRecipe(ItemID.AnkletoftheWind, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
@@ -923,9 +1009,9 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.FeralClaws, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
             AddCrateRecipe(ItemID.StaffofRegrowth, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
             AddCrateRecipe(ItemID.FiberglassFishingPole, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
-            AddCrateRecipe(ItemID.FlowerBoots, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
-            AddCrateRecipe(ItemID.Seaweed, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
             AddCrateRecipe(ItemID.BeeMinecart, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
+            AddCrateRecipe(ItemID.Seaweed, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
+            AddCrateRecipe(ItemID.FlowerBoots, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
 
             //sky
             AddCrateRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
@@ -946,6 +1032,8 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.CrimsonRod, ItemID.CrimsonFishingCrate, 1, ItemID.CrimsonFishingCrateHard);
             AddCrateRecipe(ItemID.PanicNecklace, ItemID.CrimsonFishingCrate, 1, ItemID.CrimsonFishingCrateHard);
             AddCrateRecipe(ItemID.CrimsonHeart, ItemID.CrimsonFishingCrate, 1, ItemID.CrimsonFishingCrateHard);
+
+            //hallow
 
             //dungeon
             AddCrateRecipe(ItemID.WaterBolt, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
@@ -971,8 +1059,6 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.Fish, ItemID.FrozenCrate, 5, ItemID.FrozenCrateHard);
 
             //oasis crate
-            AddCrateRecipe(ItemID.FlyingCarpet, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
-            AddCrateRecipe(ItemID.SandstorminaBottle, ItemID.GoldenCrate, 3, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.AncientChisel, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.ThunderSpear, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.ScarabFishingRod, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
@@ -982,22 +1068,24 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.MysticCoilSnake, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.DesertMinecart, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.EncumberingStone, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
+            AddCrateRecipe(ItemID.FlyingCarpet, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
+            AddCrateRecipe(ItemID.SandstorminaBottle, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
 
             //obsidian
-            AddCrateRecipe(ItemID.HellCake, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.OrnateShadowKey, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.SuperheatedBlood, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.SuperheatedBlood, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.FlameWakerBoots, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.HellMinecart, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
-            AddCrateRecipe(ItemID.LavaFishingHook, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
-
             AddCrateRecipe(ItemID.DarkLance, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.HellwingBow, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.Flamelash, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.FlowerofFire, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.Sunfury, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             AddCrateRecipe(ItemID.TreasureMagnet, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
+
+            AddCrateRecipe(ItemID.LavaCharm, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.HellCake, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.OrnateShadowKey, ItemID.LavaCrate, 5, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.SuperheatedBlood, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.FlameWakerBoots, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.LavaFishingHook, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.HellMinecart, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
 
             // ocean crate
             AddCrateRecipe(ItemID.Trident, ItemID.OceanCrate, 1, ItemID.OceanCrateHard);
@@ -1133,7 +1221,7 @@ namespace Fargowiltas
         //    recipe = GetNewRecipe();
         //    recipe.AddIngredient(null, "TravellingMerchant");
         //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.IronBar, 5);
+        //    recipe.AddRecipeGroup("IronBar", 5);
         //    recipe.AddTile(TileID.TinkerersWorkbench);
         //    recipe.SetResult(ItemID.Stopwatch);
         //    recipe.AddRecipe();
@@ -1141,7 +1229,7 @@ namespace Fargowiltas
         //    recipe = GetNewRecipe();
         //    recipe.AddIngredient(null, "TravellingMerchant");
         //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.IronBar, 5);
+        //    recipe.AddRecipeGroup("IronBar", 5);
         //    recipe.AddTile(TileID.TinkerersWorkbench);
         //    recipe.SetResult(ItemID.LifeformAnalyzer);
         //    recipe.AddRecipe();
@@ -1149,7 +1237,7 @@ namespace Fargowiltas
         //    recipe = GetNewRecipe();
         //    recipe.AddIngredient(null, "TravellingMerchant");
         //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.IronBar, 5);
+        //    recipe.AddRecipeGroup("IronBar", 5);
         //    recipe.AddTile(TileID.TinkerersWorkbench);
         //    recipe.SetResult(ItemID.DPSMeter);
         //    recipe.AddRecipe();
@@ -1158,7 +1246,7 @@ namespace Fargowiltas
         //    recipe = GetNewRecipe();
         //    recipe.AddIngredient(null, "TravellingMerchant");
         //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddIngredient(ItemID.IronBar, 5);
+        //    recipe.AddRecipeGroup("IronBar", 5);
         //    recipe.AddTile(TileID.TinkerersWorkbench);
         //    recipe.SetResult(ItemID.Katana);
         //    recipe.AddRecipe();
@@ -1415,700 +1503,279 @@ namespace Fargowiltas
         //    //engineer plus wrench 
         //}
 
-        //private static void AddTreasureBagRecipes()
-        //{
-        //    ModRecipe recipe = GetNewRecipe();
-        //    //QB
-        //    recipe.AddIngredient(ItemID.QueenBeeBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BeesKnees);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.QueenBeeBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BeeGun);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.QueenBeeBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BeeKeeper);
-        //    recipe.AddRecipe();
-
-        //    //WOF
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.WallOfFleshBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.RangerEmblem);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.WallOfFleshBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.SorcererEmblem);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.WallOfFleshBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.SummonerEmblem);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.WallOfFleshBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.WarriorEmblem);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.WallOfFleshBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ClockworkAssaultRifle);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.WallOfFleshBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BreakerBlade);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.WallOfFleshBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.LaserRifle);
-        //    recipe.AddRecipe();
-
-        //    //add firecracker here
-
-        //    //plantera
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PlanteraBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.GrenadeLauncher);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PlanteraBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.PygmyStaff);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PlanteraBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.VenusMagnum);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PlanteraBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.NettleBurst);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PlanteraBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.LeafBlower);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PlanteraBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Seedler);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PlanteraBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.FlowerPow);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PlanteraBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.WaspGun);
-        //    recipe.AddRecipe();
-
-        //    //golem
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GolemBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Stynger);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GolemBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.PossessedHatchet);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GolemBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.SunStone);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GolemBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.EyeoftheGolem);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GolemBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Picksaw);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GolemBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.HeatRay);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GolemBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.StaffofEarth);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GolemBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.GolemFist);
-        //    recipe.AddRecipe();
-
-        //    //duke
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FishronBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Flairon);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FishronBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Tsunami);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FishronBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.RazorbladeTyphoon);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FishronBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.TempestStaff);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FishronBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BubbleGun);
-        //    recipe.AddRecipe();
-
-        //    //empress
-        //    //starlight, kalediscope, eventide, nightglow
-
-        //    //moon lord
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Meowmere);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Terrarian);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.StarWrath);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.SDMG);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.FireworksLauncher); //CHANGE TO CELEB MK 2
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.LastPrism);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.LunarFlareBook);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.RainbowCrystalStaff);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MoonLordBossBag);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.MoonlordTurretStaff);
-        //    recipe.AddRecipe();
-
-        //    //meowmere minecart here
-
-        //    //dark mage
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyDarkmage);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.DD2PetDragon);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyDarkmage);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.DD2PetGato);
-        //    recipe.AddRecipe();
-
-        //    //ogre
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ApprenticeScarf);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.SquireShield);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.HuntressBuckler);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.MonkBelt);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.DD2PhoenixBow);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BookStaff);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.DD2SquireDemonSword);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.MonkStaffT1);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.MonkStaffT2);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossTrophyOgre);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.DD2PetGhost);
-        //    recipe.AddRecipe();
-
-        //    //besty
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossBagBetsy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BetsyWings);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossBagBetsy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.DD2BetsyBow);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossBagBetsy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.DD2SquireBetsySword);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossBagBetsy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ApprenticeStaffT3);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.BossBagBetsy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.MonkStaffT3);
-        //    recipe.AddRecipe();
-
-        //    //mourning wood
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MourningWoodTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.SpookyHook);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MourningWoodTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.SpookyTwig);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MourningWoodTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.StakeLauncher);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MourningWoodTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.CursedSapling);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MourningWoodTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.NecromanticScroll);
-        //    recipe.AddRecipe();
-
-        //    //pumpking
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PumpkingTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.TheHorsemansBlade);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PumpkingTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BatScepter);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PumpkingTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.RavenStaff);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PumpkingTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.CandyCornRifle);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PumpkingTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.JackOLanternLauncher);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.PumpkingTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BlackFairyDust);
-        //    recipe.AddRecipe();
-
-        //    //add dark harvest
-
-        //    //everscream
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.EverscreamTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ChristmasTreeSword);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.EverscreamTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ChristmasHook);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.EverscreamTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Razorpine);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.EverscreamTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.FestiveWings);
-        //    recipe.AddRecipe();
-
-        //    //santa nk1
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.SantaNK1Trophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.EldMelter);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.SantaNK1Trophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ChainGun);
-        //    recipe.AddRecipe();
-
-        //    //ice queen
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.IceQueenTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BlizzardStaff);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.IceQueenTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.SnowmanCannon);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.IceQueenTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.NorthPole);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.IceQueenTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.BabyGrinchMischiefWhistle);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.IceQueenTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ReindeerBells);
-        //    recipe.AddRecipe();
-
-        //    //saucer
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Xenopopper);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.XenoStaff);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.LaserMachinegun);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ElectrosphereLauncher);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.InfluxWaver);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.CosmicCarKey);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.AntiGravityHook);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.ChargedBlasterCannon);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.MartianSaucerTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.LaserDrill);
-        //    recipe.AddRecipe();
-
-        //    //dutchman
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.LuckyCoin);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.DiscountCard);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.CoinGun);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.PirateStaff);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.GoldRing);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FlyingDutchmanTrophy);
-        //    recipe.AddTile(TileID.Solidifier);
-        //    recipe.SetResult(ItemID.Cutlass);
-        //    recipe.AddRecipe();
-
-        //    //add the dutchman minecart
-
-
-        //}
-
-        //private static void AddMiscRecipes()
-        //{
-        //    ModRecipe recipe = GetNewRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.IceBlade);
-        //    recipe.AddTile(TileID.CrystalBall);
-        //    recipe.SetResult(ItemID.EnchantedSword);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.EnchantedSword, 2);
-        //    recipe.AddIngredient(ItemID.SoulofLight, 5);
-        //    recipe.AddTile(TileID.CrystalBall);
-        //    recipe.SetResult(ItemID.Arkhalis); //terragrim
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.Pumpkin, 500);
-        //    recipe.AddTile(TileID.LivingLoom);
-        //    recipe.SetResult(ItemID.MagicalPumpkinSeed);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.FishingSeaweed, 5);
-        //    recipe.AddTile(TileID.LivingLoom);
-        //    recipe.SetResult(ItemID.Seaweed);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GoodieBag, 2);
-        //    recipe.AddTile(TileID.WorkBenches);
-        //    recipe.SetResult(ItemID.RottenEgg, 25);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.HermesBoots);
-        //    recipe.AddIngredient(ItemID.Daybloom);
-        //    recipe.AddIngredient(ItemID.Blinkroot);
-        //    recipe.AddIngredient(ItemID.Shiverthorn);
-        //    recipe.AddIngredient(ItemID.Moonglow);
-        //    recipe.AddIngredient(ItemID.Waterleaf);
-        //    recipe.AddIngredient(ItemID.Deathweed);
-        //    recipe.AddIngredient(ItemID.Fireblossom);
-        //    recipe.AddTile(TileID.LivingLoom);
-        //    recipe.SetResult(ItemID.FlowerBoots);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.Loom);
-        //    recipe.AddIngredient(ItemID.Vine, 10);
-        //    recipe.AddTile(TileID.WorkBenches);
-        //    recipe.SetResult(ItemID.LivingLoom);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.NaturesGift);
-        //    recipe.AddIngredient(ItemID.RedHusk);
-        //    recipe.AddTile(TileID.LivingLoom);
-        //    recipe.SetResult(ItemID.JungleRose);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.Amber, 15);
-        //    recipe.AddIngredient(ItemID.Firefly);
-        //    recipe.AddTile(TileID.CookingPots);
-        //    recipe.SetResult(ItemID.AmberMosquito);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.Moonglow, 15);
-        //    recipe.AddIngredient(ItemID.ManaCrystal);
-        //    recipe.AddTile(TileID.AlchemyTable);
-        //    recipe.SetResult(ItemID.NaturesGift);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.SandBlock, 50);
-        //    recipe.AddIngredient(ItemID.Bottle);
-        //    recipe.AddTile(TileID.AlchemyTable);
-        //    recipe.SetResult(ItemID.SandstorminaBottle);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.ChlorophyteBar);
-        //    recipe.AddIngredient(ItemID.DarkBlueSolution);
-        //    recipe.AddTile(TileID.Autohammer);
-        //    recipe.SetResult(ItemID.ShroomiteBar);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GrapplingHook);
-        //    recipe.AddIngredient(ItemID.WebRopeCoil, 8);
-        //    recipe.AddTile(TileID.CookingPots);
-        //    recipe.SetResult(ItemID.WebSlinger);
-        //    recipe.AddRecipe();
-
-        //}
+        private void AddTreasureBagRecipes()
+        {
+            void CreateTreasureBagRecipes(int input, params int[] outputs)
+            {
+                foreach (int output in outputs)
+                {
+                    mod.CreateRecipe(output)
+                        .AddIngredient(input)
+                        .AddTile(TileID.Solidifier)
+                        .Register();
+                }
+            }
+
+            //QB
+            CreateTreasureBagRecipes(ItemID.QueenBeeBossBag,
+                ItemID.BeesKnees,
+                ItemID.BeeGun,
+                ItemID.BeeKeeper
+            );
+
+            //WOF
+            CreateTreasureBagRecipes(ItemID.WallOfFleshBossBag,
+                ItemID.RangerEmblem,
+                ItemID.SorcererEmblem,
+                ItemID.SummonerEmblem,
+                ItemID.WarriorEmblem,
+                ItemID.ClockworkAssaultRifle,
+                ItemID.BreakerBlade,
+                ItemID.LaserRifle,
+                ItemID.FireWhip
+            );
+
+            //queen slime
+            CreateTreasureBagRecipes(ItemID.QueenSlimeBossBag,
+                ItemID.Smolstar,
+                ItemID.QueenSlimeMountSaddle,
+                ItemID.QueenSlimeHook
+            );
+
+            //plantera
+            CreateTreasureBagRecipes(ItemID.PlanteraBossBag,
+                ItemID.GrenadeLauncher,
+                ItemID.PygmyStaff,
+                ItemID.VenusMagnum,
+                ItemID.NettleBurst,
+                ItemID.LeafBlower,
+                ItemID.Seedler,
+                ItemID.FlowerPow,
+                ItemID.WaspGun
+            );
+
+            //golem
+            CreateTreasureBagRecipes(ItemID.GolemBossBag,
+                ItemID.Stynger,
+                ItemID.PossessedHatchet,
+                ItemID.SunStone,
+                ItemID.EyeoftheGolem,
+                ItemID.Picksaw,
+                ItemID.HeatRay,
+                ItemID.StaffofEarth,
+                ItemID.GolemFist
+            );
+
+            //duke
+            CreateTreasureBagRecipes(ItemID.FishronBossBag,
+                ItemID.Flairon,
+                ItemID.Tsunami,
+                ItemID.RazorbladeTyphoon,
+                ItemID.TempestStaff,
+                ItemID.BubbleGun
+            );
+
+            //empress
+            CreateTreasureBagRecipes(ItemID.FairyQueenBossBag,
+                ItemID.PiercingStarlight,
+                ItemID.RainbowWhip,
+                ItemID.FairyQueenMagicItem,
+                ItemID.FairyQueenRangedItem
+            );
+
+            //moon lord
+            CreateTreasureBagRecipes(ItemID.MoonLordBossBag,
+                ItemID.Meowmere,
+                ItemID.Terrarian,
+                ItemID.StarWrath,
+                ItemID.SDMG,
+                ItemID.Celeb2,
+                ItemID.LastPrism,
+                ItemID.LunarFlareBook,
+                ItemID.RainbowCrystalStaff,
+                ItemID.MoonlordTurretStaff
+            );
+
+            //dark mage
+            CreateTreasureBagRecipes(ItemID.BossTrophyDarkmage,
+                ItemID.DD2PetDragon,
+                ItemID.DD2PetGato
+            );
+
+            //ogre
+            CreateTreasureBagRecipes(ItemID.BossTrophyOgre,
+                ItemID.ApprenticeScarf,
+                ItemID.SquireShield,
+                ItemID.HuntressBuckler,
+                ItemID.MonkBelt,
+                ItemID.DD2PhoenixBow,
+                ItemID.BookStaff,
+                ItemID.DD2SquireDemonSword,
+                ItemID.MonkStaffT1,
+                ItemID.MonkStaffT2,
+                ItemID.DD2PetGhost
+            );
+
+            //besty
+            CreateTreasureBagRecipes(ItemID.BossBagBetsy,
+                ItemID.BetsyWings,
+                ItemID.DD2SquireBetsySword,
+                ItemID.ApprenticeStaffT3,
+                ItemID.MonkStaffT3,
+                ItemID.DD2BetsyBow
+            );
+
+            //mourning wood
+            CreateTreasureBagRecipes(ItemID.MourningWoodTrophy,
+                ItemID.SpookyHook,
+                ItemID.SpookyTwig,
+                ItemID.StakeLauncher,
+                ItemID.CursedSapling,
+                ItemID.NecromanticScroll
+            );
+
+            //pumpking
+            CreateTreasureBagRecipes(ItemID.PumpkingTrophy,
+                ItemID.TheHorsemansBlade,
+                ItemID.BatScepter,
+                ItemID.RavenStaff,
+                ItemID.CandyCornRifle,
+                ItemID.JackOLanternLauncher,
+                ItemID.BlackFairyDust,
+                ItemID.ScytheWhip
+            );
+
+            //everscream
+            CreateTreasureBagRecipes(ItemID.EverscreamTrophy,
+                ItemID.ChristmasTreeSword,
+                ItemID.ChristmasHook,
+                ItemID.Razorpine,
+                ItemID.FestiveWings
+            );
+
+            //santa nk1
+            CreateTreasureBagRecipes(ItemID.SantaNK1Trophy,
+                ItemID.EldMelter,
+                ItemID.ChainGun
+            );
+
+            //ice queen
+            CreateTreasureBagRecipes(ItemID.IceQueenTrophy,
+                ItemID.BlizzardStaff,
+                ItemID.SnowmanCannon,
+                ItemID.NorthPole,
+                ItemID.BabyGrinchMischiefWhistle,
+                ItemID.ReindeerBells
+            );
+
+            //saucer
+            CreateTreasureBagRecipes(ItemID.MartianSaucerTrophy,
+                ItemID.Xenopopper,
+                ItemID.XenoStaff,
+                ItemID.LaserMachinegun,
+                ItemID.ElectrosphereLauncher,
+                ItemID.InfluxWaver,
+                ItemID.CosmicCarKey,
+                ItemID.AntiGravityHook,
+                ItemID.ChargedBlasterCannon,
+                ItemID.LaserDrill
+            );
+
+            //dutchman
+            CreateTreasureBagRecipes(ItemID.FlyingDutchmanTrophy,
+                ItemID.LuckyCoin,
+                ItemID.DiscountCard,
+                ItemID.CoinGun,
+                ItemID.PirateStaff,
+                ItemID.GoldRing,
+                ItemID.Cutlass,
+                ItemID.PirateMinecart
+            );
+        }
+
+        private void AddMiscRecipes()
+        {
+            mod.CreateRecipe(ItemID.EnchantedSword)
+                .AddIngredient(ItemID.IceBlade)
+                .AddTile(TileID.CrystalBall)
+                .Register();
+
+            mod.CreateRecipe(ItemID.Terragrim)
+                .AddIngredient(ItemID.EnchantedSword, 2)
+                .AddIngredient(ItemID.SoulofLight, 5)
+                .AddTile(TileID.CrystalBall)
+                .Register();
+
+            mod.CreateRecipe(ItemID.MagicalPumpkinSeed)
+                .AddIngredient(ItemID.Pumpkin, 500)
+                .AddTile(TileID.LivingLoom)
+                .Register();
+
+            mod.CreateRecipe(ItemID.Seaweed)
+                .AddIngredient(ItemID.FishingSeaweed, 5)
+                .AddTile(TileID.LivingLoom)
+                .Register();
+
+            mod.CreateRecipe(ItemID.RottenEgg, 25)
+                .AddIngredient(ItemID.GoodieBag, 2)
+                .AddTile(TileID.WorkBenches)
+                .Register();
+
+            mod.CreateRecipe(ItemID.FlowerBoots)
+                .AddIngredient(ItemID.HermesBoots)
+                .AddIngredient(ItemID.Daybloom)
+                .AddIngredient(ItemID.Blinkroot)
+                .AddIngredient(ItemID.Shiverthorn)
+                .AddIngredient(ItemID.Moonglow)
+                .AddIngredient(ItemID.Waterleaf)
+                .AddIngredient(ItemID.Deathweed)
+                .AddIngredient(ItemID.Fireblossom)
+                .AddTile(TileID.LivingLoom)
+                .Register();
+
+            mod.CreateRecipe(ItemID.LivingLoom)
+                .AddIngredient(ItemID.Loom)
+                .AddIngredient(ItemID.Vine, 10)
+                .AddTile(TileID.WorkBenches)
+                .Register();
+
+            mod.CreateRecipe(ItemID.JungleRose)
+                .AddIngredient(ItemID.NaturesGift)
+                .AddIngredient(ItemID.RedHusk)
+                .AddTile(TileID.LivingLoom)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AmberMosquito)
+                .AddIngredient(ItemID.Amber, 15)
+                .AddIngredient(ItemID.Firefly)
+                .AddTile(TileID.CookingPots)
+                .Register();
+
+            mod.CreateRecipe(ItemID.NaturesGift)
+                .AddIngredient(ItemID.Moonglow, 15)
+                .AddIngredient(ItemID.ManaCrystal)
+                .AddTile(TileID.AlchemyTable)
+                .Register();
+
+            mod.CreateRecipe(ItemID.SandstorminaBottle)
+                .AddIngredient(ItemID.SandBlock, 50)
+                .AddIngredient(ItemID.Bottle)
+                .AddTile(TileID.AlchemyTable)
+                .Register();
+
+            mod.CreateRecipe(ItemID.ShroomiteBar)
+                .AddIngredient(ItemID.ChlorophyteBar)
+                .AddIngredient(ItemID.DarkBlueSolution)
+                .AddTile(TileID.Autohammer)
+                .Register();
+
+            mod.CreateRecipe(ItemID.WebSlinger)
+                .AddIngredient(ItemID.GrapplingHook)
+                .AddIngredient(ItemID.WebRopeCoil, 8)
+                .AddTile(TileID.CookingPots)
+                .Register();
+
+        }
 
         //private static void AddFurnitureRecipes()
         //{
@@ -2851,67 +2518,6 @@ namespace Fargowiltas
         //    recipe.SetResult(ItemID.OmegaBanner);
         //    recipe.AddRecipe();
 
-        //    //ancient armor recipes 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.DemoniteBar, 15);
-        //    recipe.AddIngredient(ItemID.ShadowScale, 10);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientShadowHelmet);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.DemoniteBar, 25);
-        //    recipe.AddIngredient(ItemID.ShadowScale, 20);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientShadowScalemail);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.DemoniteBar, 20);
-        //    recipe.AddIngredient(ItemID.ShadowScale, 15);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientShadowGreaves);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.IronBar, 15);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientIronHelmet);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.GoldBar, 20);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientGoldHelmet);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.Bone, 40);
-        //    recipe.AddIngredient(ItemID.Cobweb, 40);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientNecroHelmet);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.JungleSpores, 8);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientCobaltHelmet);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.JungleSpores, 16);
-        //    recipe.AddIngredient(ItemID.Stinger, 10);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientCobaltBreastplate);
-        //    recipe.AddRecipe();
-
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.JungleSpores, 8);
-        //    recipe.AddIngredient(ItemID.Vine, 2);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AncientCobaltLeggings);
-        //    recipe.AddRecipe();
-
         //}
 
         private void AddConvertRecipe(int item, int item2)
@@ -2927,18 +2533,91 @@ namespace Fargowiltas
                .Register();
         }
 
-        //private static void AddVanillaRecipeChanges()
-        //{
-        //    RecipeFinder recipeFinder = new RecipeFinder();
-        //    recipeFinder.AddIngredient(ItemID.BeetleHusk);
+        private void AddVanillaRecipes()
+        {
+            foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasIngredient(ItemID.BeetleHusk)))
+            {
+                if (recipe.TryGetIngredient(ItemID.TurtleHelmet, out Item head))
+                {
+                    recipe.RemoveIngredient(head);
+                    recipe.AddIngredient(ItemID.ChlorophyteMask);
+                }
+                if (recipe.TryGetIngredient(ItemID.TurtleScaleMail, out Item body))
+                {
+                    recipe.RemoveIngredient(body);
+                    recipe.AddIngredient(ItemID.ChlorophytePlateMail);
+                }
+                if (recipe.TryGetIngredient(ItemID.TurtleLeggings, out Item legs))
+                {
+                    recipe.RemoveIngredient(legs);
+                    recipe.AddIngredient(ItemID.ChlorophyteGreaves);
+                }
+            }
 
-        //    foreach (Recipe recipe in recipeFinder.SearchRecipes())
-        //    {
-        //        RecipeEditor editor = new RecipeEditor(recipe);
-        //        editor.DeleteIngredient(ItemID.TurtleHelmet);
-        //        editor.DeleteIngredient(ItemID.TurtleScaleMail);
-        //        editor.DeleteIngredient(ItemID.TurtleLeggings);
-        //    }
-        //}
+            //ancient armor recipes
+            mod.CreateRecipe(ItemID.AncientShadowHelmet)
+                .AddIngredient(ItemID.DemoniteBar, 15)
+                .AddIngredient(ItemID.ShadowScale, 10)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AncientShadowScalemail)
+                .AddIngredient(ItemID.DemoniteBar, 25)
+                .AddIngredient(ItemID.ShadowScale, 20)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AncientShadowGreaves)
+                .AddIngredient(ItemID.DemoniteBar, 20)
+                .AddIngredient(ItemID.ShadowScale, 15)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AncientIronHelmet)
+                .AddIngredient(ItemID.IronBar, 15)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AncientGoldHelmet)
+                .AddIngredient(ItemID.GoldBar, 20)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AncientNecroHelmet)
+                .AddIngredient(ItemID.Bone, 20)
+                .AddIngredient(ItemID.Cobweb, 40)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AncientCobaltHelmet)
+                .AddIngredient(ItemID.JungleSpores, 8)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AncientCobaltBreastplate)
+                .AddIngredient(ItemID.JungleSpores, 16)
+                .AddIngredient(ItemID.Stinger, 10)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.AncientCobaltLeggings)
+                .AddIngredient(ItemID.JungleSpores, 8)
+                .AddIngredient(ItemID.Vine, 2)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+
+            mod.CreateRecipe(ItemID.TeleportationPylonVictory)
+                .AddIngredient(ItemID.TeleportationPylonDesert)
+                .AddIngredient(ItemID.TeleportationPylonHallow)
+                .AddIngredient(ItemID.TeleportationPylonJungle)
+                .AddIngredient(ItemID.TeleportationPylonMushroom)
+                .AddIngredient(ItemID.TeleportationPylonOcean)
+                .AddIngredient(ItemID.TeleportationPylonPurity)
+                .AddIngredient(ItemID.TeleportationPylonSnow)
+                .AddIngredient(ItemID.TeleportationPylonUnderground)
+                .AddIngredient(ItemID.PlatinumCoin)
+                .AddTile(TileID.DemonAltar)
+                .Register();
+        }
     }
 }

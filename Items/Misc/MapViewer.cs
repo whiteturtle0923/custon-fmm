@@ -21,6 +21,7 @@ namespace Fargowiltas.Items.Summons
             {
                 Tooltip.SetDefault("Reveals an area of the map around you");
             }
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

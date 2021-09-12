@@ -10,6 +10,7 @@ namespace Fargowiltas.Items.Ammos
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Brittle Bone");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
         }
 
         public override void SetDefaults()

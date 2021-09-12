@@ -9,6 +9,7 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault("Ech Painting");
             Tooltip.SetDefault("'Groalt W. Fai'");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

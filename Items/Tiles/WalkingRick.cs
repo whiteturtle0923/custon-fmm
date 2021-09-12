@@ -12,6 +12,7 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault("Walking Rick");
             Tooltip.SetDefault("'Kien R. Oco'");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

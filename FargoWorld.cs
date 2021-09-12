@@ -69,7 +69,13 @@ namespace Fargowiltas
             "babyGuardian",
             "squirrel",
             "worm",
-            "nailhead"
+            "nailhead",
+            "zombieMerman",
+            "eyeFish",
+            "bloodEel",
+            "goblinShark",
+            "dreadnautilus",
+            "gnome"
        };
 
         public override void PreWorldGen()
@@ -101,7 +107,8 @@ namespace Fargowiltas
             List<string> downed = new List<string>();
             foreach (string tag in tags)
             {
-                downed.AddWithCondition(tag, DownedBools[tag]);
+                if (DownedBools.TryGetValue(tag, out bool down) && down)
+                    downed.AddWithCondition(tag, down);
             }
 
             return new TagCompound

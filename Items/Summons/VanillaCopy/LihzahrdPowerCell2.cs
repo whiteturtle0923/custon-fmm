@@ -8,12 +8,13 @@ namespace Fargowiltas.Items.Summons.VanillaCopy
 {
     public class LihzahrdPowerCell2 : BaseSummon
     {
-        public override int Type => NPCID.Golem;
+        public override int NPCType => NPCID.Golem;
 
         public override string NPCName => "Golem";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Lihzahrd Battery Pack");
             Tooltip.SetDefault("Summons the Golem without an altar");
         }

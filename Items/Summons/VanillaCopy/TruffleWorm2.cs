@@ -10,12 +10,13 @@ namespace Fargowiltas.Items.Summons
     {
         public override string Texture => "Terraria/Images/Item_2673";
 
-        public override int Type => NPCID.DukeFishron;
+        public override int NPCType => NPCID.DukeFishron;
 
         public override string NPCName => "Duke Fishron";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Truffly Worm");
             Tooltip.SetDefault("Summons Duke Fishron without fishing");
         }

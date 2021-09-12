@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Fargowiltas.Items.Vanity;
+using Terraria.GameContent.Bestiary;
 
 namespace Fargowiltas.NPCs
 {
@@ -26,6 +27,7 @@ namespace Fargowiltas.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Abominationn");
+
             Main.npcFrameCount[NPC.type] = 25;
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
             NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -34,6 +36,21 @@ namespace Fargowiltas.NPCs
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
             NPCID.Sets.HatOffsetY[NPC.type] = 2;
+
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                Velocity = -1f,
+                Direction = -1
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
+                new FlavorTextBestiaryInfoElement("Can control the weather, but his weapons are fused to his hands. Thankfully, he doesn’t need to eat and doors magically open when he approaches.")
+            });
         }
 
         public override void SetDefaults()
@@ -228,6 +245,7 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates && FargoWorld.DownedBools["flyingDutchman"], ItemType<PlunderedBooty>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["dreadnautilus"], ItemType<BloodShrimp>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedMechBossAny, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["darkMage"] || NPC.downedMechBossAny, ItemType<ForbiddenTome>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["ogre"] || NPC.downedGolemBoss, ItemType<BatteredClub>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);

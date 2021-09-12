@@ -12,7 +12,7 @@ namespace Fargowiltas.Projectiles
     {
         public override string Texture => "Terraria/Images/Projectile_274";
 
-        public override Color? GetAlpha(Color lightColor) => Color.White;
+        public override Color? GetAlpha(Color lightColor) => Color.White * Projectile.Opacity;
 
         public override void SetStaticDefaults()
         {
@@ -26,6 +26,7 @@ namespace Fargowiltas.Projectiles
             Projectile.width = 42;
             Projectile.height = 42;
             Projectile.friendly = true;
+            Projectile.npcProj = true;
             Projectile.penetrate = 50;
             Projectile.scale = 1f;
             Projectile.timeLeft = 180;

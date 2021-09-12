@@ -16,6 +16,7 @@ namespace Fargowiltas.Items.Summons
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Some Kind of Metallic Worm");
             Tooltip.SetDefault("Summons the Destroyer");
         }

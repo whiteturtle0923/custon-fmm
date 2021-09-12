@@ -19,6 +19,8 @@ namespace Fargowiltas.Items.Misc
                                "\nOn hit effects get triggered as well" +
                                "\nRight click to remove all spawned super dummies" +
                                "\nCan spawn up to 50 super dummies at once");
+
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

@@ -66,6 +66,7 @@ namespace Fargowiltas.Items.Ammos.Arrows
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Endless Jester's Quiver");
         }
     }

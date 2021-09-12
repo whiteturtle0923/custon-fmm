@@ -10,6 +10,7 @@ using Fargowiltas.Items.Summons.SwarmSummons;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Projectiles;
+using Terraria.GameContent.Bestiary;
 
 namespace Fargowiltas.NPCs
 {
@@ -32,6 +33,7 @@ namespace Fargowiltas.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mutant");
+
             Main.npcFrameCount[NPC.type] = 25;
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
             NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -39,6 +41,21 @@ namespace Fargowiltas.NPCs
             NPCID.Sets.AttackType[NPC.type] = 0;
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
+
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                Velocity = -1f,
+                Direction = -1
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
+                new FlavorTextBestiaryInfoElement("Called brother by its siblings, but refuses to confirm its gender. More interested in watching fights and fuzzy critters than talking about its past.")
+            });
         }
 
         public override void SetDefaults()
@@ -71,7 +88,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
+        public override bool CanGoToStatue(bool toKingStatue) => true;
 
         public override void AI()
         {
@@ -478,15 +495,15 @@ namespace Fargowiltas.NPCs
             }
             else */if (NPC.downedMoonlord)
             {
-                projType = ModContent.ProjectileType<PhantasmalEyeProjectile>();
+                projType = ProjectileType<PhantasmalEyeProjectile>();
             }
             else if (Main.hardMode)
             {
-                projType = ModContent.ProjectileType<MechEyeProjectile>();
+                projType = ProjectileType<MechEyeProjectile>();
             }
             else
             {
-                projType = ModContent.ProjectileType<EyeProjectile>();
+                projType = ProjectileType<EyeProjectile>();
             }
 
             attackDelay = 1;

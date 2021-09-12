@@ -13,6 +13,7 @@ namespace Fargowiltas.Items.Summons.Abom
         {
             DisplayName.SetDefault("Party Cone");
             Tooltip.SetDefault("Starts a Party!");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()
@@ -30,19 +31,19 @@ namespace Fargowiltas.Items.Summons.Abom
 
         public override bool CanUseItem(Player player)
         {
-            return !BirthdayParty.PartyIsUp;
+            return Main.dayTime && !BirthdayParty.PartyIsUp;
         }
 
         public override bool? UseItem(Player player)
         {
-            BirthdayParty.ToggleManualParty();
-            
+            if (!BirthdayParty.PartyIsUp)
+                BirthdayParty.ToggleManualParty();
+            NPC.freeCake = true;
+
             NetMessage.SendData(MessageID.WorldData);
 
             if (!NPC.AnyNPCs(NPCID.PartyGirl))
-            {
                 NPC.SpawnOnPlayer(player.whoAmI, NPCID.PartyGirl);
-            }
 
             Main.NewText("Looks like someone's throwing a Party!", new Color(255, 0, 160));
             //SoundEngine.PlaySound(28, player.position);

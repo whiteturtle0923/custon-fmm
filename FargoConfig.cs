@@ -92,6 +92,10 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool PiggyBankAcc;
 
+        [Label("[i:4881] Faster Fishing in Lava")]
+        [DefaultValue(true)]
+        public bool FasterLavaFishing;
+
         [Label("[i:1612] Debuffs render above player")]
         [DefaultValue(false)]
         public bool DebuffDisplay;

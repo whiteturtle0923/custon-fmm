@@ -12,6 +12,7 @@ namespace Fargowiltas.Items.Summons.Abom
         {
             DisplayName.SetDefault("Weather Balloon");
             Tooltip.SetDefault("Starts the Rain");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()

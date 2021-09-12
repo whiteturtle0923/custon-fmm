@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,6 +14,7 @@ namespace Fargowiltas.Items.Misc
             Tooltip.SetDefault("Left click to instantly switch from day to night" +
                                "\nRight click to activate the Enchanted Sundial effect" +
                                "\nThis will also reset travelling merchant's shops");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
@@ -64,6 +66,11 @@ namespace Fargowiltas.Items.Misc
                 {
                     Main.moonPhase = 0;
                 }
+
+                if (Main.dayTime)
+                    BirthdayParty.CheckMorning();
+                else
+                    BirthdayParty.CheckNight();
             }
 
             return true;

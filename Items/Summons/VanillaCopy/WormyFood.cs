@@ -8,12 +8,13 @@ namespace Fargowiltas.Items.Summons
     {
         public override string Texture => "Terraria/Images/Item_70";
 
-        public override int Type => NPCID.EaterofWorldsHead;
+        public override int NPCType => NPCID.EaterofWorldsHead;
 
         public override string NPCName => "Eater of Worlds";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Wormy Food");
             Tooltip.SetDefault("Summons the Eater of Worlds in any biome");
         }

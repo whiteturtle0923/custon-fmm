@@ -12,9 +12,14 @@ namespace Fargowiltas.Items.Summons
 {
     public abstract class BaseSummon : ModItem
     {
-        public abstract int Type { get; }
+        public abstract int NPCType { get; }
 
         public abstract string NPCName { get; }
+
+        public override void SetStaticDefaults()
+        {
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        }
 
         public override void SetDefaults()
         {
@@ -34,7 +39,7 @@ namespace Fargowiltas.Items.Summons
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250));
 
-            if (Type == NPCID.Golem)
+            if (NPCType == NPCID.Golem)
             {
                 pos = player.Center;
                 for (int i = 0; i < 30; i++)
@@ -49,13 +54,13 @@ namespace Fargowiltas.Items.Summons
                 }
             }
 
-            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, Type);
+            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCType);
 
             if (Main.netMode == NetmodeID.Server)
             {
                 ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral($"{NPCName} has awoken!"), new Color(175, 75, 255));
             }
-            else if (Type != NPCID.KingSlime)
+            else if (NPCType != NPCID.KingSlime)
             {
                 Main.NewText($"{NPCName} has awoken!", new Color(175, 75, 255));
             }

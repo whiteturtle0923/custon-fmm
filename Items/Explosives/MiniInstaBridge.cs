@@ -14,6 +14,7 @@ namespace Fargowiltas.Items.Explosives
             DisplayName.SetDefault("Mini Instabridge");
             Tooltip.SetDefault("Creates a long bridge of platforms" +
                                "\nWill not break any blocks");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
         }
 
         public override void SetDefaults()

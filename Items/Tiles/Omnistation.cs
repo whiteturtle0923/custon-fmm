@@ -3,14 +3,22 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Tiles
 {
-    public class Omnistation : ModItem
+    public abstract class BaseOmnistation : ModItem
     {
+        protected int bar;
+
+        public BaseOmnistation(int bar)
+        {
+            this.bar = bar;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Omnistation");
-            Tooltip.SetDefault(@"Effects of all vanilla buff stations
-Grants Honey when touched
+            Tooltip.SetDefault(@"Can be reused infinitely
+Effects of all vanilla buff stations
 Right click while holding a weapon for its respective buff");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
@@ -29,18 +37,38 @@ Right click while holding a weapon for its respective buff");
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.Sunflower, 20)
-                .AddIngredient(ItemID.Campfire, 20)
-                .AddIngredient(ItemID.HeartLantern, 20)
-                .AddIngredient(ItemID.StarinaBottle, 20)
-                .AddIngredient(ItemID.HoneyBucket, 20)
-                .AddIngredient(ItemID.SharpeningStation, 5)
-                .AddIngredient(ItemID.AmmoBox, 5)
-                .AddIngredient(ItemID.CrystalBall, 5)
-                .AddIngredient(ItemID.BewitchingTable, 5)
-                .AddIngredient(ItemID.AdamantiteBar, 5)
+                .AddIngredient(ItemID.Sunflower, 5)
+                .AddIngredient(ItemID.Campfire, 5)
+                .AddIngredient(ItemID.HeartLantern, 5)
+                .AddIngredient(ItemID.StarinaBottle, 5)
+                .AddIngredient(ItemID.HoneyBucket, 5)
+                .AddIngredient(ItemID.SharpeningStation, 3)
+                .AddIngredient(ItemID.AmmoBox, 3)
+                .AddIngredient(ItemID.CrystalBall, 3)
+                .AddIngredient(ItemID.BewitchingTable, 3)
+                .AddIngredient(ItemID.GardenGnome, 3)
+                .AddIngredient(ItemID.CatBast, 3)
+                .AddIngredient(ItemID.SliceOfCake, 3)
+                .AddIngredient(ItemID.GoldLadyBug, 3)
+                .AddIngredient(bar, 10)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
+        }
+    }
+
+    public class Omnistation : BaseOmnistation
+    {
+        public Omnistation() : base(ItemID.AdamantiteBar) { }
+    }
+
+    public class Omnistation2 : BaseOmnistation
+    {
+        public Omnistation2() : base(ItemID.TitaniumBar) { }
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            Item.createTile = ModContent.TileType<OmnistationSheet2>();
         }
     }
 }

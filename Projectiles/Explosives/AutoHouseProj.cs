@@ -6,7 +6,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Projectiles
+namespace Fargowiltas.Projectiles.Explosives
 {
     public class AutoHouseProj : ModProjectile
     {

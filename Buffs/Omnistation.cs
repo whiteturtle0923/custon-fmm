@@ -17,30 +17,56 @@ namespace Fargowiltas.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.buffImmune[BuffID.Sunflower] = true;
-            player.buffImmune[BuffID.Campfire] = true;
-            player.buffImmune[BuffID.HeartLamp] = true;
-            player.buffImmune[BuffID.StarInBottle] = true;
-
             if (player.whoAmI == Main.myPlayer)
             {
                 //sunflower
+                Main.SceneMetrics.HasSunflower = false;
+                player.buffImmune[BuffID.Sunflower] = true;
                 player.moveSpeed += 0.1f;
                 player.moveSpeed *= 1.1f;
                 player.sunflower = true;
+
                 //campfire
-                player.lifeRegen++;
+                Main.SceneMetrics.HasCampfire = true;
+                player.buffImmune[BuffID.Campfire] = true;
+
                 //heart lantern
+                Main.SceneMetrics.HasHeartLantern = false;
+                player.buffImmune[BuffID.HeartLamp] = true;
                 player.lifeRegen += 2;
+
                 //star bottle
+                Main.SceneMetrics.HasStarInBottle = false;
+                player.buffImmune[BuffID.StarInBottle] = true;
                 player.manaRegenBonus += 2;
+
+                //gnome (kinda, it jitters and turns off for 1 tick every 3 ticks)
+                Main.SceneMetrics.HasGardenGnome = true;
+
+                //bast
+                Main.SceneMetrics.HasCatBast = false;
+                player.buffImmune[BuffID.CatBast] = true;
+                player.statDefense += 5;
+
+                //ladybug (also jitters for some reason)
+                player.ladyBugLuckTimeLeft = 24 * 60 * 60;
+
+                //honey
+                player.buffImmune[BuffID.Honey] = true;
+                player.honey = true;
+
+                //sugar rush
+                player.buffImmune[BuffID.SugarRush] = true;
+                player.moveSpeed += 0.2f;
+                player.pickSpeed += 0.2f;
             }
 
-            int type = Framing.GetTileSafely(player.Center).type;
+            /*int type = Framing.GetTileSafely(player.Center).type;
             if (type == ModContent.TileType<OmnistationSheet>() || type == ModContent.TileType<OmnistationSheet2>())
             {
-                player.AddBuff(BuffID.Honey, 30 * 60 + 1);
-            }
+                player.AddBuff(BuffID.Honey, 30 * 60 - 1);
+                player.AddBuff(BuffID.SugarRush, 120 * 60 - 1);
+            }*/
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Fargowiltas.Items.Summons.Mutant
         {
             DisplayName.SetDefault("Mutant Voodoo Doll");
             Tooltip.SetDefault("Summons ALL the bosses");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()

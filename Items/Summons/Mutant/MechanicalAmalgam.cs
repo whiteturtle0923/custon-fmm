@@ -11,6 +11,7 @@ namespace Fargowiltas.Items.Summons.Mutant
         {
             DisplayName.SetDefault("Mechanical Amalgam");
             Tooltip.SetDefault("Summons all 3 Mechanical bosses");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()

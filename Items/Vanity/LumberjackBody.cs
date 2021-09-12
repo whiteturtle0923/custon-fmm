@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿using Terraria.GameContent.Creative;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Vanity
@@ -9,6 +10,7 @@ namespace Fargowiltas.Items.Vanity
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lumberjack Body");
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()

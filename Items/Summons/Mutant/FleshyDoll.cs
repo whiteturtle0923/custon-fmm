@@ -12,6 +12,7 @@ namespace Fargowiltas.Items.Summons.Mutant
             DisplayName.SetDefault("Fleshy Doll");
             Tooltip.SetDefault("Summons the Wall of Flesh" +
                                "\nMake sure you use it in the Underworld");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()

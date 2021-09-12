@@ -93,7 +93,9 @@ namespace Fargowiltas
             mods = new string[]
             {
                 "FargowiltasSouls", // Fargo's Souls
-//                "FargowiltasSoulsDLC"
+                "FargowiltasSoulsDLC",
+                "ThoriumMod",
+                "CalamityMod"
             };
 
             ModLoaded = new Dictionary<string, bool>();
@@ -131,7 +133,7 @@ namespace Fargowiltas
             {
                 foreach (string mod in mods)
                 {
-                    ModLoaded[mod] = ModLoader.GetMod(mod) != null;
+                    ModLoaded[mod] = ModLoader.TryGetMod(mod, out Mod otherMod);
                 }
             }
             catch (Exception e)

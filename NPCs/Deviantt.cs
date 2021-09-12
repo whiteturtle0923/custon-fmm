@@ -3,6 +3,7 @@ using Fargowiltas.Items.Summons.Deviantt;
 using Fargowiltas.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -24,6 +25,7 @@ namespace Fargowiltas.NPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deviantt");
+
             Main.npcFrameCount[NPC.type] = 23;
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
             NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -32,7 +34,20 @@ namespace Fargowiltas.NPCs
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
 
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                Velocity = -1f,
+                Direction = -1
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+        }
 
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
+                new FlavorTextBestiaryInfoElement("Provides monster spawners and (rarely) a helping hand. This upbeat and energetic creature likes money almost as much as she likes violence.")
+            });
         }
 
         public override void SetDefaults()
@@ -206,6 +221,7 @@ namespace Fargowiltas.NPCs
             AddItem(FargoWorld.DownedBools["doctorBones"], ItemType<Eggplant>(), Item.buyPrice(0, 2), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["undeadMiner"], ItemType<AttractiveOre>(), Item.buyPrice(0, 3), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["tim"], ItemType<HolyGrail>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["gnome"], ItemType<GnomeHat>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(NPC.downedBoss3 && FargoWorld.DownedBools["dungeonSlime"], ItemType<SlimyLockBox>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["medusa"], ItemType<AthenianIdol>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["clown"], ItemType<ClownLicense>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
@@ -222,6 +238,9 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode && FargoWorld.DownedBools["mimicJungle"], ItemType<JungleChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["iceGolem"], ItemType<CoreoftheFrostCore>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["sandElemental"], ItemType<ForbiddenForbiddenFragment>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["eyeFish"] || FargoWorld.DownedBools["zombieMerman"], ItemType<SuspiciousLookingEyedrops>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(Main.hardMode && FargoWorld.DownedBools["bloodEel"], ItemType<BloodUrchin>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(Main.hardMode && FargoWorld.DownedBools["goblinShark"], ItemType<HemoclawCrab>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && NPC.downedGoblins && FargoWorld.DownedBools["goblinSummoner"], ItemType<ShadowflameIcon>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && NPC.downedPirates && FargoWorld.DownedBools["pirateCaptain"], ItemType<PirateFlag>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPlantBoss && FargoWorld.DownedBools["nailhead"], ItemType<Pincushion>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);

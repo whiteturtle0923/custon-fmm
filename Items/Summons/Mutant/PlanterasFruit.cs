@@ -8,12 +8,13 @@ namespace Fargowiltas.Items.Summons.Mutant
 {
     public class PlanterasFruit : BaseSummon
     {
-        public override int Type => NPCID.Plantera;
+        public override int NPCType => NPCID.Plantera;
 
         public override string NPCName => "Plantera";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Plantera's Fruit");
             Tooltip.SetDefault("Summons Plantera");
         }

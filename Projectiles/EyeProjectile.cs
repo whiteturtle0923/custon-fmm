@@ -18,7 +18,7 @@ namespace Fargowiltas.Projectiles
             Projectile.height = 13;
             Projectile.aiStyle = 1;
             Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.npcProj = true;
             Projectile.penetrate = 2;
             Projectile.timeLeft = 600;
             AIType = ProjectileID.Bullet;

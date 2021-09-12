@@ -15,6 +15,7 @@ namespace Fargowiltas.Items.Explosives
             Tooltip.SetDefault("Creates 2 bridges of obsidian platforms across the whole world" +
                                "\nAlso clears the area between and above the platforms" +
                                "\nDo not use if any important building is nearby");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
         }
 
         public override void SetDefaults()

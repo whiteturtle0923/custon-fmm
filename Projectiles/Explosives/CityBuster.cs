@@ -43,7 +43,7 @@ namespace Fargowiltas.Projectiles.Explosives
             Vector2 position = Projectile.Center;
             int radius = 60;     //bigger = boomer
 
-            for (int x = -radius; x <= (radius); x++)
+            for (int x = -radius; x <= radius; x++)
             {
                 for (int y = -radius * 2; y <= 0; y++)
                 {
@@ -60,19 +60,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     if (!FargoGlobalProjectile.OkayToDestroyTile(tile))
                         continue;
 
-                    FargoGlobalTile.FindChestTopLeft(xPosition, yPosition, true);
-
-                    WorldGen.KillTile(xPosition, yPosition, noItem: true);
-                    tile.LiquidType = 0;
-                    tile.LiquidAmount = 0;
-                    //tile.lava(false);
-                    //tile.honey(false);
-
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        NetMessage.sendWater(xPosition, yPosition);
-                        NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
-                    }
+                    FargoGlobalTile.ClearEverything(xPosition, yPosition);
                 }
             }
 

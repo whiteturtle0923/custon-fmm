@@ -5,12 +5,13 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class WormSnack : BaseSummon
     {
-        public override int Type => Main.hardMode ? NPCID.DiggerHead : NPCID.GiantWormHead;
+        public override int NPCType => Main.hardMode ? NPCID.DiggerHead : NPCID.GiantWormHead;
 
         public override string NPCName => Main.hardMode ? "Digger" : "Giant Worm";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Worm Snack");
             Tooltip.SetDefault(@"Summons Giant Worm in pre-Hardmode
 Summons Digger in Hardmode
