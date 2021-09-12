@@ -13,12 +13,12 @@ namespace Fargowiltas.Items.Summons.Abom
         {
             DisplayName.SetDefault("Naughty List");
             Tooltip.SetDefault("Summons Santa-NK1" +
-                               "\nOnly usable at night");
+                               "\nOnly usable during Frost Moon");
         }
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime;
+            return !Main.dayTime && Main.snowMoon;
         }
     }
 }

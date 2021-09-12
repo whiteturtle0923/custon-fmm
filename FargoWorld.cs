@@ -72,15 +72,19 @@ namespace Fargowiltas
             "nailhead"
        };
 
-        public override void OnWorldLoad()
+        public override void PreWorldGen()
         {
             foreach (string tag in tags)
             {
                 DownedBools[tag] = false;
             }
 
-            AbomClearCD = 0;
             WoodChopped = 0;
+        }
+
+        public override void OnWorldLoad()
+        {
+            AbomClearCD = 0;
 
             OverloadGoblins = false;
             OverloadPirates = false;

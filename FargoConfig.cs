@@ -101,7 +101,8 @@ namespace Fargowiltas
         public float DebuffOpacity;
 
         [Label("[i:1309] Transparent Minions & Support Attacks")]
-        [DefaultValue(false)]
-        public bool TransparentMinions;
+        [DefaultValue(1f)]
+        [Slider]
+        public float TransparentMinions;
     }
 }
