@@ -1134,38 +1134,6 @@ namespace Fargowiltas.NPCs
 
         public override bool CheckDead(NPC npc)
         {
-<<<<<<< HEAD
-            void TryDowned(string seller, Color color, params string[] names)
-            {
-                bool update = false;
-
-                foreach (string name in names)
-                {
-                    if (!FargoWorld.DownedBools[name])
-                    {
-                        FargoWorld.DownedBools[name] = true;
-                        update = true;
-                    }
-                }
-
-                if (update)
-                {
-                    string text = $"A new item has been unlocked in {seller}'s shop!";
-                    if (Main.netMode == NetmodeID.SinglePlayer)
-                    {
-                        Main.NewText(text, color);
-                    }
-                    else if (Main.netMode == NetmodeID.Server)
-                    {
-                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), color);
-                        NetMessage.SendData(MessageID.WorldData); //sync world
-                    }
-                }
-            };
-=======
-            
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
-
             // Lumber Jaxe
             if (npc.FindBuffIndex(ModContent.BuffType<WoodDrop>()) != -1)
             {
@@ -1197,142 +1165,32 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.GiantWormHead:
                 case NPCID.DiggerHead:
-<<<<<<< HEAD
-                    TryDowned("Deviantt", Color.HotPink, "worm");
-=======
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "worm");
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
                     break;
 
                 case NPCID.DD2OgreT2:
                 case NPCID.DD2OgreT3:
-<<<<<<< HEAD
-                    TryDowned("Abominationn", Color.Orange, "ogre");
-=======
                     FargoUtils.TryDowned(npc, "Abominationn", Color.Orange, "ogre");
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
                     break;
 
                 case NPCID.DD2DarkMageT1:
                 case NPCID.DD2DarkMageT3:
-<<<<<<< HEAD
-                    TryDowned("Abominationn", Color.Orange, "darkMage");
-                    break;
-
-                case NPCID.Clown:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "clown");
-=======
                     FargoUtils.TryDowned(npc, "Abominationn", Color.Orange, "darkMage");
                     break;
 
                 case NPCID.Clown:
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, Main.hardMode, "rareEnemy", "clown");
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
                     break;
 
                 case NPCID.BlueSlime:
                     if (npc.netID == NPCID.Pinky)
                     {
-<<<<<<< HEAD
-                        TryDowned("Deviantt", Color.HotPink, "rareEnemy", "pinky");
-=======
                         FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "pinky");
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
                     }
                     break;
 
                 case NPCID.UndeadMiner:
-<<<<<<< HEAD
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "undeadMiner");
-                    break;
 
-                case NPCID.Tim:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "tim");
-                    break;
-
-                case NPCID.DoctorBones:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "doctorBones");
-                    break;
-
-                case NPCID.Mimic:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimic");
-                    break;
-
-                case NPCID.WyvernHead:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "wyvern");
-                    break;
-
-                case NPCID.RuneWizard:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "runeWizard");
-                    break;
-
-                case NPCID.Nymph:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "nymph");
-                    break;
-
-                case NPCID.Moth:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "moth");
-                    break;
-
-                case NPCID.RainbowSlime:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "rainbowSlime");
-                    break;
-
-                case NPCID.Paladin:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "paladin");
-                    break;
-
-                case NPCID.Medusa:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "medusa");
-                    break;
-
-                case NPCID.IceGolem:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "iceGolem");
-                    break;
-
-                case NPCID.SandElemental:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "sandElemental");
-                    break;
-
-                case NPCID.Nailhead:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "nailhead");
-                    break;
-
-                case NPCID.Mothron:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mothron");
-                    break;
-
-                case NPCID.BigMimicCorruption:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimicCorrupt");
-                    break;
-
-                case NPCID.BigMimicHallow:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimicHallow");
-                    break;
-
-                case NPCID.BigMimicCrimson:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimicCrimson");
-                    break;
-
-                case NPCID.BigMimicJungle:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "mimicJungle");
-                    break;
-
-                case NPCID.GoblinSummoner:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "goblinSummoner");
-                    break;
-
-                case NPCID.PirateShip:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "flyingDutchman");
-                    break;
-
-                case NPCID.DungeonSlime:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "dungeonSlime");
-                    break;
-
-                case NPCID.PirateCaptain:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "pirateCaptain");
-=======
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "undeadMiner");
                     break;
 
@@ -1422,17 +1280,12 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.PirateCaptain:
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, Main.hardMode && NPC.downedPirates, "rareEnemy", "pirateCaptain");
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
                     break;
 
                 case NPCID.SkeletonSniper:
                 case NPCID.TacticalSkeleton:
                 case NPCID.SkeletonCommando:
-<<<<<<< HEAD
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "skeletonGun");
-=======
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, NPC.downedPlantBoss, "rareEnemy", "skeletonGun");
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
                     break;
 
                 case NPCID.Necromancer:
@@ -1441,17 +1294,6 @@ namespace Fargowiltas.NPCs
                 case NPCID.DiabolistWhite:
                 case NPCID.RaggedCaster:
                 case NPCID.RaggedCasterOpenCoat:
-<<<<<<< HEAD
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "skeletonMage");
-                    break;
-
-                case NPCID.BoneLee:
-                    TryDowned("Deviantt", Color.HotPink, "rareEnemy", "boneLee");
-                    break;
-
-                case NPCID.HeadlessHorseman:
-                    TryDowned("Abominationn", Color.Orange, "headlessHorseman");
-=======
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, NPC.downedPlantBoss, "rareEnemy", "skeletonMage");
                     break;
 
@@ -1482,7 +1324,6 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.Gnome:
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "gnome");
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
                     break;
 
                 default:
@@ -1491,11 +1332,7 @@ namespace Fargowiltas.NPCs
 
             if (Fargowiltas.ModRareEnemies.ContainsKey(npc.type))
             {
-<<<<<<< HEAD
-                TryDowned("Deviantt", Color.HotPink, "rareEnemy", Fargowiltas.ModRareEnemies[npc.type]);
-=======
                 FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", Fargowiltas.ModRareEnemies[npc.type]);
->>>>>>> 2dcfed5c271e143cd83cf1584b8324a1806beaab
             }
 
             if (npc.type == NPCID.DD2Betsy && !PandoraActive)
