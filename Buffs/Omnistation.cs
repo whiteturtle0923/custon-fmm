@@ -58,7 +58,7 @@ namespace Fargowiltas.Buffs
                 //sugar rush
                 player.buffImmune[BuffID.SugarRush] = true;
                 player.moveSpeed += 0.2f;
-                player.pickSpeed += 0.2f;
+                player.pickSpeed -= 0.2f;
             }
 
             /*int type = Framing.GetTileSafely(player.Center).type;
