@@ -3,4 +3,4 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 ALPHA UPDATE - V 2.5.8
 -Super Dummy no longer appears in bestiary
--Fixed Omnistation reducing mining speed instead of increasing
+-Omnistation gives Honey and Sugar Rush on contact instead

@@ -52,21 +52,21 @@ namespace Fargowiltas.Buffs
                 player.ladyBugLuckTimeLeft = 24 * 60 * 60;
 
                 //honey
-                player.buffImmune[BuffID.Honey] = true;
-                player.honey = true;
+                /*player.buffImmune[BuffID.Honey] = true;
+                player.honey = true;*/
 
                 //sugar rush
-                player.buffImmune[BuffID.SugarRush] = true;
+                /*player.buffImmune[BuffID.SugarRush] = true;
                 player.moveSpeed += 0.2f;
-                player.pickSpeed -= 0.2f;
+                player.pickSpeed -= 0.2f;*/
             }
 
-            /*int type = Framing.GetTileSafely(player.Center).type;
+            int type = Framing.GetTileSafely(player.Center).type;
             if (type == ModContent.TileType<OmnistationSheet>() || type == ModContent.TileType<OmnistationSheet2>())
             {
                 player.AddBuff(BuffID.Honey, 30 * 60 - 1);
                 player.AddBuff(BuffID.SugarRush, 120 * 60 - 1);
-            }*/
+            }
         }
     }
 }

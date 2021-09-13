@@ -17,6 +17,7 @@ namespace Fargowiltas.Items.Tiles
             DisplayName.SetDefault("Omnistation");
             Tooltip.SetDefault(@"Can be reused infinitely
 Effects of all vanilla buff stations
+Grants Honey and Sugar Rush when touched
 Right click while holding a weapon for its respective buff");
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
