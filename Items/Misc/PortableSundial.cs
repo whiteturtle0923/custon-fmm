@@ -1,3 +1,4 @@
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Events;
@@ -37,6 +38,17 @@ namespace Fargowiltas.Items.Misc
 
         public override bool CanUseItem(Player player)
         {
+            if (Main.npc.Any(n => n.active && n.boss))
+            {
+                Item.useAnimation = 120;
+                Item.useTime = 120;
+            }
+            else
+            {
+                Item.useAnimation = 30;
+                Item.useTime = 30;
+            }
+
             return !Main.fastForwardTime;
         }
 
