@@ -365,7 +365,7 @@ namespace Fargowiltas.NPCs
                         AddItem(ref nextSlot, ItemType<UnsafePinkSlabWall>(), Item.buyPrice(copper: 25));
                         AddItem(ref nextSlot, ItemType<UnsafePinkTileWall>(), Item.buyPrice(copper: 25));
 
-                        if (Main.LocalPlayer.inventory.Any(i => i.stack > 0 && i.useAmmo == ItemID.Bone))
+                        if (Main.LocalPlayer.inventory.Any(i => !i.IsAir && i.useAmmo == ItemID.Bone))
                         {
                             AddItem(ref nextSlot, ItemType<Items.Ammos.BrittleBone>());
                         }
@@ -403,6 +403,10 @@ namespace Fargowiltas.NPCs
                             }
                         }
 
+                        if (Main.LocalPlayer.inventory.Any(i => !i.IsAir && i.useAmmo == AmmoID.Dart))
+                        {
+                            AddItem(ref nextSlot, ItemID.Seed, 3);
+                        }
                         break;
 
                     case NPCID.Painter:
@@ -1324,6 +1328,10 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.Gnome:
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "gnome");
+                    break;
+
+                case NPCID.RedDevil:
+                    FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "redDevil");
                     break;
 
                 default:

@@ -238,6 +238,7 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode && FargoWorld.DownedBools["mimicJungle"], ItemType<JungleChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["iceGolem"], ItemType<CoreoftheFrostCore>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["sandElemental"], ItemType<ForbiddenForbiddenFragment>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(NPC.downedMechBossAny && FargoWorld.DownedBools["redDevil"], ItemType<RedDevilVoodooDoll>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["eyeFish"] || FargoWorld.DownedBools["zombieMerman"], ItemType<SuspiciousLookingEyedrops>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["bloodEel"], ItemType<BloodUrchin>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["goblinShark"], ItemType<HemoclawCrab>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);

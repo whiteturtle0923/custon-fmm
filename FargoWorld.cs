@@ -75,7 +75,8 @@ namespace Fargowiltas
             "bloodEel",
             "goblinShark",
             "dreadnautilus",
-            "gnome"
+            "gnome",
+            "redDevil",
        };
 
         public override void PreWorldGen()
@@ -102,19 +103,16 @@ namespace Fargowiltas
             CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
         }
 
-        public override TagCompound SaveWorldData()
+        public override void SaveWorldData(TagCompound tag)
         {
             List<string> downed = new List<string>();
-            foreach (string tag in tags)
+            foreach (string downTag in tags)
             {
-                if (DownedBools.TryGetValue(tag, out bool down) && down)
-                    downed.AddWithCondition(tag, down);
+                if (DownedBools.TryGetValue(downTag, out bool down) && down)
+                    downed.AddWithCondition(downTag, down);
             }
 
-            return new TagCompound
-                    {
-                        { "downed", downed },
-                    };
+            tag.Add("downed", downed);
         }
 
         public override void LoadWorldData(TagCompound tag)
