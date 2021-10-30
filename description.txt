@@ -9,3 +9,4 @@ ALPHA UPDATE - V 2.5.8.1
 -Added Red Devil Voodoo Doll
 -Internal refactors to how data is saved to agree with new alpha version
 -Fixed Golden Dipping Vat being unobtainable due to requiring a Golden Dipping Vat to craft
+-Fixed Battle Cry sound issue

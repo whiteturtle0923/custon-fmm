@@ -44,9 +44,9 @@ namespace Fargowiltas.Items.Misc
                 ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), new Color(175, 75, 255));
             }
 
-            if (modPlayer.BattleCry && !Main.dedServ)
+            if (!Main.dedServ)
             {
-                SoundEngine.PlaySound(Mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Horn").WithVolume(1f).WithPitchVariance(.5f), player.position);
+                SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Horn").WithVolume(1f), player.Center);
             }
 
             return true;
