@@ -75,7 +75,8 @@ namespace Fargowiltas
             "bloodEel",
             "goblinShark",
             "dreadnautilus",
-            "gnome"
+            "gnome",
+            "redDevil",
        };
 
         public override void PreWorldGen()
@@ -105,6 +106,7 @@ namespace Fargowiltas
         public override void SaveWorldData(TagCompound tag)
         {
             List<string> downed = new List<string>();
+
             foreach (string downedTag in tags)
             {
                 if (DownedBools.TryGetValue(downedTag, out bool down) && down)

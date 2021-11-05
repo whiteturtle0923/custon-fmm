@@ -54,6 +54,7 @@ namespace Fargowiltas
         {
             string name = "FargoDyes" + Player.name;
             List<string> dyes = new List<string>();
+
             foreach (string tagString in tags)
             {
                 bool value;
@@ -69,8 +70,6 @@ namespace Fargowiltas
             }
 
             tag.Add(name, dyes);
-
-            //Toggler.Save();
         }
 
         //        public override void Initialize()

@@ -333,6 +333,7 @@ namespace Fargowiltas.Items
         {
             if (GetInstance<FargoConfig>().UnlimitedAmmo && Main.hardMode && ammo.ammo != 0 && ammo.stack >= 3996)
                 return false;
+
             return true;
         }
 

@@ -1,32 +1,14 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
-ALPHA UPDATE - V 2.5.8
--Updated to latest tmod 1.4 version
+ALPHA UPDATE - V 2.5.9
+-Updated to latest tmod version
+-Portable Sundial has longer cooldown when used during a boss fight
+-Fixed Slimy Barometer not having research available
+-Fixed World Token selling for more than its buy price
+-Merchant sells Seeds when you have a dart-firing weapon
+-Added Red Devil Voodoo Doll
+-Internal refactors to how data is saved to agree with new alpha version
+-Fixed Golden Dipping Vat being unobtainable due to requiring a Golden Dipping Vat to craft
+-Fixed Battle Cry sound issue
 
-ALPHA UPDATE - V 2.5.7
--Fixed Lumberjack crash (real)
--Added Swarm Crystal and Jar of Lacewings
--Added Hemoclaw Crab, Suspicious Looking Eyedrops, Blood Urchin, Blood Shrimp, Gnome Hat
--Added Endless Star Pouch, Endless Tungsten Pouch, and Endless Rocket Bags for 1.4 Rockets
--Added Golden Dipping Vat
--Added unsafe Dungeon, Lihzahrd, spider, and marble/granite  walls
--Added NPC bestiary entries
--Added Journey research values for almost all items
--Added Faster Lava Fishing option
--Added recipes for Desert Key, Desert Tiger Staff
--Added The Dutchman and Universal Pylon recipe
--Added recipes for Empress/Queen Slime drops
--Restored boss bag recipes
--Restored cheaper recipe for Beetle armor (but uses Chlorophyte armor now)
--Restored ancient armor recipes
--Restored miscellaneous recipes
--Empress/Queen Slime spawners can be crafted back and forth
--Fixed crate recipes
--Improved visuals for Mutant post-ML attack
--Omnistation glowmask restored
--Omnistation now gives Honey by proximity instead of on touch
--Omnistation includes Bast, Gnome, Gold Ladybug, Cake
--Lowered cost of Omnistation recipe
--Party Cone can be used to get Party Girl Cake
--Moon Lord has 1% chance to drop Moon Lord Legs

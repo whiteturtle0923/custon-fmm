@@ -37,7 +37,7 @@ namespace Fargowiltas.Items.Tiles
                 .AddRecipeGroup("Fargowiltas:AnyGoldBar", 25)
                 .AddIngredient(ItemID.GoldCoin, 25)
                 .AddIngredient(ItemID.GoldDust, 250)
-                .AddTile(ModContent.TileType<GoldenDippingVatSheet>())
+                .AddTile(TileID.MythrilAnvil)
                 .Register();
 
             AddCritter(ItemID.Bird, ItemID.GoldBird);
