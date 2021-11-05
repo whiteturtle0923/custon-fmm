@@ -489,6 +489,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.PinkJellyfishBanner, ItemID.JellyfishNecklace);
             AddBannerToItemRecipe(ItemID.PiranhaBanner, ItemID.RobotHat);
             AddBannerToItemRecipe(ItemID.PixieBanner, ItemID.Megaphone, tile: TileID.MythrilAnvil);
+            AddBannerToItemRecipe(ItemID.PixieBanner, ItemID.PixieDust, tile: TileID.MythrilAnvil, resultAmount: 100);
             AddBannerToItemRecipe(ItemID.PsychoBanner, ItemID.PsychoKnife, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.RaggedCasterBanner, ItemID.SpectreStaff, tile: TileID.MythrilAnvil);
             AddBannerToItemRecipe(ItemID.RaincoatZombieBanner, ItemID.RainHat);

@@ -174,7 +174,7 @@ namespace Fargowiltas.NPCs
                 {
                     quote = "While I was chopping down a cactus these things leaped at me, why don't you take care of them?";
                     player.QuickSpawnItem(Main.rand.Next(new int[] { ItemID.Scorpion, ItemID.BlackScorpion }), 5);
-                    player.QuickSpawnItem(ItemID.Cactus, 50);
+                    player.QuickSpawnItem(ItemID.Cactus, 100);
                 }
                 else if (player.ZoneJungle)
                 {

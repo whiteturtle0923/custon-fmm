@@ -11,4 +11,7 @@ ALPHA UPDATE - V 2.5.9
 -Internal refactors to how data is saved to agree with new alpha version
 -Fixed Golden Dipping Vat being unobtainable due to requiring a Golden Dipping Vat to craft
 -Fixed Battle Cry sound issue
+-Added Pixie Dust banner recipe
+-Increased Lumberjack's cactus sell price
+-Fixed the Pink Slime Crown not working
 
