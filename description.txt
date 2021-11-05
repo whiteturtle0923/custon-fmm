@@ -1,48 +1,32 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+ALPHA UPDATE - V 2.5.8
+-Updated to latest tmod 1.4 version
+
 ALPHA UPDATE - V 2.5.7
--Added unsafe Dungeon walls, sold at Clothier
--Added unsafe Lihzahrd walls, craftable
--Added unsafe spider walls, craftable
--Added unsafe marble/granite walls, craftable
--Refactored vanilla town NPC sellings
--Improved visuals for Mutant post-ML attack
--NPC bestiary entries
--Fixed Lumberjack crash
--Super Dummies cap at 50
--Transparent Minions is a slider
--Frost/Pumpkin Moon summons only work during the event since their loot is wave-based, meaning summoning at night doesn't give drops
--Text prints in chat when most Abom/Deviantt enemy spawners are unlocked to better communicate them to player
--Omnistation glowmask restored
--Omnistation now gives Honey by proximity instead of on touch
--Omnistation includes Bast, Gnome, Gold Ladybug, Cake
--Added Endless Star Pouch
--Added Swarm Crystal
--Added Jar of Lacewings
--Empress/Queen Slime spawners can be crafted back and forth
--Fixed crate recipes requiring several hundred hardmode crates to craft the same thing as 1 or 5 pre-Hardmode crates
--Recalculated crate recipes
--Added bestiary mod icon
--Added Journey research values for almost all items
--Added Hemoclaw Crab
--Added Suspicious Looking Eyedrops
--Added Blood Urchin
--Added Blood Shrimp
--Added Gnome Hat
+-Fixed Lumberjack crash (real)
+-Added Swarm Crystal and Jar of Lacewings
+-Added Hemoclaw Crab, Suspicious Looking Eyedrops, Blood Urchin, Blood Shrimp, Gnome Hat
+-Added Endless Star Pouch, Endless Tungsten Pouch, and Endless Rocket Bags for 1.4 Rockets
 -Added Golden Dipping Vat
--Party Cone can be used to get Party Girl Cake
--Lowered cost of Omnistation recipe
+-Added unsafe Dungeon, Lihzahrd, spider, and marble/granite  walls
+-Added NPC bestiary entries
+-Added Journey research values for almost all items
 -Added Faster Lava Fishing option
--Added Endless Tungsten Pouch
--Added Endless Rocket Bags for 1.4 Rockets
 -Added recipes for Desert Key, Desert Tiger Staff
+-Added The Dutchman and Universal Pylon recipe
+-Added recipes for Empress/Queen Slime drops
 -Restored boss bag recipes
 -Restored cheaper recipe for Beetle armor (but uses Chlorophyte armor now)
 -Restored ancient armor recipes
 -Restored miscellaneous recipes
--Added The Dutchman recipe
--Added Universal Pylon recipe
--Added recipes for Empress/Queen Slime drops
--Attempted fixing Lumberjack world save glitch
+-Empress/Queen Slime spawners can be crafted back and forth
+-Fixed crate recipes
+-Improved visuals for Mutant post-ML attack
+-Omnistation glowmask restored
+-Omnistation now gives Honey by proximity instead of on touch
+-Omnistation includes Bast, Gnome, Gold Ladybug, Cake
+-Lowered cost of Omnistation recipe
+-Party Cone can be used to get Party Girl Cake
 -Moon Lord has 1% chance to drop Moon Lord Legs

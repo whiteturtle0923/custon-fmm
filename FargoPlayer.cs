@@ -50,30 +50,27 @@ namespace Fargowiltas
                     "BlackInk"
        };
 
-        public override TagCompound Save()
+        public override void SaveData(TagCompound tag)
         {
             string name = "FargoDyes" + Player.name;
             List<string> dyes = new List<string>();
-            foreach (string tag in tags)
+            foreach (string tagString in tags)
             {
                 bool value;
 
-                if (FirstDyeIngredients.TryGetValue(tag, out value))
+                if (FirstDyeIngredients.TryGetValue(tagString, out value))
                 {
-                    dyes.AddWithCondition(tag, FirstDyeIngredients[tag]);
+                    dyes.AddWithCondition(tagString, FirstDyeIngredients[tagString]);
                 }
                 else
                 {
-                    dyes.AddWithCondition(tag, false);
+                    dyes.AddWithCondition(tagString, false);
                 }
             }
 
-            //Toggler.Save();
+            tag.Add(name, dyes);
 
-            return new TagCompound
-                    {
-                        { name, dyes },
-                    };
+            //Toggler.Save();
         }
 
         //        public override void Initialize()
@@ -81,7 +78,7 @@ namespace Fargowiltas
         //            //Toggler.Load(this);
         //        }
 
-        public override void Load(TagCompound tag)
+        public override void LoadData(TagCompound tag)
         {
             string name = "FargoDyes" + Player.name;
 

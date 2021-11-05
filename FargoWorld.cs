@@ -102,19 +102,16 @@ namespace Fargowiltas
             CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
         }
 
-        public override TagCompound SaveWorldData()
+        public override void SaveWorldData(TagCompound tag)
         {
             List<string> downed = new List<string>();
-            foreach (string tag in tags)
+            foreach (string downedTag in tags)
             {
-                if (DownedBools.TryGetValue(tag, out bool down) && down)
-                    downed.AddWithCondition(tag, down);
+                if (DownedBools.TryGetValue(downedTag, out bool down) && down)
+                    downed.AddWithCondition(downedTag, down);
             }
 
-            return new TagCompound
-                    {
-                        { "downed", downed },
-                    };
+            tag.Add("downed", downed);
         }
 
         public override void LoadWorldData(TagCompound tag)
