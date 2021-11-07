@@ -167,5 +167,10 @@ namespace Fargowiltas.Projectiles
 
             return true;
         }
+
+        public static bool TileIsLiterallyAir(Tile tile)
+        {
+            return tile.type == 0 && tile.wall == 0 && tile.LiquidAmount == 0 && tile.sTileHeader == 0 && tile.bTileHeader == 0 && tile.bTileHeader2 == 0 && tile.bTileHeader3 == 0 && tile.frameX == 0 && tile.frameY == 0;
+        }
     }
 }

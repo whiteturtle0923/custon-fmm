@@ -124,7 +124,7 @@ namespace Fargowiltas.Projectiles.Explosives
                 if (!WipeColumn(leftTry)) //if went OOB or exited temple before reaching normal left limit, give up
                 {
                     rightMax += leftMax - Math.Abs(leftTry); //try to extend right side by this much
-                    Main.NewText($"Extended right max to {rightMax}");
+                    //Main.NewText($"Extended right max to {rightMax}");
                     break;
                 }
             }
@@ -134,7 +134,7 @@ namespace Fargowiltas.Projectiles.Explosives
                 if (!WipeColumn(rightTry)) //if went OOB or exited temple before reaching normal right limit, give up
                 {
                     leftMax += rightMax - rightTry; //try to extend left side by this much
-                    Main.NewText($"Extended left max to {leftMax}");
+                    //Main.NewText($"Extended left max to {leftMax}");
                     for (; leftTry >= -leftMax; leftTry--) //try left one more time with the new extended limit
                     {
                         if (!WipeColumn(leftTry))

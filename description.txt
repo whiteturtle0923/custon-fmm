@@ -1,6 +1,10 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+ALPHA UPDATE - V 2.5.9.1
+-Improved multiplayer issues with instant structures
+-Mini Instabridge can now destroy thorns
+
 ALPHA UPDATE - V 2.5.9
 -Updated to latest tmod version
 -Portable Sundial has longer cooldown when used during a boss fight
