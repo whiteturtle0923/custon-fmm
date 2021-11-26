@@ -57,7 +57,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     if (tile == null)
                         continue;
 
-                    if (!FargoGlobalProjectile.OkayToDestroyTile(tile))
+                    if (!FargoGlobalProjectile.OkayToDestroyTile(tile) || FargoGlobalProjectile.TileIsLiterallyAir(tile))
                         continue;
 
                     FargoGlobalTile.ClearEverything(xPosition, yPosition);

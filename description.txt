@@ -10,6 +10,8 @@ ALPHA UPDATE - V 2.6
 -Demolitionist can sell Meteorite, Demonite, Crimtane, Hellstone
 -Added a few more NPC quotes
 -Fixed Town NPC toggle formatting
+-Improved multiplayer issues with instant structures
+-Mini Instabridge can now destroy thorns
 
 ALPHA UPDATE - V 2.5.11
 -Updated to latest tmod version

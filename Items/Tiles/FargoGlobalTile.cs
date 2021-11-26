@@ -120,11 +120,12 @@ namespace Fargowiltas.Tiles
             return Point16.NegativeOne;
         }
 
-        internal static void ClearEverything(int x, int y)
+        internal static void ClearEverything(int x, int y, bool sendData = true)
         {
             FindChestTopLeft(x, y, true);
 
             Tile tile = Main.tile[x, y];
+            bool hadLiquid = tile.LiquidAmount != 0;
             WorldGen.KillTile(x, y, noItem: true);
             tile.ClearEverything();
 
@@ -133,10 +134,11 @@ namespace Fargowiltas.Tiles
 
             if (Main.netMode == NetmodeID.Server)
             {
-                NetMessage.sendWater(x, y);
+                if (hadLiquid)
+                    NetMessage.sendWater(x, y);
+                if (sendData)
+                    NetMessage.SendTileSquare(-1, x, y, 1);
             }
-
-            NetMessage.SendTileSquare(-1, x, y, 1);
         }
     }
 }

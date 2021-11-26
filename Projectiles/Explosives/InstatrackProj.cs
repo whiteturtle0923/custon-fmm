@@ -59,15 +59,19 @@ namespace Fargowiltas.Projectiles.Explosives
                     if (!FargoGlobalProjectile.OkayToDestroyTile(tile))
                         continue;
 
-                    FargoGlobalTile.ClearEverything(xPosition, yPosition);
-
                     if (y == 0)
                     {
+                        FargoGlobalTile.ClearEverything(xPosition, yPosition, false);
                         // Spawn platforms
                         WorldGen.PlaceTile(xPosition, yPosition, TileID.MinecartTrack);
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
                     }
-
-                    NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
+                    else
+                    {
+                        if (!FargoGlobalProjectile.TileIsLiterallyAir(tile))
+                            FargoGlobalTile.ClearEverything(xPosition, yPosition);
+                    }
                 }
             }
         }

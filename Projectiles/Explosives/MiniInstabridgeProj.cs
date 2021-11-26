@@ -1,5 +1,6 @@
 ﻿using Fargowiltas.Tiles;
 using Microsoft.Xna.Framework;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -44,6 +45,15 @@ namespace Fargowiltas.Projectiles.Explosives
             bool goLeft = Projectile.Center.X < Main.player[Projectile.owner].Center.X;
             int min = goLeft ? -length : 0;
             int max = goLeft ? 0 : length;
+
+            int[] deletableTiles = { 
+                TileID.Cactus,
+                TileID.Trees,
+                TileID.CorruptThorns,
+                TileID.CrimsonThorns,
+                TileID.JungleThorns
+            };
+
             for (int x = min; x < max; x++)
             {
                 int xPosition = (int)(x + position.X / 16.0f);
@@ -59,7 +69,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     continue;
                 }
 
-                if (tile.type == TileID.Trees || tile.type == TileID.Cactus)
+                if (deletableTiles.Contains(tile.type))
                 {
                     FargoGlobalTile.ClearEverything(xPosition, yPosition);
                 }

@@ -70,25 +70,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     if (!FargoGlobalProjectile.OkayToDestroyTile(tile))
                         continue;
 
-                    FargoGlobalTile.ClearEverything(xPosition, y);
-
-                    // Tile destroy
-
-                    // WorldGen.KillTile(xPosition, y);
-                    // WorldGen.KillWall(xPosition, y);
-                    // Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
-
-                    // Kill liquids
-                    /*if (tile != null)
-                    {
-                        tile.liquid = 0;
-                        tile.lava(false);
-                        tile.honey(false);
-                        if (Main.netMode == NetmodeID.Server)
-                        {
-                            NetMessage.sendWater(xPosition, y);
-                        }
-                    }*/
+                    FargoGlobalTile.ClearEverything(xPosition, y, false);
 
                     // Spawn structure
                     WorldGen.PlaceWall(xPosition, y, WallID.Stone);
@@ -97,13 +79,11 @@ namespace Fargowiltas.Projectiles.Explosives
                     {
                         WorldGen.PlaceTile(xPosition, y, TileID.GrayBrick);
                     }
-
-                    if ((x == -2 || x == 2) && (y % 10 == 0))
+                    else if ((x == -2 || x == 2) && (y % 10 == 0))
                     {
                         WorldGen.PlaceTile(xPosition, y, TileID.Torches);
                     }
-
-                    if (x == 0)
+                    else if (x == 0)
                     {
                         WorldGen.PlaceTile(xPosition, y, TileID.Rope);
                     }
