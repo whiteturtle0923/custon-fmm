@@ -15,7 +15,7 @@ using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.Projectiles;
 using Fargowilta;
-//using Fargowiltas.Items.CaughtNPCs;
+using Fargowiltas.Items.CaughtNPCs;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using MonoMod.RuntimeDetour.HookGen;
@@ -104,12 +104,12 @@ namespace Fargowiltas
                 ModLoaded.Add(mod, false);
             }
 
-            //AddToggle("Mutant", "Mutant Can Spawn", ModContent.ItemType<MutantMask>(), "ffffff");
-            //AddToggle("Abom", "Abominationn Can Spawn", ModContent.ItemType<AbominationnMask>(), "ffffff");
-            //AddToggle("Devi", "Deviantt Can Spawn", ModContent.ItemType<DevianttMask>(), "ffffff");
-            //AddToggle("Lumber", "Lumberjack Can Spawn", ModContent.ItemType<LumberjackMask>(), "ffffff");
+            AddToggle("Mutant", "Mutant Can Spawn", ModContent.ItemType<MutantMask>(), "ffffff");
+            AddToggle("Abom", "Abominationn Can Spawn", ModContent.ItemType<AbominationnMask>(), "ffffff");
+            AddToggle("Devi", "Deviantt Can Spawn", ModContent.ItemType<DevianttMask>(), "ffffff");
+            AddToggle("Lumber", "Lumberjack Can Spawn", ModContent.ItemType<LumberjackMask>(), "ffffff");
 
-            //            CaughtNPCItem.RegisterItems(this);
+            CaughtNPCItem.RegisterItems(this);
 
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
@@ -141,29 +141,29 @@ namespace Fargowiltas
                 Logger.Error("Fargowiltas PostSetupContent Error: " + e.StackTrace + e.Message);
             }
 
-//            Mod censusMod = ModLoader.GetMod("Census");
-//            if (censusMod != null)
-//            {
-//                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Defeat any rare enemy or... embrace eternity");
-//                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
-//                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Chop down enough trees");
-//                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
-//                Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
-//                if (fargoSouls != null)
-//                {
-//                    censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
-//                }
-//            }
+            //            Mod censusMod = ModLoader.GetMod("Census");
+            //            if (censusMod != null)
+            //            {
+            //                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Defeat any rare enemy or... embrace eternity");
+            //                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
+            //                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Chop down enough trees");
+            //                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
+            //                Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
+            //                if (fargoSouls != null)
+            //                {
+            //                    censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
+            //                }
+            //            }
 
-//            foreach (KeyValuePair<int, int> npc in CaughtNPCItem.CaughtTownies)
-//                Main.RegisterItemAnimation(npc.Key, new DrawAnimationVertical(6, Main.npcFrameCount[npc.Value]));
+            //foreach (KeyValuePair<int, int> npc in CaughtNPCItem.CaughtTownies)
+            //    Main.RegisterItemAnimation(npc.Key, new DrawAnimationVertical(6, Main.npcFrameCount[npc.Value]));
 
-//            /*Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
-//            if (soulsMod != null)
-//            {
-//                if (!ModRareEnemies.ContainsKey(soulsMod.NPCType("BabyGuardian")))
-//                    ModRareEnemies.Add(soulsMod.NPCType("BabyGuardian"), "babyGuardian");
-//            }*/
+            //            /*Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
+            //            if (soulsMod != null)
+            //            {
+            //                if (!ModRareEnemies.ContainsKey(soulsMod.NPCType("BabyGuardian")))
+            //                    ModRareEnemies.Add(soulsMod.NPCType("BabyGuardian"), "babyGuardian");
+            //            }*/
         }
 
         public override object Call(params object[] args)

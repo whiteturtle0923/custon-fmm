@@ -493,7 +493,13 @@ namespace Fargowiltas.NPCs
                             AddItem(ref nextSlot, ItemID.GoldOre);
                             AddItem(ref nextSlot, ItemID.PlatinumOre);
                         }
-
+                        if (NPC.downedPlantBoss)
+                        {
+                            AddItem(ref nextSlot, ItemID.Meteorite);
+                            AddItem(ref nextSlot, ItemID.DemoniteOre);
+                            AddItem(ref nextSlot, ItemID.CrimtaneOre);
+                            AddItem(ref nextSlot, ItemID.Hellstone);
+                        }
                         if (NPC.downedMoonlord)
                         {
                             AddItem(ref nextSlot, ItemID.CobaltOre);

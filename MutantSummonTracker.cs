@@ -4,6 +4,7 @@ using Fargowiltas.Items.Summons.VanillaCopy;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas
@@ -13,6 +14,7 @@ namespace Fargowiltas
         public const float KingSlime = 1f;
         public const float EyeOfCthulhu = 2f;
         public const float EaterOfWorlds = 3f;
+        public const float Deerclops = 3.5f;
         public const float QueenBee = 4f;
         public const float Skeletron = 5f;
         public const float WallOfFlesh = 6f;
@@ -46,6 +48,7 @@ namespace Fargowiltas
                 new MutantSummonInfo(EyeOfCthulhu, ModContent.ItemType<SuspiciousEye>(), () => NPC.downedBoss1, 80000),
                 new MutantSummonInfo(EaterOfWorlds, ModContent.ItemType<WormyFood>(), () => NPC.downedBoss2, 100000),
                 new MutantSummonInfo(EaterOfWorlds, ModContent.ItemType<GoreySpine>(), () => NPC.downedBoss2, 100000),
+                new MutantSummonInfo(Deerclops, ItemID.DeerThing, () => NPC.downedDeerclops, 120000),
                 new MutantSummonInfo(QueenBee, ModContent.ItemType<Abeemination2>(), () => NPC.downedQueenBee, 150000),
                 new MutantSummonInfo(Skeletron, ModContent.ItemType<SuspiciousSkull>(), () => NPC.downedBoss3, 150000),
                 new MutantSummonInfo(WallOfFlesh, ModContent.ItemType<FleshyDoll>(), () => Main.hardMode  , 200000),

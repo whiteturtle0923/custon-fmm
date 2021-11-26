@@ -180,6 +180,7 @@ namespace Fargowiltas.NPCs
                 "Have you seen the ech cat?",
                 "I don't understand music nowadays, I prefer some smooth jazz... or the dying screams of monsters.",
                 "Cthulhu's got nothing on me!",
+                "I heard of a rumor of infinite use boss summons. Makes me sick.."
             };
 
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])

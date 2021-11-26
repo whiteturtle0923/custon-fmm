@@ -141,11 +141,12 @@ namespace Fargowiltas.NPCs
                 dialogue.Add($"I always see {Main.npc[nurse].GivenName} looking at my biceps when I'm working. Wonder if she wants some of my wood.");
             }
 
-            //if (Fargowiltas.ModLoaded["ThoriumMod"])
-            //{
-            //    dialogue.Add("Astroturf? Sorry I only grow trees on real grass.");
-            //    dialogue.Add("Yew tree? Sakura tree? Nope, haven't found any.");
-            //}
+            Player player = Main.LocalPlayer;
+
+            if (player.HeldItem.type == ItemID.LucyTheAxe)
+            {
+                dialogue.Add($"Lucy from that universe.. Interesting things await you.");
+            }
 
             return Main.rand.Next(dialogue);
         }

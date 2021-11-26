@@ -25,11 +25,11 @@ namespace Fargowiltas
         public bool Lumber;
 
         [Label("[i:1774] Halloween Season Active")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool Halloween;
 
         [Label("[i:1869] Christmas Season Active")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool Christmas;
 
         [Label("[i:771] Unlimited Ammo at 3996+ in Hardmode")]

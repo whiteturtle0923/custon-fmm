@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-//using Fargowiltas.Items.CaughtNPCs;
+using Fargowiltas.Items.CaughtNPCs;
 using Fargowiltas.Items.Summons;
 using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Items.Misc;
@@ -236,8 +236,8 @@ namespace Fargowiltas
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Desert Banner", desertBanners);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDeserts", group);
 
-            //group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", CaughtNPCItem.CaughtTownies.Keys.ToArray());
-            //RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", CaughtNPCItem.CaughtTownies.Values.ToArray());
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
 
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Omnistation", ModContent.ItemType<Omnistation>(), ModContent.ItemType<Omnistation2>());
             RecipeGroup.RegisterGroup("Fargowiltas:AnyOmnistation", group);
@@ -319,7 +319,7 @@ namespace Fargowiltas
 
             AddStatueRecipes();
             AddContainerLootRecipes();
-            //AddNPCRecipes();
+            AddNPCRecipes();
             AddTreasureBagRecipes();
             //AddFurnitureRecipes();
             AddMiscRecipes();
@@ -346,6 +346,7 @@ namespace Fargowiltas
             AddSummonConversion(ModContent.ItemType<GoreySpine>(), ItemID.BloodySpine);
             AddSummonConversion(ModContent.ItemType<SlimyCrown>(), ItemID.SlimeCrown);
             AddSummonConversion(ModContent.ItemType<Abeemination2>(), ItemID.Abeemination);
+            AddSummonConversion(ModContent.ItemType<DeerThing2>(), ItemID.DeerThing);
             AddSummonConversion(ModContent.ItemType<WormyFood>(), ItemID.WormFood);
             AddSummonConversion(ModContent.ItemType<SuspiciousEye>(), ItemID.SuspiciousLookingEye);
             AddSummonConversion(ModContent.ItemType<PrismaticPrimrose>(), ItemID.EmpressButterfly);
@@ -524,6 +525,12 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.EnchantedSwordBanner, ItemID.Smolstar);
             AddBannerToItemRecipe(ItemID.SporeBatBanner, ItemID.Shroomerang);
             AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.ShadowJoustingLance);
+
+            AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.TentacleSpike, 2);
+            AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.TentacleSpike, 2);
+            AddBannerToItemRecipe(ItemID.BatBanner, ItemID.BatBat, 2);
+            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.HamBat);
+
             //critters
             AddBannerToItemRecipe(ItemID.BirdBanner, ItemID.Bird, 1, 100);
             AddBannerToItemRecipe(ItemID.BirdBanner, ItemID.BlueJay, 1, 100);
@@ -1097,412 +1104,406 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.SharkBait, ItemID.OceanCrate, 5, ItemID.OceanCrateHard);
         }
 
-        //private static void AddNPCRecipes()
-        //{
-        //    Fargowiltas mod = ModLoader.GetMod("Fargowiltas") as Fargowiltas;
-        //    ModRecipe recipe = GetNewRecipe();
-        //    recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
-        //    recipe.AddTile(TileID.MeatGrinder);
-        //    recipe.SetResult(ItemID.FleshBlock, 25);
-        //    recipe.AddRecipe();
+        private static void AddNPCRecipes()
+        {
+            Fargowiltas mod = ModLoader.GetMod("Fargowiltas") as Fargowiltas;
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
-        //    recipe.AddTile(TileID.DyeVat);
-        //    recipe.SetResult(ItemID.DeepRedPaint, 20);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.FleshBlock, 25)
+                .AddRecipeGroup("Fargowiltas:AnyCaughtNPC")
+                .AddTile(TileID.MeatGrinder)
+                .Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(mod?.GetItem("Truffle"));
-        //    recipe.AddTile(TileID.DyeVat);
-        //    recipe.SetResult(ItemID.BluePaint, 20);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.DeepRedPaint, 20).
+            AddRecipeGroup("Fargowiltas:AnyCaughtNPC").
+            AddTile(TileID.DyeVat).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(mod?.GetItem("Merchant"));
-        //    recipe.AddIngredient(ItemID.DynastyWood);
-        //    recipe.AddTile(TileID.AlchemyTable);
-        //    recipe.SetResult(mod?.GetItem("TravellingMerchant"));
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.BluePaint, 20).
+            AddIngredient(CaughtNPCItem.CaughtTownies[NPCID.Truffle]).
+            AddTile(TileID.DyeVat).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddRecipeGroup("Fargowiltas:AnyCaughtNPC");
-        //    recipe.AddTile(TileID.DyeVat);
-        //    recipe.SetResult(ItemID.GrimDye, 2);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(CaughtNPCItem.CaughtTownies[NPCID.TravellingMerchant]).
+            AddIngredient(null, "Merchant").
+            AddIngredient(ItemID.DynastyWood).
+            AddTile(TileID.AlchemyTable).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(mod?.GetItem("TravellingMerchant"));
-        //    recipe.AddIngredient(ItemID.Bone, 5);
-        //    recipe.AddTile(TileID.BoneWelder);
-        //    recipe.SetResult(mod?.GetItem("SkeletonMerchant"));
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.GrimDye, 2).
+            AddRecipeGroup("Fargowiltas:AnyCaughtNPC").
+            AddTile(TileID.DyeVat).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(mod?.GetItem("SkeletonMerchant"));
-        //    recipe.AddTile(TileID.BoneWelder);
-        //    recipe.SetResult(ItemID.Bone, 25);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(CaughtNPCItem.CaughtTownies[NPCID.SkeletonMerchant]).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.Bone, 5).
+            AddTile(TileID.BoneWelder).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "Dryad");
-        //    recipe.AddTile(TileID.LivingLoom);
-        //    recipe.SetResult(ItemID.LeafWand);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.Bone, 25).
+            AddIngredient(null, "SkeletonMerchant").
+            AddTile(TileID.BoneWelder).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "Truffle");
-        //    recipe.AddIngredient(ItemID.EnchantedNightcrawler);
-        //    recipe.AddTile(TileID.Autohammer);
-        //    recipe.SetResult(ItemID.TruffleWorm);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.LeafWand).
+            AddIngredient(null, "Dryad").
+            AddTile(TileID.LivingLoom).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "DyeTrader");
-        //    recipe.AddIngredient(ItemID.WoodenSword);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.DyeTradersScimitar);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.TruffleWorm).
+            AddIngredient(null, "Truffle").
+            AddIngredient(ItemID.EnchantedNightcrawler).
+            AddTile(TileID.Autohammer).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "Tavernkeep");
-        //    recipe.AddIngredient(ItemID.Ale, 5);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.AleThrowingGlove);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.DyeTradersScimitar).
+            AddIngredient(null, "DyeTrader").
+            AddIngredient(ItemID.WoodenSword).
+            AddTile(TileID.DemonAltar).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "Stylist");
-        //    recipe.AddIngredient(ItemID.WoodenSword);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.StylistKilLaKillScissorsIWish);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.AleThrowingGlove).
+            AddIngredient(null, "Tavernkeep").
+            AddIngredient(ItemID.Ale, 5).
+            AddTile(TileID.DemonAltar).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "Painter");
-        //    recipe.AddIngredient(ItemID.WoodenBow);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.PainterPaintballGun);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.StylistKilLaKillScissorsIWish).
+            AddIngredient(null, "Stylist").
+            AddIngredient(ItemID.WoodenSword).
+            AddTile(TileID.DemonAltar).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TaxCollector");
-        //    recipe.AddIngredient(ItemID.WoodenSword);
-        //    recipe.AddTile(TileID.DemonAltar);
-        //    recipe.SetResult(ItemID.TaxCollectorsStickOfDoom);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.PainterPaintballGun).
+            AddIngredient(null, "Painter").
+            AddIngredient(ItemID.WoodenBow).
+            AddTile(TileID.DemonAltar).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "Angler");
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.FishermansGuide);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.TaxCollectorsStickOfDoom).
+            AddIngredient(null, "TaxCollector").
+            AddIngredient(ItemID.WoodenSword).
+            AddTile(TileID.DemonAltar).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "Angler");
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.WeatherRadio);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.CombatWrench).
+            AddIngredient(null, "Mechanic").
+            AddIngredient(ItemID.WoodenBoomerang).
+            AddTile(TileID.DemonAltar).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "Angler");
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Sextant);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.FishermansGuide).
+            AddIngredient(null, "Angler").
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //travelling merch recipes 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(ItemID.Wood, 500);
-        //    recipe.AddIngredient(mod?.GetItem("TravellingMerchant"));
-        //    recipe.AddTile(TileID.CookingPots);
-        //    recipe.SetResult(ItemID.DynastyWood, 500);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.WeatherRadio).
+            AddIngredient(null, "Angler").
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //common items - 1 merchant, 2x price
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddRecipeGroup("IronBar", 5);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Stopwatch);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.Sextant).
+            AddIngredient(null, "Angler").
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddRecipeGroup("IronBar", 5);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.LifeformAnalyzer);
-        //    recipe.AddRecipe();
+            //travelling merch recipes 
+            mod.CreateRecipe(ItemID.DynastyWood, 500).
+            AddIngredient(ItemID.Wood, 500).
+            AddIngredient(null, "TravellingMerchant").
+            AddTile(TileID.CookingPots).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddRecipeGroup("IronBar", 5);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.DPSMeter);
-        //    recipe.AddRecipe();
+            //common items - 1 merchant, 2x price
+            mod.CreateRecipe(ItemID.Stopwatch).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddRecipeGroup("IronBar", 5).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //uncommon - 1 merchant, 2x price
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddRecipeGroup("IronBar", 5);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Katana);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.LifeformAnalyzer).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddRecipeGroup("IronBar", 5).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddIngredient(ItemID.Actuator, 10);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.ActuationAccessory);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.DPSMeter).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddRecipeGroup("IronBar", 5).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddIngredient(ItemID.BuilderPotion);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.PortableCementMixer);
-        //    recipe.AddRecipe();
+            //uncommon - 1 merchant, 2x price
+            mod.CreateRecipe(ItemID.Katana).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 20).
+            AddRecipeGroup("IronBar", 5).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddIngredient(ItemID.BuilderPotion);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.PaintSprayer);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.ActuationAccessory).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 20).
+            AddIngredient(ItemID.Actuator, 10).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddIngredient(ItemID.BuilderPotion);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.ExtendoGrip);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.PortableCementMixer).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 20).
+            AddIngredient(ItemID.BuilderPotion).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddIngredient(ItemID.BuilderPotion);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.BrickLayer);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.PaintSprayer).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 20).
+            AddIngredient(ItemID.BuilderPotion).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //rare - 2 merchant, 2x price
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 2);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Code1);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.ExtendoGrip).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 20).
+            AddIngredient(ItemID.BuilderPotion).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 2);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 50);
-        //    recipe.AddIngredient(ItemID.Code1);
-        //    recipe.AddIngredient(ItemID.HallowedBar, 5); //post mech
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Code2);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.BrickLayer).
+            AddIngredient(null, "TravellingMerchant").
+            AddIngredient(ItemID.GoldCoin, 20).
+            AddIngredient(ItemID.BuilderPotion).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //bamboo leaf
+            //rare - 2 merchant, 2x price
+            mod.CreateRecipe(ItemID.Code1).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //celestial wand
+            mod.CreateRecipe(ItemID.Code2).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 50).
+            AddIngredient(ItemID.Code1).
+            AddIngredient(ItemID.HallowedBar, 5). //post mech
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 2);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 4);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Gi);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.BambooLeaf).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.PlatinumCoin, 2).
+            AddIngredient(ItemID.BambooLeaf, 25).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 2);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 7);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.GypsyRobe);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.CelestialWand).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.PlatinumCoin, 2).
+            AddIngredient(ItemID.ManaCrystal).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 2);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 6);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.MagicHat);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.Gi).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 4).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 2);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 30);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.AmmoBox);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.GypsyRobe).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 7).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 2);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddIngredient(ItemID.MusketBall, 25); //post evil
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Revolver);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.MagicHat).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 6).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //very rare
+            mod.CreateRecipe(ItemID.AmmoBox).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 30).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //bedazzled nectar
+            mod.CreateRecipe(ItemID.Revolver).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 20).
+            AddIngredient(ItemID.MusketBall, 25). //post evil
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //exotic chew toy
+            //very rare
+            mod.CreateRecipe(ItemID.BedazzledNectar).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.PlatinumCoin, 2).
+            AddIngredient(ItemID.TreeNymphButterfly).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //birdie rattle
+            mod.CreateRecipe(ItemID.ExoticEasternChewToy).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.PlatinumCoin, 2).
+            AddIngredient(ItemID.Cactus, 50).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 3);
-        //    recipe.AddIngredient(ItemID.PlatinumCoin, 10);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.CompanionCube);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.BirdieRattle).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.PlatinumCoin, 2).
+            AddIngredient(ItemID.Feather, 10).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 3);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 70);
-        //    recipe.AddIngredient(ItemID.Bone, 10); //post skele
-        //    recipe.AddIngredient(ItemID.Duck);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.SittingDucksFishingRod);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.CompanionCube).
+            AddIngredient(null, "TravellingMerchant", 3).
+            AddIngredient(ItemID.PlatinumCoin, 10).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 3);
-        //    recipe.AddIngredient(ItemID.PlatinumCoin, 4);
-        //    recipe.AddIngredient(ItemID.Diamond);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.DiamondRing);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.SittingDucksFishingRod).
+            AddIngredient(null, "TravellingMerchant", 3).
+            AddIngredient(ItemID.GoldCoin, 70).
+            AddIngredient(ItemID.Bone, 10). //post skele
+            AddIngredient(ItemID.Duck).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 3);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 30);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.CelestialMagnet);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.DiamondRing).
+            AddIngredient(null, "TravellingMerchant", 3).
+            AddIngredient(ItemID.PlatinumCoin, 4).
+            AddIngredient(ItemID.Diamond).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 3);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 3);
-        //    recipe.AddIngredient(ItemID.WaterBucket);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.WaterGun);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.CelestialMagnet).
+            AddIngredient(null, "TravellingMerchant", 3).
+            AddIngredient(ItemID.GoldCoin, 30).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 3);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 90);
-        //    recipe.AddIngredient(ItemID.Ectoplasm, 5); //post plant
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.PulseBow);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.WaterGun).
+            AddIngredient(null, "TravellingMerchant", 3).
+            AddIngredient(ItemID.GoldCoin, 3).
+            AddIngredient(ItemID.WaterBucket).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 3);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.YellowDye);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.YellowCounterweight);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.PulseBow).
+            AddIngredient(null, "TravellingMerchant", 3).
+            AddIngredient(ItemID.GoldCoin, 90).
+            AddIngredient(ItemID.Ectoplasm, 5). //post plant
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //extremely rare
-        //    //gray zapinator
-        //    //orange zapinator
-        //    //sergent united shield
+            mod.CreateRecipe(ItemID.YellowCounterweight).
+            AddIngredient(null, "TravellingMerchant", 3).
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddIngredient(ItemID.YellowDye).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 4);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 70);
-        //    recipe.AddIngredient(ItemID.SoulofLight, 2); //hardmode
-        //    recipe.AddIngredient(ItemID.SoulofNight, 2);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Gatligator);
-        //    recipe.AddRecipe();
+            //extremely rare
+            mod.CreateRecipe(ItemID.ZapinatorGray).
+            AddIngredient(null, "TravellingMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 34).
+            AddIngredient(ItemID.SpaceGun).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 4);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.BlackDye);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.BlackCounterweight);
-        //    recipe.AddRecipe();
+           mod.CreateRecipe(ItemID.ZapinatorOrange).
+           AddIngredient(null, "TravellingMerchant", 2).
+           AddIngredient(ItemID.PlatinumCoin).
+           AddIngredient(ItemID.ZapinatorGray).
+           AddIngredient(ItemID.SoulofLight). //hm
+           AddTile(TileID.TinkerersWorkbench).
+           Register();
 
-        //    //extraordinarily rare
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "TravellingMerchant", 5);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 80);
-        //    recipe.AddIngredient(ItemID.GoldBar, 5);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.AngelHalo);
-        //    recipe.AddRecipe();
+           mod.CreateRecipe(ItemID.BouncingShield).
+           AddIngredient(null, "TravellingMerchant", 2).
+           AddIngredient(ItemID.GoldCoin, 70).
+           AddIngredient(ItemID.SoulofLight). //hm
+           AddTile(TileID.TinkerersWorkbench).
+           Register();
 
-        //    //skeleton merchant recipes
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "SkeletonMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.BlueDye);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.BlueCounterweight);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.Gatligator).
+            AddIngredient(null, "TravellingMerchant", 4).
+            AddIngredient(ItemID.GoldCoin, 70).
+            AddIngredient(ItemID.SoulofLight, 2). //hardmode
+            AddIngredient(ItemID.SoulofNight, 2).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "SkeletonMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.RedDye);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.RedCounterweight);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.BlackCounterweight).
+            AddIngredient(null, "TravellingMerchant", 4).
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddIngredient(ItemID.BlackDye).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "SkeletonMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.PurpleDye);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.PurpleCounterweight);
-        //    recipe.AddRecipe();
+            //extraordinarily rare
+            mod.CreateRecipe(ItemID.AngelHalo).
+            AddIngredient(null, "TravellingMerchant", 5).
+            AddIngredient(ItemID.GoldCoin, 80).
+            AddIngredient(ItemID.GoldBar, 5).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "SkeletonMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 10);
-        //    recipe.AddIngredient(ItemID.GreenDye);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.GreenCounterweight);
-        //    recipe.AddRecipe();
+            //skeleton merchant recipes
+            mod.CreateRecipe(ItemID.BlueCounterweight).
+            AddIngredient(null, "SkeletonMerchant").
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddIngredient(ItemID.BlueDye).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "SkeletonMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 40);
-        //    recipe.AddIngredient(ItemID.SoulofNight, 5);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.Gradient);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.RedCounterweight).
+            AddIngredient(null, "SkeletonMerchant").
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddIngredient(ItemID.RedDye).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "SkeletonMerchant");
-        //    recipe.AddIngredient(ItemID.GoldCoin, 40);
-        //    recipe.AddIngredient(ItemID.SoulofLight, 5);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.FormatC);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.PurpleCounterweight).
+            AddIngredient(null, "SkeletonMerchant").
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddIngredient(ItemID.PurpleDye).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    recipe = GetNewRecipe();
-        //    recipe.AddIngredient(null, "SkeletonMerchant", 2);
-        //    recipe.AddIngredient(ItemID.GoldCoin, 20);
-        //    recipe.AddTile(TileID.TinkerersWorkbench);
-        //    recipe.SetResult(ItemID.MagicLantern);
-        //    recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.GreenCounterweight).
+            AddIngredient(null, "SkeletonMerchant").
+            AddIngredient(ItemID.GoldCoin, 10).
+            AddIngredient(ItemID.GreenDye).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
+            mod.CreateRecipe(ItemID.Gradient).
+            AddIngredient(null, "SkeletonMerchant").
+            AddIngredient(ItemID.GoldCoin, 40).
+            AddIngredient(ItemID.SoulofNight, 5).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
 
-        //    //engineers combat rench recipe
-        //    //engineer plus wrench 
-        //}
+            mod.CreateRecipe(ItemID.FormatC).
+            AddIngredient(null, "SkeletonMerchant").
+            AddIngredient(ItemID.GoldCoin, 40).
+            AddIngredient(ItemID.SoulofLight, 5).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
+
+            mod.CreateRecipe(ItemID.MagicLantern).
+            AddIngredient(null, "SkeletonMerchant", 2).
+            AddIngredient(ItemID.GoldCoin, 20).
+            AddTile(TileID.TinkerersWorkbench).
+            Register();
+        }
 
         private void AddTreasureBagRecipes()
         {
@@ -1775,6 +1776,12 @@ namespace Fargowiltas
                 .AddIngredient(ItemID.WebRopeCoil, 8)
                 .AddTile(TileID.CookingPots)
                 .Register();
+
+            mod.CreateRecipe(ItemID.AbigailsFlower)
+               .AddIngredient(ItemID.Deathweed, 5)
+               .AddTile(TileID.Tombstones)
+               .AddCondition(Recipe.Condition.InGraveyardBiome)
+               .Register();
 
         }
 
