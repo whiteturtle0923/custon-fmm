@@ -1,6 +1,9 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+ALPHA UPDATE - V 2.6.2
+-Updated to latest tmod version
+
 ALPHA UPDATE - V 2.6
 -Readded Caught Town NPCs, including Golfer, Zoologist, and Princess
 -Readded all recipes using Caught town npcs including new recipes for Travelling Merchant items
@@ -12,21 +15,4 @@ ALPHA UPDATE - V 2.6
 -Fixed Town NPC toggle formatting
 -Improved multiplayer issues with instant structures
 -Mini Instabridge can now destroy thorns
-
-ALPHA UPDATE - V 2.5.11
--Updated to latest tmod version
-
-ALPHA UPDATE - V 2.5.9
--Updated to latest tmod version
--Portable Sundial has longer cooldown when used during a boss fight
--Fixed Slimy Barometer not having research available
--Fixed World Token selling for more than its buy price
--Merchant sells Seeds when you have a dart-firing weapon
--Added Red Devil Voodoo Doll
--Internal refactors to how data is saved to agree with new alpha version
--Fixed Golden Dipping Vat being unobtainable due to requiring a Golden Dipping Vat to craft
--Fixed Battle Cry sound issue
--Added Pixie Dust banner recipe
--Increased Lumberjack's cactus sell price
--Fixed the Pink Slime Crown not working
 
