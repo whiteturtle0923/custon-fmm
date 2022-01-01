@@ -1,24 +1,25 @@
-﻿using System;
+﻿using Fargowiltas.Projectiles;
+using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Renewals
 {
-    public class BaseRenewalItem : ModItem
+    public abstract class BaseRenewalItem : ModItem
     {
-        private readonly String name;
-        private readonly String tooltip;
-        private readonly String projType;
+        private readonly string name;
+        private readonly string tooltip;
         private readonly int material;
         private readonly bool supreme;
-        private readonly String supremeMaterial;
+        private readonly int supremeMaterial;
 
-        protected BaseRenewalItem(String name, String tooltip, String projType, int material, bool supreme = false, String supremeMaterial = "")
+        protected BaseRenewalItem(string name, string tooltip, int material, bool supreme = false, int supremeMaterial = -1)
         {
             this.name = name;
             this.tooltip = tooltip;
-            this.projType = projType;
             this.material = material;
             this.supreme = supreme;
             this.supremeMaterial = supremeMaterial;
@@ -28,33 +29,34 @@ namespace Fargowiltas.Items.Renewals
         {
             DisplayName.SetDefault(name);
             Tooltip.SetDefault(tooltip);
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
         }
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 26;
-            item.maxStack = 99;
-            item.consumable = true;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.rare = ItemRarityID.Orange;
-            item.UseSound = SoundID.Item1;
-            item.useAnimation = 20;
-            item.useTime = 20;
-            item.value = Item.buyPrice(0, 0, 3);
-            item.noUseGraphic = true;
-            item.noMelee = true;
-            item.shoot = mod.ProjectileType(projType);
-            item.shootSpeed = 5f;
+            Item.width = 20;
+            Item.height = 26;
+            Item.maxStack = 99;
+            Item.consumable = true;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.rare = ItemRarityID.Orange;
+            Item.UseSound = SoundID.Item1;
+            Item.useAnimation = 20;
+            Item.useTime = 20;
+            Item.value = Item.buyPrice(0, 0, 3);
+            Item.noUseGraphic = true;
+            Item.noMelee = true;
+            Item.shoot = 1;
+            Item.shootSpeed = 5f;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            var recipe = Mod.CreateRecipe(Type);
 
             if (supreme)
             {
-                recipe.AddIngredient(mod.ItemType(supremeMaterial), 10);
+                recipe.AddIngredient(supremeMaterial, 10);
                 recipe.AddIngredient(ItemID.ChlorophyteBar, 5);
                 recipe.AddTile(TileID.AlchemyTable);
             }
@@ -65,8 +67,7 @@ namespace Fargowiltas.Items.Renewals
                 recipe.AddTile(TileID.Bottles);
             }
 
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

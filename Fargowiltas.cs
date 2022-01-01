@@ -21,6 +21,8 @@ using MonoMod.RuntimeDetour;
 using MonoMod.RuntimeDetour.HookGen;
 using Terraria.DataStructures;
 using Terraria.UI;
+using Terraria.Chat;
+using Fargowiltas.Items.Vanity;
 
 namespace Fargowiltas
 {
@@ -30,11 +32,11 @@ namespace Fargowiltas
         internal static DevianttDialogueTracker dialogueTracker;
 
         // Hotkeys
-        internal static ModHotKey CustomKey;
-        internal static ModHotKey HomeKey;
-        internal static ModHotKey RodKey;
+        internal static ModKeybind CustomKey;
+        internal static ModKeybind HomeKey;
+        internal static ModKeybind RodKey;
 
-        internal static ModHotKey StatKey;
+        internal static ModKeybind StatKey;
 
         public static UIManager UserInterfaceManager => Instance._userInterfaceManager;
         private UIManager _userInterfaceManager;
@@ -54,20 +56,21 @@ namespace Fargowiltas
 
         public Fargowiltas()
         {
-            Properties = new ModProperties()
-            {
-                Autoload = true,
-                AutoloadGores = true,
-                AutoloadSounds = true,
-            }; 
-            HookIntoLoad();
+//            Properties = new ModProperties()
+//            {
+//                Autoload = true,
+//                AutoloadGores = true,
+//                AutoloadSounds = true,
+//            }; 
+//            HookIntoLoad();
         }
 
-        public void AddToggle(String toggle, String name, String item, String color)
+        public void AddToggle(String toggle, String name, int item, String color)
         {
-            ModTranslation text = CreateTranslation(toggle);
-            text.SetDefault("[i:" + Instance.ItemType(item) + "][c/" + color + ": " + name + "]");
-            AddTranslation(text);
+            ModTranslation text = LocalizationLoader.CreateTranslation(toggle);
+            text.SetDefault("[i:" + item + "][c/" + color + ": " + name + "]");
+
+            LocalizationLoader.AddTranslation(text);
         }
 
         public override void Load()
@@ -78,11 +81,11 @@ namespace Fargowiltas
             dialogueTracker = new DevianttDialogueTracker();
             dialogueTracker.AddVanillaDialogue();
 
-            HomeKey = RegisterHotKey("Quick Recall/Mirror", "Home");
-            RodKey = RegisterHotKey("Quick Rod of Discord", "E");
-            CustomKey = RegisterHotKey("Quick Use Custom (Bottom Left Inventory Slot)", "K");
+            HomeKey = KeybindLoader.RegisterKeybind(this, "Quick Recall/Mirror", "Home");
+            RodKey = KeybindLoader.RegisterKeybind(this, "Quick Rod of Discord", "E");
+            CustomKey = KeybindLoader.RegisterKeybind(this, "Quick Use Custom (Bottom Left Inventory Slot)", "K");
 
-            StatKey = RegisterHotKey("Open Stat Sheet", "M");
+            StatKey = KeybindLoader.RegisterKeybind(this, "Open Stat Sheet", "M");
 
             _userInterfaceManager = new UIManager();
             _userInterfaceManager.LoadUI();
@@ -90,32 +93,9 @@ namespace Fargowiltas
             mods = new string[]
             {
                 "FargowiltasSouls", // Fargo's Souls
-                "Bluemagic", // Elemental Unleash / Blushiemagic's Mod
-                "CalamityMod", // Calamity
-                "CookieMod", // Cookie Mod
-                "CrystiliumMod", // Crystilium
-                "GRealm", // GRealm
-                "JoostMod", // JoostMod
-                "TrueEater", // Nightmares Unleashed
-                "SacredTools", // SacredTools / Shadows of Abaddon
-                "SpiritMod", // Spirit
-                "ThoriumMod", // Thorium
-                "W1KModRedux", // W1K's Mod Redux
-                "EchoesoftheAncients", // Echoes of the Ancients
-                "ForgottenMemories", // Beyond the Forgotten Ages
-                "Disarray", // Disarray
-                "ElementsAwoken", // Elements Awoken
-                "Laugicality", // Enigma
-                "Split", // Split
-                "Antiaris", // Antiaris
-                "AAMod", // Ancients Awakened
-                "TrelamiumMod", // Trelamium
-                "pinkymod", // Pinkymod
-                "Redemption", // Mod of Redemption
-                "Jetshift", // Jetshift
-                "Ocram", // Ocram 'n Stuff
-                "CSkies", // Celestial Skies
-                "FargowiltasSoulsDLC"
+                "FargowiltasSoulsDLC",
+                "ThoriumMod",
+                "CalamityMod"
             };
 
             ModLoaded = new Dictionary<string, bool>();
@@ -124,10 +104,10 @@ namespace Fargowiltas
                 ModLoaded.Add(mod, false);
             }
 
-            AddToggle("Mutant", "Mutant Can Spawn", "MutantMask", "ffffff");
-            AddToggle("Abom", "Abominationn Can Spawn", "AbominationnMask", "ffffff");
-            AddToggle("Devi", "Deviantt Can Spawn", "DevianttMask", "ffffff");
-            AddToggle("Lumber", "Lumberjack Can Spawn", "LumberjackMask", "ffffff");
+            AddToggle("Mutant", "Mutant Can Spawn", ModContent.ItemType<MutantMask>(), "ffffff");
+            AddToggle("Abom", "Abominationn Can Spawn", ModContent.ItemType<AbominationnMask>(), "ffffff");
+            AddToggle("Devi", "Deviantt Can Spawn", ModContent.ItemType<DevianttMask>(), "ffffff");
+            AddToggle("Lumber", "Lumberjack Can Spawn", ModContent.ItemType<LumberjackMask>(), "ffffff");
 
             CaughtNPCItem.RegisterItems(this);
 
@@ -153,7 +133,7 @@ namespace Fargowiltas
             {
                 foreach (string mod in mods)
                 {
-                    ModLoaded[mod] = ModLoader.GetMod(mod) != null;
+                    ModLoaded[mod] = ModLoader.TryGetMod(mod, out Mod otherMod);
                 }
             }
             catch (Exception e)
@@ -161,29 +141,29 @@ namespace Fargowiltas
                 Logger.Error("Fargowiltas PostSetupContent Error: " + e.StackTrace + e.Message);
             }
 
-            Mod censusMod = ModLoader.GetMod("Census");
-            if (censusMod != null)
-            {
-                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Defeat any rare enemy or... embrace eternity");
-                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
-                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Chop down enough trees");
-                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
-                Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
-                if (fargoSouls != null)
-                {
-                    censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
-                }
-            }
+            //            Mod censusMod = ModLoader.GetMod("Census");
+            //            if (censusMod != null)
+            //            {
+            //                censusMod.Call("TownNPCCondition", NPCType("Deviantt"), "Defeat any rare enemy or... embrace eternity");
+            //                censusMod.Call("TownNPCCondition", NPCType("Mutant"), "Defeat any boss or miniboss");
+            //                censusMod.Call("TownNPCCondition", NPCType("LumberJack"), $"Chop down enough trees");
+            //                censusMod.Call("TownNPCCondition", NPCType("Abominationn"), "Clear any event");
+            //                Mod fargoSouls = ModLoader.GetMod("FargowiltasSouls");
+            //                if (fargoSouls != null)
+            //                {
+            //                    censusMod.Call("TownNPCCondition", NPCType("Squirrel"), $"Have a Top Hat Squirrel ([i:{fargoSouls.ItemType("TophatSquirrel")}]) in your inventory");
+            //                }
+            //            }
 
-            foreach (KeyValuePair<int, int> npc in CaughtNPCItem.CaughtTownies)
-                Main.RegisterItemAnimation(npc.Key, new DrawAnimationVertical(6, Main.npcFrameCount[npc.Value]));
+            //foreach (KeyValuePair<int, int> npc in CaughtNPCItem.CaughtTownies)
+            //    Main.RegisterItemAnimation(npc.Key, new DrawAnimationVertical(6, Main.npcFrameCount[npc.Value]));
 
-            /*Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
-            if (soulsMod != null)
-            {
-                if (!ModRareEnemies.ContainsKey(soulsMod.NPCType("BabyGuardian")))
-                    ModRareEnemies.Add(soulsMod.NPCType("BabyGuardian"), "babyGuardian");
-            }*/
+            //            /*Mod soulsMod = ModLoader.GetMod("FargowiltasSouls");
+            //            if (soulsMod != null)
+            //            {
+            //                if (!ModRareEnemies.ContainsKey(soulsMod.NPCType("BabyGuardian")))
+            //                    ModRareEnemies.Add(soulsMod.NPCType("BabyGuardian"), "babyGuardian");
+            //            }*/
         }
 
         public override object Call(params object[] args)
@@ -198,39 +178,38 @@ namespace Fargowiltas
                         ModContent.GetInstance<FargoConfig>().DebuffDisplay = (bool)args[1];
                         break;
 
-                    case "SwarmActive":
-                        return SwarmActive;
+                    //case "SwarmActive":
+                    //    return SwarmActive;
 
                     case "AddSummon":
                         if (summonTracker.SummonsFinalized)
                             throw new Exception($"Call Error: Summons must be added before AddRecipes");
 
                         summonTracker.AddSummon(
-                            Convert.ToSingle(args[1]), 
-                            args[2] as string,
-                            args[3] as string,
-                            args[4] as Func<bool>,
-                            Convert.ToInt32(args[5])
-                        );
-                        break;
-
-                    case "AddEventSummon":
-                        if (summonTracker.SummonsFinalized)
-                            throw new Exception($"Call Error: Event summons must be added before AddRecipes");
-
-                        summonTracker.AddEventSummon(
                             Convert.ToSingle(args[1]),
-                            args[2] as string,
-                            args[3] as string,
+                            Convert.ToInt32(args[2]),
                             args[4] as Func<bool>,
                             Convert.ToInt32(args[5])
                         );
                         break;
 
-                    case "GetDownedEnemy":
-                        if (FargoWorld.DownedBools.ContainsKey(args[1] as string) && FargoWorld.DownedBools[args[1] as string])
-                            return true;
-                        return false;
+                    //                    case "AddEventSummon":
+                    //                        if (summonTracker.SummonsFinalized)
+                    //                            throw new Exception($"Call Error: Event summons must be added before AddRecipes");
+
+                    //                        summonTracker.AddEventSummon(
+                    //                            Convert.ToSingle(args[1]),
+                    //                            args[2] as string,
+                    //                            args[3] as string,
+                    //                            args[4] as Func<bool>,
+                    //                            Convert.ToInt32(args[5])
+                    //                        );
+                    //                        break;
+
+                    //                    case "GetDownedEnemy":
+                    //                        if (FargoWorld.DownedBools.ContainsKey(args[1] as string) && FargoWorld.DownedBools[args[1] as string])
+                    //                            return true;
+                    //                        return false;
                     case "AddDevianttHelpDialogue":
                         dialogueTracker.AddDialogue(
                             args[1] as string,
@@ -257,7 +236,8 @@ namespace Fargowiltas
         {
             summonTracker.FinalizeSummonData();
 
-            FargoRecipes.AddRecipes();
+            FargoRecipes recipes = new FargoRecipes(this);
+            recipes.AddRecipes();
         }
 
         public override void AddRecipeGroups()
@@ -265,12 +245,12 @@ namespace Fargowiltas
             FargoRecipes.AddRecipeGroups();
         }
 
-        public override void HandlePacket(BinaryReader reader, int whoAmI)
-        {
-            byte messageType = reader.ReadByte();
+                public override void HandlePacket(BinaryReader reader, int whoAmI)
+                {
+                    byte messageType = reader.ReadByte();
 
-            switch (messageType)
-            {
+                    switch (messageType)
+                    {
                 // Regal statue
                 case 1:
                     FargoWorld.CurrentSpawnRateTile[whoAmI] = reader.ReadBoolean();
@@ -284,7 +264,7 @@ namespace Fargowiltas
                         if (ClearEvents(ref eventOccurring))
                         {
                             NetMessage.SendData(MessageID.WorldData);
-                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The event has been cancelled!"), new Color(175, 75, 255));
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The event has been cancelled!"), new Color(175, 75, 255));
                         }
                     }
 
@@ -329,9 +309,9 @@ namespace Fargowiltas
                     break;
 
                 default:
-                    break;
-            }
-        }
+                            break;
+                    }
+                }
 
         internal static bool ClearEvents(ref bool eventOccurring)
         {
@@ -429,7 +409,7 @@ namespace Fargowiltas
                 }
             }
 
-            if  (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
+            if (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
             {
                 eventOccurring = true;
                 if (canClearEvent)
@@ -505,10 +485,10 @@ namespace Fargowiltas
                 if (spawnMessage)
                 {
                     string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
-                    if ((npcName == null || string.IsNullOrEmpty(npcName)) && Main.npc[npcID].modNPC != null)
-                    {
-                        npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
-                    }
+                    //if ((npcName == null || string.IsNullOrEmpty(npcName)) && Main.npc[npcID].modNPC != null)
+                    //{
+                    //    npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
+                    //}
 
                     if (namePlural)
                     {
@@ -519,7 +499,7 @@ namespace Fargowiltas
                         else
                         if (Main.netMode == NetmodeID.Server)
                         {
-                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255));
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255));
                         }
                     }
                     else
@@ -531,7 +511,7 @@ namespace Fargowiltas
                         else
                         if (Main.netMode == NetmodeID.Server)
                         {
-                            NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[] { NetworkText.FromLiteral(npcName) }), new Color(175, 75, 255));
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[] { NetworkText.FromLiteral(npcName) }), new Color(175, 75, 255));
                         }
                     }
                 }
@@ -545,97 +525,85 @@ namespace Fargowiltas
             return 200;
         }
 
-        public override void UpdateUI(GameTime gameTime)
-        {
-            base.UpdateUI(gameTime);
-            UserInterfaceManager.UpdateUI(gameTime);
-        }
+        //        private static void HookIntoLoad()
+        //        {
+        //            MonoModHooks.RequestNativeAccess();
+        //            new Hook(
+        //                typeof(ModContent).GetMethod("LoadModContent", BindingFlags.NonPublic | BindingFlags.Static),
+        //                typeof(Fargowiltas).GetMethod(nameof(LoadHook), BindingFlags.NonPublic | BindingFlags.Static)).Apply();
 
-        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-        {
-            base.ModifyInterfaceLayers(layers);
-            UserInterfaceManager.ModifyInterfaceLayers(layers);
-        }
+        //            HookEndpointManager.Modify(
+        //                typeof(ModContent).GetMethod("Load", BindingFlags.NonPublic | BindingFlags.Static),
+        //                Delegate.CreateDelegate(typeof(ILContext.Manipulator),
+        //                    typeof(Fargowiltas).GetMethod(nameof(ModifyLoading),
+        //                        BindingFlags.NonPublic | BindingFlags.Static) ?? throw new Exception("Couldn't create IL manipulator.")));
+        //        }
 
-        private static void HookIntoLoad()
-        {
-            MonoModHooks.RequestNativeAccess();
-            new Hook(
-                typeof(ModContent).GetMethod("LoadModContent", BindingFlags.NonPublic | BindingFlags.Static),
-                typeof(Fargowiltas).GetMethod(nameof(LoadHook), BindingFlags.NonPublic | BindingFlags.Static)).Apply();
+        //        private static void ModifyLoading(ILContext il)
+        //        {
+        //            ILCursor c = new ILCursor(il);
 
-            HookEndpointManager.Modify(
-                typeof(ModContent).GetMethod("Load", BindingFlags.NonPublic | BindingFlags.Static),
-                Delegate.CreateDelegate(typeof(ILContext.Manipulator),
-                    typeof(Fargowiltas).GetMethod(nameof(ModifyLoading),
-                        BindingFlags.NonPublic | BindingFlags.Static) ?? throw new Exception("Couldn't create IL manipulator.")));
-        }
+        //            c.GotoNext(x => x.MatchCall(typeof(ModContent), "ResizeArrays"));
+        //            c.Index++;
 
-        private static void ModifyLoading(ILContext il)
-        {
-            ILCursor c = new ILCursor(il);
+        //            c.EmitDelegate<Action>(() =>
+        //            {
+        //                FieldInfo loadInfo = typeof(Mod).GetField("loading", BindingFlags.Instance | BindingFlags.NonPublic);
+        //                loadInfo?.SetValue(ModLoader.GetMod("Fargowiltas"), true);
 
-            c.GotoNext(x => x.MatchCall(typeof(ModContent), "ResizeArrays"));
-            c.Index++;
+        //                /*foreach (Mod mod in ModLoader.Mods.Where(x => x != ModLoader.GetMod("Fargowiltas")))
+        //                {
+        //                    foreach (ModNPC npc in (typeof(Mod).GetField("npcs", BindingFlags.Instance | BindingFlags.NonPublic)
+        //                        ?.GetValue(mod) as IDictionary<string, ModNPC>)?.Values ?? new ModNPC[0])
+        //                    {
+        //                        try
+        //                        {
+        //                            npc.SetDefaults();
 
-            c.EmitDelegate<Action>(() =>
-            {
-                FieldInfo loadInfo = typeof(Mod).GetField("loading", BindingFlags.Instance | BindingFlags.NonPublic);
-                loadInfo?.SetValue(ModLoader.GetMod("Fargowiltas"), true);
+        //                            if (npc.npc.townNPC)
+        //                                CaughtNPCItem.AddAutomatic(npc.Name, npc.npc.type);
+        //                        }
+        //                        catch
+        //                        {
+        //                            // ignore
+        //                        }
+        //                    }
+        //                }*/
+        //                loadInfo?.SetValue(ModLoader.GetMod("Fargowiltas"), false);
 
-                /*foreach (Mod mod in ModLoader.Mods.Where(x => x != ModLoader.GetMod("Fargowiltas")))
-                {
-                    foreach (ModNPC npc in (typeof(Mod).GetField("npcs", BindingFlags.Instance | BindingFlags.NonPublic)
-                        ?.GetValue(mod) as IDictionary<string, ModNPC>)?.Values ?? new ModNPC[0])
-                    {
-                        try
-                        {
-                            npc.SetDefaults();
+        //                typeof(ModContent).GetMethod("ResizeArrays", BindingFlags.NonPublic | BindingFlags.Static)?
+        //                    .Invoke(null, new object[] {false});
+        //            });
+        //        }
 
-                            if (npc.npc.townNPC)
-                                CaughtNPCItem.AddAutomatic(npc.Name, npc.npc.type);
-                        }
-                        catch
-                        {
-                            // ignore
-                        }
-                    }
-                }*/
-                loadInfo?.SetValue(ModLoader.GetMod("Fargowiltas"), false);
+        //        private static void LoadHook(Action<CancellationToken, Action<Mod>> orig, CancellationToken token,
+        //            Action<Mod> loadAction)
+        //        {
+        //            PropertyInfo modsArray = typeof(ModLoader).GetProperty("Mods", BindingFlags.Public | BindingFlags.Static);
 
-                typeof(ModContent).GetMethod("ResizeArrays", BindingFlags.NonPublic | BindingFlags.Static)?
-                    .Invoke(null, new object[] {false});
-            });
-        }
+        //            if (modsArray is null)
+        //            {
+        //                orig(token, loadAction);
+        //                return;
+        //            }
 
-        private static void LoadHook(Action<CancellationToken, Action<Mod>> orig, CancellationToken token,
-            Action<Mod> loadAction)
-        {
-            PropertyInfo modsArray = typeof(ModLoader).GetProperty("Mods", BindingFlags.Public | BindingFlags.Static);
+        //            // Mod[] cachedArray = modsArray.GetValue(null) as Mod[];
+        //            List<Mod> tempMods = (modsArray.GetValue(null) as Mod[])?.ToList();
 
-            if (modsArray is null)
-            {
-                orig(token, loadAction);
-                return;
-            }
+        //            if (tempMods is null)
+        //            {
+        //                orig(token, loadAction);
+        //                return;
+        //            }
 
-            // Mod[] cachedArray = modsArray.GetValue(null) as Mod[];
-            List<Mod> tempMods = (modsArray.GetValue(null) as Mod[])?.ToList();
+        //            Mod mod = tempMods.First(x => x.Name.Equals("Fargowiltas"));
+        //            tempMods.Remove(mod);
+        //            tempMods.Add(mod);
+        //            modsArray.SetValue(null, tempMods.ToArray());
 
-            if (tempMods is null)
-            {
-                orig(token, loadAction);
-                return;
-            }
+        //            orig(token, loadAction);
 
-            Mod mod = tempMods.First(x => x.Name.Equals("Fargowiltas"));
-            tempMods.Remove(mod);
-            tempMods.Add(mod);
-            modsArray.SetValue(null, tempMods.ToArray());
-            
-            orig(token, loadAction);
-
-            // modsArray.SetValue(null, cachedArray);
-        }
+        //            // modsArray.SetValue(null, cachedArray);
+        //        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿using Terraria.GameContent.Creative;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Vanity
@@ -9,30 +10,30 @@ namespace Fargowiltas.Items.Vanity
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mutant Body");
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
         {
-            item.width = 18;
-            item.height = 18;
-            item.vanity = true;
-            item.rare = ItemRarityID.Blue;
+            Item.width = 18;
+            Item.height = 18;
+            Item.vanity = true;
+            Item.rare = ItemRarityID.Blue;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.KingSlimeMask);
-            recipe.AddIngredient(ItemID.SkeletronMask);
-            recipe.AddIngredient(ItemID.DestroyerMask);
-            recipe.AddIngredient(ItemID.SkeletronPrimeMask);
-            recipe.AddIngredient(ItemID.TwinMask);
-            recipe.AddIngredient(ItemID.GolemMask);
-            //add empress mask
-            recipe.AddIngredient(ItemID.BossMaskMoonlord);
-            recipe.AddTile(TileID.TinkerersWorkbench);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.KingSlimeMask)
+                .AddIngredient(ItemID.SkeletronMask)
+                .AddIngredient(ItemID.DestroyerMask)
+                .AddIngredient(ItemID.SkeletronPrimeMask)
+                .AddIngredient(ItemID.TwinMask)
+                .AddIngredient(ItemID.GolemMask)
+                .AddIngredient(ItemID.FairyQueenMask)
+                .AddIngredient(ItemID.BossMaskMoonlord)
+                .AddTile(TileID.TinkerersWorkbench)
+                .Register();
         }
     }
 }

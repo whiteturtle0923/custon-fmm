@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,18 +12,19 @@ namespace Fargowiltas.Items.Summons.Mutant
             DisplayName.SetDefault("Fleshy Doll");
             Tooltip.SetDefault("Summons the Wall of Flesh" +
                                "\nMake sure you use it in the Underworld");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 20;
-            item.value = Item.sellPrice(0, 0, 2);
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.consumable = true;
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 20;
+            Item.value = Item.sellPrice(0, 0, 2);
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.consumable = true;
         }
 
         public override bool CanUseItem(Player player)
@@ -30,30 +32,29 @@ namespace Fargowiltas.Items.Summons.Mutant
             return player.position.Y / 16 > Main.maxTilesY - 200 && !NPC.AnyNPCs(NPCID.WallofFlesh);
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
             NPC.SpawnWOF(player.Center);
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
 
             return true;
         }
 
         public override void PostUpdate()
         {
-            if (item.lavaWet && !NPC.AnyNPCs(NPCID.WallofFlesh))
+            if (Item.lavaWet && !NPC.AnyNPCs(NPCID.WallofFlesh))
             {
-                NPC.SpawnWOF(item.position);
-                item.TurnToAir();
+                NPC.SpawnWOF(Item.position);
+                Item.TurnToAir();
             }
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.GuideVoodooDoll);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+               .AddIngredient(ItemID.GuideVoodooDoll)
+               .AddTile(TileID.WorkBenches)
+               .Register();
         }
     }
 }

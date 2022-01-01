@@ -1,6 +1,7 @@
 ﻿using Fargowiltas.Projectiles.Explosives;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,44 +14,43 @@ namespace Fargowiltas.Items.Explosives
             DisplayName.SetDefault("Mini Instabridge");
             Tooltip.SetDefault("Creates a long bridge of platforms" +
                                "\nWill not break any blocks");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
         }
 
         public override void SetDefaults()
         {
-            item.width = 10;
-            item.height = 32;
-            item.maxStack = 99;
-            item.consumable = true;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.rare = ItemRarityID.Green;
-            item.UseSound = SoundID.Item1;
-            item.useAnimation = 20;
-            item.useTime = 20;
-            item.value = Item.buyPrice(0, 0, 3);
-            item.noUseGraphic = true;
-            item.noMelee = true;
-            item.shoot = ModContent.ProjectileType<MiniInstabridgeProj>();
+            Item.width = 10;
+            Item.height = 32;
+            Item.maxStack = 99;
+            Item.consumable = true;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.rare = ItemRarityID.Green;
+            Item.UseSound = SoundID.Item1;
+            Item.useAnimation = 20;
+            Item.useTime = 20;
+            Item.value = Item.buyPrice(0, 0, 3);
+            Item.noUseGraphic = true;
+            Item.noMelee = true;
+            Item.shoot = ModContent.ProjectileType<MiniInstabridgeProj>();
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 mouse = Main.MouseWorld;
 
-            Projectile.NewProjectile(mouse, Vector2.Zero, type, 0, 0, player.whoAmI);
+            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), mouse, Vector2.Zero, type, 0, 0, player.whoAmI);
 
             return false;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Dynamite);
-            recipe.AddIngredient(ItemID.WoodPlatform, 100);
-            recipe.AddIngredient(ItemID.FallenStar);
-            
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.Dynamite)
+                .AddIngredient(ItemID.WoodPlatform, 100)
+                .AddIngredient(ItemID.FallenStar)
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }

@@ -19,7 +19,12 @@ namespace Fargowiltas.Items
 
         public override bool InstancePerEntity => true;
 
-        public override bool CloneNewInstances => true;
+        public override GlobalItem Clone(Item item, Item itemClone)
+        {
+            return base.Clone(item, itemClone);
+        }
+
+        //public override bool CloneNewInstances => true;
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
@@ -28,37 +33,37 @@ namespace Fargowiltas.Items
             switch (item.type)
             {
                 case ItemID.PureWaterFountain:
-                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Ocean upon activation");
+                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Ocean upon activation");
                     tooltips.Add(line);
                     break;
 
                 case ItemID.DesertWaterFountain:
-                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Desert upon activation");
+                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Desert upon activation");
                     tooltips.Add(line);
                     break;
 
                 case ItemID.JungleWaterFountain:
-                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Jungle upon activation");
+                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Jungle upon activation");
                     tooltips.Add(line);
                     break;
 
                 case ItemID.IcyWaterFountain:
-                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Snow upon activation");
+                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Snow upon activation");
                     tooltips.Add(line);
                     break;
 
                 case ItemID.CorruptWaterFountain:
-                    line = new TooltipLine(mod, "Tooltip0", "Forces surrounding biome state to Corruption upon activation");
+                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Corruption upon activation");
                     tooltips.Add(line);
                     break;
 
                 case ItemID.CrimsonWaterFountain:
-                    line = new TooltipLine(mod, "Tooltip1", "Forces surrounding biome state to Crimson upon activation");
+                    line = new TooltipLine(Mod, "Tooltip1", "Forces surrounding biome state to Crimson upon activation");
                     tooltips.Add(line);
                     break;
 
                 case ItemID.HallowedWaterFountain:
-                    line = new TooltipLine(mod, "Tooltip1", "In hardmode, forces surrounding biome state to Hallow upon activation");
+                    line = new TooltipLine(Mod, "Tooltip1", "In hardmode, forces surrounding biome state to Hallow upon activation");
                     tooltips.Add(line);
                     break;
 
@@ -66,7 +71,7 @@ namespace Fargowiltas.Items
 
                 case ItemID.BugNet:
                 case ItemID.GoldenBugNet:
-                    line = new TooltipLine(mod, "Tooltip0", "Can also catch townsfolk");
+                    line = new TooltipLine(Mod, "Tooltip0", "Can also catch townsfolk");
                     tooltips.Add(line);
                     break;
 
@@ -76,25 +81,25 @@ namespace Fargowiltas.Items
             {
                 if (item.type == ItemID.FishingPotion)
                 {
-                    line = new TooltipLine(mod, "Tooltip1", "Also grants one extra lure");
+                    line = new TooltipLine(Mod, "Tooltip1", "Also grants one extra lure");
                     tooltips.Insert(3, line);
                 }
 
                 if (item.type == ItemID.FiberglassFishingPole || item.type == ItemID.FisherofSouls || item.type == ItemID.Fleshcatcher)
                 {
-                    line = new TooltipLine(mod, "Tooltip1", "This rod fires 2 lures");
+                    line = new TooltipLine(Mod, "Tooltip1", "This rod fires 2 lures");
                     tooltips.Insert(3, line);
                 }
 
                 if (item.type == ItemID.MechanicsRod || item.type == ItemID.SittingDucksFishingRod)
                 {
-                    line = new TooltipLine(mod, "Tooltip1", "This rod fires 3 lures");
+                    line = new TooltipLine(Mod, "Tooltip1", "This rod fires 3 lures");
                     tooltips.Insert(3, line);
                 }
 
                 if (item.type == ItemID.GoldenFishingRod || item.type == ItemID.HotlineFishingHook)
                 {
-                    line = new TooltipLine(mod, "Tooltip1", "This rod fires 5 lures");
+                    line = new TooltipLine(Mod, "Tooltip1", "This rod fires 5 lures");
                     tooltips.Insert(3, line);
                 }
             }
@@ -104,12 +109,7 @@ namespace Fargowiltas.Items
         {
             if (GetInstance<FargoConfig>().IncreaseMaxStack)
             {
-                if (item.maxStack > 10 && (item.maxStack != 100 || ModLoader.GetMod("TerrariaOverhaul") != null) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
-                {
-                    item.maxStack = 9999;
-                }
-
-                if (item.type == ItemID.PirateMap || item.type == ItemID.SnowGlobe)
+                if (item.maxStack > 10 && (item.maxStack != 100) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
                 {
                     item.maxStack = 9999;
                 }
@@ -329,25 +329,11 @@ namespace Fargowiltas.Items
             }
         }
 
-        public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed, ref int damage, ref float knockback)
+        public override bool CanBeConsumedAsAmmo(Item ammo, Player player)
         {
-            if (weapon.type == ItemID.SnowmanCannon)
-            {
-                if (ammo.type == ItemType<Rocket1Bag>())
-                    type = ProjectileID.RocketSnowmanI;
-                else if (ammo.type == ItemType<Rocket2Bag>())
-                    type = ProjectileID.RocketSnowmanII;
-                else if (ammo.type == ItemType<Rocket3Bag>())
-                    type = ProjectileID.RocketSnowmanIII;
-                else if (ammo.type == ItemType<Rocket4Bag>())
-                    type = ProjectileID.RocketSnowmanIV;
-            }
-        }
-
-        public override bool ConsumeAmmo(Item item, Player player)
-        {
-            if (GetInstance<FargoConfig>().UnlimitedAmmo && Main.hardMode && item.ammo != 0 && item.stack >= 3996)
+            if (GetInstance<FargoConfig>().UnlimitedAmmo && Main.hardMode && ammo.ammo != 0 && ammo.stack >= 3996)
                 return false;
+
             return true;
         }
 

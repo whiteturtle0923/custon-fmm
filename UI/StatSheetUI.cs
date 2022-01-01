@@ -4,6 +4,7 @@ using System.Linq;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.UI;
 
 namespace Fargowiltas.UI
@@ -69,14 +70,14 @@ namespace Fargowiltas.UI
             InnerPanel.RemoveAllChildren();
             ColumnCounter = LineCounter = 0;
 
-            AddStat($"Melee Damage: {(int)(player.meleeDamage * 100)}%", ItemID.CopperBroadsword);
-            AddStat($"Melee Crit: {player.meleeCrit}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Damage: {(int)(player.GetDamage(DamageClass.Melee) * 100)}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Crit: {player.GetCritChance(DamageClass.Melee)}%", ItemID.CopperBroadsword);
             AddStat($"Melee Speed: {(int)(player.meleeSpeed * 100)}%", ItemID.CopperBroadsword);
-            AddStat($"Ranged Damage: {(int)(player.rangedDamage * 100)}%", ItemID.CopperBow);
-            AddStat($"Ranged Crit: {player.rangedCrit}%", ItemID.CopperBow);
-            AddStat($"Magic Damage: {(int)(player.magicDamage * 100)}%", ItemID.WandofSparking);
-            AddStat($"Magic Crit: {player.magicCrit}%", ItemID.WandofSparking);
-            AddStat($"Summon Damage: {(int)(player.minionDamage * 100)}%", ItemID.SlimeStaff);
+            AddStat($"Ranged Damage: {(int)(player.GetDamage(DamageClass.Ranged) * 100)}%", ItemID.CopperBow);
+            AddStat($"Ranged Crit: {player.GetCritChance(DamageClass.Ranged)}%", ItemID.CopperBow);
+            AddStat($"Magic Damage: {(int)(player.GetDamage(DamageClass.Magic) * 100)}%", ItemID.WandofSparking);
+            AddStat($"Magic Crit: {player.GetCritChance(DamageClass.Magic)}%", ItemID.WandofSparking);
+            AddStat($"Summon Damage: {(int)(player.GetDamage(DamageClass.Summon) * 100)}%", ItemID.SlimeStaff);
             AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
             AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
 

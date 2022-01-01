@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -8,7 +10,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 {
     public class OverloadFrostMoon : ModItem
     {
-        public override string Texture => "Terraria/Item_1958";
+        public override string Texture => "Terraria/Images/Item_1958";
 
         public override void SetStaticDefaults()
         {
@@ -18,15 +20,15 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 1;
-            item.value = 1000;
-            item.rare = 1;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = 4;
-            item.consumable = false;
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 1;
+            Item.value = 1000;
+            Item.rare = 1;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = 4;
+            Item.consumable = false;
         }
 
         public override bool CanUseItem(Player player)
@@ -34,7 +36,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             return !Main.dayTime;
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
             if (FargoWorld.OverloadFrostMoon)
             {
@@ -44,7 +46,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
                 if (Main.netMode == 2)
                 {
-                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The Frost Moon fades away!"), new Color(175, 75, 255));
+                    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Frost Moon fades away!"), new Color(175, 75, 255));
                 }
                 else
                 {
@@ -55,7 +57,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
             {
                 if (Main.netMode == 2)
                 {
-                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The Frost Moon is rising..."), new Color(50, 255, 130));
+                    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Frost Moon is rising..."), new Color(50, 255, 130));
                 }
                 else
                 {
@@ -72,7 +74,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
                     if (Main.netMode == 2)
                     {
-                        NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Wave: 20: Everything"), new Color(175, 75, 255));
+                        ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Wave: 20: Everything"), new Color(175, 75, 255));
                     }
                     else
                     {
@@ -85,7 +87,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 }
 
                 FargoWorld.OverloadFrostMoon = true;
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+                SoundEngine.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             }
 
             return true;
@@ -93,12 +95,11 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.NaughtyPresent);
-            recipe.AddIngredient(null, "Overloader", 10);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.NaughtyPresent)
+                .AddIngredient(null, "Overloader", 10)
+                .AddTile(TileID.CrystalBall)
+                .Register();
         }
     }
 }

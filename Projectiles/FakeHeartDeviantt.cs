@@ -16,56 +16,57 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 12;
-            projectile.height = 12;
-            projectile.timeLeft = 600;
-            projectile.friendly = true;
-            projectile.aiStyle = -1;
+            Projectile.width = 12;
+            Projectile.height = 12;
+            Projectile.timeLeft = 600;
+            Projectile.friendly = true;
+            Projectile.npcProj = true;
+            Projectile.aiStyle = -1;
 
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
         }
 
         public override void AI()
         {
             float rand = Main.rand.Next(90, 111) * 0.01f * (Main.essScale * 0.5f);
-            Lighting.AddLight(projectile.Center, 0.5f * rand, 0.1f * rand, 0.1f * rand);
+            Lighting.AddLight(Projectile.Center, 0.5f * rand, 0.1f * rand, 0.1f * rand);
 
-            /*projectile.ai[0]--;
-            if (projectile.ai[0] > 0)
+            /*Projectile.ai[0]--;
+            if (Projectile.ai[0] > 0)
             {
-                projectile.rotation = -projectile.velocity.ToRotation();
+                Projectile.rotation = -Projectile.velocity.ToRotation();
             }
-            else if (projectile.ai[0] == 0)
-                projectile.velocity = Vector2.Zero;
+            else if (Projectile.ai[0] == 0)
+                Projectile.velocity = Vector2.Zero;
             else
             {
-                projectile.ai[1]--;
-                if (projectile.ai[1] == 0)
+                Projectile.ai[1]--;
+                if (Projectile.ai[1] == 0)
                 {
-                    projectile.velocity = projectile.DirectionTo(Main.player[Player.FindClosest(projectile.Center, 0, 0)].Center) * 20;
-                    projectile.netUpdate = true;
+                    Projectile.velocity = Projectile.DirectionTo(Main.player[Player.FindClosest(Projectile.Center, 0, 0)].Center) * 20;
+                    Projectile.netUpdate = true;
                 }
-                if (projectile.ai[1] <= 0)
+                if (Projectile.ai[1] <= 0)
                 {
-                    projectile.rotation = projectile.velocity.ToRotation();
+                    Projectile.rotation = Projectile.velocity.ToRotation();
                 }
             }
 
-            projectile.rotation -= (float)Math.PI / 2;*/
+            Projectile.rotation -= (float)Math.PI / 2;*/
 
-            if (projectile.localAI[0] == 0)
+            if (Projectile.localAI[0] == 0)
             {
-                projectile.localAI[0] = 1;
-                projectile.ai[0] = -1;
+                Projectile.localAI[0] = 1;
+                Projectile.ai[0] = -1;
             }
 
-            if (projectile.ai[0] >= 0 && projectile.ai[0] < 200)
+            if (Projectile.ai[0] >= 0 && Projectile.ai[0] < Main.maxNPCs)
             {
-                int ai0 = (int)projectile.ai[0];
+                int ai0 = (int)Projectile.ai[0];
                 if (Main.npc[ai0].CanBeChasedBy())
                 {
-                    double num4 = (Main.npc[ai0].Center - projectile.Center).ToRotation() - projectile.velocity.ToRotation();
+                    double num4 = (Main.npc[ai0].Center - Projectile.Center).ToRotation() - Projectile.velocity.ToRotation();
                     if (num4 > Math.PI)
                     {
                         num4 -= 2.0 * Math.PI;
@@ -76,27 +77,27 @@ namespace Fargowiltas.Projectiles
                         num4 += 2.0 * Math.PI;
                     }
 
-                    projectile.velocity = projectile.velocity.RotatedBy(num4 * (projectile.Distance(Main.npc[ai0].Center) > 100 ? 0.4f : 0.1f));
+                    Projectile.velocity = Projectile.velocity.RotatedBy(num4 * (Projectile.Distance(Main.npc[ai0].Center) > 100 ? 0.4f : 0.1f));
                 }
                 else
                 {
-                    projectile.ai[0] = -1f;
-                    projectile.netUpdate = true;
+                    Projectile.ai[0] = -1f;
+                    Projectile.netUpdate = true;
                 }
             }
             else
             {
-                if (++projectile.localAI[1] > 6f)
+                if (++Projectile.localAI[1] > 6f)
                 {
-                    projectile.localAI[1] = 0f;
+                    Projectile.localAI[1] = 0f;
                     float maxDistance = 700f;
                     int possibleTarget = -1;
-                    for (int i = 0; i < 200; i++)
+                    for (int i = 0; i < Main.maxNPCs; i++)
                     {
                         NPC npc = Main.npc[i];
-                        if (npc.CanBeChasedBy())
+                        if (npc.CanBeChasedBy() && Collision.CanHitLine(Projectile.Center, 0, 0, npc.Center, 0, 0))
                         {
-                            float npcDistance = projectile.Distance(npc.Center);
+                            float npcDistance = Projectile.Distance(npc.Center);
                             if (npcDistance < maxDistance)
                             {
                                 maxDistance = npcDistance;
@@ -105,12 +106,12 @@ namespace Fargowiltas.Projectiles
                         }
                     }
 
-                    projectile.ai[0] = possibleTarget;
-                    projectile.netUpdate = true;
+                    Projectile.ai[0] = possibleTarget;
+                    Projectile.netUpdate = true;
                 }
             }
 
-            projectile.rotation = projectile.velocity.ToRotation() - (float)Math.PI / 2;
+            Projectile.rotation = Projectile.velocity.ToRotation() - (float)Math.PI / 2;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -120,18 +121,18 @@ namespace Fargowiltas.Projectiles
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(255, lightColor.G, lightColor.B, lightColor.A);
+            return new Color(255, lightColor.G, lightColor.B, lightColor.A) * Projectile.Opacity;
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            Texture2D texture2D13 = Main.projectileTexture[projectile.type];
-            int num156 = Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type]; // ypos of lower right corner of sprite to draw
-            int y3 = num156 * projectile.frame; // ypos of upper left corner of sprite to draw
-            Rectangle rectangle = new Rectangle(0, y3, texture2D13.Width, num156);
-            Vector2 origin2 = rectangle.Size() / 2f;
-            Main.spriteBatch.Draw(texture2D13, projectile.Center - Main.screenPosition + new Vector2(0f, projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), projectile.GetAlpha(lightColor), projectile.rotation, origin2, projectile.scale, SpriteEffects.None, 0f);
-            return false;
-        }
+        //public override bool PreDraw(ref Color lightColor)
+        //{
+        //    Texture2D texture2D13 = Main.ProjectileTexture[Projectile.type];
+        //    int num156 = Main.ProjectileTexture[Projectile.type].Height / Main.projFrames[Projectile.type]; // ypos of lower right corner of sprite to draw
+        //    int y3 = num156 * Projectile.frame; // ypos of upper left corner of sprite to draw
+        //    Rectangle rectangle = new Rectangle(0, y3, texture2D13.Width, num156);
+        //    Vector2 origin2 = rectangle.Size() / 2f;
+        //    Main.spriteBatch.Draw(texture2D13, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Projectile.GetAlpha(lightColor), Projectile.rotation, origin2, Projectile.scale, SpriteEffects.None, 0f);
+        //    return false;
+        //}
     }
 }

@@ -2,7 +2,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -26,80 +28,97 @@ namespace Fargowiltas.NPCs
             Other
         }
 
-        public override bool Autoload(ref string name)
-		{
-			name = "Squirrel";
-			return ModLoader.GetMod("FargowiltasSouls") != null;
-		}
-
-		private readonly Mod fargosouls = ModLoader.GetMod("FargowiltasSouls");
+  //      public override bool Autoload(ref string name)
+		//{
+		//	name = "Squirrel";
+		//	return ModLoader.GetMod("FargowiltasSouls") != null;
+		//}
 
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Squirrel");
-			Main.npcFrameCount[npc.type] = 6;
-			NPCID.Sets.ExtraFramesCount[npc.type] = 9;
-			NPCID.Sets.AttackFrameCount[npc.type] = 4;
-			NPCID.Sets.DangerDetectRange[npc.type] = 700;
-			NPCID.Sets.AttackType[npc.type] = 0;
-			NPCID.Sets.AttackTime[npc.type] = 90;
-			NPCID.Sets.AttackAverageChance[npc.type] = 30;
-			NPCID.Sets.HatOffsetY[npc.type] = 4;
-		}
+			Main.npcFrameCount[NPC.type] = 6;
+			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
+			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
+			NPCID.Sets.DangerDetectRange[NPC.type] = 700;
+			NPCID.Sets.AttackType[NPC.type] = 0;
+			NPCID.Sets.AttackTime[NPC.type] = 90;
+			NPCID.Sets.AttackAverageChance[NPC.type] = 30;
+			NPCID.Sets.HatOffsetY[NPC.type] = 4;
 
-		public override void SetDefaults()
-		{
-			npc.townNPC = true;
-			npc.friendly = true;
-			npc.width = 50;
-			npc.height = 32;
-			npc.damage = 0;
-			npc.defense = 0;
-			npc.lifeMax = 100;
-			npc.HitSound = SoundID.NPCHit1;
-			npc.DeathSound = SoundID.NPCDeath1;
-			npc.knockBackResist = .25f;
-
-			animationType = NPCID.Squirrel;
-			npc.aiStyle = 7;
-
-            if (GetInstance<FargoConfig>().CatchNPCs)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
-                Main.npcCatchable[npc.type] = true;
-                npc.catchItem = (short)mod.ItemType("Squirrel");
-            }
+                Velocity = -1f,
+                Direction = -1
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                new FlavorTextBestiaryInfoElement("Sells duplicates of valuable items that it notices in inventories. Won’t divulge how it gets them, mostly because it can’t speak.")
+            });
+        }
+
+        public override void SetDefaults()
+		{
+			NPC.townNPC = true;
+			NPC.friendly = true;
+			NPC.width = 50;
+			NPC.height = 32;
+			NPC.damage = 0;
+			NPC.defense = 0;
+			NPC.lifeMax = 100;
+			NPC.HitSound = SoundID.NPCHit1;
+			NPC.DeathSound = SoundID.NPCDeath1;
+			NPC.knockBackResist = .25f;
+
+			AnimationType = NPCID.Squirrel;
+			NPC.aiStyle = 7;
+
+            //if (GetInstance<FargoConfig>().CatchNPCs)
+            //{
+            //    Main.npcCatchable[NPC.type] = true;
+            //    NPC.catchItem = (short)mod.ItemType("Squirrel");
+            //}
         }
 
         public override void AI()
         {
-            npc.dontTakeDamage = Main.bloodMoon;
+            NPC.dontTakeDamage = Main.bloodMoon;
         }
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
+        {
             if (FargoWorld.DownedBools["squirrel"])
             {
                 return true;
             }
 
-			for (int k = 0; k < Main.maxPlayers; k++)
-			{
-				Player player = Main.player[k];
-				if (!player.active)
-				{
-					continue;
-				}
+            /*if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            {
+                for (int k = 0; k < Main.maxPlayers; k++)
+                {
+                    Player player = Main.player[k];
+                    if (!player.active)
+                    {
+                        continue;
+                    }
 
-				foreach (Item item in player.inventory)
-				{
-					if (item.type == fargosouls.ItemType("TopHatSquirrelCaught"))
-					{
-						return true;
-					}
-				}
-			}
-			return false;
-		}
+                    foreach (Item item in player.inventory)
+                    {
+                        if (item.type == fargosouls.ItemType("TopHatSquirrelCaught"))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }*/
+
+            return false;
+        }
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
 
@@ -129,7 +148,7 @@ namespace Fargowiltas.NPCs
             showCycleShop = GetSellableItems().Count / 40 > 0;
 
             if (Main.bloodMoon)
-                return $"[c/ff0000:You will suffer.]";
+                return "You will suffer."; //"[c/FF0000:You will suffer.]";
 
             switch (Main.rand.Next(3))
 			{
@@ -182,7 +201,7 @@ namespace Fargowiltas.NPCs
                     }
                     if (!playerHasBiocluster)
                     {
-                        CombatText.NewText(npc.Hitbox, Color.White, $"[i:{type}]?", true);
+                        CombatText.NewText(NPC.Hitbox, Color.White, $"[i:{type}]?", true);
                     }
                 }*/
 
@@ -211,73 +230,71 @@ namespace Fargowiltas.NPCs
                 AddToCollection(item.type, ShopGroups.Potion);
             }
 
-            if (item.modItem == null || (!item.modItem.mod.Name.Equals("FargowiltasSouls") && !item.modItem.mod.Name.Equals("FargowiltasSoulsDLC")))
+            if (item.ModItem == null || (!item.ModItem.Mod.Name.Equals("FargowiltasSouls") && !item.ModItem.Mod.Name.Equals("FargowiltasSoulsDLC")))
                 return;
 
-            if (item.modItem.Name.EndsWith("Enchant"))
+            if (item.ModItem.Name.EndsWith("Enchant"))
             {
                 AddToCollection(item.type, ShopGroups.Enchant);
             }
-            else if (item.modItem.Name.EndsWith("Essence"))
+            else if (item.ModItem.Name.EndsWith("Essence"))
             {
                 AddToCollection(item.type, ShopGroups.Essence);
             }
-            else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("BionomicCluster")
-                || item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("HeartoftheMasochist"))
+            else if ((TryFind("FargowiltasSouls/BionomicCluster", out ModItem cluster) && cluster.Type == item.type)
+                || (TryFind("FargowiltasSouls/HeartoftheMasochist", out ModItem heart) && heart.Type == item.type))
             {
                 AddToCollection(item.type, ShopGroups.Other);
             }
-            else if (item.modItem.Name.EndsWith("Force"))
+            else if (item.ModItem.Name.EndsWith("Force"))
             {
-                RecipeFinder finder = new RecipeFinder();
-                finder.SetResult(item.type);
-                Recipe exactRecipe = finder.SearchRecipes()[0];
-                foreach (Item material in exactRecipe.requiredItem)
+                foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
                 {
-                    if (material.modItem != null && material.modItem.Name.EndsWith("Enchant"))
-                        AddToCollection(material.type, ShopGroups.Enchant);
+                    foreach (Item material in recipe.requiredItem)
+                    {
+                        if (material.ModItem != null && material.ModItem.Name.EndsWith("Enchant"))
+                            AddToCollection(material.type, ShopGroups.Enchant);
+                    }
                 }
             }
-            else if (item.modItem.Name.EndsWith("Soul"))
+            else if (item.ModItem.Name.EndsWith("Soul"))
             {
-                RecipeFinder finder = new RecipeFinder();
-                finder.SetResult(item.type);
-                Recipe exactRecipe = finder.SearchRecipes()[0];
-                foreach (Item material in exactRecipe.requiredItem)
+                foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
                 {
-                    if (material.modItem != null)
+                    foreach (Item material in recipe.requiredItem)
                     {
-                        if (material.modItem.Name.EndsWith("Essence"))
+                        if (material.ModItem != null)
                         {
-                            AddToCollection(material.type, ShopGroups.Essence);
+                            if (material.ModItem.Name.EndsWith("Essence"))
+                            {
+                                AddToCollection(material.type, ShopGroups.Essence);
+                            }
+                            else if (material.ModItem.Name.EndsWith("Force"))
+                            {
+                                AddToCollection(material.type, ShopGroups.Force);
+                            }
+                            else if (material.ModItem.Name.EndsWith("Soul"))
+                            {
+                                AddToCollection(material.type, ShopGroups.Soul);
+                            }
                         }
-                        else if (material.modItem.Name.EndsWith("Force"))
+                        else if (material.type != ItemID.None && TryFind("FargowiltasSouls/MasochistSoul", out ModItem modItem) && modItem.Type == item.type)
                         {
-                            AddToCollection(material.type, ShopGroups.Force);
-                        }
-                        else if (material.modItem.Name.EndsWith("Soul"))
-                        {
-                            AddToCollection(material.type, ShopGroups.Soul);
-                        }
-                    }
-                    else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("MasochistSoul") && material.type != ItemID.None)
-                    {
-                        RecipeFinder ingredientFinder = new RecipeFinder();
-                        finder.SetResult(material.type);
-                        if (finder.SearchRecipes().Count > 0) //only put in materials that have recipes themselves
-                        {
-                            AddToCollection(material.type, ShopGroups.Other);
+                            if (Main.recipe.Any(recipe => recipe.HasResult(material.type))) //only put in materials that have recipes themselves
+                            {
+                                AddToCollection(material.type, ShopGroups.Other);
+                            }
                         }
                     }
                 }
             }
-            else if (item.type == ModLoader.GetMod("FargowiltasSouls").ItemType("AeolusBoots"))
+            else if (TryFind("FargowiltasSouls/AeolusBoots", out ModItem modItem) && item.type == modItem.Type)
             {
                 AddToCollection(ItemID.FrostsparkBoots, ShopGroups.Other);
                 AddToCollection(ItemID.BalloonHorseshoeFart, ShopGroups.Other);
             }
         }
-        
+
         private List<int> GetSellableItems()
         {
             List<int>[] itemCollections = new List<int>[6]; //so they can be grouped by category
@@ -306,14 +323,14 @@ namespace Fargowiltas.NPCs
         }
 
         public override void SetupShop(Chest shop, ref int nextSlot)
-		{
-            if (shopNum == 0 && Fargowiltas.ModLoaded["FargowiltasSouls"]) //only on page 1
+        {
+            if (shopNum == 0 && TryFind("FargowiltasSouls/TopHatSquirrelCaught", out ModItem modItem)) //only on page 1
             {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("TopHatSquirrelCaught"));
+                shop.item[nextSlot].SetDefaults(modItem.Type);
                 shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 10);
                 nextSlot++;
             }
-            
+
             List<int> sellableItems = GetSellableItems();
             int i = 0;
             int startOffset = shopNum * 40;
@@ -341,7 +358,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override void NPCLoot()
+        public override bool CheckDead()
         {
             if (!FargoWorld.DownedBools["squirrel"])
             {
@@ -349,36 +366,37 @@ namespace Fargowiltas.NPCs
                 if (Main.netMode == NetmodeID.Server)
                     NetMessage.SendData(MessageID.WorldData); //sync world
             }
+            return base.CheckDead();
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D texture2D13 = Main.npcTexture[npc.type];
-            //int num156 = Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type]; //ypos of lower right corner of sprite to draw
-            //int y3 = num156 * npc.frame.Y; //ypos of upper left corner of sprite to draw
-            Rectangle rectangle = npc.frame;//new Rectangle(0, y3, texture2D13.Width, num156);
+            Texture2D texture2D13 = Request<Texture2D>(Texture).Value;
+            //int num156 = Main.NPCTexture[NPC.type].Height / Main.NPCFrameCount[NPC.type]; //ypos of lower right corner of sprite to draw
+            //int y3 = num156 * NPC.frame.Y; //ypos of upper left corner of sprite to draw
+            Rectangle rectangle = NPC.frame;//new Rectangle(0, y3, texture2D13.Width, num156);
             Vector2 origin2 = rectangle.Size() / 2f;
-
-            Color color26 = lightColor;
-            color26 = npc.GetAlpha(color26);
-
-            SpriteEffects effects = npc.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-
+            SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             if (Main.bloodMoon)
             {
-                Texture2D texture2D14 = mod.GetTexture("NPCs/Squirrel_Glow");
+                Texture2D texture2D14 = Request<Texture2D>(Texture + "_Glow").Value;
                 float scale = (Main.mouseTextColor / 200f - 0.35f) * 0.3f + 0.9f;
-                Main.spriteBatch.Draw(texture2D14, npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * npc.Opacity, npc.rotation, origin2, scale, effects, 0f);
+                Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY + 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, scale, effects, 0f);
             }
+            //Main.spriteBatch.Draw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
+            return true;
+        }
 
-            Main.spriteBatch.Draw(texture2D13, npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), npc.GetAlpha(lightColor), npc.rotation, origin2, npc.scale, effects, 0f);
-
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
             if (Main.bloodMoon)
             {
-                Texture2D texture2D14 = mod.GetTexture("NPCs/Squirrel_Eyes");
-                Main.spriteBatch.Draw(texture2D14, npc.Center - Main.screenPosition + new Vector2(0f, npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * npc.Opacity, npc.rotation, origin2, npc.scale, effects, 0f);
+                Texture2D texture2D14 = Request<Texture2D>(Texture + "_Eyes").Value;
+                Rectangle rectangle = NPC.frame;
+                Vector2 origin2 = rectangle.Size() / 2f;
+                SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+                Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY + 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, NPC.scale, effects, 0f);
             }
-            return false;
         }
     }
 }

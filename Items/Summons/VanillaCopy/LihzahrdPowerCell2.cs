@@ -8,12 +8,13 @@ namespace Fargowiltas.Items.Summons.VanillaCopy
 {
     public class LihzahrdPowerCell2 : BaseSummon
     {
-        public override int Type => NPCID.Golem;
+        public override int NPCType => NPCID.Golem;
 
         public override string NPCName => "Golem";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Lihzahrd Battery Pack");
             Tooltip.SetDefault("Summons the Golem without an altar");
         }
@@ -25,11 +26,10 @@ namespace Fargowiltas.Items.Summons.VanillaCopy
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LihzahrdPowerCell);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+               .AddIngredient(ItemID.LihzahrdPowerCell)
+               .AddTile(TileID.WorkBenches)
+               .Register();
         }
     }
 }

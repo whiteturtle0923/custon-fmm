@@ -8,7 +8,7 @@ namespace Fargowiltas.Items.Tiles
 {
     public class ElementalAssemblerSheet : ModTile
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             Main.tileLighted[Type] = true;
             Main.tileFrameImportant[Type] = true;
@@ -20,11 +20,11 @@ namespace Fargowiltas.Items.Tiles
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Elemental Assembler");
             AddMapEntry(new Color(200, 200, 200), name);
-            disableSmartCursor = true;
+            TileID.Sets.DisableSmartCursor[Type] = true;
             //counts as
-            adjTiles = new int[] { TileID.Hellforge, TileID.Furnaces, TileID.AlchemyTable, TileID.TinkerersWorkbench, TileID.ImbuingStation, TileID.DyeVat, TileID.LivingLoom, TileID.GlassKiln, TileID.IceMachine, TileID.HoneyDispenser, TileID.SkyMill, TileID.Solidifier, TileID.BoneWelder, TileID.Bottles, TileID.DemonAltar};
+            AdjTiles = new int[] { TileID.Hellforge, TileID.Furnaces, TileID.AlchemyTable, TileID.TinkerersWorkbench, TileID.ImbuingStation, TileID.DyeVat, TileID.LivingLoom, TileID.GlassKiln, TileID.IceMachine, TileID.HoneyDispenser, TileID.SkyMill, TileID.Solidifier, TileID.BoneWelder, TileID.Bottles, TileID.DemonAltar};
 
-            animationFrameHeight = 54;
+            AnimationFrameHeight = 54;
 
         }
 
@@ -42,7 +42,7 @@ namespace Fargowiltas.Items.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("ElementalAssembler"));
+            Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<ElementalAssembler>());
         }
 
         public override void AnimateTile(ref int frame, ref int frameCounter)

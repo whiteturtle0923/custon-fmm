@@ -5,12 +5,13 @@ namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class HolyGrail : BaseSummon
     {
-        public override int Type => NPCID.Tim;
+        public override int NPCType => NPCID.Tim;
 
         public override string NPCName => "Tim";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Holy Grail");
             Tooltip.SetDefault("Summons Tim" +
                                "\nOnly usable at night or underground");

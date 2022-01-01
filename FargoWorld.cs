@@ -1,19 +1,22 @@
 using Fargowiltas.NPCs;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
 using Terraria.ModLoader.IO;
 using static Terraria.ModLoader.ModContent;
+using Fargowiltas.Items.Tiles;
+using System;
 
 namespace Fargowiltas
 {
-    public class FargoWorld : ModWorld
+    public class FargoWorld : ModSystem
     {
         internal static int AbomClearCD;
-        internal static bool MovedLumberjack;
         internal static int WoodChopped;
 
         internal static bool OverloadGoblins;
@@ -63,21 +66,32 @@ namespace Fargowiltas
             "darkMage",
             "ogre",
             "headlessHorseman",
-            "babyGuardian", 
+            "babyGuardian",
             "squirrel",
             "worm",
-            "nailhead"
-        };
+            "nailhead",
+            "zombieMerman",
+            "eyeFish",
+            "bloodEel",
+            "goblinShark",
+            "dreadnautilus",
+            "gnome",
+            "redDevil",
+       };
 
-        public override void Initialize()
+        public override void PreWorldGen()
         {
             foreach (string tag in tags)
             {
                 DownedBools[tag] = false;
             }
 
-            AbomClearCD = 0;
             WoodChopped = 0;
+        }
+
+        public override void OnWorldLoad()
+        {
+            AbomClearCD = 0;
 
             OverloadGoblins = false;
             OverloadPirates = false;
@@ -89,21 +103,20 @@ namespace Fargowiltas
             CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
         }
 
-        public override TagCompound Save()
+        public override void SaveWorldData(TagCompound tag)
         {
             List<string> downed = new List<string>();
-            foreach (string tag in tags)
+
+            foreach (string downedTag in tags)
             {
-                downed.AddWithCondition(tag, DownedBools[tag]);
+                if (DownedBools.TryGetValue(downedTag, out bool down) && down)
+                    downed.AddWithCondition(downedTag, down);
             }
 
-            return new TagCompound
-            {
-                { "downed", downed },
-            };
+            tag.Add("downed", downed);
         }
 
-        public override void Load(TagCompound tag)
+        public override void LoadWorldData(TagCompound tag)
         {
             IList<string> downed = tag.GetList<string>("downed");
             foreach (string downedTag in tags)
@@ -136,14 +149,14 @@ namespace Fargowiltas
             writer.Write(Fargowiltas.SwarmActive);
         }
 
-        public override void PostUpdate()
+        public override void PostUpdateWorld()
         {
             // seasonals
             Main.halloween = GetInstance<FargoConfig>().Halloween;
             Main.xMas = GetInstance<FargoConfig>().Christmas;
 
             // swarm reset in case something goes wrong
-            if (Main.netMode != NetmodeID.MultiplayerClient && Fargowiltas.SwarmActive 
+            if (Main.netMode != NetmodeID.MultiplayerClient && Fargowiltas.SwarmActive
                 && NoBosses() && !NPC.AnyNPCs(NPCID.EaterofWorldsHead) && !NPC.AnyNPCs(NPCID.DungeonGuardian) && !NPC.AnyNPCs(NPCID.DD2DarkMageT1))
             {
                 Fargowiltas.SwarmActive = false;
@@ -189,11 +202,11 @@ namespace Fargowiltas
             }
         }
 
-        public override void TileCountsAvailable(int[] tileCounts)
+        public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
         {
             ref bool current = ref CurrentSpawnRateTile[0];
             bool oldSpawnRateTile = current;
-            current = tileCounts[mod.TileType("RegalStatueSheet")] > 0;
+            current = tileCounts[ModContent.TileType<RegalStatueSheet>()] > 0;
 
             if (Main.netMode == NetmodeID.MultiplayerClient && current != oldSpawnRateTile)
             {
@@ -204,7 +217,7 @@ namespace Fargowiltas
             }
         }
 
-        public override void PreUpdate()
+        public override void PreUpdateWorld()
         {
             bool rate = false;
             for (int i = 0; i < CurrentSpawnRateTile.Length; i++)
@@ -233,5 +246,17 @@ namespace Fargowiltas
         }
 
         private bool NoBosses() => Main.npc.All(i => !i.active || !i.boss);
+
+        public override void UpdateUI(GameTime gameTime)
+        {
+            base.UpdateUI(gameTime);
+            Fargowiltas.UserInterfaceManager.UpdateUI(gameTime);
+        }
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+            base.ModifyInterfaceLayers(layers);
+            Fargowiltas.UserInterfaceManager.ModifyInterfaceLayers(layers);
+        }
     }
 }

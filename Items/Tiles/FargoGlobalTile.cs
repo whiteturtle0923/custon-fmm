@@ -18,11 +18,11 @@ namespace Fargowiltas.Tiles
                 return adjTiles;
             }
 
-            if (type == ModContent.TileType<CrucibleCosmosSheet>())
-            {
-                Main.LocalPlayer.adjHoney = true;
-                Main.LocalPlayer.adjLava = true;
-            }
+            //if (type == ModContent.TileType<CrucibleCosmosSheet>())
+            //{
+            //    Main.LocalPlayer.adjHoney = true;
+            //    Main.LocalPlayer.adjLava = true;
+            //}
 
             return base.AdjTiles(type);
         }
@@ -37,13 +37,18 @@ namespace Fargowiltas.Tiles
 
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
-            if (type == TileID.Trees && !FargoWorld.MovedLumberjack && !fail)
+            if (WorldGen.gen)
+            {
+                return;
+            }
+
+            if (type == TileID.Trees && !fail && !(FargoWorld.DownedBools.TryGetValue("lumberjack", out bool down) && down))
             {
                 FargoWorld.WoodChopped++;
 
                 if (FargoWorld.WoodChopped > 500)
                 {
-                    FargoWorld.MovedLumberjack = true;
+                    FargoWorld.DownedBools["lumberjack"] = true;
                 }
             }
         }
@@ -115,22 +120,25 @@ namespace Fargowiltas.Tiles
             return Point16.NegativeOne;
         }
 
-        internal static void ClearEverything(int x, int y)
+        internal static void ClearEverything(int x, int y, bool sendData = true)
         {
             FindChestTopLeft(x, y, true);
 
             Tile tile = Main.tile[x, y];
+            bool hadLiquid = tile.LiquidAmount != 0;
             WorldGen.KillTile(x, y, noItem: true);
             tile.ClearEverything();
-            tile.lava(false);
-            tile.honey(false);
+
+            //tile.lava(false);
+            //tile.honey(false);
 
             if (Main.netMode == NetmodeID.Server)
             {
-                NetMessage.sendWater(x, y);
+                if (hadLiquid)
+                    NetMessage.sendWater(x, y);
+                if (sendData)
+                    NetMessage.SendTileSquare(-1, x, y, 1);
             }
-
-            NetMessage.SendTileSquare(-1, x, y, 1);
         }
     }
 }

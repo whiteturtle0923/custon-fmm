@@ -5,20 +5,21 @@ namespace Fargowiltas.Items.Ammos
 {
     public class BrittleBone : ModItem
     {
-        public override string Texture => "Terraria/Item_154";
+        public override string Texture => "Terraria/Images/Item_154";
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Brittle Bone");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
         }
 
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.Bone);
-            item.shoot = 0;
-            item.useAnimation = 0;
-            item.useTime = 0;
-            item.useStyle = 0;
+            Item.CloneDefaults(ItemID.Bone);
+            Item.shoot = 0;
+            Item.useAnimation = 0;
+            Item.useTime = 0;
+            Item.useStyle = 0;
         }
     }
 }

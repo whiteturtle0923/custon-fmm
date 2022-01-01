@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Fargowiltas;
+using Terraria.Audio;
+using ReLogic.Content;
 
 namespace Fargowilta
 {
@@ -18,16 +20,16 @@ namespace Fargowilta
         public StatButton StatButton;
         private GameTime _lastUpdateUIGameTime;
 
-        public Texture2D StatsButtonTexture;
-        public Texture2D StatsButton_MouseOverTexture;
+        public Asset<Texture2D> StatsButtonTexture;
+        public Asset<Texture2D> StatsButton_MouseOverTexture;
 
         public void LoadUI()
         {
             if (!Main.dedServ)
             {
                 // Load textures
-                StatsButtonTexture = ModContent.GetTexture("Fargowiltas/UI/Assets/StatsButton");
-                StatsButton_MouseOverTexture = ModContent.GetTexture("Fargowiltas/UI/Assets/StatsButton_MouseOver");
+                StatsButtonTexture = (ModContent.Request<Texture2D>("Fargowiltas/UI/Assets/StatsButton"));
+                StatsButton_MouseOverTexture = (ModContent.Request<Texture2D>("Fargowiltas/UI/Assets/StatsButton_MouseOver"));
 
                 // Initialize UserInterfaces
                 StatSheetUserInterface = new UserInterface();
@@ -65,12 +67,12 @@ namespace Fargowilta
         {
             if (IsStatSheetOpen())
             {
-                Main.PlaySound(SoundID.MenuOpen);
+                SoundEngine.PlaySound(SoundID.MenuOpen);
                 OpenStatSheet();
             }
             else// if (IsTogglerOpen())
             {
-                Main.PlaySound(SoundID.MenuClose);
+                SoundEngine.PlaySound(SoundID.MenuClose);
                 CloseStatSheet();
             }
         }

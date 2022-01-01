@@ -173,10 +173,10 @@ namespace Fargowiltas
                 HelpDialogueType.Misc, (name) => true);
 
             AddDialogue("Just so you know, ammos are less effective. Only a bit of their damage contributes to your total output!",
-                HelpDialogueType.Misc, (name) => Main.LocalPlayer.HeldItem.ranged);
+                HelpDialogueType.Misc, (name) => Main.LocalPlayer.HeldItem.DamageType == DamageClass.Ranged);
 
-            AddDialogue("Found any Top Hat Squirrels yet? Keep one in your inventory and maybe a special friend will show up!",
-                HelpDialogueType.Misc, (name) => !NPC.AnyNPCs(ModContent.NPCType<Squirrel>()));
+            //AddDialogue("Found any Top Hat Squirrels yet? Keep one in your inventory and maybe a special friend will show up!",
+            //    HelpDialogueType.Misc, (name) => !NPC.AnyNPCs(ModContent.NPCType<Squirrel>()));
 
             AddDialogue("I don't have any more Life Crystals for you, but I think my big brother left some in the fat slime king. Maybe he'll share if you beat it up!",
                 HelpDialogueType.Misc, (name) => Main.LocalPlayer.statLifeMax < 400);

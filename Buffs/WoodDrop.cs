@@ -5,7 +5,7 @@ namespace Fargowiltas.Buffs
 {
     public class WoodDrop : ModBuff
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Wood Drop");
             Main.buffNoSave[Type] = true;

@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -13,20 +15,21 @@ namespace Fargowiltas.Items.Misc
             DisplayName.SetDefault("Battle Cry");
             Tooltip.SetDefault("Increase spawn rates by 10x on use" +
                                "\nUse it again to decrease them");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
         {
-            item.width = 28;
-            item.height = 38;
-            item.value = Item.sellPrice(0, 0, 2);
-            item.rare = ItemRarityID.Pink;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = ItemUseStyleID.HoldingUp;
+            Item.width = 28;
+            Item.height = 38;
+            Item.value = Item.sellPrice(0, 0, 2);
+            Item.rare = ItemRarityID.Pink;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = ItemUseStyleID.Shoot;
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
             FargoPlayer modPlayer = player.GetFargoPlayer();
             modPlayer.BattleCry = !modPlayer.BattleCry;
@@ -38,12 +41,12 @@ namespace Fargowiltas.Items.Misc
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(text), new Color(175, 75, 255));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), new Color(175, 75, 255));
             }
 
-            if (modPlayer.BattleCry && !Main.dedServ)
+            if (!Main.dedServ)
             {
-                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Horn").WithVolume(1f).WithPitchVariance(.5f), player.position);
+                SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Horn").WithVolume(1f), player.Center);
             }
 
             return true;
@@ -51,12 +54,11 @@ namespace Fargowiltas.Items.Misc
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BattlePotion, 15);
-            recipe.AddIngredient(ItemID.WaterCandle, 10);
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.BattlePotion, 15)
+                .AddIngredient(ItemID.WaterCandle, 10)
+                .AddTile(TileID.DemonAltar)
+                .Register();
         }
     }
 }

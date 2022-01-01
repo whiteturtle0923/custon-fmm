@@ -5,12 +5,13 @@ namespace Fargowiltas.Items.Summons.Abom
 {
     public class HeadofMan : BaseSummon
     {
-        public override int Type => NPCID.HeadlessHorseman;
+        public override int NPCType => NPCID.HeadlessHorseman;
 
         public override string NPCName => "Headless Horseman";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Head of Man");
             Tooltip.SetDefault("Summons Headless Horseman" +
                                "\nOnly usable during Pumpkin Moon");
@@ -18,7 +19,8 @@ namespace Fargowiltas.Items.Summons.Abom
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime && Main.pumpkinMoon;
+            return Main.pumpkinMoon;
+
         }
     }
 }

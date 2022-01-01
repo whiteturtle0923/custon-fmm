@@ -105,19 +105,26 @@ namespace Fargowiltas.Items.Ammos.Bullets
         public override int AmmunitionItem => ItemID.SilverBullet;
     }
 
+    public class TungstenPouch : BaseAmmo
+    {
+        public override int AmmunitionItem => ItemID.TungstenBullet;
+        public override string Texture => "Fargowiltas/Items/Placeholder";
+    }
+
     public class VelocityPouch : BaseAmmo
     {
         public override int AmmunitionItem => ItemID.HighVelocityBullet;
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Endless High Velocity Pouch");
         }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
-            item.shootSpeed = 28f;
+            Item.shootSpeed = 28f;
         }
     }
 

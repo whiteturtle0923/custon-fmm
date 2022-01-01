@@ -1,6 +1,7 @@
 ﻿using Fargowiltas.Items.Summons.Abom;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -19,18 +20,18 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 1;
-            item.value = 1000;
-            item.rare = 1;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = 4;
-            item.consumable = false;
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 1;
+            Item.value = 1000;
+            Item.rare = 1;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = 4;
+            Item.consumable = false;
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
             if (FargoWorld.OverloadedSlimeRain)
             {
@@ -54,7 +55,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 }
 
                 FargoWorld.OverloadedSlimeRain = true;
-                Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+                SoundEngine.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             }
 
             return true;
@@ -62,12 +63,11 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<SlimyBarometer>());
-            recipe.AddIngredient(null, "Overloader", 10);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<SlimyBarometer>())
+                .AddIngredient(null, "Overloader", 10)
+                .AddTile(TileID.CrystalBall)
+                .Register();
         }
     }
 }

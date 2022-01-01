@@ -15,14 +15,14 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 12;
-            projectile.height = 12;
-            projectile.timeLeft = 2;
-            projectile.aiStyle = -1;
-            projectile.hide = true;
+            Projectile.width = 12;
+            Projectile.height = 12;
+            Projectile.timeLeft = 2;
+            Projectile.aiStyle = -1;
+            Projectile.hide = true;
 
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
         }
 
         public override void AI()
@@ -31,14 +31,14 @@ namespace Fargowiltas.Projectiles
             {
                 for (int i = -3; i < 3; i++)
                 {
-                    Projectile.NewProjectile(projectile.Center, -projectile.velocity.RotatedBy(Math.PI / 7 * i), mod.ProjectileType("FakeHeart2Deviantt"), projectile.damage, projectile.knockBack, projectile.owner, -1, 120 + 20 * i);
+                    Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center, -Projectile.velocity.RotatedBy(Math.PI / 7 * i), ModContent.ProjectileType<FakeHeart2Deviantt>(), Projectile.damage, Projectile.knockBack, Projectile.owner, -1, 120 + 20 * i);
                 }
             }
 
-            projectile.Kill();
+            Projectile.Kill();
         }
 
-        public override bool CanDamage()
+        public override bool? CanDamage()
         {
             return false;
         }

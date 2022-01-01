@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿using Terraria.GameContent.Creative;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Vanity
@@ -9,24 +10,24 @@ namespace Fargowiltas.Items.Vanity
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deviantt Pants");
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
         {
-            item.width = 18;
-            item.height = 18;
-            item.vanity = true;
-            item.rare = ItemRarityID.Blue;
+            Item.width = 18;
+            Item.height = 18;
+            Item.vanity = true;
+            Item.rare = ItemRarityID.Blue;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SoulofNight, 5);
-            recipe.AddIngredient(ItemID.SoulofFlight, 5); 
-            recipe.AddTile(TileID.TinkerersWorkbench);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.SoulofNight, 5)
+                .AddIngredient(ItemID.SoulofFlight, 5)
+                .AddTile(TileID.TinkerersWorkbench)
+                .Register();
         }
     }
 }

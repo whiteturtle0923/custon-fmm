@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,26 +12,26 @@ namespace Fargowiltas.Items.Ammos
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault($"Endless {Regex.Replace(Name, "([A-Z])", " $1").Trim()}");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
         {
-            item.CloneDefaults(AmmunitionItem);
-            item.width = 26;
-            item.height = 26;
-            item.consumable = false;
-            item.maxStack = 1;
-            item.value *= 3996;
-            item.rare += 1;
+            Item.CloneDefaults(AmmunitionItem);
+            Item.width = 26;
+            Item.height = 26;
+            Item.consumable = false;
+            Item.maxStack = 1;
+            Item.value *= 3996;
+            Item.rare += 1;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(AmmunitionItem, 3996);
-            recipe.AddTile(TileID.CrystalBall);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(AmmunitionItem, 3996)
+                .AddTile(TileID.CrystalBall)
+                .Register();
         }
     }
 }

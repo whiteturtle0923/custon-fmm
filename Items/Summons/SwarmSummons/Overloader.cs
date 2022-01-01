@@ -14,15 +14,16 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                                "The more consumed, the more bosses will spawn\n" +
                                "A Trophy will drop every 10 kills\n" +
                                "An Energizer will drop every 100 kills");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 4));
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 999;
-            item.rare = 2;
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 999;
+            Item.rare = 2;
         }
     }
 }

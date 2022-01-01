@@ -13,44 +13,41 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault("Elemental Assembler");
             Tooltip.SetDefault("Functions as several basic crafting stations");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
         {
-            item.width = 28;
-            item.height = 14;
-            item.maxStack = 99;
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.useAnimation = 15;
-            item.useTime = 10;
-            item.useStyle = 1;
-            item.consumable = true;
-            item.createTile = mod.TileType("ElementalAssemblerSheet");
+            Item.width = 28;
+            Item.height = 14;
+            Item.maxStack = 99;
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.useStyle = 1;
+            Item.consumable = true;
+            Item.createTile = ModContent.TileType<ElementalAssemblerSheet>();
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-
-            recipe.AddIngredient(ItemID.Hellforge);
-            recipe.AddIngredient(ItemID.AlchemyTable);
-            recipe.AddIngredient(ItemID.TinkerersWorkshop);
-            recipe.AddIngredient(ItemID.ImbuingStation);
-            recipe.AddIngredient(ItemID.DyeVat);
-            recipe.AddIngredient(ItemID.LivingLoom);
-            recipe.AddIngredient(ItemID.GlassKiln);
-            recipe.AddIngredient(ItemID.IceMachine);
-            recipe.AddIngredient(ItemID.HoneyDispenser);
-            recipe.AddIngredient(ItemID.SkyMill);
-            recipe.AddIngredient(ItemID.Solidifier);
-            recipe.AddIngredient(ItemID.BoneWelder);
-            recipe.AddRecipeGroup("Fargowiltas:AnyDemonAltar");
-
-            recipe.AddTile(TileID.WorkBenches);
-
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.Hellforge)
+                .AddIngredient(ItemID.AlchemyTable)
+                .AddIngredient(ItemID.TinkerersWorkshop)
+                .AddIngredient(ItemID.ImbuingStation)
+                .AddIngredient(ItemID.DyeVat)
+                .AddIngredient(ItemID.LivingLoom)
+                .AddIngredient(ItemID.GlassKiln)
+                .AddIngredient(ItemID.IceMachine)
+                .AddIngredient(ItemID.HoneyDispenser)
+                .AddIngredient(ItemID.SkyMill)
+                .AddIngredient(ItemID.Solidifier)
+                .AddIngredient(ItemID.BoneWelder)
+                .AddRecipeGroup("Fargowiltas:AnyDemonAltar")
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
     }
 }

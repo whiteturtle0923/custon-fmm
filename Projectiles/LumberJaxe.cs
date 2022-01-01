@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
 
 namespace Fargowiltas.Projectiles
 {
@@ -13,29 +14,29 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 42;
-            projectile.height = 40;
-            projectile.friendly = true;
-            projectile.ranged = true;
-            projectile.penetrate = 1;
-            projectile.aiStyle = 0;
-            projectile.timeLeft = 150;
-            aiType = ProjectileID.CrystalBullet;
+            Projectile.width = 42;
+            Projectile.height = 40;
+            Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.penetrate = 1;
+            Projectile.aiStyle = 0;
+            Projectile.timeLeft = 150;
+            AIType = ProjectileID.CrystalBullet;
         }
 
         public override void AI()
         {
-            projectile.rotation += 0.3f;
+            Projectile.rotation += 0.3f;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            projectile.Kill();
+            Projectile.Kill();
         }
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * 0, projectile.velocity.Y * 0, mod.ProjectileType("Explosion"), (int)(projectile.damage * 1f), projectile.knockBack, projectile.owner);
+            Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X * 0, Projectile.velocity.Y * 0, ModContent.ProjectileType<Explosion>(), (int)(Projectile.damage * 1f), Projectile.knockBack, Projectile.owner);
         }
     }
 }

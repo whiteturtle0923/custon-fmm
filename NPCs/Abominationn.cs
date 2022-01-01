@@ -7,7 +7,9 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Terraria.Audio;
 using Fargowiltas.Items.Vanity;
+using Terraria.GameContent.Bestiary;
 
 namespace Fargowiltas.NPCs
 {
@@ -16,55 +18,71 @@ namespace Fargowiltas.NPCs
     {
         private bool saidDefeatQuote;
 
-        public override bool Autoload(ref string name)
-        {
-            name = "Abominationn";
-            return mod.Properties.Autoload;
-        }
+        //public override bool Autoload(ref string name)
+        //{
+        //    name = "Abominationn";
+        //    return mod.Properties.Autoload;
+        //}
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Abominationn");
-            Main.npcFrameCount[npc.type] = 25;
-            NPCID.Sets.ExtraFramesCount[npc.type] = 9;
-            NPCID.Sets.AttackFrameCount[npc.type] = 4;
-            NPCID.Sets.DangerDetectRange[npc.type] = 700;
-            NPCID.Sets.AttackType[npc.type] = 0;
-            NPCID.Sets.AttackTime[npc.type] = 90;
-            NPCID.Sets.AttackAverageChance[npc.type] = 30;
-            NPCID.Sets.HatOffsetY[npc.type] = 2;
+
+            Main.npcFrameCount[NPC.type] = 25;
+            NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
+            NPCID.Sets.AttackFrameCount[NPC.type] = 4;
+            NPCID.Sets.DangerDetectRange[NPC.type] = 700;
+            NPCID.Sets.AttackType[NPC.type] = 0;
+            NPCID.Sets.AttackTime[NPC.type] = 90;
+            NPCID.Sets.AttackAverageChance[NPC.type] = 30;
+            NPCID.Sets.HatOffsetY[NPC.type] = 2;
+
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                Velocity = -1f,
+                Direction = -1
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
+                new FlavorTextBestiaryInfoElement("Can control the weather, but his weapons are fused to his hands. Thankfully, he doesn’t need to eat and doors magically open when he approaches.")
+            });
         }
 
         public override void SetDefaults()
         {
-            npc.townNPC = true;
-            npc.friendly = true;
-            npc.width = 40;
-            npc.height = 40;
-            npc.aiStyle = 7;
-            npc.damage = 10;
-            npc.defense = NPC.downedMoonlord ? 50 : 15;
-            npc.lifeMax = NPC.downedMoonlord ? 5000 : 250;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.5f;
-            animationType = NPCID.Guide;
+            NPC.townNPC = true;
+            NPC.friendly = true;
+            NPC.width = 40;
+            NPC.height = 40;
+            NPC.aiStyle = 7;
+            NPC.damage = 10;
+            NPC.defense = NPC.downedMoonlord ? 50 : 15;
+            NPC.lifeMax = NPC.downedMoonlord ? 5000 : 250;
+            NPC.HitSound = SoundID.NPCHit1;
+            NPC.DeathSound = SoundID.NPCDeath1;
+            NPC.knockBackResist = 0.5f;
+            AnimationType = NPCID.Guide;
 
-            if (GetInstance<FargoConfig>().CatchNPCs)
-            {
-                Main.npcCatchable[npc.type] = true;
-                npc.catchItem = (short)mod.ItemType("Abominationn");
-            }
+            //if (GetInstance<FargoConfig>().CatchNPCs)
+            //{
+            //    Main.npcCatchable[NPC.type] = true;
+            //    NPC.catchItem = (short)mod.ItemType("Abominationn");
+            //}
                 
-            npc.buffImmune[BuffID.Suffocation] = true;
+            NPC.buffImmune[BuffID.Suffocation] = true;
         }
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
-            {
-                return false;
-            }
+            //if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
+            //{
+            //    return false;
+            //}
             return GetInstance<FargoConfig>().Abom && NPC.downedGoblins && !FargoGlobalNPC.AnyBossAlive();
         }
 
@@ -72,7 +90,7 @@ namespace Fargowiltas.NPCs
 
         public override void AI()
         {
-            npc.breath = 200;
+            NPC.breath = 200;
         }
 
         public override string TownNPCName()
@@ -83,7 +101,7 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (npc.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
+            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
             {
                 saidDefeatQuote = true;
                 return "You really defeated me... not bad. Now do it again without getting hit. Oh, and Copper Shortsword only.";
@@ -156,7 +174,7 @@ namespace Fargowiltas.NPCs
                 {
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
-                        var netMessage = mod.GetPacket();
+                        var netMessage = Mod.GetPacket();
                         netMessage.Write((byte)2);
                         netMessage.Send();
                     }
@@ -165,7 +183,7 @@ namespace Fargowiltas.NPCs
                         Main.NewText("The event has been cancelled!", 175, 75, 255);
                     }
 
-                    Main.PlaySound(SoundID.Roar, npc.position, 0);
+                    SoundEngine.PlaySound(SoundID.Roar, NPC.position, 0);
                     Main.npcChatText = "Hocus pocus, the event is over.";
                 }
                 else
@@ -182,15 +200,15 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public static void AddModItem(bool condition, string modName, string itemName, int price, ref Chest shop, ref int nextSlot)
-        {
-            if (condition)
-            {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod(modName).ItemType(itemName));
-                shop.item[nextSlot].shopCustomPrice = price;
-                nextSlot++;
-            }
-        }
+        //public static void AddModItem(bool condition, string modName, string itemName, int price, ref Chest shop, ref int nextSlot)
+        //{
+        //    if (condition)
+        //    {
+        //        shop.item[nextSlot].SetDefaults(ModLoader.GetMod(modName).ItemType(itemName));
+        //        shop.item[nextSlot].shopCustomPrice = price;
+        //        nextSlot++;
+        //    }
+        //}
 
         public static void AddItem(bool check, int item, int price, ref Chest shop, ref int nextSlot)
         {
@@ -202,18 +220,18 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public static void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
-        {
-            if (!check || shop is null)
-            {
-                return;
-            }
+        //public static void AddItem(bool check, string mod, string item, int price, ref Chest shop, ref int nextSlot)
+        //{
+        //    if (!check || shop is null)
+        //    {
+        //        return;
+        //    }
 
-            shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
-            shop.item[nextSlot].shopCustomPrice = price;
+        //    shop.item[nextSlot].SetDefaults(ModLoader.GetMod(mod).ItemType(item));
+        //    shop.item[nextSlot].shopCustomPrice = price;
 
-            nextSlot++;
-        }
+        //    nextSlot++;
+        //}
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
@@ -222,11 +240,12 @@ namespace Fargowiltas.NPCs
             AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
             AddItem(true, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
-            AddItem(true, ItemType<CursedSextant>(), Item.buyPrice(0, 5), ref shop, ref nextSlot); //Remove Cursed Sextant & replace with Bloody Tear in 1.4
+            AddItem(true, ItemID.BloodMoonStarter, Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(true, ItemID.GoblinBattleStandard, Item.buyPrice(0, 6), ref shop, ref nextSlot);
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates && FargoWorld.DownedBools["flyingDutchman"], ItemType<PlunderedBooty>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["dreadnautilus"], ItemType<BloodShrimp>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedMechBossAny, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["darkMage"] || NPC.downedMechBossAny, ItemType<ForbiddenTome>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["ogre"] || NPC.downedGolemBoss, ItemType<BatteredClub>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
@@ -248,10 +267,10 @@ namespace Fargowiltas.NPCs
 
             AddItem(NPC.downedTowers, ItemType<PillarSummon>(), Item.buyPrice(0, 75), ref shop, ref nextSlot);
 
-            foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.EventSummons)
-            {
-                AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
-            }
+            //foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.EventSummons)
+            //{
+            //    AddItem(summon.downed(), summon.modSource, summon.itemName, summon.price, ref shop, ref nextSlot);
+            //}
 
             AddItem(NPC.downedTowers, ItemType<AbominationnScythe>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
         }
@@ -285,27 +304,27 @@ namespace Fargowiltas.NPCs
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0)
+            if (NPC.life <= 0)
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * hitDirection, -2.5f, Scale: 0.8f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hitDirection, -2.5f, Scale: 0.8f);
                 }
 
-                Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore3"));
+                Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore3").Type);
 
-                pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore2"));
+                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore2").Type);
 
-                pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/AbomGore1"));
+                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore1").Type);
             }
             else
             {
-                for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+                for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f, Scale: 0.6f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, Scale: 0.6f);
                 }
             }
         }

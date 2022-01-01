@@ -1,6 +1,7 @@
 using Fargowiltas.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,36 +16,36 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 36;
-            projectile.aiStyle = 16;
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 170;
+            Projectile.width = 20;
+            Projectile.height = 36;
+            Projectile.aiStyle = 16;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 170;
         }
 
-        public override bool CanDamage()
+        public override bool? CanDamage()
         {
             return false;
         }
 
-        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
         {
             fallThrough = false;
 
-            return base.TileCollideStyle(ref width, ref height, ref fallThrough);
+            return base.TileCollideStyle(ref width, ref height, ref fallThrough, ref hitboxCenterFrac);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            projectile.Kill();
+            Projectile.Kill();
             return true;
         }
 
         public override void Kill(int timeLeft)
         {
-            Vector2 position = projectile.Center;
-            Main.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
+            Vector2 position = Projectile.Center;
+            SoundEngine.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
@@ -69,25 +70,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     if (!FargoGlobalProjectile.OkayToDestroyTile(tile))
                         continue;
 
-                    FargoGlobalTile.ClearEverything(xPosition, y);
-
-                    // Tile destroy
-
-                    // WorldGen.KillTile(xPosition, y);
-                    // WorldGen.KillWall(xPosition, y);
-                    // Dust.NewDust(position, 22, 22, DustID.Smoke, 0.0f, 0.0f, 120);
-
-                    // Kill liquids
-                    /*if (tile != null)
-                    {
-                        tile.liquid = 0;
-                        tile.lava(false);
-                        tile.honey(false);
-                        if (Main.netMode == NetmodeID.Server)
-                        {
-                            NetMessage.sendWater(xPosition, y);
-                        }
-                    }*/
+                    FargoGlobalTile.ClearEverything(xPosition, y, false);
 
                     // Spawn structure
                     WorldGen.PlaceWall(xPosition, y, WallID.Stone);
@@ -96,13 +79,11 @@ namespace Fargowiltas.Projectiles.Explosives
                     {
                         WorldGen.PlaceTile(xPosition, y, TileID.GrayBrick);
                     }
-
-                    if ((x == -2 || x == 2) && (y % 10 == 0))
+                    else if ((x == -2 || x == 2) && (y % 10 == 0))
                     {
                         WorldGen.PlaceTile(xPosition, y, TileID.Torches);
                     }
-
-                    if (x == 0)
+                    else if (x == 0)
                     {
                         WorldGen.PlaceTile(xPosition, y, TileID.Rope);
                     }

@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -6,7 +7,7 @@ namespace Fargowiltas.Items.Tiles
 {
     public class WoodenTokenSheet : ModTile
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
             Main.tileLavaDeath[Type] = true;
@@ -21,13 +22,13 @@ namespace Fargowiltas.Items.Tiles
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 36;
             TileObjectData.addTile(Type);
-            dustType = 7;
-            disableSmartCursor = true;
+            DustType = 7;
+            TileID.Sets.DisableSmartCursor[Type] = true;
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 48, mod.ItemType("WoodenToken"));
+            Item.NewItem(i * 16, j * 16, 32, 48, ModContent.ItemType<WoodenToken>());
         }
 
         /*public override void NearbyEffects(int i, int j, bool closer)

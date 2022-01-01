@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Fargowiltas.Items.Summons.Deviantt;
+using Fargowiltas.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -14,63 +16,77 @@ namespace Fargowiltas.NPCs
     {
         private bool saidDefeatQuote;
 
-        public override bool Autoload(ref string name)
-        {
-            name = "Deviantt";
-            return mod.Properties.Autoload;
-        }
+        //public override bool Autoload(ref string name)
+        //{
+        //    name = "Deviantt";
+        //    return mod.Properties.Autoload;
+        //}
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deviantt");
-            Main.npcFrameCount[npc.type] = 23;
-            NPCID.Sets.ExtraFramesCount[npc.type] = 9;
-            NPCID.Sets.AttackFrameCount[npc.type] = 4;
-            NPCID.Sets.DangerDetectRange[npc.type] = 700;
-            NPCID.Sets.AttackType[npc.type] = 0;
-            NPCID.Sets.AttackTime[npc.type] = 90;
-            NPCID.Sets.AttackAverageChance[npc.type] = 30;
 
+            Main.npcFrameCount[NPC.type] = 23;
+            NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
+            NPCID.Sets.AttackFrameCount[NPC.type] = 4;
+            NPCID.Sets.DangerDetectRange[NPC.type] = 700;
+            NPCID.Sets.AttackType[NPC.type] = 0;
+            NPCID.Sets.AttackTime[NPC.type] = 90;
+            NPCID.Sets.AttackAverageChance[NPC.type] = 30;
 
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                Velocity = -1f,
+                Direction = -1
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
+                new FlavorTextBestiaryInfoElement("Provides monster spawners and (rarely) a helping hand. This upbeat and energetic creature likes money almost as much as she likes violence.")
+            });
         }
 
         public override void SetDefaults()
         {
-            npc.townNPC = true;
-            npc.friendly = true;
-            npc.width = 18;
-            npc.height = 40;
-            npc.aiStyle = 7;
-            npc.damage = 10;
-            npc.defense = NPC.downedMoonlord ? 50 : 15;
-            npc.lifeMax = NPC.downedMoonlord ? 2500 : 250;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.5f;
-            animationType = NPCID.Angler;
+            NPC.townNPC = true;
+            NPC.friendly = true;
+            NPC.width = 18;
+            NPC.height = 40;
+            NPC.aiStyle = 7;
+            NPC.damage = 10;
+            NPC.defense = NPC.downedMoonlord ? 50 : 15;
+            NPC.lifeMax = NPC.downedMoonlord ? 2500 : 250;
+            NPC.HitSound = SoundID.NPCHit1;
+            NPC.DeathSound = SoundID.NPCDeath1;
+            NPC.knockBackResist = 0.5f;
+            AnimationType = NPCID.Angler;
 
-            if (GetInstance<FargoConfig>().CatchNPCs)
-            {
-                Main.npcCatchable[npc.type] = true;
-                npc.catchItem = (short)mod.ItemType("Deviantt");
-            }
+            //if (GetInstance<FargoConfig>().CatchNPCs)
+            //{
+            //    Main.NPCCatchable[NPC.type] = true;
+            //    NPC.catchItem = (short)mod.ItemType("Deviantt");
+            //}
                 
-            npc.buffImmune[BuffID.Suffocation] = true;
+            NPC.buffImmune[BuffID.Suffocation] = true;
         }
 
-        public override bool CanTownNPCSpawn(int numTownnpcs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
-                return false;
+            //if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
+            //    return false;
 
-            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
+            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"]); //|| //(Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => !toKingStatue;
 
         public override void AI()
         {
-            npc.breath = 200;
+            NPC.breath = 200;
         }
 
         public override string TownNPCName()
@@ -81,7 +97,7 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (npc.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
+            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
             {
                 saidDefeatQuote = true;
                 return "Good work getting one over on me! Hope I didn't make you sweat too much. Keep at the grind - I wanna see how far you can go!";
@@ -111,7 +127,7 @@ namespace Fargowiltas.NPCs
                 "The more rare things you kill, the more stuff I sell! Simple, right?",
             };
 
-            int mutant = NPC.FindFirstNPC(mod.NPCType("Mutant"));
+            int mutant = NPC.FindFirstNPC(ModContent.NPCType<Mutant>());
             if (mutant != -1)
             {
                 dialogue.Add($"Can you tell {Main.npc[mutant].GivenName} to put some clothes on?");
@@ -119,13 +135,13 @@ namespace Fargowiltas.NPCs
                 dialogue.Add($"{Main.npc[mutant].GivenName} is here! That's my big brother!");
             }
 
-            int abom = NPC.FindFirstNPC(mod.NPCType("Abominationn"));
+            int abom = NPC.FindFirstNPC(NPCType<Abominationn>());
             if (abom != -1)
             {
                 dialogue.Add($"{Main.npc[abom].GivenName} is here! That's my big-but-not-biggest brother!");
             }
 
-            int lumberjack = NPC.FindFirstNPC(mod.NPCType("LumberJack"));
+            int lumberjack = NPC.FindFirstNPC(NPCType<LumberJack>());
             if (lumberjack != -1)
             {
                 dialogue.Add($"What's that? You want to fight {Main.npc[lumberjack].GivenName}? ...even I know better than to try.");
@@ -181,30 +197,31 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            if (Fargowiltas.ModLoaded["FargowiltasSoulsDLC"])
-            {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSoulsDLC").ItemType("PandorasBox"));
-                nextSlot++;
-            }
+            //if (Fargowiltas.ModLoaded["FargowiltasSoulsDLC"])
+            //{
+            //    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSoulsDLC").ItemType("PandorasBox"));
+            //    nextSlot++;
+            //}
 
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
-            {
-                shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
-                nextSlot++;
+            //if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            //{
+            //    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
+            //    nextSlot++;
 
-                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
-                {
-                    shop.item[nextSlot].SetDefaults(ItemType<Items.Misc.EternityAdvisor>());
-                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 1);
-                    nextSlot++;
-                }
-            }
+            //    if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            //    {
+            //        shop.item[nextSlot].SetDefaults(ItemType<Items.Misc.EternityAdvisor>());
+            //        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 1);
+            //        nextSlot++;
+            //    }
+            //}
 
             AddItem(FargoWorld.DownedBools["worm"], ItemType<WormSnack>(), Item.buyPrice(0, 2), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["pinky"], ItemType<PinkSlimeCrown>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["doctorBones"], ItemType<Eggplant>(), Item.buyPrice(0, 2), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["undeadMiner"], ItemType<AttractiveOre>(), Item.buyPrice(0, 3), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["tim"], ItemType<HolyGrail>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["gnome"], ItemType<GnomeHat>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(NPC.downedBoss3 && FargoWorld.DownedBools["dungeonSlime"], ItemType<SlimyLockBox>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["medusa"], ItemType<AthenianIdol>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["clown"], ItemType<ClownLicense>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
@@ -221,6 +238,10 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode && FargoWorld.DownedBools["mimicJungle"], ItemType<JungleChest>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["iceGolem"], ItemType<CoreoftheFrostCore>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && FargoWorld.DownedBools["sandElemental"], ItemType<ForbiddenForbiddenFragment>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(NPC.downedMechBossAny && FargoWorld.DownedBools["redDevil"], ItemType<RedDevilVoodooDoll>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["eyeFish"] || FargoWorld.DownedBools["zombieMerman"], ItemType<SuspiciousLookingEyedrops>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(Main.hardMode && FargoWorld.DownedBools["bloodEel"], ItemType<BloodUrchin>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
+            AddItem(Main.hardMode && FargoWorld.DownedBools["goblinShark"], ItemType<HemoclawCrab>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && NPC.downedGoblins && FargoWorld.DownedBools["goblinSummoner"], ItemType<ShadowflameIcon>(), Item.buyPrice(0, 10), ref shop, ref nextSlot);
             AddItem(Main.hardMode && NPC.downedPirates && FargoWorld.DownedBools["pirateCaptain"], ItemType<PirateFlag>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPlantBoss && FargoWorld.DownedBools["nailhead"], ItemType<Pincushion>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
@@ -261,7 +282,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = NPC.downedMoonlord ? mod.ProjectileType("FakeHeartMarkDeviantt") : mod.ProjectileType("FakeHeartDeviantt");
+            projType = NPC.downedMoonlord ? ProjectileType<FakeHeartMarkDeviantt>() : ProjectileType<FakeHeartDeviantt>();
             attackDelay = 1;
         }
 
@@ -273,27 +294,27 @@ namespace Fargowiltas.NPCs
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0)
+            if (NPC.life <= 0)
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default, 0.8f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default, 0.8f);
                 }
 
-                Vector2 pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/DevianttGore3"));
+                Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore3").Type);
 
-                pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/DevianttGore2"));
+                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore2").Type);
 
-                pos = npc.position + new Vector2(Main.rand.Next(npc.width - 8), Main.rand.Next(npc.height / 2));
-                Gore.NewGore(pos, npc.velocity, mod.GetGoreSlot("Gores/DevianttGore1"));
+                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore1").Type);
             }
             else
             {
-                for (int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+                for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, 5, hitDirection, -1f, 0, default, 0.6f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, 0, default, 0.6f);
                 }
             }
         }
@@ -312,7 +333,7 @@ namespace Fargowiltas.NPCs
                 return;
             }
 
-            Main.npcChatText = Fargowiltas.dialogueTracker.GetDialogue(npc.GivenName);
+            Main.npcChatText = Fargowiltas.dialogueTracker.GetDialogue(NPC.GivenName);
         }
 
         private void FargosLore()
@@ -340,10 +361,10 @@ namespace Fargowiltas.NPCs
             Main.npcChatText = Main.rand.Next(dialogue);
         }
 
-        public override void NPCLoot()
-        {
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("CosmosChampion")))
-                Item.NewItem(npc.Hitbox, mod.ItemType("WalkingRick"));
-        }
+        //public override void NPCLoot()
+        //{
+        //    if (Fargowiltas.ModLoaded["FargowiltasSouls"] && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("CosmosChampion")))
+        //        Item.NewItem(NPC.Hitbox, mod.ItemType("WalkingRick"));
+        //}
     }
 }

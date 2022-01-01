@@ -7,6 +7,12 @@ namespace Fargowiltas.Projectiles
 {
     public class MechEyeProjectile : ModProjectile
     {
+        private float HomingCooldown
+        {
+            get => Projectile.ai[0];
+            set => Projectile.ai[0] = value;
+        }
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("MechEyeProjectile");
@@ -14,26 +20,71 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 8;
-            projectile.height = 12;
-            projectile.aiStyle = 1;
-            projectile.friendly = true;
-            projectile.ranged = true;
-            projectile.penetrate = 5;
-            projectile.timeLeft = 600;
-            aiType = ProjectileID.Bullet;
+            Projectile.width = 8;
+            Projectile.height = 12;
+            Projectile.aiStyle = 1;
+            Projectile.friendly = true;
+            Projectile.npcProj = true;
+            Projectile.penetrate = 5;
+            Projectile.timeLeft = 600;
+            AIType = ProjectileID.Bullet;
+        }
+
+        public override void AI()
+        {
+            const int homingDelay = 10;
+            const float flySpeed = 60; // fly speed in pixels per frame
+            const int lerpFrameAmount = 20; // minimum of 1
+
+            HomingCooldown++;
+            if (HomingCooldown > homingDelay)
+            {
+                HomingCooldown = homingDelay; // cap this value
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    NPC n = Main.npc[foundTarget];
+                    if (Projectile.Distance(n.Center) > System.Math.Max(n.width, n.height))
+                    {
+                        Vector2 desiredVelocity = Projectile.DirectionTo(n.Center) * flySpeed;
+                        Projectile.velocity = Vector2.Lerp(Projectile.velocity, desiredVelocity, 1f / lerpFrameAmount);
+                    }
+                }
+            }
         }
 
         public override void Kill(int timeLeft)
         {
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.Silver, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default(Color), 1.5f);
+                int num469 = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), Projectile.width, Projectile.height, DustID.Silver, -Projectile.velocity.X * 0.2f, -Projectile.velocity.Y * 0.2f, 100, default(Color), 1.5f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.Silver, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default(Color), .75f);
+                num469 = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), Projectile.width, Projectile.height, DustID.Silver, -Projectile.velocity.X * 0.2f, -Projectile.velocity.Y * 0.2f, 100, default(Color), .75f);
                 Main.dust[num469].velocity *= 2f;
             }
+        }
+
+        private int HomeOnTarget()
+        {
+            const float HOMING_MAXIMUM_RANGE_IN_PIXELS = 500;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(Projectile) && Collision.CanHitLine(Projectile.Center, 0, 0, n.Center, 0, 0))
+                {
+                    float distance = Projectile.Distance(n.Center);
+                    if (distance <= HOMING_MAXIMUM_RANGE_IN_PIXELS && (selectedTarget == -1 || Projectile.Distance(Main.npc[selectedTarget].Center) > distance))
+                    {
+                        selectedTarget = i;
+                    }
+                }
+            }
+
+            return selectedTarget;
         }
     }
 }

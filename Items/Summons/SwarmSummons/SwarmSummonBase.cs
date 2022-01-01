@@ -1,6 +1,8 @@
 ﻿using Fargowiltas.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -27,25 +29,25 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 100;
-            item.value = 10000;
-            item.rare = ItemRarityID.Blue;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.consumable = true;
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 100;
+            Item.value = 10000;
+            Item.rare = ItemRarityID.Blue;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.consumable = true;
 
             if (npcType == NPCID.WallofFlesh)
             {
-                item.useAnimation = 20;
-                item.useTime = 2;
-                item.consumable = false;
+                Item.useAnimation = 20;
+                Item.useTime = 2;
+                Item.consumable = false;
             }
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
             Fargowiltas.SwarmActive = true;
             Fargowiltas.SwarmTotal = 10 * player.inventory[player.selectedItem].stack;
@@ -109,7 +111,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
 
             if (Main.netMode == NetmodeID.Server)
             {
-                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(spawnMessage), new Color(175, 75, 255));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(spawnMessage), new Color(175, 75, 255));
                 NetMessage.SendData(MessageID.WorldData);
             }
             else if (Main.netMode == NetmodeID.SinglePlayer)
@@ -117,18 +119,17 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 Main.NewText(spawnMessage, 175, 75, 255);
             }
 
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            SoundEngine.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, material);
-            recipe.AddIngredient(null, "Overloader");
-            recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(null, material)
+                .AddIngredient(null, "Overloader")
+                .AddTile(TileID.DemonAltar)
+                .Register();
         }
     }
 }

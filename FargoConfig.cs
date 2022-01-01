@@ -25,11 +25,11 @@ namespace Fargowiltas
         public bool Lumber;
 
         [Label("[i:1774] Halloween Season Active")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool Halloween;
 
         [Label("[i:1869] Christmas Season Active")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool Christmas;
 
         [Label("[i:771] Unlimited Ammo at 3996+ in Hardmode")]
@@ -92,6 +92,10 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool PiggyBankAcc;
 
+        [Label("[i:4881] Faster Fishing in Lava")]
+        [DefaultValue(true)]
+        public bool FasterLavaFishing;
+
         [Label("[i:1612] Debuffs render above player")]
         [DefaultValue(false)]
         public bool DebuffDisplay;
@@ -101,7 +105,8 @@ namespace Fargowiltas
         public float DebuffOpacity;
 
         [Label("[i:1309] Transparent Minions & Support Attacks")]
-        [DefaultValue(1f)] [Slider]
+        [DefaultValue(1f)]
+        [Slider]
         public float TransparentMinions;
     }
 }

@@ -1,5 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Fargowiltas.Projectiles;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.Chat;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -8,29 +12,34 @@ namespace Fargowiltas.Items.Summons
 {
     public abstract class BaseSummon : ModItem
     {
-        public abstract int Type { get; }
+        public abstract int NPCType { get; }
 
         public abstract string NPCName { get; }
 
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 20;
-            item.value = Item.sellPrice(0, 0, 2);
-            item.rare = ItemRarityID.Blue;
-            item.useAnimation = 30;
-            item.useTime = 30;
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.consumable = true;
-            item.shoot = mod.ProjectileType("SpawnProj");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override void SetDefaults()
+        {
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 20;
+            Item.value = Item.sellPrice(0, 0, 2);
+            Item.rare = ItemRarityID.Blue;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.consumable = true;
+            Item.shoot = ModContent.ProjectileType<SpawnProj>();
+        }
+
+        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250));
 
-            if (Type == NPCID.Golem)
+            if (NPCType == NPCID.Golem)
             {
                 pos = player.Center;
                 for (int i = 0; i < 30; i++)
@@ -45,21 +54,18 @@ namespace Fargowiltas.Items.Summons
                 }
             }
 
-            //if (Main.netMode != 1)
-            //{
-                Projectile.NewProjectile(pos, Vector2.Zero, mod.ProjectileType("SpawnProj"), 0, 0, Main.myPlayer, Type);
-            //}
+            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCType);
 
             if (Main.netMode == NetmodeID.Server)
             {
-                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral($"{NPCName} has awoken!"), new Color(175, 75, 255));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral($"{NPCName} has awoken!"), new Color(175, 75, 255));
             }
-            else if (Type != NPCID.KingSlime)
+            else if (NPCType != NPCID.KingSlime)
             {
                 Main.NewText($"{NPCName} has awoken!", new Color(175, 75, 255));
             }
 
-            Main.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
 
             return false;
         }

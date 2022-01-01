@@ -12,21 +12,22 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault("Walking Rick");
             Tooltip.SetDefault("'Kien R. Oco'");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 999;
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.useAnimation = 15;
-            item.useTime = 10;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.consumable = true;
-            item.rare = ItemRarityID.Blue;
-            item.createTile = mod.TileType("WalkingRickSheet");
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 999;
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.consumable = true;
+            Item.rare = ItemRarityID.Blue;
+            Item.createTile = ModContent.TileType<WalkingRickSheet>();
         }
     }
 }

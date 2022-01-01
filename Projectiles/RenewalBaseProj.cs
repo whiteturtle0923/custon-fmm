@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,23 +31,23 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 20;
-            projectile.aiStyle = 2;
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 170;
+            Projectile.width = 20;
+            Projectile.height = 20;
+            Projectile.aiStyle = 2;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 170;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            projectile.Kill();
+            Projectile.Kill();
             return true;
         }
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(SoundID.Shatter, projectile.Center);
+            SoundEngine.PlaySound(SoundID.Shatter, Projectile.Center);
 
             int radius = 150;
             float[] speedX = { 0, 0, 5, 5, 5, -5, -5, -5 };
@@ -54,7 +55,7 @@ namespace Fargowiltas.Projectiles
 
             for (int i = 0; i < 8; i++)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, speedX[i], speedY[i], projType, 0, 0, Main.myPlayer);
+                Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, speedX[i], speedY[i], projType, 0, 0, Main.myPlayer);
             }
 
             if (supreme)
@@ -63,8 +64,8 @@ namespace Fargowiltas.Projectiles
                 {
                     for (int y = -Main.maxTilesY; y < Main.maxTilesY; y++)
                     {
-                        int xPosition = (int)(x + projectile.Center.X / 16.0f);
-                        int yPosition = (int)(y + projectile.Center.Y / 16.0f);
+                        int xPosition = (int)(x + Projectile.Center.X / 16.0f);
+                        int yPosition = (int)(y + Projectile.Center.Y / 16.0f);
 
                         WorldGen.Convert(xPosition, yPosition, convertType, 1); 
                     }
@@ -76,8 +77,8 @@ namespace Fargowiltas.Projectiles
                 {
                     for (int y = -radius; y <= radius; y++)
                     {
-                        int xPosition = (int)(x + projectile.Center.X / 16.0f);
-                        int yPosition = (int)(y + projectile.Center.Y / 16.0f);
+                        int xPosition = (int)(x + Projectile.Center.X / 16.0f);
+                        int yPosition = (int)(y + Projectile.Center.Y / 16.0f);
 
                         // Circle
                         if (Math.Sqrt(x * x + y * y) <= radius + 0.5)

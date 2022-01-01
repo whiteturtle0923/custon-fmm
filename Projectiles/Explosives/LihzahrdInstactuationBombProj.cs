@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -16,30 +17,30 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 36;
-            projectile.aiStyle = 16;
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 1;
+            Projectile.width = 20;
+            Projectile.height = 36;
+            Projectile.aiStyle = 16;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 1;
         }
 
-        public override bool CanDamage()
+        public override bool? CanDamage()
         {
             return false;
         }
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(SoundID.Item14, projectile.Center);
+            SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 return;
             }
 
-            int xPos = (int)projectile.Center.X / 16;
-            int yPos = (int)projectile.Center.Y / 16;
+            int xPos = (int)Projectile.Center.X / 16;
+            int yPos = (int)Projectile.Center.Y / 16;
 
             bool WipeColumn(int i)
             {
@@ -99,7 +100,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     if (tile.type == TileID.LihzahrdBrick)
                     {
-                        tile.inActive(true); //actuate it
+                        tile.IsActuated = true; //actuate it
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendTileSquare(-1, tileX, tileY, 1);
 
@@ -123,7 +124,7 @@ namespace Fargowiltas.Projectiles.Explosives
                 if (!WipeColumn(leftTry)) //if went OOB or exited temple before reaching normal left limit, give up
                 {
                     rightMax += leftMax - Math.Abs(leftTry); //try to extend right side by this much
-                    Main.NewText($"Extended right max to {rightMax}");
+                    //Main.NewText($"Extended right max to {rightMax}");
                     break;
                 }
             }
@@ -133,7 +134,7 @@ namespace Fargowiltas.Projectiles.Explosives
                 if (!WipeColumn(rightTry)) //if went OOB or exited temple before reaching normal right limit, give up
                 {
                     leftMax += rightMax - rightTry; //try to extend left side by this much
-                    Main.NewText($"Extended left max to {leftMax}");
+                    //Main.NewText($"Extended left max to {leftMax}");
                     for (; leftTry >= -leftMax; leftTry--) //try left one more time with the new extended limit
                     {
                         if (!WipeColumn(leftTry))

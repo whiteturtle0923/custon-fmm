@@ -9,43 +9,40 @@ namespace Fargowiltas.Items.Tiles
         {
             DisplayName.SetDefault("Multitask Center");
             Tooltip.SetDefault("Functions as several basic crafting stations");
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
         public override void SetDefaults()
         {
-            item.width = 28;
-            item.height = 14;
-            item.maxStack = 99;
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.useAnimation = 15;
-            item.useTime = 10;
-            item.useStyle = 1;
-            item.consumable = true;
-            item.createTile = mod.TileType("MultitaskCenterSheet");
+            Item.width = 28;
+            Item.height = 14;
+            Item.maxStack = 99;
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.useStyle = 1;
+            Item.consumable = true;
+            Item.createTile = ModContent.TileType<MultitaskCenterSheet>();
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-
-            recipe.AddIngredient(ItemID.WorkBench);
-            recipe.AddIngredient(ItemID.HeavyWorkBench);
-            recipe.AddIngredient(ItemID.Furnace);
-            recipe.AddRecipeGroup("Fargowiltas:AnyAnvil");
-            recipe.AddIngredient(ItemID.Bottle);
-            recipe.AddIngredient(ItemID.Sawmill);
-            recipe.AddIngredient(ItemID.Loom);
-            recipe.AddIngredient(ItemID.WoodenTable);
-            recipe.AddIngredient(ItemID.WoodenChair);
-            recipe.AddRecipeGroup("Fargowiltas:AnyCookingPot");
-            recipe.AddIngredient(ItemID.WoodenSink);
-            recipe.AddIngredient(ItemID.Keg);
-
-            recipe.AddTile(TileID.WorkBenches);
-
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.WorkBench)
+                .AddIngredient(ItemID.HeavyWorkBench)
+                .AddIngredient(ItemID.Furnace)
+                .AddRecipeGroup("Fargowiltas:AnyAnvil")
+                .AddIngredient(ItemID.Bottle)
+                .AddIngredient(ItemID.Sawmill)
+                .AddIngredient(ItemID.Loom)
+                .AddIngredient(ItemID.WoodenTable)
+                .AddIngredient(ItemID.WoodenChair)
+                .AddRecipeGroup("Fargowiltas:AnyCookingPot")
+                .AddIngredient(ItemID.WoodenSink)
+                .AddIngredient(ItemID.Keg)
+                .AddTile(TileID.WorkBenches)
+                .Register();
         }
     }
 }
