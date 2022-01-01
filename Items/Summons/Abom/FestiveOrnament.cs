@@ -19,7 +19,9 @@ namespace Fargowiltas.Items.Summons.Abom
 
         public override bool CanUseItem(Player player)
         {
+
             return Main.snowMoon;
+
         }
     }
 }

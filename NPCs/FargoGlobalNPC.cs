@@ -1051,8 +1051,10 @@ namespace Fargowiltas.NPCs
                     }
                     break;
 
+
                 case NPCID.DD2OgreT2:
                 case NPCID.DD2OgreT3:
+
 
                     Item.NewItem(npc.Hitbox, ItemID.DefenderMedal, 20);
 
@@ -1190,12 +1192,15 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.Clown:
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, Main.hardMode, "rareEnemy", "clown");
+
                     break;
 
                 case NPCID.BlueSlime:
                     if (npc.netID == NPCID.Pinky)
                     {
+
                         FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "pinky");
+
                     }
                     break;
 
@@ -1338,6 +1343,7 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.RedDevil:
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "redDevil");
+
                     break;
 
                 default:
@@ -1347,6 +1353,7 @@ namespace Fargowiltas.NPCs
             if (Fargowiltas.ModRareEnemies.ContainsKey(npc.type))
             {
                 FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", Fargowiltas.ModRareEnemies[npc.type]);
+
             }
 
             if (npc.type == NPCID.DD2Betsy && !PandoraActive)

@@ -21,6 +21,7 @@ namespace Fargowiltas.Items.Misc
                                "\nCan spawn up to 50 super dummies at once");
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+
         }
 
         public override void SetDefaults()
