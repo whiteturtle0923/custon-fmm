@@ -40,13 +40,23 @@ namespace Fargowiltas.NPCs
                 Direction = -1
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+
+            NPC.Happiness.LikeBiome(BiomeID.Jungle);
+            //NPC.Happiness.LoveBiome(BiomeID.Sky); //enable this when it exists
+            NPC.Happiness.DislikeBiome(BiomeID.Snow);
+            NPC.Happiness.HateBiome(BiomeID.Desert);
+
+            NPC.Happiness.LoveNPC(GetInstance<Mutant>().Type);
+            NPC.Happiness.LikeNPC(GetInstance<Abominationn>().Type);
+            NPC.Happiness.DislikeNPC(NPCID.BestiaryGirl);
+            NPC.Happiness.HateNPC(NPCID.Angler);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-                new FlavorTextBestiaryInfoElement("Provides monster spawners and (rarely) a helping hand. This upbeat and energetic creature likes money almost as much as she likes violence.")
+                new FlavorTextBestiaryInfoElement("Mods.Fargowiltas.Bestiary.Deviantt")
             });
         }
 
@@ -97,11 +107,11 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
+            /*if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
             {
                 saidDefeatQuote = true;
                 return "Good work getting one over on me! Hope I didn't make you sweat too much. Keep at the grind - I wanna see how far you can go!";
-            }
+            }*/
 
             if (Main.bloodMoon && Main.rand.NextBool(2))
             {
@@ -132,13 +142,6 @@ namespace Fargowiltas.NPCs
             {
                 dialogue.Add($"Can you tell {Main.npc[mutant].GivenName} to put some clothes on?");
                 dialogue.Add($"One day, I'll sell a summon for myself! ...Just kidding. That's {Main.npc[mutant].GivenName}'s job.");
-                dialogue.Add($"{Main.npc[mutant].GivenName} is here! That's my big brother!");
-            }
-
-            int abom = NPC.FindFirstNPC(NPCType<Abominationn>());
-            if (abom != -1)
-            {
-                dialogue.Add($"{Main.npc[abom].GivenName} is here! That's my big-but-not-biggest brother!");
             }
 
             int lumberjack = NPC.FindFirstNPC(NPCType<LumberJack>());
@@ -147,16 +150,10 @@ namespace Fargowiltas.NPCs
                 dialogue.Add($"What's that? You want to fight {Main.npc[lumberjack].GivenName}? ...even I know better than to try.");
             }
 
-            int angler = NPC.FindFirstNPC(NPCID.Angler);
-            if (angler != -1)
-            {
-                dialogue.Add($"Have you ever considered throwing {Main.npc[angler].GivenName} back where you found him?");
-            }
-
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            /*if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
                 dialogue.Add("Embrace suffering... and while you're at it, embrace another purchase!");
-            }
+            }*/
 
             return Main.rand.Next(dialogue);
         }
@@ -164,10 +161,10 @@ namespace Fargowiltas.NPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("LegacyInterface.28");
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            /*if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
                 button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "[c/" + Main.DiscoColor.Hex3() +":Receive Gift]";
-            }
+            }*/
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -176,13 +173,10 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
             }
-            else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            /*else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
-                /*if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
-                    FargosLore();
-                else*/
-                    Fargos();
-            }
+                Fargos();
+            }*/
         }
 
         public static void AddItem(bool check, int item, int price, ref Chest shop, ref int nextSlot)
@@ -334,31 +328,6 @@ namespace Fargowiltas.NPCs
             }
 
             Main.npcChatText = Fargowiltas.dialogueTracker.GetDialogue(NPC.GivenName);
-        }
-
-        private void FargosLore()
-        {
-            IList<string> dialogue = new List<string>
-            {
-                "We all came from the end of time. This past world is a lot better than the timeless abyss of nothing!",
-                "Lumberjack is 'the one who cuts.' That means trees, connections, and even severing alternate timelines.",
-                "Who do you think we are? We're parts of you, a few hundred million years from now after you shed the need for a physical body.",
-                "Mutant is inhabiting the physical shell of your future self, but we're all manifestations of your power and experience.",
-                "In our first past, it took you eons to amass power. Since we happened to come back, we decided to help speed it up a little!",
-                "Even if the three of us joined forces again, we still wouldn't regain the full power of our original self. You could probably still beat us!",
-                "To accelerate your growth, Mutant released his powers to the rest of the world. Good work gathering it all back for yourself!",
-                "Don't worry about our true names. We don't actually have any!",
-                "No hard feelings about killing Abominationn, by the way. He comes back, right? Not that it won't miff Mutant if you do it again!",
-                "We summon enemies and control events because we are them! Sort of. It's a long story.",
-                "Take on a bigger form? I could do that, but I don't feel like it! Sorry!",
-                "Why was Mutant in that big slime? It was the best way to power it up. Too bad he's too lazy to do that with the rest!",
-                "Don't worry about the end of time, it's still billions of years away! I think. Dunno how this timey-wimey stuff works, really!",
-                "There's no fighting Lumberjack at full power. He's already cut away every timeline in which you tried.",
-                "Cthulhu? Hastur? All I know is where we came from, so your guess is as good as mine when it comes to them!",
-                "I once heard Mutant mention a once cat-like being so far beyond us that its existence transcends cause and effect. It's more like a law of reality."
-            };
-
-            Main.npcChatText = Main.rand.Next(dialogue);
         }
 
         //public override void NPCLoot()
