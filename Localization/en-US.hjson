@@ -14,7 +14,7 @@ Mods: {
 			Abominationn: Can control the weather and stop invasions, but he's lazy and his weapons are fused to his hands. Good thing he doesn't need to eat and doors magically open when he approaches.
 			Mutant: Called brother by its siblings, but refuses to confirm its gender. More interested in watching fights and small pets than talking about its past. It seems to be looking for someone strong...
 			LumberJack: A wholly ordinary lumberjack that loves collecting critters and chopping wood of any kind. But could there be more to him than meets the eye? Secret godly powers? ...Probably not.
-			Squirrel: This dapper critter sells duplicates of valuable items that it notices in inventories. Won’t divulge how it gets them, mostly because it can’t speak.
+			Squirrel: This dapper critter sells duplicates of valuable items that it notices in inventories. Won't divulge how it gets them, mostly because it can't speak.
 		}
 		
 		#This is what displays during all of an NPC's happiness levels. Note that the localization key for these should always be "TownNPCMood.*NPCName*.*Mood*" or else it won't display properly.
