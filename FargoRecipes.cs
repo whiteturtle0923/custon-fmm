@@ -522,7 +522,6 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.SalamanderBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);
-            AddBannerToItemRecipe(ItemID.EnchantedSwordBanner, ItemID.Smolstar);
             AddBannerToItemRecipe(ItemID.SporeBatBanner, ItemID.Shroomerang);
             AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.ShadowJoustingLance);
 
