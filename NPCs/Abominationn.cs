@@ -87,10 +87,10 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            //if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
-            //{
-            //    return false;
-            //}
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
+            {
+                return false;
+            }
             return GetInstance<FargoConfig>().Abom && NPC.downedGoblins && !FargoGlobalNPC.AnyBossAlive();
         }
 
@@ -109,11 +109,11 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            /*if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
+            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
             {
                 saidDefeatQuote = true;
                 return "You really defeated me... not bad. Now do it again without getting hit. Oh, and Copper Shortsword only.";
-            }*/
+            }
 
             List<string> dialogue = new List<string>
             {

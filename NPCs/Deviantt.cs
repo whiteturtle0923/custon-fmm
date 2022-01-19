@@ -86,10 +86,10 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            //if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
-            //    return false;
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
+                return false;
 
-            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"]); //|| //(Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
+            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => !toKingStatue;
@@ -107,11 +107,11 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            /*if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
+            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
             {
                 saidDefeatQuote = true;
                 return "Good work getting one over on me! Hope I didn't make you sweat too much. Keep at the grind - I wanna see how far you can go!";
-            }*/
+            }
 
             if (Main.bloodMoon && Main.rand.NextBool(2))
             {
@@ -150,10 +150,10 @@ namespace Fargowiltas.NPCs
                 dialogue.Add($"What's that? You want to fight {Main.npc[lumberjack].GivenName}? ...even I know better than to try.");
             }
 
-            /*if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
                 dialogue.Add("Embrace suffering... and while you're at it, embrace another purchase!");
-            }*/
+            }
 
             return Main.rand.Next(dialogue);
         }
@@ -161,10 +161,10 @@ namespace Fargowiltas.NPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("LegacyInterface.28");
-            /*if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
-                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "[c/" + Main.DiscoColor.Hex3() +":Receive Gift]";
-            }*/
+                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "GIFT"; //"[c/" + Main.DiscoColor.Hex3() + ":Receive Gift]";
+            }
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -173,10 +173,10 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
             }
-            /*else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
                 Fargos();
-            }*/
+            }
         }
 
         public static void AddItem(bool check, int item, int price, ref Chest shop, ref int nextSlot)
@@ -191,24 +191,27 @@ namespace Fargowiltas.NPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            //if (Fargowiltas.ModLoaded["FargowiltasSoulsDLC"])
-            //{
-            //    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSoulsDLC").ItemType("PandorasBox"));
-            //    nextSlot++;
-            //}
+            if (Fargowiltas.ModLoaded["FargowiltasSoulsDLC"] && TryFind("FargowiltasSoulsDLC", "PandorasBox", out ModItem pandorasBox))
+            {
+                shop.item[nextSlot].SetDefaults(pandorasBox.Type);
+                nextSlot++;
+            }
 
-            //if (Fargowiltas.ModLoaded["FargowiltasSouls"])
-            //{
-            //    shop.item[nextSlot].SetDefaults(ModLoader.GetMod("FargowiltasSouls").ItemType("EurusSock"));
-            //    nextSlot++;
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            {
+                if (TryFind("FargowiltasSouls", "EurusSock", out ModItem eurusSock))
+                {
+                    shop.item[nextSlot].SetDefaults(eurusSock.Type);
+                    nextSlot++;
+                }
 
-            //    if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
-            //    {
-            //        shop.item[nextSlot].SetDefaults(ItemType<Items.Misc.EternityAdvisor>());
-            //        shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 1);
-            //        nextSlot++;
-            //    }
-            //}
+                /*if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+                {
+                    shop.item[nextSlot].SetDefaults(ItemType<Items.Misc.EternityAdvisor>());
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 1);
+                    nextSlot++;
+                }*/
+            }
 
             AddItem(FargoWorld.DownedBools["worm"], ItemType<WormSnack>(), Item.buyPrice(0, 2), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["pinky"], ItemType<PinkSlimeCrown>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
@@ -330,10 +333,10 @@ namespace Fargowiltas.NPCs
             Main.npcChatText = Fargowiltas.dialogueTracker.GetDialogue(NPC.GivenName);
         }
 
-        //public override void NPCLoot()
-        //{
-        //    if (Fargowiltas.ModLoaded["FargowiltasSouls"] && NPC.AnyNPCs(ModLoader.GetMod("FargowiltasSouls").NPCType("CosmosChampion")))
-        //        Item.NewItem(NPC.Hitbox, mod.ItemType("WalkingRick"));
-        //}
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && TryFind("FargowiltasSouls", "CosmosChampion", out ModNPC cosmosChamp) && NPC.AnyNPCs(cosmosChamp.Type))
+                Item.NewItem(NPC.Hitbox, ModContent.ItemType<Items.Tiles.WalkingRick>());
+        }
     }
 }
