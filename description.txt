@@ -1,19 +1,7 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
-ALPHA UPDATE - V 2.6.4
--Updated to latest tmod version
--Removed Blade Staff banner recipe
 
-ALPHA UPDATE - V 2.6
--Readded Caught Town NPCs, including Golfer, Zoologist, and Princess
--Readded all recipes using Caught town npcs including new recipes for Travelling Merchant items
--Mutant now sells Thing Deer
--Added recipes for Tentacle Spike, Ham Bat, Bat Bat, and Abigail's Flower
--Seasons tooggle default is on
--Demolitionist can sell Meteorite, Demonite, Crimtane, Hellstone
--Added a few more NPC quotes
--Fixed Town NPC toggle formatting
--Improved multiplayer issues with instant structures
--Mini Instabridge can now destroy thorns
+ALPHA UPDATE - V 2.6.4
+-Added NPC happiness
 

@@ -52,13 +52,18 @@ namespace Fargowiltas.NPCs
                 Direction = -1
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+
+            NPC.Happiness.LoveBiome(BiomeID.Forest);
+            NPC.Happiness.HateBiome(BiomeID.NormalUnderground);
+
+            NPC.Happiness.LikeNPC(GetInstance<LumberJack>().Type);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-                new FlavorTextBestiaryInfoElement("Sells duplicates of valuable items that it notices in inventories. Won’t divulge how it gets them, mostly because it can’t speak.")
+                new FlavorTextBestiaryInfoElement("Mods.Fargowiltas.Bestiary.Squirrel")
             });
         }
 

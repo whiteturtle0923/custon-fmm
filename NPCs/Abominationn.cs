@@ -43,13 +43,21 @@ namespace Fargowiltas.NPCs
                 Direction = -1
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+
+            NPC.Happiness.LikeBiome(BiomeID.Ocean);
+            //NPC.Happiness.LoveBiome(BiomeID.Sky); //enable this when it exists
+            NPC.Happiness.DislikeBiome(BiomeID.Dungeon);
+
+            NPC.Happiness.LoveNPC(GetInstance<Mutant>().Type);
+            NPC.Happiness.LikeNPC(GetInstance<Deviantt>().Type);
+            NPC.Happiness.HateNPC(NPCID.Nurse);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-                new FlavorTextBestiaryInfoElement("Can control the weather, but his weapons are fused to his hands. Thankfully, he doesn’t need to eat and doors magically open when he approaches.")
+                new FlavorTextBestiaryInfoElement("Mods.Fargowiltas.Bestiary.Abominationn")
             });
         }
 
@@ -101,11 +109,11 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
+            /*if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
             {
                 saidDefeatQuote = true;
                 return "You really defeated me... not bad. Now do it again without getting hit. Oh, and Copper Shortsword only.";
-            }
+            }*/
 
             List<string> dialogue = new List<string>
             {
@@ -133,18 +141,6 @@ namespace Fargowiltas.NPCs
                 "It's not like I don't enjoy your company, but can you buy something?",
                 "I have slain one thousand humans! Huh? You're a human? There's so much blood on your hands..",
             };
-
-            int mutant = NPC.FindFirstNPC(NPCType<Mutant>());
-            if (mutant != -1)
-            {
-                dialogue.Add($"That one guy, {Main.npc[mutant].GivenName}, he is my brother... I've fought more bosses than him.");
-            }
-
-            int deviantt = NPC.FindFirstNPC(NPCType<Deviantt>());
-            if (deviantt != -1)
-            {
-                dialogue.Add($"That one girl, {Main.npc[deviantt].GivenName}, she is my sister... I've defeated more events than her.");
-            }
 
             int mechanic = NPC.FindFirstNPC(NPCID.Mechanic);
             if (mechanic != -1)

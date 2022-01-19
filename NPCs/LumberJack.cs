@@ -45,13 +45,20 @@ namespace Fargowiltas.NPCs
                 Direction = -1
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+
+            NPC.Happiness.LoveBiome(BiomeID.Forest);
+            //NPC.Happiness.HateBiome(BiomeID.Sky);
+
+            NPC.Happiness.LikeNPC(GetInstance<Squirrel>().Type);
+            NPC.Happiness.DislikeNPC(NPCID.Dryad);
+            NPC.Happiness.HateNPC(NPCID.Demolitionist);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				new FlavorTextBestiaryInfoElement("A wholly ordinary lumberjack that loves chopping wood. But could there be more to him than meets the eye? ...Probably not.")
+                new FlavorTextBestiaryInfoElement("Mods.Fargowiltas.Bestiary.LumberJack")
             });
         }
 
@@ -123,17 +130,11 @@ namespace Fargowiltas.NPCs
                 "Can I axe you a question?",
                 "Might take a nap under a tree later, care to join me?",
                 "I'm an expert in all wood types.",
-                "I wonder if there'll be more trees to chop in 1.4.",
+                "I'm glad there's more trees to chop here at journey's end.",
                 "Red is one of my favourite colors, right after wood.",
                 "It's always flannel season.",
                 "I'm glad my wood put such a big smile on your face."
             };
-
-            int dryad = NPC.FindFirstNPC(NPCID.Dryad);
-            if (dryad >= 0)
-            {
-                dialogue.Add($"{Main.npc[dryad].GivenName} told me to start hugging trees... I hug trees with my chainsaw.");
-            }
 
             int nurse = NPC.FindFirstNPC(NPCID.Nurse);
             if (nurse >= 0)
