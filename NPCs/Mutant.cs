@@ -49,9 +49,9 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LikeBiome(PrimaryBiomeID.Forest);
-            //NPC.Happiness.LoveBiome(PrimaryBiomeID.Sky); //enable this when it exists
-            NPC.Happiness.DislikeBiome(PrimaryBiomeID.Hallow);
+            NPC.Happiness.LikeBiome(BiomeID.Forest);
+            //NPC.Happiness.LoveBiome(BiomeID.Sky); //enable this when it exists
+            NPC.Happiness.DislikeBiome(BiomeID.Hallow);
 
             NPC.Happiness.LoveNPC(GetInstance<Abominationn>().Type);
             NPC.Happiness.LikeNPC(GetInstance<Deviantt>().Type);
@@ -377,8 +377,7 @@ namespace Fargowiltas.NPCs
             }
 
             shop.item[nextSlot].SetDefaults(itemType);
-            if (price > 0)
-                shop.item[nextSlot].shopCustomPrice = price;
+            shop.item[nextSlot].shopCustomPrice = price > 0 ? price : shop.item[nextSlot].value;
 
             // Lowered prices with discount card and pact
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
