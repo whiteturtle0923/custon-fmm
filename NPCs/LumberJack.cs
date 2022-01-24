@@ -46,8 +46,8 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LoveBiome(BiomeID.Forest);
-            //NPC.Happiness.HateBiome(BiomeID.Sky);
+            NPC.Happiness.LoveBiome(PrimaryBiomeID.Forest);
+            //NPC.Happiness.HateBiome(PrimaryBiomeID.Sky);
 
             NPC.Happiness.LikeNPC(GetInstance<Squirrel>().Type);
             NPC.Happiness.DislikeNPC(NPCID.Dryad);

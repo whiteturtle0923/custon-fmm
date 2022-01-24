@@ -53,8 +53,8 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LoveBiome(BiomeID.Forest);
-            NPC.Happiness.HateBiome(BiomeID.NormalUnderground);
+            NPC.Happiness.LoveBiome(PrimaryBiomeID.Forest);
+            NPC.Happiness.HateBiome(PrimaryBiomeID.NormalUnderground);
 
             NPC.Happiness.LikeNPC(GetInstance<LumberJack>().Type);
         }
