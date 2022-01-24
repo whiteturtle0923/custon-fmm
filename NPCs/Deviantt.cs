@@ -163,7 +163,7 @@ namespace Fargowiltas.NPCs
             button = Language.GetTextValue("LegacyInterface.28");
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
             {
-                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "GIFT"; //"[c/" + Main.DiscoColor.Hex3() + ":Receive Gift]";
+                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "[c/" + Main.DiscoColor.Hex3() + ":Receive Gift]";
             }
         }
 
