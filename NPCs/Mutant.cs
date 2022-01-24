@@ -49,9 +49,9 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LikeBiome(BiomeID.Forest);
-            //NPC.Happiness.LoveBiome(BiomeID.Sky); //enable this when it exists
-            NPC.Happiness.DislikeBiome(BiomeID.Hallow);
+            NPC.Happiness.LikeBiome(PrimaryBiomeID.Forest);
+            //NPC.Happiness.LoveBiome(PrimaryBiomeID.Sky); //enable this when it exists
+            NPC.Happiness.DislikeBiome(PrimaryBiomeID.Hallow);
 
             NPC.Happiness.LoveNPC(GetInstance<Abominationn>().Type);
             NPC.Happiness.LikeNPC(GetInstance<Deviantt>().Type);
