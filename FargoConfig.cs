@@ -32,6 +32,26 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool Christmas;
 
+        [Label("[i:353] Drunk World Active")]
+        [DefaultValue(true)]
+        public bool DrunkWorld;
+
+        [Label("[i:1133] Bee World Active")]
+        [DefaultValue(true)]
+        public bool BeeWorld;
+
+        [Label("[i:2107] For the Worthy World Active")]
+        [DefaultValue(true)]
+        public bool WorthyWorld;
+
+        [Label("[i:3732] Celebration World Active")]
+        [DefaultValue(true)]
+        public bool CelebrationWorld;
+
+        [Label("[i:5109] Constant World Active")]
+        [DefaultValue(true)]
+        public bool ConstantWorld;
+
         [Label("[i:771] Unlimited Ammo at 3996+ in Hardmode")]
         [DefaultValue(true)]
         public bool UnlimitedAmmo;

@@ -13,8 +13,8 @@ namespace Fargowiltas.UI
         public override void OnActivate()
         {
             Icon = new UIImage(Fargowiltas.UserInterfaceManager.StatsButtonTexture);
-            Icon.Left.Set(26, 0f);
-            Icon.Top.Set(262, 0f);
+            Icon.Left.Set(65, 0f);
+            Icon.Top.Set(270, 0f);
             Append(Icon);
 
             IconHighlight = new UIHoverTextImageButton(Fargowiltas.UserInterfaceManager.StatsButton_MouseOverTexture, "Stat Sheet");

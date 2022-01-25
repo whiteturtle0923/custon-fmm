@@ -4,4 +4,29 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 ALPHA UPDATE - V 2.6.4
 -Added NPC happiness
+-Fixed Stat Sheet UI not working at all
+-Moved Stat Sheet button to avoid covering Journey Mode button
+
+
+
+-Added Secret Seeds to the Config, activate them before or after world gen
+
+
+Jungle Rose + Cyan Husk/Blue Berries = Nature's Gift?
+Add better caught princess sprite
+Update Abom's "Maybe in" quote from 2020 to 2022.
+bamboo leaf recipe is meme
+1.4 forbidden scarab broken?
+Get 1.4 fountains working
+Fix 1.4 vanities
+Deer thing swarm (also does eol and queen exist yet)
+Ectoplasm from dungeon spirit banner
+Ultrabright torch recipe
+Overload events turn off if all players dead
+Bestiary don’t is whack
+Paper windmill that summon Windy Day event for 1.4.
+mutant mod adds 2 recipies for daybloom?
+add mana usage to statsheet
+Once this mod is vanilla 1.4 compatible, make NPCs as items create bloodbath dye instead of grim dye.
+Party Cone doesn't spawn Party Girl in multiplayer
 

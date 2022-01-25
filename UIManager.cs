@@ -28,8 +28,8 @@ namespace Fargowilta
             if (!Main.dedServ)
             {
                 // Load textures
-                StatsButtonTexture = (ModContent.Request<Texture2D>("Fargowiltas/UI/Assets/StatsButton"));
-                StatsButton_MouseOverTexture = (ModContent.Request<Texture2D>("Fargowiltas/UI/Assets/StatsButton_MouseOver"));
+                StatsButtonTexture = (ModContent.Request<Texture2D>("Fargowiltas/UI/Assets/StatsButton", AssetRequestMode.ImmediateLoad));
+                StatsButton_MouseOverTexture = (ModContent.Request<Texture2D>("Fargowiltas/UI/Assets/StatsButton_MouseOver", AssetRequestMode.ImmediateLoad));
 
                 // Initialize UserInterfaces
                 StatSheetUserInterface = new UserInterface();

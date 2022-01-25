@@ -154,6 +154,13 @@ namespace Fargowiltas
             // seasonals
             Main.halloween = GetInstance<FargoConfig>().Halloween;
             Main.xMas = GetInstance<FargoConfig>().Christmas;
+            //seeds
+            Main.drunkWorld = GetInstance<FargoConfig>().DrunkWorld;
+            Main.notTheBeesWorld = GetInstance<FargoConfig>().BeeWorld;
+            Main.getGoodWorld = GetInstance<FargoConfig>().WorthyWorld;
+            Main.tenthAnniversaryWorld = GetInstance<FargoConfig>().CelebrationWorld;
+            Main.dontStarveWorld = GetInstance<FargoConfig>().ConstantWorld;
+
 
             // swarm reset in case something goes wrong
             if (Main.netMode != NetmodeID.MultiplayerClient && Fargowiltas.SwarmActive
