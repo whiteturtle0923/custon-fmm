@@ -6,7 +6,7 @@ ALPHA UPDATE - V 2.6.4
 -Added NPC happiness
 -Fixed Stat Sheet UI not working at all
 -Moved Stat Sheet button to avoid covering Journey Mode button
-
+-Fixed a bug with Mutant custom prices in some cases
 
 
 -Added Secret Seeds to the Config, activate them before or after world gen

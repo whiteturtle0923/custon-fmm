@@ -44,9 +44,9 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LikeBiome(BiomeID.Ocean);
-            //NPC.Happiness.LoveBiome(BiomeID.Sky); //enable this when it exists
-            NPC.Happiness.DislikeBiome(BiomeID.Dungeon);
+            NPC.Happiness.LikeBiome(PrimaryBiomeID.Ocean);
+            //NPC.Happiness.LoveBiome(PrimaryBiomeID.Sky); //enable this when it exists
+            NPC.Happiness.DislikeBiome(PrimaryBiomeID.Dungeon);
 
             NPC.Happiness.LoveNPC(GetInstance<Mutant>().Type);
             NPC.Happiness.LikeNPC(GetInstance<Deviantt>().Type);
@@ -87,10 +87,10 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            //if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
-            //{
-            //    return false;
-            //}
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive") || (bool)ModLoader.GetMod("FargowiltasSouls").Call("AbomAlive")))
+            {
+                return false;
+            }
             return GetInstance<FargoConfig>().Abom && NPC.downedGoblins && !FargoGlobalNPC.AnyBossAlive();
         }
 
@@ -109,11 +109,11 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            /*if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
+            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
             {
                 saidDefeatQuote = true;
                 return "You really defeated me... not bad. Now do it again without getting hit. Oh, and Copper Shortsword only.";
-            }*/
+            }
 
             List<string> dialogue = new List<string>
             {
