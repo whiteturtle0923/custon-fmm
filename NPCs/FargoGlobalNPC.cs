@@ -753,6 +753,10 @@ namespace Fargowiltas.NPCs
                         Swarm(npc, NPCID.DD2DarkMageT1, -1, ItemID.DefenderMedal, ItemID.BossTrophyDarkmage, ItemType<EnergizerDarkMage>());
                         break;
 
+                    case NPCID.Deerclops:
+                        Swarm(npc, NPCID.Deerclops, -1, ItemID.DeerclopsBossBag, ItemID.DeerclopsTrophy, ItemType<EnergizerDeer>());
+                        break;
+
                     case NPCID.QueenBee:
                         Swarm(npc, NPCID.QueenBee, NPCID.BeeSmall, ItemID.QueenBeeBossBag, ItemID.QueenBeeTrophy, ItemType<EnergizerBee>());
                         break;

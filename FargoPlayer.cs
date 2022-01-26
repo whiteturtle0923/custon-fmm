@@ -124,14 +124,6 @@ namespace Fargowiltas
             }
         }
 
-        //        /*private void Fargos()
-        //        {
-        //            if (player.GetModPlayer<FargowiltasSouls.FargoPlayer>().NinjaEnchant)
-        //            {
-        //                player.AddBuff(ModLoader.GetMod("FargowiltasSouls").BuffType("FirstStrike"), 60);
-        //            }
-        //        }*/
-
         public override void PostUpdate()
         {
             if (autoRevertSelectedItem)
@@ -163,43 +155,43 @@ namespace Fargowiltas
                 Player.ZoneJungle = true;
             }
 
-            //    if (GetInstance<FargoConfig>().Fountains)
-            //    {
-            //        //switch (Main.fountainColor)
-            //        //{
-            //        //    case 0:
-            //        //        Player.ZoneBeach = true;
-            //        //        break;
-            //        //    case 6:
-            //        //        Player.ZoneDesert = true;
-            //        //        if (Player.Center.Y > 3200f)
-            //        //            Player.ZoneUndergroundDesert = true;
-            //        //        break;
-            //        //    case 3:
-            //        //        Player.ZoneJungle = true;
-            //        //        break;
-            //        //    case 5:
-            //        //        Player.ZoneSnow = true;
-            //        //        break;
-            //        //    case 2:
-            //        //        Player.ZoneCorrupt = true;
-            //        //        break;
-            //        //    case 10:
-            //        //        Player.ZoneCrimson = true;
-            //        //        break;
-            //        //    case 4:
-            //        //        if (Main.hardMode)
-            //        //        {
-            //        //            Player.ZoneHallow = true;
-            //        //        }
-            //        //        break;
+            if (GetInstance<FargoConfig>().Fountains)
+            {
+                switch (Main.waterStyle)
+                {
+                    case 0:
+                        Player.ZoneBeach = true;
+                        break;
+                    case 6:
+                        Player.ZoneDesert = true;
+                        if (Player.Center.Y > 3200f)
+                            Player.ZoneUndergroundDesert = true;
+                        break;
+                    case 3:
+                        Player.ZoneJungle = true;
+                        break;
+                    case 5:
+                        Player.ZoneSnow = true;
+                        break;
+                    case 2:
+                        Player.ZoneCorrupt = true;
+                        break;
+                    case 10:
+                        Player.ZoneCrimson = true;
+                        break;
+                    case 4:
+                        if (Main.hardMode)
+                        {
+                            Player.ZoneHallow = true;
+                        }
+                        break;
 
-            //        //        //oasis and cavern fountains
-            //        //}
-            //    }
+                        //        //        //oasis and cavern fountains
+                }
+            }
 
 
-        }
+            }
 
         public void SlimeRainSpawns()
         {

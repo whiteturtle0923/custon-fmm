@@ -524,6 +524,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.SporeBatBanner, ItemID.Shroomerang);
             AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.ShadowJoustingLance);
+            AddBannerToItemRecipe(ItemID.DungeonSpiritBanner, ItemID.Ectoplasm, 50);
 
             AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.TentacleSpike, 2);
             AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.TentacleSpike, 2);
@@ -942,7 +943,6 @@ namespace Fargowiltas
             AddHerbBagRecipe(ItemID.Deathweed);
             AddHerbBagRecipe(ItemID.Fireblossom);
             AddHerbBagRecipe(ItemID.Shiverthorn);
-            AddHerbBagRecipe(ItemID.Daybloom);
 
             void AddCrateRecipe(int result, int crate, int crateAmount, int hardCrate, int extraItem = -1)
             {
@@ -1128,7 +1128,7 @@ namespace Fargowiltas
             AddTile(TileID.AlchemyTable).
             Register();
 
-            mod.CreateRecipe(ItemID.GrimDye, 2).
+            mod.CreateRecipe(ItemID.BloodbathDye, 2).
             AddRecipeGroup("Fargowiltas:AnyCaughtNPC").
             AddTile(TileID.DyeVat).
             Register();
@@ -1211,6 +1211,12 @@ namespace Fargowiltas
             AddIngredient(ItemID.Wood, 500).
             AddIngredient(null, "TravellingMerchant").
             AddTile(TileID.CookingPots).
+            Register();
+
+            mod.CreateRecipe(ItemID.UltrabrightTorch, 200).
+            AddIngredient(ItemID.Torch, 200).
+            AddIngredient(null, "TravellingMerchant").
+            AddTile(TileID.TinkerersWorkbench).
             Register();
 
             //common items - 1 merchant, 2x price
@@ -1296,7 +1302,7 @@ namespace Fargowiltas
             mod.CreateRecipe(ItemID.BambooLeaf).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.PlatinumCoin, 2).
-            AddIngredient(ItemID.BambooLeaf, 25).
+            AddIngredient(ItemID.BambooBlock, 25).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
@@ -1743,6 +1749,12 @@ namespace Fargowiltas
             mod.CreateRecipe(ItemID.JungleRose)
                 .AddIngredient(ItemID.NaturesGift)
                 .AddIngredient(ItemID.RedHusk)
+                .AddTile(TileID.LivingLoom)
+                .Register();
+
+            mod.CreateRecipe(ItemID.NaturesGift)
+                .AddIngredient(ItemID.JungleRose)
+                .AddIngredient(ItemID.CyanHusk)
                 .AddTile(TileID.LivingLoom)
                 .Register();
 

@@ -4,29 +4,38 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 ALPHA UPDATE - V 2.6.4
 -Added NPC happiness
+-Added Deer Amalgamation and Deary Energizer
+-ReAdded Fountains changing biomes
+-Fixed a bug with Mutant custom prices in some cases
+-Fixed Mutant seling the wrong Deerclops summon
+-Added Deerclops to the Deathbringer Fairy and friends
 -Fixed Stat Sheet UI not working at all
 -Moved Stat Sheet button to avoid covering Journey Mode button
--Fixed a bug with Mutant custom prices in some cases
-
-
+-Fixed all Body Vanities looking totally off
 -Added Secret Seeds to the Config, activate them before or after world gen
+-Fixed Town NPC toggles not being formatted right
+-Added some headers to the config menu
+-Updated Insta House and Dart Box sprites
+-Updated THE Abom vanity quote
+-Added Nature's Gift and Ultrabright Torch recipes
+-Added Ectoplasm recipe from Dungeon Spirit Banner
+-Town NPC items can be crafted into Bloodbath Dye instead of Grim Dye
+-Removed duplicate Daybloom recipe
+-Fixed Bamboo Leaf recipe
 
 
-Jungle Rose + Cyan Husk/Blue Berries = Nature's Gift?
-Add better caught princess sprite
-Update Abom's "Maybe in" quote from 2020 to 2022.
-bamboo leaf recipe is meme
-1.4 forbidden scarab broken?
-Get 1.4 fountains working
-Fix 1.4 vanities
-Deer thing swarm (also does eol and queen exist yet)
-Ectoplasm from dungeon spirit banner
-Ultrabright torch recipe
-Overload events turn off if all players dead
-Bestiary don’t is whack
-Paper windmill that summon Windy Day event for 1.4.
-mutant mod adds 2 recipies for daybloom?
-add mana usage to statsheet
-Once this mod is vanilla 1.4 compatible, make NPCs as items create bloodbath dye instead of grim dye.
-Party Cone doesn't spawn Party Girl in multiplayer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

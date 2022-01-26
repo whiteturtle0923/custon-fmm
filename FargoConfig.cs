@@ -8,6 +8,7 @@ namespace Fargowiltas
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+        [Header("Town NPCs")]
         [Label("$Mods.Fargowiltas.Mutant")]
         [DefaultValue(true)]
         public bool Mutant;
@@ -24,6 +25,15 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool Lumber;
 
+        [Label("[i:267] Catch Town NPCs")]
+        [DefaultValue(true)]
+        public bool CatchNPCs;
+
+        [Label("[i:267] Extra Town NPC sales")]
+        [DefaultValue(true)]
+        public bool NPCSales;
+
+        [Header("Seasons")]
         [Label("[i:1774] Halloween Season Active")]
         [DefaultValue(true)]
         public bool Halloween;
@@ -32,26 +42,28 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool Christmas;
 
+        [Header("Secret World Seeds")]
         [Label("[i:353] Drunk World Active")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool DrunkWorld;
 
         [Label("[i:1133] Bee World Active")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool BeeWorld;
 
         [Label("[i:2107] For the Worthy World Active")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool WorthyWorld;
 
         [Label("[i:3732] Celebration World Active")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool CelebrationWorld;
 
         [Label("[i:5109] Constant World Active")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool ConstantWorld;
 
+        [Header("Unlimited")]
         [Label("[i:771] Unlimited Ammo at 3996+ in Hardmode")]
         [DefaultValue(true)]
         public bool UnlimitedAmmo;
@@ -64,6 +76,7 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool UnlimitedPotionBuffsOn120;
 
+        [Header("Misc")]
         [Label("[i:2374] Angler Quest Instant Reset")]
         [DefaultValue(true)]
         public bool AnglerQuestInstantReset;
@@ -75,14 +88,6 @@ namespace Fargowiltas
         [Label("[i:3213] Stalker Money Trough")]
         [DefaultValue(true)]
         public bool StalkerMoneyTrough;
-
-        [Label("[i:267] Catch Town NPCs")]
-        [DefaultValue(true)]
-        public bool CatchNPCs;
-
-        [Label("[i:267] Extra Town NPC sales")]
-        [DefaultValue(true)]
-        public bool NPCSales;
 
         [Label("[i:1809] Powerful Rotten Eggs")]
         [DefaultValue(true)]

@@ -81,6 +81,12 @@ namespace Fargowiltas
 
         public override void PreWorldGen()
         {
+            Main.drunkWorld = GetInstance<FargoConfig>().DrunkWorld;
+            Main.notTheBeesWorld = GetInstance<FargoConfig>().BeeWorld;
+            Main.getGoodWorld = GetInstance<FargoConfig>().WorthyWorld;
+            Main.tenthAnniversaryWorld = GetInstance<FargoConfig>().CelebrationWorld;
+            Main.dontStarveWorld = GetInstance<FargoConfig>().ConstantWorld;
+
             foreach (string tag in tags)
             {
                 DownedBools[tag] = false;

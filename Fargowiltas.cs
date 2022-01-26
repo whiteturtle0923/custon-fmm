@@ -68,7 +68,7 @@ namespace Fargowiltas
         public void AddToggle(String toggle, String name, int item, String color)
         {
             ModTranslation text = LocalizationLoader.CreateTranslation(toggle);
-            text.SetDefault("[i:" + item + "][c/" + color + ": " + name + "]");
+            text.SetDefault("[i:" + item + "] [c/" + color + ":" + name + "]");
 
             LocalizationLoader.AddTranslation(text);
         }
@@ -104,10 +104,10 @@ namespace Fargowiltas
                 ModLoaded.Add(mod, false);
             }
 
-            AddToggle("Mutant", "Mutant Can Spawn", ModContent.ItemType<MutantMask>(), "ffffff");
-            AddToggle("Abom", "Abominationn Can Spawn", ModContent.ItemType<AbominationnMask>(), "ffffff");
-            AddToggle("Devi", "Deviantt Can Spawn", ModContent.ItemType<DevianttMask>(), "ffffff");
-            AddToggle("Lumber", "Lumberjack Can Spawn", ModContent.ItemType<LumberjackMask>(), "ffffff");
+            AddToggle("Mods.Fargowiltas.Mutant", "Mutant Can Spawn", ModContent.ItemType<MutantMask>(), "ffffff");
+            AddToggle("Mods.Fargowiltas.Abom", "Abominationn Can Spawn", ModContent.ItemType<AbominationnMask>(), "ffffff");
+            AddToggle("Mods.Fargowiltas.Devi", "Deviantt Can Spawn", ModContent.ItemType<DevianttMask>(), "ffffff");
+            AddToggle("Mods.Fargowiltas.Lumber", "Lumberjack Can Spawn", ModContent.ItemType<LumberjackMask>(), "ffffff");
 
             CaughtNPCItem.RegisterItems(this);
 

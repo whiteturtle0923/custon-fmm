@@ -48,7 +48,7 @@ namespace Fargowiltas
                 new MutantSummonInfo(EyeOfCthulhu, ModContent.ItemType<SuspiciousEye>(), () => NPC.downedBoss1, 80000),
                 new MutantSummonInfo(EaterOfWorlds, ModContent.ItemType<WormyFood>(), () => NPC.downedBoss2, 100000),
                 new MutantSummonInfo(EaterOfWorlds, ModContent.ItemType<GoreySpine>(), () => NPC.downedBoss2, 100000),
-                new MutantSummonInfo(Deerclops, ItemID.DeerThing, () => NPC.downedDeerclops, 120000),
+                new MutantSummonInfo(Deerclops, ModContent.ItemType<DeerThing2>(), () => NPC.downedDeerclops, 120000),
                 new MutantSummonInfo(QueenBee, ModContent.ItemType<Abeemination2>(), () => NPC.downedQueenBee, 150000),
                 new MutantSummonInfo(Skeletron, ModContent.ItemType<SuspiciousSkull>(), () => NPC.downedBoss3, 150000),
                 new MutantSummonInfo(WallOfFlesh, ModContent.ItemType<FleshyDoll>(), () => Main.hardMode  , 200000),

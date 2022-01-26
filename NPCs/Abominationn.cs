@@ -121,7 +121,7 @@ namespace Fargowiltas.NPCs
                 "I have defeated everything in this land... nothing can beat me.",
                 "Have you ever had a weapon stuck to your hand? It's not very handy.",
                 "What happened to Yoramur? No idea who you're talking about.",
-                "You wish you could dress like me? Ha! Maybe in 2020.",
+                "You wish you could dress like me? Ha! Actually yea.. you can.",
                 "You ever read the ancient classics, I love all the fighting in them.",
                 "I'm a world class poet, ever read my piece about impending doom?",
                 "You want swarm summons? Maybe next year.",
