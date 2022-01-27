@@ -25,3 +25,4 @@ ALPHA UPDATE - V 2.6.4
 -Fixed Luck and Greater Luck Potion only giving Lesser Luck buff because Lucky buff gives less luck as duration decreases
 -Fixed "Fountain biome" actually locking your biome based on current water appearance
 -Restored debuff display
+-Added a duration-based transparency effect to debuff display (toggleable)

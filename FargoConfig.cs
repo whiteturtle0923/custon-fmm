@@ -121,13 +121,15 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool FasterLavaFishing;
 
-        [Label("[i:1612] Debuffs render above player")]
-        [DefaultValue(false)]
-        public bool DebuffDisplay;
-
-        [Label("[i:1612] Debuff Display Opacity")]
-        [DefaultValue(1f)] [Slider]
+        [Label("[i:1612] Debuff Display Max Opacity")]
+        [DefaultValue(1f)]
+        [Slider]
         public float DebuffOpacity;
+
+        [Label("[i:1612] Debuff Duration Fader Strength")]
+        [DefaultValue(0.75f)]
+        [Slider]
+        public float DebuffFaderRatio;
 
         [Label("[i:1309] Transparent Minions & Support Attacks")]
         [DefaultValue(1f)]

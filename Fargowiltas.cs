@@ -174,12 +174,12 @@ namespace Fargowiltas
 
                 switch (code)
                 {
-                    case "DebuffDisplay":
-                        ModContent.GetInstance<FargoConfig>().DebuffDisplay = (bool)args[1];
-                        break;
+                    //case "DebuffDisplay":
+                    //    ModContent.GetInstance<FargoConfig>().DebuffDisplay = (bool)args[1];
+                    //    break;
 
-                    //case "SwarmActive":
-                    //    return SwarmActive;
+                    case "SwarmActive":
+                        return SwarmActive;
 
                     case "AddSummon":
                         if (summonTracker.SummonsFinalized)
