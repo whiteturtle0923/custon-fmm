@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -79,15 +79,18 @@ namespace Fargowiltas.Projectiles
                 Player player = Main.player[projectile.owner];
                 float dist = Vector2.Distance(projectile.Center, player.Center);
 
-                if (dist > 2000)
+                if (dist > 3000)
                 {
-                    projectile.Kill();
+                    projectile.Center = player.Top;
                 }
-                else if (dist > 100)
+                else if (projectile.Center != player.Center)
                 {
-                    Vector2 velocity = Vector2.Normalize(player.Center - projectile.Center) * 3;
+                    Vector2 velocity = (player.Center + projectile.DirectionFrom(player.Center) * 3 * 16 - projectile.Center) / (dist < 3f * 16 ? 30f : 60f);
                     projectile.position += velocity;
                 }
+
+                if (projectile.timeLeft < 2 && projectile.timeLeft > 0)
+                    projectile.timeLeft = 2;
             }
 
             if (firstTick)
@@ -105,6 +108,16 @@ namespace Fargowiltas.Projectiles
             }
 
             return true;
+        }
+
+        public override void Kill(Projectile projectile, int timeLeft)
+        {
+            if (projectile.type == ProjectileID.FlyingPiggyBank && GetInstance<FargoConfig>().StalkerMoneyTrough)
+            {
+                //functionally, this makes money trough toggle the piggy bank on/off
+                foreach (Projectile p in Main.projectile.Where(p => p.active && p.type == projectile.type && p.owner == projectile.owner))
+                    p.timeLeft = 0;
+            }
         }
 
         public static void SplitProj(Projectile projectile, int number)
