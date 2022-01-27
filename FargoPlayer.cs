@@ -36,21 +36,21 @@ namespace Fargowiltas
         internal Dictionary<string, bool> FirstDyeIngredients = new Dictionary<string, bool>();
 
         private readonly string[] tags = new string[]
-       {
-                    "RedHusk",
-                    "OrangeBloodroot",
-                    "YellowMarigold",
-                    "LimeKelp",
-                    "GreenMushroom",
-                    "TealMushroom",
-                    "CyanHusk",
-                    "SkyBlueFlower",
-                    "BlueBerries",
-                    "PurpleMucos",
-                    "VioletHusk",
-                    "PinkPricklyPear",
-                    "BlackInk"
-       };
+        {
+            "RedHusk",
+            "OrangeBloodroot",
+            "YellowMarigold",
+            "LimeKelp",
+            "GreenMushroom",
+            "TealMushroom",
+            "CyanHusk",
+            "SkyBlueFlower",
+            "BlueBerries",
+            "PurpleMucos",
+            "VioletHusk",
+            "PinkPricklyPear",
+            "BlackInk"
+        };
 
         public override void SaveData(TagCompound tag)
         {
