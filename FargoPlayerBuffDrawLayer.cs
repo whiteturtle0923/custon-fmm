@@ -23,7 +23,10 @@ namespace Fargowiltas
             BuffID.Tipsy,
             BuffID.MonsterBanner,
             BuffID.Werewolf,
-            BuffID.Merfolk
+            BuffID.Merfolk,
+            BuffID.CatBast,
+            BuffID.BrainOfConfusionBuff,
+            BuffID.NeutralHunger
         };
 
         public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)

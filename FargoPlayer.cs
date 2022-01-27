@@ -360,45 +360,6 @@ namespace Fargowiltas
             }
         }
 
-
-        //        public static readonly PlayerLayer DebuffsLayer = new PlayerLayer("FargowiltasSouls", "MiscEffects", PlayerLayer.MiscEffectsFront, delegate (PlayerDrawInfo drawInfo)
-        //        {
-        //            Player drawPlayer = drawInfo.drawPlayer;
-        //            if (drawPlayer.whoAmI != Main.myPlayer || !drawPlayer.active || drawPlayer.dead || drawPlayer.ghost)
-        //                return;
-        //            int[] debuffsToIgnore = { BuffID.Campfire, BuffID.HeartLamp, BuffID.Sunflower, BuffID.PeaceCandle, BuffID.StarInBottle, BuffID.Tipsy, BuffID.MonsterBanner, BuffID.Werewolf, BuffID.Merfolk };
-        //            List<int> debuffs = drawPlayer.buffType.Where(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)).ToList();
-        //            if (debuffs.Count == 0)
-        //                return;
-        //            const int maxPerLine = 10;
-        //            int yOffset = 0;
-        //            for (int j = 0; j < debuffs.Count; j += maxPerLine)
-        //            {
-        //                int maxForThisLine = Math.Min(maxPerLine, debuffs.Count - j);
-        //                float midpoint = maxForThisLine / 2f - 0.5f;
-        //                for (int i = 0; i < maxForThisLine; i++)
-        //                {
-        //                    Texture2D buffIcon = Main.buffTexture[debuffs[j + i]];
-        //                    Color buffColor = Color.White * GetInstance<FargoConfig>().DebuffOpacity;
-        //                    Vector2 drawPos = (drawPlayer.gravDir > 0 ? drawPlayer.Top : drawPlayer.Bottom) - Main.screenPosition;
-        //                    drawPos.Y -= (32f + yOffset) * drawPlayer.gravDir;
-        //                    drawPos.X += 32f * (i - midpoint);
-        //                    DrawData data = new DrawData(buffIcon, drawPos, buffIcon.Bounds, buffColor, drawPlayer.gravDir > 0 ? 0 : MathHelper.Pi, buffIcon.Bounds.Size() / 2, 1f, SpriteEffects.None, 0);
-        //                    Main.playerDrawData.Add(data);
-        //                }
-        //                yOffset += (int)(32 * drawPlayer.gravDir);
-        //            }
-        //        });
-
-        //        public override void ModifyDrawLayers(List<PlayerLayer> layers)
-        //        {
-        //            if (player.whoAmI == Main.myPlayer && GetInstance<FargoConfig>().DebuffDisplay && !Main.hideUI)
-        //            {
-        //                DebuffsLayer.visible = true;
-        //                layers.Add(DebuffsLayer);
-        //            }
-        //        }
-
         //        /*public override void clientClone(ModPlayer clientClone)
         //        {
         //            FargoPlayer modPlayer = clientClone as FargoPlayer;
