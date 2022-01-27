@@ -19,8 +19,8 @@ namespace Fargowiltas
 {
     public class FargoPlayer : ModPlayer
     {
-//        //public ToggleBackend Toggler = new ToggleBackend();
-//        public Dictionary<string, bool> TogglesToSync = new Dictionary<string, bool>();
+        //        //public ToggleBackend Toggler = new ToggleBackend();
+        //        public Dictionary<string, bool> TogglesToSync = new Dictionary<string, bool>();
 
 
 
@@ -194,7 +194,7 @@ namespace Fargowiltas
             }
 
 
-            }
+        }
 
         public void SlimeRainSpawns()
         {
@@ -220,7 +220,7 @@ namespace Fargowiltas
 
         public override void PostUpdateEquips()
         {
-           // Main.NewText(GetInstance<FargoConfig>().Mutant && FargoWorld.DownedBools["boss"] && !FargoGlobalNPC.AnyBossAlive());
+            // Main.NewText(GetInstance<FargoConfig>().Mutant && FargoWorld.DownedBools["boss"] && !FargoGlobalNPC.AnyBossAlive());
 
             if (Fargowiltas.SwarmActive)
             {
@@ -301,133 +301,133 @@ namespace Fargowiltas
         int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.Ruler, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone };
 
         public void AutoUseMirror()
+        {
+            for (int i = 0; i < Player.inventory.Length; i++)
             {
-                for (int i = 0; i < Player.inventory.Length; i++)
+                switch (Player.inventory[i].type)
                 {
-                    switch (Player.inventory[i].type)
-                    {
-                        case ItemID.RecallPotion:
-                        case ItemID.MagicMirror:
-                        case ItemID.IceMirror:
-                        case ItemID.CellPhone:
-                            QuickUseItemAt(i);
-                            break;
-                    }
-                }
-            }
-
-            public void AutoUseRod()
-            {
-                for (int i = 0; i < Player.inventory.Length; i++)
-                {
-                    if (Player.inventory[i].type == ItemID.RodofDiscord)
-                    {
+                    case ItemID.RecallPotion:
+                    case ItemID.MagicMirror:
+                    case ItemID.IceMirror:
+                    case ItemID.CellPhone:
                         QuickUseItemAt(i);
                         break;
-                    }
                 }
             }
-
-            public void QuickUseItemAt(int index, bool use = true)
-            {
-                if (!autoRevertSelectedItem && Player.selectedItem != index && Player.inventory[index].type != 0)
-                {
-                    originalSelectedItem = Player.selectedItem;
-                    autoRevertSelectedItem = true;
-                    Player.selectedItem = index;
-                    Player.controlUseItem = true;
-                    if (use)
-                    {
-                        Player.ItemCheck(Main.myPlayer);
-                    }
-                }
-            }
-           
-
-            //        public static readonly PlayerLayer DebuffsLayer = new PlayerLayer("FargowiltasSouls", "MiscEffects", PlayerLayer.MiscEffectsFront, delegate (PlayerDrawInfo drawInfo)
-            //        {
-            //            Player drawPlayer = drawInfo.drawPlayer;
-            //            if (drawPlayer.whoAmI != Main.myPlayer || !drawPlayer.active || drawPlayer.dead || drawPlayer.ghost)
-            //                return;
-            //            int[] debuffsToIgnore = { BuffID.Campfire, BuffID.HeartLamp, BuffID.Sunflower, BuffID.PeaceCandle, BuffID.StarInBottle, BuffID.Tipsy, BuffID.MonsterBanner, BuffID.Werewolf, BuffID.Merfolk };
-            //            List<int> debuffs = drawPlayer.buffType.Where(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)).ToList();
-            //            if (debuffs.Count == 0)
-            //                return;
-            //            const int maxPerLine = 10;
-            //            int yOffset = 0;
-            //            for (int j = 0; j < debuffs.Count; j += maxPerLine)
-            //            {
-            //                int maxForThisLine = Math.Min(maxPerLine, debuffs.Count - j);
-            //                float midpoint = maxForThisLine / 2f - 0.5f;
-            //                for (int i = 0; i < maxForThisLine; i++)
-            //                {
-            //                    Texture2D buffIcon = Main.buffTexture[debuffs[j + i]];
-            //                    Color buffColor = Color.White * GetInstance<FargoConfig>().DebuffOpacity;
-            //                    Vector2 drawPos = (drawPlayer.gravDir > 0 ? drawPlayer.Top : drawPlayer.Bottom) - Main.screenPosition;
-            //                    drawPos.Y -= (32f + yOffset) * drawPlayer.gravDir;
-            //                    drawPos.X += 32f * (i - midpoint);
-            //                    DrawData data = new DrawData(buffIcon, drawPos, buffIcon.Bounds, buffColor, drawPlayer.gravDir > 0 ? 0 : MathHelper.Pi, buffIcon.Bounds.Size() / 2, 1f, SpriteEffects.None, 0);
-            //                    Main.playerDrawData.Add(data);
-            //                }
-            //                yOffset += (int)(32 * drawPlayer.gravDir);
-            //            }
-            //        });
-
-            //        public override void ModifyDrawLayers(List<PlayerLayer> layers)
-            //        {
-            //            if (player.whoAmI == Main.myPlayer && GetInstance<FargoConfig>().DebuffDisplay && !Main.hideUI)
-            //            {
-            //                DebuffsLayer.visible = true;
-            //                layers.Add(DebuffsLayer);
-            //            }
-            //        }
-
-            //        /*public override void clientClone(ModPlayer clientClone)
-            //        {
-            //            FargoPlayer modPlayer = clientClone as FargoPlayer;
-            //            modPlayer.Toggler = Toggler;
-            //        }*/
-
-            //        /*public void SyncToggle(string key)
-            //        {
-            //            if (!TogglesToSync.ContainsKey(key))
-            //                TogglesToSync.Add(key, player.GetToggle(key).ToggleBool);
-            //        }*/
-
-            //        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
-            //        {
-            //            foreach (KeyValuePair<string, bool> toggle in TogglesToSync)
-            //            {
-            //                ModPacket packet = mod.GetPacket();
-
-            //                packet.Write((byte)80);
-            //                packet.Write((byte)player.whoAmI);
-            //                packet.Write(toggle.Key);
-            //                packet.Write(toggle.Value);
-
-            //                packet.Send(toWho, fromWho);
-            //            }
-
-            //            TogglesToSync.Clear();
-            //        }
-
-            //        /*public override void SendClientChanges(ModPlayer clientPlayer)
-            //        {
-            //            FargoPlayer modPlayer = clientPlayer as FargoPlayer;
-            //            if (modPlayer.Toggler.Toggles != Toggler.Toggles)
-            //            {
-            //                ModPacket packet = mod.GetPacket();
-            //                packet.Write((byte)79);
-            //                packet.Write((byte)player.whoAmI);
-            //                packet.Write((byte)Toggler.Toggles.Count);
-
-            //                for (int i = 0; i < Toggler.Toggles.Count; i++)
-            //                {
-            //                    packet.Write(Toggler.Toggles.Values.ElementAt(i).ToggleBool);
-            //                }
-
-            //                packet.Send();
-            //            }
-            //        }*/
         }
+
+        public void AutoUseRod()
+        {
+            for (int i = 0; i < Player.inventory.Length; i++)
+            {
+                if (Player.inventory[i].type == ItemID.RodofDiscord)
+                {
+                    QuickUseItemAt(i);
+                    break;
+                }
+            }
+        }
+
+        public void QuickUseItemAt(int index, bool use = true)
+        {
+            if (!autoRevertSelectedItem && Player.selectedItem != index && Player.inventory[index].type != 0)
+            {
+                originalSelectedItem = Player.selectedItem;
+                autoRevertSelectedItem = true;
+                Player.selectedItem = index;
+                Player.controlUseItem = true;
+                if (use)
+                {
+                    Player.ItemCheck(Main.myPlayer);
+                }
+            }
+        }
+
+
+        //        public static readonly PlayerLayer DebuffsLayer = new PlayerLayer("FargowiltasSouls", "MiscEffects", PlayerLayer.MiscEffectsFront, delegate (PlayerDrawInfo drawInfo)
+        //        {
+        //            Player drawPlayer = drawInfo.drawPlayer;
+        //            if (drawPlayer.whoAmI != Main.myPlayer || !drawPlayer.active || drawPlayer.dead || drawPlayer.ghost)
+        //                return;
+        //            int[] debuffsToIgnore = { BuffID.Campfire, BuffID.HeartLamp, BuffID.Sunflower, BuffID.PeaceCandle, BuffID.StarInBottle, BuffID.Tipsy, BuffID.MonsterBanner, BuffID.Werewolf, BuffID.Merfolk };
+        //            List<int> debuffs = drawPlayer.buffType.Where(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)).ToList();
+        //            if (debuffs.Count == 0)
+        //                return;
+        //            const int maxPerLine = 10;
+        //            int yOffset = 0;
+        //            for (int j = 0; j < debuffs.Count; j += maxPerLine)
+        //            {
+        //                int maxForThisLine = Math.Min(maxPerLine, debuffs.Count - j);
+        //                float midpoint = maxForThisLine / 2f - 0.5f;
+        //                for (int i = 0; i < maxForThisLine; i++)
+        //                {
+        //                    Texture2D buffIcon = Main.buffTexture[debuffs[j + i]];
+        //                    Color buffColor = Color.White * GetInstance<FargoConfig>().DebuffOpacity;
+        //                    Vector2 drawPos = (drawPlayer.gravDir > 0 ? drawPlayer.Top : drawPlayer.Bottom) - Main.screenPosition;
+        //                    drawPos.Y -= (32f + yOffset) * drawPlayer.gravDir;
+        //                    drawPos.X += 32f * (i - midpoint);
+        //                    DrawData data = new DrawData(buffIcon, drawPos, buffIcon.Bounds, buffColor, drawPlayer.gravDir > 0 ? 0 : MathHelper.Pi, buffIcon.Bounds.Size() / 2, 1f, SpriteEffects.None, 0);
+        //                    Main.playerDrawData.Add(data);
+        //                }
+        //                yOffset += (int)(32 * drawPlayer.gravDir);
+        //            }
+        //        });
+
+        //        public override void ModifyDrawLayers(List<PlayerLayer> layers)
+        //        {
+        //            if (player.whoAmI == Main.myPlayer && GetInstance<FargoConfig>().DebuffDisplay && !Main.hideUI)
+        //            {
+        //                DebuffsLayer.visible = true;
+        //                layers.Add(DebuffsLayer);
+        //            }
+        //        }
+
+        //        /*public override void clientClone(ModPlayer clientClone)
+        //        {
+        //            FargoPlayer modPlayer = clientClone as FargoPlayer;
+        //            modPlayer.Toggler = Toggler;
+        //        }*/
+
+        //        /*public void SyncToggle(string key)
+        //        {
+        //            if (!TogglesToSync.ContainsKey(key))
+        //                TogglesToSync.Add(key, player.GetToggle(key).ToggleBool);
+        //        }*/
+
+        //        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        //        {
+        //            foreach (KeyValuePair<string, bool> toggle in TogglesToSync)
+        //            {
+        //                ModPacket packet = mod.GetPacket();
+
+        //                packet.Write((byte)80);
+        //                packet.Write((byte)player.whoAmI);
+        //                packet.Write(toggle.Key);
+        //                packet.Write(toggle.Value);
+
+        //                packet.Send(toWho, fromWho);
+        //            }
+
+        //            TogglesToSync.Clear();
+        //        }
+
+        //        /*public override void SendClientChanges(ModPlayer clientPlayer)
+        //        {
+        //            FargoPlayer modPlayer = clientPlayer as FargoPlayer;
+        //            if (modPlayer.Toggler.Toggles != Toggler.Toggles)
+        //            {
+        //                ModPacket packet = mod.GetPacket();
+        //                packet.Write((byte)79);
+        //                packet.Write((byte)player.whoAmI);
+        //                packet.Write((byte)Toggler.Toggles.Count);
+
+        //                for (int i = 0; i < Toggler.Toggles.Count; i++)
+        //                {
+        //                    packet.Write(Toggler.Toggles.Values.ElementAt(i).ToggleBool);
+        //                }
+
+        //                packet.Send();
+        //            }
+        //        }*/
+    }
 }
