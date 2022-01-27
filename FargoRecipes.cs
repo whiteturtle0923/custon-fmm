@@ -524,7 +524,7 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.GiantShellyBanner, ItemID.Compass);
             AddBannerToItemRecipe(ItemID.SporeBatBanner, ItemID.Shroomerang);
             AddBannerToItemRecipe(ItemID.GiantCursedSkullBanner, ItemID.ShadowJoustingLance);
-            AddBannerToItemRecipe(ItemID.DungeonSpiritBanner, ItemID.Ectoplasm, 50);
+            AddBannerToItemRecipe(ItemID.DungeonSpiritBanner, ItemID.Ectoplasm, 1, 50);
 
             AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.TentacleSpike, 2);
             AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.TentacleSpike, 2);

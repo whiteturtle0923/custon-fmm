@@ -29,3 +29,4 @@ ALPHA UPDATE - V 2.6.4
 -Fixed World Token, caught town NPCs not being researchable in Journey
 -Caught town NPCs can only be spawned up to 5 at a time
 -Buffed Stalker Money Trough a lot
+-Fixed Ectoplasm recipe
