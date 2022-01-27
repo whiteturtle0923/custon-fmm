@@ -160,36 +160,53 @@ namespace Fargowiltas
 
             if (GetInstance<FargoConfig>().Fountains)
             {
-                switch (Main.waterStyle)
+                switch (Main.SceneMetrics.ActiveFountainColor)
                 {
-                    case 0:
+                    case -1: //no fountain active
+                        goto default;
+
+                    case 0: //pure water, ocean
                         Player.ZoneBeach = true;
                         break;
-                    case 6:
+
+                    case 2: //corrupt
+                        Player.ZoneCorrupt = true;
+                        break;
+
+                    case 3: //jungle
+                        Player.ZoneJungle = true;
+                        break;
+
+                    case 4: //hallow
+                        if (Main.hardMode)
+                            Player.ZoneHallow = true;
+                        break;
+
+                    case 5: //ice
+                        Player.ZoneSnow = true;
+                        break;
+
+                    case 6: //oasis
+                        goto case 12;
+
+                    case 8: //cavern
+                        goto default;
+
+                    case 9: //blood fountain
+                        goto default;
+
+                    case 10: //crimson
+                        Player.ZoneCrimson = true;
+                        break;
+
+                    case 12: //desert fountain
                         Player.ZoneDesert = true;
                         if (Player.Center.Y > 3200f)
                             Player.ZoneUndergroundDesert = true;
                         break;
-                    case 3:
-                        Player.ZoneJungle = true;
-                        break;
-                    case 5:
-                        Player.ZoneSnow = true;
-                        break;
-                    case 2:
-                        Player.ZoneCorrupt = true;
-                        break;
-                    case 10:
-                        Player.ZoneCrimson = true;
-                        break;
-                    case 4:
-                        if (Main.hardMode)
-                        {
-                            Player.ZoneHallow = true;
-                        }
-                        break;
 
-                        //        //        //oasis and cavern fountains
+                    default:
+                        break;
                 }
             }
 

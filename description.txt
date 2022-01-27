@@ -23,3 +23,5 @@ ALPHA UPDATE - V 2.6.4
 -Removed duplicate Daybloom recipe
 -Fixed Bamboo Leaf recipe
 -Fixed Luck and Greater Luck Potion only giving Lesser Luck buff because Lucky buff gives less luck as duration decreases
+-Fixed "Fountain biome" actually locking your biome based on current water appearance
+-Restored debuff display

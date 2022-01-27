@@ -37,6 +37,7 @@ namespace Fargowiltas.Items
                     tooltips.Add(line);
                     break;
 
+                case ItemID.OasisFountain:
                 case ItemID.DesertWaterFountain:
                     line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Desert upon activation");
                     tooltips.Add(line);
@@ -67,7 +68,7 @@ namespace Fargowiltas.Items
                     tooltips.Add(line);
                     break;
 
-                //oasis and cavern? fountains
+                //cavern fountain?
 
                 case ItemID.BugNet:
                 case ItemID.GoldenBugNet:
