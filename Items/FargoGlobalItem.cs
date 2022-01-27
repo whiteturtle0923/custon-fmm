@@ -205,7 +205,15 @@ namespace Fargowiltas.Items
             if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
             {
                 if (item.stack >= 30 && item.buffType != 0)
+                {
                     player.AddBuff(item.buffType, 2);
+
+                    //compensate to account for luck potion being weaker based on remaining duration wtf
+                    if (item.type == ItemID.LuckPotion)
+                        player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.1f);
+                    else if (item.type == ItemID.LuckPotionGreater)
+                        player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.2f);
+                }
 
                 if (item.stack >= 15)
                 {
