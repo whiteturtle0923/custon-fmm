@@ -29,8 +29,15 @@ namespace Fargowiltas
             BuffID.NeutralHunger
         };
 
+        private float globalTimeTracker;
+
         public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)
         {
+            //stop it from drawing multiple times per frame, e.g. with armor/dash afterimages that ruin opacity
+            if (globalTimeTracker == Main.GlobalTimeWrappedHourly)
+                return false;
+            globalTimeTracker = Main.GlobalTimeWrappedHourly;
+
             return ModContent.GetInstance<FargoConfig>().DebuffOpacity > 0 && !Main.hideUI
                 && drawInfo.drawPlayer.whoAmI == Main.myPlayer && drawInfo.drawPlayer.active && !drawInfo.drawPlayer.dead && !drawInfo.drawPlayer.ghost
                 && drawInfo.drawPlayer.buffType.Count(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)) > 0;
@@ -45,12 +52,8 @@ namespace Fargowiltas
 
         protected override void Draw(ref PlayerDrawSet drawInfo)
         {
-            //what i need
-            //current duration of the debuff
-            //max duration of the debuff
             Player player = drawInfo.drawPlayer;
             List<int> debuffs = player.buffType.Where(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)).ToList();
-
             const int maxPerLine = 10;
             int yOffset = 0;
             for (int j = 0; j < debuffs.Count; j += maxPerLine)
