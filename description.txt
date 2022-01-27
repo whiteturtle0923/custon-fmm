@@ -26,3 +26,5 @@ ALPHA UPDATE - V 2.6.4
 -Fixed "Fountain biome" actually locking your biome based on current water appearance
 -Restored debuff display
 -Added a duration-based transparency effect to debuff display (toggleable)
+-Fixed World Token, caught town NPCs not being researchable in Journey
+-Caught town NPCs can only be spawned up to 5 at a time
