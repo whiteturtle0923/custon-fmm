@@ -132,7 +132,7 @@ namespace Fargowiltas.NPCs
                 }
             }
 
-            return false;
+            return GetInstance<FargoConfig>().Squirrel;
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;

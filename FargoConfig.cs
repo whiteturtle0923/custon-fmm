@@ -26,6 +26,10 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool Lumber;
 
+        [Label("$Mods.Fargowiltas.Squirrel")]
+        [DefaultValue(true)]
+        public bool Squirrel;
+
         [Label("[i:267] Catch Town NPCs")]
         [DefaultValue(true)]
         public bool CatchNPCs;

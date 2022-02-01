@@ -108,6 +108,7 @@ namespace Fargowiltas
             AddToggle("Mods.Fargowiltas.Abom", "Abominationn Can Spawn", ModContent.ItemType<AbominationnMask>(), "ffffff");
             AddToggle("Mods.Fargowiltas.Devi", "Deviantt Can Spawn", ModContent.ItemType<DevianttMask>(), "ffffff");
             AddToggle("Mods.Fargowiltas.Lumber", "Lumberjack Can Spawn", ModContent.ItemType<LumberjackMask>(), "ffffff");
+            AddToggle("Mods.Fargowiltas.Squirrel", "Squirrel Can Spawn", ItemID.TopHat, "ffffff");
 
             CaughtNPCItem.RegisterItems(this);
 
