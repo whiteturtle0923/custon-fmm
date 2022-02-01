@@ -1122,6 +1122,12 @@ namespace Fargowiltas
             AddTile(TileID.DyeVat).
             Register();
 
+            mod.CreateRecipe(CaughtNPCItem.CaughtTownies[ModContent.NPCType<NPCs.Squirrel>()]).
+            AddRecipeGroup("Fargowiltas:AnySquirrel").
+            AddIngredient(ItemID.TopHat).
+            AddTile(TileID.DemonAltar).
+            Register();
+
             mod.CreateRecipe(CaughtNPCItem.CaughtTownies[NPCID.TravellingMerchant]).
             AddIngredient(null, "Merchant").
             AddIngredient(ItemID.DynastyWood).

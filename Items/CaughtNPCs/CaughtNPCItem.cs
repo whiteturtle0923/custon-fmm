@@ -192,8 +192,8 @@ namespace Fargowiltas.Items.CaughtNPCs
             Add("SantaClaus", NPCID.SantaClaus, "'What? You thought I wasn't real?'");
             Add("SkeletonMerchant", NPCID.SkeletonMerchant,
                 "'You would not believe some of the things people throw at me... Wanna buy some of it?'");
-            if (ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSouls))
-                Add("Squirrel", ModContent.NPCType<Squirrel>(), "*squeak*");
+            //if (ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSouls))
+            Add("Squirrel", ModContent.NPCType<Squirrel>(), "*squeak*");
             Add("Steampunker", NPCID.Steampunker, "'Show me some gears!'");
             Add("Stylist", NPCID.Stylist, "'Did you even try to brush your hair today?'");
             Add("Tavernkeep", NPCID.DD2Bartender, "'What am I doing here...'");
