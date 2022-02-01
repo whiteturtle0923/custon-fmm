@@ -102,7 +102,7 @@ namespace Fargowiltas.NPCs
                 return true;
             }
 
-            /*if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && TryFind("FargowiltasSouls", "TopHatSquirrelCaught", out ModItem modItem))
             {
                 for (int k = 0; k < Main.maxPlayers; k++)
                 {
@@ -114,13 +114,13 @@ namespace Fargowiltas.NPCs
 
                     foreach (Item item in player.inventory)
                     {
-                        if (item.type == fargosouls.ItemType("TopHatSquirrelCaught"))
+                        if (item.type == modItem.Type)
                         {
                             return true;
                         }
                     }
                 }
-            }*/
+            }
 
             return false;
         }
