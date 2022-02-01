@@ -18,14 +18,24 @@ namespace Fargowiltas.NPCs
         private static int shopNum;
         private static bool showCycleShop;
 
-        private enum ShopGroups
+        public enum SquirrelSellType
+        {
+            Sell,
+            SellMaterialsMatchingShopGroup,
+            SellCraftableMaterials,
+            SellWhen30Stack,
+            None
+        }
+
+        public enum ShopGroup
         {
             Enchant,
             Essence,
             Force,
             Soul,
             Potion,
-            Other
+            Other,
+            None
         }
 
   //      public override bool Autoload(ref string name)
@@ -217,86 +227,131 @@ namespace Fargowiltas.NPCs
                 shopNum = 0;
         }
 
+        public static ShopGroup SquirrelSells(Item item, out SquirrelSellType sellType)
+        {
+            if (item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield || item.type == ItemID.RodofDiscord)
+            {
+                sellType = SquirrelSellType.Sell;
+                return ShopGroup.Other;
+            }
+
+            if (item.maxStack >= 30 && item.buffType != 0)
+            {
+                sellType = SquirrelSellType.SellWhen30Stack;
+                return ShopGroup.Potion;
+            }
+
+            if (item.ModItem != null && (item.ModItem.Mod.Name.Equals("FargowiltasSouls") || item.ModItem.Mod.Name.Equals("FargowiltasSoulsDLC")))
+            {
+                if (item.ModItem.Name.EndsWith("Enchant"))
+                {
+                    sellType = SquirrelSellType.Sell;
+                    return ShopGroup.Enchant;
+                }
+                else if (item.ModItem.Name.EndsWith("Essence"))
+                {
+                    sellType = SquirrelSellType.Sell;
+                    return ShopGroup.Essence;
+                }
+                else if ((TryFind("FargowiltasSouls", "BionomicCluster", out ModItem cluster) && cluster.Type == item.type)
+                    || (TryFind("FargowiltasSouls", "HeartoftheMasochist", out ModItem heart) && heart.Type == item.type))
+                {
+                    sellType = SquirrelSellType.Sell;
+                    return ShopGroup.Other;
+                }
+                else if (item.ModItem.Name.EndsWith("Force"))
+                {
+                    sellType = SquirrelSellType.SellMaterialsMatchingShopGroup;
+                    return ShopGroup.Enchant;
+                }
+                else if ((TryFind("FargowiltasSouls", "MasochistSoul", out ModItem masoSoul) && masoSoul.Type == item.type)
+                    || (TryFind("FargowiltasSouls", "AeolusBoots", out ModItem aeolusBoots) && item.type == aeolusBoots.Type))
+                {
+                    sellType = SquirrelSellType.SellCraftableMaterials;
+                    return ShopGroup.Other;
+                }
+                else if (item.ModItem.Name.EndsWith("Soul"))
+                {
+                    foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
+                    {
+                        foreach (Item material in recipe.requiredItem)
+                        {
+                            if (material.type != ItemID.None && material.ModItem != null)
+                            {
+                                if (material.ModItem.Name.EndsWith("Essence"))
+                                {
+                                    sellType = SquirrelSellType.SellMaterialsMatchingShopGroup;
+                                    return ShopGroup.Essence;
+                                }
+                                else if (material.ModItem.Name.EndsWith("Force"))
+                                {
+                                    sellType = SquirrelSellType.SellMaterialsMatchingShopGroup;
+                                    return ShopGroup.Force;
+                                }
+                                else if (material.ModItem.Name.EndsWith("Soul"))
+                                {
+                                    sellType = SquirrelSellType.SellMaterialsMatchingShopGroup;
+                                    return ShopGroup.Soul;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            sellType = SquirrelSellType.None;
+            return ShopGroup.None;
+        }
+
         private void TryAddItem(Item item, List<int>[] itemCollections)
         {
-            void AddToCollection(int type, ShopGroups group)
+            void AddToCollection(int type, ShopGroup group)
             {
                 int groupCast = (int)group;
                 if (!itemCollections[groupCast].Contains(type))
                     itemCollections[groupCast].Add(type);
             };
 
-            if (item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield || item.type == ItemID.RodofDiscord)
+            ShopGroup shopGroup = SquirrelSells(item, out SquirrelSellType sellType);
+            switch (sellType)
             {
-                AddToCollection(item.type, ShopGroups.Other);
-            }
-            else if (item.stack >= 30 && item.buffType != 0)
-            {
-                AddToCollection(item.type, ShopGroups.Potion);
-            }
+                case SquirrelSellType.Sell:
+                    AddToCollection(item.type, shopGroup);
+                    break;
 
-            if (item.ModItem == null || (!item.ModItem.Mod.Name.Equals("FargowiltasSouls") && !item.ModItem.Mod.Name.Equals("FargowiltasSoulsDLC")))
-                return;
-
-            if (item.ModItem.Name.EndsWith("Enchant"))
-            {
-                AddToCollection(item.type, ShopGroups.Enchant);
-            }
-            else if (item.ModItem.Name.EndsWith("Essence"))
-            {
-                AddToCollection(item.type, ShopGroups.Essence);
-            }
-            else if ((TryFind("FargowiltasSouls/BionomicCluster", out ModItem cluster) && cluster.Type == item.type)
-                || (TryFind("FargowiltasSouls/HeartoftheMasochist", out ModItem heart) && heart.Type == item.type))
-            {
-                AddToCollection(item.type, ShopGroups.Other);
-            }
-            else if (item.ModItem.Name.EndsWith("Force"))
-            {
-                foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
-                {
-                    foreach (Item material in recipe.requiredItem)
+                case SquirrelSellType.SellMaterialsMatchingShopGroup:
+                    foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
                     {
-                        if (material.ModItem != null && material.ModItem.Name.EndsWith("Enchant"))
-                            AddToCollection(material.type, ShopGroups.Enchant);
-                    }
-                }
-            }
-            else if (item.ModItem.Name.EndsWith("Soul"))
-            {
-                foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
-                {
-                    foreach (Item material in recipe.requiredItem)
-                    {
-                        if (material.ModItem != null)
+                        foreach (Item material in recipe.requiredItem)
                         {
-                            if (material.ModItem.Name.EndsWith("Essence"))
-                            {
-                                AddToCollection(material.type, ShopGroups.Essence);
-                            }
-                            else if (material.ModItem.Name.EndsWith("Force"))
-                            {
-                                AddToCollection(material.type, ShopGroups.Force);
-                            }
-                            else if (material.ModItem.Name.EndsWith("Soul"))
-                            {
-                                AddToCollection(material.type, ShopGroups.Soul);
-                            }
+                            if (material.ModItem != null && material.ModItem.Name.EndsWith(shopGroup.ToString()))
+                                AddToCollection(material.type, shopGroup);
                         }
-                        else if (material.type != ItemID.None && TryFind("FargowiltasSouls/MasochistSoul", out ModItem modItem) && modItem.Type == item.type)
+                    }
+                    break;
+
+                case SquirrelSellType.SellCraftableMaterials:
+                    foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
+                    {
+                        foreach (Item material in recipe.requiredItem)
                         {
-                            if (Main.recipe.Any(recipe => recipe.HasResult(material.type))) //only put in materials that have recipes themselves
+                            if (material.type != ItemID.None)
                             {
-                                AddToCollection(material.type, ShopGroups.Other);
+                                if (Main.recipe.Any(recipe => recipe.HasResult(material.type))) //only put in materials that have recipes themselves
+                                    AddToCollection(material.type, shopGroup);
                             }
                         }
                     }
-                }
-            }
-            else if (TryFind("FargowiltasSouls/AeolusBoots", out ModItem modItem) && item.type == modItem.Type)
-            {
-                AddToCollection(ItemID.FrostsparkBoots, ShopGroups.Other);
-                AddToCollection(ItemID.BalloonHorseshoeFart, ShopGroups.Other);
+                    break;
+
+                case SquirrelSellType.SellWhen30Stack:
+                    if (item.stack >= 30)
+                        AddToCollection(item.type, shopGroup);
+                    break;
+
+                case SquirrelSellType.None:
+                default:
+                    break;
             }
         }
 
