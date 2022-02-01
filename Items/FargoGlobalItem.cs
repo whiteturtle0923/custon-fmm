@@ -6,7 +6,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Fargowiltas.NPCs;
 using Fargowiltas.Items.Ammos.Rockets;
+using System.Text.RegularExpressions;
 
 namespace Fargowiltas.Items
 {
@@ -103,6 +105,14 @@ namespace Fargowiltas.Items
                     line = new TooltipLine(Mod, "Tooltip1", "This rod fires 5 lures");
                     tooltips.Insert(3, line);
                 }
+            }
+
+            if (GetInstance<FargoConfig>().SquirrelTooltips && Squirrel.SquirrelSells(item, out Squirrel.SquirrelSellType sellType) != Squirrel.ShopGroup.None)
+            {
+                string text = Regex.Replace(sellType.ToString(), "([a-z])([A-Z])", "$1 $2");
+                line = new TooltipLine(Mod, "TooltipSquirrel", 
+                    $"[i:{CaughtNPCs.CaughtNPCItem.CaughtTownies[NPCType<Squirrel>()]}] [c/AAAAAA:{text}]");
+                tooltips.Add(line);
             }
         }
 

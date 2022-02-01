@@ -64,7 +64,7 @@ namespace Fargowiltas.Buffs
             int type = Framing.GetTileSafely(player.Center).type;
             if (type == ModContent.TileType<OmnistationSheet>() || type == ModContent.TileType<OmnistationSheet2>())
             {
-                player.AddBuff(BuffID.Honey, 30 * 60 - 1);
+                player.AddBuff(BuffID.Honey, 30 * 60);
                 player.AddBuff(BuffID.SugarRush, 120 * 60 - 1);
             }
         }

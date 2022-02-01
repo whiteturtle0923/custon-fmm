@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
 namespace Fargowiltas
@@ -32,6 +33,10 @@ namespace Fargowiltas
         [Label("[i:267] Extra Town NPC sales")]
         [DefaultValue(true)]
         public bool NPCSales;
+
+        [Label("[i:239] Mark items sold by Squirrel")]
+        [DefaultValue(true)]
+        public bool SquirrelTooltips;
 
         [Header("Seasons")]
         [Label("[i:1774] Halloween Season Active")]

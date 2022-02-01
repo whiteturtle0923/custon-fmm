@@ -31,3 +31,4 @@ ALPHA UPDATE - V 2.6.4
 -Buffed Stalker Money Trough a lot
 -Fixed Ectoplasm recipe
 -Squirrel town NPC is available without Souls Mod and can be crafted
+-Items sold by Squirrel have tooltips reflecting this

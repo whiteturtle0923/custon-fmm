@@ -20,10 +20,10 @@ namespace Fargowiltas.NPCs
 
         public enum SquirrelSellType
         {
-            Sell,
-            SellMaterialsMatchingShopGroup,
-            SellCraftableMaterials,
-            SellWhen30Stack,
+            SoldBySquirrel,
+            SomeMaterialsSold, //sells materials with names matching the associated shopgroup
+            CraftableMaterialsSold,
+            SoldAtThirtyStack,
             None
         }
 
@@ -231,13 +231,13 @@ namespace Fargowiltas.NPCs
         {
             if (item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield || item.type == ItemID.RodofDiscord)
             {
-                sellType = SquirrelSellType.Sell;
+                sellType = SquirrelSellType.SoldBySquirrel;
                 return ShopGroup.Other;
             }
 
             if (item.maxStack >= 30 && item.buffType != 0)
             {
-                sellType = SquirrelSellType.SellWhen30Stack;
+                sellType = SquirrelSellType.SoldAtThirtyStack;
                 return ShopGroup.Potion;
             }
 
@@ -245,29 +245,29 @@ namespace Fargowiltas.NPCs
             {
                 if (item.ModItem.Name.EndsWith("Enchant"))
                 {
-                    sellType = SquirrelSellType.Sell;
+                    sellType = SquirrelSellType.SoldBySquirrel;
                     return ShopGroup.Enchant;
                 }
                 else if (item.ModItem.Name.EndsWith("Essence"))
                 {
-                    sellType = SquirrelSellType.Sell;
+                    sellType = SquirrelSellType.SoldBySquirrel;
                     return ShopGroup.Essence;
                 }
                 else if ((TryFind("FargowiltasSouls", "BionomicCluster", out ModItem cluster) && cluster.Type == item.type)
                     || (TryFind("FargowiltasSouls", "HeartoftheMasochist", out ModItem heart) && heart.Type == item.type))
                 {
-                    sellType = SquirrelSellType.Sell;
+                    sellType = SquirrelSellType.SoldBySquirrel;
                     return ShopGroup.Other;
                 }
                 else if (item.ModItem.Name.EndsWith("Force"))
                 {
-                    sellType = SquirrelSellType.SellMaterialsMatchingShopGroup;
+                    sellType = SquirrelSellType.SomeMaterialsSold;
                     return ShopGroup.Enchant;
                 }
                 else if ((TryFind("FargowiltasSouls", "MasochistSoul", out ModItem masoSoul) && masoSoul.Type == item.type)
                     || (TryFind("FargowiltasSouls", "AeolusBoots", out ModItem aeolusBoots) && item.type == aeolusBoots.Type))
                 {
-                    sellType = SquirrelSellType.SellCraftableMaterials;
+                    sellType = SquirrelSellType.CraftableMaterialsSold;
                     return ShopGroup.Other;
                 }
                 else if (item.ModItem.Name.EndsWith("Soul"))
@@ -280,17 +280,17 @@ namespace Fargowiltas.NPCs
                             {
                                 if (material.ModItem.Name.EndsWith("Essence"))
                                 {
-                                    sellType = SquirrelSellType.SellMaterialsMatchingShopGroup;
+                                    sellType = SquirrelSellType.SomeMaterialsSold;
                                     return ShopGroup.Essence;
                                 }
                                 else if (material.ModItem.Name.EndsWith("Force"))
                                 {
-                                    sellType = SquirrelSellType.SellMaterialsMatchingShopGroup;
+                                    sellType = SquirrelSellType.SomeMaterialsSold;
                                     return ShopGroup.Force;
                                 }
                                 else if (material.ModItem.Name.EndsWith("Soul"))
                                 {
-                                    sellType = SquirrelSellType.SellMaterialsMatchingShopGroup;
+                                    sellType = SquirrelSellType.SomeMaterialsSold;
                                     return ShopGroup.Soul;
                                 }
                             }
@@ -315,11 +315,11 @@ namespace Fargowiltas.NPCs
             ShopGroup shopGroup = SquirrelSells(item, out SquirrelSellType sellType);
             switch (sellType)
             {
-                case SquirrelSellType.Sell:
+                case SquirrelSellType.SoldBySquirrel:
                     AddToCollection(item.type, shopGroup);
                     break;
 
-                case SquirrelSellType.SellMaterialsMatchingShopGroup:
+                case SquirrelSellType.SomeMaterialsSold:
                     foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
                     {
                         foreach (Item material in recipe.requiredItem)
@@ -330,7 +330,7 @@ namespace Fargowiltas.NPCs
                     }
                     break;
 
-                case SquirrelSellType.SellCraftableMaterials:
+                case SquirrelSellType.CraftableMaterialsSold:
                     foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
                     {
                         foreach (Item material in recipe.requiredItem)
@@ -344,7 +344,7 @@ namespace Fargowiltas.NPCs
                     }
                     break;
 
-                case SquirrelSellType.SellWhen30Stack:
+                case SquirrelSellType.SoldAtThirtyStack:
                     if (item.stack >= 30)
                         AddToCollection(item.type, shopGroup);
                     break;
