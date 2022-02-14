@@ -58,10 +58,10 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     Tile tile = Framing.GetTileSafely(tileX, tileY);
 
-                    if (tile.type == TileID.LihzahrdAltar)
+                    if (tile.TileType == TileID.LihzahrdAltar)
                         continue;
 
-                    if (tile.wall != WallID.LihzahrdBrickUnsafe)
+                    if (tile.WallType != WallID.LihzahrdBrickUnsafe)
                     {
                         if (j == 0)
                             return false;
@@ -70,26 +70,26 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     //check for chest above this block
                     Tile tileAbove = Framing.GetTileSafely(tileX, tileY - 1);
-                    if (TileID.Sets.BasicChest[tileAbove.type])
+                    if (TileID.Sets.BasicChest[tileAbove.TileType])
                     {
-                        TileObjectData data = TileObjectData.GetTileData(tileAbove.type, 0);
-                        int x = tileX - (tile.frameX / 18 % data.Width);
-                        int y = tileY - 1 - (tile.frameY / 18 % data.Height); //get top left of chest
+                        TileObjectData data = TileObjectData.GetTileData(tileAbove.TileType, 0);
+                        int x = tileX - (tile.TileFrameX / 18 % data.Width);
+                        int y = tileY - 1 - (tile.TileFrameY / 18 % data.Height); //get top left of chest
 
                         WorldGen.KillTile(x, y);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendTileSquare(-1, x, y, 3);
 
                         //if couldnt destroy chest, ignore this block
-                        if (TileID.Sets.BasicChest[tileAbove.type])
+                        if (TileID.Sets.BasicChest[tileAbove.TileType])
                             continue;
                     }
 
-                    if (TileID.Sets.BasicChest[tile.type])
+                    if (TileID.Sets.BasicChest[tile.TileType])
                     {
-                        TileObjectData data = TileObjectData.GetTileData(tile.type, 0);
-                        int x = tileX - tile.frameX / 18 % data.Width;
-                        int y = tileY - tile.frameY / 18 % data.Height; //get top left of chest
+                        TileObjectData data = TileObjectData.GetTileData(tile.TileType, 0);
+                        int x = tileX - tile.TileFrameX / 18 % data.Width;
+                        int y = tileY - tile.TileFrameY / 18 % data.Height; //get top left of chest
 
                         WorldGen.KillTile(x, y); //try to kill chest
                         if (Main.netMode == NetmodeID.Server)
@@ -98,7 +98,7 @@ namespace Fargowiltas.Projectiles.Explosives
                         continue;
                     }
 
-                    if (tile.type == TileID.LihzahrdBrick)
+                    if (tile.TileType == TileID.LihzahrdBrick)
                     {
                         tile.IsActuated = true; //actuate it
                         if (Main.netMode == NetmodeID.Server)

@@ -64,7 +64,7 @@ namespace Fargowiltas.Projectiles.Explosives
                         // Hit the tile 6 times, most tiles that you can break will break in 1-3 hits.
                         for (int i = 0; i < 6; i++)
                         {
-                            if (!tile.IsActive)
+                            if (!tile.IsActuated)
                                 break;
 
                             player.PickTile(xPosition, yPosition, bestPickaxe != null ? bestPickaxe.pick : 35);

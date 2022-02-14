@@ -67,12 +67,12 @@ namespace Fargowiltas.Tiles
 
                 Main.chest[chest] = null;
 
-                if (Main.tile[x, y].type == TileID.Containers2)
+                if (Main.tile[x, y].TileType == TileID.Containers2)
                 {
                     chestType = 5;
                 }
 
-                if (Main.tile[x, y].type >= TileID.Count)
+                if (Main.tile[x, y].TileType >= TileID.Count)
                 {
                     chestType = 101;
                 }
@@ -82,10 +82,10 @@ namespace Fargowiltas.Tiles
             {
                 for (int j = y; j < y + 2; j++)
                 {
-                    Main.tile[i, j].type = 0;
-                    Main.tile[i, j].sTileHeader = 0;
-                    Main.tile[i, j].frameX = 0;
-                    Main.tile[i, j].frameY = 0;
+                    Main.tile[i, j].TileType = 0;
+                    //Main.tile[i, j].sTileHeader = 0;
+                    Main.tile[i, j].TileFrameX = 0;
+                    Main.tile[i, j].TileFrameY = 0;
                 }
             }
 
@@ -93,7 +93,7 @@ namespace Fargowiltas.Tiles
             {
                 if (chest != -1)
                 {
-                    NetMessage.SendData(MessageID.ChestUpdates, -1, -1, null, chestType, x, y, 0f, chest, Main.tile[x, y].type);
+                    NetMessage.SendData(MessageID.ChestUpdates, -1, -1, null, chestType, x, y, 0f, chest, Main.tile[x, y].TileType);
                 }
 
                 NetMessage.SendTileSquare(-1, x, y, 3);
@@ -103,11 +103,11 @@ namespace Fargowiltas.Tiles
         internal static Point16 FindChestTopLeft(int x, int y, bool destroy)
         {
             Tile tile = Main.tile[x, y];
-            if (TileID.Sets.BasicChest[tile.type])
+            if (TileID.Sets.BasicChest[tile.TileType])
             {
-                TileObjectData data = TileObjectData.GetTileData(tile.type, 0);
-                x -= tile.frameX / 18 % data.Width;
-                y -= tile.frameY / 18 % data.Height;
+                TileObjectData data = TileObjectData.GetTileData(tile.TileType, 0);
+                x -= tile.TileFrameX / 18 % data.Width;
+                y -= tile.TileFrameY / 18 % data.Height;
 
                 if (destroy)
                 {

@@ -93,26 +93,26 @@ namespace Fargowiltas.Projectiles.Explosives
             }
 
             //dont act if the right blocks already above
-            if ((y == -5) && (tile.type == TileID.Platforms || tile.type == tileType))
+            if ((y == -5) && (tile.TileType == TileID.Platforms || tile.TileType == tileType))
                 return;
 
             if (x == 10 * side || x == 1 * side)
             {
                 //dont act on correct block above/below door, destroying them will break it
-                if ((y == -4 || y == 0) && tile.type == tileType)
+                if ((y == -4 || y == 0) && tile.TileType == tileType)
                     return;
                 
-                if ((y == -1 || y == -2 || y == -3) && (tile.type == TileID.ClosedDoor || tile.type == TileID.OpenDoor))
+                if ((y == -1 || y == -2 || y == -3) && (tile.TileType == TileID.ClosedDoor || tile.TileType == TileID.OpenDoor))
                     return;
             }
             else //for blocks besides those on the left/right edges where doors are placed, its okay to have platform as floor
             {
-                if (y == 0 && (tile.type == TileID.Platforms || tile.type == tileType))
+                if (y == 0 && (tile.TileType == TileID.Platforms || tile.TileType == tileType))
                     return;
             }
 
             //doing it this way so the code still runs to place bg walls behind open door
-            if (!((x == 9 * side || x == 2 * side) && (y == -1 || y == -2 || y == -3) && tile.type == TileID.OpenDoor))
+            if (!((x == 9 * side || x == 2 * side) && (y == -1 || y == -2 || y == -3) && tile.TileType == TileID.OpenDoor))
                 FargoGlobalTile.ClearEverything(xPosition, yPosition);
 
             // Spawn walls

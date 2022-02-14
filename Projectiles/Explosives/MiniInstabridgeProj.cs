@@ -69,7 +69,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     continue;
                 }
 
-                if (deletableTiles.Contains(tile.type))
+                if (deletableTiles.Contains(tile.TileType))
                 {
                     FargoGlobalTile.ClearEverything(xPosition, yPosition);
                 }

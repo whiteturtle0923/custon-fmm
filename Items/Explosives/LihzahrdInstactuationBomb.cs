@@ -38,13 +38,13 @@ Only works in the Jungle Temple and after Plantera is defeated");
         public override bool CanUseItem(Player player)
         {
             Tile tile = Framing.GetTileSafely(player.Center);
-            return tile.type == TileID.LihzahrdAltar && tile.wall == WallID.LihzahrdBrickUnsafe && NPC.downedPlantBoss;
+            return tile.TileType == TileID.LihzahrdAltar && tile.WallType == WallID.LihzahrdBrickUnsafe && NPC.downedPlantBoss;
         }
 
         public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Tile tile = Framing.GetTileSafely(player.Center);
-            if (tile.type == TileID.LihzahrdAltar && tile.wall == WallID.LihzahrdBrickUnsafe && NPC.downedPlantBoss)
+            if (tile.TileType == TileID.LihzahrdAltar && tile.WallType == WallID.LihzahrdBrickUnsafe && NPC.downedPlantBoss)
             {
                 Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), player.Bottom - Vector2.UnitY * 8f, Vector2.Zero, type, 0, 0, player.whoAmI);
             }

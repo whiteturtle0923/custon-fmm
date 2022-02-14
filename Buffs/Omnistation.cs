@@ -61,7 +61,7 @@ namespace Fargowiltas.Buffs
                 player.pickSpeed -= 0.2f;*/
             }
 
-            int type = Framing.GetTileSafely(player.Center).type;
+            int type = Framing.GetTileSafely(player.Center).TileType;
             if (type == ModContent.TileType<OmnistationSheet>() || type == ModContent.TileType<OmnistationSheet2>())
             {
                 player.AddBuff(BuffID.Honey, 30 * 60);
