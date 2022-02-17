@@ -1,34 +1,35 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+ALPHA UPDATE - V 2.7.1
+-Fixed Forbidden Scarab and Boom Shurikens
 
-ALPHA UPDATE - V 2.6.4
+ALPHA UPDATE - V 2.7
+-Updated to latest tmod version (fixing insta items)
 -Added NPC happiness
 -Added Deer Amalgamation and Deary Energizer
--ReAdded Fountains changing biomes
--Fixed a bug with Mutant custom prices in some cases
--Fixed Mutant seling the wrong Deerclops summon
+-Fixed Mutant selling the wrong Deerclops summon
 -Added Deerclops to the Deathbringer Fairy and friends
--Fixed Stat Sheet UI not working at all
--Moved Stat Sheet button to avoid covering Journey Mode button
--Fixed all Body Vanities looking totally off
+-Fixed a bug with Mutant custom prices in some cases
+-Squirrel town NPC is available without Souls Mod and can be crafted
+-Items sold by Squirrel have tooltips reflecting this
+-Squirrel sells Recall Potion, Potion of Return, Wormhole Potion
+-ReAdded Fountains changing biomes
+-ReAdded Stat Sheet UI, moved button away from Journey Mode things
 -Added Secret Seeds to the Config, activate them before or after world gen
--Fixed Town NPC toggles not being formatted right
 -Added some headers to the config menu
--Updated Insta House and Dart Box sprites
--Updated THE Abom vanity quote
+-Fixed Town NPC toggles not being formatted right
+-Fixed all Body Vanities looking totally off
 -Added Nature's Gift and Ultrabright Torch recipes
 -Added Ectoplasm recipe from Dungeon Spirit Banner
--Town NPC items can be crafted into Bloodbath Dye instead of Grim Dye
 -Removed duplicate Daybloom recipe
 -Fixed Bamboo Leaf recipe
+-Town NPC items can be crafted into Bloodbath Dye instead of Grim Dye
+-Updated Insta House and Dart Box sprites
+-Updated THE Abom vanity quote
 -Fixed Luck and Greater Luck Potion only giving Lesser Luck buff because Lucky buff gives less luck as duration decreases
--Fixed "Fountain biome" actually locking your biome based on current water appearance
 -Restored debuff display
 -Added a duration-based transparency effect to debuff display (toggleable)
 -Fixed World Token, caught town NPCs not being researchable in Journey
 -Caught town NPCs can only be spawned up to 5 at a time
 -Buffed Stalker Money Trough a lot
--Squirrel town NPC is available without Souls Mod and can be crafted
--Items sold by Squirrel have tooltips reflecting this
--Squirrel sells Recall Potion, Potion of Return, Wormhole Potion
