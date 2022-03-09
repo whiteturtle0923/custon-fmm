@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -63,10 +64,9 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LoveBiome(PrimaryBiomeID.Forest);
-            NPC.Happiness.HateBiome(PrimaryBiomeID.NormalUnderground);
-
-            NPC.Happiness.LikeNPC(GetInstance<LumberJack>().Type);
+            NPC.Happiness.SetBiomeAffection<ForestBiome>(AffectionLevel.Love);
+            NPC.Happiness.SetBiomeAffection<UndergroundBiome>(AffectionLevel.Hate);
+            NPC.Happiness.SetNPCAffection<LumberJack>(AffectionLevel.Like);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

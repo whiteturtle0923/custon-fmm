@@ -134,7 +134,7 @@ namespace Fargowiltas.Items
                 case ItemID.KingSlimeBossBag:
                     if (Main.rand.NextBool(25))
                     {
-                        player.QuickSpawnItem(ItemID.SlimeStaff);
+                        player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.SlimeStaff), ItemID.SlimeStaff);
                     }
 
                     break;
@@ -143,8 +143,8 @@ namespace Fargowiltas.Items
                 //case Pearlwood
                     if (Main.rand.NextBool(40))
                     {
-                        int[] drops = { ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang };
-                        player.QuickSpawnItem(Main.rand.Next(drops));
+                        int drop = Main.rand.Next(new int[] { ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang });
+                        player.QuickSpawnItem(player.GetItemSource_OpenItem(drop), drop);
                     }
 
                     break;
@@ -153,13 +153,13 @@ namespace Fargowiltas.Items
                 //case Titanium
                     if (Main.rand.NextBool(10))
                     {
-                        int[] drops = { ItemID.BandofRegeneration, ItemID.MagicMirror, ItemID.CloudinaBottle, ItemID.EnchantedBoomerang, ItemID.ShoeSpikes, ItemID.FlareGun, ItemID.HermesBoots, ItemID.LavaCharm, ItemID.SandstorminaBottle, ItemID.FlyingCarpet };
-                        player.QuickSpawnItem(Main.rand.Next(drops));
+                        int drop = Main.rand.Next( new int[] { ItemID.BandofRegeneration, ItemID.MagicMirror, ItemID.CloudinaBottle, ItemID.EnchantedBoomerang, ItemID.ShoeSpikes, ItemID.FlareGun, ItemID.HermesBoots, ItemID.LavaCharm, ItemID.SandstorminaBottle, ItemID.FlyingCarpet });
+                        player.QuickSpawnItem(player.GetItemSource_OpenItem(drop), drop);
                     }
 
                     if (Main.rand.NextBool(20) && !Main.hardMode)
                     {
-                        player.QuickSpawnItem(ItemID.Sundial);
+                        player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Sundial), ItemID.Sundial);
                     }
 
                         break;
@@ -169,7 +169,7 @@ namespace Fargowiltas.Items
             {
                 if (Main.rand.NextBool(7))
                 {
-                    player.QuickSpawnItem(ItemID.Valor);
+                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Valor), ItemID.Valor);
                 }
             }
         }

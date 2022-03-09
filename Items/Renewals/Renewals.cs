@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<CorruptNukeProj>(), 0, 0, Main.myPlayer);
 
@@ -27,7 +27,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<CorruptNukeSupremeProj>(), 0, 0, Main.myPlayer);
 
@@ -41,7 +41,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<CrimsonNukeProj>(), 0, 0, Main.myPlayer);
 
@@ -55,7 +55,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<CrimsonNukeSupremeProj>(), 0, 0, Main.myPlayer);
 
@@ -69,7 +69,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<HallowNukeProj>(), 0, 0, Main.myPlayer);
 
@@ -83,7 +83,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<HallowNukeSupremeProj>(), 0, 0, Main.myPlayer);
 
@@ -97,7 +97,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<MushroomNukeProj>(), 0, 0, Main.myPlayer);
 
@@ -111,7 +111,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<MushroomNukeSupremeProj>(), 0, 0, Main.myPlayer);
 
@@ -125,7 +125,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<PurityNukeProj>(), 0, 0, Main.myPlayer);
 
@@ -139,7 +139,7 @@ namespace Fargowiltas.Items.Renewals
         {
         }
 
-        public override bool Shoot(Player player, ProjectileSource_Item_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), position, velocity, ModContent.ProjectileType<PurityNukeSupremeProj>(), 0, 0, Main.myPlayer);
 

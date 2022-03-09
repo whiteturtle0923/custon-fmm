@@ -479,7 +479,7 @@ namespace Fargowiltas
 
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType);
+                int npcID = NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)npcCenter.X, (int)npcCenter.Y, bossType);
                 Main.npc[npcID].Center = npcCenter;
                 Main.npc[npcID].netUpdate2 = true;
 

@@ -41,9 +41,6 @@ namespace Fargowiltas.Items.Summons.Abom
         {
             Sandstorm.StartSandstorm();
 
-            //startSandstormMethod = typeof(Sandstorm).GetMethod("StartSandstorm", BindingFlags.NonPublic | BindingFlags.Static);
-            //startSandstormMethod.Invoke(null, null);
-
             NetMessage.SendData(MessageID.WorldData);
             Main.NewText("A sandstorm has begun.", new Color(175, 75, 255));
             SoundEngine.PlaySound(SoundID.Roar, player.position, 0);

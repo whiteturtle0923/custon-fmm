@@ -147,7 +147,7 @@ namespace Fargowiltas.Projectiles
             }
         }
 
-        public static Projectile NewProjectileDirectSafe(IProjectileSource source, Vector2 pos, Vector2 vel, int type, int damage, float knockback, int owner = 255, float ai0 = 0f, float ai1 = 0f)
+        public static Projectile NewProjectileDirectSafe(IEntitySource source, Vector2 pos, Vector2 vel, int type, int damage, float knockback, int owner = 255, float ai0 = 0f, float ai1 = 0f)
         {
             int p = Projectile.NewProjectile(source, pos, vel, type, damage, knockback, owner, ai0, ai1);
             return (p < Main.maxProjectiles) ? Main.projectile[p] : null;

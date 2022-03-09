@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Localization;
+using Terraria.DataStructures;
 
 namespace Fargowiltas.Items.Tiles
 {
@@ -45,7 +46,7 @@ namespace Fargowiltas.Items.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<CrucibleCosmos>());
+            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<CrucibleCosmos>());
         }
 
         public override void AnimateTile(ref int frame, ref int frameCounter)

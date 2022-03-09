@@ -38,7 +38,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
 
         public override bool? UseItem(Player player)
         {
-            int n = NPC.NewNPC((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250), NPCID.BlueSlime);
+            int n = NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250), NPCID.BlueSlime);
             Main.npc[n].SetDefaults(NPCID.Pinky);
 
             SoundEngine.PlaySound(SoundID.Roar, player.position, 0);

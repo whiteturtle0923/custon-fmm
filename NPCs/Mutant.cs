@@ -11,6 +11,7 @@ using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Projectiles;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Personalities;
 
 namespace Fargowiltas.NPCs
 {
@@ -49,13 +50,13 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LikeBiome(PrimaryBiomeID.Forest);
+            NPC.Happiness.SetBiomeAffection<ForestBiome>(AffectionLevel.Like);
             //NPC.Happiness.LoveBiome(PrimaryBiomeID.Sky); //enable this when it exists
-            NPC.Happiness.DislikeBiome(PrimaryBiomeID.Hallow);
+            NPC.Happiness.SetBiomeAffection<HallowBiome>(AffectionLevel.Dislike);
 
-            NPC.Happiness.LoveNPC(GetInstance<Abominationn>().Type);
-            NPC.Happiness.LikeNPC(GetInstance<Deviantt>().Type);
-            NPC.Happiness.DislikeNPC(GetInstance<LumberJack>().Type);
+            NPC.Happiness.SetNPCAffection<Abominationn>(AffectionLevel.Love);
+            NPC.Happiness.SetNPCAffection<Deviantt>(AffectionLevel.Like);
+            NPC.Happiness.SetNPCAffection<LumberJack>(AffectionLevel.Dislike);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

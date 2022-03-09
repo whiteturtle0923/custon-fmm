@@ -35,7 +35,7 @@ namespace Fargowiltas.Projectiles
             if ((int)Projectile.ai[0] == NPCID.CultistBoss && NPC.downedAncientCultist)
             {
                 // Lunatic Cultist
-                int npc = NPC.NewNPC((int)Projectile.Center.X, (int)Projectile.Center.Y, (int)Projectile.ai[0]);
+                int npc = NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)Projectile.Center.X, (int)Projectile.Center.Y, (int)Projectile.ai[0]);
                 Main.npc[npc].GetGlobalNPC<FargoGlobalNPC>().PillarSpawn = false;
             }
             else if (Projectile.ai[1] == 2)
@@ -43,7 +43,7 @@ namespace Fargowiltas.Projectiles
                 // Death Fairy (Pre-Hardmode bosses)
                 for (int i = 0; i < 7; i++)
                 {
-                    NPC.NewNPC((int)Projectile.Center.X, (int)Projectile.Center.Y, bosses[i]);
+                    NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)Projectile.Center.X, (int)Projectile.Center.Y, bosses[i]);
                 }
 
                 NPC.SpawnWOF(Main.player[Projectile.owner].Center);
@@ -53,7 +53,7 @@ namespace Fargowiltas.Projectiles
                 // Mutant Voodoo (All bosses)
                 foreach (int boss in bosses)
                 {
-                    int spawn = NPC.NewNPC((int)Projectile.Center.X, (int)Projectile.Center.Y, boss);
+                    int spawn = NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)Projectile.Center.X, (int)Projectile.Center.Y, boss);
 
                     if (boss == NPCID.CultistBoss)
                     {
@@ -65,7 +65,7 @@ namespace Fargowiltas.Projectiles
             }
             else
             {
-                NPC.NewNPC((int)Projectile.Center.X, (int)Projectile.Center.Y, (int)Projectile.ai[0]);
+                NPC.NewNPC(NPC.GetBossSpawnSource(Main.myPlayer), (int)Projectile.Center.X, (int)Projectile.Center.Y, (int)Projectile.ai[0]);
             }
         }
     }

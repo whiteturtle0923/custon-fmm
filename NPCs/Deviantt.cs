@@ -4,6 +4,7 @@ using Fargowiltas.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -41,15 +42,15 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LikeBiome(PrimaryBiomeID.Jungle);
+            NPC.Happiness.SetBiomeAffection<JungleBiome>(AffectionLevel.Like);
             //NPC.Happiness.LoveBiome(PrimaryBiomeID.Sky); //enable this when it exists
-            NPC.Happiness.DislikeBiome(PrimaryBiomeID.Snow);
-            NPC.Happiness.HateBiome(PrimaryBiomeID.Desert);
+            NPC.Happiness.SetBiomeAffection<SnowBiome>(AffectionLevel.Dislike);
+            NPC.Happiness.SetBiomeAffection<DesertBiome>(AffectionLevel.Hate);
 
-            NPC.Happiness.LoveNPC(GetInstance<Mutant>().Type);
-            NPC.Happiness.LikeNPC(GetInstance<Abominationn>().Type);
-            NPC.Happiness.DislikeNPC(NPCID.BestiaryGirl);
-            NPC.Happiness.HateNPC(NPCID.Angler);
+            NPC.Happiness.SetNPCAffection<Mutant>(AffectionLevel.Love);
+            NPC.Happiness.SetNPCAffection<Abominationn>(AffectionLevel.Like);
+            NPC.Happiness.SetNPCAffection(NPCID.BestiaryGirl, AffectionLevel.Dislike);
+            NPC.Happiness.SetNPCAffection(NPCID.Angler, AffectionLevel.Hate);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -336,7 +337,7 @@ namespace Fargowiltas.NPCs
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && TryFind("FargowiltasSouls", "CosmosChampion", out ModNPC cosmosChamp) && NPC.AnyNPCs(cosmosChamp.Type))
-                Item.NewItem(NPC.Hitbox, ModContent.ItemType<Items.Tiles.WalkingRick>());
+                Item.NewItem(NPC.GetItemSource_Loot(), NPC.Hitbox, ItemType<Items.Tiles.WalkingRick>());
         }
     }
 }

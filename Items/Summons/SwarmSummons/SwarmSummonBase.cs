@@ -90,13 +90,13 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 //spawn the bosses
                 for (int i = 0; i < Fargowiltas.SwarmSpawned; i++)
                 {
-                    int boss = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), npcType);
+                    int boss = NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), npcType);
                     Main.npc[boss].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
 
                     //spawn the other twin as well
                     if (npcType == NPCID.Retinazer)
                     {
-                        int twin = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.Spazmatism);
+                        int twin = NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), NPCID.Spazmatism);
                         Main.npc[twin].GetGlobalNPC<FargoGlobalNPC>().SwarmActive = true;
                     }
                     else if (npcType == NPCID.TheDestroyer)

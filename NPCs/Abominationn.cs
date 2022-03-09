@@ -10,6 +10,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Fargowiltas.Items.Vanity;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Personalities;
 
 namespace Fargowiltas.NPCs
 {
@@ -44,13 +45,13 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
-            NPC.Happiness.LikeBiome(PrimaryBiomeID.Ocean);
+            NPC.Happiness.SetBiomeAffection<OceanBiome>(AffectionLevel.Like);
             //NPC.Happiness.LoveBiome(PrimaryBiomeID.Sky); //enable this when it exists
-            NPC.Happiness.DislikeBiome(PrimaryBiomeID.Dungeon);
+            NPC.Happiness.SetBiomeAffection<DungeonBiome>(AffectionLevel.Dislike);
 
-            NPC.Happiness.LoveNPC(GetInstance<Mutant>().Type);
-            NPC.Happiness.LikeNPC(GetInstance<Deviantt>().Type);
-            NPC.Happiness.HateNPC(NPCID.Nurse);
+            NPC.Happiness.SetNPCAffection<Mutant>(AffectionLevel.Love);
+            NPC.Happiness.SetNPCAffection<Deviantt>(AffectionLevel.Like);
+            NPC.Happiness.SetNPCAffection(NPCID.Nurse, AffectionLevel.Hate);
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
