@@ -265,7 +265,8 @@ namespace Fargowiltas.NPCs
                     return ShopGroup.Enchant;
                 }
                 else if ((TryFind("FargowiltasSouls", "MasochistSoul", out ModItem masoSoul) && masoSoul.Type == item.type)
-                    || (TryFind("FargowiltasSouls", "AeolusBoots", out ModItem aeolusBoots) && item.type == aeolusBoots.Type))
+                    || (TryFind("FargowiltasSouls", "AeolusBoots", out ModItem aeolusBoots) && item.type == aeolusBoots.Type)
+                    || (TryFind("FargowiltasSouls", "ZephyrBoots", out ModItem zephyrBoots) && item.type == zephyrBoots.Type))
                 {
                     sellType = SquirrelSellType.CraftableMaterialsSold;
                     return ShopGroup.Other;
