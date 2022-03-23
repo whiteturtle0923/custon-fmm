@@ -44,7 +44,7 @@ namespace Fargowiltas.Items.Explosives
             CreateRecipe()
                 .AddRecipeGroup("Wood", 50)
                 .AddIngredient(ItemID.Torch)
-                .AddTile(TileID.Sawmill)
+                .AddTile(TileID.WorkBenches)
                 .Register();
         }
     }
