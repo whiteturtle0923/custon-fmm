@@ -1066,6 +1066,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.Fish, ItemID.FrozenCrate, 5, ItemID.FrozenCrateHard);
 
             //oasis crate
+            AddCrateRecipe(ItemID.SandBoots, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.AncientChisel, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.ThunderSpear, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.ScarabFishingRod, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
