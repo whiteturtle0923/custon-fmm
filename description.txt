@@ -5,6 +5,7 @@ ALPHA UPDATE - V 2.7.3
 -???
 -Added crate recipe for Dunerider Boots
 -InstaHouse now crafted at workbench (was sawmill)
+-Rewrote AddSummon Call for better compatability
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

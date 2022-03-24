@@ -183,15 +183,29 @@ namespace Fargowiltas
                         return SwarmActive;
 
                     case "AddSummon":
-                        if (summonTracker.SummonsFinalized)
-                            throw new Exception($"Call Error: Summons must be added before AddRecipes");
+                        {
+                            if (summonTracker.SummonsFinalized)
+                                throw new Exception($"Call Error: Summons must be added before AddRecipes");
+                            
+                            int itemId;
+                            if (args[2].GetType() == typeof(string))
+                            {
+                                //Logger.Warn("Fargowiltas: You should provide the summon item ID instead of strings (mod name) and (item name)!");
+                                itemId = ModContent.Find<ModItem>(Convert.ToString(args[2]), Convert.ToString(args[3])).Type;
+                            }
+                            else
+                            {
+                                itemId = Convert.ToInt32(args[2]);
+                            }
 
-                        summonTracker.AddSummon(
-                            Convert.ToSingle(args[1]),
-                            Convert.ToInt32(args[2]),
-                            args[4] as Func<bool>,
-                            Convert.ToInt32(args[5])
-                        );
+                            int funcIndex = args[3].GetType() == typeof(Func<bool>) ? 3 : 4;
+                            summonTracker.AddSummon(
+                                Convert.ToSingle(args[1]),
+                                itemId,
+                                args[funcIndex] as Func<bool>,
+                                Convert.ToInt32(args[funcIndex + 1])
+                            );
+                        }
                         break;
 
                     //                    case "AddEventSummon":
