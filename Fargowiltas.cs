@@ -188,17 +188,19 @@ namespace Fargowiltas
                                 throw new Exception($"Call Error: Summons must be added before AddRecipes");
                             
                             int itemId;
+                            int funcIndex;
                             if (args[2].GetType() == typeof(string))
                             {
                                 //Logger.Warn("Fargowiltas: You should provide the summon item ID instead of strings (mod name) and (item name)!");
                                 itemId = ModContent.Find<ModItem>(Convert.ToString(args[2]), Convert.ToString(args[3])).Type;
+                                funcIndex = 4;
                             }
                             else
                             {
                                 itemId = Convert.ToInt32(args[2]);
+                                funcIndex = 3;
                             }
 
-                            int funcIndex = args[3].GetType() == typeof(Func<bool>) ? 3 : 4;
                             summonTracker.AddSummon(
                                 Convert.ToSingle(args[1]),
                                 itemId,
