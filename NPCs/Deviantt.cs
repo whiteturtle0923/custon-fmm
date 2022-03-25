@@ -108,6 +108,16 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
+            if (Main.notTheBeesWorld)
+            {
+                string text = "HA";
+                int max = Main.rand.Next(10, 50);
+                for (int i = 0; i < max; i++)
+                    text += " " + Main.rand.Next(new string[] { "HA", "HA", "HA", "HEE", "HOO", "HEH" });
+                text += "!";
+                return text;
+            }
+
             if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
             {
                 saidDefeatQuote = true;
