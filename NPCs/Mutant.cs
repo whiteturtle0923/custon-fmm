@@ -136,7 +136,7 @@ namespace Fargowiltas.NPCs
             {
                 saidDefeatQuote = true;
 
-                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
                     return "Congratulations. You truly embraced eternity... at least, I think you did? So what happens next? Ascend from this plane of existence? Fight a transcendant cat-like entity? Destroy the world? All the power's in your hands now.";
                 else
                     return "Good work beating me, I guess. I still feel like stretching my wings... Why don't we go at it for real next time?";

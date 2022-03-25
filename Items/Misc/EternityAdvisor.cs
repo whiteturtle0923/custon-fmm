@@ -38,7 +38,7 @@
 
 //        public override bool CanUseItem(Player player)
 //        {
-//            return (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode");
+//            return (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode");
 //        }
 
 //        private string GetBuildText(params int[] args)

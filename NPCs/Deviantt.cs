@@ -90,7 +90,7 @@ namespace Fargowiltas.NPCs
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
                 return false;
 
-            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode")));
+            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() && (FargoWorld.DownedBools["rareEnemy"] || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode")));
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => !toKingStatue;
@@ -161,7 +161,7 @@ namespace Fargowiltas.NPCs
                 dialogue.Add($"What's that? You want to fight {Main.npc[lumberjack].GivenName}? ...even I know better than to try.");
             }
 
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
             {
                 dialogue.Add("Embrace suffering... and while you're at it, embrace another purchase!");
             }
@@ -172,7 +172,7 @@ namespace Fargowiltas.NPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("LegacyInterface.28");
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
             {
                 button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "[c/" + Main.DiscoColor.Hex3() + ":Receive Gift]";
             }
@@ -184,7 +184,7 @@ namespace Fargowiltas.NPCs
             {
                 shop = true;
             }
-            else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+            else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
             {
                 Fargos();
             }
@@ -216,7 +216,7 @@ namespace Fargowiltas.NPCs
                     nextSlot++;
                 }
 
-                /*if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("Masomode"))
+                /*if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
                 {
                     shop.item[nextSlot].SetDefaults(ItemType<Items.Misc.EternityAdvisor>());
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 1);
