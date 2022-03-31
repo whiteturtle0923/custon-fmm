@@ -7,6 +7,7 @@ ALPHA UPDATE - V 2.7.3
 -InstaHouse now crafted at workbench (was sawmill)
 -Rewrote AddSummon Call for better compatability
 -Deviantt reacts to Not The Bees
+-Fixed a dictionary key issue with Deviantt spawn condition
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates
