@@ -2,6 +2,7 @@
 using Fargowiltas.Items.Summons.Deviantt;
 using Fargowiltas.Projectiles;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
@@ -174,7 +175,7 @@ namespace Fargowiltas.NPCs
             button = Language.GetTextValue("LegacyInterface.28");
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
             {
-                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "[c/" + Main.DiscoColor.Hex3() + ":Receive Gift]";
+                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "Receive Gift";
             }
         }
 
@@ -348,6 +349,35 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && TryFind("FargowiltasSouls", "CosmosChampion", out ModNPC cosmosChamp) && NPC.AnyNPCs(cosmosChamp.Type))
                 Item.NewItem(NPC.GetItemSource_Loot(), NPC.Hitbox, ItemType<Items.Tiles.WalkingRick>());
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived"))
+            {
+                Texture2D texture2D13 = Terraria.GameContent.TextureAssets.Npc[NPC.type].Value;
+                Rectangle rectangle = NPC.frame;//new Rectangle(0, y3, texture2D13.Width, num156);
+                Vector2 origin2 = rectangle.Size() / 2f;
+                SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+                Color color26 = Main.DiscoColor;
+                color26.A = 0;
+
+                //for (int i = 0; i < NPCID.Sets.TrailCacheLength[NPC.type]; i++)
+                //{
+                //    Color color27 = color26 * 0.5f;
+                //    color27 *= (float)(NPCID.Sets.TrailCacheLength[NPC.type] - i) / NPCID.Sets.TrailCacheLength[NPC.type];
+                //    Vector2 value4 = NPC.oldPos[i];
+                //    float num165 = NPC.rotation; //NPC.oldRot[i];
+                //    Main.EntitySpriteDraw(texture2D13, value4 + NPC.Size / 2f - Main.screenPosition + new Vector2(0, NPC.gfxOffY - 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), color27, num165, origin2, NPC.scale, effects, 0);
+                //}
+
+                float scale = (Main.mouseTextColor / 200f - 0.35f) * 0.5f + 1f;
+                scale *= NPC.scale;
+                Main.EntitySpriteDraw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY - 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), color26, NPC.rotation, origin2, scale, effects, 0);
+            }
+            //Main.EntitySpriteDraw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0);
+            return true;
         }
     }
 }
