@@ -111,6 +111,13 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode")
+                && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived"))
+            {
+                ModLoader.GetMod("FargowiltasSouls").Call("GiveDevianttGifts");
+                return Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
+            }
+
             if (Main.notTheBeesWorld)
             {
                 string text = "HA";
@@ -177,7 +184,7 @@ namespace Fargowiltas.NPCs
             button = Language.GetTextValue("LegacyInterface.28");
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
             {
-                button2 = (bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "Receive Gift";
+                button2 = "Help"; //(bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived") ? "Help" : "Receive Gift";
             }
         }
 
@@ -189,7 +196,7 @@ namespace Fargowiltas.NPCs
             }
             else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
             {
-                Fargos();
+                Main.npcChatText = Fargowiltas.dialogueTracker.GetDialogue(NPC.GivenName);
             }
         }
 
@@ -328,23 +335,6 @@ namespace Fargowiltas.NPCs
                     Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, 0, default, 0.6f);
                 }
             }
-        }
-
-        private void Fargos()
-        {
-            Player player = Main.LocalPlayer;
-
-            //devi gifts
-            if (!(bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived"))
-            {
-                ModLoader.GetMod("FargowiltasSouls").Call("GiveDevianttGifts");
-
-                Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
-
-                return;
-            }
-
-            Main.npcChatText = Fargowiltas.dialogueTracker.GetDialogue(NPC.GivenName);
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)

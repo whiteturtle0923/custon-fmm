@@ -229,6 +229,12 @@ namespace Fargowiltas.NPCs
 
         public static ShopGroup SquirrelSells(Item item, out SquirrelSellType sellType)
         {
+            if (item.type == ItemID.Zenith)
+            {
+                sellType = SquirrelSellType.CraftableMaterialsSold;
+                return ShopGroup.Other;
+            }
+
             if (item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield || item.type == ItemID.RodofDiscord)
             {
                 sellType = SquirrelSellType.SoldBySquirrel;
