@@ -235,7 +235,7 @@ namespace Fargowiltas.NPCs
                 return ShopGroup.Other;
             }
 
-            if (item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield || item.type == ItemID.RodofDiscord)
+            if (item.makeNPC != 0 || item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield || item.type == ItemID.RodofDiscord)
             {
                 sellType = SquirrelSellType.SoldBySquirrel;
                 return ShopGroup.Other;
@@ -412,7 +412,33 @@ namespace Fargowiltas.NPCs
                     break;
 
                 shop.item[nextSlot].SetDefaults(type);
-                if (type == ItemID.RodofDiscord)
+                if (shop.item[nextSlot].makeNPC != 0)
+                {
+                    shop.item[nextSlot].shopCustomPrice = Item.buyPrice(gold: 10);
+                    int[] pricier = new int[]
+                    {
+                        ItemID.TruffleWorm,
+                        ItemID.EmpressButterfly,
+                        ItemID.GoldBird,
+                        ItemID.GoldBunny,
+                        ItemID.GoldButterfly,
+                        ItemID.GoldDragonfly,
+                        ItemID.GoldFrog,
+                        ItemID.GoldGoldfish,
+                        ItemID.GoldGrasshopper,
+                        ItemID.GoldLadyBug,
+                        ItemID.GoldMouse,
+                        ItemID.GoldSeahorse,
+                        ItemID.SquirrelGold,
+                        ItemID.GoldWaterStrider,
+                        ItemID.GoldWorm
+                    };
+                    if (pricier.Contains(shop.item[nextSlot].type))
+                        shop.item[nextSlot].shopCustomPrice *= 7;
+                    else if (shop.item[nextSlot].ModItem is Items.CaughtNPCs.CaughtNPCItem)
+                        shop.item[nextSlot].shopCustomPrice *= 3;
+                }
+                else if (type == ItemID.RodofDiscord)
                 {
                     shop.item[nextSlot].shopCustomPrice = 250;
                     shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
