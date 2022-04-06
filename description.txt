@@ -14,6 +14,7 @@ ALPHA UPDATE - V 2.7.3
 -Refactored Suspicious Looking Eyedrops to Suspicious Looking Lure
 -Refactored Blood Shrimp to Blood Sushi Platter
 -Refactored Red Devil Voodoo Doll to Demonic Plushie
+-Fixed animated items not animating properly when dropped or used
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

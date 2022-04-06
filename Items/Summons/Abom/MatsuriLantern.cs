@@ -14,6 +14,7 @@ namespace Fargowiltas.Items.Summons.Abom
             Tooltip.SetDefault("Makes every night a Lantern Night when possible");
 
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 4));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
@@ -29,8 +30,6 @@ namespace Fargowiltas.Items.Summons.Abom
             Item.useTime = 30;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = false;
-
-            Item.noUseGraphic = true;
         }
 
         public override bool? UseItem(Player player)

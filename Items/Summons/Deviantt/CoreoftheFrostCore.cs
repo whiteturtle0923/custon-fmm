@@ -16,12 +16,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
             DisplayName.SetDefault("Core of the Frost Core");
             Tooltip.SetDefault("Summons Ice Golem");
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 4));
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            Item.noUseGraphic = true;
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
     }
 }
