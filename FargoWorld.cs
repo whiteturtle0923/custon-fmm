@@ -11,6 +11,7 @@ using Terraria.ModLoader.IO;
 using static Terraria.ModLoader.ModContent;
 using Fargowiltas.Items.Tiles;
 using System;
+using Terraria.GameContent.Events;
 
 namespace Fargowiltas
 {
@@ -25,6 +26,8 @@ namespace Fargowiltas
         internal static bool OverloadFrostMoon;
         internal static bool OverloadMartians;
         internal static bool OverloadedSlimeRain;
+
+        internal static bool Matsuri;
 
         internal static bool[] CurrentSpawnRateTile;
         internal static Dictionary<string, bool> DownedBools = new Dictionary<string, bool>();
@@ -106,6 +109,8 @@ namespace Fargowiltas
             OverloadMartians = false;
             OverloadedSlimeRain = false;
 
+            Matsuri = false;
+
             CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
         }
 
@@ -120,6 +125,7 @@ namespace Fargowiltas
             }
 
             tag.Add("downed", downed);
+            tag.Add("matsuri", Matsuri);
         }
 
         public override void LoadWorldData(TagCompound tag)
@@ -129,6 +135,7 @@ namespace Fargowiltas
             {
                 DownedBools[downedTag] = downed.Contains(downedTag);
             }
+            Matsuri = tag.Get<bool>("matsuri");
         }
 
         public override void NetReceive(BinaryReader reader)
@@ -140,6 +147,7 @@ namespace Fargowiltas
 
             AbomClearCD = reader.ReadInt32();
             WoodChopped = reader.ReadInt32();
+            Matsuri = reader.ReadBoolean();
             Fargowiltas.SwarmActive = reader.ReadBoolean();
         }
 
@@ -152,6 +160,7 @@ namespace Fargowiltas
 
             writer.Write(AbomClearCD);
             writer.Write(WoodChopped);
+            writer.Write(Matsuri);
             writer.Write(Fargowiltas.SwarmActive);
         }
 
@@ -166,6 +175,12 @@ namespace Fargowiltas
             Main.getGoodWorld = GetInstance<FargoConfig>().WorthyWorld;
             Main.tenthAnniversaryWorld = GetInstance<FargoConfig>().CelebrationWorld;
             Main.dontStarveWorld = GetInstance<FargoConfig>().ConstantWorld;
+
+
+            if (Matsuri)
+            {
+                LanternNight.NextNightIsLanternNight = true;
+            }
 
 
             // swarm reset in case something goes wrong

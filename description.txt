@@ -10,6 +10,7 @@ ALPHA UPDATE - V 2.7.3
 -Fixed a dictionary key issue with Deviantt spawn condition
 -Squirrel can sell Zenith materials
 -Squirrel can sell caught town NPCs at the price of robbery
+-Abominationn sells Matsuri Lantern after defeating a boss
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates
