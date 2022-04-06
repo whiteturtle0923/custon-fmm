@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Abom
 {
-    public class BloodShrimp : BaseSummon
+    public class BloodSushiPlatter : BaseSummon
     {
         public override int NPCType => NPCID.BloodNautilus;
 
@@ -12,7 +12,7 @@ namespace Fargowiltas.Items.Summons.Abom
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Blood Shrimp");
+            DisplayName.SetDefault("Blood Sushi Platter");
             Tooltip.SetDefault("Summons Dreadnautilus" +
                                "\nOnly usable at night");
         }

@@ -11,6 +11,9 @@ ALPHA UPDATE - V 2.7.3
 -Squirrel can sell Zenith materials
 -Squirrel can sell caught town NPCs at the price of robbery
 -Abominationn sells Matsuri Lantern after defeating a boss
+-Refactored Suspicious Looking Eyedrops to Suspicious Looking Lure
+-Refactored Blood Shrimp to Blood Sushi Platter
+-Refactored Red Devil Voodoo Doll to Demonic Plushie
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

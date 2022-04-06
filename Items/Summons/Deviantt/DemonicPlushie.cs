@@ -3,7 +3,7 @@ using Terraria.ID;
 
 namespace Fargowiltas.Items.Summons.Deviantt
 {
-    public class RedDevilVoodooDoll : BaseSummon
+    public class DemonicPlushie : BaseSummon
     {
         public override int NPCType => NPCID.RedDevil;
 
@@ -12,7 +12,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Red Devil Voodoo Doll");
+            DisplayName.SetDefault("Demonic Plushie");
             Tooltip.SetDefault("Summons Red Devil" +
                                "\nOnly usable in the Underworld");
         }

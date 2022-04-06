@@ -245,7 +245,7 @@ namespace Fargowiltas.NPCs
             AddItem(Main.hardMode, ItemID.SnowGlobe, Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates, ItemID.PirateMap, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedPirates && FargoWorld.DownedBools["flyingDutchman"], ItemType<PlunderedBooty>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
-            AddItem(FargoWorld.DownedBools["dreadnautilus"], ItemType<BloodShrimp>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
+            AddItem(FargoWorld.DownedBools["dreadnautilus"], ItemType<BloodSushiPlatter>(), Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(NPC.downedMechBossAny, ItemID.SolarTablet, Item.buyPrice(0, 20), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["darkMage"] || NPC.downedMechBossAny, ItemType<ForbiddenTome>(), Item.buyPrice(0, 5), ref shop, ref nextSlot);
             AddItem(FargoWorld.DownedBools["ogre"] || NPC.downedGolemBoss, ItemType<BatteredClub>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
