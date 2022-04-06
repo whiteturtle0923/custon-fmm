@@ -1192,6 +1192,12 @@ namespace Fargowiltas
             AddTile(TileID.DemonAltar).
             Register();
 
+            mod.CreateRecipe(ItemID.PrincessWeapon).
+            AddIngredient(null, "Princess").
+            AddIngredient(ItemID.Ectoplasm).
+            AddTile(TileID.DemonAltar).
+            Register();
+
             mod.CreateRecipe(ItemID.CombatWrench).
             AddIngredient(null, "Mechanic").
             AddIngredient(ItemID.WoodenBoomerang).
