@@ -40,15 +40,15 @@ namespace Fargowiltas.Buffs
                 player.buffImmune[BuffID.StarInBottle] = true;
                 player.manaRegenBonus += 2;
 
-                //gnome (kinda, it jitters and turns off for 1 tick every 3 ticks)
-                Main.SceneMetrics.HasGardenGnome = true;
+                //gnome
+                player.HasGardenGnomeNearby = true;
 
                 //bast
                 Main.SceneMetrics.HasCatBast = false;
                 player.buffImmune[BuffID.CatBast] = true;
                 player.statDefense += 5;
 
-                //ladybug (also jitters for some reason)
+                //ladybug
                 player.ladyBugLuckTimeLeft = 24 * 60 * 60;
 
                 //honey

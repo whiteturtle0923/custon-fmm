@@ -70,32 +70,35 @@ namespace Fargowiltas.UI
             InnerPanel.RemoveAllChildren();
             ColumnCounter = LineCounter = 0;
 
-            AddStat($"Melee Damage: {(int)(player.GetDamage(DamageClass.Melee) * 100)}%", ItemID.CopperBroadsword);
-            AddStat($"Melee Crit: {player.GetCritChance(DamageClass.Melee)}%", ItemID.CopperBroadsword);
-            AddStat($"Melee Speed: {(int)(player.meleeSpeed * 100)}%", ItemID.CopperBroadsword);
-            AddStat($"Ranged Damage: {(int)(player.GetDamage(DamageClass.Ranged) * 100)}%", ItemID.CopperBow);
-            AddStat($"Ranged Crit: {player.GetCritChance(DamageClass.Ranged)}%", ItemID.CopperBow);
-            AddStat($"Magic Damage: {(int)(player.GetDamage(DamageClass.Magic) * 100)}%", ItemID.WandofSparking);
-            AddStat($"Magic Crit: {player.GetCritChance(DamageClass.Magic)}%", ItemID.WandofSparking);
-            AddStat($"Summon Damage: {(int)(player.GetDamage(DamageClass.Summon) * 100)}%", ItemID.SlimeStaff);
+            int Damage(DamageClass damageClass) => (int)(((float)player.GetDamage(DamageClass.Generic) + (float)player.GetDamage(damageClass) - 1) * 100);
+            int Crit(DamageClass damageClass) => player.GetCritChance(DamageClass.Generic) + player.GetCritChance(damageClass);
+
+            AddStat($"Melee Damage: {Damage(DamageClass.Melee)}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Crit: {Crit(DamageClass.Melee)}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Speed: {(int)(1f / player.meleeSpeed * 100)}%", ItemID.CopperBroadsword);
+            AddStat($"Ranged Damage: {Damage(DamageClass.Ranged)}%", ItemID.CopperBow);
+            AddStat($"Ranged Crit: {Crit(DamageClass.Ranged)}%", ItemID.CopperBow);
+            AddStat($"Magic Damage: {Damage(DamageClass.Magic)}%", ItemID.WandofSparking);
+            AddStat($"Magic Crit: {Crit(DamageClass.Magic)}%", ItemID.WandofSparking);
+            AddStat($"Summon Damage: {Damage(DamageClass.Summon)}%", ItemID.SlimeStaff);
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+                AddStat($"Summon Crit: {ModLoader.GetMod("FargowiltasSouls").Call("GetSummonCrit")}%", ItemID.SlimeStaff);
             AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
             AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
-
 
             AddStat($"HP: {player.statLifeMax2}", ItemID.LifeCrystal);
             AddStat($"Defense: {player.statDefense}", ItemID.CobaltShield);
             AddStat($"Damage Reduction: {(int)(player.endurance * 100)}%", ItemID.WormScarf);
-            AddStat($"Life Regen: {player.lifeRegen} HP/second", ItemID.BandofRegeneration);
+            AddStat($"Life Regen: {player.lifeRegen}/sec", ItemID.BandofRegeneration);
             AddStat($"Mana: {player.statManaMax2}", ItemID.ManaCrystal);
-            AddStat($"Mana Regen: {player.manaRegen / 2}/second", ItemID.ManaCrystal);
+            AddStat($"Mana Regen: {player.manaRegen / 2}/sec", ItemID.ManaCrystal);
 
             AddStat($"Armor Penetration: {player.armorPenetration}", ItemID.SharkToothNecklace);
             AddStat($"Aggro: {player.aggro}", ItemID.FleshKnuckles);
             AddStat($"Max Speed: {(int)((player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6)} mph", ItemID.HermesBoots);
-            AddStat($"Wing Time: {player.wingTimeMax / 60} seconds", ItemID.AngelWings);
+            AddStat($"Wing Time: {player.wingTimeMax / 60} sec", ItemID.AngelWings);
 
-            //luck
-
+            AddStat($"Luck: {(int)(player.luck * 100) / 100f}", ItemID.Torch);
         }
 
         public void AddStat(string text, int item = -1)

@@ -17,6 +17,10 @@ ALPHA UPDATE - V 2.7.3
 -Fixed animated items not animating properly when dropped or used
 -Added recipe for Resonance Scepter
 -Added Golden Slime Crown
+-Fixed Stat Sheet not showing damage/crit correctly
+-Stat Sheet can show Luck and has some decimal precision
+-Fixed Omnistation not giving Gnome luck for 1 tick every 4 ticks
+-Fixed regular and Greater Luck Potion giving Lesser Luck effect because of duration-based strength
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

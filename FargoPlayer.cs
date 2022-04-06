@@ -101,7 +101,6 @@ namespace Fargowiltas
         public override void ResetEffects()
         {
             extractSpeed = false;
-            luckPotionBoost = 0f;
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -235,6 +234,16 @@ namespace Fargowiltas
             //Projectile.NewProjectile( pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, type);
         }
 
+        public override void PostUpdateBuffs()
+        {
+            
+        }
+
+        public override void PostUpdateMiscEffects()
+        {
+            
+        }
+
         public override void PostUpdateEquips()
         {
             // Main.NewText(GetInstance<FargoConfig>().Mutant && FargoWorld.DownedBools["boss"] && !FargoGlobalNPC.AnyBossAlive());
@@ -310,9 +319,22 @@ namespace Fargowiltas
             }
         }
 
+        public override bool PreModifyLuck(ref float luck)
+        {
+            if (FargoWorld.Matsuri)
+            {
+                Terraria.GameContent.Events.LanternNight.GenuineLanterns = true;
+                Terraria.GameContent.Events.LanternNight.ManualLanterns = false;
+            }
+
+            return base.PreModifyLuck(ref luck);
+        }
+
         public override void ModifyLuck(ref float luck)
         {
             luck += luckPotionBoost;
+
+            luckPotionBoost = 0; //look nowhere else works ok
         }
 
         int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.Ruler, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone };
