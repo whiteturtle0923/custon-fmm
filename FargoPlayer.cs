@@ -32,7 +32,6 @@ namespace Fargowiltas
 
         public float luckPotionBoost;
 
-
         internal Dictionary<string, bool> FirstDyeIngredients = new Dictionary<string, bool>();
 
         private readonly string[] tags = new string[]
@@ -208,8 +207,6 @@ namespace Fargowiltas
                         break;
                 }
             }
-
-
         }
 
         public void SlimeRainSpawns()
@@ -232,16 +229,6 @@ namespace Fargowiltas
             Vector2 pos = new Vector2((int)Player.position.X + Main.rand.Next(-800, 800), (int)Player.position.Y + Main.rand.Next(-800, -250));
 
             //Projectile.NewProjectile( pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, type);
-        }
-
-        public override void PostUpdateBuffs()
-        {
-            
-        }
-
-        public override void PostUpdateMiscEffects()
-        {
-            
         }
 
         public override void PostUpdateEquips()

@@ -18,7 +18,7 @@ ALPHA UPDATE - V 2.7.3
 -Added recipe for Resonance Scepter
 -Added Golden Slime Crown
 -Fixed Stat Sheet not showing damage/crit correctly
--Stat Sheet can show Luck and has some decimal precision
+-Stat Sheet shows Luck
 -Fixed Omnistation not giving Gnome luck for 1 tick every 4 ticks
 -Fixed regular and Greater Luck Potion giving Lesser Luck effect because of duration-based strength
 
