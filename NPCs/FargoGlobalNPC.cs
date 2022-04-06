@@ -1347,7 +1347,10 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.RedDevil:
                     FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "redDevil");
+                    break;
 
+                case NPCID.GoldenSlime:
+                    FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "goldenSlime");
                     break;
 
                 default:

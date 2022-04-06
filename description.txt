@@ -16,6 +16,7 @@ ALPHA UPDATE - V 2.7.3
 -Refactored Red Devil Voodoo Doll to Demonic Plushie
 -Fixed animated items not animating properly when dropped or used
 -Added recipe for Resonance Scepter
+-Added Golden Slime Crown
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

@@ -80,6 +80,7 @@ namespace Fargowiltas
             "dreadnautilus",
             "gnome",
             "redDevil",
+            "goldenSlime"
        };
 
         public override void PreWorldGen()
