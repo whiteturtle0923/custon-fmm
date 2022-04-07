@@ -12,9 +12,9 @@ namespace Fargowiltas.UI
     public class StatSheetUI : UIState
     {
         public const int BackWidth = 660;
-        public const int BackHeight = 251 + 28; // 28 = search bar height (26) + padding (2)
+        public const int BackHeight = 25 * HowManyPerColumn + 26 + 4; //row height * stat rows + search bar + padding
         public const int HowManyPerColumn = 11;
-        public const int HowManyColumns = 3;
+        public const int HowManyColumns = 2;
 
         public int LineCounter;
         public int ColumnCounter;
@@ -100,7 +100,7 @@ namespace Fargowiltas.UI
 
             AddStat(player.wingTimeMax / 60 > 60 || player.empressBrooch ? "Wing Time: Yes" : $"Wing Time: {Math.Round(player.wingTimeMax / 60.0, 2)} sec", ItemID.AngelWings);
 
-            AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.Torch);
+            AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.TorchGodsFavor);
         }
 
         public void AddStat(string text, int item = -1)
