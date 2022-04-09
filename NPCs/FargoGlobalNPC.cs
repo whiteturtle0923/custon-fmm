@@ -86,12 +86,16 @@ namespace Fargowiltas.NPCs
         //            }
         //        }
 
-        //        public override bool? CanHitNPC(NPC npc, NPC target)
-        //        {
-        //            if (target.dontTakeDamage && target.type == NPCType<Squirrel>())
-        //                return false;
-        //            return base.CanHitNPC(npc, target);
-        //        }
+        public override bool? CanHitNPC(NPC npc, NPC target)
+        {
+            if (target.dontTakeDamage && target.type == NPCType<Squirrel>())
+                return false;
+            
+            if (target.friendly && GetInstance<FargoConfig>().SaferBoundNPCs && (target.type == NPCID.BoundGoblin || target.type == NPCID.BoundMechanic || target.type == NPCID.BoundWizard || target.type == NPCID.BartenderUnconscious || target.type == NPCID.GolferRescue))
+                return false;
+            
+            return base.CanHitNPC(npc, target);
+        }
 
         public override bool PreAI(NPC npc)
         {

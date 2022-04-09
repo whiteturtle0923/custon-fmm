@@ -12,6 +12,7 @@ using System;
 using System.Linq;
 using Terraria.ModLoader.IO;
 using Fargowiltas.Projectiles;
+using Fargowiltas.Items;
 
 ////using Fargowiltas.Toggler;
 
@@ -122,6 +123,14 @@ namespace Fargowiltas
             if (Fargowiltas.StatKey.JustPressed)
             {
                 Fargowiltas.UserInterfaceManager.ToggleStatSheet();
+            }
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            foreach (Item item in Player.bank.item)
+            {
+                FargoGlobalItem.TryUnlimBuff(item, Player);
             }
         }
 

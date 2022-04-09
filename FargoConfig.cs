@@ -38,6 +38,10 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool NPCSales;
 
+        [Label("[i:1274] Rescuable Town NPCs take no contact damage")]
+        [DefaultValue(true)]
+        public bool SaferBoundNPCs;
+
         [Label("[i:239] Mark items sold by Squirrel")]
         [DefaultValue(true)]
         public bool SquirrelTooltips;
@@ -81,7 +85,7 @@ namespace Fargowiltas
         [DefaultValue(true)]
         public bool UnlimitedConsumableWeapons;
 
-        [Label("[i:292] Unlimited Potion/Class Station Buffs at 30/15+ Stack")]
+        [Label("[i:292] Unlimited Potion/Class Station Buffs at 30/15+ Stack in Inventory or Piggy Bank")]
         [DefaultValue(true)]
         public bool UnlimitedPotionBuffsOn120;
 

@@ -21,6 +21,8 @@ ALPHA UPDATE - V 2.7.3
 -Stat Sheet shows Luck
 -Fixed Omnistation not giving Gnome luck for 1 tick every 4 ticks
 -Fixed regular and Greater Luck Potion giving Lesser Luck effect because of duration-based strength
+-Unlimited buffs work from Piggy Bank
+-New toggleable feature, bound NPCs take no contact damage
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

@@ -211,33 +211,35 @@ namespace Fargowiltas.Items
             return base.CanUseItem(item, player);
         }
 
+        public static void TryUnlimBuff(Item item, Player player)
+    {
+            if (item.stack >= 30 && item.buffType != 0 && GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            {
+                player.AddBuff(item.buffType, 2);
+
+                //compensate to account for luck potion being weaker based on remaining duration wtf
+                if (item.type == ItemID.LuckPotion)
+                    player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.1f);
+                else if (item.type == ItemID.LuckPotionGreater)
+                    player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.2f);
+            }
+
+            if (item.stack >= 15 && GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            {
+                if (item.type == ItemID.SharpeningStation)
+                    player.AddBuff(BuffID.Sharpened, 2);
+                else if (item.type == ItemID.AmmoBox)
+                    player.AddBuff(BuffID.AmmoBox, 2);
+                else if (item.type == ItemID.CrystalBall)
+                    player.AddBuff(BuffID.Clairvoyance, 2);
+                else if (item.type == ItemID.BewitchingTable)
+                    player.AddBuff(BuffID.Bewitched, 2);
+            }
+        }
+
         public override void UpdateInventory(Item item, Player player)
         {
-            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
-            {
-                if (item.stack >= 30 && item.buffType != 0)
-                {
-                    player.AddBuff(item.buffType, 2);
-
-                    //compensate to account for luck potion being weaker based on remaining duration wtf
-                    if (item.type == ItemID.LuckPotion)
-                        player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.1f);
-                    else if (item.type == ItemID.LuckPotionGreater)
-                        player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.2f);
-                }
-
-                if (item.stack >= 15)
-                {
-                    if (item.type == ItemID.SharpeningStation)
-                        player.AddBuff(BuffID.Sharpened, 2);
-                    else if (item.type == ItemID.AmmoBox)
-                        player.AddBuff(BuffID.AmmoBox, 2);
-                    else if (item.type == ItemID.CrystalBall)
-                        player.AddBuff(BuffID.Clairvoyance, 2);
-                    else if (item.type == ItemID.BewitchingTable)
-                        player.AddBuff(BuffID.Bewitched, 2);
-                }
-            }
+            TryUnlimBuff(item, player);
         }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)

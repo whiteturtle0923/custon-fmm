@@ -100,7 +100,7 @@ namespace Fargowiltas.UI
 
             AddStat(player.wingTimeMax / 60 > 60 || player.empressBrooch ? "Wing Time: Yes" : $"Wing Time: {Math.Round(player.wingTimeMax / 60.0, 2)} sec", ItemID.AngelWings);
 
-            AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.TorchGodsFavor);
+            AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.Torch);
         }
 
         public void AddStat(string text, int item = -1)
