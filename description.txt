@@ -24,7 +24,7 @@ ALPHA UPDATE - V 2.7.3
 -Unlimited buffs work from Piggy Bank
 -New toggleable feature, bound NPCs take no contact damage
 -Added recipes to convert Pharaoh outfit into Sandstorm in Bottle or Flying Carpet
--Added recipes to allow adding Whoopie Cushion to Cloud in a Balloon and White Horseshoe Balloon
+-Added recipes to allow adding Whoopie Cushion to Cloud in a Balloon and Blue Horseshoe Balloon
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

@@ -1828,7 +1828,7 @@ namespace Fargowiltas
                .Register();
 
             mod.CreateRecipe(ItemID.BalloonHorseshoeFart)
-               .AddIngredient(ItemID.WhiteHorseshoeBalloon)
+               .AddIngredient(ItemID.BlueHorseshoeBalloon)
                .AddIngredient(ItemID.WhoopieCushion)
                .AddTile(TileID.TinkerersWorkbench)
                .Register();
