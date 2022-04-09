@@ -1807,6 +1807,31 @@ namespace Fargowiltas
                .AddCondition(Recipe.Condition.InGraveyardBiome)
                .Register();
 
+            mod.CreateRecipe(ItemID.SandstorminaBottle)
+               .AddIngredient(ItemID.PharaohsMask)
+               .AddIngredient(ItemID.PharaohsRobe)
+               .AddIngredient(ItemID.GoldCoin, 10)
+               .AddTile(TileID.TinkerersWorkbench)
+               .Register();
+
+            mod.CreateRecipe(ItemID.FlyingCarpet)
+               .AddIngredient(ItemID.PharaohsMask)
+               .AddIngredient(ItemID.PharaohsRobe)
+               .AddIngredient(ItemID.GoldCoin, 10)
+               .AddTile(TileID.TinkerersWorkbench)
+               .Register();
+
+            mod.CreateRecipe(ItemID.FartInABalloon)
+               .AddIngredient(ItemID.CloudinaBalloon)
+               .AddIngredient(ItemID.WhoopieCushion)
+               .AddTile(TileID.TinkerersWorkbench)
+               .Register();
+
+            mod.CreateRecipe(ItemID.BalloonHorseshoeFart)
+               .AddIngredient(ItemID.WhiteHorseshoeBalloon)
+               .AddIngredient(ItemID.WhoopieCushion)
+               .AddTile(TileID.TinkerersWorkbench)
+               .Register();
         }
 
         //private static void AddFurnitureRecipes()
