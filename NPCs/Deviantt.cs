@@ -128,6 +128,11 @@ namespace Fargowiltas.NPCs
                 return text;
             }
 
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EridanusArmor") && Main.rand.NextBool())
+            {
+                return "UWAH! Please don't hurt... wait, it's just you. Don't scare me like that! And why is that THING following you?!";
+            }
+
             if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
             {
                 saidDefeatQuote = true;
