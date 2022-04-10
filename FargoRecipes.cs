@@ -304,6 +304,21 @@ namespace Fargowiltas
                 ItemID.RedDragonfly,
                 ItemID.YellowDragonfly);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDragonfly", group);
+
+            //tombstones
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tombstone",
+                ItemID.CrossGraveMarker,
+                ItemID.Headstone,
+                ItemID.GraveMarker,
+                ItemID.Gravestone,
+                ItemID.Obelisk,
+                ItemID.RichGravestone1,
+                ItemID.RichGravestone2,
+                ItemID.RichGravestone3,
+                ItemID.RichGravestone4,
+                ItemID.RichGravestone5,
+                ItemID.Tombstone);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyTombstone", group);
         }
 
         public void AddRecipes()

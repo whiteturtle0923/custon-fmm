@@ -45,6 +45,7 @@ namespace Fargowiltas.Items.Tiles
                 .AddIngredient(ItemID.SkyMill)
                 .AddIngredient(ItemID.Solidifier)
                 .AddIngredient(ItemID.BoneWelder)
+                .AddRecipeGroup("Fargowiltas:AnyTombstone")
                 .AddRecipeGroup("Fargowiltas:AnyDemonAltar")
                 .AddTile(TileID.WorkBenches)
                 .Register();

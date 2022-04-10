@@ -32,6 +32,7 @@ namespace Fargowiltas
         internal bool autoRevertSelectedItem = false;
 
         public float luckPotionBoost;
+        public float ElementalAssemblerNearby;
 
         internal Dictionary<string, bool> FirstDyeIngredients = new Dictionary<string, bool>();
 
@@ -131,6 +132,16 @@ namespace Fargowiltas
             foreach (Item item in Player.bank.item)
             {
                 FargoGlobalItem.TryUnlimBuff(item, Player);
+            }
+        }
+
+        public override void PostUpdateMiscEffects()
+        {
+            if (ElementalAssemblerNearby > 0)
+            {
+                ElementalAssemblerNearby -= 1;
+                Player.alchemyTable = true;
+                //Player.ZoneGraveyard = true; //i am in fucking AGONY
             }
         }
 

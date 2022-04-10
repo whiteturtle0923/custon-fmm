@@ -262,12 +262,12 @@ namespace Fargowiltas
             FargoRecipes.AddRecipeGroups();
         }
 
-                public override void HandlePacket(BinaryReader reader, int whoAmI)
-                {
-                    byte messageType = reader.ReadByte();
+        public override void HandlePacket(BinaryReader reader, int whoAmI)
+        {
+            byte messageType = reader.ReadByte();
 
-                    switch (messageType)
-                    {
+            switch (messageType)
+            {
                 // Regal statue
                 case 1:
                     FargoWorld.CurrentSpawnRateTile[whoAmI] = reader.ReadBoolean();
@@ -326,9 +326,9 @@ namespace Fargowiltas
                     break;
 
                 default:
-                            break;
-                    }
-                }
+                    break;
+            }
+        }
 
         internal static bool ClearEvents(ref bool eventOccurring)
         {
