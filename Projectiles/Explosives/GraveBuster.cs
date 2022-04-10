@@ -9,11 +9,11 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Projectiles.Explosives
 {
-    public class CityBuster : ModProjectile
+    public class GraveBuster : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("City Buster");
+            DisplayName.SetDefault("Grave Buster");
         }
 
         public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace Fargowiltas.Projectiles.Explosives
             Projectile.aiStyle = 16;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 300;
+            Projectile.timeLeft = 180;
         }
 
         public override bool? CanDamage()
@@ -42,11 +42,11 @@ namespace Fargowiltas.Projectiles.Explosives
             }
 
             Vector2 position = Projectile.Center;
-            int radius = 60;     //bigger = boomer
+            int radius = 120;     //bigger = boomer
 
             for (int x = -radius; x <= radius; x++)
             {
-                for (int y = -radius * 2; y <= 0; y++)
+                for (int y = -radius; y <= radius; y++)
                 {
                     int xPosition = (int)(x + position.X / 16.0f);
                     int yPosition = (int)(y + position.Y / 16.0f);
@@ -55,13 +55,12 @@ namespace Fargowiltas.Projectiles.Explosives
                         continue;
 
                     Tile tile = Main.tile[xPosition, yPosition];
-                    if (tile == null)
-                        continue;
 
                     if (!FargoGlobalProjectile.OkayToDestroyTile(tile) || FargoGlobalProjectile.TileIsLiterallyAir(tile))
                         continue;
 
-                    FargoGlobalTile.ClearTileAndLiquid(xPosition, yPosition);
+                    if (tile.TileType == TileID.Tombstones)
+                        tile.Clear(TileDataType.Tile);
                 }
             }
 

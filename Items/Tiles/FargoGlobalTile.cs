@@ -120,6 +120,29 @@ namespace Fargowiltas.Tiles
             return Point16.NegativeOne;
         }
 
+        internal static void ClearTileAndLiquid(int x, int y, bool sendData = true)
+        {
+            FindChestTopLeft(x, y, true);
+
+            Tile tile = Main.tile[x, y];
+            bool hadLiquid = tile.LiquidAmount != 0;
+            WorldGen.KillTile(x, y, noItem: true);
+
+            tile.Clear(TileDataType.Tile);
+            tile.Clear(TileDataType.Liquid);
+
+            //tile.lava(false);
+            //tile.honey(false);
+
+            if (Main.netMode == NetmodeID.Server)
+            {
+                if (hadLiquid)
+                    NetMessage.sendWater(x, y);
+                if (sendData)
+                    NetMessage.SendTileSquare(-1, x, y, 1);
+            }
+        }
+
         internal static void ClearEverything(int x, int y, bool sendData = true)
         {
             FindChestTopLeft(x, y, true);
