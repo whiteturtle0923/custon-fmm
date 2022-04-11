@@ -105,7 +105,7 @@ namespace Fargowiltas.NPCs
 
         public override string TownNPCName()
         {
-            string[] names = { "Akira", "Remi", "Bloom", "Yuuki", "Seira", "Koi", "Elly", "Lori", "Calius", "Teri", "Artt" };
+            string[] names = { "Akira", "Remi", "Saku", "Seira", "Koi", "Elly", "Lori", "Calia", "Teri", "Artt", "Flan", "Shion", "Tewi" };
             return Main.rand.Next(names);
         }
 
@@ -163,7 +163,7 @@ namespace Fargowiltas.NPCs
                 "The more rare things you kill, the more stuff I sell! Simple, right?",
             };
 
-            int mutant = NPC.FindFirstNPC(ModContent.NPCType<Mutant>());
+            int mutant = NPC.FindFirstNPC(NPCType<Mutant>());
             if (mutant != -1)
             {
                 dialogue.Add($"Can you tell {Main.npc[mutant].GivenName} to put some clothes on?");
@@ -174,6 +174,12 @@ namespace Fargowiltas.NPCs
             if (lumberjack != -1)
             {
                 dialogue.Add($"What's that? You want to fight {Main.npc[lumberjack].GivenName}? ...even I know better than to try.");
+            }
+
+            int princess = NPC.FindFirstNPC(NPCID.Princess);
+            if (princess != -1)
+            {
+                dialogue.Add($"Ooh, I need to drop by {Main.npc[princess].GivenName}'s place again soon! Now there's a girl who gets me!");
             }
 
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
@@ -343,7 +349,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        public override void OnKill()
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && TryFind("FargowiltasSouls", "CosmosChampion", out ModNPC cosmosChamp) && NPC.AnyNPCs(cosmosChamp.Type))
                 Item.NewItem(NPC.GetItemSource_Loot(), NPC.Hitbox, ItemType<Items.Tiles.WalkingRick>());

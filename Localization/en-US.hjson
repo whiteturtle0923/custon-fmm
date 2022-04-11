@@ -21,10 +21,11 @@ Mods: {
 		TownNPCMood: {
 			Deviantt: {
 				Content: I'm feeling good!
-				NoHome: Do you have any spare housing? I wouldn't even mind a jail cell over being left out in the cold!
+				NoHome: Do you have any spare housing? Please? Anything? Even a jail cell is fine with me!
 				LoveSpace: Peace and quiet means I get to live it up!
 				FarFromHome: I think my house was that way... unless you're taking me somewhere?
-				DislikeCrowded: I can't kick my legs out and relax without hitting someone...
+				DislikeCrowded: The more the merrier and all, but I'm starting to feel a lil' overcrowded.
+				HateCrowded: I can't kick my legs out and relax without hitting someone...
 				LikeBiome: "Ha ha ha, something about {BiomeName} just makes me laugh uncontrollably for some reason!"
 				LoveBiome: Living this high up reminds me of how we got here!
 				DislikeBiome: Can we go somewhere warmer than this?
@@ -39,7 +40,8 @@ Mods: {
 				NoHome: Give me a home and I'll lower my prices.
 				LoveSpace: Not being crowded around is good.
 				FarFromHome: I'd fly back to my house, but I don't really feel like being watched.
-				DislikeCrowded: Do you know how hard it is to carry a scythe without cutting anyone in a crowded space?
+				DislikeCrowded: There's too many humans around, they keep poking at my face.
+				HateCrowded: Do you know how hard it is to carry a scythe and not cut anyone with this many people around?
 				LikeBiome: "I like {BiomeName}. It's home to a fine opponent with my brother's wings."
 				LoveBiome: "I like {BiomeName} a lot. We came here first before landing."
 				DislikeBiome: "Too many weak enemies live in {BiomeName}."
@@ -55,6 +57,7 @@ Mods: {
 				LoveSpace: Downtime between boss fights is nice. I don't get that with lots of humans around.
 				FarFromHome: I'll eat slimes and zombies, but eating human food at home would be good too.
 				DislikeCrowded: There's too many people here. And they seem upset I keep winning our staring contests.
+				HateCrowded: '''"If one more human in this cramped town bumps into my brain again... never mind."'''
 				LikeBiome: "We all start in {BiomeName}. It's a good place."
 				LoveBiome: "Living up here is great, but when are you going to find my temple?"
 				DislikeBiome: "Is {BiomeName} supposed to impress me? The big fairy doesn't, that's for sure."
@@ -69,7 +72,8 @@ Mods: {
 				NoHome: No lumberjack is complete without a log cabin to call home!
 				LoveSpace: Fewer people around means I can swing my axe all I want with nobody in the way.
 				FarFromHome: This is too far from my cabin. I should get back and sharpen my axe.
-				DislikeCrowded: Too many people around. Nothing ruins a good chopping session more than chopping down someone.
+				DislikeCrowded: I think it's getting crowded around here.
+				HateCrowded: Too many people around. Nothing ruins a good chopping session more than chopping down someone.
 				LikeBiome: "Plenty of trees to chop in {BiomeName} makes for a happy lumberjack."
 				LoveBiome: "There's nothing like good old fashioned woodchopping in {BiomeName}!"
 				DislikeBiome: "There's nothing to chop in {BiomeName}!"
@@ -85,6 +89,7 @@ Mods: {
 				LoveSpace: *happy uncrowded squeak*
 				FarFromHome: *sad lost squeak*
 				DislikeCrowded: *sad crowded squeak*
+				HateCrowded: *very sad crowded squeak*
 				LikeBiome: *happy squeak about {BiomeName}*
 				LoveBiome: *very happy squeak about {BiomeName}*
 				DislikeBiome: *sad squeak about {BiomeName}*
