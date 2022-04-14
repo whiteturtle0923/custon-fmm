@@ -26,7 +26,6 @@ ALPHA UPDATE - V 2.7.3
 -Added recipes to convert Pharaoh outfit into Sandstorm in Bottle or Flying Carpet
 -Added recipes to allow adding Whoopie Cushion to Cloud in a Balloon and Blue Horseshoe Balloon
 -Fixed Elemental Assembler not giving Alchemy Table effect properly
--Added Tombstone to Elemental Assembler
 -Added Grave Buster
 -Added Goblin Scrap (Goblin Scout spawner)
 -Added NPC Hate Crowded dialogue
