@@ -151,6 +151,11 @@ namespace Fargowiltas.NPCs
                 "I have slain one thousand humans! Huh? You're a human? There's so much blood on your hands..",
             };
 
+            if (Main.LocalPlayer.ZoneGraveyard)
+            {
+                dialogue.Add("I hope all these graves lying around don't belong to you.");
+            }
+
             int mechanic = NPC.FindFirstNPC(NPCID.Mechanic);
             if (mechanic != -1)
             {

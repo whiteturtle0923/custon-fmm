@@ -184,12 +184,6 @@ namespace Fargowiltas.NPCs
                 dialogue.Add($"What's that? You want to fight {Main.npc[lumberjack].GivenName}? ...even I know better than to try.");
             }
 
-            int princess = NPC.FindFirstNPC(NPCID.Princess);
-            if (princess != -1)
-            {
-                dialogue.Add($"Ooh, I need to drop by {Main.npc[princess].GivenName}'s place again soon! Now there's a girl who gets me!");
-            }
-
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
             {
                 dialogue.Add("Embrace suffering... and while you're at it, embrace another purchase!");

@@ -31,6 +31,7 @@ Mods: {
 				DislikeBiome: Can we go somewhere warmer than this?
 				HateBiome: I wanna live elsewhere! This is awful, I'm sweating up a storm!
 				LikeNPC: "{NPCName} is my big-but-not-biggest bro. He's pretty cool!"
+				LikeNPC_Princess: "I gotta visit {NPCName} again sometime, there's a girl who gets me!"
 				LoveNPC: "{NPCName} is here! That's my big bro, isn't he just the coolest?!"
 				DislikeNPC: "I can't stand girls like {NPCName}, feels like she's just here for a certain audience."
 				HateNPC: "Just between us. Have you ever considered throwing {NPCName} back where you found him?"
@@ -42,14 +43,15 @@ Mods: {
 				FarFromHome: I'd fly back to my house, but I don't really feel like being watched.
 				DislikeCrowded: There's too many humans around, they keep poking at my face.
 				HateCrowded: Do you know how hard it is to carry a scythe and not cut anyone with this many people around?
-				LikeBiome: "I like {BiomeName}. It's home to a fine opponent with my brother's wings."
-				LoveBiome: "I like {BiomeName} a lot. We came here first before landing."
+				LikeBiome: "I like {BiomeName}, it's home to a fine opponent with my brother's wings."
+				LoveBiome: "I like {BiomeName} a lot, we came here first before landing."
 				DislikeBiome: "Too many weak enemies live in {BiomeName}."
 				HateBiome: "I dislike {BiomeName} a lot."
-				LikeNPC: "That one girl, {NPCName}, she is my sister... I've defeated more events than her, but she's okay."
-				LoveNPC: "That one guy, {NPCName}, he is my brother... I've fought more bosses than him, but he's strong."
+				LikeNPC: "{NPCName} is my sister... I've defeated more events than her, but she's okay."
+				LikeNPC_Princess: "{NPCName} is okay."
+				LoveNPC: "{NPCName} is my brother... I've fought more bosses than him, but he's strong."
 				DislikeNPC: "I do not like {NPCName}."
-				HateNPC: "{NPCName} ruins the glory of battle. I don't want her near me."
+				HateNPC: "{NPCName} ruins the glory of battle, I don't want her near me."
 			}
 			Mutant: {
 				Content: Thanks for the house, I guess.
@@ -57,13 +59,14 @@ Mods: {
 				LoveSpace: Downtime between boss fights is nice. I don't get that with lots of humans around.
 				FarFromHome: I'll eat slimes and zombies, but eating human food at home would be good too.
 				DislikeCrowded: There's too many people here. And they seem upset I keep winning our staring contests.
-				HateCrowded: '''"If one more human in this cramped town bumps into my brain again... never mind."'''
-				LikeBiome: "We all start in {BiomeName}. It's a good place."
+				HateCrowded: If one more human in this cramped town bumps into my brain again... never mind.
+				LikeBiome: "We all start in {BiomeName}, it's a good place."
 				LoveBiome: "Living up here is great, but when are you going to find my temple?"
 				DislikeBiome: "Is {BiomeName} supposed to impress me? The big fairy doesn't, that's for sure."
 				HateBiome: "Do you want pricier summons? Making me live in {BiomeName} means pricier summons."
 				LikeNPC: "I forget when {NPCName} joined the family, but she's earned her place."
-				LoveNPC: "{NPCName} and I fought through many battles. Too bad there's still no opportunity to do it again."
+				LikeNPC_Princess: "{NPCName} seems friendly."
+				LoveNPC: "{NPCName} and I fought through many battles, too bad there's no opportunity to do it again."
 				DislikeNPC: "Why is {NPCName} here? It's okay, me, just don't look him in the eye and he can't scare you..."
 				HateNPC: "{NPCName} needs to leave before my Penetrator makes it happen."
 			}
@@ -78,7 +81,8 @@ Mods: {
 				LoveBiome: "There's nothing like good old fashioned woodchopping in {BiomeName}!"
 				DislikeBiome: "There's nothing to chop in {BiomeName}!"
 				HateBiome: "There's nothing to chop in {BiomeName}!"
-				LikeNPC: "I chop down trees, {NPCName} eats the acorns and plants seeds to grow more. We're the perfect duo."
+				LikeNPC: "I chop down trees, {NPCName} plants more, we're the perfect duo."
+				LikeNPC_Princess: "{NPCName} is better with an axe than I expected!"
 				LoveNPC: "I'm glad {NPCName} understands the beauty of felling a big tree."
 				DislikeNPC: "{NPCName} told me to start hugging trees... so I taught my axe to hug trees for me."
 				HateNPC: "{NPCName} doesn't get me at all. Bombing a forest isn't woodchopping!"
@@ -95,10 +99,20 @@ Mods: {
 				DislikeBiome: *sad squeak about {BiomeName}*
 				HateBiome: *very sad squeak about {BiomeName}*
 				LikeNPC: *happy squeak about {NPCName}*
+				LikeNPC_Princess: *happy squeak about {NPCName}*
 				LoveNPC: *very happy squeak about {NPCName}*
 				DislikeNPC: *angry squeak about {NPCName}*
 				HateNPC: *very angry squeak about {NPCName}*
 			}
 		}
 	}
+}
+
+# this doesnt work rn
+TownNPCMood_Princess: {
+	LoveNPC_Fargowiltas/Abominationn: "{NPCName} tells great stories about his battles!"
+	LoveNPC_Fargowiltas/Deviantt: "{NPCName} is so fun, we could talk for hours!"
+	LoveNPC_Fargowiltas/Mutant: "{NPCName} has some amazing items, they're great for meeting new friends!"
+	LoveNPC_Fargowiltas/Squirrel: "{NPCName} is really adorable!"
+	LoveNPC_Fargowiltas/LumberJack: "{NPCName} is so strong, I want to try chopping wood some time!"
 }

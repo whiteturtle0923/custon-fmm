@@ -30,6 +30,7 @@ ALPHA UPDATE - V 2.7.3
 -Added Grave Buster
 -Added Goblin Scrap (Goblin Scout spawner)
 -Added NPC Hate Crowded dialogue
+-Added Princess dialogue
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates
