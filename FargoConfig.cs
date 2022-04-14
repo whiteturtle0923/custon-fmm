@@ -144,6 +144,10 @@ namespace Fargowiltas
         [Slider]
         public float DebuffFaderRatio;
 
+        //[Label("[i:1612] Debuff Display Duration Countdown")]
+        //[DefaultValue(true)]
+        //public bool DebuffCountdown;
+
         [Label("[i:1309] Transparent Minions & Support Attacks")]
         [DefaultValue(1f)]
         [Slider]

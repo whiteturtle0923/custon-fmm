@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI.Chat;
 
 namespace Fargowiltas
 {
@@ -76,11 +78,13 @@ namespace Fargowiltas
                     Texture2D buffIcon = Terraria.GameContent.TextureAssets.Buff[debuffID].Value;
                     Color buffColor = Color.White * ModContent.GetInstance<FargoConfig>().DebuffOpacity;
 
+
+                    int index = Array.FindIndex(player.buffType, id => id == debuffID);
+                    int currentDuration = player.buffTime[index];
+
                     float faderRatio = ModContent.GetInstance<FargoConfig>().DebuffFaderRatio;
                     if (faderRatio > 0)
                     {
-                        int index = Array.FindIndex(player.buffType, id => id == debuffID);
-                        int currentDuration = player.buffTime[index];
                         if (currentDuration <= 1) //probably either a persistent debuff or one that will clear soon
                         {
                             if (memorizedDebuffDurations.TryGetValue(debuffID, out Tuple<int, int> knownDurations))
@@ -130,6 +134,20 @@ namespace Fargowiltas
                         buffIcon, drawPos, buffIcon.Bounds, buffColor,
                         (player.gravDir > 0 ? 0 : MathHelper.Pi) - player.fullRotation, buffIcon.Bounds.Size() / 2,
                         1f, player.gravDir > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0));
+
+                    //if (ModContent.GetInstance<FargoConfig>().DebuffCountdown)
+                    //{
+                    //    Vector2 textPos = drawPos;
+                    //    ChatManager.DrawColorCodedStringWithShadow(
+                    //        Main.spriteBatch, 
+                    //        FontAssets.ItemStack.Value, 
+                    //        Math.Round(currentDuration / 60.0, MidpointRounding.AwayFromZero).ToString(), 
+                    //        textPos,
+                    //        Color.White, 
+                    //        0f,
+                    //        Vector2.Zero,
+                    //        Vector2.One);
+                    //}
                 }
                 yOffset += (int)(32 * player.gravDir);
             }
