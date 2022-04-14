@@ -11,6 +11,8 @@ namespace Fargowiltas.Items.Explosives
         {
             DisplayName.SetDefault("Half Instavator");
             Tooltip.SetDefault("Creates half a hellevator instantly\nDo not use if any important building is below");
+            //does not have research value
+            //this is intended, it should be a 1-time-ever item
         }
 
         public override void SetDefaults()
