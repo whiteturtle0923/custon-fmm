@@ -113,6 +113,11 @@ namespace Fargowiltas
 
             Matsuri = false;
 
+            foreach (string tag in tags)
+            {
+                DownedBools[tag] = false;
+            }
+
             CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
         }
 
