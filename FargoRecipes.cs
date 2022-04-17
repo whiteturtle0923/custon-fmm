@@ -1006,6 +1006,8 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.FalconBlade, ItemID.IronCrate, 3, ItemID.IronCrateHard);
             AddCrateRecipe(ItemID.TartarSauce, ItemID.IronCrate, 3, ItemID.IronCrateHard);
             AddCrateRecipe(ItemID.GingerBeard, ItemID.IronCrate, 3, ItemID.IronCrateHard);
+            AddCrateRecipe(ItemID.CloudinaBottle, ItemID.IronCrate, 1, ItemID.IronCrateHard);
+            AddCrateRecipe(ItemID.LuckyHorseshoe, ItemID.IronCrate, 1, ItemID.IronCrateHard);
 
             //gold
             AddCrateRecipe(ItemID.BandofRegeneration, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
@@ -1013,9 +1015,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.FlareGun, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.HermesBoots, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.ShoeSpikes, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
-            AddCrateRecipe(ItemID.CloudinaBottle, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.Mace, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
-            AddCrateRecipe(ItemID.LuckyHorseshoe, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.LifeCrystal, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.HardySaddle, -1, 5, ItemID.GoldenCrateHard);
             AddCrateRecipe(ItemID.EnchantedSword, ItemID.GoldenCrate, 5, ItemID.GoldenCrateHard);
@@ -1722,6 +1722,15 @@ namespace Fargowiltas
                 ItemID.GoldRing,
                 ItemID.Cutlass,
                 ItemID.PirateMinecart
+            );
+
+            //treasure magnet I HATE TREASURE MAGNET TEAR OFF ALL OF YOUR FLESH
+            CreateTreasureBagRecipes(ItemID.TreasureMagnet,
+                ItemID.DarkLance,
+                ItemID.HellwingBow,
+                ItemID.Flamelash,
+                ItemID.FlowerofFire,
+                ItemID.Sunfury
             );
         }
 
