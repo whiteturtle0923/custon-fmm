@@ -29,7 +29,6 @@ ALPHA UPDATE - V 2.7.3
 -Added Grave Buster
 -Added Goblin Scrap (Goblin Scout spawner)
 -Added NPC Hate Crowded dialogue
--Added Princess dialogue
 -Tried fixing multiplayer dictionary issue
 -Squirrel detects items in Piggy Banks
 -Squirrel sells town NPCs in the world
