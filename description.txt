@@ -38,6 +38,7 @@ ALPHA UPDATE - V 2.7.3
 -Squirrel cannot sell Pylon, fixing a page issue where it made him unable to sell one item sometimes
 -Added conversion recipe from Treasure Magnet to other drops
 -Moved Cloud in a Bottle and Lucky Horseshoe crate recipes from Gold Crate to Iron Crate
+-Fixed town NPCs crashing the server when killed
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

@@ -408,14 +408,17 @@ namespace Fargowiltas.NPCs
                     Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hitDirection, -2.5f, Scale: 0.8f);
                 }
 
-                Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore3").Type);
+                if (!Main.dedServ)
+                {
+                    Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore3").Type);
 
-                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore2").Type);
+                    pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore2").Type);
 
-                pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore1").Type);
+                    pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
+                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore1").Type);
+                }
             }
             else
             {
