@@ -394,6 +394,7 @@ namespace Fargowiltas
             AddConvertRecipe(ItemID.BoneRattle, ItemID.EatersBone);
             AddConvertRecipe(ItemID.CrimsonSeeds, ItemID.CorruptSeeds);
             AddConvertRecipe(ItemID.DeadlandComesAlive, ItemID.LightlessChasms);
+            AddConvertRecipe(ItemID.BlackCurrant, ItemID.BloodOrange);
         }
 
         private void AddMetalConversions()
@@ -863,42 +864,38 @@ namespace Fargowiltas
             AddStatueRecipe(ItemID.TreeStatue, -1);
 
             ////lihzahrd
-            //recipe = GetNewRecipe();
-            //recipe.AddIngredient(ItemID.LihzahrdBanner);
-            //recipe.AddIngredient(ItemID.LihzahrdBrick, 50);
-            //recipe.AddTile(TileID.HeavyWorkBench);
-            //recipe.SetResult(ItemID.LihzahrdGuardianStatue);
-            //recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.LihzahrdGuardianStatue)
+                .AddIngredient(ItemID.LihzahrdBanner)
+                .AddIngredient(ItemID.LihzahrdBrick, 50)
+                .AddTile(TileID.HeavyWorkBench)
+                .Register();
 
-            //recipe = GetNewRecipe();
-            //recipe.AddIngredient(ItemID.LihzahrdBanner);
-            //recipe.AddIngredient(ItemID.LihzahrdBrick, 50);
-            //recipe.AddTile(TileID.HeavyWorkBench);
-            //recipe.SetResult(ItemID.LihzahrdStatue);
-            //recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.LihzahrdStatue)
+                .AddIngredient(ItemID.LihzahrdBanner)
+                .AddIngredient(ItemID.LihzahrdBrick, 50)
+                .AddTile(TileID.HeavyWorkBench)
+                .Register();
 
-            //recipe = GetNewRecipe();
-            //recipe.AddIngredient(ItemID.LihzahrdBanner);
-            //recipe.AddIngredient(ItemID.LihzahrdBrick, 50);
-            //recipe.AddTile(TileID.HeavyWorkBench);
-            //recipe.SetResult(ItemID.LihzahrdWatcherStatue);
-            //recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.LihzahrdWatcherStatue)
+                .AddIngredient(ItemID.LihzahrdBanner)
+                .AddIngredient(ItemID.LihzahrdBrick, 50)
+                .AddTile(TileID.HeavyWorkBench)
+                .Register();
 
-            //recipe = GetNewRecipe();
-            //recipe.AddIngredient(ItemID.Throne);
-            //recipe.AddIngredient(ItemID.TeleportationPotion);
-            //recipe.AddIngredient(ItemID.StoneBlock, 50);
-            //recipe.AddTile(TileID.HeavyWorkBench);
-            //recipe.SetResult(ItemID.KingStatue);
-            //recipe.AddRecipe();
 
-            //recipe = GetNewRecipe();
-            //recipe.AddIngredient(ItemID.Throne);
-            //recipe.AddIngredient(ItemID.TeleportationPotion);
-            //recipe.AddIngredient(ItemID.StoneBlock, 50);
-            //recipe.AddTile(TileID.HeavyWorkBench);
-            //recipe.SetResult(ItemID.QueenStatue);
-            //recipe.AddRecipe();
+            mod.CreateRecipe(ItemID.KingStatue)
+                .AddIngredient(ItemID.Throne)
+                .AddIngredient(ItemID.TeleportationPotion)
+                .AddIngredient(ItemID.StoneBlock, 50)
+                .AddTile(TileID.HeavyWorkBench)
+                .Register();
+
+            mod.CreateRecipe(ItemID.QueenStatue)
+                .AddIngredient(ItemID.Throne)
+                .AddIngredient(ItemID.TeleportationPotion)
+                .AddIngredient(ItemID.StoneBlock, 50)
+                .AddTile(TileID.HeavyWorkBench)
+                .Register();
         }
 
         private void AddContainerLootRecipes()

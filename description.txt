@@ -31,6 +31,12 @@ ALPHA UPDATE - V 2.7.3
 -Added NPC Hate Crowded dialogue
 -Added Princess dialogue
 -Tried fixing multiplayer dictionary issue
+-Squirrel detects items in Piggy Banks
+-Squirrel sells town NPCs in the world
+-Restored recipes for King/Queen and Lihzahrd Statues
+-Added conversion recipes for Blackcurrant and Blood Orange
+-Reduced multiplayer lag of Boom Shuriken
+-Squirrel cannot sell Pylon, fixing a page issue where it made him unable to sell one item sometimes
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

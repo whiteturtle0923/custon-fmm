@@ -160,7 +160,7 @@ namespace Fargowiltas.NPCs
 
 		public override string GetChat()
 		{
-            showCycleShop = GetSellableItems().Count / 40 > 0;
+            showCycleShop = GetSellableItems().Count / maxShop > 0;
 
             if (Main.bloodMoon)
                 return "You will suffer."; //"[c/FF0000:You will suffer.]";
@@ -222,8 +222,9 @@ namespace Fargowiltas.NPCs
 
                 shopNum++;
             }
-            
-            if (shopNum > GetSellableItems().Count / 40) //check this when just opening shop too in case shop shrinks
+
+            //check this when just opening shop too in case shop shrinks
+            if (shopNum > GetSellableItems().Count / maxShop)
                 shopNum = 0;
         }
 
@@ -310,20 +311,20 @@ namespace Fargowiltas.NPCs
             return ShopGroup.None;
         }
 
+        private void AddToCollection(int type, ShopGroup group, List<int>[] itemCollections)
+        {
+            int groupCast = (int)group;
+            if (!itemCollections[groupCast].Contains(type))
+                itemCollections[groupCast].Add(type);
+        }
+
         private void TryAddItem(Item item, List<int>[] itemCollections)
         {
-            void AddToCollection(int type, ShopGroup group)
-            {
-                int groupCast = (int)group;
-                if (!itemCollections[groupCast].Contains(type))
-                    itemCollections[groupCast].Add(type);
-            };
-
             ShopGroup shopGroup = SquirrelSells(item, out SquirrelSellType sellType);
             switch (sellType)
             {
                 case SquirrelSellType.SoldBySquirrel:
-                    AddToCollection(item.type, shopGroup);
+                    AddToCollection(item.type, shopGroup, itemCollections);
                     break;
 
                 case SquirrelSellType.SomeMaterialsSold:
@@ -332,7 +333,7 @@ namespace Fargowiltas.NPCs
                         foreach (Item material in recipe.requiredItem)
                         {
                             if (material.ModItem != null && material.ModItem.Name.EndsWith(shopGroup.ToString()))
-                                AddToCollection(material.type, shopGroup);
+                                AddToCollection(material.type, shopGroup, itemCollections);
                         }
                     }
                     break;
@@ -345,7 +346,7 @@ namespace Fargowiltas.NPCs
                             if (material.type != ItemID.None)
                             {
                                 if (Main.recipe.Any(recipe => recipe.HasResult(material.type))) //only put in materials that have recipes themselves
-                                    AddToCollection(material.type, shopGroup);
+                                    AddToCollection(material.type, shopGroup, itemCollections);
                             }
                         }
                     }
@@ -353,7 +354,7 @@ namespace Fargowiltas.NPCs
 
                 case SquirrelSellType.SoldAtThirtyStack:
                     if (item.stack >= 30)
-                        AddToCollection(item.type, shopGroup);
+                        AddToCollection(item.type, shopGroup, itemCollections);
                     break;
 
                 case SquirrelSellType.None:
@@ -379,6 +380,17 @@ namespace Fargowiltas.NPCs
 
                 foreach (Item item in player.armor)
                     TryAddItem(item, itemCollections);
+
+                foreach (Item item in player.bank.item)
+                    TryAddItem(item, itemCollections);
+            }
+
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                if (Main.npc[i].active && Main.npc[i].townNPC && Items.CaughtNPCs.CaughtNPCItem.CaughtTownies.ContainsKey(Main.npc[i].type))
+                {
+                    AddToCollection(Items.CaughtNPCs.CaughtNPCItem.CaughtTownies[Main.npc[i].type], ShopGroup.Other, itemCollections);
+                }
             }
 
             List<int> sellableItems = new List<int>();
@@ -389,8 +401,12 @@ namespace Fargowiltas.NPCs
             return sellableItems;
         }
 
+        const int maxShop = 40;
+
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
+            nextSlot = 0; //ignore pylon and anything else inserted into shop
+
             if (shopNum == 0 && TryFind("FargowiltasSouls/TopHatSquirrelCaught", out ModItem modItem)) //only on page 1
             {
                 shop.item[nextSlot].SetDefaults(modItem.Type);
@@ -400,8 +416,9 @@ namespace Fargowiltas.NPCs
 
             List<int> sellableItems = GetSellableItems();
             int i = 0;
-            int startOffset = shopNum * 40;
-            const int maxShop = 40;
+            int startOffset = shopNum * maxShop;
+            if (startOffset < 0)
+                startOffset = 0;
 
             foreach (int type in sellableItems)
             {
@@ -474,7 +491,7 @@ namespace Fargowiltas.NPCs
             {
                 Texture2D texture2D14 = Request<Texture2D>(Texture + "_Glow").Value;
                 float scale = (Main.mouseTextColor / 200f - 0.35f) * 0.3f + 0.9f;
-                Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY + 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, scale, effects, 0f);
+                Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, scale, effects, 0f);
             }
             //Main.spriteBatch.Draw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
             return true;
@@ -488,7 +505,7 @@ namespace Fargowiltas.NPCs
                 Rectangle rectangle = NPC.frame;
                 Vector2 origin2 = rectangle.Size() / 2f;
                 SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-                Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY + 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, NPC.scale, effects, 0f);
+                Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, NPC.scale, effects, 0f);
             }
         }
     }
