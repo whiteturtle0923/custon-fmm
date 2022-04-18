@@ -42,7 +42,7 @@ namespace Fargowiltas.Items.Summons.Abom
             Main.raining = true;
 
             NetMessage.SendData(MessageID.WorldData);
-            Main.NewText("Rain clouds cover the sky.", new Color(175, 75, 255));
+            FargoUtils.PrintText("Rain clouds cover the sky.", new Color(175, 75, 255));
             SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
 
             return true;
