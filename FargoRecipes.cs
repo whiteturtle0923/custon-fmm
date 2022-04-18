@@ -1232,6 +1232,13 @@ namespace Fargowiltas
             Register();
 
             //travelling merch recipes 
+            mod.CreateRecipe(ItemID.SliceOfCake).
+            AddIngredient(ItemID.FoodPlatter).
+            AddIngredient(null, "PartyGirl").
+            AddTile(TileID.Furnaces).
+            Register();
+
+            //travelling merch recipes 
             mod.CreateRecipe(ItemID.DynastyWood, 500).
             AddIngredient(ItemID.Wood, 500).
             AddIngredient(null, "TravellingMerchant").
