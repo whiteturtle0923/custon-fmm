@@ -40,6 +40,7 @@ ALPHA UPDATE - V 2.7.3
 -Moved Cloud in a Bottle and Lucky Horseshoe crate recipes from Gold Crate to Iron Crate
 -Fixed town NPCs crashing the server when killed
 -Added recipe to turn Party Girl into Slice of Cake
+-Bosses won't block random spawns if you're very far away from them
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates
