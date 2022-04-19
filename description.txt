@@ -43,6 +43,7 @@ ALPHA UPDATE - V 2.7.3
 -Bosses won't block random spawns if you're very far away from them
 -Fixed Debuff Display not working in multiplayer
 -Fixed Transparent Minions & Support Attacks not working
+-Sitting Duck's Fishing Pole recipe can now use both Duck and Mallard Duck
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

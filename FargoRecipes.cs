@@ -294,6 +294,12 @@ namespace Fargowiltas
                 ItemID.MallardDuck);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyBird", group);
 
+            //vanilla ducks
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Duck",
+                ItemID.Duck,
+                ItemID.MallardDuck);
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyDuck", group);
+
             //vanilla dragonfly
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Dragonfly",
                 //ItemID.GoldDragonfly,
@@ -1408,7 +1414,7 @@ namespace Fargowiltas
             AddIngredient(null, "TravellingMerchant", 3).
             AddIngredient(ItemID.GoldCoin, 70).
             AddIngredient(ItemID.Bone, 10). //post skele
-            AddIngredient(ItemID.Duck).
+            AddRecipeGroup("Fargowiltas:AnyDuck").
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
