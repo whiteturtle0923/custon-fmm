@@ -46,6 +46,7 @@ ALPHA UPDATE - V 2.7.3
 -Sitting Duck's Fishing Pole recipe can now use both Duck and Mallard Duck
 -Squirrel sells Portable Sundial
 -Squirrel sells Omnistations, Multitask Center, Elemental Assembler, and Crucible of the Cosmos
+-Fixed Betsy throwing an exception when killed in multiplayer
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

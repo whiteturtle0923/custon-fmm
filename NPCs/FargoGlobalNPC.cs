@@ -1373,7 +1373,7 @@ namespace Fargowiltas.NPCs
 
             if (npc.type == NPCID.DD2Betsy && !PandoraActive)
             {
-                Main.NewText("Betsy has been defeated!", 175, 75);
+                FargoUtils.PrintText("Betsy has been defeated!", new Color(175, 75, 0));
                 FargoWorld.DownedBools["betsy"] = true;
             }
 
