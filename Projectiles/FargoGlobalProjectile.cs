@@ -16,8 +16,12 @@ namespace Fargowiltas.Projectiles
 
         public override void SetDefaults(Projectile projectile)
         {
-            if (projectile.minion || projectile.sentry || projectile.minionSlots > 0 || ProjectileID.Sets.MinionShot[projectile.type])
-                lowRender = true;
+            if (projectile.DamageType == DamageClass.Summon || projectile.minion || projectile.sentry || projectile.minionSlots > 0 || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type])
+            {
+                if (!ProjectileID.Sets.IsAWhip[projectile.type])
+                    lowRender = true;
+            }
+
             switch (projectile.type)
             {
                 case ProjectileID.FlowerPetal:
@@ -158,8 +162,9 @@ namespace Fargowiltas.Projectiles
             if (lowRender && !projectile.hostile && GetInstance<FargoConfig>().TransparentMinions < 1)
             {
                 lightColor *= GetInstance<FargoConfig>().TransparentMinions;
-
+                return lightColor;
             }
+
             return base.GetAlpha(projectile, lightColor);
         }
 

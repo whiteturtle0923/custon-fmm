@@ -31,18 +31,23 @@ namespace Fargowiltas
             BuffID.NeutralHunger
         };
 
-        private float globalTimeTracker;
-
         public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)
         {
-            //stop it from drawing multiple times per frame, e.g. with armor/dash afterimages that ruin opacity
-            if (globalTimeTracker == Main.GlobalTimeWrappedHourly)
-                return false;
-            globalTimeTracker = Main.GlobalTimeWrappedHourly;
+            if (!Main.hideUI && drawInfo.drawPlayer.whoAmI == Main.myPlayer && drawInfo.drawPlayer.active && !drawInfo.drawPlayer.dead && !drawInfo.drawPlayer.ghost
+                && ModContent.GetInstance<FargoConfig>().DebuffOpacity > 0)
+            {
+                bool shouldDraw = !drawInfo.drawPlayer.GetModPlayer<FargoPlayer>().HasDrawnDebuffLayer
+                    && drawInfo.drawPlayer.buffType.Count(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)) > 0;
 
-            return ModContent.GetInstance<FargoConfig>().DebuffOpacity > 0 && !Main.hideUI
-                && drawInfo.drawPlayer.whoAmI == Main.myPlayer && drawInfo.drawPlayer.active && !drawInfo.drawPlayer.dead && !drawInfo.drawPlayer.ghost
-                && drawInfo.drawPlayer.buffType.Count(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)) > 0;
+                //stop it from drawing multiple times per frame, e.g. with armor/dash afterimages that ruin opacity
+                //singleplayer check because for some reason this makes it just not work for some people in mp
+                if (Main.netMode == NetmodeID.SinglePlayer)
+                    drawInfo.drawPlayer.GetModPlayer<FargoPlayer>().HasDrawnDebuffLayer = true;
+
+                return shouldDraw;
+            }
+
+            return false;
         }
 
         public override Position GetDefaultPosition() => new Between();
@@ -75,7 +80,10 @@ namespace Fargowiltas
                     drawPos += player.MountedCenter;
                     drawPos -= Main.screenPosition;
 
-                    Texture2D buffIcon = Terraria.GameContent.TextureAssets.Buff[debuffID].Value;
+                    if (!TextureAssets.Buff[debuffID].IsLoaded)
+                        continue;
+
+                    Texture2D buffIcon = TextureAssets.Buff[debuffID].Value;
                     Color buffColor = Color.White * ModContent.GetInstance<FargoConfig>().DebuffOpacity;
 
 

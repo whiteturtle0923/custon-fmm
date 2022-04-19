@@ -41,6 +41,8 @@ ALPHA UPDATE - V 2.7.3
 -Fixed town NPCs crashing the server when killed
 -Added recipe to turn Party Girl into Slice of Cake
 -Bosses won't block random spawns if you're very far away from them
+-Fixed Debuff Display not working in multiplayer
+-Fixed Transparent Minions & Support Attacks not working
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

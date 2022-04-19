@@ -26,10 +26,11 @@ namespace Fargowiltas
 
 
         public bool extractSpeed;
+        public bool HasDrawnDebuffLayer;
         internal bool BattleCry;
 
         internal int originalSelectedItem;
-        internal bool autoRevertSelectedItem = false;
+        internal bool autoRevertSelectedItem;
 
         public float luckPotionBoost;
         public float ElementalAssemblerNearby;
@@ -102,6 +103,7 @@ namespace Fargowiltas
         public override void ResetEffects()
         {
             extractSpeed = false;
+            HasDrawnDebuffLayer = false;
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
