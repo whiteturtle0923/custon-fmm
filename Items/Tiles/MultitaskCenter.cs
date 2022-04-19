@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Tiles
@@ -23,6 +24,7 @@ namespace Fargowiltas.Items.Tiles
             Item.useTime = 10;
             Item.useStyle = 1;
             Item.consumable = true;
+            Item.value = Item.buyPrice(gold: 30);
             Item.createTile = ModContent.TileType<MultitaskCenterSheet>();
         }
 

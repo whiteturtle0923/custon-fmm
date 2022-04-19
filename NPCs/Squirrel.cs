@@ -1,3 +1,5 @@
+using Fargowiltas.Items.Misc;
+using Fargowiltas.Items.Tiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -228,6 +230,19 @@ namespace Fargowiltas.NPCs
                 shopNum = 0;
         }
 
+        private static int[] ItemsSoldDirectly => new int[]
+        {
+            ItemID.CellPhone,
+            ItemID.AnkhShield,
+            ItemID.RodofDiscord,
+            ItemType<Omnistation>(),
+            ItemType<Omnistation2>(),
+            ItemType<CrucibleCosmos>(),
+            ItemType<ElementalAssembler>(),
+            ItemType<MultitaskCenter>(),
+            ItemType<PortableSundial>()
+        };
+
         public static ShopGroup SquirrelSells(Item item, out SquirrelSellType sellType)
         {
             if (item.type == ItemID.Zenith)
@@ -236,7 +251,7 @@ namespace Fargowiltas.NPCs
                 return ShopGroup.Other;
             }
 
-            if (item.makeNPC != 0 || item.type == ItemID.CellPhone || item.type == ItemID.AnkhShield || item.type == ItemID.RodofDiscord)
+            if (item.makeNPC != 0 || ItemsSoldDirectly.Contains(item.type))
             {
                 sellType = SquirrelSellType.SoldBySquirrel;
                 return ShopGroup.Other;
@@ -384,7 +399,7 @@ namespace Fargowiltas.NPCs
                 foreach (Item item in player.bank.item)
                     TryAddItem(item, itemCollections);
             }
-
+            
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 if (Main.npc[i].active && Main.npc[i].townNPC && Items.CaughtNPCs.CaughtNPCItem.CaughtTownies.ContainsKey(Main.npc[i].type))
@@ -392,10 +407,12 @@ namespace Fargowiltas.NPCs
                     AddToCollection(Items.CaughtNPCs.CaughtNPCItem.CaughtTownies[Main.npc[i].type], ShopGroup.Other, itemCollections);
                 }
             }
-
+            
             List<int> sellableItems = new List<int>();
             for (int i = 0; i < itemCollections.Length; i++)
             {
+                itemCollections[i].Sort();
+
                 sellableItems.AddRange(itemCollections[i]);
             }
             return sellableItems;

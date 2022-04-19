@@ -41,6 +41,7 @@ namespace Fargowiltas.Items.Tiles
             Item.useTime = 10;
             Item.useStyle = 1;
             Item.consumable = true;
+            Item.value = Item.buyPrice(2);
             Item.createTile = ModContent.TileType<CrucibleCosmosSheet>();
         }
 

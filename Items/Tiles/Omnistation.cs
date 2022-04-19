@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,6 +33,7 @@ Right click while holding a weapon for its respective buff");
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.rare = ItemRarityID.Blue;
+            Item.value = Item.buyPrice(gold: 50);
             Item.createTile = ModContent.TileType<OmnistationSheet>();
         }
 

@@ -27,6 +27,7 @@ namespace Fargowiltas.Items.Tiles
             Item.useTime = 10;
             Item.useStyle = 1;
             Item.consumable = true;
+            Item.value = Item.buyPrice(gold: 50);
             Item.createTile = ModContent.TileType<ElementalAssemblerSheet>();
         }
 
