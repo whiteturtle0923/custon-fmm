@@ -163,17 +163,20 @@ namespace Fargowiltas
                 SlimeRainSpawns();
             }
 
-            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead)
+                && Player.Distance(Main.npc[FargoGlobalNPC.eaterBoss].Center) < 3000)
             {
                 Player.ZoneCorrupt = true;
             }
 
-            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.brainBoss, NPCID.BrainofCthulhu)
+                && Player.Distance(Main.npc[FargoGlobalNPC.brainBoss].Center) < 3000)
             {
                 Player.ZoneCrimson = true;
             }
 
-            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera))
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.plantBoss, NPCID.Plantera)
+                && Player.Distance(Main.npc[FargoGlobalNPC.plantBoss].Center) < 3000)
             {
                 Player.ZoneJungle = true;
             }
