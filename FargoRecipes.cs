@@ -447,10 +447,12 @@ namespace Fargowiltas
                 }
             }
 
-            void AddGroupToItemRecipe(string group, int result, int station = TileID.Solidifier, int resultAmount = 1, int groupAmount = 1)
+            void AddGroupToItemRecipe(string group, int result, int station = TileID.Solidifier, int resultAmount = 1, int groupAmount = 1, int secondaryMaterial = -1, int secondaryAmount = 1)
             {
                 var recipe = mod.CreateRecipe(result, resultAmount);
                 recipe.AddRecipeGroup(group, groupAmount);
+                if (secondaryMaterial != -1)
+                    recipe.AddIngredient(secondaryMaterial, secondaryAmount);
                 recipe.AddTile(station);
                 recipe.Register();
             }
@@ -632,6 +634,14 @@ namespace Fargowiltas
 
             AddGroupToItemRecipe("Fargowiltas:AnyCorrupts", ItemID.MeatGrinder, TileID.MythrilAnvil, 1, 5);
             AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.MeatGrinder, TileID.MythrilAnvil, 1, 5);
+
+            AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelAmber, TileID.Solidifier, 1, 1, ItemID.Amber, 5);
+            AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelAmethyst, TileID.Solidifier, 1, 1, ItemID.Amethyst, 5);
+            AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelDiamond, TileID.Solidifier, 1, 1, ItemID.Diamond, 5);
+            AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelEmerald, TileID.Solidifier, 1, 1, ItemID.Emerald, 5);
+            AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelRuby, TileID.Solidifier, 1, 1, ItemID.Ruby, 5);
+            AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelSapphire, TileID.Solidifier, 1, 1, ItemID.Sapphire, 5);
+            AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelTopaz, TileID.Solidifier, 1, 1, ItemID.Topaz, 5);
 
 
             //FOOD

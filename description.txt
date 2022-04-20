@@ -47,6 +47,7 @@ ALPHA UPDATE - V 2.7.3
 -Squirrel sells Portable Sundial and Terraspark Boots
 -Squirrel sells Omnistations, Multitask Center, Elemental Assembler, and Crucible of the Cosmos
 -Fixed Betsy throwing an exception when killed in multiplayer
+-Added recipes to convert any Squirrel into a Gem Squirrel
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates
