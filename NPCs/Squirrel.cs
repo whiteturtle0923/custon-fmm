@@ -295,6 +295,7 @@ namespace Fargowiltas.NPCs
                 }
                 else if (item.ModItem.Name.EndsWith("Soul"))
                 {
+                    //go through recipes and look for a sellable material
                     foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
                     {
                         foreach (Item material in recipe.requiredItem)
@@ -319,6 +320,10 @@ namespace Fargowiltas.NPCs
                             }
                         }
                     }
+
+                    //if nothing found, sell the soul itself
+                    sellType = SquirrelSellType.SoldBySquirrel;
+                    return ShopGroup.Soul;
                 }
             }
 
