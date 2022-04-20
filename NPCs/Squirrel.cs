@@ -235,6 +235,7 @@ namespace Fargowiltas.NPCs
             ItemID.CellPhone,
             ItemID.AnkhShield,
             ItemID.RodofDiscord,
+            ItemID.TerrasparkBoots,
             ItemType<Omnistation>(),
             ItemType<Omnistation2>(),
             ItemType<CrucibleCosmos>(),
