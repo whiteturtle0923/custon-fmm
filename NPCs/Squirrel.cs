@@ -356,6 +356,9 @@ namespace Fargowiltas.NPCs
                         {
                             if (material.ModItem != null && material.ModItem.Name.EndsWith(shopGroup.ToString()))
                                 AddToCollection(material.type, shopGroup, itemCollections);
+
+                            if (material.type == ItemID.CellPhone && TryFind("FargowiltasSouls", "WorldShaperSoul", out ModItem worldShaperSoul) && item.type == worldShaperSoul.Type)
+                                AddToCollection(material.type, ShopGroup.Other, itemCollections);
                         }
                     }
                     break;
@@ -409,7 +412,7 @@ namespace Fargowiltas.NPCs
                 if (player.unlockedBiomeTorches)
                     AddToCollection(ItemID.TorchGodsFavor, ShopGroup.Other, itemCollections);
             }
-            
+
             //add town npcs to shop
             for (int i = 0; i < Main.maxNPCs; i++)
             {
