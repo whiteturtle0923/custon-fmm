@@ -889,264 +889,151 @@ namespace Fargowiltas.NPCs
                 return true;
             }
 
+            return false;
+        }
+
+        public override void OnKill(NPC npc)
+        {
             switch (npc.type)
             {
-                case NPCID.GreekSkeleton:
-                    NPCLoader.blockLoot.Add(ItemID.GladiatorHelmet);
-                    NPCLoader.blockLoot.Add(ItemID.GladiatorBreastplate);
-                    NPCLoader.blockLoot.Add(ItemID.GladiatorLeggings);
+                case NPCID.Painter:
+                    if (NPC.AnyNPCs(NPCID.MoonLordCore))
+                        Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemType<EchPainting>());
+                    break;
+
+                case NPCID.DD2OgreT2:
+                case NPCID.DD2OgreT3:
+                    if (!DD2Event.Ongoing)
+                    {
+                        if (Main.rand.NextBool(14))
+                            Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemID.BossMaskOgre);
+
+                        Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, Main.rand.Next(new int[] { ItemID.ApprenticeScarf, ItemID.SquireShield, ItemID.HuntressBuckler, ItemID.MonkBelt, ItemID.DD2SquireDemonSword, ItemID.MonkStaffT1, ItemID.MonkStaffT2, ItemID.BookStaff, ItemID.DD2PhoenixBow, ItemID.DD2PetGhost }));
+
+                        Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemID.GoldCoin, Main.rand.Next(4, 7));
+                    }
+                    break;
+
+                case NPCID.DD2DarkMageT1:
+                case NPCID.DD2DarkMageT3:
+                    if (!DD2Event.Ongoing)
+                    {
+                        if (Main.rand.NextBool(14))
+                            Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemID.BossMaskDarkMage);
+
+                        if (Main.rand.NextBool(10))
+                            Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, Main.rand.NextBool() ? ItemID.WarTable : ItemID.WarTableBanner);
+
+                        if (Main.rand.NextBool(6))
+                            Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, Main.rand.Next(new int[] { ItemID.DD2PetGato, ItemID.DD2PetDragon }));
+                    }
+                    break;
+
+                default:
                     break;
             }
-
-            return false;
         }
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            //switch (npc.type)
-            //{
-            //    case NPCID.ZombieEskimo:
-            //    case NPCID.ArmedZombieEskimo:
-            //    case NPCID.Penguin:
-            //    case NPCID.IceSlime:
-            //    case NPCID.SpikedIceSlime:
-            //        if (Main.rand.NextBool(10))
-            //        {
-            //            int i = Main.rand.Next(3);
-            //            switch (i)
-            //            {
-            //                case 0:
-            //                    Item.NewItem(npc.Hitbox, ItemID.EskimoHood);
-            //                    break;
+            switch (npc.type)
+            {
+                case NPCID.ZombieEskimo:
+                case NPCID.ArmedZombieEskimo:
+                case NPCID.Penguin:
+                case NPCID.IceSlime:
+                case NPCID.SpikedIceSlime:
+                    npcLoot.Add(ItemDropRule.OneFromOptions(10, ItemID.EskimoHood, ItemID.EskimoCoat, ItemID.EskimoPants));
+                    break;
 
-            //                case 1:
-            //                    Item.NewItem(npc.Hitbox, ItemID.EskimoCoat);
-            //                    break;
+                case NPCID.GreekSkeleton:
+                    npcLoot.RemoveWhere(rule => rule is CommonDrop drop && (drop.itemId == ItemID.GladiatorHelmet || drop.itemId == ItemID.GladiatorBreastplate || drop.itemId == ItemID.GladiatorLeggings));
+                    npcLoot.Add(ItemDropRule.OneFromOptions(10, ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings));
+                    break;
 
-            //                default:
-            //                    Item.NewItem(npc.Hitbox, ItemID.EskimoPants);
-            //                    break;
-            //            }
-            //        }
-            //        break;
+                case NPCID.Merchant:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.MiningShirt, 8));
+                    npcLoot.Add(ItemDropRule.Common(ItemID.MiningPants, 8));
+                    break;
 
+                case NPCID.Nurse:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.LifeCrystal, 5));
+                    break;
 
-            //    case NPCID.GreekSkeleton:
-            //        if (Main.rand.NextBool(10))
-            //        {
-            //            int i = Main.rand.Next(3);
-            //            switch (i)
-            //            {
-            //                case 0:
-            //                    Item.NewItem(npc.Hitbox, ItemID.GladiatorHelmet);
-            //                    break;
+                case NPCID.Demolitionist:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.Dynamite, 2, 5, 5));
+                    break;
 
-            //                case 1:
-            //                    Item.NewItem(npc.Hitbox, ItemID.GladiatorBreastplate);
-            //                    break;
+                case NPCID.Dryad:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.HerbBag, 3));
+                    break;
 
-            //                default:
-            //                    Item.NewItem(npc.Hitbox, ItemID.GladiatorLeggings);
-            //                    break;
-            //            }
-            //        }
+                case NPCID.DD2Bartender:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.Ale, 2, 4, 4));
+                    break;
 
-            //        break;
+                case NPCID.ArmsDealer:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.NanoBullet, 4, 30, 30));
+                    break;
 
-            //    case NPCID.Merchant:
-            //        if (Main.rand.NextBool(8))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.MiningShirt);
-            //            Item.NewItem(npc.Hitbox, ItemID.MiningPants);
-            //        }
+                case NPCID.Clothier:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.Skull, 20));
+                    break;
 
-            //        break;
+                case NPCID.Mechanic:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.Wire, 5, 40, 40));
+                    break;
 
-            //    case NPCID.Nurse:
-            //        if (Main.rand.NextBool(5))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.LifeCrystal);
-            //        }
+                case NPCID.Wizard:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.FallenStar, 5, 5, 5));
+                    break;
 
-            //        break;
+                case NPCID.TaxCollector:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 8, 10, 10));
+                    break;
 
-            //    case NPCID.Demolitionist:
-            //        if (Main.rand.NextBool(2))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.Dynamite, 5);
-            //        }
+                case NPCID.Truffle:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.MushroomStatue, 8));
+                    break;
 
-            //        break;
-
-            //    case NPCID.Dryad:
-            //        if (Main.rand.NextBool(3))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.HerbBag);
-            //        }
-
-            //        break;
-
-            //    case NPCID.DD2Bartender:
-            //        if (Main.rand.NextBool(2))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.Ale, 4);
-            //        }
-
-            //        break;
-
-            //    case NPCID.ArmsDealer:
-            //        if (Main.rand.NextBool(4))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.NanoBullet, 30);
-            //        }
-
-            //        break;
-
-            //    case NPCID.Painter:
-            //        if (NPC.AnyNPCs(NPCID.MoonLordCore))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ModContent.ItemType<EchPainting>());
-            //        }
-
-            //        break;
-
-            //    case NPCID.Clothier:
-            //        if (Main.rand.NextBool(20))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.Skull);
-            //        }
-
-            //        break;
-
-            //    case NPCID.Mechanic:
-            //        if (Main.rand.NextBool(5))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.Wire, 40);
-            //        }
-
-            //        break;
-
-            //    case NPCID.Wizard:
-            //        if (Main.rand.NextBool(5))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.FallenStar, 5);
-            //        }
-
-            //        break;
-
-            //    case NPCID.TaxCollector:
-            //        if (Main.rand.NextBool(8))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.GoldCoin, 10);
-            //        }
-
-            //        break;
-
-            //    case NPCID.Truffle:
-            //        if (Main.rand.NextBool(8))
-            //        {
-            //            Item.NewItem(npc.Hitbox, ItemID.MushroomStatue);
-            //        }
-
-            //        break;
-
-            //    case NPCID.Angler:
-            //        if (Main.rand.NextBool(2))
-            //        {
-            //            int[] fishingTrash = new int[] { ItemID.OldShoe, ItemID.TinCan, ItemID.FishingSeaweed };
-
-            //            Item.NewItem(npc.Hitbox, Main.rand.Next(fishingTrash));
-            //        }
-            //        break;
+                case NPCID.Angler:
+                    npcLoot.Add(ItemDropRule.OneFromOptions(2, ItemID.OldShoe, ItemID.TinCan, ItemID.FishingSeaweed));
+                    break;
 
 
-            //    case NPCID.DD2OgreT2:
-            //    case NPCID.DD2OgreT3:
+                case NPCID.DD2OgreT2:
+                case NPCID.DD2OgreT3:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.DefenderMedal, 1, 20, 20));
+                    break;
 
+                case NPCID.DD2DarkMageT1:
+                case NPCID.DD2DarkMageT3:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.DefenderMedal, 1, 5, 5));
+                    break;
 
-            //        Item.NewItem(npc.Hitbox, ItemID.DefenderMedal, 20);
+                case NPCID.Raven:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.GoodieBag));
+                    break;
 
-            //        if (!DD2Event.Ongoing)
-            //        {
-            //            if (Main.rand.NextBool(14))
-            //            {
-            //                Item.NewItem(npc.Hitbox, ItemID.BossMaskOgre);
-            //            }
+                case NPCID.SlimeRibbonRed:
+                case NPCID.SlimeRibbonGreen:
+                case NPCID.SlimeRibbonWhite:
+                case NPCID.SlimeRibbonYellow:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.Present));
+                    break;
 
-            //            Item.NewItem(npc.Hitbox, Main.rand.Next(new short[] { ItemID.ApprenticeScarf, ItemID.SquireShield, ItemID.HuntressBuckler, ItemID.MonkBelt, ItemID.DD2SquireDemonSword, ItemID.MonkStaffT1, ItemID.MonkStaffT2, ItemID.BookStaff, ItemID.DD2PhoenixBow, ItemID.DD2PetGhost }));
+                case NPCID.BloodZombie:
+                    npcLoot.Add(ItemDropRule.OneFromOptions(200, ItemID.BladedGlove, ItemID.BloodyMachete));
+                    break;
 
-            //            Item.NewItem(npc.Hitbox, ItemID.GoldCoin, Main.rand.Next(4, 7));
-            //        }
+                case NPCID.Clown:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.Bananarang));
+                    break;
 
-            //        break;
-
-            //    case NPCID.DD2DarkMageT1:
-            //    case NPCID.DD2DarkMageT3:
-
-            //        Item.NewItem(npc.Hitbox, ItemID.DefenderMedal, 5);
-
-            //        if (!DD2Event.Ongoing)
-            //        {
-            //            if (Main.rand.NextBool(14))
-            //            {
-            //                Item.NewItem(npc.Hitbox, ItemID.BossMaskDarkMage);
-            //            }
-
-            //            if (Main.rand.NextBool(10))
-            //            {
-            //                if (Main.rand.NextBool(2))
-            //                {
-            //                    Item.NewItem(npc.Hitbox, ItemID.WarTableBanner);
-            //                }
-            //                else
-            //                {
-            //                    Item.NewItem(npc.Hitbox, ItemID.WarTable);
-            //                }
-            //            }
-
-            //            if (Main.rand.NextBool(6))
-            //            {
-            //                Item.NewItem(npc.Hitbox, Main.rand.Next(new short[] { ItemID.DD2PetGato, ItemID.DD2PetDragon }));
-            //            }
-
-            //            if (DD2Event.ShouldDropCrystals())
-            //            {
-            //                Item.NewItem(npc.Hitbox, ItemID.DD2EnergyCrystal);
-            //            }
-            //        }
-
-            //        break;
-
-            //    case NPCID.Raven:
-            //        Item.NewItem(npc.Hitbox, ItemID.GoodieBag);
-
-            //        break;
-
-            //    case NPCID.SlimeRibbonRed:
-            //    case NPCID.SlimeRibbonGreen:
-            //    case NPCID.SlimeRibbonWhite:
-            //    case NPCID.SlimeRibbonYellow:
-            //        Item.NewItem(npc.Hitbox, ItemID.Present);
-
-            //        break;
-
-            //    case NPCID.BloodZombie:
-            //        if (Main.rand.NextBool(200))
-            //        {
-            //            Item.NewItem(npc.Hitbox, Main.rand.NextBool(2) ? ItemID.BladedGlove : ItemID.BloodyMachete);
-            //        }
-
-            //        break;
-
-            //    case NPCID.Clown:
-            //        Item.NewItem(npc.Hitbox, ItemID.Bananarang);
-            //        break;
-
-            //    case NPCID.MoonLordCore:
-            //        if (Main.rand.NextBool(100))
-            //            Item.NewItem(npc.Hitbox, ItemID.MoonLordLegs);
-            //        break;
-            //}
+                case NPCID.MoonLordCore:
+                    npcLoot.Add(ItemDropRule.Common(ItemID.MoonLordLegs, 100));
+                    break;
+            }
 
             base.ModifyNPCLoot(npc, npcLoot);
         }

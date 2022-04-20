@@ -48,6 +48,8 @@ ALPHA UPDATE - V 2.7.3
 -Squirrel sells Omnistations, Multitask Center, Elemental Assembler, and Crucible of the Cosmos
 -Fixed Betsy throwing an exception when killed in multiplayer
 -Added recipes to convert any Squirrel into a Gem Squirrel
+-Restored all Mutant Mod drops (town NPCs, Dark Mage/Ogre medals, etc.)
+-Added 1% chance for Moon Lord to drop legs
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates
