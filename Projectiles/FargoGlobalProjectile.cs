@@ -101,7 +101,7 @@ namespace Fargowiltas.Projectiles
             {
                 firstTick = false;
 
-                if (projectile.owner != Main.myPlayer)
+                if (projectile.owner != Main.myPlayer && !projectile.hostile && !projectile.trap && projectile.friendly)
                     lowRender = true;
             }
 
