@@ -30,7 +30,7 @@ ALPHA UPDATE - V 2.7.3
 -Added Goblin Scrap (Goblin Scout spawner)
 -Added NPC Hate Crowded dialogue
 -Tried fixing multiplayer dictionary issue
--Squirrel detects items in Piggy Banks
+-Squirrel detects items in your Piggy Bank (but not other players)
 -Squirrel sells town NPCs in the world
 -Restored recipes for King/Queen and Lihzahrd Statues
 -Added conversion recipes for Blackcurrant and Blood Orange
@@ -50,6 +50,7 @@ ALPHA UPDATE - V 2.7.3
 -Added recipes to convert any Squirrel into a Gem Squirrel
 -Restored all Mutant Mod drops (town NPCs, Dark Mage/Ogre medals, etc.)
 -Added 1% chance for Moon Lord to drop legs
+-Squirrel sells Torch God's Favor
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates

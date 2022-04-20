@@ -236,6 +236,7 @@ namespace Fargowiltas.NPCs
             ItemID.AnkhShield,
             ItemID.RodofDiscord,
             ItemID.TerrasparkBoots,
+            ItemID.TorchGodsFavor,
             ItemType<Omnistation>(),
             ItemType<Omnistation2>(),
             ItemType<CrucibleCosmos>(),
@@ -404,16 +405,18 @@ namespace Fargowiltas.NPCs
 
                 foreach (Item item in player.bank.item)
                     TryAddItem(item, itemCollections);
+
+                if (player.unlockedBiomeTorches)
+                    AddToCollection(ItemID.TorchGodsFavor, ShopGroup.Other, itemCollections);
             }
             
+            //add town npcs to shop
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 if (Main.npc[i].active && Main.npc[i].townNPC && Items.CaughtNPCs.CaughtNPCItem.CaughtTownies.ContainsKey(Main.npc[i].type))
-                {
                     AddToCollection(Items.CaughtNPCs.CaughtNPCItem.CaughtTownies[Main.npc[i].type], ShopGroup.Other, itemCollections);
-                }
             }
-            
+
             List<int> sellableItems = new List<int>();
             for (int i = 0; i < itemCollections.Length; i++)
             {
