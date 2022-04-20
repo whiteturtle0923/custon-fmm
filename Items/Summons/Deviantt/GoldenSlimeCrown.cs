@@ -28,7 +28,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
         {
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<PinkSlimeCrown>())
-                .AddIngredient(ItemID.GoldDust, 500)
+                .AddIngredient(ItemID.GoldDust, 999)
                 .AddTile(ModContent.TileType<GoldenDippingVatSheet>())
                 .Register();
         }
