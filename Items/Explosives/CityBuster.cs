@@ -12,7 +12,7 @@ namespace Fargowiltas.Items.Explosives
             Tooltip.SetDefault(@"Destroys a large area
 Will not remove background walls
 Use at your own risk");
-            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
         }
 
         public override void SetDefaults()

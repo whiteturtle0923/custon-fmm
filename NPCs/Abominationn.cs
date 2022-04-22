@@ -248,6 +248,7 @@ namespace Fargowiltas.NPCs
             // Events
             AddItem(true, ItemType<PartyCone>(), 10000, ref shop, ref nextSlot);
             AddItem(true, ItemType<WeatherBalloon>(), 20000, ref shop, ref nextSlot);
+            AddItem(true, ItemType<Anemometer>(), 30000, ref shop, ref nextSlot);
             AddItem(true, ItemType<ForbiddenScarab>(), 30000, ref shop, ref nextSlot);
             AddItem(true, ItemType<SlimyBarometer>(), Item.buyPrice(0, 4), ref shop, ref nextSlot);
             AddItem(true, ItemID.BloodMoonStarter, Item.buyPrice(0, 5), ref shop, ref nextSlot);

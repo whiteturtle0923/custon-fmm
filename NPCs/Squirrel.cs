@@ -259,7 +259,7 @@ namespace Fargowiltas.NPCs
                 return ShopGroup.Other;
             }
 
-            if ((item.maxStack >= 30 && item.buffType != 0) || item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion)
+            if ((item.maxStack >= 30 && item.buffType != 0 && item.type != ItemID.GrilledSquirrel) || item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion)
             {
                 sellType = SquirrelSellType.SoldAtThirtyStack;
                 return ShopGroup.Potion;

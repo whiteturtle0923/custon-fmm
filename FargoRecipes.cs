@@ -643,6 +643,22 @@ namespace Fargowiltas
             AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelSapphire, TileID.Solidifier, 1, 1, ItemID.Sapphire, 5);
             AddGroupToItemRecipe("Fargowiltas:AnySquirrel", ItemID.GemSquirrelTopaz, TileID.Solidifier, 1, 1, ItemID.Topaz, 5);
 
+            AddBannerToItemRecipe(ItemID.GemBunnyDiamond, ItemID.Diamond, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemBunnyAmber, ItemID.Amber, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemBunnyRuby, ItemID.Ruby, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemBunnyEmerald, ItemID.Emerald, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemBunnySapphire, ItemID.Sapphire, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemBunnyTopaz, ItemID.Topaz, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemBunnyAmethyst, ItemID.Amethyst, 1, 5);
+
+            AddBannerToItemRecipe(ItemID.GemSquirrelDiamond, ItemID.Diamond, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemSquirrelAmber, ItemID.Amber, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemSquirrelRuby, ItemID.Ruby, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemSquirrelEmerald, ItemID.Emerald, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemSquirrelSapphire, ItemID.Sapphire, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemSquirrelTopaz, ItemID.Topaz, 1, 5);
+            AddBannerToItemRecipe(ItemID.GemSquirrelAmethyst, ItemID.Amethyst, 1, 5);
+
 
             //FOOD
             //chaos ele, illum slime, illum bat = apple pie
@@ -1172,6 +1188,11 @@ namespace Fargowiltas
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.Bone, 5).
             AddTile(TileID.BoneWelder).
+            Register();
+
+            mod.CreateRecipe(CaughtNPCItem.CaughtTownies[NPCID.TravellingMerchant]).
+            AddIngredient(null, "SkeletonMerchant").
+            AddTile(TileID.MeatGrinder).
             Register();
 
             mod.CreateRecipe(ItemID.Bone, 25).

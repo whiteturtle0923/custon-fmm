@@ -13,7 +13,7 @@ namespace Fargowiltas.UI
     {
         public const int BackWidth = 660;
         public const int BackHeight = 25 * HowManyPerColumn + 26 + 4; //row height * stat rows + search bar + padding
-        public const int HowManyPerColumn = 11;
+        public const int HowManyPerColumn = 12;
         public const int HowManyColumns = 2;
 
         public int LineCounter;
@@ -86,6 +86,7 @@ namespace Fargowiltas.UI
                 AddStat($"Summon Crit: {(int)ModLoader.GetMod("FargowiltasSouls").Call("GetSummonCrit")}%", ItemID.SlimeStaff);
             AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
             AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
+            AddStat($"Armor Penetration: {player.armorPenetration}", ItemID.SharkToothNecklace);
 
             AddStat($"HP: {player.statLifeMax2}", ItemID.LifeCrystal);
             AddStat($"Defense: {player.statDefense}", ItemID.CobaltShield);
@@ -94,13 +95,15 @@ namespace Fargowiltas.UI
             AddStat($"Mana: {player.statManaMax2}", ItemID.ManaCrystal);
             AddStat($"Mana Regen: {player.manaRegen / 2}/sec", ItemID.ManaCrystal);
 
-            AddStat($"Armor Penetration: {player.armorPenetration}", ItemID.SharkToothNecklace);
+            
             AddStat($"Aggro: {player.aggro}", ItemID.FleshKnuckles);
             AddStat($"Max Speed: {(int)((player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6)} mph", ItemID.HermesBoots);
 
             AddStat(player.wingTimeMax / 60 > 60 || player.empressBrooch ? "Wing Time: Yes" : $"Wing Time: {Math.Round(player.wingTimeMax / 60.0, 2)} sec", ItemID.AngelWings);
 
             AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.Torch);
+
+            AddStat($"Fishing Quests: {player.anglerQuestsFinished}", ItemID.AnglerEarring);
         }
 
         public void AddStat(string text, int item = -1)

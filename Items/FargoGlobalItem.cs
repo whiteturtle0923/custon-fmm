@@ -88,7 +88,7 @@ namespace Fargowiltas.Items
                     tooltips.Insert(3, line);
                 }
 
-                if (item.type == ItemID.FiberglassFishingPole || item.type == ItemID.FisherofSouls || item.type == ItemID.Fleshcatcher)
+                if (item.type == ItemID.FiberglassFishingPole || item.type == ItemID.FisherofSouls || item.type == ItemID.Fleshcatcher || item.type == ItemID.ScarabFishingRod || item.type == ItemID.BloodFishingRod)
                 {
                     line = new TooltipLine(Mod, "Tooltip1", "This rod fires 2 lures");
                     tooltips.Insert(3, line);

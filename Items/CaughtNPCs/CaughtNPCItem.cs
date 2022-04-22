@@ -207,6 +207,11 @@ namespace Fargowiltas.Items.CaughtNPCs
 
             Add("Zoologist", NPCID.BestiaryGirl, "'I love animals, like, a lot!'");
             Add("Princess", NPCID.Princess, "'Pink is the best color anyone could ask for!'");
+
+            //town pets
+            Add("Town Dog", NPCID.TownDog, "'Woof!'");
+            Add("Town Cat", NPCID.TownCat, "'Meow!'");
+            Add("Town Bunny", NPCID.TownBunny, "'*Bunny noises*'");
         }
 
         public static void Add(string name, int id, string quote, Mod mod = null)

@@ -10,7 +10,7 @@ namespace Fargowiltas.Items.Explosives
         {
             DisplayName.SetDefault("Grave Buster");
             Tooltip.SetDefault(@"Destroys tombstones in a large area");
-            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
+            Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
         }
 
         public override void SetDefaults()

@@ -51,6 +51,8 @@ namespace Fargowiltas.Projectiles
                             case ProjectileID.BobberFiberglass:
                             case ProjectileID.BobberFisherOfSouls:
                             case ProjectileID.BobberFleshcatcher:
+                            case ProjectileID.BobberBloody:
+                            case ProjectileID.BobberScarab:
                                 split = 2;
                                 break;
 
@@ -128,7 +130,7 @@ namespace Fargowiltas.Projectiles
         {
             Projectile split;
 
-            double spread = 0.6 / number;
+            double spread = 0.3 / number;
 
             for (int i = 0; i < number / 2; i++)
             {
