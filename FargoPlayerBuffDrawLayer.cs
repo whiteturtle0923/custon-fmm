@@ -34,17 +34,18 @@ namespace Fargowiltas
         public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)
         {
             if (!Main.hideUI && drawInfo.drawPlayer.whoAmI == Main.myPlayer && drawInfo.drawPlayer.active && !drawInfo.drawPlayer.dead && !drawInfo.drawPlayer.ghost
-                && ModContent.GetInstance<FargoConfig>().DebuffOpacity > 0)
+                && drawInfo.shadow == 0 && ModContent.GetInstance<FargoConfig>().DebuffOpacity > 0)
             {
-                bool shouldDraw = !drawInfo.drawPlayer.GetModPlayer<FargoPlayer>().HasDrawnDebuffLayer
-                    && drawInfo.drawPlayer.buffType.Count(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)) > 0;
+                //bool shouldDraw = !drawInfo.drawPlayer.GetModPlayer<FargoPlayer>().HasDrawnDebuffLayer
+                //    && drawInfo.drawPlayer.buffType.Count(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)) > 0;
 
                 //stop it from drawing multiple times per frame, e.g. with armor/dash afterimages that ruin opacity
                 //singleplayer check because for some reason this makes it just not work for some people in mp
-                if (Main.netMode == NetmodeID.SinglePlayer)
-                    drawInfo.drawPlayer.GetModPlayer<FargoPlayer>().HasDrawnDebuffLayer = true;
+                //if (Main.netMode == NetmodeID.SinglePlayer) drawInfo.drawPlayer.GetModPlayer<FargoPlayer>().HasDrawnDebuffLayer = true;
 
-                return shouldDraw;
+                //return shouldDraw;
+
+                return true;
             }
 
             return false;
