@@ -1229,7 +1229,7 @@ namespace Fargowiltas.NPCs
                     break;
 
                 case NPCID.BloodNautilus:
-                    FargoUtils.TryDowned(npc, "Abominationn", Color.Orange, "dreadnautilus");
+                    FargoUtils.TryDowned(npc, "Deviantt", Color.HotPink, "rareEnemy", "dreadnautilus");
                     break;
 
                 case NPCID.Gnome:

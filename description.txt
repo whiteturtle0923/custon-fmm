@@ -52,8 +52,6 @@ ALPHA UPDATE - V 2.7.3
 -Added 1% chance for Moon Lord to drop legs
 -Squirrel sells Torch God's Favor
 -Boss biomes don't take effect if you're very far away from the boss
-
-
 -Added Anemometer
 -Added extra lures to Scarb Fishing Rod and Chum Caster
 -Reduced spread of all extra lures
@@ -64,7 +62,8 @@ ALPHA UPDATE - V 2.7.3
 -Eye That Could Be Seen As Suspicious now resets night until EoC has been beaten like other night boss summons
 -Squirrel now REFUSES to sell Grilled Squirrel
 -Added Skeleton Merchant recipe from Travelling Merchant at Meat Grinder
-
+-Moved Blood Sushi Platter to Deviantt shop
+-Blood Moon enemy spawners now require Blood Moon to use instead of only Night since enemies despawn during only Night
 
 
 ALPHA UPDATE - V 2.7.2
