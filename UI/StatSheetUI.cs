@@ -71,7 +71,7 @@ namespace Fargowiltas.UI
             InnerPanel.RemoveAllChildren();
             ColumnCounter = LineCounter = 0;
 
-            double Damage(DamageClass damageClass) => Math.Round(player.GetTotalDamage(damageClass).Flat) * 100;
+            double Damage(DamageClass damageClass) => Math.Round(player.GetTotalDamage(damageClass).Additive * 100);
             int Crit(DamageClass damageClass) => (int)player.GetCritChance(DamageClass.Generic) + (int)player.GetCritChance(damageClass);
 
             AddStat($"Melee Damage: {Damage(DamageClass.Melee)}%", ItemID.CopperBroadsword);
