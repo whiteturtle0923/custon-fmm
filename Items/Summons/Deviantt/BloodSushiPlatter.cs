@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 
-namespace Fargowiltas.Items.Summons.Abom
+namespace Fargowiltas.Items.Summons.Deviantt
 {
     public class BloodSushiPlatter : BaseSummon
     {
@@ -14,12 +14,12 @@ namespace Fargowiltas.Items.Summons.Abom
             base.SetStaticDefaults();
             DisplayName.SetDefault("Blood Sushi Platter");
             Tooltip.SetDefault("Summons Dreadnautilus" +
-                               "\nOnly usable at night");
+                               "\nOnly usable during Blood Moon");
         }
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime;
+            return !Main.dayTime && Main.bloodMoon;
         }
     }
 }

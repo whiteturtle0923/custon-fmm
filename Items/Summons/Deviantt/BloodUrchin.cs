@@ -14,12 +14,12 @@ namespace Fargowiltas.Items.Summons.Deviantt
             base.SetStaticDefaults();
             DisplayName.SetDefault("Blood Urchin");
             Tooltip.SetDefault("Summons Blood Eel" +
-                               "\nOnly usable at night");
+                               "\nOnly usable during Blood Moon");
         }
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime;
+            return !Main.dayTime && Main.bloodMoon;
         }
     }
 }
