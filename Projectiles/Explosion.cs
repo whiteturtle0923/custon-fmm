@@ -63,7 +63,7 @@ namespace Fargowiltas.Projectiles
                     scaleFactor = 0.8f;
                 }
 
-                int num620 = Gore.NewGore(Projectile.position, default, Main.rand.Next(61, 64));
+                int num620 = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position, default, Main.rand.Next(61, 64));
                 Main.gore[num620].velocity *= scaleFactor;
 
                 Gore gore97 = Main.gore[num620];
@@ -72,7 +72,7 @@ namespace Fargowiltas.Projectiles
                 Gore gore98 = Main.gore[num620];
                 gore98.velocity.Y += 1f;
 
-                num620 = Gore.NewGore(Projectile.position, default, Main.rand.Next(61, 64));
+                num620 = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position, default, Main.rand.Next(61, 64));
                 Main.gore[num620].velocity *= scaleFactor;
 
                 Gore gore99 = Main.gore[num620];
@@ -81,7 +81,7 @@ namespace Fargowiltas.Projectiles
                 Gore gore100 = Main.gore[num620];
                 gore100.velocity.Y += 1f;
 
-                num620 = Gore.NewGore(Projectile.position, default, Main.rand.Next(61, 64));
+                num620 = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position, default, Main.rand.Next(61, 64));
                 Main.gore[num620].velocity *= scaleFactor;
 
                 Gore gore101 = Main.gore[num620];
@@ -90,7 +90,7 @@ namespace Fargowiltas.Projectiles
                 Gore gore102 = Main.gore[num620];
                 gore102.velocity.Y -= 1f;
 
-                num620 = Gore.NewGore(Projectile.position, default, Main.rand.Next(61, 64));
+                num620 = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position, default, Main.rand.Next(61, 64));
                 Main.gore[num620].velocity *= scaleFactor;
 
                 Gore gore103 = Main.gore[num620];

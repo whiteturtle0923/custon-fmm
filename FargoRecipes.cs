@@ -263,14 +263,14 @@ namespace Fargowiltas
             group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Squirrel",
                 //ItemID.SquirrelGold,
                 ItemID.Squirrel,
-                ItemID.SquirrelRed,
-                ItemID.GemSquirrelAmber,
-                ItemID.GemSquirrelAmethyst,
-                ItemID.GemSquirrelDiamond,
-                ItemID.GemSquirrelEmerald,
-                ItemID.GemSquirrelRuby,
-                ItemID.GemSquirrelSapphire,
-                ItemID.GemSquirrelTopaz);
+                ItemID.SquirrelRed);
+                //ItemID.GemSquirrelAmber,
+                //ItemID.GemSquirrelAmethyst,
+                //ItemID.GemSquirrelDiamond,
+                //ItemID.GemSquirrelEmerald,
+                //ItemID.GemSquirrelRuby,
+                //ItemID.GemSquirrelSapphire,
+                //ItemID.GemSquirrelTopaz);
             RecipeGroup.RegisterGroup("Fargowiltas:AnySquirrel", group);
 
             //vanilla squirrels

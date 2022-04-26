@@ -104,10 +104,11 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override string TownNPCName()
+        public override List<string> SetNPCNameList()
         {
             string[] names = { "Griff", "Jack", "Bruce", "Larry", "Will", "Jerry", "Liam", "Stan", "Lee", "Woody", "Leif", "Paul" };
-            return Main.rand.Next(names);
+
+            return new List<string>(names);
         }
 
         public override string GetChat()
@@ -177,26 +178,26 @@ namespace Fargowiltas.NPCs
                 {
                     quote = "While I was chopping down a cactus these things leaped at me, why don't you take care of them?";
                     itemType = Main.rand.Next(new int[] { ItemID.Scorpion, ItemID.BlackScorpion });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Cactus), ItemID.Cactus, 100);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Cactus), ItemID.Cactus, 100);
                 }
                 else if (player.ZoneJungle)
                 {
                     quote = "These mahogany trees are full of life, but a tree only has one purpose: to be chopped. Oh yea these fell out of the last one.";
                     itemType = Main.rand.Next(new int[] { ItemID.Buggy, ItemID.Sluggy, ItemID.Grubby, ItemID.Frog });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
                     itemType = Main.rand.Next(new int[] { ItemID.Mango, ItemID.Pineapple });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.RichMahogany), ItemID.RichMahogany, 50);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.RichMahogany), ItemID.RichMahogany, 50);
                 }
                 else if (player.ZoneHallow)
                 {
                     quote = "This place is a bit fanciful for my tastes, but the wood's as choppable as any. Nighttime has these cool bugs though, take a few.";
                     itemType = Main.rand.Next(new int[] { ItemID.LightningBug, ItemID.FairyCritterBlue, ItemID.FairyCritterGreen, ItemID.FairyCritterPink });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
                     itemType = Main.rand.Next(new int[] { ItemID.Starfruit, ItemID.Dragonfruit });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Pearlwood), ItemID.Pearlwood, 50);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Pearlwood), ItemID.Pearlwood, 50);
 
                     //add prismatic lacewing if post plantera
                 }
@@ -204,8 +205,8 @@ namespace Fargowiltas.NPCs
                 {
                     quote = "Whatever causes these to glow is beyond me, you're probably gonna eat them anyway so have this while you're at it.";
                     itemType = Main.rand.Next(new int[] { ItemID.GlowingSnail, ItemID.TruffleWorm });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.GlowingMushroom), ItemID.GlowingMushroom, 50);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.GlowingMushroom), ItemID.GlowingMushroom, 50);
                     //add mushroom grass seeds
 
                 }
@@ -213,29 +214,29 @@ namespace Fargowiltas.NPCs
                 {
                     quote = "The trees here are probably the toughest in this branch of reality.. Sorry, just tree puns. I found these for you here.";
                     itemType = Main.rand.Next(new int[] { ItemID.Elderberry, ItemID.BlackCurrant, ItemID.BloodOrange, ItemID.Rambutan });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
                 }
                 else if (player.ZoneSnow)
                 {
                     //penguin
                     quote = "This neck of the woods is pretty eh? Here I've got some of my favorite wood for you.";
                     itemType = Main.rand.Next(new int[] { ItemID.Cherry, ItemID.Plum });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.BorealWood), ItemID.BorealWood, 50);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.BorealWood), ItemID.BorealWood, 50);
                 }
                 else if (player.ZoneBeach)
                 {
                     quote = "Even on vacation, I always fit in a little chopping. A couple annoying birds fell out of a palm tree. Take them off my hands.. maybe cook them up?";
                     itemType = Main.rand.Next(new int[] { ItemID.Coconut, ItemID.Banana });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Seagull), ItemID.Seagull, 5);
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.PalmWood), ItemID.PalmWood, 50);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Seagull), ItemID.Seagull, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.PalmWood), ItemID.PalmWood, 50);
                 }
                 else if (player.ZoneUnderworldHeight)
                 {
                     quote = "I looked around here for a while and didn't find any trees. I did find these little guys though. Maybe you'll want them?";
                     itemType = Main.rand.Next(new int[] { ItemID.HellButterfly, ItemID.MagmaSnail, ItemID.Lavafly });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
 
                 }
                 else if (player.ZoneRockLayerHeight || player.ZoneDirtLayerHeight)
@@ -243,9 +244,9 @@ namespace Fargowiltas.NPCs
                     quote = "I certainly didn't expect to find such wonderful trees down here. Check this out.";
 
                     itemType = Main.rand.Next(new int[] { ItemID.Diamond, ItemID.Ruby, ItemID.Amethyst, ItemID.Emerald, ItemID.Sapphire, ItemID.Topaz, ItemID.Amber });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 15);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 15);
                     itemType = Main.rand.Next(new int[] { ItemID.GemSquirrelDiamond, ItemID.GemSquirrelAmber, ItemID.GemSquirrelAmethyst, ItemID.GemSquirrelEmerald, ItemID.GemSquirrelRuby, ItemID.GemSquirrelSapphire, ItemID.GemSquirrelTopaz, ItemID.GemBunnyAmber, ItemID.GemBunnyAmethyst, ItemID.GemBunnyDiamond, ItemID.GemBunnyEmerald, ItemID.GemBunnyRuby, ItemID.GemBunnySapphire, ItemID.GemBunnyTopaz });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
                 }
                 //purity, most common option likely
                 else// if (player.position.Y > Main.worldSurface)
@@ -257,18 +258,18 @@ namespace Fargowiltas.NPCs
                         {
                             quote = "Back in the day, people used to forge butterflies into powerful gear. We try to forget those days... but here have one.";
                             itemType = Main.rand.Next(new int[] { ItemID.JuliaButterfly, ItemID.MonarchButterfly, ItemID.PurpleEmperorButterfly, ItemID.RedAdmiralButterfly, ItemID.SulphurButterfly, ItemID.TreeNymphButterfly, ItemID.UlyssesButterfly, ItemID.ZebraSwallowtailButterfly });
-                            player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
+                            player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
                         }
                         else if (Main.rand.Next(20) == 0)
                         {
                             quote = "";
-                            player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.EucaluptusSap), ItemID.EucaluptusSap);
+                            player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.EucaluptusSap), ItemID.EucaluptusSap);
                         }
                         else
                         {
                             quote = "These little critters are always falling out of the trees I cut down. Maybe you can find a use for them?";
                             itemType = Main.rand.Next(new int[] { ItemID.Grasshopper, ItemID.Squirrel, ItemID.SquirrelRed, ItemID.Bird, ItemID.BlueJay, ItemID.Cardinal });
-                            player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
+                            player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
                         }
 
                         
@@ -278,12 +279,12 @@ namespace Fargowiltas.NPCs
                     else
                     {
                         quote = "Chopping trees at night is always relaxing... well except for the flying eyeballs. Have one of these little guys to keep you company.";
-                        player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Firefly), ItemID.Firefly);
+                        player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Firefly), ItemID.Firefly);
                     }
 
                     itemType = Main.rand.Next(new int[] { ItemID.Lemon, ItemID.Peach, ItemID.Apricot, ItemID.Grapefruit });
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(itemType), itemType, 5);
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Wood), ItemID.Wood, 50);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Wood), ItemID.Wood, 50);
                 }
 
                 Main.npcChatText = quote;
@@ -411,13 +412,13 @@ namespace Fargowiltas.NPCs
                 if (!Main.dedServ)
                 {
                     Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore3").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore3").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore2").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore2").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore1").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/LumberGore1").Type);
                 }
             }
             else

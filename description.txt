@@ -65,6 +65,11 @@ ALPHA UPDATE - V 2.7.3
 -Squirrel now REFUSES to sell Grilled Squirrel
 -Added Skeleton Merchant recipe from Travelling Merchant at Meat Grinder
 
+-Updated to 1.4 preview 
+-Fixed Eye That Could Be Seen As Suspicious not working
+-Removed Gem Squirrels from Squirrel group, they can no longer be crafted into themself
+-Make sure Stat sheet damages are correct still, there was a funky change in code
+
 
 
 ALPHA UPDATE - V 2.7.2

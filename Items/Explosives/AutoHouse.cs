@@ -35,7 +35,7 @@ namespace Fargowiltas.Items.Explosives
             if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[ModContent.ProjectileType<InstaHouseVisual>()] < 1)
             {
                 Vector2 mouse = Main.MouseWorld;
-                Projectile.NewProjectile(player.GetProjectileSource_Item(Item), mouse, Vector2.Zero, ModContent.ProjectileType<InstaHouseVisual>(), 0, 0, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), mouse, Vector2.Zero, ModContent.ProjectileType<InstaHouseVisual>(), 0, 0, player.whoAmI);
             }
         }
 

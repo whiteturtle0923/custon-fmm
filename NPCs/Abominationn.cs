@@ -110,10 +110,11 @@ namespace Fargowiltas.NPCs
             NPC.breath = 200;
         }
 
-        public override string TownNPCName()
+        public override List<string> SetNPCNameList()
         {
             string[] names = { "Wilta", "Jack", "Harley", "Reaper", "Stevenn", "Doof", "Baroo", "Fergus", "Entev", "Catastrophe", "Bardo", "Betson" };
-            return Main.rand.Next(names);
+
+            return new List<string>(names);
         }
 
         public override string GetChat()
@@ -328,13 +329,13 @@ namespace Fargowiltas.NPCs
                 if (!Main.dedServ)
                 {
                     Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore3").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore3").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore2").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore2").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore1").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore1").Type);
                 }
             }
             else

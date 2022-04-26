@@ -31,7 +31,7 @@ namespace Fargowiltas.Projectiles
             {
                 for (int i = -3; i < 3; i++)
                 {
-                    Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center, -Projectile.velocity.RotatedBy(Math.PI / 7 * i), ModContent.ProjectileType<FakeHeart2Deviantt>(), Projectile.damage, Projectile.knockBack, Projectile.owner, -1, 120 + 20 * i);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -Projectile.velocity.RotatedBy(Math.PI / 7 * i), ModContent.ProjectileType<FakeHeart2Deviantt>(), Projectile.damage, Projectile.knockBack, Projectile.owner, -1, 120 + 20 * i);
                 }
             }
 

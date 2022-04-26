@@ -18,7 +18,7 @@ namespace Fargowiltas.Items.Explosives
 
         public override void PlaceInWorld(int i, int j, Item item)
         {
-            Projectile.NewProjectile(Main.player[Main.myPlayer].GetProjectileSource_Item(item), i * 16 + 8, (j + 2) * 16, 0f, 0f, ModContent.ProjectileType<AutoHouseProj>(), 0, 0, Main.myPlayer);
+            Projectile.NewProjectile(Main.player[Main.myPlayer].GetSource_ItemUse(item), i * 16 + 8, (j + 2) * 16, 0f, 0f, ModContent.ProjectileType<AutoHouseProj>(), 0, 0, Main.myPlayer);
         }
 
         public override void NearbyEffects(int i, int j, bool closer)

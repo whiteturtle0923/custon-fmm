@@ -54,7 +54,7 @@ namespace Fargowiltas.Items.Summons
                 }
             }
 
-            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCType);
+            Projectile.NewProjectile(player.GetSource_ItemUse(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, NPCType);
 
             if (Main.netMode == NetmodeID.Server)
             {

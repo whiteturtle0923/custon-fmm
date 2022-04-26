@@ -44,7 +44,7 @@ namespace Fargowiltas.Items.Summons.Mutant
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-1000, -250));
 
             // Vanilla
-            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, 1, 3);
+            Projectile.NewProjectile(player.GetSource_ItemUse(source.Item), pos, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer, 1, 3);
 
             // Modded
             for (int i = Main.maxNPCTypes; i < NPCLoader.NPCCount; i++)

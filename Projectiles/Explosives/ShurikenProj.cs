@@ -38,7 +38,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Explosion>(), 0, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<Explosion>(), 0, Projectile.knockBack, Projectile.owner);
 
             Vector2 position = Projectile.Center;
             SoundEngine.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);

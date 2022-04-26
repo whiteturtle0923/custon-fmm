@@ -71,12 +71,12 @@ namespace Fargowiltas.UI
             InnerPanel.RemoveAllChildren();
             ColumnCounter = LineCounter = 0;
 
-            double Damage(DamageClass damageClass) => Math.Round(((float)player.GetDamage(DamageClass.Generic) + (float)player.GetDamage(damageClass) - 1) * 100);
-            int Crit(DamageClass damageClass) => player.GetCritChance(DamageClass.Generic) + player.GetCritChance(damageClass);
+            double Damage(DamageClass damageClass) => Math.Round(player.GetTotalDamage(damageClass).Flat) * 100;
+            int Crit(DamageClass damageClass) => (int)player.GetCritChance(DamageClass.Generic) + (int)player.GetCritChance(damageClass);
 
             AddStat($"Melee Damage: {Damage(DamageClass.Melee)}%", ItemID.CopperBroadsword);
             AddStat($"Melee Crit: {Crit(DamageClass.Melee)}%", ItemID.CopperBroadsword);
-            AddStat($"Melee Speed: {(int)(1f / player.meleeSpeed * 100)}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Speed: {(int)(1f / player.GetAttackSpeed(DamageClass.Melee) * 100)}%", ItemID.CopperBroadsword);
             AddStat($"Ranged Damage: {Damage(DamageClass.Ranged)}%", ItemID.CopperBow);
             AddStat($"Ranged Crit: {Crit(DamageClass.Ranged)}%", ItemID.CopperBow);
             AddStat($"Magic Damage: {Damage(DamageClass.Magic)}%", ItemID.WandofSparking);
@@ -86,7 +86,7 @@ namespace Fargowiltas.UI
                 AddStat($"Summon Crit: {(int)ModLoader.GetMod("FargowiltasSouls").Call("GetSummonCrit")}%", ItemID.SlimeStaff);
             AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
             AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
-            AddStat($"Armor Penetration: {player.armorPenetration}", ItemID.SharkToothNecklace);
+            AddStat($"Armor Penetration: {player.GetArmorPenetration(DamageClass.Melee)}", ItemID.SharkToothNecklace);
 
             AddStat($"HP: {player.statLifeMax2}", ItemID.LifeCrystal);
             AddStat($"Defense: {player.statDefense}", ItemID.CobaltShield);

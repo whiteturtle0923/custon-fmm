@@ -134,7 +134,7 @@ namespace Fargowiltas.Items
                 case ItemID.KingSlimeBossBag:
                     if (Main.rand.NextBool(25))
                     {
-                        player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.SlimeStaff), ItemID.SlimeStaff);
+                        player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.SlimeStaff), ItemID.SlimeStaff);
                     }
 
                     break;
@@ -144,7 +144,7 @@ namespace Fargowiltas.Items
                     if (Main.rand.NextBool(40))
                     {
                         int drop = Main.rand.Next(new int[] { ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang });
-                        player.QuickSpawnItem(player.GetItemSource_OpenItem(drop), drop);
+                        player.QuickSpawnItem(player.GetSource_OpenItem(drop), drop);
                     }
 
                     break;
@@ -154,12 +154,12 @@ namespace Fargowiltas.Items
                     if (Main.rand.NextBool(10))
                     {
                         int drop = Main.rand.Next( new int[] { ItemID.BandofRegeneration, ItemID.MagicMirror, ItemID.CloudinaBottle, ItemID.EnchantedBoomerang, ItemID.ShoeSpikes, ItemID.FlareGun, ItemID.HermesBoots, ItemID.LavaCharm, ItemID.SandstorminaBottle, ItemID.FlyingCarpet });
-                        player.QuickSpawnItem(player.GetItemSource_OpenItem(drop), drop);
+                        player.QuickSpawnItem(player.GetSource_OpenItem(drop), drop);
                     }
 
                     if (Main.rand.NextBool(20) && !Main.hardMode)
                     {
-                        player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Sundial), ItemID.Sundial);
+                        player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Sundial), ItemID.Sundial);
                     }
 
                         break;
@@ -169,7 +169,7 @@ namespace Fargowiltas.Items
             {
                 if (Main.rand.NextBool(7))
                 {
-                    player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.Valor), ItemID.Valor);
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Valor), ItemID.Valor);
                 }
             }
         }

@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Summons.Abom
             for (int i = 0; i < pillars.Length; i++)
             {
                 Vector2 pos = new Vector2((int)player.position.X + (400 * i) - 600, (int)player.position.Y - 200);
-                Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), pos, Vector2.Zero, type, 0, 0, Main.myPlayer, pillars[i]);
+                Projectile.NewProjectile(player.GetSource_ItemUse(source.Item), pos, Vector2.Zero, type, 0, 0, Main.myPlayer, pillars[i]);
             }
 
             if (Main.netMode == NetmodeID.Server)

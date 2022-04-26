@@ -137,7 +137,7 @@ namespace Fargowiltas.Projectiles
                 for (int j = 0; j < 2; j++)
                 {
                     int factor = (j == 0) ? 1 : -1;
-                    split = NewProjectileDirectSafe(projectile.GetProjectileSource_FromThis(), projectile.Center, projectile.velocity.RotatedBy(factor * spread * (i + 1)), projectile.type, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1]);
+                    split = NewProjectileDirectSafe(projectile.GetSource_FromThis(), projectile.Center, projectile.velocity.RotatedBy(factor * spread * (i + 1)), projectile.type, projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1]);
 
                     if (split != null)
                     {

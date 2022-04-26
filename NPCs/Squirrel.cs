@@ -139,26 +139,12 @@ namespace Fargowiltas.NPCs
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
 
-        public override string TownNPCName()
-		{
-			switch (WorldGen.genRand.Next(7))
-			{
-				case 0:
-					return "Rick";
-				case 1:
-					return "Acorn";
-                case 2:
-                    return "Puff";
-                case 3:
-                    return "Coco";
-                case 4:
-                    return "Truffle";
-                case 5:
-                    return "Furgo";
-                default:
-					return "Squeaks";
-			}
-		}
+        public override List<string> SetNPCNameList()
+        {
+            string[] names = { "Rick", "Acorn", "Puff", "Coco", "Truffle", "Furgo", "Squeaks" };
+
+            return new List<string>(names);
+        }
 
 		public override string GetChat()
 		{

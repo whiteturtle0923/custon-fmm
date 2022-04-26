@@ -111,10 +111,11 @@ namespace Fargowiltas.NPCs
             NPC.breath = 200;
         }
 
-        public override string TownNPCName()
+        public override List<string> SetNPCNameList()
         {
             string[] names = { "Akira", "Remi", "Saku", "Seira", "Koi", "Elly", "Lori", "Calia", "Teri", "Artt", "Flan", "Shion", "Tewi" };
-            return Main.rand.Next(names);
+
+            return new List<string>(names);
         }
 
         public override string GetChat()
@@ -336,13 +337,13 @@ namespace Fargowiltas.NPCs
                 if (!Main.dedServ)
                 {
                     Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore3").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore3").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore2").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore2").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore1").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/DevianttGore1").Type);
                 }
             }
             else
@@ -357,7 +358,7 @@ namespace Fargowiltas.NPCs
         public override void OnKill()
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && TryFind("FargowiltasSouls", "CosmosChampion", out ModNPC cosmosChamp) && NPC.AnyNPCs(cosmosChamp.Type))
-                Item.NewItem(NPC.GetItemSource_Loot(), NPC.Hitbox, ItemType<Items.Tiles.WalkingRick>());
+                Item.NewItem(NPC.GetSource_Loot(), NPC.Hitbox, ItemType<Items.Tiles.WalkingRick>());
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

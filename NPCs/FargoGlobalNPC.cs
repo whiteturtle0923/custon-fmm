@@ -898,7 +898,7 @@ namespace Fargowiltas.NPCs
             {
                 case NPCID.Painter:
                     if (NPC.AnyNPCs(NPCID.MoonLordCore))
-                        Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemType<EchPainting>());
+                        Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, ItemType<EchPainting>());
                     break;
 
                 case NPCID.DD2OgreT2:
@@ -906,11 +906,11 @@ namespace Fargowiltas.NPCs
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.NextBool(14))
-                            Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemID.BossMaskOgre);
+                            Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, ItemID.BossMaskOgre);
 
-                        Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, Main.rand.Next(new int[] { ItemID.ApprenticeScarf, ItemID.SquireShield, ItemID.HuntressBuckler, ItemID.MonkBelt, ItemID.DD2SquireDemonSword, ItemID.MonkStaffT1, ItemID.MonkStaffT2, ItemID.BookStaff, ItemID.DD2PhoenixBow, ItemID.DD2PetGhost }));
+                        Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, Main.rand.Next(new int[] { ItemID.ApprenticeScarf, ItemID.SquireShield, ItemID.HuntressBuckler, ItemID.MonkBelt, ItemID.DD2SquireDemonSword, ItemID.MonkStaffT1, ItemID.MonkStaffT2, ItemID.BookStaff, ItemID.DD2PhoenixBow, ItemID.DD2PetGhost }));
 
-                        Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemID.GoldCoin, Main.rand.Next(4, 7));
+                        Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, ItemID.GoldCoin, Main.rand.Next(4, 7));
                     }
                     break;
 
@@ -919,13 +919,13 @@ namespace Fargowiltas.NPCs
                     if (!DD2Event.Ongoing)
                     {
                         if (Main.rand.NextBool(14))
-                            Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemID.BossMaskDarkMage);
+                            Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, ItemID.BossMaskDarkMage);
 
                         if (Main.rand.NextBool(10))
-                            Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, Main.rand.NextBool() ? ItemID.WarTable : ItemID.WarTableBanner);
+                            Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, Main.rand.NextBool() ? ItemID.WarTable : ItemID.WarTableBanner);
 
                         if (Main.rand.NextBool(6))
-                            Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, Main.rand.Next(new int[] { ItemID.DD2PetGato, ItemID.DD2PetDragon }));
+                            Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, Main.rand.Next(new int[] { ItemID.DD2PetGato, ItemID.DD2PetDragon }));
                     }
                     break;
 
@@ -1044,7 +1044,7 @@ namespace Fargowiltas.NPCs
             // Lumber Jaxe
             if (npc.FindBuffIndex(ModContent.BuffType<WoodDrop>()) != -1)
             {
-                Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, ItemID.Wood, Main.rand.Next(10, 30));
+                Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, ItemID.Wood, Main.rand.Next(10, 30));
             }
 
             switch (npc.type)
@@ -1382,13 +1382,13 @@ namespace Fargowiltas.NPCs
             // Drop swarm reward every 100 kills
             if (Fargowiltas.SwarmKills % 100 == 0 && reward > 0)
             {
-                Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, reward);
+                Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, reward);
             }
 
             //drop trphy every 10 killa
             if (Fargowiltas.SwarmKills % 10 == 0 && trophy != -1)
             {
-                Item.NewItem(npc.GetItemSource_Loot(), npc.Hitbox, trophy);
+                Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, trophy);
             }
 
             if (Main.netMode == NetmodeID.Server)

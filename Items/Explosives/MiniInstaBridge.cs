@@ -38,7 +38,7 @@ namespace Fargowiltas.Items.Explosives
         {
             Vector2 mouse = Main.MouseWorld;
 
-            Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), mouse, Vector2.Zero, type, 0, 0, player.whoAmI);
+            Projectile.NewProjectile(player.GetSource_ItemUse(source.Item), mouse, Vector2.Zero, type, 0, 0, player.whoAmI);
 
             return false;
         }

@@ -46,7 +46,7 @@ Only works in the Jungle Temple and after Plantera is defeated");
             Tile tile = Framing.GetTileSafely(player.Center);
             if (tile.TileType == TileID.LihzahrdAltar && tile.WallType == WallID.LihzahrdBrickUnsafe && NPC.downedPlantBoss)
             {
-                Projectile.NewProjectile(player.GetProjectileSource_Item(source.Item), player.Bottom - Vector2.UnitY * 8f, Vector2.Zero, type, 0, 0, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_ItemUse(source.Item), player.Bottom - Vector2.UnitY * 8f, Vector2.Zero, type, 0, 0, player.whoAmI);
             }
             return false;
         }
