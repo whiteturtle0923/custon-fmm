@@ -345,6 +345,9 @@ namespace Fargowiltas.NPCs
 
                             if (material.type == ItemID.CellPhone && TryFind("FargowiltasSouls", "WorldShaperSoul", out ModItem worldShaperSoul) && item.type == worldShaperSoul.Type)
                                 AddToCollection(material.type, ShopGroup.Other, itemCollections);
+
+                            if (material.type == ItemID.Zenith && TryFind("FargowiltasSouls", "BerserkerSoul", out ModItem berserkerSoul) && item.type == berserkerSoul.Type)
+                                AddToCollection(material.type, ShopGroup.Other, itemCollections);
                         }
                     }
                     break;
