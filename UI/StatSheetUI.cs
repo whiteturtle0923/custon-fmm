@@ -11,9 +11,9 @@ namespace Fargowiltas.UI
 {
     public class StatSheetUI : UIState
     {
-        public const int BackWidth = 660;
+        public const int BackWidth = 700;
         public const int BackHeight = 25 * HowManyPerColumn + 26 + 4; //row height * stat rows + search bar + padding
-        public const int HowManyPerColumn = 12;
+        public const int HowManyPerColumn = 13;
         public const int HowManyColumns = 2;
 
         public int LineCounter;
@@ -84,26 +84,30 @@ namespace Fargowiltas.UI
             AddStat($"Summon Damage: {Damage(DamageClass.Summon)}%", ItemID.SlimeStaff);
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
                 AddStat($"Summon Crit: {(int)ModLoader.GetMod("FargowiltasSouls").Call("GetSummonCrit")}%", ItemID.SlimeStaff);
+            else
+                AddStat("");
             AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
             AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
-            AddStat($"Armor Penetration: {player.GetArmorPenetration(DamageClass.Melee)}", ItemID.SharkToothNecklace);
 
-            AddStat($"HP: {player.statLifeMax2}", ItemID.LifeCrystal);
-            AddStat($"Defense: {player.statDefense}", ItemID.CobaltShield);
-            AddStat($"Damage Reduction: {Math.Round(player.endurance * 100)}%", ItemID.WormScarf);
+            AddStat($"Armor Penetration: {player.GetArmorPenetration(DamageClass.Generic)}", ItemID.SharkToothNecklace);
+            AddStat($"Aggro: {player.aggro}", ItemID.FleshKnuckles);
+
+
+            AddStat($"Life: {player.statLifeMax2}", ItemID.LifeCrystal);
             AddStat($"Life Regen: {player.lifeRegen}/sec", ItemID.BandofRegeneration);
             AddStat($"Mana: {player.statManaMax2}", ItemID.ManaCrystal);
             AddStat($"Mana Regen: {player.manaRegen / 2}/sec", ItemID.ManaCrystal);
-
-            
-            AddStat($"Aggro: {player.aggro}", ItemID.FleshKnuckles);
+            AddStat($"Defense: {player.statDefense}", ItemID.CobaltShield);
+            AddStat($"Damage Reduction: {Math.Round(player.endurance * 100)}%", ItemID.WormScarf);
             AddStat($"Max Speed: {(int)((player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6)} mph", ItemID.HermesBoots);
-
-            AddStat(player.wingTimeMax / 60 > 60 || player.empressBrooch ? "Wing Time: Yes" : $"Wing Time: {Math.Round(player.wingTimeMax / 60.0, 2)} sec", ItemID.AngelWings);
-
             AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.Torch);
-
             AddStat($"Fishing Quests: {player.anglerQuestsFinished}", ItemID.AnglerEarring);
+
+            string RenderWingStat(double stat) => stat <= 0 ? "???" : stat.ToString();
+            AddStat(player.wingTimeMax / 60 > 60 || player.empressBrooch ? "Wing Time: Yes" : $"Wing Time: {RenderWingStat(Math.Round(player.wingTimeMax / 60.0, 2))} sec", ItemID.AngelWings);
+            AddStat($"Wing Max Speed: {RenderWingStat(Math.Round(modPlayer.StatSheetWingSpeed * 32 / 6.25))} mph", ItemID.AngelWings);
+            AddStat($"Wing Ascent Modifier: {RenderWingStat(Math.Round(modPlayer.StatSheetMaxAscentMultiplier * 100))}%", ItemID.AngelWings);
+            AddStat($"Wing Can Hover: {(modPlayer.CanHover == null ? "???" : modPlayer.CanHover)}", ItemID.AngelWings);
         }
 
         public void AddStat(string text, int item = -1)

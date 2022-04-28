@@ -35,6 +35,10 @@ namespace Fargowiltas
         public float luckPotionBoost;
         public float ElementalAssemblerNearby;
 
+        public float StatSheetMaxAscentMultiplier;
+        public float StatSheetWingSpeed;
+        public bool? CanHover = null;
+
         internal Dictionary<string, bool> FirstDyeIngredients = new Dictionary<string, bool>();
 
         private readonly string[] tags = new string[]
@@ -147,6 +151,16 @@ namespace Fargowiltas
                 Player.adjLava = true;
                 //Player.ZoneGraveyard = true; //i am in fucking AGONY
             }
+
+            if (Player.equippedWings == null)
+                ResetStatSheetWings();
+        }
+
+        public void ResetStatSheetWings()
+        {
+            StatSheetMaxAscentMultiplier = 0;
+            StatSheetWingSpeed = 0;
+            CanHover = null;
         }
 
         public override void PostUpdate()

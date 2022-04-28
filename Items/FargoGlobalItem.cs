@@ -419,5 +419,24 @@ namespace Fargowiltas.Items
 
             return base.OnPickup(item, player);
         }
+
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+        {
+            if (equippedItem.wingSlot != 0 && incomingItem.wingSlot != 0)
+                player.GetModPlayer<FargoPlayer>().ResetStatSheetWings();
+
+            return base.CanAccessoryBeEquippedWith(equippedItem, incomingItem, player);
+        }
+
+        public override void VerticalWingSpeeds(Item item, Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
+        {
+            player.GetModPlayer<FargoPlayer>().StatSheetMaxAscentMultiplier = maxAscentMultiplier;
+            player.GetModPlayer<FargoPlayer>().CanHover = ArmorIDs.Wing.Sets.Stats[item.wingSlot].HasDownHoverStats || ArmorIDs.Wing.Sets.Stats[player.wingsLogic].HasDownHoverStats;
+        }
+
+        public override void HorizontalWingSpeeds(Item item, Player player, ref float speed, ref float acceleration)
+        {
+            player.GetModPlayer<FargoPlayer>().StatSheetWingSpeed = speed;
+        }
     }
 }
