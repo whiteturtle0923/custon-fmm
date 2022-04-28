@@ -154,6 +154,8 @@ namespace Fargowiltas
 
             if (Player.equippedWings == null)
                 ResetStatSheetWings();
+
+            ForceBiomes();
         }
 
         public void ResetStatSheetWings()
@@ -163,22 +165,8 @@ namespace Fargowiltas
             CanHover = null;
         }
 
-        public override void PostUpdate()
+        private void ForceBiomes()
         {
-            if (autoRevertSelectedItem)
-            {
-                if (Player.itemTime == 0 && Player.itemAnimation == 0)
-                {
-                    Player.selectedItem = originalSelectedItem;
-                    autoRevertSelectedItem = false;
-                }
-            }
-
-            if (FargoWorld.OverloadedSlimeRain && Main.rand.Next(20) == 0)
-            {
-                SlimeRainSpawns();
-            }
-
             if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoGlobalNPC.eaterBoss, NPCID.EaterofWorldsHead)
                 && Player.Distance(Main.npc[FargoGlobalNPC.eaterBoss].Center) < 3000)
             {
@@ -247,6 +235,23 @@ namespace Fargowiltas
                     default:
                         break;
                 }
+            }
+        }
+
+        public override void PostUpdate()
+        {
+            if (autoRevertSelectedItem)
+            {
+                if (Player.itemTime == 0 && Player.itemAnimation == 0)
+                {
+                    Player.selectedItem = originalSelectedItem;
+                    autoRevertSelectedItem = false;
+                }
+            }
+
+            if (FargoWorld.OverloadedSlimeRain && Main.rand.Next(20) == 0)
+            {
+                SlimeRainSpawns();
             }
         }
 
