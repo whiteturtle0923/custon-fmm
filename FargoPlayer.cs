@@ -143,6 +143,8 @@ namespace Fargowiltas
             {
                 ElementalAssemblerNearby -= 1;
                 Player.alchemyTable = true;
+                Player.adjHoney = true;
+                Player.adjLava = true;
                 //Player.ZoneGraveyard = true; //i am in fucking AGONY
             }
         }

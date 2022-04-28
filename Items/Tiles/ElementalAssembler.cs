@@ -46,6 +46,8 @@ namespace Fargowiltas.Items.Tiles
                 .AddIngredient(ItemID.SkyMill)
                 .AddIngredient(ItemID.Solidifier)
                 .AddIngredient(ItemID.BoneWelder)
+                .AddIngredient(ItemID.LavaBucket)
+                .AddIngredient(ItemID.HoneyBucket)
                 //.AddRecipeGroup("Fargowiltas:AnyTombstone") //TODO: put this back
                 .AddRecipeGroup("Fargowiltas:AnyDemonAltar")
                 .AddTile(TileID.WorkBenches)
