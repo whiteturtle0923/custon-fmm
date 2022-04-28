@@ -68,6 +68,7 @@ ALPHA UPDATE - V 2.7.3
 -Moved Blood Sushi Platter to Deviantt shop
 -Blood Moon enemy spawners now require Blood Moon to use instead of only Night since enemies despawn during only Night
 -Updated localization files
+-Fixed several Mutant boss spawners not being researchable
 
 
 ALPHA UPDATE - V 2.7.2

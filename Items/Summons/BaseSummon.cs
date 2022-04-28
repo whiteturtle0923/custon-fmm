@@ -16,6 +16,8 @@ namespace Fargowiltas.Items.Summons
 
         public abstract string NPCName { get; }
 
+        public virtual bool ResetTimeWhenUsed => false;
+
         public override void SetStaticDefaults()
         {
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
@@ -37,6 +39,14 @@ namespace Fargowiltas.Items.Summons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            if (ResetTimeWhenUsed)
+            {
+                Main.time = 0;
+
+                if (Main.netMode == NetmodeID.Server) //sync time
+                    NetMessage.SendData(MessageID.WorldData, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+            }
+
             Vector2 pos = new Vector2((int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250));
 
             if (NPCType == NPCID.Golem)
