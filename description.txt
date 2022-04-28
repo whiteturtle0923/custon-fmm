@@ -62,16 +62,12 @@ ALPHA UPDATE - V 2.7.3
 -Eye That Could Be Seen As Suspicious now resets night until EoC has been beaten like other night boss summons
 -Squirrel now REFUSES to sell Grilled Squirrel
 -Added Skeleton Merchant recipe from Travelling Merchant at Meat Grinder
-
-
-
--Updated to 1.4 preview 
 -Fixed Eye That Could Be Seen As Suspicious not working
 -Removed Gem Squirrels from Squirrel group, they can no longer be crafted into themself
 -Make sure Stat sheet damages are correct still, there was a funky change in code
 -Moved Blood Sushi Platter to Deviantt shop
 -Blood Moon enemy spawners now require Blood Moon to use instead of only Night since enemies despawn during only Night
-
+-Updated localization files
 
 
 ALPHA UPDATE - V 2.7.2

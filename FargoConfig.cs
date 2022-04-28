@@ -9,137 +9,137 @@ namespace Fargowiltas
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-        [Header("Town NPCs")]
-        [Label("$Mods.Fargowiltas.Mutant")]
+        [Header("$Mods.Fargowiltas.Config.TownNPCsHeader")]
+        [Label("$Mods.Fargowiltas.Config.Mutant")]
         [DefaultValue(true)]
         public bool Mutant;
 
-        [Label("$Mods.Fargowiltas.Abom")]
+        [Label("$Mods.Fargowiltas.Config.Abom")]
         [DefaultValue(true)]
         public bool Abom;
 
-        [Label("$Mods.Fargowiltas.Devi")]
+        [Label("$Mods.Fargowiltas.Config.Devi")]
         [DefaultValue(true)]
         public bool Devi;
 
-        [Label("$Mods.Fargowiltas.Lumber")]
+        [Label("$Mods.Fargowiltas.Config.Lumber")]
         [DefaultValue(true)]
         public bool Lumber;
 
-        [Label("$Mods.Fargowiltas.Squirrel")]
+        [Label("$Mods.Fargowiltas.Config.Squirrel")]
         [DefaultValue(true)]
         public bool Squirrel;
 
-        [Label("[i:267] Catch Town NPCs")]
+        [Label("$Mods.Fargowiltas.Config.CatchNPCs")]
         [DefaultValue(true)]
         public bool CatchNPCs;
 
-        [Label("[i:267] Extra Town NPC sales")]
+        [Label("$Mods.Fargowiltas.Config.NPCSales")]
         [DefaultValue(true)]
         public bool NPCSales;
 
-        [Label("[i:1274] Rescuable Town NPCs take no contact damage")]
+        [Label("$Mods.Fargowiltas.Config.SaferBoundNPCs")]
         [DefaultValue(true)]
         public bool SaferBoundNPCs;
 
-        [Label("[i:239] Mark items sold by Squirrel")]
+        [Label("$Mods.Fargowiltas.Config.SquirrelTooltips")]
         [DefaultValue(true)]
         public bool SquirrelTooltips;
 
-        [Header("Seasons")]
-        [Label("[i:1774] Halloween Season Active")]
+        [Header("$Mods.Fargowiltas.Config.SeasonsHeader")]
+        [Label("$Mods.Fargowiltas.Config.Halloween")]
         [DefaultValue(true)]
         public bool Halloween;
 
-        [Label("[i:1869] Christmas Season Active")]
+        [Label("$Mods.Fargowiltas.Config.Christmas")]
         [DefaultValue(true)]
         public bool Christmas;
 
-        [Header("Secret World Seeds")]
-        [Label("[i:353] Drunk World Active")]
+        [Header("$Mods.Fargowiltas.Config.SeedsHeader")]
+        [Label("$Mods.Fargowiltas.Config.DrunkWorld")]
         [DefaultValue(false)]
         public bool DrunkWorld;
 
-        [Label("[i:1133] Bee World Active")]
+        [Label("$Mods.Fargowiltas.Config.BeeWorld")]
         [DefaultValue(false)]
         public bool BeeWorld;
 
-        [Label("[i:2107] For the Worthy World Active")]
+        [Label("$Mods.Fargowiltas.Config.WorthyWorld")]
         [DefaultValue(false)]
         public bool WorthyWorld;
 
-        [Label("[i:3732] Celebration World Active")]
+        [Label("$Mods.Fargowiltas.Config.CelebrationWorld")]
         [DefaultValue(false)]
         public bool CelebrationWorld;
 
-        [Label("[i:5109] Constant World Active")]
+        [Label("$Mods.Fargowiltas.Config.ConstantWorld")]
         [DefaultValue(false)]
         public bool ConstantWorld;
 
-        [Header("Unlimited")]
-        [Label("[i:771] Unlimited Ammo at 3996+ in Hardmode")]
+        [Header("$Mods.Fargowiltas.Config.UnlimitedHeader")]
+        [Label("$Mods.Fargowiltas.Config.UnlimitedAmmo")]
         [DefaultValue(true)]
         public bool UnlimitedAmmo;
 
-        [Label("[i:42] Unlimited Consumable Weapons at 3996+ in Hardmode")]
+        [Label("$Mods.Fargowiltas.Config.UnlimitedConsumableWeapons")]
         [DefaultValue(true)]
         public bool UnlimitedConsumableWeapons;
 
-        [Label("[i:292] Unlimited Potion/Class Station Buffs at 30/15+ Stack in Inventory or Piggy Bank")]
+        [Label("$Mods.Fargowiltas.Config.UnlimitedPotionBuffsOn120")]
         [DefaultValue(true)]
         public bool UnlimitedPotionBuffsOn120;
 
-        [Header("Misc")]
-        [Label("[i:2374] Angler Quest Instant Reset")]
+        [Header("$Mods.Fargowiltas.Config.MiscHeader")]
+        [Label("$Mods.Fargowiltas.Config.AnglerQuestInstantReset")]
         [DefaultValue(true)]
         public bool AnglerQuestInstantReset;
 
-        [Label("[i:2294] Extra Lures on Fishing Rods")]
+        [Label("$Mods.Fargowiltas.Config.ExtraLures")]
         [DefaultValue(true)]
         public bool ExtraLures;
 
-        [Label("[i:3213] Stalker Money Trough")]
+        [Label("$Mods.Fargowiltas.Config.StalkerMoneyTrough")]
         [DefaultValue(true)]
         public bool StalkerMoneyTrough;
 
-        [Label("[i:1809] Powerful Rotten Eggs")]
+        [Label("$Mods.Fargowiltas.Config.RottenEggs")]
         [DefaultValue(true)]
         public bool RottenEggs;
 
-        [Label("[i:1683] Banner Recipes")]
+        [Label("$Mods.Fargowiltas.Config.BannerRecipes")]
         [DefaultValue(true)]
         public bool BannerRecipes;
 
-        [Label("[i:2] Increased Max Stacks")]
+        [Label("$Mods.Fargowiltas.Config.IncreaseMaxStack")]
         [DefaultValue(true)]
         public bool IncreaseMaxStack;
 
-        [Label("[i:997] Increased Extractinator Speed")]
+        [Label("$Mods.Fargowiltas.Config.ExtractSpeed")]
         [DefaultValue(true)]
         public bool ExtractSpeed;
 
-        [Label("[i:909] Fountains Cause Biomes")]
+        [Label("$Mods.Fargowiltas.Config.Fountains")]
         [DefaultValue(true)]
         public bool Fountains;
 
-        [Label("[i:3117] No enemies spawn during boss fights")]
+        [Label("$Mods.Fargowiltas.Config.BossZen")]
         [DefaultValue(true)]
         public bool BossZen;
 
-        [Label("[i:87] Informational and Construction Accessories work in Piggy Bank")]
+        [Label("$Mods.Fargowiltas.Config.PiggyBankAcc")]
         [DefaultValue(true)]
         public bool PiggyBankAcc;
 
-        [Label("[i:4881] Faster Fishing in Lava")]
+        [Label("$Mods.Fargowiltas.Config.FasterLavaFishing")]
         [DefaultValue(true)]
         public bool FasterLavaFishing;
 
-        [Label("[i:1612] Debuff Display Max Opacity")]
+        [Label("$Mods.Fargowiltas.Config.DebuffOpacity")]
         [DefaultValue(1f)]
         [Slider]
         public float DebuffOpacity;
 
-        [Label("[i:1612] Debuff Duration Fader Strength")]
+        [Label("$Mods.Fargowiltas.Config.DebuffFaderRatio")]
         [DefaultValue(0.75f)]
         [Slider]
         public float DebuffFaderRatio;
@@ -148,7 +148,7 @@ namespace Fargowiltas
         //[DefaultValue(true)]
         //public bool DebuffCountdown;
 
-        [Label("[i:1309] Transparent Minions & Support Attacks")]
+        [Label("$Mods.Fargowiltas.Config.TransparentMinions")]
         [DefaultValue(1f)]
         [Slider]
         public float TransparentMinions;
