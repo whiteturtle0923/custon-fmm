@@ -42,14 +42,7 @@ namespace Fargowiltas.Items.Summons.Abom
                 Projectile.NewProjectile(player.GetSource_ItemUse(source.Item), pos, Vector2.Zero, type, 0, 0, Main.myPlayer, pillars[i]);
             }
 
-            if (Main.netMode == NetmodeID.Server)
-            {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The Celestial Pillars have awoken!"), new Color(175, 75, 255));
-            }
-            else
-            {
-                Main.NewText("The Celestial Pillars have awoken!", new Color(175, 75, 255));
-            }
+            FargoUtils.PrintText("The Celestial Pillars have awoken!", new Color(175, 75, 255));
 
             SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
 

@@ -277,11 +277,10 @@ namespace Fargowiltas
                 case 2:
                     if (Main.netMode == NetmodeID.Server)
                     {
-                        bool eventOccurring = false;
-                        if (ClearEvents(ref eventOccurring))
+                        if (IsEventOccurring)
                         {
+                            TryClearEvents();
                             NetMessage.SendData(MessageID.WorldData);
-                            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The event has been cancelled!"), new Color(175, 75, 255));
                         }
                     }
 
@@ -325,111 +324,101 @@ namespace Fargowiltas
                     }
                     break;
 
+                    //client requested server to update world
+                case 6:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.SendData(MessageID.WorldData);
+                    }
+                    break;
+
                 default:
                     break;
             }
         }
 
-        internal static bool ClearEvents(ref bool eventOccurring)
+        internal static bool IsEventOccurring =>
+            Main.invasionType != 0
+            || Main.pumpkinMoon
+            || Main.snowMoon
+            || Main.eclipse
+            || Main.bloodMoon
+            || Main.WindyEnoughForKiteDrops
+            || Main.IsItRaining
+            || Main.IsItStorming
+            || Main.slimeRain
+            || BirthdayParty.PartyIsUp
+            || DD2Event.Ongoing
+            || Sandstorm.Happening
+            || (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0));
+
+        internal static bool TryClearEvents()
         {
             bool canClearEvent = FargoWorld.AbomClearCD <= 0;
-            if (Main.invasionType != 0)
+            if (canClearEvent)
             {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (Main.invasionType != 0)
                 {
                     Main.invasionType = 0;
+                    FargoUtils.PrintText("The invaders have left!", 175, 75, 255);
                 }
-            }
 
-            if (Main.pumpkinMoon)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (Main.pumpkinMoon)
                 {
                     Main.pumpkinMoon = false;
+                    FargoUtils.PrintText("The Pumpkin Moon is lowering...", 175, 75, 255);
                 }
-            }
 
-            if (Main.snowMoon)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (Main.snowMoon)
                 {
                     Main.snowMoon = false;
+                    FargoUtils.PrintText("The Frost Moon is lowering...", 175, 75, 255);
                 }
-            }
 
-            if (Main.eclipse)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (Main.eclipse)
                 {
                     Main.eclipse = false;
+                    FargoUtils.PrintText("A solar eclipse is not happening!", 175, 75, 255);
                 }
-            }
 
-            if (Main.bloodMoon)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (Main.bloodMoon)
                 {
                     Main.bloodMoon = false;
+                    FargoUtils.PrintText("The blood moon is descending...", 175, 75, 255);
                 }
-            }
 
-            if (Main.raining)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (Main.WindyEnoughForKiteDrops)
                 {
-                    Main.raining = false;
+                    Main.windSpeedTarget = 0;
+                    Main.windSpeedCurrent = 0;
+                    FargoUtils.PrintText("The wind has ended!", 175, 75, 255);
                 }
-            }
 
-            if (Main.slimeRain)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (Main.slimeRain)
                 {
                     Main.StopSlimeRain();
                     Main.slimeWarningDelay = 1;
                     Main.slimeWarningTime = 1;
                 }
-            }
 
-            if (BirthdayParty.PartyIsUp)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
-                {
-                    BirthdayParty.WorldClear();
-                }
-            }
+                if (BirthdayParty.PartyIsUp)
+                    BirthdayParty.CheckNight();
 
-            if (DD2Event.Ongoing)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (DD2Event.Ongoing && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     DD2Event.StopInvasion();
+                    FargoUtils.PrintText("The Old One's Army is leaving!", 175, 75, 255);
                 }
-            }
 
-            if (Sandstorm.Happening)
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (Sandstorm.Happening)
                 {
                     Sandstorm.Happening = false;
                     Sandstorm.TimeLeft = 0;
+                    Sandstorm.IntendedSeverity = 0;
+                    FargoUtils.PrintText("The sandstorm has ended!", 175, 75, 255);
                 }
-            }
 
-            if (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
-            {
-                eventOccurring = true;
-                if (canClearEvent)
+                if (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
                 {
                     NPC.LunarApocalypseIsUp = false;
                     NPC.ShieldStrengthTowerNebula = 0;
@@ -449,23 +438,30 @@ namespace Fargowiltas
                             Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
                         }
                     }
+                    FargoUtils.PrintText("Celestial creatures are not invading!", 175, 75, 255);
                 }
-            }
 
-            foreach (MutantSummonInfo summon in summonTracker.EventSummons)
-            {
-                if ((bool)ModLoader.GetMod(summon.modSource).Call("AbominationnClearEvents", canClearEvent))
+                if (Main.IsItRaining || Main.IsItStorming)
                 {
-                    eventOccurring = true;
+                    Main.StopRain();
+                    Main.cloudAlpha = 0;
+                    if (Main.netMode == NetmodeID.Server)
+                        Main.SyncRain();
+                    FargoUtils.PrintText("The rain has ended!", 175, 75, 255);
                 }
-            }
 
-            if (eventOccurring && canClearEvent)
-            {
                 FargoWorld.AbomClearCD = 7200;
             }
 
-            return eventOccurring && canClearEvent;
+            //foreach (MutantSummonInfo summon in summonTracker.EventSummons)
+            //{
+            //    if ((bool)ModLoader.GetMod(summon.modSource).Call("AbominationnClearEvents", canClearEvent))
+            //    {
+            //        eventOccurring = true;
+            //    }
+            //}
+
+            return canClearEvent;
         }
 
         // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);

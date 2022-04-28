@@ -36,21 +36,23 @@ namespace Fargowiltas.Items.Summons.Abom
 
         public override bool? UseItem(Player player)
         {
-            if (!BirthdayParty.PartyIsUp)
-            {
-                BirthdayParty.ToggleManualParty();
-                BirthdayParty.ManualParty = false;
-                BirthdayParty.GenuineParty = true;
-            }
-            NPC.freeCake = true;
-
-            NetMessage.SendData(MessageID.WorldData);
-
             if (!NPC.AnyNPCs(NPCID.PartyGirl))
                 NPC.SpawnOnPlayer(player.whoAmI, NPCID.PartyGirl);
 
-            FargoUtils.PrintText("Looks like someone's throwing a Party!", new Color(255, 0, 160));
-            //SoundEngine.PlaySound(28, player.position);
+            BirthdayParty.PartyDaysOnCooldown = 0;
+
+            if (Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    if (BirthdayParty.PartyIsUp)
+                        break;
+                    BirthdayParty.CheckMorning();
+                }
+            }
+
+            if (Main.netMode == NetmodeID.Server)
+                NetMessage.SendData(MessageID.WorldData);
 
             return true;
         }

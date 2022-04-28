@@ -28,16 +28,17 @@ namespace Fargowiltas.Items.Summons.Abom
             Item.consumable = true;
         }
 
-        //public override bool CanUseItem(Player player)
-        //{
-        //    return !Main.wind;
-        //}
+        public override bool CanUseItem(Player player)
+        {
+            return Main.windSpeedTarget <= 0.4f; //wind threshold
+        }
 
         public override bool? UseItem(Player player)
         {
-            Main.windSpeedTarget = 20;
+            Main.windSpeedTarget = Main.windSpeedCurrent = 0.8f; //40mph?
 
-            NetMessage.SendData(MessageID.WorldData);
+            if (Main.netMode == NetmodeID.Server)
+                NetMessage.SendData(MessageID.WorldData);
             FargoUtils.PrintText("The wind begins howling.", new Color(175, 75, 255));
             SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
 

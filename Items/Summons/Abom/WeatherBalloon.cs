@@ -30,18 +30,23 @@ namespace Fargowiltas.Items.Summons.Abom
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.raining;
+            return !Main.IsItRaining && !Main.IsItStorming;
         }
-
+                
         public override bool? UseItem(Player player)
         {
-            //starts rain for 12 hours
+            //sets rain time to 12 hours
             int day = 86400;
             int hour = day / 24;
             Main.rainTime = hour * 12;
             Main.raining = true;
+            Main.maxRaining = Main.cloudAlpha = 0.9f;
 
-            NetMessage.SendData(MessageID.WorldData);
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData);
+                Main.SyncRain();
+            }
             FargoUtils.PrintText("Rain clouds cover the sky.", new Color(175, 75, 255));
             SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
 

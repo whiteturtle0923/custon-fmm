@@ -180,33 +180,27 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                bool eventOccurring = false;
-                if (Fargowiltas.ClearEvents(ref eventOccurring))
+                if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    if (Main.netMode != NetmodeID.SinglePlayer)
+                    var netMessage = Mod.GetPacket();
+                    netMessage.Write((byte)6);
+                    netMessage.Send();
+                }
+
+                if (Fargowiltas.IsEventOccurring)
+                {
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         var netMessage = Mod.GetPacket();
                         netMessage.Write((byte)2);
                         netMessage.Send();
                     }
-                    else
-                    {
-                        Main.NewText("The event has been cancelled!", 175, 75, 255);
-                    }
 
-                    SoundEngine.PlaySound(SoundID.Roar, NPC.position, 0);
-                    Main.npcChatText = "Hocus pocus, the event is over.";
+                    Main.npcChatText = Fargowiltas.TryClearEvents() ? "Hocus pocus, the event is over" : $"I'm not feeling it right now, come back in {FargoWorld.AbomClearCD / 60} seconds.";
                 }
                 else
                 {
-                    if (eventOccurring)
-                    {
-                        Main.npcChatText = "I'm not feeling it right now, come back in " + (FargoWorld.AbomClearCD / 60).ToString() + " seconds.";
-                    }
-                    else
-                    {
-                        Main.npcChatText = "I don't think there's an event right now.";
-                    }
+                    Main.npcChatText = "I don't think there's an event right now.";
                 }
             }
         }

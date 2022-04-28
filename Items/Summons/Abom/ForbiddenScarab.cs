@@ -10,7 +10,7 @@ namespace Fargowiltas.Items.Summons.Abom
 {
     public class ForbiddenScarab : ModItem
     {
-        private static MethodInfo startSandstormMethod;
+        //private static MethodInfo startSandstormMethod;
 
         public override void SetStaticDefaults()
         {
@@ -34,7 +34,7 @@ namespace Fargowiltas.Items.Summons.Abom
 
         public override bool CanUseItem(Player player)
         {
-            return player.ZoneDesert && !Sandstorm.Happening;
+            return !Sandstorm.Happening;
         }
 
         public override bool? UseItem(Player player)
