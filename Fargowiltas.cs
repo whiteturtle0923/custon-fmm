@@ -54,6 +54,8 @@ namespace Fargowiltas
 
         internal static Fargowiltas Instance;
 
+        public override uint ExtraPlayerBuffSlots => ModContent.GetInstance<FargoConfig>().ExtraBuffSlots;
+
         public Fargowiltas()
         {
 //            Properties = new ModProperties()

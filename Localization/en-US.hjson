@@ -129,9 +129,11 @@ Mods: {
 			UnlimitedHeader: Unlimited
 			UnlimitedAmmo: "[i:771] Unlimited Ammo at 3996+ in Hardmode"
 			UnlimitedConsumableWeapons: "[i:42] Unlimited Consumable Weapons at 3996+ in Hardmode"
-			UnlimitedPotionBuffsOn120: "[i:292] Unlimited Potion/Class Station Buffs at 30/15+ Stack in Inventory or Piggy Bank"
+			UnlimitedPotionBuffsOn120: "[i:292] Unlimited Buffs at 30/15+ in Inventory/Piggy Bank"
+			UnlimitedPotionBuffsOn120Tooltip: 30+ for potions, 15+ for class stations (e.g. Sharpening Table)
 
 			MiscHeader: Miscellaneous
+			ExtraBuffSlots: "[i:3000] Additional Buff Slots"
 			AnglerQuestInstantReset: "[i:2374] Angler Quest Instant Reset"
 			ExtraLures: "[i:2294] Extra Lures on Fishing Rods"
 			StalkerMoneyTrough: "[i:3213] Stalker Money Trough"

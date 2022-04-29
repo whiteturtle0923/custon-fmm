@@ -75,6 +75,7 @@ ALPHA UPDATE - V 2.7.3
 -Forbidden Scarab can now be used outside the Desert
 -Improved Abom event clear multiplayer sync
 -Fixed Abom's parties not causing Party Girl to sell Slice of Cake
+-Added config for additional buff slots!
 
 
 ALPHA UPDATE - V 2.7.2

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Runtime.Serialization;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
@@ -86,10 +88,18 @@ namespace Fargowiltas
         public bool UnlimitedConsumableWeapons;
 
         [Label("$Mods.Fargowiltas.Config.UnlimitedPotionBuffsOn120")]
+        [Tooltip("$Mods.Fargowiltas.Config.UnlimitedPotionBuffsOn120Tooltip")]
         [DefaultValue(true)]
         public bool UnlimitedPotionBuffsOn120;
 
+        private const uint maxExtraBuffSlots = 99;
         [Header("$Mods.Fargowiltas.Config.MiscHeader")]
+        [Label("$Mods.Fargowiltas.Config.ExtraBuffSlots")]
+        [Range(0, maxExtraBuffSlots)]
+        [DefaultValue(22)]
+        [ReloadRequired]
+        public uint ExtraBuffSlots;
+
         [Label("$Mods.Fargowiltas.Config.AnglerQuestInstantReset")]
         [DefaultValue(true)]
         public bool AnglerQuestInstantReset;
@@ -152,5 +162,11 @@ namespace Fargowiltas
         [DefaultValue(1f)]
         [Slider]
         public float TransparentMinions;
+
+        [OnDeserialized]
+        internal void OnDeserializedMethod(StreamingContext context)
+        {
+            ExtraBuffSlots = Utils.Clamp<uint>(ExtraBuffSlots, 0, maxExtraBuffSlots);
+        }
     }
 }
