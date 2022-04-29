@@ -234,18 +234,18 @@ namespace Fargowiltas.NPCs
 
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
-                if (TryFind("FargowiltasSouls", "EurusSock", out ModItem eurusSock))
+                /*if (TryFind("FargowiltasSouls", "EurusSock", out ModItem eurusSock))
                 {
                     shop.item[nextSlot].SetDefaults(eurusSock.Type);
                     nextSlot++;
-                }
+                }*/
 
-                /*if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode") && TryFind("FargowiltasSouls", "EternityAdvisor", out ModItem advisor))
                 {
-                    shop.item[nextSlot].SetDefaults(ItemType<Items.Misc.EternityAdvisor>());
+                    shop.item[nextSlot].SetDefaults(advisor.Type);
                     shop.item[nextSlot].shopCustomPrice = Item.buyPrice(0, 1);
                     nextSlot++;
-                }*/
+                }
             }
 
             AddItem(FargoWorld.DownedBools["worm"], ItemType<WormSnack>(), Item.buyPrice(0, 2), ref shop, ref nextSlot);
