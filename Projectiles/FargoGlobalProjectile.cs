@@ -38,7 +38,7 @@ namespace Fargowiltas.Projectiles
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (projectile.bobber && projectile.owner == Main.myPlayer && GetInstance<FargoConfig>().ExtraLures) && source is EntitySource_ItemUse)
+            if (projectile.bobber && projectile.owner == Main.myPlayer && GetInstance<FargoConfig>().ExtraLures && source is EntitySource_ItemUse)
             {
                 int split = 1;
 
