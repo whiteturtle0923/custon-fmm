@@ -36,50 +36,43 @@ namespace Fargowiltas.Projectiles
             }
         }
 
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            if (projectile.bobber && projectile.owner == Main.myPlayer && GetInstance<FargoConfig>().ExtraLures) && source is EntitySource_ItemUse)
+            {
+                int split = 1;
+
+                switch (projectile.type)
+                {
+                    case ProjectileID.BobberFiberglass:
+                    case ProjectileID.BobberFisherOfSouls:
+                    case ProjectileID.BobberFleshcatcher:
+                    case ProjectileID.BobberBloody:
+                    case ProjectileID.BobberScarab:
+                        split = 2;
+                        break;
+
+                    case ProjectileID.BobberMechanics:
+                    case ProjectileID.BobbersittingDuck:
+                        split = 3;
+                        break;
+
+                    case ProjectileID.BobberHotline:
+                    case ProjectileID.BobberGolden:
+                        split = 5;
+                        break;
+                }
+
+                if (Main.player[projectile.owner].HasBuff(BuffID.Fishing))
+                    split++;
+
+                if (split > 1)
+                    SplitProj(projectile, split);
+            }
+        }
+
         public override bool PreAI(Projectile projectile)
         {
-            if (projectile.owner == Main.myPlayer)
-            {
-                if (firstTick)
-                {
-                    if (GetInstance<FargoConfig>().ExtraLures && projectile.bobber)
-                    {
-                        int split = 1;
-
-                        switch (projectile.type)
-                        {
-                            case ProjectileID.BobberFiberglass:
-                            case ProjectileID.BobberFisherOfSouls:
-                            case ProjectileID.BobberFleshcatcher:
-                            case ProjectileID.BobberBloody:
-                            case ProjectileID.BobberScarab:
-                                split = 2;
-                                break;
-
-                            case ProjectileID.BobberMechanics:
-                            case ProjectileID.BobbersittingDuck:
-                                split = 3;
-                                break;
-
-                            case ProjectileID.BobberHotline:
-                            case ProjectileID.BobberGolden:
-                                split = 5;
-                                break;
-                        }
-
-                        if (Main.player[projectile.owner].HasBuff(BuffID.Fishing))
-                        {
-                            split++;
-                        }
-
-                        if (split > 1)
-                        {
-                            SplitProj(projectile, split);
-                        }
-                    }
-                }
-            }
-
             if (projectile.type == ProjectileID.FlyingPiggyBank && GetInstance<FargoConfig>().StalkerMoneyTrough)
             {
                 Player player = Main.player[projectile.owner];
