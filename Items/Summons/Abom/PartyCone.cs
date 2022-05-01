@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Events;
@@ -12,7 +13,7 @@ namespace Fargowiltas.Items.Summons.Abom
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Party Cone");
-            Tooltip.SetDefault("Starts a Party!");
+            Tooltip.SetDefault("Starts a Party!\nNeeds at least 5 town NPCs to use");
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         }
 
@@ -31,7 +32,7 @@ namespace Fargowiltas.Items.Summons.Abom
 
         public override bool CanUseItem(Player player)
         {
-            return Main.dayTime && !BirthdayParty.PartyIsUp;
+            return Main.dayTime && !BirthdayParty.PartyIsUp && Main.npc.Count(n => n.active && n.townNPC && n.aiStyle != 0 && n.type != NPCID.OldMan && n.type != NPCID.SkeletonMerchant && n.type != NPCID.TaxCollector && !NPCID.Sets.IsTownPet[n.type]) >= 5;
         }
 
         public override bool? UseItem(Player player)
