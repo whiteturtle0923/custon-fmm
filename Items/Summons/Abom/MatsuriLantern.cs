@@ -23,24 +23,30 @@ namespace Fargowiltas.Items.Summons.Abom
         {
             Item.width = 20;
             Item.height = 20;
-            Item.maxStack = 20;
+            Item.maxStack = 1;
             Item.value = Item.sellPrice(0, 0, 2);
             Item.rare = ItemRarityID.Blue;
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.consumable = false;
+            Item.consumable = true; //visually indicate it as consumable
         }
+
+        public override bool ConsumeItem(Player player) => false;
+
+        public override bool CanUseItem(Player player) => !FargoWorld.Matsuri;
 
         public override bool? UseItem(Player player)
         {
-            FargoWorld.Matsuri = !FargoWorld.Matsuri;
-            FargoUtils.PrintText(FargoWorld.Matsuri ? "Lantern Night rate increased!" : "Lantern Night rate restored to default.", new Color(175, 75, 255));
+            FargoWorld.Matsuri = true;
+            FargoUtils.PrintText("Lantern Night rate increased!", new Color(175, 75, 255));
             
             if (Main.netMode == NetmodeID.Server)
                 NetMessage.SendData(MessageID.WorldData);
 
             Terraria.Audio.SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+
+            Item.SetDefaults(ModContent.ItemType<SpentLantern>());
 
             return true;
         }
