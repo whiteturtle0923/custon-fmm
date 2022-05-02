@@ -1,84 +1,74 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
-ALPHA UPDATE - V 2.7.3
--???
--Added crate recipe for Dunerider Boots
--InstaHouse now crafted at workbench (was sawmill)
+ALPHA UPDATE - V 2.8
+-Updated to latest tmod version
+-Added Anemometer
+-Added Golden Slime Crown and Goblin Scrap
+-Added Grave Buster
+-Refactored Suspicious Looking Eyedrops to Suspicious Looking Lure
+-Refactored Blood Shrimp to Blood Sushi Platter
+-Blood Moon enemy spawners now require Blood Moon to use instead of only Night since enemies despawn during only Night
+-Refactored Red Devil Voodoo Doll to Demonic Plushie
+-Eye That Could Be Seen As Suspicious now resets night until EoC has been beaten like other night boss summons
+-Added NPC Hate Crowded dialogue
 -Rewrote AddSummon Call for better compatability
+-Abominationn sells Matsuri Lantern after defeating a boss
+-Forbidden Scarab can now be used outside the Desert
+-Improved Abom event clear multiplayer sync
+-Moved Blood Sushi Platter to Deviantt shop
 -Deviantt reacts to Not The Bees
 -Fixed a dictionary key issue with Deviantt spawn condition
 -Squirrel can sell Zenith materials
 -Squirrel can sell caught town NPCs at the price of robbery
--Abominationn sells Matsuri Lantern after defeating a boss
--Refactored Suspicious Looking Eyedrops to Suspicious Looking Lure
--Refactored Blood Shrimp to Blood Sushi Platter
--Refactored Red Devil Voodoo Doll to Demonic Plushie
--Fixed animated items not animating properly when dropped or used
--Added recipe for Resonance Scepter
--Added Golden Slime Crown
--Fixed Stat Sheet not showing damage/crit correctly
--Stat Sheet shows Luck
--Fixed Omnistation not giving Gnome luck for 1 tick every 4 ticks
--Fixed regular and Greater Luck Potion giving Lesser Luck effect because of duration-based strength
--Unlimited buffs work from Piggy Bank
--New toggleable feature, bound NPCs take no contact damage
--Added recipes to convert Pharaoh outfit into Sandstorm in Bottle or Flying Carpet
--Added recipes to allow adding Whoopie Cushion to Cloud in a Balloon and Blue Horseshoe Balloon
--Fixed Elemental Assembler not giving Alchemy Table effect properly
--Added Grave Buster
--Added Goblin Scrap (Goblin Scout spawner)
--Added NPC Hate Crowded dialogue
--Tried fixing multiplayer dictionary issue
 -Squirrel detects items in your Piggy Bank (but not other players)
--Squirrel sells town NPCs in the world
--Restored recipes for King/Queen and Lihzahrd Statues
--Added conversion recipes for Blackcurrant and Blood Orange
--Reduced multiplayer lag of Boom Shuriken
--Squirrel cannot sell Pylon, fixing a page issue where it made him unable to sell one item sometimes
--Added conversion recipe from Treasure Magnet to other drops
--Moved Cloud in a Bottle and Lucky Horseshoe crate recipes from Gold Crate to Iron Crate
--Fixed town NPCs crashing the server when killed
--Added recipe to turn Party Girl into Slice of Cake
--Bosses won't block random spawns if you're very far away from them
--Fixed Debuff Display not working in multiplayer
--Fixed Transparent Minions & Support Attacks not working
--Sitting Duck's Fishing Pole recipe can now use both Duck and Mallard Duck
 -Squirrel sells Portable Sundial and Terraspark Boots
 -Squirrel sells Omnistations, Multitask Center, Elemental Assembler, and Crucible of the Cosmos
--Fixed Betsy throwing an exception when killed in multiplayer
--Added recipes to convert any Squirrel into a Gem Squirrel
--Restored all Mutant Mod drops (town NPCs, Dark Mage/Ogre medals, etc.)
--Added 1% chance for Moon Lord to drop legs
+-Squirrel cannot sell Pylon, fixing a page issue where it made him unable to sell one item sometimes
 -Squirrel sells Torch God's Favor
+-Squirrel now REFUSES to sell Grilled Squirrel
+-Restored all Mutant Mod drops (town NPCs, Dark Mage/Ogre medals, etc.)
+-All Town Pets can now be caught
+-Added 1% chance for Moon Lord to drop legs
+-Restored recipes for King/Queen and Lihzahrd Statues
+-Added conversion recipes for Blackcurrant and Blood Orange
+-Added recipes to convert Pharaoh outfit into Sandstorm in Bottle or Flying Carpet
+-Added recipes to allow adding Whoopie Cushion to Cloud in a Balloon and Blue Horseshoe Balloon
+-Added recipe for Resonance Scepter
+-Added crate recipe for Dunerider Boots
+-InstaHouse now crafted at workbench (was sawmill)
+-Sitting Duck's Fishing Pole recipe can now use both Duck and Mallard Duck
+-Added recipes to convert any Squirrel into a Gem Squirrel and vice versa
+-Added conversion recipe from Treasure Magnet to other drops
+-Moved Cloud in a Bottle and Lucky Horseshoe crate recipes from Gold Crate to Iron Crate
+-Added recipe to turn Party Girl into Slice of Cake
+-Added Skeleton Merchant recipe from Travelling Merchant at Meat Grinder
+-Added config for additional buff slots!
+-Stat Sheet shows several additonal stats
+-Fixed Stat Sheet not showing damage/crit correctly
+-New toggleable feature, bound NPCs take no contact damage
+-Unlimited buffs work from Piggy Bank
+-Bosses won't block random spawns if you're very far away from them
 -Boss biomes don't take effect if you're very far away from the boss
--Added Anemometer
 -Added extra lures to Scarb Fishing Rod and Chum Caster
 -Reduced spread of all extra lures
--Added number of fishing quests to stat sheet
--Added recipes to turn gem critters into gems
--Lowered all insta item research amounts to 10
--All Town Pets can now be caught
--Eye That Could Be Seen As Suspicious now resets night until EoC has been beaten like other night boss summons
--Squirrel now REFUSES to sell Grilled Squirrel
--Added Skeleton Merchant recipe from Travelling Merchant at Meat Grinder
--Fixed Eye That Could Be Seen As Suspicious not working
--Removed Gem Squirrels from Squirrel group, they can no longer be crafted into themself
--Make sure Stat sheet damages are correct still, there was a funky change in code
--Moved Blood Sushi Platter to Deviantt shop
--Blood Moon enemy spawners now require Blood Moon to use instead of only Night since enemies despawn during only Night
--Updated localization files
--Fixed several Mutant boss spawners not being researchable
--Added Lava and Honey to Elemental Assembler
--Fixed Weather Balloon not working in multiplayer
--Forbidden Scarab can now be used outside the Desert
--Improved Abom event clear multiplayer sync
--Fixed Abom's parties not causing Party Girl to sell Slice of Cake
--Added config for additional buff slots!
--Added more stats to Stat Sheet
 -Added Honey, Lava, and Tombstones to Elemental Assembler
+-Lowered all insta item research amounts to 10
+-Updated localization files
+-Fixed animated items not animating properly when dropped or used
+-Fixed Omnistation not giving Gnome luck for 1 tick every 4 ticks
+-Fixed regular and Greater Luck Potion giving Lesser Luck effect because of duration-based strength
+-Fixed Elemental Assembler not giving Alchemy Table effect properly
+-Tried fixing multiplayer dictionary issue
+-Reduced multiplayer lag of Boom Shuriken
+-Fixed town NPCs crashing the server when killed
+-Fixed Debuff Display not working in multiplayer
 -Fixed Debuff Display dissociating on sloped minecart tracks
-
+-Fixed Transparent Minions & Support Attacks not working
+-Fixed Betsy throwing an exception when killed in multiplayer
+-Fixed several Mutant boss spawners not being researchable
+-Fixed Weather Balloon not working in multiplayer
+-Fixed Abom's parties not causing Party Girl to sell Slice of Cake
 
 ALPHA UPDATE - V 2.7.2
 -Fixed several issues brought on by tmod updates
