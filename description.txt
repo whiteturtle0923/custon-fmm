@@ -77,6 +77,7 @@ ALPHA UPDATE - V 2.7.3
 -Added config for additional buff slots!
 -Added more stats to Stat Sheet
 -Added Honey, Lava, and Tombstones to Elemental Assembler
+-Fixed Debuff Display dissociating on sloped minecart tracks
 
 
 ALPHA UPDATE - V 2.7.2

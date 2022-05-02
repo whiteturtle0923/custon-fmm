@@ -32,24 +32,14 @@ namespace Fargowiltas
         };
 
         public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)
-        {
-            if (!Main.hideUI && drawInfo.drawPlayer.whoAmI == Main.myPlayer && drawInfo.drawPlayer.active && !drawInfo.drawPlayer.dead && !drawInfo.drawPlayer.ghost
-                && drawInfo.shadow == 0 && ModContent.GetInstance<FargoConfig>().DebuffOpacity > 0)
-            {
-                //bool shouldDraw = !drawInfo.drawPlayer.GetModPlayer<FargoPlayer>().HasDrawnDebuffLayer
-                //    && drawInfo.drawPlayer.buffType.Count(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)) > 0;
-
-                //stop it from drawing multiple times per frame, e.g. with armor/dash afterimages that ruin opacity
-                //singleplayer check because for some reason this makes it just not work for some people in mp
-                //if (Main.netMode == NetmodeID.SinglePlayer) drawInfo.drawPlayer.GetModPlayer<FargoPlayer>().HasDrawnDebuffLayer = true;
-
-                //return shouldDraw;
-
-                return true;
-            }
-
-            return false;
-        }
+            => !Main.hideUI 
+            && drawInfo.drawPlayer.whoAmI == Main.myPlayer 
+            && drawInfo.drawPlayer.active 
+            && !drawInfo.drawPlayer.dead 
+            && !drawInfo.drawPlayer.ghost
+            && drawInfo.shadow == 0 
+            && ModContent.GetInstance<FargoConfig>().DebuffOpacity > 0 
+            && drawInfo.drawPlayer.buffType.Count(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)) > 0;
 
         public override Position GetDefaultPosition() => new Between();
 
@@ -91,6 +81,9 @@ namespace Fargowiltas
                     int index = Array.FindIndex(player.buffType, id => id == debuffID);
                     int currentDuration = player.buffTime[index];
 
+                    float rotation = (player.gravDir > 0 ? 0 : MathHelper.Pi) - player.fullRotation;
+                    SpriteEffects effects = player.gravDir > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
                     float faderRatio = ModContent.GetInstance<FargoConfig>().DebuffFaderRatio;
                     if (faderRatio > 0)
                     {
@@ -119,13 +112,13 @@ namespace Fargowiltas
                                     y = buffIcon.Bounds.Height - height;
 
                                 Rectangle buffIconPortion = new Rectangle(x, y, width, height);
-                                Vector2 drawPortion = drawPos + Vector2.UnitY * y * player.gravDir;
+                                Vector2 drawPortion = drawPos + y * Vector2.UnitY.RotatedBy(rotation);
                                 Color portionColor = buffColor * faderRatio;
 
                                 drawInfo.DrawDataCache.Add(new DrawData(
                                     buffIcon, drawPortion, buffIconPortion, buffColor,
-                                    (player.gravDir > 0 ? 0 : MathHelper.Pi) - player.fullRotation, buffIcon.Bounds.Size() / 2,
-                                    1f, player.gravDir > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0));
+                                    rotation, buffIcon.Bounds.Size() / 2,
+                                    1f, effects, 0));
 
                                 buffColor *= 1f - faderRatio;
 
@@ -141,8 +134,8 @@ namespace Fargowiltas
 
                     drawInfo.DrawDataCache.Add(new DrawData(
                         buffIcon, drawPos, buffIcon.Bounds, buffColor,
-                        (player.gravDir > 0 ? 0 : MathHelper.Pi) - player.fullRotation, buffIcon.Bounds.Size() / 2,
-                        1f, player.gravDir > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0));
+                        rotation, buffIcon.Bounds.Size() / 2,
+                        1f, effects, 0));
 
                     //if (ModContent.GetInstance<FargoConfig>().DebuffCountdown)
                     //{
