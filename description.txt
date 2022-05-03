@@ -1,6 +1,10 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+ALPHA UPDATE - V 2.8.1
+-Fixed town NPCs being nettable from infinite range when using Bug Net as the first item after releasing in a specific way
+-Fixed town NPCs having incorrectly formatted names in inventory
+
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version
 -Added Anemometer

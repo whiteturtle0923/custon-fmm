@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Fargowiltas.NPCs;
-using Fargowiltas.Projectiles;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -21,7 +18,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public static Dictionary<int, int> CaughtTownies = new Dictionary<int, int>(); // lol
 
-        private int realNpcId;
+        //private int realNpcId;
 
         public int AssociatedNpcId;
         //{
@@ -64,7 +61,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Name);
+            DisplayName.SetDefault(Regex.Replace(Name, "([A-Z])", " $1").Trim());
             Tooltip.SetDefault(NpcQuote);
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, Main.npcFrameCount[AssociatedNpcId]));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
@@ -121,7 +118,6 @@ namespace Fargowiltas.Items.CaughtNPCs
             Item.noUseGraphic = true;
             Item.UseSound = SoundID.Item44;
             Item.makeNPC = (short)AssociatedNpcId;
-            Item.shoot = ModContent.ProjectileType<SpawnProj>();
 
             switch (AssociatedNpcId)
             {
@@ -134,14 +130,6 @@ namespace Fargowiltas.Items.CaughtNPCs
             }
         }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            Projectile.NewProjectile(player.GetSource_ItemUse(source.Item), player.position, Vector2.Zero, ModContent.ProjectileType<SpawnProj>(), 0, 0, Main.myPlayer,
-                AssociatedNpcId);
-
-            return false;
-        }
-
         public override void PostUpdate()
         {
             if (AssociatedNpcId != NPCID.Guide || !Item.lavaWet || NPC.AnyNPCs(NPCID.WallofFlesh))
@@ -151,7 +139,16 @@ namespace Fargowiltas.Items.CaughtNPCs
             Item.TurnToAir();
         }
 
-        public override bool CanUseItem(Player player) => NPC.CountNPCS(AssociatedNpcId) < 5;
+        public override bool CanUseItem(Player player)
+        {
+            //mirroring vanilla checks
+            bool inRange = player.position.X / 16 - Player.tileRangeX - Item.tileBoost <= Player.tileTargetX
+                && (player.position.X + player.width) / 16 + Player.tileRangeX + Item.tileBoost - 1 >= Player.tileTargetX
+                && player.position.Y / 16 - Player.tileRangeY - Item.tileBoost <= Player.tileTargetY
+                && (player.position.Y + player.height) / 16 + Player.tileRangeY + Item.tileBoost - 2 >= Player.tileTargetY;
+
+            return inRange && !WorldGen.SolidTile((int)Main.MouseWorld.X / 16, (int)Main.MouseWorld.Y / 16) && NPC.CountNPCS(AssociatedNpcId) < 5;
+        }
 
         public override bool? UseItem(Player player) => true;
 
@@ -174,7 +171,7 @@ namespace Fargowiltas.Items.CaughtNPCs
                 "'My expedition efficiency was critically reduced when a projectile impacted my locomotive actuator.'");
             Add("Demolitionist", NPCID.Demolitionist, "'It's a good day to die!'");
             Add("Deviantt", ModContent.NPCType<Deviantt>(),
-                "''Embrace suffering... and while you're at it, embrace another purchase!'");
+                "'Embrace suffering... and while you're at it, embrace another purchase!'");
             Add("Dryad", NPCID.Dryad, "'Be safe; Terraria needs you!'");
             Add("DyeTrader", NPCID.DyeTrader, "'My dear, what you're wearing is much too drab.'");
             Add("GoblinTinkerer", NPCID.GoblinTinkerer, "'Looking for a gadgets expert? I'm your goblin!'");
@@ -209,17 +206,17 @@ namespace Fargowiltas.Items.CaughtNPCs
             Add("Princess", NPCID.Princess, "'Pink is the best color anyone could ask for!'");
 
             //town pets
-            Add("Town Dog", NPCID.TownDog, "'Woof!'");
-            Add("Town Cat", NPCID.TownCat, "'Meow!'");
-            Add("Town Bunny", NPCID.TownBunny, "'*Bunny noises*'");
+            Add("TownDog", NPCID.TownDog, "'Woof!'");
+            Add("TownCat", NPCID.TownCat, "'Meow!'");
+            Add("TownBunny", NPCID.TownBunny, "'*Bunny noises*'");
         }
 
-        public static void Add(string name, int id, string quote, Mod mod = null)
+        public static void Add(string internalName, int id, string quote, Mod mod = null)
         {
             if (mod == null)
                 mod = ModLoader.GetMod("Fargowiltas");
 
-            CaughtNPCItem item = new CaughtNPCItem(name, id, quote);
+            CaughtNPCItem item = new CaughtNPCItem(internalName, id, quote);
             mod.AddContent(item);
             CaughtTownies.Add(id, item.Type);
         }
@@ -228,14 +225,14 @@ namespace Fargowiltas.Items.CaughtNPCs
     }
 
     public class CaughtGlobalNPC : GlobalNPC
+    {
+        public override void SetDefaults(NPC npc)
         {
-            public override void SetDefaults(NPC npc)
+            if (CaughtNPCItem.CaughtTownies.ContainsKey(npc.type))
             {
-                if (CaughtNPCItem.CaughtTownies.ContainsKey(npc.type))
-                {
-                    npc.catchItem = (short)CaughtNPCItem.CaughtTownies.FirstOrDefault(x => x.Key.Equals(npc.type)).Value;
-                    Main.npcCatchable[npc.type] = true;
-                }
+                npc.catchItem = (short)CaughtNPCItem.CaughtTownies.FirstOrDefault(x => x.Key.Equals(npc.type)).Value;
+                Main.npcCatchable[npc.type] = true;
             }
         }
+    }
 }
