@@ -100,7 +100,7 @@ namespace Fargowiltas
             WoodChopped = 0;
         }
 
-        public override void OnWorldLoad()
+        private void ResetFlags()
         {
             AbomClearCD = 0;
 
@@ -119,6 +119,16 @@ namespace Fargowiltas
             }
 
             CurrentSpawnRateTile = new bool[Main.netMode == NetmodeID.Server ? 255 : 1];
+        }
+
+        public override void OnWorldLoad()
+        {
+            ResetFlags();
+        }
+
+        public override void OnWorldUnload()
+        {
+            ResetFlags();
         }
 
         public override void SaveWorldData(TagCompound tag)
