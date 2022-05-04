@@ -3,6 +3,7 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 ALPHA UPDATE - V 2.8.1
 -Updated Mechanical Amalgam sprite
+-Added Crucible of Cosmos crossmod recipe supporting Magic Storage's combined stations
 -Fixed town NPCs being nettable from infinite range when using Bug Net as the first item after releasing in a specific way
 -Fixed town NPCs having incorrectly formatted names in inventory
 

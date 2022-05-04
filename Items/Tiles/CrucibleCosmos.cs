@@ -64,6 +64,15 @@ namespace Fargowiltas.Items.Tiles
                 .AddIngredient(ItemID.LunarBar, 25)
                 .AddTile(TileID.DemonAltar)
                 .Register();
+
+            if (ModLoader.TryGetMod("MagicStorage", out Mod magicStorage))
+            {
+                CreateRecipe()
+                    .AddIngredient(magicStorage.Find<ModItem>("CombinedStations4Item").Type)
+                    .AddIngredient(ItemID.LunarBar, 25)
+                    .AddTile(TileID.DemonAltar)
+                    .Register();
+            }
         }
     }
 }
