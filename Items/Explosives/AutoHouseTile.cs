@@ -1,6 +1,7 @@
 ﻿using Fargowiltas.Projectiles.Explosives;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,9 +17,10 @@ namespace Fargowiltas.Items.Explosives
             Main.tileLighted[Type] = true;
         }
 
-        public override void PlaceInWorld(int i, int j, Item item)
+        public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
-            Projectile.NewProjectile(Main.player[Main.myPlayer].GetSource_ItemUse(item), i * 16 + 8, (j + 2) * 16, 0f, 0f, ModContent.ProjectileType<AutoHouseProj>(), 0, 0, Main.myPlayer);
+            if (Main.netMode != NetmodeID.MultiplayerClient)
+                Projectile.NewProjectile(new EntitySource_TileBreak(i, j), i * 16 + 8, (j + 2) * 16, 0f, 0f, ModContent.ProjectileType<AutoHouseProj>(), 0, 0, Main.myPlayer);
         }
 
         public override void NearbyEffects(int i, int j, bool closer)

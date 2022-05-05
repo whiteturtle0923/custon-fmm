@@ -175,7 +175,7 @@ namespace Fargowiltas.Projectiles
             bool noChloro = tile.TileType == TileID.Chlorophyte && !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             bool noLihzahrd = (tile.TileType == TileID.LihzahrdBrick || tile.WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
 
-            if (noDungeon || noHMOre || noChloro || noLihzahrd)
+            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMagicStorage(tile))
                 return false;
 
             return true;
@@ -184,6 +184,11 @@ namespace Fargowiltas.Projectiles
         public static bool TileIsLiterallyAir(Tile tile)
         {
             return tile.TileType == 0 && tile.WallType == 0 && tile.LiquidAmount == 0 /*&& tile.sTileHeader == 0 && tile.bTileHeader == 0 && tile.bTileHeader2 == 0 && tile.bTileHeader3 == 0*/ && tile.TileFrameX == 0 && tile.TileFrameY == 0;
+        }
+
+        public static bool TileBelongsToMagicStorage(Tile tile)
+        {
+            return Fargowiltas.ModLoaded["MagicStorage"] && TileLoader.GetTile(tile.TileType)?.Mod == ModLoader.GetMod("MagicStorage");
         }
     }
 }

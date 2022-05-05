@@ -97,7 +97,8 @@ namespace Fargowiltas
                 "FargowiltasSouls", // Fargo's Souls
                 "FargowiltasSoulsDLC",
                 "ThoriumMod",
-                "CalamityMod"
+                "CalamityMod",
+                "MagicStorage"
             };
 
             ModLoaded = new Dictionary<string, bool>();

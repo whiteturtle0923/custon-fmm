@@ -92,12 +92,12 @@ namespace Fargowiltas.Projectiles.Explosives
                 platformStyle = 13;
             }
 
-            //dont act if the right blocks already above
-            if ((y == -5) && (tile.TileType == TileID.Platforms || tile.TileType == tileType))
-                return;
-
             if (x == 10 * side || x == 1 * side)
             {
+                //dont act if the right tile already above (but DO replace a corner platform)
+                if (y == -5 && tile.TileType == tileType)
+                    return;
+
                 //dont act on correct block above/below door, destroying them will break it
                 if ((y == -4 || y == 0) && tile.TileType == tileType)
                     return;
@@ -107,6 +107,10 @@ namespace Fargowiltas.Projectiles.Explosives
             }
             else //for blocks besides those on the left/right edges where doors are placed, its okay to have platform as floor
             {
+                //dont act if the right blocks already above
+                if (y == -5 && (tile.TileType == TileID.Platforms || tile.TileType == tileType))
+                    return;
+
                 if (y == 0 && (tile.TileType == TileID.Platforms || tile.TileType == tileType))
                     return;
             }
@@ -128,7 +132,7 @@ namespace Fargowiltas.Projectiles.Explosives
             {
                 WorldGen.PlaceTile(xPosition, yPosition, TileID.Platforms, style: platformStyle);
                 if (Main.netMode == NetmodeID.Server)
-                    NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.Platforms, platformStyle);
+                    NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 1, xPosition, yPosition, TileID.Platforms, platformStyle);
             }
             // Spawn border
             else if ((y == -5) || (y == 0) || (x == (10 * side)) || (x == (1 * side) && y == -4))
@@ -193,7 +197,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     WorldGen.PlaceTile(xPosition, yPosition, TileID.ClosedDoor, style: placeStyle);
                     if (Main.netMode == NetmodeID.Server)
-                        NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, xPosition, yPosition, TileID.ClosedDoor, placeStyle);
+                        NetMessage.SendTileSquare(-1, xPosition, yPosition - 2, 1, 3);
                 }
 
                 if (x == (5 * side))
@@ -305,6 +309,16 @@ namespace Fargowiltas.Projectiles.Explosives
             }
         }
 
+        public static void UpdateWall(int x, int y, Vector2 position, int side, Player player)
+        {
+            int xPosition = (int)((side * -1) + x + position.X / 16.0f);
+            int yPosition = (int)(y + position.Y / 16.0f);
+
+            WorldGen.SquareWallFrame(xPosition, yPosition);
+            if (Main.netMode == NetmodeID.Server)
+                NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
+        }
+
         public override void Kill(int timeLeft)
         {
             Vector2 position = Projectile.Center;
@@ -316,21 +330,29 @@ namespace Fargowiltas.Projectiles.Explosives
 
             if (player.Center.X < position.X)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    // Ten wide
-                    for (int x = 10; x > 0; x--)
+                    for (int x = 11; x > -1; x--)
                     {
-                        // Six tall
-                        for (int y = -5; y <= 0; y++)
+                        if (i != 2 && (x == 11 || x == 0))
+                            continue;
+
+                        for (int y = -6; y <= 1; y++)
                         {
+                            if (i != 2 && (y == -6 || y == 1))
+                                continue;
+
                             if (i == 0)
                             {
                                 PlaceHouse(x, y, position, 1, player);
                             }
-                            else
+                            else if (i == 1)
                             {
                                 PlaceFurniture(x, y, position, 1, player);
+                            }
+                            else
+                            {
+                                UpdateWall(x, y, position, 1, player);
                             }
                         }
                     }
@@ -338,19 +360,23 @@ namespace Fargowiltas.Projectiles.Explosives
             }
             else
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    // Ten wide
-                    for (int x = -10; x < 0; x++)
+                    for (int x = -11; x < 1; x++)
                     {
-                        // Six tall
-                        for (int y = -5; y <= 0; y++)
+                        if (i != 2 && (x == -11 || x == 0))
+                            continue;
+
+                        for (int y = -6; y <= 1; y++)
                         {
+                            if (i != 2 && (y == -6 || y == 1))
+                                continue;
+
                             if (i == 0)
                             {
                                 PlaceHouse(x, y, position, -1, player);
                             }
-                            else
+                            else if (i == 1)
                             {
                                 PlaceFurniture(x, y, position, -1, player);
                             }
