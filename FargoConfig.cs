@@ -34,6 +34,7 @@ namespace Fargowiltas
 
         [Label("$Mods.Fargowiltas.Config.CatchNPCs")]
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool CatchNPCs;
 
         [Label("$Mods.Fargowiltas.Config.NPCSales")]
