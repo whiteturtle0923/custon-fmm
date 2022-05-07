@@ -14,20 +14,20 @@ namespace Fargowiltas
         public const float KingSlime = 1f;
         public const float EyeOfCthulhu = 2f;
         public const float EaterOfWorlds = 3f;
-        public const float Deerclops = 3.5f;
         public const float QueenBee = 4f;
         public const float Skeletron = 5f;
-        public const float WallOfFlesh = 6f;
-        public const float QueenSlime = 6.5f;
-        public const float TheTwins = 7f;
-        public const float TheDestroyer = 8f;
-        public const float SkeletronPrime = 9f;
-        public const float Plantera = 10f;
-        public const float Golem = 11f;
-        public const float Empress = 11.5f;
-        public const float DukeFishron = 12f;
-        public const float LunaticCultist = 13f;
-        public const float Moonlord = 14f;
+        public const float DeerClops = 6f;
+        public const float WallOfFlesh = 7f;
+        public const float QueenSlime = 8f;
+        public const float TheTwins = 9f;
+        public const float TheDestroyer = 10f;
+        public const float SkeletronPrime = 11f;
+        public const float Plantera = 12f;
+        public const float Golem = 13f;
+        public const float EmpressOfLight = 14f;
+        public const float DukeFishron = 15f;
+        public const float LunaticCultist = 16f;
+        public const float Moonlord = 17f;
 
         internal List<MutantSummonInfo> SortedSummons;
         internal List<MutantSummonInfo> EventSummons;
@@ -44,27 +44,27 @@ namespace Fargowiltas
         {
             SortedSummons = new List<MutantSummonInfo> {
                 // Vanilla bosses
-                new MutantSummonInfo(KingSlime, ModContent.ItemType<SlimyCrown>(), () => NPC.downedSlimeKing, 50000),
-                new MutantSummonInfo(EyeOfCthulhu, ModContent.ItemType<SuspiciousEye>(), () => NPC.downedBoss1, 80000),
-                new MutantSummonInfo(EaterOfWorlds, ModContent.ItemType<WormyFood>(), () => NPC.downedBoss2, 100000),
-                new MutantSummonInfo(EaterOfWorlds, ModContent.ItemType<GoreySpine>(), () => NPC.downedBoss2, 100000),
-                new MutantSummonInfo(Deerclops, ModContent.ItemType<DeerThing2>(), () => NPC.downedDeerclops, 120000),
-                new MutantSummonInfo(QueenBee, ModContent.ItemType<Abeemination2>(), () => NPC.downedQueenBee, 150000),
-                new MutantSummonInfo(Skeletron, ModContent.ItemType<SuspiciousSkull>(), () => NPC.downedBoss3, 150000),
-                new MutantSummonInfo(WallOfFlesh, ModContent.ItemType<FleshyDoll>(), () => Main.hardMode  , 200000),
-                new MutantSummonInfo(WallOfFlesh + 0.01f, ModContent.ItemType<DeathBringerFairy>(), () => Main.hardMode, 500000),
-                new MutantSummonInfo(QueenSlime, ModContent.ItemType<JellyCrystal>(), () => NPC.downedQueenSlime, 250000),
-                new MutantSummonInfo(TheTwins, ModContent.ItemType<MechEye>(), () => NPC.downedMechBoss2, 400000),
-                new MutantSummonInfo(TheDestroyer, ModContent.ItemType<MechWorm>(), () => NPC.downedMechBoss1, 400000),
-                new MutantSummonInfo(SkeletronPrime, ModContent.ItemType<MechSkull>(), () => NPC.downedMechBoss3, 400000),
-                new MutantSummonInfo(SkeletronPrime + 0.01f, ModContent.ItemType<MechanicalAmalgam>(), () => (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3), 1000000),
-                new MutantSummonInfo(Plantera, ModContent.ItemType<PlanterasFruit>(), () => NPC.downedPlantBoss, 500000),
-                new MutantSummonInfo(Golem, ModContent.ItemType<LihzahrdPowerCell2>(), () => NPC.downedGolemBoss, 600000),
-                new MutantSummonInfo(Empress, ModContent.ItemType<PrismaticPrimrose>(), () => NPC.downedEmpressOfLight, 600000),
-                new MutantSummonInfo(DukeFishron, ModContent.ItemType<TruffleWorm2>(), () => NPC.downedFishron, 600000),
-                new MutantSummonInfo(LunaticCultist, ModContent.ItemType<CultistSummon>(), () => NPC.downedAncientCultist, 750000),
-                new MutantSummonInfo(Moonlord, ModContent.ItemType<CelestialSigil2>(), () => NPC.downedMoonlord, 1000000),
-                new MutantSummonInfo(Moonlord + 0.01f, ModContent.ItemType<MutantVoodoo>(), () => NPC.downedMoonlord, 2000000)
+                new MutantSummonInfo(KingSlime, ModContent.ItemType<SlimyCrown>(), () => NPC.downedSlimeKing, Item.buyPrice(gold: 5)),
+                new MutantSummonInfo(EyeOfCthulhu, ModContent.ItemType<SuspiciousEye>(), () => NPC.downedBoss1, Item.buyPrice(gold: 8)),
+                new MutantSummonInfo(EaterOfWorlds, ModContent.ItemType<WormyFood>(), () => NPC.downedBoss2, Item.buyPrice(gold: 10)),
+                new MutantSummonInfo(EaterOfWorlds, ModContent.ItemType<GoreySpine>(), () => NPC.downedBoss2, Item.buyPrice(gold: 10)),
+                new MutantSummonInfo(DeerClops, ModContent.ItemType<DeerThing2>(), () => NPC.downedDeerclops, Item.buyPrice(gold: 12)),
+                new MutantSummonInfo(QueenBee, ModContent.ItemType<Abeemination2>(), () => NPC.downedQueenBee, Item.buyPrice(gold: 15)),
+                new MutantSummonInfo(Skeletron, ModContent.ItemType<SuspiciousSkull>(), () => NPC.downedBoss3, Item.buyPrice(gold: 15)),
+                new MutantSummonInfo(WallOfFlesh, ModContent.ItemType<FleshyDoll>(), () => Main.hardMode  , Item.buyPrice(gold: 20)),
+                new MutantSummonInfo(WallOfFlesh + 0.0001f, ModContent.ItemType<DeathBringerFairy>(), () => Main.hardMode, Item.buyPrice(gold: 50)),
+                new MutantSummonInfo(QueenSlime, ModContent.ItemType<JellyCrystal>(), () => NPC.downedQueenSlime, Item.buyPrice(gold: 25)),
+                new MutantSummonInfo(TheTwins, ModContent.ItemType<MechEye>(), () => NPC.downedMechBoss2, Item.buyPrice(gold: 40)),
+                new MutantSummonInfo(TheDestroyer, ModContent.ItemType<MechWorm>(), () => NPC.downedMechBoss1, Item.buyPrice(gold: 40)),
+                new MutantSummonInfo(SkeletronPrime, ModContent.ItemType<MechSkull>(), () => NPC.downedMechBoss3, Item.buyPrice(gold: 40)),
+                new MutantSummonInfo(SkeletronPrime + 0.0001f, ModContent.ItemType<MechanicalAmalgam>(), () => NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3, Item.buyPrice(platinum: 1)),
+                new MutantSummonInfo(Plantera, ModContent.ItemType<PlanterasFruit>(), () => NPC.downedPlantBoss, Item.buyPrice(gold: 50)),
+                new MutantSummonInfo(Golem, ModContent.ItemType<LihzahrdPowerCell2>(), () => NPC.downedGolemBoss, Item.buyPrice(gold: 60)),
+                new MutantSummonInfo(EmpressOfLight, ModContent.ItemType<PrismaticPrimrose>(), () => NPC.downedEmpressOfLight, Item.buyPrice(gold: 60)),
+                new MutantSummonInfo(DukeFishron, ModContent.ItemType<TruffleWorm2>(), () => NPC.downedFishron, Item.buyPrice(gold: 60)),
+                new MutantSummonInfo(LunaticCultist, ModContent.ItemType<CultistSummon>(), () => NPC.downedAncientCultist, Item.buyPrice(gold: 75)),
+                new MutantSummonInfo(Moonlord, ModContent.ItemType<CelestialSigil2>(), () => NPC.downedMoonlord, Item.buyPrice(platinum: 1)),
+                new MutantSummonInfo(Moonlord + 0.0001f, ModContent.ItemType<MutantVoodoo>(), () => NPC.downedMoonlord, Item.buyPrice(platinum: 2))
             };
 
             EventSummons = new List<MutantSummonInfo>();
