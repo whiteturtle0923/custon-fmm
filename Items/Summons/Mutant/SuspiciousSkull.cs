@@ -26,7 +26,7 @@ namespace Fargowiltas.Items.Summons.Mutant
                                "\nSummons the Dungeon Guardian during the day");
         }
 
-        public override bool CanUseItem(Player player) => !Main.dayTime;
+        public override bool CanUseItem(Player player) => true;
 
         public override void AddRecipes()
         {

@@ -12,6 +12,7 @@ ALPHA UPDATE - V 2.8.1
 -All explosives no longer affect Magic Storage tiles
 -Fixed Elemental Assembler not counting as Lava/Honey in Magic Storage
 -Fixed Squirrel not rendering in Bestiary
+-Fixed Suspicious Skull not being usable to summon Dungeon Guardian
 -Revised weights of bosses in Mutant shop to match Boss Checklist's 1.4 boss weights
 
 ALPHA UPDATE - V 2.8
