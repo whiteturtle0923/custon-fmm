@@ -505,9 +505,9 @@ namespace Fargowiltas.NPCs
             {
                 Texture2D texture2D14 = Request<Texture2D>(Texture + "_Glow").Value;
                 float scale = (Main.mouseTextColor / 200f - 0.35f) * 0.3f + 0.9f;
-                Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY + 2), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, scale, effects, 0f);
+                spriteBatch.Draw(texture2D14, NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY + 2), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, scale, effects, 0f);
             }
-            Main.spriteBatch.Draw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY + 2), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
+            spriteBatch.Draw(texture2D13, NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY + 2), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
             return false;
         }
 
@@ -519,7 +519,7 @@ namespace Fargowiltas.NPCs
                 Rectangle rectangle = NPC.frame;
                 Vector2 origin2 = rectangle.Size() / 2f;
                 SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-                Main.spriteBatch.Draw(texture2D14, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY + 2), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, NPC.scale, effects, 0f);
+                spriteBatch.Draw(texture2D14, NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY + 2), new Microsoft.Xna.Framework.Rectangle?(rectangle), Color.White * NPC.Opacity, NPC.rotation, origin2, NPC.scale, effects, 0f);
             }
         }
     }
