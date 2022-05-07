@@ -425,7 +425,7 @@ namespace Fargowiltas.NPCs
                 foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
                 {
                     //phm
-                    if (summon.progression <= 6f)
+                    if (summon.progression <= MutantSummonTracker.WallOfFlesh)
                     {
                         AddItem(summon.downed(), summon.itemId, summon.price, ref shop, ref nextSlot);
                     }
@@ -436,7 +436,7 @@ namespace Fargowiltas.NPCs
                 foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
                 {
                     //hm
-                    if (summon.progression > 6f && summon.progression <= 14)
+                    if (summon.progression > MutantSummonTracker.WallOfFlesh && summon.progression <= MutantSummonTracker.Moonlord)
                     {
                         AddItem(summon.downed(), summon.itemId, summon.price, ref shop, ref nextSlot);
                     }
@@ -447,7 +447,7 @@ namespace Fargowiltas.NPCs
                 foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
                 {
                     //post ml
-                    if (summon.progression > 14f)
+                    if (summon.progression > MutantSummonTracker.Moonlord)
                     {
                         AddItem(summon.downed(), summon.itemId, summon.price, ref shop, ref nextSlot);
                     }
