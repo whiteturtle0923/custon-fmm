@@ -25,7 +25,7 @@ namespace Fargowiltas.Items.Tiles
             TileID.Sets.DisableSmartCursor[Type] = true;
             //counts as
             AdjTiles = new int[] { TileID.WorkBenches, TileID.HeavyWorkBench, TileID.Furnaces,  TileID.Anvils,  TileID.Bottles, TileID.Sawmill, TileID.Loom, TileID.Tables, TileID.Chairs, TileID.CookingPots, TileID.Sinks, TileID.Kegs };
-            
+            TileID.Sets.CountsAsWaterSource[Type] = true;
             AnimationFrameHeight = 54;
         }
 

@@ -10,6 +10,7 @@ ALPHA UPDATE - V 2.8.1
 -Fixed Instahouse having unusual wall borders
 -Fixed Instahouse doors exploding in multiplayer
 -All explosives no longer affect Magic Storage tiles
+-Fixed Elemental Assembler not counting as Lava/Honey in Magic Storage
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version

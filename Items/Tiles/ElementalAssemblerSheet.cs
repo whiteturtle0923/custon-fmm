@@ -24,6 +24,9 @@ namespace Fargowiltas.Items.Tiles
             TileID.Sets.DisableSmartCursor[Type] = true;
             //counts as
             AdjTiles = new int[] { TileID.Hellforge, TileID.Furnaces, TileID.AlchemyTable, TileID.TinkerersWorkbench, TileID.ImbuingStation, TileID.DyeVat, TileID.LivingLoom, TileID.GlassKiln, TileID.IceMachine, TileID.HoneyDispenser, TileID.SkyMill, TileID.Solidifier, TileID.BoneWelder, TileID.Bottles, TileID.DemonAltar, TileID.Tombstones };
+            
+            TileID.Sets.CountsAsHoneySource[Type] = true;
+            TileID.Sets.CountsAsLavaSource[Type] = true;
 
             AnimationFrameHeight = 54;
 

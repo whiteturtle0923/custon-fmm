@@ -12,11 +12,7 @@ namespace Fargowiltas
         public override bool RecipeAvailable(Recipe recipe)
         {
             if (Main.LocalPlayer.GetModPlayer<FargoPlayer>().ElementalAssemblerNearby > 0)
-            {
-                Main.LocalPlayer.adjHoney = true;
-                Main.LocalPlayer.adjLava = true;
                 Main.LocalPlayer.ZoneGraveyard = true;
-            }
 
             return base.RecipeAvailable(recipe);
         }
