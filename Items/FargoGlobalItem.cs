@@ -362,6 +362,8 @@ namespace Fargowiltas.Items
         {
             if (GetInstance<FargoConfig>().UnlimitedConsumableWeapons && Main.hardMode && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
                 return false;
+            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120 && item.stack >= 30 && (item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion))
+                return false;
             return true;
         }
 

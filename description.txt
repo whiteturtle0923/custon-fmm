@@ -16,6 +16,7 @@ ALPHA UPDATE - V 2.8.1
 -Fixed Suspicious Looking Chest not actually summoning Ice Mimic in snow biome as advertised
 -Revised weights of bosses in Mutant shop to match Boss Checklist's 1.4 boss weights
 -Lumberjack sells Acorns and Gemcorns
+-Unlimited Potions works on Recall Potion, Potion of Return, and Wormhole Potion
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version
