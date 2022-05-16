@@ -592,22 +592,6 @@ namespace Fargowiltas
             AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemID.AncientNecroHelmet, 2);
             //gladiator
             AddBannerToItemsRecipe(ItemID.GreekSkeletonBanner, new int[] { ItemID.GladiatorHelmet, ItemID.GladiatorBreastplate, ItemID.GladiatorLeggings, ItemID.Gladius });
-            
-            //boss trophy recipes
-            AddBannerToItemRecipe(ItemID.KingSlimeTrophy, ItemID.SlimeStaff);
-            AddBannerToItemRecipe(ItemID.EyeofCthulhuTrophy, ItemID.Binoculars);
-            AddBannerToItemRecipe(ItemID.EaterofWorldsTrophy, ItemID.EatersBone);
-            AddBannerToItemRecipe(ItemID.BrainofCthulhuTrophy, ItemID.BoneRattle);
-            AddBannerToItemRecipe(ItemID.QueenBeeTrophy, ItemID.HoneyedGoggles);
-            AddBannerToItemRecipe(ItemID.QueenBeeTrophy, ItemID.Nectar);
-            AddBannerToItemRecipe(ItemID.SkeletronTrophy, ItemID.BookofSkulls);
-            AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.TheAxe);
-            AddBannerToItemRecipe(ItemID.PlanteraTrophy, ItemID.Seedling);
-            AddBannerToItemRecipe(ItemID.DukeFishronTrophy, ItemID.FishronWings);
-            AddBannerToItemRecipe(ItemID.MoonLordTrophy, ItemID.MeowmereMinecart);
-            AddBannerToItemRecipe(ItemID.FairyQueenTrophy, ItemID.SparkleGuitar);
-            AddBannerToItemRecipe(ItemID.FairyQueenTrophy, ItemID.RainbowCursor);
-            AddBannerToItemRecipe(ItemID.FairyQueenTrophy, ItemID.RainbowWings);
 
             //pirates
             AddGroupToItemRecipe("Fargowiltas:AnyPirateBanner", ItemID.Cutlass, TileID.MythrilAnvil);
@@ -1592,11 +1576,38 @@ namespace Fargowiltas
                 }
             }
 
+            CreateTreasureBagRecipes(ItemID.KingSlimeTrophy, ItemID.SlimeStaff);
+            
+            CreateTreasureBagRecipes(ItemID.EyeofCthulhuTrophy, ItemID.Binoculars);
+            
+            CreateTreasureBagRecipes(ItemID.EaterofWorldsTrophy, ItemID.EatersBone);
+            
+            CreateTreasureBagRecipes(ItemID.BrainofCthulhuTrophy, ItemID.BoneRattle);
+            
+            CreateTreasureBagRecipes(ItemID.SkeletronTrophy, ItemID.BookofSkulls);
+
             //QB
             CreateTreasureBagRecipes(ItemID.QueenBeeBossBag,
                 ItemID.BeesKnees,
                 ItemID.BeeGun,
                 ItemID.BeeKeeper
+            );
+            CreateTreasureBagRecipes(ItemID.QueenBeeTrophy,
+                ItemID.HoneyedGoggles,
+                ItemID.Nectar
+            );
+
+            //deerclops
+            CreateTreasureBagRecipes(ItemID.DeerclopsBossBag,
+                ItemID.PewMaticHorn,
+                ItemID.WeatherPain,
+                ItemID.HoundiusShootius,
+                ItemID.LucyTheAxe
+            );
+            CreateTreasureBagRecipes(ItemID.DeerclopsTrophy,
+                ItemID.ChesterPetItem,
+                ItemID.Eyebrella,
+                ItemID.DontStarveShaderItem
             );
 
             //WOF
@@ -1629,6 +1640,10 @@ namespace Fargowiltas
                 ItemID.FlowerPow,
                 ItemID.WaspGun
             );
+            CreateTreasureBagRecipes(ItemID.PlanteraTrophy,
+                ItemID.TheAxe,
+                ItemID.Seedling
+            );
 
             //golem
             CreateTreasureBagRecipes(ItemID.GolemBossBag,
@@ -1650,6 +1665,7 @@ namespace Fargowiltas
                 ItemID.TempestStaff,
                 ItemID.BubbleGun
             );
+            CreateTreasureBagRecipes(ItemID.DukeFishronTrophy, ItemID.FishronWings);
 
             //empress
             CreateTreasureBagRecipes(ItemID.FairyQueenBossBag,
@@ -1657,6 +1673,11 @@ namespace Fargowiltas
                 ItemID.RainbowWhip,
                 ItemID.FairyQueenMagicItem,
                 ItemID.FairyQueenRangedItem
+            );
+            CreateTreasureBagRecipes(ItemID.FairyQueenTrophy,
+                ItemID.SparkleGuitar,
+                ItemID.RainbowCursor,
+                ItemID.RainbowWings
             );
 
             //moon lord
@@ -1671,6 +1692,7 @@ namespace Fargowiltas
                 ItemID.RainbowCrystalStaff,
                 ItemID.MoonlordTurretStaff
             );
+            CreateTreasureBagRecipes(ItemID.MoonLordTrophy, ItemID.MeowmereMinecart);
 
             //dark mage
             CreateTreasureBagRecipes(ItemID.BossTrophyDarkmage,
