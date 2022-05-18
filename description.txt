@@ -19,6 +19,7 @@ ALPHA UPDATE - V 2.8.1
 -Unlimited Potions works on Recall Potion, Potion of Return, and Wormhole Potion
 -Added recipes for Deerclops drops
 -Siblings have a loved biome
+-Fixed Squirrel being able to sit
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version

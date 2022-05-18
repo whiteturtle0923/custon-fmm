@@ -55,6 +55,8 @@ namespace Fargowiltas.NPCs
 			NPCID.Sets.AttackAverageChance[NPC.type] = 30;
 			NPCID.Sets.HatOffsetY[NPC.type] = 4;
 
+            NPCID.Sets.CannotSitOnFurniture[NPC.type] = true;
+
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
                 Velocity = -1f,
