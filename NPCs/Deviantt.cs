@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Fargowiltas.Items.Summons.Deviantt;
 using Fargowiltas.Projectiles;
+using Fargowiltas.ShoppingBiomes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -43,8 +44,8 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
+            NPC.Happiness.SetBiomeAffection<SkyBiome>(AffectionLevel.Love);
             NPC.Happiness.SetBiomeAffection<JungleBiome>(AffectionLevel.Like);
-            //NPC.Happiness.LoveBiome(PrimaryBiomeID.Sky); //enable this when it exists
             NPC.Happiness.SetBiomeAffection<SnowBiome>(AffectionLevel.Dislike);
             NPC.Happiness.SetBiomeAffection<DesertBiome>(AffectionLevel.Hate);
 

@@ -12,6 +12,7 @@ using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Projectiles;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
+using Fargowiltas.ShoppingBiomes;
 
 namespace Fargowiltas.NPCs
 {
@@ -50,8 +51,8 @@ namespace Fargowiltas.NPCs
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
+            NPC.Happiness.SetBiomeAffection<SkyBiome>(AffectionLevel.Love);
             NPC.Happiness.SetBiomeAffection<ForestBiome>(AffectionLevel.Like);
-            //NPC.Happiness.LoveBiome(PrimaryBiomeID.Sky); //enable this when it exists
             NPC.Happiness.SetBiomeAffection<HallowBiome>(AffectionLevel.Dislike);
 
             NPC.Happiness.SetNPCAffection<Abominationn>(AffectionLevel.Love);

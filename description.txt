@@ -18,6 +18,7 @@ ALPHA UPDATE - V 2.8.1
 -Lumberjack sells Acorns and Gemcorns
 -Unlimited Potions works on Recall Potion, Potion of Return, and Wormhole Potion
 -Added recipes for Deerclops drops
+-Siblings have a loved biome
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version
