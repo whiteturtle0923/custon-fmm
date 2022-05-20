@@ -371,18 +371,36 @@ namespace Fargowiltas
 
         public void AutoUseMirror()
         {
+            int potionofReturn = -1;
+            int recallPotion = -1;
+            int magicMirror = -1;
+
             for (int i = 0; i < Player.inventory.Length; i++)
             {
                 switch (Player.inventory[i].type)
                 {
+                    case ItemID.PotionOfReturn:
+                        potionofReturn = i;
+                        break;
+
                     case ItemID.RecallPotion:
+                        recallPotion = i;
+                        break;
+
                     case ItemID.MagicMirror:
                     case ItemID.IceMirror:
                     case ItemID.CellPhone:
-                        QuickUseItemAt(i);
+                        magicMirror = i;
                         break;
                 }
             }
+
+            if (potionofReturn != -1)
+                QuickUseItemAt(potionofReturn);
+            else if (recallPotion != -1)
+                QuickUseItemAt(recallPotion);
+            else if (magicMirror != -1)
+                QuickUseItemAt(magicMirror);
         }
 
         public void AutoUseRod()
