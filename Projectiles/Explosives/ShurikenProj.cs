@@ -18,7 +18,7 @@ namespace Fargowiltas.Projectiles.Explosives
             Projectile.width = 11;
             Projectile.height = 11;
             Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.DamageType = DamageClass.Default;
             Projectile.penetrate = 5;
             Projectile.aiStyle = 2;
             Projectile.timeLeft = 600;
