@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Ammos.Rockets
 {
@@ -10,9 +11,9 @@ namespace Fargowiltas.Items.Ammos.Rockets
         public abstract int GrenadeProjectile { get; }
         public abstract int MineProjectile { get; }
 
-        public override void PickAmmo(Item weapon, Player player, ref int type, ref float speed, ref int damage, ref float knockback)
+        public override void PickAmmo(Item weapon, Player player, ref int type, ref float speed, ref StatModifier damage, ref float knockback)
         {
-            switch(weapon.type)
+            switch (weapon.type)
             {
                 case ItemID.RocketLauncher: type = RocketProjectile; break;
                 case ItemID.SnowmanCannon: type = SnowmanProjectile; break;

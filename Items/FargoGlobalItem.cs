@@ -350,7 +350,7 @@ namespace Fargowiltas.Items
             }
         }
 
-        public override bool CanBeConsumedAsAmmo(Item ammo, Player player)
+        public override bool CanBeConsumedAsAmmo(Item ammo, Item weapon, Player player)
         {
             if (GetInstance<FargoConfig>().UnlimitedAmmo && Main.hardMode && ammo.ammo != 0 && ammo.stack >= 3996)
                 return false;
