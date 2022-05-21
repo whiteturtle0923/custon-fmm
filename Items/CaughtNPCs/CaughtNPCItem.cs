@@ -11,97 +11,63 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class CaughtNPCItem : ModItem
     {
-        public override string Name
-        {
-            get;
-        }
+        public static Dictionary<int, int> CaughtTownies = new Dictionary<int, int>();
 
-        public static Dictionary<int, int> CaughtTownies = new Dictionary<int, int>(); // lol
+        public override string Name => _name;
 
-        //private int realNpcId;
-
+        public string _name;
         public int AssociatedNpcId;
-        //{
-        //    get
-        //    {
-        //        if (realNpcId > 0 || !CaughtTownies.ContainsKey(Item.type))
-        //            return realNpcId;
+        public string NpcQuote;
 
-        //        return CaughtTownies[Item.type];
-        //    }
-
-        //    private set => realNpcId = value;
-        //}
-
-        public string NpcQuote
+        public CaughtNPCItem()
         {
-            get; protected set;
+            _name = base.Name;
+            AssociatedNpcId = NPCID.None;
+            NpcQuote = "";
         }
-
-        //        public CaughtNPCItem()
-        //        {
-        //            AssociatedNpcId = NPCID.None;
-        //            NpcQuote = "nil";
-        //        }
 
         public CaughtNPCItem(string internalName, int associatedNpcId, string npcQuote = "")
         {
-            Name = internalName ?? base.Name;
+            _name = internalName;
             AssociatedNpcId = associatedNpcId;
             NpcQuote = npcQuote;
         }
+
+        public override bool IsLoadingEnabled(Mod mod) => AssociatedNpcId != NPCID.None;
+
+        protected override bool CloneNewInstances => true;
+
+        //public override ModItem Clone(Item item)
+        //{
+        //    CaughtNPCItem clone = base.Clone(item) as CaughtNPCItem;
+        //    clone._name = _name;
+        //    clone.AssociatedNpcId = AssociatedNpcId;
+        //    clone.NpcQuote = NpcQuote;
+        //    return clone;
+        //}
+
+        public override bool IsCloneable => true;
+
+        public override void Unload()
+        {
+            base.Unload();
+
+            CaughtTownies.Clear();
+        }
+
 
         public override string Texture => AssociatedNpcId < NPCID.Count
             ? $"Terraria/Images/NPC_{AssociatedNpcId}"
             : NPCLoader.GetNPC(AssociatedNpcId).Texture;
 
-        //        public override bool Autoload(ref string name) => true;
-
-        //        public override bool CloneNewInstances => false;
-
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Regex.Replace(Name, "([A-Z])", " $1").Trim());
+            DisplayName.SetDefault(Regex.Replace(_name, "([A-Z])", " $1").Trim());
             Tooltip.SetDefault(NpcQuote);
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, Main.npcFrameCount[AssociatedNpcId]));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Item.type] = 5;
-
-            //string GetNameWithRegex() => $"The {Regex.Replace(Name, "([A-Z])", " $1").Replace("Caught ", "").Trim()}";
-
-            //if (AssociatedNpcId < NPCID.Count)
-            //    DisplayName.SetDefault(Name);//GetNameWithRegex());
-            //else
-            //{
-            //    try
-            //    {
-            //        ModNPC npc = NPCLoader.GetNPC(AssociatedNpcId);
-
-            //        if (npc.Mod.Name.Equals("Fargowiltas"))
-            //            DisplayName.SetDefault(GetNameWithRegex());
-            //        else
-            //            DisplayName.SetDefault($"The Caught {npc.DisplayName.GetDefault()}");
-            //    }
-            //    catch
-            //    {
-            //        DisplayName.SetDefault(GetNameWithRegex());
-            //    }
-            //}
-
-            //try
-            //{
-            //    if (string.IsNullOrEmpty(NpcQuote))
-            //        NpcQuote = $"'{NPCLoader.GetNPC(AssociatedNpcId).GetChat()}'";
-            //}
-            //catch
-            //{
-            //    NpcQuote = "'I have little to say.'";
-            //    // catch and ignore any thrown errors
-            //}
-
-            //if (!string.IsNullOrEmpty(NpcQuote))
-            //    Tooltip.SetDefault(NpcQuote);
         }
 
         public override void SetDefaults()
@@ -117,7 +83,7 @@ namespace Fargowiltas.Items.CaughtNPCs
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.UseSound = SoundID.Item44;
-            Item.makeNPC = (short)AssociatedNpcId;
+            Item.makeNPC = AssociatedNpcId;
 
             switch (AssociatedNpcId)
             {
@@ -151,12 +117,6 @@ namespace Fargowiltas.Items.CaughtNPCs
         }
 
         public override bool? UseItem(Player player) => true;
-
-        //public override ModItem NewInstance(Item ItemClone) => new CaughtNPCItem(getId, quote);
-
-        //public override ModItem Clone(Item Item) => new CaughtNPCItem(getId, quote);
-
-        //public override ModItem Clone() => new CaughtNPCItem(AssociatedNpcId, NpcQuote);
 
         public static void RegisterItems(Mod mod)
         {
@@ -216,7 +176,7 @@ namespace Fargowiltas.Items.CaughtNPCs
             if (mod == null)
                 mod = ModLoader.GetMod("Fargowiltas");
 
-            CaughtNPCItem item = new CaughtNPCItem(internalName, id, quote);
+            CaughtNPCItem item = new(internalName, id, quote);
             mod.AddContent(item);
             CaughtTownies.Add(id, item.Type);
         }
