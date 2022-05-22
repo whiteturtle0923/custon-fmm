@@ -1,4 +1,5 @@
 ﻿using Fargowiltas.Projectiles.Explosives;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -20,7 +21,11 @@ namespace Fargowiltas.Items.Explosives
         public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
             if (Main.netMode != NetmodeID.MultiplayerClient)
-                Projectile.NewProjectile(new EntitySource_TileBreak(i, j), i * 16 + 8, (j + 2) * 16, 0f, 0f, ModContent.ProjectileType<AutoHouseProj>(), 0, 0, Main.myPlayer);
+            {
+                int p = Player.FindClosest(new Vector2(i * 16 + 8, j * 16 + 8), 0, 0);
+                if (p != -1)
+                    Projectile.NewProjectile(new EntitySource_TileBreak(i, j), i * 16 + 8, (j + 2) * 16, 0f, 0f, ModContent.ProjectileType<AutoHouseProj>(), 0, 0, p);
+            }
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
