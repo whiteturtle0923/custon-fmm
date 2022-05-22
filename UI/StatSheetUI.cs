@@ -84,7 +84,10 @@ namespace Fargowiltas.UI
             AddStat($"Magic Critical: {Crit(DamageClass.Magic)}%", ItemID.WandofSparking);
             AddStat($"Mana Cost Reduction: {Math.Round((1.0 - player.manaCost) * 100)}%", ItemID.WandofSparking);
             AddStat($"Summon Damage: {Damage(DamageClass.Summon)}%", ItemID.SlimeStaff);
-            AddStat($"Summon Critical: {Crit(DamageClass.Summon)}%", ItemID.SlimeStaff);
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+                AddStat($"Summon Critical: {(int)ModLoader.GetMod("FargowiltasSouls").Call("GetSummonCrit")}%", ItemID.SlimeStaff);
+            else
+                AddStat("");
             AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
             AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
 
