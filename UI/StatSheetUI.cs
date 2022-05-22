@@ -73,7 +73,7 @@ namespace Fargowiltas.UI
             ColumnCounter = LineCounter = 0;
 
             double Damage(DamageClass damageClass) => Math.Round(player.GetTotalDamage(damageClass).Additive * player.GetTotalDamage(damageClass).Multiplicative * 100 - 100);
-            int Crit(DamageClass damageClass) => (int)player.GetCritChance(DamageClass.Generic) + (int)player.GetCritChance(damageClass);
+            int Crit(DamageClass damageClass) => (int)player.GetTotalCritChance(damageClass);
 
             AddStat($"Melee Damage: {Damage(DamageClass.Melee)}%", ItemID.CopperBroadsword);
             AddStat($"Melee Critical: {Crit(DamageClass.Melee)}%", ItemID.CopperBroadsword);
@@ -84,10 +84,7 @@ namespace Fargowiltas.UI
             AddStat($"Magic Critical: {Crit(DamageClass.Magic)}%", ItemID.WandofSparking);
             AddStat($"Mana Cost Reduction: {Math.Round((1.0 - player.manaCost) * 100)}%", ItemID.WandofSparking);
             AddStat($"Summon Damage: {Damage(DamageClass.Summon)}%", ItemID.SlimeStaff);
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
-                AddStat($"Summon Critical: {(int)ModLoader.GetMod("FargowiltasSouls").Call("GetSummonCrit")}%", ItemID.SlimeStaff);
-            else
-                AddStat("");
+            AddStat($"Summon Critical: {Crit(DamageClass.Summon)}%", ItemID.SlimeStaff);
             AddStat($"Max Minions: {player.maxMinions}", ItemID.SlimeStaff);
             AddStat($"Max Sentries: {player.maxTurrets}", ItemID.SlimeStaff);
 
