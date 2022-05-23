@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Summons.Mutant
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.Retinazer);
             NPC.SpawnOnPlayer(player.whoAmI, NPCID.Spazmatism);
 
-            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
 
             return true;
         }

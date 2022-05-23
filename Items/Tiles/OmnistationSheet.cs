@@ -76,7 +76,7 @@ namespace Fargowiltas.Items.Tiles
 
             if (item.DamageType == DamageClass.Melee || item.DamageType == DamageClass.Ranged || item.DamageType == DamageClass.Magic || item.DamageType == DamageClass.Summon)
             {
-                SoundEngine.PlaySound(SoundID.Item44, i * 16 + 8, j * 16 + 8);
+                SoundEngine.PlaySound(SoundID.Item44, new Vector2(i * 16 + 8, j * 16 + 8));
             }
 
             return true;

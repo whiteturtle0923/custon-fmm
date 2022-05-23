@@ -44,7 +44,7 @@ namespace Fargowiltas.Items.Summons.Abom
             if (Main.netMode == NetmodeID.Server)
                 NetMessage.SendData(MessageID.WorldData);
 
-            Terraria.Audio.SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+            Terraria.Audio.SoundEngine.PlaySound(SoundID.Roar, player.position);
 
             Item.SetDefaults(ModContent.ItemType<SpentLantern>());
 

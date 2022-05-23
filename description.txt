@@ -22,6 +22,7 @@ ALPHA UPDATE - V 2.8.1
 -Fixed Squirrel being able to sit
 -Magic Mirror hotkey has a priority system: Potion of Return -> Recall Potion -> Magic Mirrors
 -Fixed Instahouse always building to the right
+-A vast number of internal refactors to port to new version
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version

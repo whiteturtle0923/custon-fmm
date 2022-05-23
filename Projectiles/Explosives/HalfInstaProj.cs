@@ -45,7 +45,7 @@ namespace Fargowiltas.Projectiles.Explosives
         public override void Kill(int timeLeft)
         {
             Vector2 position = Projectile.Center;
-            SoundEngine.PlaySound(SoundID.Item14, (int)position.X, (int)position.Y);
+            SoundEngine.PlaySound(SoundID.Item14, position);
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {

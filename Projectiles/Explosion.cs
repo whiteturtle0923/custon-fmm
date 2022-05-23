@@ -33,7 +33,7 @@ namespace Fargowiltas.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Item, Projectile.position, 14);
+            SoundEngine.PlaySound(SoundHelper.LegacySoundStyle("Item", 14), Projectile.position);
             Projectile.position = Projectile.Center;
             Projectile.width = 100;
             Projectile.height = 100;

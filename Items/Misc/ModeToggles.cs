@@ -82,7 +82,7 @@ namespace Fargowiltas.Items.Misc
                 NetMessage.SendData(7); //sync world
             }
 
-            SoundEngine.PlaySound(15, player.Center, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.Center);
 
             return true;
         }

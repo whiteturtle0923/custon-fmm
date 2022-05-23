@@ -30,7 +30,7 @@ namespace Fargowiltas.Items.Summons.Abom
         public override bool? UseItem(Player player)
         {
             Main.StartInvasion(InvasionID.MartianMadness);
-            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
 
             return true;
         }

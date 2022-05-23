@@ -48,7 +48,7 @@ namespace Fargowiltas.Items.Summons.Abom
                 Main.SyncRain();
             }
             FargoUtils.PrintText("Rain clouds cover the sky.", new Color(175, 75, 255));
-            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
 
             return true;
         }

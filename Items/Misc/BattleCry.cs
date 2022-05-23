@@ -46,7 +46,7 @@ namespace Fargowiltas.Items.Misc
 
             if (!Main.dedServ)
             {
-                SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Horn").WithVolume(1f), player.Center);
+                SoundEngine.PlaySound(SoundHelper.FargoSound("Horn"), player.Center);
             }
 
             return true;

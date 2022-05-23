@@ -67,7 +67,7 @@ namespace Fargowiltas.Items.Summons.Mutant
                 Main.NewText("Every boss has awoken!", new Color(175, 75, 255));
             }
 
-            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
 
             return false;
         }

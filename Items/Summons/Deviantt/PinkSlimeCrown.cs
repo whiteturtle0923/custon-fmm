@@ -41,7 +41,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
             int n = NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.position.X + Main.rand.Next(-800, 800), (int)player.position.Y + Main.rand.Next(-800, -250), NPCID.BlueSlime);
             Main.npc[n].SetDefaults(NPCID.Pinky);
 
-            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
 
             if (Main.netMode == NetmodeID.Server)
             {

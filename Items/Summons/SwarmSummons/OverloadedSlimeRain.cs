@@ -55,7 +55,7 @@ namespace Fargowiltas.Items.Summons.SwarmSummons
                 }
 
                 FargoWorld.OverloadedSlimeRain = true;
-                SoundEngine.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+                SoundEngine.PlaySound(SoundID.Roar, player.position);
             }
 
             return true;

@@ -39,7 +39,7 @@ namespace Fargowiltas.Items.Summons.Abom
             Main.StartSlimeRain();
             Main.slimeWarningDelay = 1;
             Main.slimeWarningTime = 1;
-            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
 
             return true;
         }

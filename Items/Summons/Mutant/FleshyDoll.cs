@@ -35,7 +35,7 @@ namespace Fargowiltas.Items.Summons.Mutant
         public override bool? UseItem(Player player)
         {
             NPC.SpawnWOF(player.Center);
-            SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
 
             return true;
         }
