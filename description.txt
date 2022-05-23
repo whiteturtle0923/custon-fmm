@@ -22,6 +22,7 @@ ALPHA UPDATE - V 2.8.1
 -Fixed Squirrel being able to sit
 -Magic Mirror hotkey has a priority system: Potion of Return -> Recall Potion -> Magic Mirrors
 -Fixed Instahouse always building to the right
+-Fixed Debuff Display showing duration for debuffs that shouldn't have their duration shown
 -A vast number of internal refactors to port to new version
 
 ALPHA UPDATE - V 2.8

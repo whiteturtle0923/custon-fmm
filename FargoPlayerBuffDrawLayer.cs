@@ -85,7 +85,7 @@ namespace Fargowiltas
                     SpriteEffects effects = player.gravDir > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
                     float faderRatio = ModContent.GetInstance<FargoConfig>().DebuffFaderRatio;
-                    if (faderRatio > 0)
+                    if (faderRatio > 0 && !Main.buffNoTimeDisplay[debuffID])
                     {
                         if (currentDuration <= 1) //probably either a persistent debuff or one that will clear soon
                         {
