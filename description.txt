@@ -23,7 +23,7 @@ ALPHA UPDATE - V 2.8.1
 -Magic Mirror hotkey has a priority system: Potion of Return -> Recall Potion -> Magic Mirrors
 -Fixed Instahouse always building to the right
 -Fixed Debuff Display showing duration for debuffs that shouldn't have their duration shown
--A vast number of internal refactors to port to new version
+-A vast number of internal sound refactors to port to new version
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version
