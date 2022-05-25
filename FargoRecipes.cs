@@ -21,35 +21,38 @@ namespace Fargowiltas
             this.mod = mod;
         }
 
+        static string AnyItem(int id) => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemName(id)}";
+        static string AnyItem(string fargoLocalizationKey) => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.Fargowiltas.RecipeGroups.{fargoLocalizationKey}")}";
+        static string AnyBanner(string vanillaKey) => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue(vanillaKey)} {Language.GetTextValue("Mods.Fargowiltas.RecipeGroups.Banner")}";
+
         public static void AddRecipeGroups()
         {
             // Evil Wood
-            RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Wood", new int[] { ItemID.Ebonwood, ItemID.Shadewood });
+            RecipeGroup group = new RecipeGroup(() => AnyItem("EvilWood"),  ItemID.Ebonwood, ItemID.Shadewood );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
 
             //gold bar
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Gold Bar", new int[] { ItemID.GoldBar, ItemID.PlatinumBar });
+            group = new RecipeGroup(() => AnyItem(ItemID.GoldBar), ItemID.GoldBar, ItemID.PlatinumBar );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyGoldBar", group);
 
             //demon altar
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Demon Altar", new int[] { ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() });
+            group = new RecipeGroup(() => AnyItem(ModContent.ItemType<DemonAltar>()), ModContent.ItemType<DemonAltar>(), ModContent.ItemType<CrimsonAltar>() );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDemonAltar", group);
 
             //iron anvil
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Iron Anvil", new int[] { ItemID.IronAnvil, ItemID.LeadAnvil});
+            group = new RecipeGroup(() => AnyItem(ItemID.IronAnvil), ItemID.IronAnvil, ItemID.LeadAnvil);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyAnvil", group);
 
             //anvil HM
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mythril Anvil", ItemID.MythrilAnvil, ItemID.OrichalcumAnvil);
+            group = new RecipeGroup(() => AnyItem(ItemID.MythrilAnvil), ItemID.MythrilAnvil, ItemID.OrichalcumAnvil);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyHMAnvil", group);
 
             //forge HM
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Adamantite Forge", ItemID.AdamantiteForge, ItemID.TitaniumForge);
+            group = new RecipeGroup(() => AnyItem(ItemID.AdamantiteForge), ItemID.AdamantiteForge, ItemID.TitaniumForge);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyForge", group);
 
             //book cases
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Bookcase", new int[]
-            {
+            group = new RecipeGroup(() => AnyItem(ItemID.Bookcase),
                 ItemID.Bookcase,
                 ItemID.BlueDungeonBookcase,
                 ItemID.BoneBookcase,
@@ -81,21 +84,18 @@ namespace Fargowiltas
                 ItemID.SlimeBookcase,
                 ItemID.SpookyBookcase,
                 ItemID.SteampunkBookcase
-            });
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyBookcase", group);
 
 
-            // Bone Banners
-            int[] boneBanners = { ItemID.BlueArmoredBonesBanner, ItemID.HellArmoredBonesBanner, ItemID.RustyArmoredBonesBanner };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Armored Bones Banner", boneBanners);
+            group = new RecipeGroup(() => AnyItem("ArmoredBones"), ItemID.BlueArmoredBonesBanner, ItemID.HellArmoredBonesBanner, ItemID.RustyArmoredBonesBanner);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyArmoredBones", group);
 
-            int[] pirateBanners = { ItemID.PirateDeadeyeBanner, ItemID.PirateCorsairBanner, ItemID.PirateCrossbowerBanner, ItemID.PirateBanner };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Pirate Banner", pirateBanners);
+            group = new RecipeGroup(() => AnyItem("PirateBanner"), ItemID.PirateDeadeyeBanner, ItemID.PirateCorsairBanner, ItemID.PirateCrossbowerBanner, ItemID.PirateBanner);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyPirateBanner", group);
 
             // Slimes (excluding ones that don't drop gel)
-            int[] slimeBanners = {
+            group = new RecipeGroup(() => AnyItem(ItemID.SlimeBanner),
                 ItemID.SlimeBanner,
                 ItemID.GreenSlimeBanner,
                 ItemID.RedSlimeBanner,
@@ -116,12 +116,11 @@ namespace Fargowiltas
                 ItemID.GastropodBanner,
                 ItemID.IlluminantSlimeBanner,
                 ItemID.RainbowSlimeBanner
-            };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Slime Banner", slimeBanners);
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnySlimes", group);
 
             // Any Hallow enemy
-            int[] hallowBanners = {
+            group = new RecipeGroup(() => AnyBanner("RandomWorldName_Adjective.Hallowed"),
                 ItemID.PixieBanner,
                 ItemID.UnicornBanner,
                 ItemID.RainbowSlimeBanner,
@@ -131,12 +130,12 @@ namespace Fargowiltas
                 ItemID.IlluminantSlimeBanner,
                 ItemID.ChaosElementalBanner,
                 ItemID.EnchantedSwordBanner,
-            };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Hallow Banner", hallowBanners);
+                ItemID.BigMimicHallowBanner
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyHallows", group);
 
             // Any Corruption enemy
-            int[] corruptionBanners = {
+            group = new RecipeGroup(() => AnyBanner("CLI.Corrupt"),
                 ItemID.EaterofSoulsBanner,
                 ItemID.CorruptorBanner,
                 ItemID.CorruptSlimeBanner,
@@ -146,12 +145,12 @@ namespace Fargowiltas
                 ItemID.DarkMummyBanner,
                 ItemID.CursedHammerBanner,
                 ItemID.ClingerBanner,
-            };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Corruption Banner", corruptionBanners);
+                ItemID.BigMimicCorruptionBanner
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCorrupts", group);
 
             // Any Crimson enemy
-            int[] crimsonBanners = {
+            group = new RecipeGroup(() => AnyBanner("CLI.Crimson"),
                 ItemID.BloodCrawlerBanner,
                 ItemID.FaceMonsterBanner,
                 ItemID.CrimeraBanner,
@@ -163,12 +162,12 @@ namespace Fargowiltas
                 ItemID.CrimsonAxeBanner,
                 ItemID.IchorStickerBanner,
                 ItemID.FloatyGrossBanner,
-            };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Crimson Banner", crimsonBanners);
+                ItemID.BigMimicCrimsonBanner
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCrimsons", group);
 
             // Any Jungle enemy
-            int[] jungleBanners = {
+            group = new RecipeGroup(() => AnyBanner("RandomWorldName_Location.Jungle"),
                 ItemID.PiranhaBanner,
                 ItemID.SnatcherBanner,
                 ItemID.JungleBatBanner,
@@ -185,12 +184,11 @@ namespace Fargowiltas
                 ItemID.JungleCreeperBanner,
                 ItemID.MothBanner,
                 ItemID.ManEaterBanner
-            };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Jungle Banner", jungleBanners);
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyJungles", group);
 
             // Any Snow enemy
-            int[] snowBanners = {
+            group = new RecipeGroup(() => AnyBanner("RandomWorldName_Noun.Snow"),
                 ItemID.IceSlimeBanner,
                 ItemID.ZombieEskimoBanner,
                 ItemID.IceElementalBanner,
@@ -203,13 +201,12 @@ namespace Fargowiltas
                 ItemID.ArmoredVikingBanner,
                 ItemID.IceTortoiseBanner,
                 ItemID.IcyMermanBanner,
-                ItemID.PigronBanner,
-            };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Snow Banner", snowBanners);
+                ItemID.PigronBanner
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnySnows", group);
 
-            // Any Crimson enemy
-            int[] desertBanners = {
+            // Any desert enemy
+            group = new RecipeGroup(() => AnyBanner("RandomWorldName_Location.Desert"),
                 ItemID.VultureBanner,
                 ItemID.BloodMummyBanner,
                 ItemID.DarkMummyBanner,
@@ -231,22 +228,21 @@ namespace Fargowiltas
                 ItemID.SandsharkCorruptBanner,
                 ItemID.SandsharkCrimsonBanner,
                 ItemID.SandsharkHallowedBanner,
-                ItemID.TumbleweedBanner,
-            };
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Desert Banner", desertBanners);
+                ItemID.TumbleweedBanner
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDeserts", group);
 
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Caught Town NPC", CaughtNPCItem.CaughtTownies.Values.ToArray());
+            group = new RecipeGroup(() => AnyItem("CaughtNPC"), CaughtNPCItem.CaughtTownies.Values.ToArray());
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
 
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Omnistation", ModContent.ItemType<Omnistation>(), ModContent.ItemType<Omnistation2>());
+            group = new RecipeGroup(() => AnyItem(ModContent.ItemType<Omnistation>()), ModContent.ItemType<Omnistation>(), ModContent.ItemType<Omnistation2>());
             RecipeGroup.RegisterGroup("Fargowiltas:AnyOmnistation", group);
 
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Cooking Pot", ItemID.CookingPot, ItemID.Cauldron);
+            group = new RecipeGroup(() => AnyItem(ItemID.CookingPot), ItemID.CookingPot, ItemID.Cauldron);
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCookingPot", group);
 
             //vanilla butterflies
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Butterfly",
+            group = new RecipeGroup(() => AnyItem("Butterfly"),
                 //ItemID.GoldButterfly,
                 ItemID.JuliaButterfly,
                 ItemID.MonarchButterfly,
@@ -256,63 +252,73 @@ namespace Fargowiltas
                 ItemID.TreeNymphButterfly,
                 ItemID.UlyssesButterfly,
                 ItemID.ZebraSwallowtailButterfly,
-                ItemID.HellButterfly);
+                ItemID.HellButterfly
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyButterfly", group);
 
             //vanilla squirrels
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Squirrel",
-                //ItemID.SquirrelGold,
+            group = new RecipeGroup(() => AnyItem(ItemID.Squirrel),
                 ItemID.Squirrel,
-                ItemID.SquirrelRed);
+                ItemID.SquirrelRed
+                //ItemID.SquirrelGold,
                 //ItemID.GemSquirrelAmber,
                 //ItemID.GemSquirrelAmethyst,
                 //ItemID.GemSquirrelDiamond,
                 //ItemID.GemSquirrelEmerald,
                 //ItemID.GemSquirrelRuby,
                 //ItemID.GemSquirrelSapphire,
-                //ItemID.GemSquirrelTopaz);
+                //ItemID.GemSquirrelTopaz
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnySquirrel", group);
 
             //vanilla squirrels
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Common Fish",
-                //ItemID.GoldenCarp,
+            group = new RecipeGroup(() => AnyItem("CommonFish"),
                 ItemID.AtlanticCod,
                 ItemID.Bass,
                 ItemID.Trout,
                 ItemID.RedSnapper,
                 ItemID.Salmon,
-                ItemID.Tuna);
+                ItemID.Tuna
+                //ItemID.GoldenCarp
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCommonFish", group);
 
             //vanilla birds
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Bird",
-                //ItemID.GoldBird,
+            group = new RecipeGroup(() => AnyItem(ItemID.Bird),
                 ItemID.Bird,
+                //ItemID.GoldBird,
                 ItemID.BlueJay,
                 ItemID.Cardinal,
                 ItemID.Duck,
-                ItemID.MallardDuck);
+                ItemID.MallardDuck,
+                ItemID.Grebe,
+                ItemID.Seagull
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyBird", group);
 
             //vanilla ducks
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Duck",
+            group = new RecipeGroup(() => AnyItem(ItemID.Duck),
                 ItemID.Duck,
-                ItemID.MallardDuck);
+                ItemID.MallardDuck,
+                ItemID.Grebe
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDuck", group);
 
             //vanilla dragonfly
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Dragonfly",
+            group = new RecipeGroup(() => AnyItem("Dragonfly"),
                 //ItemID.GoldDragonfly,
                 ItemID.BlackDragonfly,
                 ItemID.BlueDragonfly,
                 ItemID.GreenDragonfly,
                 ItemID.OrangeDragonfly,
                 ItemID.RedDragonfly,
-                ItemID.YellowDragonfly);
+                ItemID.YellowDragonfly
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDragonfly", group);
 
             //tombstones
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tombstone",
+            group = new RecipeGroup(() => AnyItem(ItemID.Tombstone),
+                ItemID.Tombstone,
                 ItemID.CrossGraveMarker,
                 ItemID.Headstone,
                 ItemID.GraveMarker,
@@ -322,8 +328,8 @@ namespace Fargowiltas
                 ItemID.RichGravestone2,
                 ItemID.RichGravestone3,
                 ItemID.RichGravestone4,
-                ItemID.RichGravestone5,
-                ItemID.Tombstone);
+                ItemID.RichGravestone5
+            );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyTombstone", group);
         }
 

@@ -150,6 +150,16 @@ Mods: {
 			TransparentMinions: "[i:1309] Transparent Minions & Support Attacks"
 		}
 
+		RecipeGroups: {
+			EvilWood: Evil Wood
+			CommonFish: Common Fish
+			Dragonfly: Dragonfly
+			Butterfly: Butterfly
+			CaughtNPC: Caught Town NPC
+			Banner: Banner
+			ArmoredBones: Armored Bones Banner
+			PirateBanner: Pirate Banner
+		}
 	}
 }
 
