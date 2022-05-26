@@ -24,7 +24,7 @@ namespace Fargowiltas.Items.Vanity
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.SoulofNight, 5)
+                .AddIngredient(ItemID.ChumBucket)
                 .AddIngredient(ItemID.SoulofFlight, 5)
                 .AddTile(TileID.TinkerersWorkbench)
                 .Register();
