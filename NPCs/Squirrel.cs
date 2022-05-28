@@ -107,6 +107,11 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
+            if (FargoGlobalNPC.AnyBossAlive())
+            {
+                return false;
+            }
+
             if (FargoWorld.DownedBools["squirrel"])
             {
                 return true;
