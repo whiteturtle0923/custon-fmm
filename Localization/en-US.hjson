@@ -44,7 +44,7 @@ Mods: {
 				DislikeCrowded: There's too many humans around, they keep poking at my face.
 				HateCrowded: Do you know how hard it is to carry a scythe and not cut anyone with this many people around?
 				LikeBiome: "I like {BiomeName}, it's home to a fine opponent with my brother's wings."
-				LoveBiome: "I like {BiomeName} a lot, we came here first before landing."
+				LoveBiome: "I like Space a lot, we came here first before landing."
 				DislikeBiome: "Too many weak enemies live in {BiomeName}."
 				HateBiome: "I dislike {BiomeName} a lot."
 				LikeNPC: "{NPCName} is my sister... I've defeated more events than her, but she's okay."
