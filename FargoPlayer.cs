@@ -13,6 +13,7 @@ using System.Linq;
 using Terraria.ModLoader.IO;
 using Fargowiltas.Projectiles;
 using Fargowiltas.Items;
+using Terraria.GameContent.Events;
 
 ////using Fargowiltas.Toggler;
 
@@ -351,10 +352,10 @@ namespace Fargowiltas
 
         public override bool PreModifyLuck(ref float luck)
         {
-            if (FargoWorld.Matsuri)
+            if (FargoWorld.Matsuri && !Main.IsItRaining && !Main.IsItStorming)
             {
-                Terraria.GameContent.Events.LanternNight.GenuineLanterns = true;
-                Terraria.GameContent.Events.LanternNight.ManualLanterns = false;
+                LanternNight.GenuineLanterns = true;
+                LanternNight.ManualLanterns = false;
             }
 
             return base.PreModifyLuck(ref luck);

@@ -27,7 +27,8 @@ ALPHA UPDATE - V 2.8.1
 -Updated Deviantt Pants recipe
 -Updated localization files
 -Added Alchemy Table crate recipe
--Fixed Weather Balloon not working
+-Fixed Matsuri Lantern making rain impossible
+-Refined unlimited potions so that using one with a stack still in inventory won't consume that one either
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version

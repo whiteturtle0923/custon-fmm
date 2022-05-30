@@ -9,6 +9,7 @@ using static Terraria.ModLoader.ModContent;
 using Fargowiltas.NPCs;
 using Fargowiltas.Items.Ammos.Rockets;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Fargowiltas.Items
 {
@@ -362,7 +363,7 @@ namespace Fargowiltas.Items
         {
             if (GetInstance<FargoConfig>().UnlimitedConsumableWeapons && Main.hardMode && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
                 return false;
-            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120 && item.stack >= 30 && (item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion))
+            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120 && (item.buffType > 0 || item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion) && (item.stack >= 30 || player.inventory.Any(i => i.type == item.type && !i.IsAir && i.stack >= 30)))
                 return false;
             return true;
         }
