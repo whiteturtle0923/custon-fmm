@@ -35,12 +35,16 @@ namespace Fargowiltas.Items.Summons.Abom
                 
         public override bool? UseItem(Player player)
         {
+            Main.StartRain();
+            Main.cloudAlpha = Main.maxRaining;
+
             //sets rain time to 12 hours
-            int day = 86400;
-            int hour = day / 24;
-            Main.rainTime = hour * 12;
-            Main.raining = true;
-            Main.maxRaining = Main.cloudAlpha = 0.9f;
+            //int day = 86400;
+            //int hour = day / 24;
+            //Main.rainTime = hour * 12;
+            //Main.raining = true;
+
+            //Main.maxRaining = Main.cloudAlpha = 0.9f;
 
             if (Main.netMode == NetmodeID.Server)
             {
