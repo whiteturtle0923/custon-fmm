@@ -54,5 +54,14 @@ namespace Fargowiltas.Items.Summons.Deviantt
 
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.SlimeCrown)
+                .AddIngredient(ItemID.PinkDye)
+                .AddTile(TileID.DyeVat)
+                .Register();
+        }
     }
 }

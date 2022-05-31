@@ -31,6 +31,7 @@ ALPHA UPDATE - V 2.8.1
 -Refined unlimited potions so that using one with a stack still in inventory won't consume that one either
 -Fixed Grave Buster multiplayer sync
 -Doubled boss zen radius to 375 tiles
+-Added a recipe for Pink Slime Crown
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version
