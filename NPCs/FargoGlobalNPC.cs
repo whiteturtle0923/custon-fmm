@@ -632,7 +632,7 @@ namespace Fargowiltas.NPCs
                 maxSpawns = (int)(maxSpawns * 30f);
             }
 
-            if (AnyBossAlive() && GetInstance<FargoConfig>().BossZen && player.Distance(Main.npc[boss].Center) < 3000)
+            if (AnyBossAlive() && GetInstance<FargoConfig>().BossZen && player.Distance(Main.npc[boss].Center) < 6000)
             {
                 maxSpawns = 0;
             }
