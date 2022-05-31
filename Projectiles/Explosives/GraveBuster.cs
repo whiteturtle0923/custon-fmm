@@ -66,7 +66,7 @@ namespace Fargowiltas.Projectiles.Explosives
                         continue;
 
                     if (tile.TileType == TileID.Tombstones)
-                        tile.Clear(TileDataType.Tile);
+                        FargoGlobalTile.ClearTileAndLiquid(xPosition, yPosition);
                 }
             }
 

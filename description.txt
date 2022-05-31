@@ -29,6 +29,7 @@ ALPHA UPDATE - V 2.8.1
 -Added Alchemy Table crate recipe
 -Fixed Matsuri Lantern making rain impossible
 -Refined unlimited potions so that using one with a stack still in inventory won't consume that one either
+-Fixed Grave Buster multiplayer sync
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version
