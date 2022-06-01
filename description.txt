@@ -2,36 +2,36 @@ This is a Quality of life mod that adds the Mutant town NPC who sells boss summo
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
 ALPHA UPDATE - V 2.8.1
--Updated Mechanical Amalgam sprite
 -Added Crucible of Cosmos crossmod recipe supporting Magic Storage's combined stations
+-Added Alchemy Table crate recipe
+-Added a recipe for Pink Slime Crown
+-Added recipes for Deerclops drops
+-All explosives no longer affect Magic Storage tiles
+-Revised weights of bosses in Mutant shop to match Boss Checklist's 1.4 boss weights
+-Lumberjack sells Acorns and Gemcorns
+-Unlimited Potions works on Recall Potion, Potion of Return, and Wormhole Potion
+-Siblings have a loved biome
+-Fixed Squirrel being able to sit
+-Magic Mirror hotkey has a priority system: Potion of Return -> Recall Potion -> Magic Mirrors
+-Refined unlimited potions so that using one with a stack still in inventory won't consume that one either
+-Doubled boss zen radius to 375 tiles
+-A vast number of internal sound refactors to port to new version
+-Updated Mechanical Amalgam sprite
+-Updated Deviantt Pants recipe
+-Updated localization files
+-Fixed Matsuri Lantern making rain impossible
 -Fixed town NPCs having incorrectly formatted names in inventory
 -Fixed catch NPCs config not working
+-Fixed Debuff Display showing duration for debuffs that shouldn't have their duration shown
+-Fixed Instahouse always building to the right
 -Fixed Instahouse not working when placed with block swap
 -Fixed Instahouse having unusual wall borders
 -Fixed Instahouse doors exploding in multiplayer
--All explosives no longer affect Magic Storage tiles
 -Fixed Elemental Assembler not counting as Lava/Honey in Magic Storage
 -Fixed Squirrel not rendering in Bestiary
 -Fixed Suspicious Skull not being usable to summon Dungeon Guardian
 -Fixed Suspicious Looking Chest not actually summoning Ice Mimic in snow biome as advertised
--Revised weights of bosses in Mutant shop to match Boss Checklist's 1.4 boss weights
--Lumberjack sells Acorns and Gemcorns
--Unlimited Potions works on Recall Potion, Potion of Return, and Wormhole Potion
--Added recipes for Deerclops drops
--Siblings have a loved biome
--Fixed Squirrel being able to sit
--Magic Mirror hotkey has a priority system: Potion of Return -> Recall Potion -> Magic Mirrors
--Fixed Instahouse always building to the right
--Fixed Debuff Display showing duration for debuffs that shouldn't have their duration shown
--A vast number of internal sound refactors to port to new version
--Updated Deviantt Pants recipe
--Updated localization files
--Added Alchemy Table crate recipe
--Fixed Matsuri Lantern making rain impossible
--Refined unlimited potions so that using one with a stack still in inventory won't consume that one either
 -Fixed Grave Buster multiplayer sync
--Doubled boss zen radius to 375 tiles
--Added a recipe for Pink Slime Crown
 
 ALPHA UPDATE - V 2.8
 -Updated to latest tmod version
