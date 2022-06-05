@@ -235,6 +235,8 @@ namespace Fargowiltas.Items
                     player.AddBuff(BuffID.Clairvoyance, 2);
                 else if (item.type == ItemID.BewitchingTable)
                     player.AddBuff(BuffID.Bewitched, 2);
+                else if (item.type == ItemID.SliceOfCake)
+                    player.AddBuff(BuffID.SugarRush, 2);
             }
         }
 
