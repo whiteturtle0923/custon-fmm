@@ -54,30 +54,27 @@ namespace Fargowiltas.Items.Tiles
         public override bool RightClick(int i, int j)
         {
             Item item = Main.LocalPlayer.HeldItem;
-            if (item.DamageType == DamageClass.Melee)
+            if (item.CountsAsClass(DamageClass.Melee))
             {
                 Main.LocalPlayer.AddBuff(BuffID.Sharpened, 60 * 60 * 10);
             }
 
-            if (item.DamageType == DamageClass.Ranged)
+            if (item.CountsAsClass(DamageClass.Ranged))
             {
                 Main.LocalPlayer.AddBuff(BuffID.AmmoBox, 60 * 60 * 10);
             }
 
-            if (item.DamageType == DamageClass.Magic)
+            if (item.CountsAsClass(DamageClass.Magic))
             {
                 Main.LocalPlayer.AddBuff(BuffID.Clairvoyance, 60 * 60 * 10);
             }
 
-            if (item.DamageType == DamageClass.Summon)
+            if (item.CountsAsClass(DamageClass.Summon))
             {
                 Main.LocalPlayer.AddBuff(BuffID.Bewitched, 60 * 60 * 10);
             }
 
-            if (item.DamageType == DamageClass.Melee || item.DamageType == DamageClass.Ranged || item.DamageType == DamageClass.Magic || item.DamageType == DamageClass.Summon)
-            {
-                SoundEngine.PlaySound(SoundID.Item44, new Vector2(i * 16 + 8, j * 16 + 8));
-            }
+            SoundEngine.PlaySound(SoundID.Item44, new Vector2(i * 16 + 8, j * 16 + 8));
 
             return true;
         }

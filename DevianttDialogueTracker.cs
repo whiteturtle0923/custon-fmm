@@ -172,8 +172,8 @@ namespace Fargowiltas
             AddDialogue("Don't forget you can turn off your soul toggles! They're all in that little wrench button right below your inventory. Those small buttons at the very bottom of the list include a recommended low-lag preset!",
                 HelpDialogueType.Misc, (name) => true);
 
-            AddDialogue("Just so you know, ammos are less effective. Only a bit of their damage contributes to your total output!",
-                HelpDialogueType.Misc, (name) => Main.LocalPlayer.HeldItem.DamageType == DamageClass.Ranged);
+            //AddDialogue("Just so you know, ammos are less effective. Only a bit of their damage contributes to your total output!",
+            //    HelpDialogueType.Misc, (name) => Main.LocalPlayer.HeldItem.CountsAsClass(DamageClass.Ranged));
 
             //AddDialogue("Found any Top Hat Squirrels yet? Keep one in your inventory and maybe a special friend will show up!",
             //    HelpDialogueType.Misc, (name) => !NPC.AnyNPCs(ModContent.NPCType<Squirrel>()));
