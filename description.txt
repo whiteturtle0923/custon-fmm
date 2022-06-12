@@ -4,6 +4,7 @@ There are several other items such as infinite ammos, craftable instant builds f
 ALPHA UPDATE - V 2.8.2
 -Added Endless Coin Bags
 -Slice of Cake now works as an inventory unlimited buff like class stations
+-Added Bat Bat banner recipe
 
 ALPHA UPDATE - V 2.8.1
 -Added Crucible of Cosmos crossmod recipe supporting Magic Storage's combined stations

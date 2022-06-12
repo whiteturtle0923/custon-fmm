@@ -232,6 +232,20 @@ namespace Fargowiltas
             );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyDeserts", group);
 
+            // Any desert enemy
+            group = new RecipeGroup(() => AnyBanner("RandomWorldName_Noun.Bats"),
+                ItemID.BatBanner,
+                ItemID.GiantBatBanner,
+                ItemID.GiantFlyingFoxBanner,
+                ItemID.IceBatBanner,
+                ItemID.IlluminantBatBanner,
+                ItemID.JungleBatBanner,
+                ItemID.HellbatBanner,
+                ItemID.LavaBatBanner,
+                ItemID.SporeBatBanner
+            );
+            RecipeGroup.RegisterGroup("Fargowiltas:AnyBats", group);
+
             group = new RecipeGroup(() => AnyItem("CaughtNPC"), CaughtNPCItem.CaughtTownies.Values.ToArray());
             RecipeGroup.RegisterGroup("Fargowiltas:AnyCaughtNPC", group);
 
@@ -621,6 +635,8 @@ namespace Fargowiltas
             AddGroupToItemRecipe("Fargowiltas:AnyJungles", ItemID.JungleKey, TileID.MythrilAnvil, 1, 10);
             AddGroupToItemRecipe("Fargowiltas:AnySnows", ItemID.FrozenKey, TileID.MythrilAnvil, 1, 10);
             AddGroupToItemRecipe("Fargowiltas:AnyDeserts", ItemID.DungeonDesertKey, TileID.MythrilAnvil, 1, 10);
+
+            AddGroupToItemRecipe("Fargowiltas:AnyBats", ItemID.BatBat);
 
             AddGroupToItemRecipe("Fargowiltas:AnyCorrupts", ItemID.MeatGrinder, TileID.MythrilAnvil, 1, 5);
             AddGroupToItemRecipe("Fargowiltas:AnyCrimsons", ItemID.MeatGrinder, TileID.MythrilAnvil, 1, 5);
