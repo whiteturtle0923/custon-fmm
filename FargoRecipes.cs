@@ -573,8 +573,7 @@ namespace Fargowiltas
 
             AddBannerToItemRecipe(ItemID.EaterofSoulsBanner, ItemID.TentacleSpike, 2);
             AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.TentacleSpike, 2);
-            AddBannerToItemRecipe(ItemID.BatBanner, ItemID.BatBat, 2);
-            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.HamBat);
+            AddBannerToItemRecipe(ItemID.PigronBanner, ItemID.HamBat, tile: TileID.MythrilAnvil);
 
             //critters
             AddBannerToItemRecipe(ItemID.BirdBanner, ItemID.Bird, 1, 100);
