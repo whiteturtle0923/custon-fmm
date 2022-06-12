@@ -158,7 +158,7 @@ namespace Fargowiltas
                 ItemID.CrimslimeBanner,
                 ItemID.BloodJellyBanner,
                 ItemID.BloodFeederBanner,
-                ItemID.DarkMummyBanner,
+                ItemID.BloodMummyBanner,
                 ItemID.CrimsonAxeBanner,
                 ItemID.IchorStickerBanner,
                 ItemID.FloatyGrossBanner,
@@ -208,6 +208,7 @@ namespace Fargowiltas
             // Any desert enemy
             group = new RecipeGroup(() => AnyBanner("RandomWorldName_Location.Desert"),
                 ItemID.VultureBanner,
+                ItemID.MummyBanner,
                 ItemID.BloodMummyBanner,
                 ItemID.DarkMummyBanner,
                 ItemID.LightMummyBanner,
