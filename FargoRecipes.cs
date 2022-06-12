@@ -1131,6 +1131,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.EncumberingStone, ItemID.OasisCrate, 1, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.FlyingCarpet, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
             AddCrateRecipe(ItemID.SandstorminaBottle, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
+            AddCrateRecipe(ItemID.MagicConch, ItemID.OasisCrate, 3, ItemID.OasisCrateHard);
 
             //obsidian
             AddCrateRecipe(ItemID.DarkLance, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
