@@ -14,12 +14,9 @@ namespace Fargowiltas.Items.Summons.Abom
             base.SetStaticDefaults();
             DisplayName.SetDefault("Spooky Branch");
             Tooltip.SetDefault("Summons Mourning Wood" +
-                               "\nOnly usable during Pumpkin Moon");
+                               "\nOnly usable at night");
         }
 
-        public override bool CanUseItem(Player player)
-        {
-            return Main.pumpkinMoon;
-        }
+        public override bool CanUseItem(Player player) => !Main.dayTime;
     }
 }

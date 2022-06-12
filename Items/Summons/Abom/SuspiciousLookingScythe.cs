@@ -14,13 +14,9 @@ namespace Fargowiltas.Items.Summons.Abom
             base.SetStaticDefaults();
             DisplayName.SetDefault("Suspicious Looking Scythe");
             Tooltip.SetDefault("Summons Pumpking" +
-                               "\nOnly usable during Pumpkin Moon");
+                               "\nOnly usable at night");
         }
 
-        public override bool CanUseItem(Player player)
-        {
-            return Main.pumpkinMoon;
-
-        }
+        public override bool CanUseItem(Player player) => !Main.dayTime;
     }
 }

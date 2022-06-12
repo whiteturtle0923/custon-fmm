@@ -14,14 +14,9 @@ namespace Fargowiltas.Items.Summons.Abom
             base.SetStaticDefaults();
             DisplayName.SetDefault("Festive Ornament");
             Tooltip.SetDefault("Summons Everscream" +
-                               "\nOnly usable during Frost Moon");
+                               "\nOnly usable at night");
         }
 
-        public override bool CanUseItem(Player player)
-        {
-
-            return Main.snowMoon;
-
-        }
+        public override bool CanUseItem(Player player) => !Main.dayTime;
     }
 }

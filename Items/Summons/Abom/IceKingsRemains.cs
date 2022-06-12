@@ -14,12 +14,9 @@ namespace Fargowiltas.Items.Summons.Abom
             base.SetStaticDefaults();
             DisplayName.SetDefault("Ice King's Remains");
             Tooltip.SetDefault("Summons Ice Queen" +
-                               "\nOnly usable during Frost Moon");
+                               "\nOnly usable at night");
         }
 
-        public override bool CanUseItem(Player player)
-        {
-            return Main.snowMoon;
-        }
+        public override bool CanUseItem(Player player) => !Main.dayTime;
     }
 }
