@@ -1069,6 +1069,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.BeeMinecart, ItemID.JungleFishingCrate, 1, ItemID.JungleFishingCrateHard);
             AddCrateRecipe(ItemID.Seaweed, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
             AddCrateRecipe(ItemID.FlowerBoots, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
+            AddCrateRecipe(ItemID.HoneyDispenser, ItemID.JungleFishingCrate, 5, ItemID.JungleFishingCrateHard);
 
             //sky
             AddCrateRecipe(ItemID.ShinyRedBalloon, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
