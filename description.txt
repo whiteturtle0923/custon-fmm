@@ -11,6 +11,7 @@ ALPHA UPDATE - V 2.8.2
 -Abominationn Pumpkin/Frost Moon spawners work at night and can yield loot
 -Added Bewitching Table recipe using Dungeon crates
 -Ham Bat recipe now requires Mythril Anvil
+-Added Jelly Crystal recipe
 
 ALPHA UPDATE - V 2.8.1
 -Added Crucible of Cosmos crossmod recipe supporting Magic Storage's combined stations

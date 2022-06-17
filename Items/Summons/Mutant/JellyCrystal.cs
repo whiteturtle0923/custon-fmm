@@ -27,6 +27,12 @@ namespace Fargowiltas.Items.Summons.Mutant
                .AddIngredient(ItemID.QueenSlimeCrystal)
                .AddTile(TileID.WorkBenches)
                .Register();
+
+            CreateRecipe()
+               .AddIngredient(ItemID.CrystalShard, 5)
+               .AddIngredient(ItemID.SoulofLight, 3)
+               .AddTile(TileID.MythrilAnvil)
+               .Register();
         }
     }
 }
