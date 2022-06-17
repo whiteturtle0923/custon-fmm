@@ -42,7 +42,7 @@ namespace Fargowiltas.Projectiles.Explosives
             }
 
             Vector2 position = Projectile.Center;
-            int radius = 60;     //bigger = boomer
+            int radius = 64;     //bigger = boomer
 
             for (int x = -radius; x <= radius; x++)
             {

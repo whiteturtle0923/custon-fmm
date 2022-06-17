@@ -12,6 +12,7 @@ ALPHA UPDATE - V 2.8.2
 -Added Bewitching Table recipe using Dungeon crates
 -Ham Bat recipe now requires Mythril Anvil
 -Added Jelly Crystal recipe
+-Slightly increased City Buster blast zone
 
 ALPHA UPDATE - V 2.8.1
 -Added Crucible of Cosmos crossmod recipe supporting Magic Storage's combined stations
