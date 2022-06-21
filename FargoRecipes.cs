@@ -372,7 +372,7 @@ namespace Fargowiltas
         {
             void AddSummonConversion(int ingredient, int result)
             {
-                mod.CreateRecipe(result)
+                Recipe.Create(result)
                 .AddIngredient(ingredient)
                 .AddTile(TileID.WorkBenches)
                 .Register();
@@ -448,7 +448,7 @@ namespace Fargowiltas
         {
             void AddBannerToItemRecipe(int banner, int result, int bannerAmount = 1, int resultAmount = 1, int item2type = -1, int item2amount = 1, int tile = TileID.Solidifier)
             {
-                var recipe = mod.CreateRecipe(result, resultAmount);
+                var recipe = Recipe.Create(result, resultAmount);
 
                 recipe.AddIngredient(banner, bannerAmount);
                 if (item2type > -1)
@@ -461,7 +461,7 @@ namespace Fargowiltas
             {
                 foreach (int result in results)
                 {
-                    var recipe = mod.CreateRecipe(result);
+                    var recipe = Recipe.Create(result);
                     recipe.AddIngredient(banner, bannerAmount);
                     recipe.AddTile(tile);
                     recipe.Register();
@@ -470,7 +470,7 @@ namespace Fargowiltas
 
             void AddGroupToItemRecipe(string group, int result, int station = TileID.Solidifier, int resultAmount = 1, int groupAmount = 1, int secondaryMaterial = -1, int secondaryAmount = 1)
             {
-                var recipe = mod.CreateRecipe(result, resultAmount);
+                var recipe = Recipe.Create(result, resultAmount);
                 recipe.AddRecipeGroup(group, groupAmount);
                 if (secondaryMaterial != -1)
                     recipe.AddIngredient(secondaryMaterial, secondaryAmount);
@@ -835,7 +835,7 @@ namespace Fargowiltas
         {
             void AddStatueRecipe(int statue, int ingredient, int ingredientAmount = 1)
             {
-                var recipe = mod.CreateRecipe(statue);
+                var recipe = Recipe.Create(statue);
 
                 if (ingredient != -1)
                 {
@@ -902,33 +902,33 @@ namespace Fargowiltas
             AddStatueRecipe(ItemID.TreeStatue, -1);
 
             ////lihzahrd
-            mod.CreateRecipe(ItemID.LihzahrdGuardianStatue)
+            Recipe.Create(ItemID.LihzahrdGuardianStatue)
                 .AddIngredient(ItemID.LihzahrdBanner)
                 .AddIngredient(ItemID.LihzahrdBrick, 50)
                 .AddTile(TileID.HeavyWorkBench)
                 .Register();
 
-            mod.CreateRecipe(ItemID.LihzahrdStatue)
+            Recipe.Create(ItemID.LihzahrdStatue)
                 .AddIngredient(ItemID.LihzahrdBanner)
                 .AddIngredient(ItemID.LihzahrdBrick, 50)
                 .AddTile(TileID.HeavyWorkBench)
                 .Register();
 
-            mod.CreateRecipe(ItemID.LihzahrdWatcherStatue)
+            Recipe.Create(ItemID.LihzahrdWatcherStatue)
                 .AddIngredient(ItemID.LihzahrdBanner)
                 .AddIngredient(ItemID.LihzahrdBrick, 50)
                 .AddTile(TileID.HeavyWorkBench)
                 .Register();
 
 
-            mod.CreateRecipe(ItemID.KingStatue)
+            Recipe.Create(ItemID.KingStatue)
                 .AddIngredient(ItemID.Throne)
                 .AddIngredient(ItemID.TeleportationPotion)
                 .AddIngredient(ItemID.StoneBlock, 50)
                 .AddTile(TileID.HeavyWorkBench)
                 .Register();
 
-            mod.CreateRecipe(ItemID.QueenStatue)
+            Recipe.Create(ItemID.QueenStatue)
                 .AddIngredient(ItemID.Throne)
                 .AddIngredient(ItemID.TeleportationPotion)
                 .AddIngredient(ItemID.StoneBlock, 50)
@@ -940,7 +940,7 @@ namespace Fargowiltas
         {
             void KeyToItemRecipe(int key, int result)
             {
-                var recipe = mod.CreateRecipe(result);
+                var recipe = Recipe.Create(result);
                 recipe.AddIngredient(key);
                 recipe.AddIngredient(ItemID.Ectoplasm, 10);
                 recipe.AddTile(TileID.MythrilAnvil);
@@ -958,7 +958,7 @@ namespace Fargowiltas
             // Goodie Bag / Present recipes
             void AddGrabBagItemRecipe(int result, int grabBag = ItemID.Present, int grabBagAmount = 10, int item2type = -1, int item2amount = 1)
             {
-                var recipe = mod.CreateRecipe(result);
+                var recipe = Recipe.Create(result);
                 recipe.AddIngredient(grabBag, grabBagAmount);
                 if (item2type > -1)
                     recipe.AddIngredient(item2type, item2amount);
@@ -980,7 +980,7 @@ namespace Fargowiltas
             //herb bags
             void AddHerbBagRecipe(int result)
             {
-                var recipe = mod.CreateRecipe(result, 5);
+                var recipe = Recipe.Create(result, 5);
                 recipe.AddIngredient(ItemID.HerbBag);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.Register();
@@ -998,7 +998,7 @@ namespace Fargowiltas
             {
                 if (crate != -1)
                 {
-                    var recipe = mod.CreateRecipe(result);
+                    var recipe = Recipe.Create(result);
                     recipe.AddIngredient(crate, crateAmount);
                     if (extraItem != -1)
                     {
@@ -1010,7 +1010,7 @@ namespace Fargowiltas
 
                 if (hardCrate != -1)
                 {
-                    var recipe = mod.CreateRecipe(result);
+                    var recipe = Recipe.Create(result);
                     recipe.AddIngredient(hardCrate, crateAmount);
                     if (extraItem != -1)
                     {
@@ -1162,158 +1162,158 @@ namespace Fargowiltas
         {
             Fargowiltas mod = ModLoader.GetMod("Fargowiltas") as Fargowiltas;
 
-            mod.CreateRecipe(ItemID.FleshBlock, 25)
+            Recipe.Create(ItemID.FleshBlock, 25)
                 .AddRecipeGroup("Fargowiltas:AnyCaughtNPC")
                 .AddTile(TileID.MeatGrinder)
                 .Register();
 
-            mod.CreateRecipe(ItemID.DeepRedPaint, 20).
+            Recipe.Create(ItemID.DeepRedPaint, 20).
             AddRecipeGroup("Fargowiltas:AnyCaughtNPC").
             AddTile(TileID.DyeVat).
             Register();
 
-            mod.CreateRecipe(ItemID.BluePaint, 20).
+            Recipe.Create(ItemID.BluePaint, 20).
             AddIngredient(CaughtNPCItem.CaughtTownies[NPCID.Truffle]).
             AddTile(TileID.DyeVat).
             Register();
 
-            mod.CreateRecipe(CaughtNPCItem.CaughtTownies[ModContent.NPCType<NPCs.Squirrel>()]).
+            Recipe.Create(CaughtNPCItem.CaughtTownies[ModContent.NPCType<NPCs.Squirrel>()]).
             AddRecipeGroup("Fargowiltas:AnySquirrel").
             AddIngredient(ItemID.TopHat).
             AddTile(TileID.DemonAltar).
             Register();
 
-            mod.CreateRecipe(CaughtNPCItem.CaughtTownies[NPCID.TravellingMerchant]).
+            Recipe.Create(CaughtNPCItem.CaughtTownies[NPCID.TravellingMerchant]).
             AddIngredient(null, "Merchant").
             AddIngredient(ItemID.DynastyWood).
             AddTile(TileID.AlchemyTable).
             Register();
 
-            mod.CreateRecipe(ItemID.BloodbathDye, 2).
+            Recipe.Create(ItemID.BloodbathDye, 2).
             AddRecipeGroup("Fargowiltas:AnyCaughtNPC").
             AddTile(TileID.DyeVat).
             Register();
 
-            mod.CreateRecipe(CaughtNPCItem.CaughtTownies[NPCID.SkeletonMerchant]).
+            Recipe.Create(CaughtNPCItem.CaughtTownies[NPCID.SkeletonMerchant]).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.Bone, 5).
             AddTile(TileID.BoneWelder).
             Register();
 
-            mod.CreateRecipe(CaughtNPCItem.CaughtTownies[NPCID.TravellingMerchant]).
+            Recipe.Create(CaughtNPCItem.CaughtTownies[NPCID.TravellingMerchant]).
             AddIngredient(null, "SkeletonMerchant").
             AddTile(TileID.MeatGrinder).
             Register();
 
-            mod.CreateRecipe(ItemID.Bone, 25).
+            Recipe.Create(ItemID.Bone, 25).
             AddIngredient(null, "SkeletonMerchant").
             AddTile(TileID.BoneWelder).
             Register();
 
-            mod.CreateRecipe(ItemID.LeafWand).
+            Recipe.Create(ItemID.LeafWand).
             AddIngredient(null, "Dryad").
             AddTile(TileID.LivingLoom).
             Register();
 
-            mod.CreateRecipe(ItemID.TruffleWorm).
+            Recipe.Create(ItemID.TruffleWorm).
             AddIngredient(null, "Truffle").
             AddIngredient(ItemID.EnchantedNightcrawler).
             AddTile(TileID.Autohammer).
             Register();
 
-            mod.CreateRecipe(ItemID.DyeTradersScimitar).
+            Recipe.Create(ItemID.DyeTradersScimitar).
             AddIngredient(null, "DyeTrader").
             AddIngredient(ItemID.WoodenSword).
             AddTile(TileID.DemonAltar).
             Register();
 
-            mod.CreateRecipe(ItemID.AleThrowingGlove).
+            Recipe.Create(ItemID.AleThrowingGlove).
             AddIngredient(null, "Tavernkeep").
             AddIngredient(ItemID.Ale, 5).
             AddTile(TileID.DemonAltar).
             Register();
 
-            mod.CreateRecipe(ItemID.StylistKilLaKillScissorsIWish).
+            Recipe.Create(ItemID.StylistKilLaKillScissorsIWish).
             AddIngredient(null, "Stylist").
             AddIngredient(ItemID.WoodenSword).
             AddTile(TileID.DemonAltar).
             Register();
 
-            mod.CreateRecipe(ItemID.PainterPaintballGun).
+            Recipe.Create(ItemID.PainterPaintballGun).
             AddIngredient(null, "Painter").
             AddIngredient(ItemID.WoodenBow).
             AddTile(TileID.DemonAltar).
             Register();
 
-            mod.CreateRecipe(ItemID.TaxCollectorsStickOfDoom).
+            Recipe.Create(ItemID.TaxCollectorsStickOfDoom).
             AddIngredient(null, "TaxCollector").
             AddIngredient(ItemID.WoodenSword).
             AddTile(TileID.DemonAltar).
             Register();
 
-            mod.CreateRecipe(ItemID.PrincessWeapon).
+            Recipe.Create(ItemID.PrincessWeapon).
             AddIngredient(null, "Princess").
             AddIngredient(ItemID.Ectoplasm).
             AddTile(TileID.DemonAltar).
             Register();
 
-            mod.CreateRecipe(ItemID.CombatWrench).
+            Recipe.Create(ItemID.CombatWrench).
             AddIngredient(null, "Mechanic").
             AddIngredient(ItemID.WoodenBoomerang).
             AddTile(TileID.DemonAltar).
             Register();
 
-            mod.CreateRecipe(ItemID.FishermansGuide).
+            Recipe.Create(ItemID.FishermansGuide).
             AddIngredient(null, "Angler").
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.WeatherRadio).
+            Recipe.Create(ItemID.WeatherRadio).
             AddIngredient(null, "Angler").
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.Sextant).
+            Recipe.Create(ItemID.Sextant).
             AddIngredient(null, "Angler").
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
             //travelling merch recipes 
-            mod.CreateRecipe(ItemID.SliceOfCake).
+            Recipe.Create(ItemID.SliceOfCake).
             AddIngredient(ItemID.FoodPlatter).
             AddIngredient(null, "PartyGirl").
             AddTile(TileID.Furnaces).
             Register();
 
             //travelling merch recipes 
-            mod.CreateRecipe(ItemID.DynastyWood, 500).
+            Recipe.Create(ItemID.DynastyWood, 500).
             AddIngredient(ItemID.Wood, 500).
             AddIngredient(null, "TravellingMerchant").
             AddTile(TileID.CookingPots).
             Register();
 
-            mod.CreateRecipe(ItemID.UltrabrightTorch, 200).
+            Recipe.Create(ItemID.UltrabrightTorch, 200).
             AddIngredient(ItemID.Torch, 200).
             AddIngredient(null, "TravellingMerchant").
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
             //common items - 1 merchant, 2x price
-            mod.CreateRecipe(ItemID.Stopwatch).
+            Recipe.Create(ItemID.Stopwatch).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 10).
             AddRecipeGroup("IronBar", 5).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.LifeformAnalyzer).
+            Recipe.Create(ItemID.LifeformAnalyzer).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 10).
             AddRecipeGroup("IronBar", 5).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.DPSMeter).
+            Recipe.Create(ItemID.DPSMeter).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 10).
             AddRecipeGroup("IronBar", 5).
@@ -1321,42 +1321,42 @@ namespace Fargowiltas
             Register();
 
             //uncommon - 1 merchant, 2x price
-            mod.CreateRecipe(ItemID.Katana).
+            Recipe.Create(ItemID.Katana).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 20).
             AddRecipeGroup("IronBar", 5).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.ActuationAccessory).
+            Recipe.Create(ItemID.ActuationAccessory).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 20).
             AddIngredient(ItemID.Actuator, 10).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.PortableCementMixer).
+            Recipe.Create(ItemID.PortableCementMixer).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 20).
             AddIngredient(ItemID.BuilderPotion).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.PaintSprayer).
+            Recipe.Create(ItemID.PaintSprayer).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 20).
             AddIngredient(ItemID.BuilderPotion).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.ExtendoGrip).
+            Recipe.Create(ItemID.ExtendoGrip).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 20).
             AddIngredient(ItemID.BuilderPotion).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.BrickLayer).
+            Recipe.Create(ItemID.BrickLayer).
             AddIngredient(null, "TravellingMerchant").
             AddIngredient(ItemID.GoldCoin, 20).
             AddIngredient(ItemID.BuilderPotion).
@@ -1364,13 +1364,13 @@ namespace Fargowiltas
             Register();
 
             //rare - 2 merchant, 2x price
-            mod.CreateRecipe(ItemID.Code1).
+            Recipe.Create(ItemID.Code1).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 10).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.Code2).
+            Recipe.Create(ItemID.Code2).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 50).
             AddIngredient(ItemID.Code1).
@@ -1378,45 +1378,45 @@ namespace Fargowiltas
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.BambooLeaf).
+            Recipe.Create(ItemID.BambooLeaf).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.PlatinumCoin, 2).
             AddIngredient(ItemID.BambooBlock, 25).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.CelestialWand).
+            Recipe.Create(ItemID.CelestialWand).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.PlatinumCoin, 2).
             AddIngredient(ItemID.ManaCrystal).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.Gi).
+            Recipe.Create(ItemID.Gi).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 4).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.GypsyRobe).
+            Recipe.Create(ItemID.GypsyRobe).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 7).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.MagicHat).
+            Recipe.Create(ItemID.MagicHat).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 6).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.AmmoBox).
+            Recipe.Create(ItemID.AmmoBox).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 30).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.Revolver).
+            Recipe.Create(ItemID.Revolver).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 20).
             AddIngredient(ItemID.MusketBall, 25). //post evil
@@ -1424,34 +1424,34 @@ namespace Fargowiltas
             Register();
 
             //very rare
-            mod.CreateRecipe(ItemID.BedazzledNectar).
+            Recipe.Create(ItemID.BedazzledNectar).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.PlatinumCoin, 2).
             AddIngredient(ItemID.TreeNymphButterfly).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.ExoticEasternChewToy).
+            Recipe.Create(ItemID.ExoticEasternChewToy).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.PlatinumCoin, 2).
             AddIngredient(ItemID.Cactus, 50).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.BirdieRattle).
+            Recipe.Create(ItemID.BirdieRattle).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.PlatinumCoin, 2).
             AddIngredient(ItemID.Feather, 10).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.CompanionCube).
+            Recipe.Create(ItemID.CompanionCube).
             AddIngredient(null, "TravellingMerchant", 3).
             AddIngredient(ItemID.PlatinumCoin, 10).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.SittingDucksFishingRod).
+            Recipe.Create(ItemID.SittingDucksFishingRod).
             AddIngredient(null, "TravellingMerchant", 3).
             AddIngredient(ItemID.GoldCoin, 70).
             AddIngredient(ItemID.Bone, 10). //post skele
@@ -1459,34 +1459,34 @@ namespace Fargowiltas
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.DiamondRing).
+            Recipe.Create(ItemID.DiamondRing).
             AddIngredient(null, "TravellingMerchant", 3).
             AddIngredient(ItemID.PlatinumCoin, 4).
             AddIngredient(ItemID.Diamond).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.CelestialMagnet).
+            Recipe.Create(ItemID.CelestialMagnet).
             AddIngredient(null, "TravellingMerchant", 3).
             AddIngredient(ItemID.GoldCoin, 30).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.WaterGun).
+            Recipe.Create(ItemID.WaterGun).
             AddIngredient(null, "TravellingMerchant", 3).
             AddIngredient(ItemID.GoldCoin, 3).
             AddIngredient(ItemID.WaterBucket).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.PulseBow).
+            Recipe.Create(ItemID.PulseBow).
             AddIngredient(null, "TravellingMerchant", 3).
             AddIngredient(ItemID.GoldCoin, 90).
             AddIngredient(ItemID.Ectoplasm, 5). //post plant
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.YellowCounterweight).
+            Recipe.Create(ItemID.YellowCounterweight).
             AddIngredient(null, "TravellingMerchant", 3).
             AddIngredient(ItemID.GoldCoin, 10).
             AddIngredient(ItemID.YellowDye).
@@ -1494,14 +1494,14 @@ namespace Fargowiltas
             Register();
 
             //extremely rare
-            mod.CreateRecipe(ItemID.ZapinatorGray).
+            Recipe.Create(ItemID.ZapinatorGray).
             AddIngredient(null, "TravellingMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 34).
             AddIngredient(ItemID.SpaceGun).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-           mod.CreateRecipe(ItemID.ZapinatorOrange).
+           Recipe.Create(ItemID.ZapinatorOrange).
            AddIngredient(null, "TravellingMerchant", 2).
            AddIngredient(ItemID.PlatinumCoin).
            AddIngredient(ItemID.ZapinatorGray).
@@ -1509,14 +1509,14 @@ namespace Fargowiltas
            AddTile(TileID.TinkerersWorkbench).
            Register();
 
-           mod.CreateRecipe(ItemID.BouncingShield).
+           Recipe.Create(ItemID.BouncingShield).
            AddIngredient(null, "TravellingMerchant", 2).
            AddIngredient(ItemID.GoldCoin, 70).
            AddIngredient(ItemID.SoulofLight). //hm
            AddTile(TileID.TinkerersWorkbench).
            Register();
 
-            mod.CreateRecipe(ItemID.Gatligator).
+            Recipe.Create(ItemID.Gatligator).
             AddIngredient(null, "TravellingMerchant", 4).
             AddIngredient(ItemID.GoldCoin, 70).
             AddIngredient(ItemID.SoulofLight, 2). //hardmode
@@ -1524,7 +1524,7 @@ namespace Fargowiltas
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.BlackCounterweight).
+            Recipe.Create(ItemID.BlackCounterweight).
             AddIngredient(null, "TravellingMerchant", 4).
             AddIngredient(ItemID.GoldCoin, 10).
             AddIngredient(ItemID.BlackDye).
@@ -1532,7 +1532,7 @@ namespace Fargowiltas
             Register();
 
             //extraordinarily rare
-            mod.CreateRecipe(ItemID.AngelHalo).
+            Recipe.Create(ItemID.AngelHalo).
             AddIngredient(null, "TravellingMerchant", 5).
             AddIngredient(ItemID.GoldCoin, 80).
             AddIngredient(ItemID.GoldBar, 5).
@@ -1540,49 +1540,49 @@ namespace Fargowiltas
             Register();
 
             //skeleton merchant recipes
-            mod.CreateRecipe(ItemID.BlueCounterweight).
+            Recipe.Create(ItemID.BlueCounterweight).
             AddIngredient(null, "SkeletonMerchant").
             AddIngredient(ItemID.GoldCoin, 10).
             AddIngredient(ItemID.BlueDye).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.RedCounterweight).
+            Recipe.Create(ItemID.RedCounterweight).
             AddIngredient(null, "SkeletonMerchant").
             AddIngredient(ItemID.GoldCoin, 10).
             AddIngredient(ItemID.RedDye).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.PurpleCounterweight).
+            Recipe.Create(ItemID.PurpleCounterweight).
             AddIngredient(null, "SkeletonMerchant").
             AddIngredient(ItemID.GoldCoin, 10).
             AddIngredient(ItemID.PurpleDye).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.GreenCounterweight).
+            Recipe.Create(ItemID.GreenCounterweight).
             AddIngredient(null, "SkeletonMerchant").
             AddIngredient(ItemID.GoldCoin, 10).
             AddIngredient(ItemID.GreenDye).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.Gradient).
+            Recipe.Create(ItemID.Gradient).
             AddIngredient(null, "SkeletonMerchant").
             AddIngredient(ItemID.GoldCoin, 40).
             AddIngredient(ItemID.SoulofNight, 5).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.FormatC).
+            Recipe.Create(ItemID.FormatC).
             AddIngredient(null, "SkeletonMerchant").
             AddIngredient(ItemID.GoldCoin, 40).
             AddIngredient(ItemID.SoulofLight, 5).
             AddTile(TileID.TinkerersWorkbench).
             Register();
 
-            mod.CreateRecipe(ItemID.MagicLantern).
+            Recipe.Create(ItemID.MagicLantern).
             AddIngredient(null, "SkeletonMerchant", 2).
             AddIngredient(ItemID.GoldCoin, 20).
             AddTile(TileID.TinkerersWorkbench).
@@ -1595,7 +1595,7 @@ namespace Fargowiltas
             {
                 foreach (int output in outputs)
                 {
-                    mod.CreateRecipe(output)
+                    Recipe.Create(output)
                         .AddIngredient(input)
                         .AddTile(TileID.Solidifier)
                         .Register();
@@ -1828,33 +1828,33 @@ namespace Fargowiltas
 
         private void AddMiscRecipes()
         {
-            mod.CreateRecipe(ItemID.EnchantedSword)
+            Recipe.Create(ItemID.EnchantedSword)
                 .AddIngredient(ItemID.IceBlade)
                 .AddTile(TileID.CrystalBall)
                 .Register();
 
-            mod.CreateRecipe(ItemID.Terragrim)
+            Recipe.Create(ItemID.Terragrim)
                 .AddIngredient(ItemID.EnchantedSword, 2)
                 .AddIngredient(ItemID.SoulofLight, 5)
                 .AddTile(TileID.CrystalBall)
                 .Register();
 
-            mod.CreateRecipe(ItemID.MagicalPumpkinSeed)
+            Recipe.Create(ItemID.MagicalPumpkinSeed)
                 .AddIngredient(ItemID.Pumpkin, 500)
                 .AddTile(TileID.LivingLoom)
                 .Register();
 
-            mod.CreateRecipe(ItemID.Seaweed)
+            Recipe.Create(ItemID.Seaweed)
                 .AddIngredient(ItemID.FishingSeaweed, 5)
                 .AddTile(TileID.LivingLoom)
                 .Register();
 
-            mod.CreateRecipe(ItemID.RottenEgg, 25)
+            Recipe.Create(ItemID.RottenEgg, 25)
                 .AddIngredient(ItemID.GoodieBag, 2)
                 .AddTile(TileID.WorkBenches)
                 .Register();
 
-            mod.CreateRecipe(ItemID.FlowerBoots)
+            Recipe.Create(ItemID.FlowerBoots)
                 .AddIngredient(ItemID.HermesBoots)
                 .AddIngredient(ItemID.Daybloom)
                 .AddIngredient(ItemID.Blinkroot)
@@ -1866,81 +1866,81 @@ namespace Fargowiltas
                 .AddTile(TileID.LivingLoom)
                 .Register();
 
-            mod.CreateRecipe(ItemID.LivingLoom)
+            Recipe.Create(ItemID.LivingLoom)
                 .AddIngredient(ItemID.Loom)
                 .AddIngredient(ItemID.Vine, 10)
                 .AddTile(TileID.WorkBenches)
                 .Register();
 
-            mod.CreateRecipe(ItemID.JungleRose)
+            Recipe.Create(ItemID.JungleRose)
                 .AddIngredient(ItemID.NaturesGift)
                 .AddIngredient(ItemID.RedHusk)
                 .AddTile(TileID.LivingLoom)
                 .Register();
 
-            mod.CreateRecipe(ItemID.NaturesGift)
+            Recipe.Create(ItemID.NaturesGift)
                 .AddIngredient(ItemID.JungleRose)
                 .AddIngredient(ItemID.CyanHusk)
                 .AddTile(TileID.LivingLoom)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AmberMosquito)
+            Recipe.Create(ItemID.AmberMosquito)
                 .AddIngredient(ItemID.Amber, 15)
                 .AddIngredient(ItemID.Firefly)
                 .AddTile(TileID.CookingPots)
                 .Register();
 
-            mod.CreateRecipe(ItemID.NaturesGift)
+            Recipe.Create(ItemID.NaturesGift)
                 .AddIngredient(ItemID.Moonglow, 15)
                 .AddIngredient(ItemID.ManaCrystal)
                 .AddTile(TileID.AlchemyTable)
                 .Register();
 
-            mod.CreateRecipe(ItemID.SandstorminaBottle)
+            Recipe.Create(ItemID.SandstorminaBottle)
                 .AddIngredient(ItemID.SandBlock, 50)
                 .AddIngredient(ItemID.Bottle)
                 .AddTile(TileID.AlchemyTable)
                 .Register();
 
-            mod.CreateRecipe(ItemID.ShroomiteBar)
+            Recipe.Create(ItemID.ShroomiteBar)
                 .AddIngredient(ItemID.ChlorophyteBar)
                 .AddIngredient(ItemID.DarkBlueSolution)
                 .AddTile(TileID.Autohammer)
                 .Register();
 
-            mod.CreateRecipe(ItemID.WebSlinger)
+            Recipe.Create(ItemID.WebSlinger)
                 .AddIngredient(ItemID.GrapplingHook)
                 .AddIngredient(ItemID.WebRopeCoil, 8)
                 .AddTile(TileID.CookingPots)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AbigailsFlower)
+            Recipe.Create(ItemID.AbigailsFlower)
                .AddIngredient(ItemID.Deathweed, 5)
                .AddTile(TileID.Tombstones)
                .AddCondition(Recipe.Condition.InGraveyardBiome)
                .Register();
 
-            mod.CreateRecipe(ItemID.SandstorminaBottle)
+            Recipe.Create(ItemID.SandstorminaBottle)
                .AddIngredient(ItemID.PharaohsMask)
                .AddIngredient(ItemID.PharaohsRobe)
                .AddIngredient(ItemID.GoldCoin, 10)
                .AddTile(TileID.TinkerersWorkbench)
                .Register();
 
-            mod.CreateRecipe(ItemID.FlyingCarpet)
+            Recipe.Create(ItemID.FlyingCarpet)
                .AddIngredient(ItemID.PharaohsMask)
                .AddIngredient(ItemID.PharaohsRobe)
                .AddIngredient(ItemID.GoldCoin, 10)
                .AddTile(TileID.TinkerersWorkbench)
                .Register();
 
-            mod.CreateRecipe(ItemID.FartInABalloon)
+            Recipe.Create(ItemID.FartInABalloon)
                .AddIngredient(ItemID.CloudinaBalloon)
                .AddIngredient(ItemID.WhoopieCushion)
                .AddTile(TileID.TinkerersWorkbench)
                .Register();
 
-            mod.CreateRecipe(ItemID.BalloonHorseshoeFart)
+            Recipe.Create(ItemID.BalloonHorseshoeFart)
                .AddIngredient(ItemID.BlueHorseshoeBalloon)
                .AddIngredient(ItemID.WhoopieCushion)
                .AddTile(TileID.TinkerersWorkbench)
@@ -2692,12 +2692,12 @@ namespace Fargowiltas
 
         private void AddConvertRecipe(int item, int item2)
         {
-            mod.CreateRecipe(item)
+            Recipe.Create(item)
                .AddIngredient(item2)
                .AddTile(TileID.DemonAltar)
                .Register();
 
-            mod.CreateRecipe(item2)
+            Recipe.Create(item2)
                .AddIngredient(item)
                .AddTile(TileID.DemonAltar)
                .Register();
@@ -2725,58 +2725,58 @@ namespace Fargowiltas
             }
 
             //ancient armor recipes
-            mod.CreateRecipe(ItemID.AncientShadowHelmet)
+            Recipe.Create(ItemID.AncientShadowHelmet)
                 .AddIngredient(ItemID.DemoniteBar, 15)
                 .AddIngredient(ItemID.ShadowScale, 10)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AncientShadowScalemail)
+            Recipe.Create(ItemID.AncientShadowScalemail)
                 .AddIngredient(ItemID.DemoniteBar, 25)
                 .AddIngredient(ItemID.ShadowScale, 20)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AncientShadowGreaves)
+            Recipe.Create(ItemID.AncientShadowGreaves)
                 .AddIngredient(ItemID.DemoniteBar, 20)
                 .AddIngredient(ItemID.ShadowScale, 15)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AncientIronHelmet)
+            Recipe.Create(ItemID.AncientIronHelmet)
                 .AddIngredient(ItemID.IronBar, 15)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AncientGoldHelmet)
+            Recipe.Create(ItemID.AncientGoldHelmet)
                 .AddIngredient(ItemID.GoldBar, 20)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AncientNecroHelmet)
+            Recipe.Create(ItemID.AncientNecroHelmet)
                 .AddIngredient(ItemID.Bone, 20)
                 .AddIngredient(ItemID.Cobweb, 40)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AncientCobaltHelmet)
+            Recipe.Create(ItemID.AncientCobaltHelmet)
                 .AddIngredient(ItemID.JungleSpores, 8)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AncientCobaltBreastplate)
+            Recipe.Create(ItemID.AncientCobaltBreastplate)
                 .AddIngredient(ItemID.JungleSpores, 16)
                 .AddIngredient(ItemID.Stinger, 10)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.AncientCobaltLeggings)
+            Recipe.Create(ItemID.AncientCobaltLeggings)
                 .AddIngredient(ItemID.JungleSpores, 8)
                 .AddIngredient(ItemID.Vine, 2)
                 .AddTile(TileID.DemonAltar)
                 .Register();
 
-            mod.CreateRecipe(ItemID.TeleportationPylonVictory)
+            Recipe.Create(ItemID.TeleportationPylonVictory)
                 .AddIngredient(ItemID.TeleportationPylonDesert)
                 .AddIngredient(ItemID.TeleportationPylonHallow)
                 .AddIngredient(ItemID.TeleportationPylonJungle)

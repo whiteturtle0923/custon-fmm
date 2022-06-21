@@ -59,7 +59,7 @@ namespace Fargowiltas.Items.Tiles
 
         private void AddCritter(int critterID, int goldCritterID)
         {
-            Mod.CreateRecipe(goldCritterID)
+            Recipe.Create(goldCritterID)
                 .AddIngredient(critterID)
                 .AddIngredient(ItemID.GoldDust, 100)
                 .AddTile(ModContent.TileType<GoldenDippingVatSheet>())
@@ -68,7 +68,7 @@ namespace Fargowiltas.Items.Tiles
 
         private void AddCritter(string critterGroup, int goldCritterID)
         {
-            Mod.CreateRecipe(goldCritterID)
+            Recipe.Create(goldCritterID)
                 .AddRecipeGroup($"Fargowiltas:Any{critterGroup}")
                 .AddIngredient(ItemID.GoldDust, 100)
                 .AddTile(ModContent.TileType<GoldenDippingVatSheet>())

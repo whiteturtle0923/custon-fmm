@@ -52,7 +52,7 @@ namespace Fargowiltas.Items.Renewals
 
         public override void AddRecipes()
         {
-            var recipe = Mod.CreateRecipe(Type);
+            var recipe = Recipe.Create(Type);
 
             if (supreme)
             {

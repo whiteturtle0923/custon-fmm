@@ -45,14 +45,14 @@ namespace Fargowiltas.Items.Tiles
         {
             if (wall != -1)
             {
-                Mod.CreateRecipe(Type)
+                Recipe.Create(Type)
                     .AddIngredient(wall)
                     .AddTile(TileID.WorkBenches)
                     .Register();
             }
             if (tile != -1)
             {
-                Mod.CreateRecipe(Type, 4)
+                Recipe.Create(Type, 4)
                     .AddIngredient(tile)
                     .AddTile(TileID.WorkBenches)
                     .Register();
