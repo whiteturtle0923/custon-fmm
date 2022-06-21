@@ -6,7 +6,6 @@ ALPHA UPDATE - V 2.8.2
 -Slice of Cake now works as an inventory unlimited buff like class stations
 -Added Bat Bat banner recipe
 -Added Honey Dispenser recipe
--Added Magic Conch recipe
 -Fixed Mummy Banner not counting for desert banner recipes
 -Abominationn Pumpkin/Frost Moon spawners work at night and can yield loot
 -Added Bewitching Table recipe using Dungeon crates
