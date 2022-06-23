@@ -11,6 +11,7 @@ ALPHA UPDATE - V 2.8.2
 -Added Bewitching Table recipe using Dungeon crates
 -Ham Bat recipe now requires Mythril Anvil
 -Added Jelly Crystal recipe
+-Added Wet Bomb recipe
 -Slightly increased City Buster blast zone
 
 ALPHA UPDATE - V 2.8.1
