@@ -96,7 +96,7 @@ namespace Fargowiltas.UI
 
 
             AddStat($"Life: {player.statLifeMax2}", ItemID.LifeCrystal);
-            AddStat($"Life Regen: {player.lifeRegen}/sec", ItemID.BandofRegeneration);
+            AddStat($"Life Regen: {player.lifeRegen / 2}/sec", ItemID.BandofRegeneration);
             AddStat($"Mana: {player.statManaMax2}", ItemID.ManaCrystal);
             AddStat($"Mana Regen: {player.manaRegen / 2}/sec", ItemID.ManaCrystal);
             AddStat($"Defense: {player.statDefense}", ItemID.CobaltShield);
