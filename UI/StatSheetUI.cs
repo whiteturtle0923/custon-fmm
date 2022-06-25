@@ -103,7 +103,7 @@ namespace Fargowiltas.UI
             AddStat($"Damage Reduction: {Math.Round(player.endurance * 100)}%", ItemID.WormScarf);
             AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.Torch);
             AddStat($"Fishing Quests: {player.anglerQuestsFinished}", ItemID.AnglerEarring);
-            AddStat($"Battle Cry: {(modPlayer.BattleCry ? "On" : "Off")}", ModContent.ItemType<BattleCry>());
+            AddStat($"Battle Cry: {(modPlayer.BattleCry ? "[c/ff0000:Battle]" : (modPlayer.CalmingCry ? "[c/00ffff:Calming]" : "None"))}", ModContent.ItemType<BattleCry>());
             AddStat($"Max Speed: {(int)((player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6)} mph", ItemID.HermesBoots);
 
             string RenderWingStat(double stat) => stat <= 0 ? "???" : stat.ToString();
