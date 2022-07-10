@@ -1148,6 +1148,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.LavaFishingHook, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
             AddCrateRecipe(ItemID.HellMinecart, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
             AddCrateRecipe(ItemID.WetBomb, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
+            AddCrateRecipe(ItemID.DemonConch, ItemID.LavaCrate, 1, ItemID.LavaCrateHard);
 
             // ocean crate
             AddCrateRecipe(ItemID.Trident, ItemID.OceanCrate, 1, ItemID.OceanCrateHard);

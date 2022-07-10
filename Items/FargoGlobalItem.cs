@@ -213,7 +213,10 @@ namespace Fargowiltas.Items
         }
 
         public static void TryUnlimBuff(Item item, Player player)
-    {
+        {
+            if (item.IsAir)
+                return;
+
             if (item.stack >= 30 && item.buffType != 0 && GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
             {
                 player.AddBuff(item.buffType, 2);

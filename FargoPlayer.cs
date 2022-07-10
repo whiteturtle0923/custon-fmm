@@ -150,6 +150,11 @@ namespace Fargowiltas
             {
                 FargoGlobalItem.TryUnlimBuff(item, Player);
             }
+
+            foreach (Item item in Player.bank2.item)
+            {
+                FargoGlobalItem.TryUnlimBuff(item, Player);
+            }
         }
 
         public override void PostUpdateMiscEffects()
