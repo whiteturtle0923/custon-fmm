@@ -112,7 +112,7 @@ namespace Fargowiltas.Items
             {
                 if (item.buffType != 0)
                 {
-                    line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] Gives unlimited buff as 30 stack in inventory, Piggy Bank, or Safe");
+                    line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] Unlimited buff at thirty stack in inventory, Piggy Bank, or Safe");
                     tooltips.Add(line);
                 }
                 else if (item.type == ItemID.SharpeningStation
@@ -122,6 +122,15 @@ namespace Fargowiltas.Items
                         || item.type == ItemID.SliceOfCake)
                 {
                     line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] Unlimited buff at thirty stack in inventory, Piggy Bank, or Safe");
+                    tooltips.Add(line);
+                }
+            }
+
+            if (GetInstance<FargoConfig>().PiggyBankAcc)
+            {
+                if (Informational.Contains(item.type) || Construction.Contains(item.type))
+                {
+                    line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] Works from Piggy Bank and Safe");
                     tooltips.Add(line);
                 }
             }
@@ -235,7 +244,7 @@ namespace Fargowiltas.Items
             if (item.IsAir)
                 return;
 
-            if (item.stack >= 30 && item.buffType != 0 && GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            if (item.stack >= 30 && item.buffType != 0)
             {
                 player.AddBuff(item.buffType, 2);
 
@@ -246,7 +255,7 @@ namespace Fargowiltas.Items
                     player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.2f);
             }
 
-            if (item.stack >= 15 && GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            if (item.stack >= 15)
             {
                 if (item.type == ItemID.SharpeningStation)
                     player.AddBuff(BuffID.Sharpened, 2);
@@ -258,6 +267,28 @@ namespace Fargowiltas.Items
                     player.AddBuff(BuffID.Bewitched, 2);
                 else if (item.type == ItemID.SliceOfCake)
                     player.AddBuff(BuffID.SugarRush, 2);
+            }
+        }
+
+        static int[] Informational = { ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.Ruler, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone };
+        static int[] Construction = { ItemID.Toolbelt, ItemID.Toolbox, ItemID.ExtendoGrip, ItemID.PaintSprayer, ItemID.BrickLayer, ItemID.PortableCementMixer, ItemID.ActuationAccessory, ItemID.ArchitectGizmoPack };
+        public static void TryPiggyBankAcc(Item item, Player player)
+        {
+            if (item.IsAir)
+                return;
+
+            if (item.maxStack > 1)
+                return;
+
+            if (Informational.Contains(item.type))
+            {
+                player.VanillaUpdateInventory(item);
+            }
+            else if (Construction.Contains(item.type))
+            {
+                Item fakeItem = new Item();
+                fakeItem.SetDefaults(item.type);
+                player.VanillaUpdateEquip(fakeItem);
             }
         }
 
