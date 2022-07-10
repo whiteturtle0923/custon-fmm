@@ -129,7 +129,7 @@ Mods: {
 			UnlimitedHeader: Unlimited
 			UnlimitedAmmo: "[i:771] Unlimited Ammo at 3996+ in Hardmode"
 			UnlimitedConsumableWeapons: "[i:42] Unlimited Consumable Weapons at 3996+ in Hardmode"
-			UnlimitedPotionBuffsOn120: "[i:292] Unlimited Buffs at 30/15+ in Inventory/Piggy Bank"
+			UnlimitedPotionBuffsOn120: "[i:292] Unlimited Buffs at 30/15+ when carried"
 			UnlimitedPotionBuffsOn120Tooltip: 30+ for potions, 15+ for class stations (e.g. Sharpening Table)
 
 			MiscHeader: Miscellaneous

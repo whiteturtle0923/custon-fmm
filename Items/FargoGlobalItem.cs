@@ -108,6 +108,24 @@ namespace Fargowiltas.Items
                 }
             }
 
+            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            {
+                if (item.buffType != 0)
+                {
+                    line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] Gives unlimited buff as 30 stack in inventory, Piggy Bank, or Safe");
+                    tooltips.Add(line);
+                }
+                else if (item.type == ItemID.SharpeningStation
+                        || item.type == ItemID.AmmoBox
+                        || item.type == ItemID.CrystalBall
+                        || item.type == ItemID.BewitchingTable
+                        || item.type == ItemID.SliceOfCake)
+                {
+                    line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] Unlimited buff at thirty stack in inventory, Piggy Bank, or Safe");
+                    tooltips.Add(line);
+                }
+            }
+
             if (GetInstance<FargoConfig>().SquirrelTooltips && Squirrel.SquirrelSells(item, out Squirrel.SquirrelSellType sellType) != Squirrel.ShopGroup.None)
             {
                 string text = Regex.Replace(sellType.ToString(), "([a-z])([A-Z])", "$1 $2");
