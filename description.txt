@@ -3,6 +3,7 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 ALPHA UPDATE - V 2.8.3
 -Added crate recipe for Demon Conch
+-Added Empress bag recipe for Prismatic Dye
 -Party Girl sells Slice of Cake during parties
 -Squirrel sells Battle Cry
 -Unlimited Buffs have tooltips and work in Safe

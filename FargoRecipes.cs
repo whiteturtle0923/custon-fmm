@@ -1699,7 +1699,8 @@ namespace Fargowiltas
                 ItemID.PiercingStarlight,
                 ItemID.RainbowWhip,
                 ItemID.FairyQueenMagicItem,
-                ItemID.FairyQueenRangedItem
+                ItemID.FairyQueenRangedItem,
+                ItemID.HallowBossDye
             );
             CreateTreasureBagRecipes(ItemID.FairyQueenTrophy,
                 ItemID.SparkleGuitar,
