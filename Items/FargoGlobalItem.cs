@@ -29,118 +29,124 @@ namespace Fargowiltas.Items
 
         //public override bool CloneNewInstances => true;
 
+        TooltipLine FountainTooltip(string biome) => new TooltipLine(Mod, "Tooltip0", $"[i:909] [c/AAAAAA:Forces surrounding biome state to {biome} upon activation]");
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            TooltipLine line;
-
-            switch (item.type)
+            if (GetInstance<FargoConfig>().ExpandedTooltips)
             {
-                case ItemID.PureWaterFountain:
-                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Ocean upon activation");
-                    tooltips.Add(line);
-                    break;
+                TooltipLine line;
 
-                case ItemID.OasisFountain:
-                case ItemID.DesertWaterFountain:
-                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Desert upon activation");
-                    tooltips.Add(line);
-                    break;
-
-                case ItemID.JungleWaterFountain:
-                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Jungle upon activation");
-                    tooltips.Add(line);
-                    break;
-
-                case ItemID.IcyWaterFountain:
-                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Snow upon activation");
-                    tooltips.Add(line);
-                    break;
-
-                case ItemID.CorruptWaterFountain:
-                    line = new TooltipLine(Mod, "Tooltip0", "Forces surrounding biome state to Corruption upon activation");
-                    tooltips.Add(line);
-                    break;
-
-                case ItemID.CrimsonWaterFountain:
-                    line = new TooltipLine(Mod, "Tooltip1", "Forces surrounding biome state to Crimson upon activation");
-                    tooltips.Add(line);
-                    break;
-
-                case ItemID.HallowedWaterFountain:
-                    line = new TooltipLine(Mod, "Tooltip1", "In hardmode, forces surrounding biome state to Hallow upon activation");
-                    tooltips.Add(line);
-                    break;
-
-                //cavern fountain?
-
-                case ItemID.BugNet:
-                case ItemID.GoldenBugNet:
-                    line = new TooltipLine(Mod, "Tooltip0", "Can also catch townsfolk");
-                    tooltips.Add(line);
-                    break;
-
-            }
-
-            if (GetInstance<FargoConfig>().ExtraLures)
-            {
-                if (item.type == ItemID.FishingPotion)
+                switch (item.type)
                 {
-                    line = new TooltipLine(Mod, "Tooltip1", "Also grants one extra lure");
-                    tooltips.Insert(3, line);
+                    case ItemID.PureWaterFountain:
+                        if (GetInstance<FargoConfig>().Fountains)
+                            tooltips.Add(FountainTooltip("Ocean"));
+                        break;
+
+                    case ItemID.OasisFountain:
+                    case ItemID.DesertWaterFountain:
+                        if (GetInstance<FargoConfig>().Fountains)
+                            tooltips.Add(FountainTooltip("Desert"));
+                        break;
+
+                    case ItemID.JungleWaterFountain:
+                        if (GetInstance<FargoConfig>().Fountains)
+                            tooltips.Add(FountainTooltip("Jungle"));
+                        break;
+
+                    case ItemID.IcyWaterFountain:
+                        if (GetInstance<FargoConfig>().Fountains)
+                            tooltips.Add(FountainTooltip("Snow"));
+                        break;
+
+                    case ItemID.CorruptWaterFountain:
+                        if (GetInstance<FargoConfig>().Fountains)
+                            tooltips.Add(FountainTooltip("Corruption"));
+                        break;
+
+                    case ItemID.CrimsonWaterFountain:
+                        if (GetInstance<FargoConfig>().Fountains)
+                            tooltips.Add(FountainTooltip("Crimson"));
+                        break;
+
+                    case ItemID.HallowedWaterFountain:
+                        if (GetInstance<FargoConfig>().Fountains)
+                            tooltips.Add(FountainTooltip("Hallow (in hardmode only)"));
+                        break;
+
+                    //cavern fountain?
+
+                    case ItemID.BugNet:
+                    case ItemID.GoldenBugNet:
+                    case ItemID.FireproofBugNet:
+                        if (GetInstance<FargoConfig>().CatchNPCs)
+                            tooltips.Add(new TooltipLine(Mod, "Tooltip0", "[i:1991] [c/AAAAAA:Can also catch townsfolk]"));
+                        break;
+
                 }
 
-                if (item.type == ItemID.FiberglassFishingPole || item.type == ItemID.FisherofSouls || item.type == ItemID.Fleshcatcher || item.type == ItemID.ScarabFishingRod || item.type == ItemID.BloodFishingRod)
+                if (GetInstance<FargoConfig>().ExtraLures)
                 {
-                    line = new TooltipLine(Mod, "Tooltip1", "This rod fires 2 lures");
-                    tooltips.Insert(3, line);
+                    if (item.type == ItemID.FishingPotion)
+                    {
+                        line = new TooltipLine(Mod, "Tooltip1", "[i:2373] [c/AAAAAA:Also grants one extra lure]");
+                        tooltips.Insert(3, line);
+                    }
+
+                    if (item.type == ItemID.FiberglassFishingPole || item.type == ItemID.FisherofSouls || item.type == ItemID.Fleshcatcher || item.type == ItemID.ScarabFishingRod || item.type == ItemID.BloodFishingRod)
+                    {
+                        line = new TooltipLine(Mod, "Tooltip1", "[i:2373] [c/AAAAAA:This rod fires 2 lures]");
+                        tooltips.Insert(3, line);
+                    }
+
+                    if (item.type == ItemID.MechanicsRod || item.type == ItemID.SittingDucksFishingRod)
+                    {
+                        line = new TooltipLine(Mod, "Tooltip1", "[i:2373] [c/AAAAAA:This rod fires 3 lures]");
+                        tooltips.Insert(3, line);
+                    }
+
+                    if (item.type == ItemID.GoldenFishingRod || item.type == ItemID.HotlineFishingHook)
+                    {
+                        line = new TooltipLine(Mod, "Tooltip1", "[i:2373] [c/AAAAAA:This rod fires 5 lures]");
+                        tooltips.Insert(3, line);
+                    }
                 }
 
-                if (item.type == ItemID.MechanicsRod || item.type == ItemID.SittingDucksFishingRod)
+                if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120 && item.maxStack > 1)
                 {
-                    line = new TooltipLine(Mod, "Tooltip1", "This rod fires 3 lures");
-                    tooltips.Insert(3, line);
+                    if (item.buffType != 0)
+                    {
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at thirty stack in inventory, Piggy Bank, or Safe]");
+                        tooltips.Add(line);
+                    }
+                    else if (item.type == ItemID.SharpeningStation
+                            || item.type == ItemID.AmmoBox
+                            || item.type == ItemID.CrystalBall
+                            || item.type == ItemID.BewitchingTable
+                            || item.type == ItemID.SliceOfCake)
+                    {
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at thirty stack in inventory, Piggy Bank, or Safe]");
+                        tooltips.Add(line);
+                    }
                 }
 
-                if (item.type == ItemID.GoldenFishingRod || item.type == ItemID.HotlineFishingHook)
+                if (GetInstance<FargoConfig>().PiggyBankAcc)
                 {
-                    line = new TooltipLine(Mod, "Tooltip1", "This rod fires 5 lures");
-                    tooltips.Insert(3, line);
+                    if (Informational.Contains(item.type) || Construction.Contains(item.type))
+                    {
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Works from Piggy Bank and Safe]");
+                        tooltips.Add(line);
+                    }
                 }
-            }
 
-            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
-            {
-                if (item.buffType != 0)
+                if (Squirrel.SquirrelSells(item, out Squirrel.SquirrelSellType sellType) != Squirrel.ShopGroup.None)
                 {
-                    line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at thirty stack in inventory, Piggy Bank, or Safe]");
+                    string text = Regex.Replace(sellType.ToString(), "([a-z])([A-Z])", "$1 $2");
+                    line = new TooltipLine(Mod, "TooltipSquirrel",
+                        $"[i:{CaughtNPCs.CaughtNPCItem.CaughtTownies[NPCType<Squirrel>()]}] [c/AAAAAA:{text}]");
                     tooltips.Add(line);
                 }
-                else if (item.type == ItemID.SharpeningStation
-                        || item.type == ItemID.AmmoBox
-                        || item.type == ItemID.CrystalBall
-                        || item.type == ItemID.BewitchingTable
-                        || item.type == ItemID.SliceOfCake)
-                {
-                    line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at thirty stack in inventory, Piggy Bank, or Safe]");
-                    tooltips.Add(line);
-                }
-            }
-
-            if (GetInstance<FargoConfig>().PiggyBankAcc)
-            {
-                if (Informational.Contains(item.type) || Construction.Contains(item.type))
-                {
-                    line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Works from Piggy Bank and Safe]");
-                    tooltips.Add(line);
-                }
-            }
-
-            if (GetInstance<FargoConfig>().SquirrelTooltips && Squirrel.SquirrelSells(item, out Squirrel.SquirrelSellType sellType) != Squirrel.ShopGroup.None)
-            {
-                string text = Regex.Replace(sellType.ToString(), "([a-z])([A-Z])", "$1 $2");
-                line = new TooltipLine(Mod, "TooltipSquirrel", 
-                    $"[i:{CaughtNPCs.CaughtNPCItem.CaughtTownies[NPCType<Squirrel>()]}] [c/AAAAAA:{text}]");
-                tooltips.Add(line);
             }
         }
 
