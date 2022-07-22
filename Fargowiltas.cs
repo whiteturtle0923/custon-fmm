@@ -117,6 +117,18 @@ namespace Fargowiltas
 
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
+            
+            On.Terraria.Recipe.FindRecipes += FindRecipes_ElementalAssemblerGraveyardHack;
+        }
+
+        private static void FindRecipes_ElementalAssemblerGraveyardHack(
+            On.Terraria.Recipe.orig_FindRecipes orig,
+            bool canDelayCheck)
+        {
+            if (!Main.gameMenu && Main.LocalPlayer.active && Main.LocalPlayer.GetModPlayer<FargoPlayer>().ElementalAssemblerNearby > 0)
+                Main.LocalPlayer.ZoneGraveyard = true;
+
+            orig(canDelayCheck);
         }
 
         public override void Unload()
@@ -250,19 +262,6 @@ namespace Fargowiltas
             }
 
             return base.Call(args);
-        }
-
-        public override void AddRecipes()
-        {
-            summonTracker.FinalizeSummonData();
-
-            FargoRecipes recipes = new FargoRecipes(this);
-            recipes.AddRecipes();
-        }
-
-        public override void AddRecipeGroups()
-        {
-            FargoRecipes.AddRecipeGroups();
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)
