@@ -501,10 +501,5 @@ namespace Fargowiltas.Items
         {
             player.GetModPlayer<FargoPlayer>().StatSheetWingSpeed = speed;
         }
-
-        public override void OnCreate(Item item, ItemCreationContext context)
-        {
-            
-        }
     }
 }
