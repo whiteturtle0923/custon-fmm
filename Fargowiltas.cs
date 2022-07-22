@@ -125,10 +125,14 @@ namespace Fargowiltas
             On.Terraria.Recipe.orig_FindRecipes orig,
             bool canDelayCheck)
         {
+            bool oldZoneGraveyard = Main.LocalPlayer.ZoneGraveyard;
+
             if (!Main.gameMenu && Main.LocalPlayer.active && Main.LocalPlayer.GetModPlayer<FargoPlayer>().ElementalAssemblerNearby > 0)
                 Main.LocalPlayer.ZoneGraveyard = true;
 
             orig(canDelayCheck);
+
+            Main.LocalPlayer.ZoneGraveyard = oldZoneGraveyard;
         }
 
         public override void Unload()
