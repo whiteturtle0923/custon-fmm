@@ -17,7 +17,8 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Deviantt : ModNPC
     {
-        private bool saidDefeatQuote;
+        private bool canSayDefeatQuote = true;
+        private int defeatQuoteTimer = 900;
 
         //public override bool Autoload(ref string name)
         //{
@@ -110,6 +111,10 @@ namespace Fargowiltas.NPCs
         public override void AI()
         {
             NPC.breath = 200;
+            if (defeatQuoteTimer > 0)
+                defeatQuoteTimer--;
+            else
+                canSayDefeatQuote = false;
         }
 
         public override List<string> SetNPCNameList()
@@ -143,9 +148,9 @@ namespace Fargowiltas.NPCs
                 return "UWAH! Please don't hurt... wait, it's just you. Don't scare me like that! And why is that THING following you?!";
             }
 
-            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
+            if (NPC.homeless && canSayDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedDevi"))
             {
-                saidDefeatQuote = true;
+                canSayDefeatQuote = false;
                 return "Good work getting one over on me! Hope I didn't make you sweat too much. Keep at the grind - I wanna see how far you can go!";
             }
 

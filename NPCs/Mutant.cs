@@ -24,7 +24,8 @@ namespace Fargowiltas.NPCs
         private static int shopNum = 1;
 
         internal bool spawned;
-        private bool saidDefeatQuote;
+        private bool canSayDefeatQuote = true;
+        private int defeatQuoteTimer = 900;
 
         //public override bool Autoload(ref string name)
         //{
@@ -111,6 +112,11 @@ namespace Fargowiltas.NPCs
         public override void AI()
         {
             NPC.breath = 200;
+            if (defeatQuoteTimer > 0)
+                defeatQuoteTimer--;
+            else
+                canSayDefeatQuote = false;
+
             if (!spawned)
             {
                 spawned = true;
@@ -142,9 +148,9 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
+            if (NPC.homeless && canSayDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedMutant"))
             {
-                saidDefeatQuote = true;
+                canSayDefeatQuote = false;
 
                 if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
                     return "Congratulations. You truly embraced eternity... at least, I think you did? So what happens next? Ascend from this plane of existence? Fight a transcendant cat-like entity? Destroy the world? All the power's in your hands now.";

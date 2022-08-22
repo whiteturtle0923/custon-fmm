@@ -18,7 +18,8 @@ namespace Fargowiltas.NPCs
     [AutoloadHead]
     public class Abominationn : ModNPC
     {
-        private bool saidDefeatQuote;
+        private bool canSayDefeatQuote = true;
+        private int defeatQuoteTimer = 900;
 
         //public override bool Autoload(ref string name)
         //{
@@ -109,6 +110,10 @@ namespace Fargowiltas.NPCs
         public override void AI()
         {
             NPC.breath = 200;
+            if (defeatQuoteTimer > 0)
+                defeatQuoteTimer--;
+            else
+                canSayDefeatQuote = false;
         }
 
         public override List<string> SetNPCNameList()
@@ -120,9 +125,9 @@ namespace Fargowiltas.NPCs
 
         public override string GetChat()
         {
-            if (NPC.homeless && !saidDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
+            if (NPC.homeless && canSayDefeatQuote && Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DownedAbom"))
             {
-                saidDefeatQuote = true;
+                canSayDefeatQuote = false;
                 return "You really defeated me... not bad. Now do it again without getting hit. Oh, and Copper Shortsword only.";
             }
 
