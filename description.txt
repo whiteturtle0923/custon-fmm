@@ -5,6 +5,7 @@ NEW UPDATE - V 2.8.4
 -Siblings will only say their defeat quotes if spoken to shortly after being defeated
 -Transparent Minions & Support Attacks config is now Transparent Friendly Projectiles config
 -Deviantt can comment on Nekomi armor if you wear it
+-Acorns are now sold by Squirrel instead of Lumberjack, resolving a crucial lore inconsistency
 
 NEW UPDATE - V 2.8.3
 -Added crate recipe for Demon Conch
