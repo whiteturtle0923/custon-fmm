@@ -6,6 +6,7 @@ NEW UPDATE - V 2.8.4
 -Transparent Minions & Support Attacks config is now Transparent Friendly Projectiles config
 -Deviantt can comment on Nekomi armor if you wear it
 -Acorns are now sold by Squirrel instead of Lumberjack, resolving a crucial lore inconsistency
+-Fixed DPS Meter not working properly from Piggy Bank
 
 NEW UPDATE - V 2.8.3
 -Added crate recipe for Demon Conch
@@ -14,7 +15,6 @@ NEW UPDATE - V 2.8.3
 -Squirrel sells Battle Cry
 -Unlimited Buffs have tooltips and work in Safe
 -Informational and Construction Accessories work in Safe
--Fixed DPS Meter not working properly from Piggy Bank
 
 NEW UPDATE - V 2.8.2
 -Added Endless Coin Bags
