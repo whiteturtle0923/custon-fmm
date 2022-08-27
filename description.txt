@@ -8,6 +8,7 @@ NEW UPDATE - V 2.8.4
 -Acorns are now sold by Squirrel instead of Lumberjack, resolving a crucial lore inconsistency
 -Fixed DPS Meter not working properly from Piggy Bank
 -Fixed Instahouse being able to destroy blocks with its Torch when it shouldn't
+-Fixed tooltips indicating the wrong stack amount for unlimited station buffs
 -Tried reducing Boom Shuriken lag
 
 NEW UPDATE - V 2.8.3
