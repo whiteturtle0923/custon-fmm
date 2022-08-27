@@ -7,6 +7,7 @@ NEW UPDATE - V 2.8.4
 -Deviantt can comment on Nekomi armor if you wear it
 -Acorns are now sold by Squirrel instead of Lumberjack, resolving a crucial lore inconsistency
 -Fixed DPS Meter not working properly from Piggy Bank
+-Fixed Instahouse being able to destroy blocks with its Torch when it shouldn't
 
 NEW UPDATE - V 2.8.3
 -Added crate recipe for Demon Conch
