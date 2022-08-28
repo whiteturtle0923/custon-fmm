@@ -12,6 +12,7 @@ NEW UPDATE - V 2.8.4
 -Fixed Calming Cry message not appearing in multiplayer
 -Tried reducing Boom Shuriken lag
 -Reduced recipe requirements for most explosives
+-Increased dimensions of Lihzahrd Instactuation Bomb
 
 NEW UPDATE - V 2.8.3
 -Added crate recipe for Demon Conch
