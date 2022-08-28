@@ -9,6 +9,7 @@ NEW UPDATE - V 2.8.4
 -Fixed DPS Meter not working properly from Piggy Bank
 -Fixed Instahouse being able to destroy blocks with its Torch when it shouldn't
 -Fixed tooltips indicating the wrong stack amount for unlimited station buffs
+-Fixed Calming Cry message not appearing in multiplayer
 -Tried reducing Boom Shuriken lag
 -Reduced recipe requirements for most explosives
 

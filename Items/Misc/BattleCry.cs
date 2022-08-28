@@ -31,14 +31,35 @@ namespace Fargowiltas.Items.Misc
 
         public override bool AltFunctionUse(Player player) => true;
 
-        void ToggleCry(bool isBattle, string playerName, ref bool cry)
+        public static void GenerateText(bool isBattle, Player player, bool cry)
         {
-            cry = !cry;
             string cryToggled = isBattle ? "Battle" : "Calming";
             string toggle = cry ? "activated" : "deactivated";
             string punctuation = isBattle ? "!" : ".";
+
+            string text = $"{cryToggled} Cry {toggle} for {player.name}{punctuation}";
             Color color = isBattle ? new Color(255, 0, 0) : new Color(0, 255, 255);
-            FargoUtils.PrintText($"{cryToggled} Cry {toggle} for {playerName}{punctuation}", color);
+
+            FargoUtils.PrintText(text, color);
+        }
+
+        void ToggleCry(bool isBattle, Player player, ref bool cry)
+        {
+            cry = !cry;
+
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                GenerateText(isBattle, player, cry);
+            }
+            else if (Main.netMode == NetmodeID.MultiplayerClient && player.whoAmI == Main.myPlayer)
+            {
+                var packet = Mod.GetPacket();
+                packet.Write((byte)7);
+                packet.Write(isBattle);
+                packet.Write(player.whoAmI);
+                packet.Write(cry);
+                packet.Send();
+            }
         }
 
         public override bool? UseItem(Player player)
@@ -47,16 +68,16 @@ namespace Fargowiltas.Items.Misc
             if (player.altFunctionUse == 2)
             {
                 if (modPlayer.BattleCry)
-                    ToggleCry(true, player.name, ref modPlayer.BattleCry);
+                    ToggleCry(true, player, ref modPlayer.BattleCry);
 
-                ToggleCry(false, player.name, ref modPlayer.CalmingCry);
+                ToggleCry(false, player, ref modPlayer.CalmingCry);
             }
             else
             {
                 if (modPlayer.CalmingCry)
-                    ToggleCry(false, player.name, ref modPlayer.CalmingCry);
+                    ToggleCry(false, player, ref modPlayer.CalmingCry);
 
-                ToggleCry(true, player.name, ref modPlayer.BattleCry);
+                ToggleCry(true, player, ref modPlayer.BattleCry);
             }
 
             if (!Main.dedServ)
