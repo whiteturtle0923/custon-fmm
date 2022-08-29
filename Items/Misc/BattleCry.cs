@@ -81,20 +81,23 @@ namespace Fargowiltas.Items.Misc
 
         public override bool? UseItem(Player player)
         {
-            FargoPlayer modPlayer = player.GetFargoPlayer();
-            if (player.altFunctionUse == 2)
+            if (player.whoAmI == Main.myPlayer)
             {
-                if (modPlayer.BattleCry)
-                    ToggleCry(true, player, ref modPlayer.BattleCry);
+                FargoPlayer modPlayer = player.GetFargoPlayer();
+                if (player.altFunctionUse == 2)
+                {
+                    if (modPlayer.BattleCry)
+                        ToggleCry(true, player, ref modPlayer.BattleCry);
 
-                ToggleCry(false, player, ref modPlayer.CalmingCry);
-            }
-            else
-            {
-                if (modPlayer.CalmingCry)
                     ToggleCry(false, player, ref modPlayer.CalmingCry);
+                }
+                else
+                {
+                    if (modPlayer.CalmingCry)
+                        ToggleCry(false, player, ref modPlayer.CalmingCry);
 
-                ToggleCry(true, player, ref modPlayer.BattleCry);
+                    ToggleCry(true, player, ref modPlayer.BattleCry);
+                }
             }
 
             if (!Main.dedServ)
