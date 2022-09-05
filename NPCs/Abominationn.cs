@@ -131,6 +131,12 @@ namespace Fargowiltas.NPCs
                 return "You really defeated me... not bad. Now do it again without getting hit. Oh, and Copper Shortsword only.";
             }
 
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && Main.rand.NextBool(3))
+            {
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("StyxArmor"))
+                    return "What nostalgic armor you're wearing... No, it doesn't fit on me anymore. And its battery takes too long to charge.";
+            }
+
             List<string> dialogue = new List<string>
             {
                 "Where'd I get my scythe from? " + (!Main.hardMode ? "Ask me later." : "You'll figure it out."),

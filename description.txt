@@ -3,6 +3,7 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 NEW UPDATE - V 2.8.5
 -Added recipe for Holy Grail
+-Abominationn can comment on Styx armor if you wear it
 -Mutant can comment on True Mutant armor if you wear it
 
 NEW UPDATE - V 2.8.4
