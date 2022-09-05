@@ -3,6 +3,7 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 NEW UPDATE - V 2.8.5
 -Added recipe for Holy Grail
+-Mutant can comment on True Mutant armor if you wear it
 
 NEW UPDATE - V 2.8.4
 -Siblings will only say their defeat quotes if spoken to shortly after being defeated

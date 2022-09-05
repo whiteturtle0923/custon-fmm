@@ -158,6 +158,12 @@ namespace Fargowiltas.NPCs
                     return "Good work beating me, I guess. I still feel like stretching my wings... Why don't we go at it for real next time?";
             }
 
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && Main.rand.NextBool(4))
+            {
+                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantArmor"))
+                    return "Nice armor you have, very realistic skin. As a matter of fact, mind if I borrow it? Your skin, that is.";
+            }
+
             List<string> dialogue = new List<string>
             {
                 "Savagery, barbarism, bloodthirst, that's what I like seeing in people.",
