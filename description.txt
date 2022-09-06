@@ -5,6 +5,8 @@ NEW UPDATE - V 2.8.5
 -Added recipe for Holy Grail
 -Abominationn can comment on Styx armor if you wear it
 -Mutant can comment on True Mutant armor if you wear it
+-Portable Sundial can now jump to noon and midnight
+-Added Pylon Cleaner
 
 NEW UPDATE - V 2.8.4
 -Siblings will only say their defeat quotes if spoken to shortly after being defeated
