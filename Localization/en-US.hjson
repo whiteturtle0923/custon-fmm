@@ -145,6 +145,8 @@ Mods: {
 			BossZen: "[i:3117] No enemies spawn during boss fights"
 			PiggyBankAcc: "[i:87] Informational and Construction Accessories work in Piggy Bank"
 			FasterLavaFishing: "[i:4881] Faster Fishing in Lava"
+			TorchGodEX: "[i:5043] Torch God's Favor Automatically Swaps Placed Torches"
+			TorchGodEXTooltip: "Obeys true torch luck, which may differ from Torch God's Favor"
 			DebuffOpacity: "[i:1612] Debuff Display Max Opacity"
 			DebuffFaderRatio: "[i:1612] Debuff Duration Fader Strength"
 			TransparentFriendlyProjectiles: "[i:1309] Transparent Friendly Projectiles"

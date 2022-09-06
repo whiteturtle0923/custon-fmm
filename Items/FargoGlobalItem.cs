@@ -33,45 +33,47 @@ namespace Fargowiltas.Items
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (GetInstance<FargoConfig>().ExpandedTooltips)
+            FargoConfig fargoConfig = GetInstance<FargoConfig>();
+
+            if (fargoConfig.ExpandedTooltips)
             {
                 TooltipLine line;
 
                 switch (item.type)
                 {
                     case ItemID.PureWaterFountain:
-                        if (GetInstance<FargoConfig>().Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Ocean"));
                         break;
 
                     case ItemID.OasisFountain:
                     case ItemID.DesertWaterFountain:
-                        if (GetInstance<FargoConfig>().Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Desert"));
                         break;
 
                     case ItemID.JungleWaterFountain:
-                        if (GetInstance<FargoConfig>().Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Jungle"));
                         break;
 
                     case ItemID.IcyWaterFountain:
-                        if (GetInstance<FargoConfig>().Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Snow"));
                         break;
 
                     case ItemID.CorruptWaterFountain:
-                        if (GetInstance<FargoConfig>().Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Corruption"));
                         break;
 
                     case ItemID.CrimsonWaterFountain:
-                        if (GetInstance<FargoConfig>().Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Crimson"));
                         break;
 
                     case ItemID.HallowedWaterFountain:
-                        if (GetInstance<FargoConfig>().Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Hallow (in hardmode only)"));
                         break;
 
@@ -80,13 +82,13 @@ namespace Fargowiltas.Items
                     case ItemID.BugNet:
                     case ItemID.GoldenBugNet:
                     case ItemID.FireproofBugNet:
-                        if (GetInstance<FargoConfig>().CatchNPCs)
+                        if (fargoConfig.CatchNPCs)
                             tooltips.Add(new TooltipLine(Mod, "Tooltip0", "[i:1991] [c/AAAAAA:Can also catch townsfolk]"));
                         break;
 
                 }
 
-                if (GetInstance<FargoConfig>().ExtraLures)
+                if (fargoConfig.ExtraLures)
                 {
                     if (item.type == ItemID.FishingPotion)
                     {
@@ -113,7 +115,15 @@ namespace Fargowiltas.Items
                     }
                 }
 
-                if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120 && item.maxStack > 1)
+                if (fargoConfig.TorchGodEX && item.type == ItemID.TorchGodsFavor)
+                {
+                    line = new TooltipLine(Mod, "TooltipTorchGod1", "[i:5043] [c/AAAAAA:Automatically swaps placed torches to boost luck]");
+                    tooltips.Add(line);
+                    line = new TooltipLine(Mod, "TooltipTorchGod2", "[i:5043] [c/AAAAAA:Obeys true torch luck when replacing torches, which may differ from default choices]");
+                    tooltips.Add(line);
+                }
+
+                if (fargoConfig.UnlimitedPotionBuffsOn120 && item.maxStack > 1)
                 {
                     if (item.buffType != 0)
                     {
@@ -131,7 +141,7 @@ namespace Fargowiltas.Items
                     }
                 }
 
-                if (GetInstance<FargoConfig>().PiggyBankAcc)
+                if (fargoConfig.PiggyBankAcc)
                 {
                     if (Informational.Contains(item.type) || Construction.Contains(item.type))
                     {
