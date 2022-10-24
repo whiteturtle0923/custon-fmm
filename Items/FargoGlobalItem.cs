@@ -127,7 +127,7 @@ namespace Fargowiltas.Items
                 {
                     if (item.buffType != 0)
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 30 stack in inventory, Piggy Bank, or Safe]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 30 stack in inventory, Piggy Bank, or Void Bag]");
                         tooltips.Add(line);
                     }
                     else if (item.type == ItemID.SharpeningStation
@@ -136,7 +136,7 @@ namespace Fargowiltas.Items
                             || item.type == ItemID.BewitchingTable
                             || item.type == ItemID.SliceOfCake)
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 15 stack in inventory, Piggy Bank, or Safe]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 15 stack in inventory, Piggy Bank, or Void Bag]");
                         tooltips.Add(line);
                     }
                 }
@@ -145,7 +145,7 @@ namespace Fargowiltas.Items
                 {
                     if (Informational.Contains(item.type) || Construction.Contains(item.type))
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Works from Piggy Bank and Safe]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Works from Piggy Bank and Void Bag]");
                         tooltips.Add(line);
                     }
                 }
@@ -257,7 +257,7 @@ namespace Fargowiltas.Items
 
         public static void TryUnlimBuff(Item item, Player player)
         {
-            if (item.IsAir)
+            if (item.IsAir || !GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
                 return;
 
             if (item.stack >= 30 && item.buffType != 0)
@@ -290,10 +290,7 @@ namespace Fargowiltas.Items
         static int[] Construction = { ItemID.Toolbelt, ItemID.Toolbox, ItemID.ExtendoGrip, ItemID.PaintSprayer, ItemID.BrickLayer, ItemID.PortableCementMixer, ItemID.ActuationAccessory, ItemID.ArchitectGizmoPack };
         public static void TryPiggyBankAcc(Item item, Player player)
         {
-            if (item.IsAir)
-                return;
-
-            if (item.maxStack > 1)
+            if (item.IsAir || item.maxStack > 1 || !GetInstance<FargoConfig>().PiggyBankAcc)
                 return;
 
             if (Informational.Contains(item.type))
