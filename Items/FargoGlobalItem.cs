@@ -127,7 +127,7 @@ namespace Fargowiltas.Items
                 {
                     if (item.buffType != 0)
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 30 stack in inventory, Piggy Bank, or Void Bag]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 30 stack in inventory, Piggy Bank, or Safe]");
                         tooltips.Add(line);
                     }
                     else if (item.type == ItemID.SharpeningStation
@@ -136,7 +136,7 @@ namespace Fargowiltas.Items
                             || item.type == ItemID.BewitchingTable
                             || item.type == ItemID.SliceOfCake)
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 15 stack in inventory, Piggy Bank, or Void Bag]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 15 stack in inventory, Piggy Bank, or Safe]");
                         tooltips.Add(line);
                     }
                 }
@@ -145,7 +145,7 @@ namespace Fargowiltas.Items
                 {
                     if (Informational.Contains(item.type) || Construction.Contains(item.type))
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Works from Piggy Bank and Void Bag]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Works from Piggy Bank and Safe]");
                         tooltips.Add(line);
                     }
                 }
