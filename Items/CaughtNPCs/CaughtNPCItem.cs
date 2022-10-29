@@ -195,12 +195,15 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public override void Unload()
         {
-            foreach (var type in npcCatchableWasFalse)
+            if (npcCatchableWasFalse != null)
             {
-                //Failing to unload this properly causes it to bleed into un-fargowiltas gameplay, causing various issues such as clients not being able to join a server
-                Main.npcCatchable[type] = false;
+                foreach (var type in npcCatchableWasFalse)
+                {
+                    //Failing to unload this properly causes it to bleed into un-fargowiltas gameplay, causing various issues such as clients not being able to join a server
+                    Main.npcCatchable[type] = false;
+                }
+                npcCatchableWasFalse = null;
             }
-            npcCatchableWasFalse = null;
         }
 
         public override void SetDefaults(NPC npc)
