@@ -37,7 +37,7 @@ namespace Fargowiltas.Items.Misc
                     {
                         if (WorldGen.InWorld(i, j))
                         {
-                            Main.Map.Update(i, j, 255);
+                            Main.Map.UpdateLighting(i, j, 127);
                         }
                     }
                 }
@@ -54,7 +54,7 @@ namespace Fargowiltas.Items.Misc
                     {
                         if (WorldGen.InWorld(i, j))
                         {
-                            Main.Map.Update(i, j, 255);
+                            Main.Map.UpdateLighting(i, j, 127);
                         }
                     }
                 }
