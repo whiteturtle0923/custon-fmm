@@ -3,7 +3,12 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 NEW UPDATE - V 2.8.6
 -Added Semistation
+-Added Pylon Cleaner sprite
+-Added Altar Exterminator sprite
 -Added recipe for Attactive Ore
+-Adjusted recipe for Holy Grail
+-Adjusted Lumberjack's Tree Treasures to provide more critters more easily
+-Crucible of Cosmos incorporates Golden Dipping Vat
 -Fixed unlimited buffs working even when toggled off
 -Removed class stations and Slice of Cake from Omnistation due to inventory unlims
 -Made recipe easier for crafting Merchant into Travelling Merchant
