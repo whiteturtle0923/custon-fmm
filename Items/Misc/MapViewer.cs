@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Items.Summons
+namespace Fargowiltas.Items.Misc
 {
     public class MapViewer : ModItem
     {
@@ -12,15 +12,7 @@ namespace Fargowiltas.Items.Summons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Ancient Master's Map of the Lost King's Great Ancestors");
-
-            if (Main.netMode != NetmodeID.MultiplayerClient)
-            {
-                Tooltip.SetDefault("Reveals the whole map");
-            }
-            else
-            {
-                Tooltip.SetDefault("Reveals an area of the map around you");
-            }
+            Tooltip.SetDefault("Reveals the map");
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 
