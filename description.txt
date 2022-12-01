@@ -11,6 +11,7 @@ NEW UPDATE - V 2.8.6
 -City Buster no longer rolls
 -Demolitionist sells Boom Shurikens for slightly more than their crafting cost
 -Updated Boom Shuriken tooltip
+-Updated Half Instavator tooltip to clarify it does not work below some depth
 -Adjusted recipe for Holy Grail
 -Adjusted Lumberjack's Tree Treasures to provide more critters more easily
 -The Ancient Master's Map of the Lost King's Great Ancestors reveals map at half brightness, allowing you to still recognize where you have and haven't been
