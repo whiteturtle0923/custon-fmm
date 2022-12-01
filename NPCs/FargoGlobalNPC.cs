@@ -15,6 +15,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Fargowiltas.Items.Explosives;
 
 namespace Fargowiltas.NPCs
 {
@@ -498,6 +499,7 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.Demolitionist:
+                        AddItem(ref nextSlot, ItemType<BoomShuriken>(), Item.buyPrice(0, 0, 1, 25));
                         if (Main.hardMode)
                         {
                             AddItem(ref nextSlot, ItemID.CopperOre);
