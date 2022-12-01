@@ -8,6 +8,7 @@ NEW UPDATE - V 2.8.6
 -Added recipe for Attactive Ore
 -Added notifications for unlocking Abominationn spawners for Pumpkin/Frost Moon enemies
 -Queen Bee now forces Jungle biome when alive like Plantera
+-City Buster no longer rolls
 -Adjusted recipe for Holy Grail
 -Adjusted Lumberjack's Tree Treasures to provide more critters more easily
 -The Ancient Master's Map of the Lost King's Great Ancestors reveals map at half brightness, allowing you to still recognize where you have and haven't been
