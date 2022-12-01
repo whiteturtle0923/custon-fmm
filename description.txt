@@ -19,6 +19,7 @@ NEW UPDATE - V 2.8.6
 -Crucible of Cosmos incorporates Golden Dipping Vat
 -Fixed unlimited buffs working even when toggled off
 -Removed class stations and Slice of Cake from Omnistation due to inventory unlims
+-Reduced stack requirement for unlimited class stations and Slice of Cake from 15 to 3
 -Made recipe easier for crafting Merchant into Travelling Merchant
 
 NEW UPDATE - V 2.8.5

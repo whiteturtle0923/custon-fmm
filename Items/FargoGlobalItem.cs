@@ -136,7 +136,7 @@ namespace Fargowiltas.Items
                             || item.type == ItemID.BewitchingTable
                             || item.type == ItemID.SliceOfCake)
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 15 stack in inventory, Piggy Bank, or Safe]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 3 stack in inventory, Piggy Bank, or Safe]");
                         tooltips.Add(line);
                     }
                 }
@@ -271,7 +271,7 @@ namespace Fargowiltas.Items
                     player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.2f);
             }
 
-            if (item.stack >= 15)
+            if (item.stack >= 3)
             {
                 if (item.type == ItemID.SharpeningStation)
                     player.AddBuff(BuffID.Sharpened, 2);
