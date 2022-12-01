@@ -3,6 +3,7 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 NEW UPDATE - V 2.8.6
 -Added Semistation
+-Added Omni-Bridgifier
 -Added Pylon Cleaner sprite
 -Added Altar Exterminator sprite
 -Added recipe for Attactive Ore
@@ -15,7 +16,6 @@ NEW UPDATE - V 2.8.6
 -Updated Half Instavator tooltip to clarify it does not work below some depth
 -Adjusted recipe for Holy Grail
 -Adjusted Lumberjack's Tree Treasures to provide more critters more easily
--The Ancient Master's Map of the Lost King's Great Ancestors reveals map at half brightness, allowing you to still recognize where you have and haven't been
 -Crucible of Cosmos incorporates Golden Dipping Vat
 -Fixed unlimited buffs working even when toggled off
 -Removed class stations and Slice of Cake from Omnistation due to inventory unlims
