@@ -65,6 +65,7 @@ namespace Fargowiltas.NPCs
         public static int eaterBoss = -1;
         public static int brainBoss = -1;
         public static int plantBoss = -1;
+        public static int beeBoss = -1;
 
         public override bool InstancePerEntity => true;
 
@@ -116,6 +117,10 @@ namespace Fargowiltas.NPCs
 
                 case NPCID.Plantera:
                     plantBoss = npc.whoAmI;
+                    break;
+
+                case NPCID.QueenBee:
+                    beeBoss = npc.whoAmI;
                     break;
 
                 //                case NPCID.TheDestroyer:
