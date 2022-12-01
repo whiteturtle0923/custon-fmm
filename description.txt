@@ -6,6 +6,7 @@ NEW UPDATE - V 2.8.6
 -Added Pylon Cleaner sprite
 -Added Altar Exterminator sprite
 -Added recipe for Attactive Ore
+-Added notifications for unlocking Abominationn spawners for Pumpkin/Frost Moon enemies
 -Adjusted recipe for Holy Grail
 -Adjusted Lumberjack's Tree Treasures to provide more critters more easily
 -Crucible of Cosmos incorporates Golden Dipping Vat
