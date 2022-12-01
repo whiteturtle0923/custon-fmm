@@ -531,6 +531,24 @@ namespace Fargowiltas.NPCs
 
                         break;
 
+                    case NPCID.WitchDoctor:
+                        if (NPC.downedBoss3)
+                        {
+                            bool alreadySellsTable = false;
+                            foreach(Item item in shop.item)
+                            {
+                                if (!item.IsAir && item.type == ItemID.BewitchingTable)
+                                {
+                                    alreadySellsTable = true;
+                                    break;
+                                }
+                            }
+
+                            if (!alreadySellsTable)
+                                AddItem(ref nextSlot, ItemID.BewitchingTable);
+                        }
+                        break;
+
                     case NPCID.Steampunker:
                         AddItem(ref nextSlot, WorldGen.crimson ? ItemID.PurpleSolution : ItemID.RedSolution);
                         break;
