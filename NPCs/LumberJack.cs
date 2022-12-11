@@ -201,8 +201,11 @@ namespace Fargowiltas.NPCs
                 else if (player.ZoneHallow)
                 {
                     quote = "This place is a bit fanciful for my tastes, but the wood's as choppable as any. Nighttime has these cool bugs though, take a few.";
-                    itemType = Main.rand.Next(new int[] { ItemID.LightningBug, ItemID.FairyCritterBlue, ItemID.FairyCritterGreen, ItemID.FairyCritterPink });
-                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        itemType = Main.rand.Next(new int[] { ItemID.LightningBug, ItemID.FairyCritterBlue, ItemID.FairyCritterGreen, ItemID.FairyCritterPink });
+                        player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType);
+                    }
                     itemType = Main.rand.Next(new int[] { ItemID.Starfruit, ItemID.Dragonfruit });
                     player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
                     player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Pearlwood), ItemID.Pearlwood, 50);
@@ -221,8 +224,11 @@ namespace Fargowiltas.NPCs
                 else if (player.ZoneCorrupt || player.ZoneCrimson)
                 {
                     quote = "The trees here are probably the toughest in this branch of reality.. Sorry, just tree puns. I found these for you here.";
-                    itemType = Main.rand.Next(new int[] { ItemID.Elderberry, ItemID.BlackCurrant, ItemID.BloodOrange, ItemID.Rambutan });
-                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        itemType = Main.rand.Next(new int[] { ItemID.Elderberry, ItemID.BlackCurrant, ItemID.BloodOrange, ItemID.Rambutan });
+                        player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType);
+                    }
                 }
                 else if (player.ZoneSnow)
                 {
@@ -243,9 +249,11 @@ namespace Fargowiltas.NPCs
                 else if (player.ZoneUnderworldHeight)
                 {
                     quote = "I looked around here for a while and didn't find any trees. I did find these little guys though. Maybe you'll want them?";
-                    itemType = Main.rand.Next(new int[] { ItemID.HellButterfly, ItemID.MagmaSnail, ItemID.Lavafly });
-                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
-
+                    for (int i = 0; i < 5; i++)
+                    {
+                        itemType = Main.rand.Next(new int[] { ItemID.HellButterfly, ItemID.MagmaSnail, ItemID.Lavafly });
+                        player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType);
+                    }
                 }
                 else if (player.ZoneRockLayerHeight || player.ZoneDirtLayerHeight)
                 {
@@ -311,8 +319,11 @@ namespace Fargowiltas.NPCs
                         player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Firefly), ItemID.Firefly);
                     }
 
-                    itemType = Main.rand.Next(new int[] { ItemID.Lemon, ItemID.Peach, ItemID.Apricot, ItemID.Grapefruit });
-                    player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType, 5);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        itemType = Main.rand.Next(new int[] { ItemID.Lemon, ItemID.Peach, ItemID.Apricot, ItemID.Grapefruit });
+                        player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType);
+                    }
                     player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Wood), ItemID.Wood, 50);
                 }
 
