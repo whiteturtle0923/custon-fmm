@@ -1,6 +1,9 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+NEW UPDATE - V 2.8.7
+-Added an additional option to holiday and seed settings. It can be set to Normal which means it behaves with no modifications.
+
 NEW UPDATE - V 2.8.6
 -Added Semistation
 -Added Omni-Bridgifier
@@ -23,58 +26,3 @@ NEW UPDATE - V 2.8.6
 -Removed class stations and Slice of Cake from Omnistation due to inventory unlims
 -Reduced stack requirement for unlimited class stations and Slice of Cake from 15 to 3
 -Made recipe easier for crafting Merchant into Travelling Merchant
-
-NEW UPDATE - V 2.8.5
--Added Pylon Cleaner
--Added Altar Exterminator
--Added Sibling Pylon
--Added recipe for Holy Grail
--Added new config effect: Torch God's Favor automatically replaces placed torches
--Overloaded Pumpkin Moon Medallion is now Haunted Trophy
--Overloaded Runaway Probe is now Martian Communications Satellite
--Overloaded Naughty Present is now Naughty Present Sack
--Abominationn can comment on Styx armor if you wear it
--Mutant can comment on True Mutant armor if you wear it
--Portable Sundial can now jump to noon and midnight
--Demon Altars are now crafted at Anvil
--Instahouse places White Torches
--Resprited Grave Buster
-
-NEW UPDATE - V 2.8.4
--Siblings will only say their defeat quotes if spoken to shortly after being defeated
--Transparent Minions & Support Attacks config is now Transparent Friendly Projectiles config
--Deviantt can comment on Nekomi armor if you wear it
--Acorns are now sold by Squirrel instead of Lumberjack, resolving a crucial lore inconsistency
--Fixed DPS Meter not working properly from Piggy Bank
--Fixed Instahouse being able to destroy blocks with its Torch when it shouldn't
--Fixed tooltips indicating the wrong stack amount for unlimited station buffs
--Fixed Calming Cry message not appearing in multiplayer
--Tried reducing Boom Shuriken lag
--Reduced recipe requirements for most explosives
--Increased dimensions of Lihzahrd Instactuation Bomb
-
-NEW UPDATE - V 2.8.3
--Added crate recipe for Demon Conch
--Added Empress bag recipe for Prismatic Dye
--Party Girl sells Slice of Cake during parties
--Squirrel sells Battle Cry
--Unlimited Buffs have tooltips and work in Safe
--Informational and Construction Accessories work in Safe
-
-NEW UPDATE - V 2.8.2
--Added Endless Coin Bags
--Added Bat Bat banner recipe
--Added Honey Dispenser recipe
--Added Bewitching Table recipe using Dungeon crates
--Added Jelly Crystal recipe
--Added Wet Bomb recipe
--Added some clarification to insta-build descriptions
--Added recipes for Hemoclaw Crab, Blood Urchin, Blood Sushi Platter
--Slice of Cake now works as an inventory unlimited buff like class stations
--Abominationn Pumpkin/Frost Moon spawners work at night and can yield loot
--Ham Bat recipe now requires Mythril Anvil
--Slightly increased City Buster blast zone
--Made Grave Buster recipe cheaper and increased area of effect
--Battle Cry can now Calming Cry
--Restored Squirrel Blood Moon dialogue color
--Fixed Mummy Banner not counting for desert banner recipes
