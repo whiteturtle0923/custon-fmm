@@ -383,6 +383,10 @@ namespace Fargowiltas.NPCs
             shop.item[nextSlot].shopCustomPrice = 10;
             nextSlot++;
 
+            shop.item[nextSlot].SetDefaults(ItemID.BambooBlock);
+            shop.item[nextSlot].shopCustomPrice = 10;
+            nextSlot++;
+
             shop.item[nextSlot].SetDefaults(ItemID.LivingWoodWand);
             shop.item[nextSlot].shopCustomPrice = 10000;
             nextSlot++;
