@@ -8,6 +8,7 @@ NEW UPDATE - V 2.8.7
 -Added a Hallowed Bar to the Tattered Bee Wing, Fire Feather, and Unholy Trident recipes
 -Added the Decay Chamber to the Crucible of the Cosmos
 -The Lumberjack now sells Bamboo
+-Adjusted boss values to match Boss Checklist again
 
 NEW UPDATE - V 2.8.6
 -Added Semistation
