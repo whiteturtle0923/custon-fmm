@@ -12,6 +12,7 @@ NEW UPDATE - V 2.8.7
 -Fixed Renewals sometimes deleting blocks when used in unloaded chunks in multiplayer
 -Fixed item hotkeys e.g. Rod of Discord being usable when they shouldn't
 -Added Semi-Bridgifier
+-Fixed segment issues caused by using Wormy Food and Some Kind of Metallic Worm
 
 NEW UPDATE - V 2.8.6
 -Added Semistation
