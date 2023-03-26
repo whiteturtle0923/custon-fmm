@@ -9,6 +9,7 @@ NEW UPDATE - V 2.8.7
 -Added the Decay Chamber to the Crucible of the Cosmos
 -The Lumberjack now sells Bamboo
 -Adjusted boss values to match Boss Checklist again
+-Fixed Renewals sometimes deleting blocks when used in unloaded chunks in multiplayer
 
 NEW UPDATE - V 2.8.6
 -Added Semistation
