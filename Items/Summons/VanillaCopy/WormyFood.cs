@@ -21,6 +21,8 @@ namespace Fargowiltas.Items.Summons
             Tooltip.SetDefault("Summons the Eater of Worlds in any biome");
         }
 
+        public override bool CanUseItem(Player player) => !NPC.AnyNPCs(NPCType);
+
         public override bool? UseItem(Player player)
         {
             FargoUtils.SpawnBossNetcoded(player, NPCType);
