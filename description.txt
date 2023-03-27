@@ -8,6 +8,7 @@ NEW UPDATE - V 2.8.8
 -Added Semi-Bridgifier
 -Fixed segment issues caused by using Wormy Food and Some Kind of Metallic Worm
 -Reduced enemy spawner multiplayer desync issues
+-Deathbringer Fairy and Ancient Seal specify they must be used at night
 
 NEW UPDATE - V 2.8.7
 -Added an additional option to holiday and seed settings. It can be set to Normal which means it behaves with no modifications.
