@@ -177,7 +177,7 @@ namespace Fargowiltas.Items
             switch (item.type)
             {
                 case ItemID.KingSlimeBossBag:
-                    itemLoot.Add(ItemDropRule.NotScalingWithLuck(ItemID.SlimeStaff, 25));
+                    itemLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 25));
                     break;
 
                 case ItemID.WoodenCrate:
@@ -187,7 +187,7 @@ namespace Fargowiltas.Items
 
                 case ItemID.GoldenCrate:
                     itemLoot.Add(ItemDropRule.OneFromOptions(10, ItemID.BandofRegeneration, ItemID.MagicMirror, ItemID.CloudinaBottle, ItemID.EnchantedBoomerang, ItemID.ShoeSpikes, ItemID.FlareGun, ItemID.HermesBoots, ItemID.LavaCharm, ItemID.SandstorminaBottle, ItemID.FlyingCarpet));
-                    itemLoot.Add(ItemDropRule.NotScalingWithLuck(ItemID.Sundial, 20));
+                    itemLoot.Add(ItemDropRule.Common(ItemID.Sundial, 20));
 
                     break;
             }
