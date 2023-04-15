@@ -283,7 +283,8 @@ namespace Fargowiltas.Items
             if (Informational.Contains(item.type))
             {
                 //TODO: hopefully works
-                player.ApplyEquipFunctional(item, false);
+                player.GrantPrefixBenefits(item);
+                //player.ApplyEquipFunctional(item, false);
                 //player.VanillaUpdateInventory(item);
             }
             else if (Construction.Contains(item.type))

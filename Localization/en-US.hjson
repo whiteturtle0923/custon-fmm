@@ -149,11 +149,11 @@ Mods: {
 			DebuffFaderRatio: "[i:1612] Debuff Duration Fader Strength"
 			TransparentFriendlyProjectiles: "[i:1309] Transparent Friendly Projectiles"
 			TransparentFriendlyProjectilesTooltip: Use with vanilla setting for Quality at Medium or Low for best results
-			Mutant: Mods.Fargowiltas.Config.Mutant
-			Abom: Mods.Fargowiltas.Config.Abom
-			Devi: Mods.Fargowiltas.Config.Devi
-			Lumber: Mods.Fargowiltas.Config.Lumber
-			Squirrel: Mods.Fargowiltas.Config.Squirrel
+			Mutant: "[i:5446] [c/ffffff:{$Mods.Fargowiltas.NPCName.Mutant} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Abom: "[i:5435] [c/ffffff:{$Mods.Fargowiltas.NPCName.Abominationn} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Devi: "[i:5439] [c/ffffff:{$Mods.Fargowiltas.NPCName.Deviantt} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Lumber: "[i:5443] [c/ffffff:{$Mods.Fargowiltas.NPCName.LumberJack} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Squirrel: "[i:239] [c/ffffff:{$Mods.Fargowiltas.NPCName.Squirrel} {$Mods.Fargowiltas.Config.CanSpawn}]"
 		}
 
 		RecipeGroups: {
@@ -172,103 +172,81 @@ Mods: {
 			NearbySiblingPylonNotNearSiblings: The nearby pylon needs the mutated siblings to function.
 		}
 
-		Keybinds: {
-			"Quick Recall/Mirror.DisplayName": Mods.Fargowiltas.Keybinds.Quick Recall/Mirror.DisplayName
-			"Quick Rod of Discord.DisplayName": Mods.Fargowiltas.Keybinds.Quick Rod of Discord.DisplayName
-			"Quick Use Custom (Bottom Left Inventory Slot).DisplayName": Mods.Fargowiltas.Keybinds.Quick Use Custom (Bottom Left Inventory Slot).DisplayName
-			"Open Stat Sheet.DisplayName": Mods.Fargowiltas.Keybinds.Open Stat Sheet.DisplayName
-		}
-
-		Tiles: {
-			CrimsonAltarSheet.MapEntry: Crimson Altar Sheet
-			CrucibleCosmosSheet.MapEntry: Crucible Cosmos Sheet
-			DemonAltarSheet.MapEntry: Demon Altar Sheet
-			ElementalAssemblerSheet.MapEntry: Elemental Assembler Sheet
-			GoldenDippingVatSheet.MapEntry: Golden Dipping Vat Sheet
-			MultitaskCenterSheet.MapEntry: Multitask Center Sheet
-			OmnistationSheet.MapEntry: Omnistation Sheet
-			OmnistationSheet2.MapEntry: Omnistation Sheet2
-			PurityTotemSheet.MapEntry: Purity Totem Sheet
-			RegalStatueSheet.MapEntry: Regal Statue Sheet
-			SemistationSheet.MapEntry: Semistation Sheet
-			SiblingPylonTile.MapEntry: Sibling Pylon Tile
-		}
-
 		Buffs: {
 			Omnistation: {
 				DisplayName: Omnistation
-				Description: Mods.Fargowiltas.Buffs.Omnistation.Description
+				Description: Effects of all vanilla stations
 			}
 
 			Semistation: {
 				DisplayName: Semistation
-				Description: Mods.Fargowiltas.Buffs.Semistation.Description
+				Description: Effects of some vanilla stations
 			}
 
 			WoodDrop: {
 				DisplayName: Wood Drop
-				Description: Mods.Fargowiltas.Buffs.WoodDrop.Description
+				Description: Mods.Fargowiltas.BuffDescription.WoodDrop
 			}
 		}
 
 		Items: {
 			BoneQuiver: {
-				DisplayName: Bone Quiver
+				DisplayName: Endless Bone Quiver
 				Tooltip: ""
 			}
 
 			ChlorophyteQuiver: {
-				DisplayName: Chlorophyte Quiver
-				Tooltip: ""
+				DisplayName: Endless Chlorophyte Quiver
+				Tooltip: Bounces back after hitting a wall
 			}
 
 			CursedQuiver: {
-				DisplayName: Cursed Quiver
+				DisplayName: Endless Cursed Quiver
 				Tooltip: ""
 			}
 
 			FlameQuiver: {
-				DisplayName: Flame Quiver
+				DisplayName: Endless Flame Quiver
 				Tooltip: ""
 			}
 
 			FrostburnQuiver: {
-				DisplayName: Frostburn Quiver
+				DisplayName: Endless Frostburn Quiver
 				Tooltip: ""
 			}
 
 			HellfireQuiver: {
-				DisplayName: Hellfire Quiver
+				DisplayName: Endless Hellfire Quiver
 				Tooltip: ""
 			}
 
 			HolyQuiver: {
-				DisplayName: Holy Quiver
-				Tooltip: ""
+				DisplayName: Endless Holy Quiver
+				Tooltip: Summons falling stars on impact
 			}
 
 			IchorQuiver: {
-				DisplayName: Ichor Quiver
-				Tooltip: ""
+				DisplayName: Endless Ichor Quiver
+				Tooltip: Decreases target's defense
 			}
 
 			JesterQuiver: {
-				DisplayName: Jester Quiver
+				DisplayName: Endless Jester's Quiver
 				Tooltip: ""
 			}
 
 			LuminiteQuiver: {
-				DisplayName: Luminite Quiver
-				Tooltip: ""
+				DisplayName: Endless Luminite Quiver
+				Tooltip: "'Shooting them down at the speed of sound!'"
 			}
 
 			UnholyQuiver: {
-				DisplayName: Unholy Quiver
+				DisplayName: Endless Unholy Quiver
 				Tooltip: ""
 			}
 
 			VenomQuiver: {
-				DisplayName: Venom Quiver
+				DisplayName: Endless Venom Quiver
 				Tooltip: ""
 			}
 
@@ -278,993 +256,1390 @@ Mods: {
 			}
 
 			ChlorophytePouch: {
-				DisplayName: Chlorophyte Pouch
-				Tooltip: ""
+				DisplayName: Endless Chlorophyte Pouch
+				Tooltip: Chases after your enemy
 			}
 
 			CrystalPouch: {
-				DisplayName: Crystal Pouch
-				Tooltip: ""
+				DisplayName: Endless Crystal Pouch
+				Tooltip: Creates several crystal shards on impact
 			}
 
 			CursedPouch: {
-				DisplayName: Cursed Pouch
+				DisplayName: Endless Cursed Pouch
 				Tooltip: ""
 			}
 
 			ExplosivePouch: {
-				DisplayName: Explosive Pouch
-				Tooltip: ""
+				DisplayName: Endless Explosive Pouch
+				Tooltip: Explodes on impact
 			}
 
 			GoldenPouch: {
-				DisplayName: Golden Pouch
-				Tooltip: ""
+				DisplayName: Endless Golden Pouch
+				Tooltip: Enemies killed will drop more money
 			}
 
 			IchorPouch: {
-				DisplayName: Ichor Pouch
-				Tooltip: ""
+				DisplayName: Endless Ichor Pouch
+				Tooltip: Decreases target's defense
 			}
 
 			LuminitePouch: {
-				DisplayName: Luminite Pouch
-				Tooltip: ""
+				DisplayName: Endless Luminite Pouch
+				Tooltip: "'Line 'em up and knock 'em down...'"
 			}
 
 			MeteorPouch: {
-				DisplayName: Meteor Pouch
+				DisplayName: Endless Meteor Pouch
 				Tooltip: ""
 			}
 
 			NanoPouch: {
-				DisplayName: Nano Pouch
-				Tooltip: ""
+				DisplayName: Endless Nano Pouch
+				Tooltip: Causes confusion
 			}
 
 			PartyPouch: {
-				DisplayName: Party Pouch
-				Tooltip: ""
+				DisplayName: Endless Party Pouch
+				Tooltip: Explodes into confetti on impact
 			}
 
 			SilverPouch: {
-				DisplayName: Silver Pouch
+				DisplayName: Endless Silver Pouch
 				Tooltip: ""
 			}
 
 			TungstenPouch: {
-				DisplayName: Tungsten Pouch
+				DisplayName: Endless Tungsten Pouch
 				Tooltip: ""
 			}
 
 			VelocityPouch: {
-				DisplayName: Velocity Pouch
+				DisplayName: Endless High Velocity Pouch
 				Tooltip: ""
 			}
 
 			VenomPouch: {
-				DisplayName: Venom Pouch
-				Tooltip: ""
+				DisplayName: Endless Venom Pouch
+				Tooltip: Inflicts target with venom
 			}
 
 			CopperCoinBag: {
-				DisplayName: Copper Coin Bag
+				DisplayName: Endless Copper Coin Bag
 				Tooltip: ""
 			}
 
 			GoldCoinBag: {
-				DisplayName: Gold Coin Bag
+				DisplayName: Endless Gold Coin Bag
 				Tooltip: ""
 			}
 
 			PlatinumCoinBag: {
-				DisplayName: Platinum Coin Bag
+				DisplayName: Endless Platinum Coin Bag
 				Tooltip: ""
 			}
 
 			SilverCoinBag: {
-				DisplayName: Silver Coin Bag
+				DisplayName: Endless Silver Coin Bag
 				Tooltip: ""
 			}
 
 			CrystalDartBox: {
-				DisplayName: Crystal Dart Box
+				DisplayName: Endless Crystal Dart Box
 				Tooltip: ""
 			}
 
 			CursedDartBox: {
-				DisplayName: Cursed Dart Box
+				DisplayName: Endless Cursed Dart Box
 				Tooltip: ""
 			}
 
 			IchorDartBox: {
-				DisplayName: Ichor Dart Box
+				DisplayName: Endless Ichor Dart Box
 				Tooltip: ""
 			}
 
 			PoisonDartBox: {
-				DisplayName: Poison Dart Box
+				DisplayName: Endless Poison Dart Box
 				Tooltip: ""
 			}
 
 			GelPack: {
-				DisplayName: Gel Pack
+				DisplayName: Endless Gel Pack
 				Tooltip: ""
 			}
 
 			ClusterRocket1Bag: {
-				DisplayName: Cluster Rocket1 Bag
+				DisplayName: Endless Cluster Rocket I Bag
 				Tooltip: ""
 			}
 
 			ClusterRocket2Bag: {
-				DisplayName: Cluster Rocket2 Bag
+				DisplayName: Endless Cluster Rocket II Bag
 				Tooltip: ""
 			}
 
 			DryRocketBag: {
-				DisplayName: Dry Rocket Bag
+				DisplayName: Endless Dry Rocket Bag
 				Tooltip: ""
 			}
 
 			HoneyRocketBag: {
-				DisplayName: Honey Rocket Bag
+				DisplayName: Endless Honey Rocket Bag
 				Tooltip: ""
 			}
 
 			LavaRocketBag: {
-				DisplayName: Lava Rocket Bag
+				DisplayName: Endless Lava Rocket Bag
 				Tooltip: ""
 			}
 
 			MiniNuke1Bag: {
-				DisplayName: Mini Nuke1 Bag
+				DisplayName: Endless Mini Nuke I Bag
 				Tooltip: ""
 			}
 
 			MiniNuke2Bag: {
-				DisplayName: Mini Nuke2 Bag
+				DisplayName: Endless Mini Nuke II Bag
 				Tooltip: ""
 			}
 
 			Rocket1Bag: {
-				DisplayName: Rocket1 Bag
+				DisplayName: Endless Rocket I Bag
 				Tooltip: ""
 			}
 
 			Rocket2Bag: {
-				DisplayName: Rocket2 Bag
+				DisplayName: Endless Rocket II Bag
 				Tooltip: ""
 			}
 
 			Rocket3Bag: {
-				DisplayName: Rocket3 Bag
+				DisplayName: Endless Rocket III Bag
 				Tooltip: ""
 			}
 
 			Rocket4Bag: {
-				DisplayName: Rocket4 Bag
+				DisplayName: Endless Rocket IV Bag
 				Tooltip: ""
 			}
 
 			WetRocketBag: {
-				DisplayName: Wet Rocket Bag
+				DisplayName: Endless Wet Rocket Bag
 				Tooltip: ""
 			}
 
 			StarPouch: {
-				DisplayName: Star Pouch
+				DisplayName: Endless Star Pouch
 				Tooltip: ""
 			}
 
 			AltarExterminator: {
 				DisplayName: Altar Exterminator
-				Tooltip: ""
+				Tooltip: Destroys all natural Demon Altars and Crimson Altars
 			}
 
 			AutoHouse: {
-				DisplayName: Auto House
-				Tooltip: ""
+				DisplayName: InstaHouse
+				Tooltip: Places an NPC house instantly
 			}
 
 			BoomShuriken: {
 				DisplayName: Boom Shuriken
-				Tooltip: ""
+				Tooltip:
+					'''
+					Rapid firing explosives
+					Uses your pickaxe's mining power
+					'The fastest way to dig through anything is always to blow it up!'
+					'''
 			}
 
 			CityBuster: {
 				DisplayName: City Buster
-				Tooltip: ""
+				Tooltip:
+					'''
+					Destroys a large area
+					Will not remove background walls
+					Use at your own risk
+					'''
 			}
 
 			DoubleObsidianInstabridge: {
 				DisplayName: Double Obsidian Instabridge
-				Tooltip: ""
+				Tooltip:
+					'''
+					Creates 2 bridges of obsidian platforms across the whole world
+					Also clears the area between and above the platforms
+					The bottom bridge appears at your cursor
+					Do not use if any important building is nearby
+					'''
 			}
 
 			GraveBuster: {
 				DisplayName: Grave Buster
-				Tooltip: ""
+				Tooltip: Destroys tombstones in a large area
 			}
 
 			HalfInstavator: {
 				DisplayName: Half Instavator
-				Tooltip: ""
+				Tooltip:
+					'''
+					Drops a bomb that creates half a hellevator instantly
+					Will not dig below a certain depth
+					Do not use if any important building is below
+					'''
 			}
 
 			InstaBridge: {
-				DisplayName: Insta Bridge
-				Tooltip: ""
+				DisplayName: Instabridge
+				Tooltip:
+					'''
+					Creates a bridge of platforms across the whole world
+					Also clears the area right above the platforms
+					The bridge appears at your cursor
+					Do not use if any important building is nearby
+					'''
 			}
 
 			InstaTrack: {
-				DisplayName: Insta Track
-				Tooltip: ""
+				DisplayName: Instatrack
+				Tooltip:
+					'''
+					Creates a minecart track across the whole world
+					Also clears the area right above the tracks
+					The track appears at your cursor
+					Do not use if any important building is nearby
+					'''
 			}
 
 			Instavator: {
 				DisplayName: Instavator
-				Tooltip: ""
+				Tooltip:
+					'''
+					Drops a bomb that creates a hellevator instantly
+					Do not use if any important building is below
+					'''
 			}
 
 			LihzahrdInstactuationBomb: {
 				DisplayName: Lihzahrd Instactuation Bomb
-				Tooltip: ""
+				Tooltip:
+					'''
+					Clears a space around the Lihzahrd Altar when used while standing in front of it
+					Actuates Lihzahrd Brick and destroys others
+					Only works in the Jungle Temple and after Plantera is defeated
+					'''
 			}
 
 			MiniInstaBridge: {
-				DisplayName: Mini Insta Bridge
-				Tooltip: ""
+				DisplayName: Mini Instabridge
+				Tooltip:
+					'''
+					Creates a long bridge of platforms at your cursor
+					Will not break any blocks
+					'''
 			}
 
 			ObsidianInstaBridge: {
-				DisplayName: Obsidian Insta Bridge
-				Tooltip: ""
+				DisplayName: Obsidian Instabridge
+				Tooltip:
+					'''
+					Creates a bridge of obsidian platforms across the whole world
+					Also clears the area right above the platforms
+					The bridge appears at your cursor
+					Do not use if any important building is nearby
+					'''
 			}
 
 			OmniBridgifier: {
-				DisplayName: Omni Bridgifier
-				Tooltip: ""
-			}
-
-			SemiBridgifier: {
-				DisplayName: Semi Bridgifier
-				Tooltip: ""
+				DisplayName: Omni-Bridgifier
+				Tooltip:
+					'''
+					Can be reused infinitely
+					Upgrades the platform you are standing on to use Omnistations
+					Does NOT build a platform!
+					'''
 			}
 
 			BattleCry: {
 				DisplayName: Battle Cry
-				Tooltip: ""
+				Tooltip:
+					'''
+					Left click to toggle 10x increased spawn rates
+					Right click to toggle 10x decreased spawn rates
+					'''
 			}
 
 			DeathFruit: {
 				DisplayName: Death Fruit
-				Tooltip: ""
+				Tooltip:
+					'''
+					Permanently decreases maximum life by 20
+					Effects may not be reversible for characters that have used modded life-increasing items
+					'''
 			}
 
 			InstantResearch: {
 				DisplayName: Instant Research
-				Tooltip: ""
+				Tooltip:
+					'''
+					DEBUG ITEM
+					Researches everything
+					'''
 			}
 
 			MapViewer: {
-				DisplayName: Map Viewer
-				Tooltip: ""
+				DisplayName: The Ancient Master's Map of the Lost King's Great Ancestors
+				Tooltip: Reveals the map
 			}
 
 			ModeToggle: {
-				DisplayName: Mode Toggle
-				Tooltip: ""
+				DisplayName: World Token
+				Tooltip: Cycles difficulty modes
 			}
 
 			PortableSundial: {
 				DisplayName: Portable Sundial
-				Tooltip: ""
+				Tooltip:
+					'''
+					Left click to instantly change time
+					Time cycles between dawn, noon, dusk, and midnight
+					Right click to activate the Enchanted Sundial effect
+					Cycling to dawn will reset travelling merchant's shops
+					'''
 			}
 
 			PylonCleaner: {
 				DisplayName: Pylon Cleaner
-				Tooltip: ""
+				Tooltip:
+					'''
+					Purifies the area around every pylon
+					Will use Blue Solution on Hallow Pylon and Green Solution on others
+					'''
 			}
 
 			SuperDummy: {
 				DisplayName: Super Dummy
-				Tooltip: ""
+				Tooltip:
+					'''
+					Spawns a super dummy at your cursor
+					Same as regular Target Dummy except minions and projectiles detect and home onto it
+					On hit effects get triggered as well
+					Right click to remove all spawned super dummies
+					Can spawn up to 50 super dummies at once
+					'''
 			}
 
 			CorruptRenewal: {
-				DisplayName: Corrupt Renewal
-				Tooltip: ""
+				DisplayName: Corruption Renewal
+				Tooltip: Corrupts a large radius
 			}
 
 			CorruptRenewalSupreme: {
-				DisplayName: Corrupt Renewal Supreme
-				Tooltip: ""
+				DisplayName: Corruption Renewal Supreme
+				Tooltip: Corrupts the entire world
 			}
 
 			CrimsonRenewal: {
 				DisplayName: Crimson Renewal
-				Tooltip: ""
+				Tooltip: Crimsons a large radius
 			}
 
 			CrimsonRenewalSupreme: {
 				DisplayName: Crimson Renewal Supreme
-				Tooltip: ""
+				Tooltip: Crimsons the entire world
 			}
 
 			HallowRenewal: {
-				DisplayName: Hallow Renewal
-				Tooltip: ""
+				DisplayName: Hallowed Renewal
+				Tooltip: Hallows a large radius
 			}
 
 			HallowRenewalSupreme: {
-				DisplayName: Hallow Renewal Supreme
-				Tooltip: ""
+				DisplayName: Hallowed Renewal Supreme
+				Tooltip: Hallows the entire world
 			}
 
 			MushroomRenewal: {
 				DisplayName: Mushroom Renewal
-				Tooltip: ""
+				Tooltip: Shroomifies a large radius
 			}
 
 			MushroomRenewalSupreme: {
 				DisplayName: Mushroom Renewal Supreme
-				Tooltip: ""
+				Tooltip: Shroomifies the entire world
 			}
 
 			PurityRenewal: {
 				DisplayName: Purity Renewal
-				Tooltip: ""
+				Tooltip: Cleanses a large radius
 			}
 
 			PurityRenewalSupreme: {
 				DisplayName: Purity Renewal Supreme
-				Tooltip: ""
+				Tooltip: Cleanses the entire world
 			}
 
 			Abeemination2: {
-				DisplayName: Abeemination2
-				Tooltip: ""
+				DisplayName: A Bee In My Nation
+				Tooltip: Summons Queen Bee in any biome
 			}
 
 			Anemometer: {
 				DisplayName: Anemometer
-				Tooltip: ""
+				Tooltip: Starts a Windy Day
 			}
 
 			BatteredClub: {
 				DisplayName: Battered Club
-				Tooltip: ""
+				Tooltip: Summons the Ogre
 			}
 
 			BetsyEgg: {
-				DisplayName: Betsy Egg
-				Tooltip: ""
+				DisplayName: Dragon's Egg
+				Tooltip: Summons Betsy
 			}
 
 			FestiveOrnament: {
 				DisplayName: Festive Ornament
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Everscream
+					Only usable at night
+					'''
 			}
 
 			ForbiddenScarab: {
 				DisplayName: Forbidden Scarab
-				Tooltip: ""
+				Tooltip: Starts a Sandstorm
 			}
 
 			ForbiddenTome: {
 				DisplayName: Forbidden Tome
-				Tooltip: ""
+				Tooltip: Summons a Dark Mage
 			}
 
 			HeadofMan: {
-				DisplayName: Headof Man
-				Tooltip: ""
+				DisplayName: Head of Man
+				Tooltip:
+					'''
+					Summons Headless Horseman
+					Only usable at night
+					'''
 			}
 
 			IceKingsRemains: {
-				DisplayName: Ice Kings Remains
-				Tooltip: ""
+				DisplayName: Ice King's Remains
+				Tooltip:
+					'''
+					Summons Ice Queen
+					Only usable at night
+					'''
 			}
 
 			MartianMemoryStick: {
 				DisplayName: Martian Memory Stick
-				Tooltip: ""
+				Tooltip: Summons Martian Saucer
 			}
 
 			MatsuriLantern: {
 				DisplayName: Matsuri Lantern
-				Tooltip: ""
+				Tooltip: Makes every night a Lantern Night when possible
 			}
 
 			NaughtyList: {
 				DisplayName: Naughty List
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Santa-NK1
+					Only usable at night
+					'''
 			}
 
 			PartyCone: {
 				DisplayName: Party Cone
-				Tooltip: ""
+				Tooltip:
+					'''
+					Starts a Party!
+					Needs at least 5 town NPCs to use
+					'''
 			}
 
 			PillarSummon: {
-				DisplayName: Pillar Summon
-				Tooltip: ""
+				DisplayName: Outsider's Portal
+				Tooltip: Summons the Celestial Pillars
 			}
 
 			RunawayProbe: {
 				DisplayName: Runaway Probe
-				Tooltip: ""
+				Tooltip: Starts the Martian invasion
 			}
 
 			SlimyBarometer: {
 				DisplayName: Slimy Barometer
-				Tooltip: ""
+				Tooltip: Starts the Slime Rain
 			}
 
 			SpentLantern: {
 				DisplayName: Spent Lantern
-				Tooltip: ""
+				Tooltip: Deactivates Matsuri Lantern effect
 			}
 
 			SpookyBranch: {
 				DisplayName: Spooky Branch
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Mourning Wood
+					Only usable at night
+					'''
 			}
 
 			SuspiciousLookingScythe: {
 				DisplayName: Suspicious Looking Scythe
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Pumpking
+					Only usable at night
+					'''
 			}
 
 			WeatherBalloon: {
 				DisplayName: Weather Balloon
-				Tooltip: ""
+				Tooltip: Starts the Rain
 			}
 
 			CelestialSigil2: {
-				DisplayName: Celestial Sigil2
-				Tooltip: ""
+				DisplayName: Celestially Sigil
+				Tooltip: Summons the Moon Lord instantly
 			}
 
 			DeerThing2: {
-				DisplayName: Deer Thing2
-				Tooltip: ""
+				DisplayName: Thing Deer
+				Tooltip: Summons Deerclops in any biome
 			}
 
 			AmalgamatedSkull: {
 				DisplayName: Amalgamated Skull
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons the skeleton gunners
+					Only usable at night or underground
+					'''
 			}
 
 			AmalgamatedSpirit: {
 				DisplayName: Amalgamated Spirit
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons the skeleton mages
+					Only usable at night or underground
+					'''
 			}
 
 			AthenianIdol: {
 				DisplayName: Athenian Idol
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Medusa
+					Only usable at night or underground
+					'''
 			}
 
 			AttractiveOre: {
 				DisplayName: Attractive Ore
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Undead Miner
+					Only usable at night or underground
+					'''
 			}
 
 			BloodSushiPlatter: {
 				DisplayName: Blood Sushi Platter
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Dreadnautilus
+					Only usable during Blood Moon
+					'''
 			}
 
 			BloodUrchin: {
 				DisplayName: Blood Urchin
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Blood Eel
+					Only usable during Blood Moon
+					'''
 			}
 
 			CloudSnack: {
 				DisplayName: Cloud Snack
-				Tooltip: ""
+				Tooltip: Summons Wyvern
 			}
 
 			ClownLicense: {
 				DisplayName: Clown License
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Clown
+					Only usable at night or underground
+					'''
 			}
 
 			CoreoftheFrostCore: {
-				DisplayName: Coreofthe Frost Core
-				Tooltip: ""
+				DisplayName: Core of the Frost Core
+				Tooltip: Summons Ice Golem
 			}
 
 			CorruptChest: {
 				DisplayName: Corrupt Chest
-				Tooltip: ""
+				Tooltip: Summons Corrupt Mimic
 			}
 
 			CrimsonChest: {
 				DisplayName: Crimson Chest
-				Tooltip: ""
+				Tooltip: Summons Crimson Mimic
 			}
 
 			DemonicPlushie: {
 				DisplayName: Demonic Plushie
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Red Devil
+					Only usable in the Underworld
+					'''
 			}
 
 			DilutedRainbowMatter: {
 				DisplayName: Diluted Rainbow Matter
-				Tooltip: ""
+				Tooltip: Summons Rainbow Slime
 			}
 
 			Eggplant: {
 				DisplayName: Eggplant
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Doctor Bones
+					Only usable at night or underground
+					'''
 			}
 
 			ForbiddenForbiddenFragment: {
 				DisplayName: Forbidden Forbidden Fragment
-				Tooltip: ""
+				Tooltip: Summons Sand Elemental
 			}
 
 			GnomeHat: {
 				DisplayName: Gnome Hat
-				Tooltip: ""
+				Tooltip: Summons Gnome
 			}
 
 			GoblinScrap: {
 				DisplayName: Goblin Scrap
-				Tooltip: ""
+				Tooltip: Summons Goblin Scout
 			}
 
 			GoldenSlimeCrown: {
 				DisplayName: Golden Slime Crown
-				Tooltip: ""
+				Tooltip: Summons Golden Slime
 			}
 
 			GrandCross: {
 				DisplayName: Grand Cross
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Paladin
+					Only usable at night or underground
+					'''
 			}
 
 			HallowChest: {
 				DisplayName: Hallow Chest
-				Tooltip: ""
+				Tooltip: Summons Hallowed Mimic
 			}
 
 			HeartChocolate: {
 				DisplayName: Heart Chocolate
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Nymph
+					Only usable at night or underground
+					'''
 			}
 
 			HemoclawCrab: {
 				DisplayName: Hemoclaw Crab
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Hemogoblin Shark
+					Only usable during Blood Moon
+					'''
 			}
 
 			HolyGrail: {
 				DisplayName: Holy Grail
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Tim
+					Only usable at night or underground
+					'''
 			}
 
 			JungleChest: {
 				DisplayName: Jungle Chest
-				Tooltip: ""
+				Tooltip: Summons Jungle Mimic
 			}
 
 			LeesHeadband: {
-				DisplayName: Lees Headband
-				Tooltip: ""
+				DisplayName: Lee's Headband
+				Tooltip:
+					'''
+					Summons Bone Lee
+					Only usable at night or underground
+					'''
 			}
 
 			MothLamp: {
 				DisplayName: Moth Lamp
-				Tooltip: ""
+				Tooltip: Summons Moth
 			}
 
 			MothronEgg: {
 				DisplayName: Mothron Egg
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Mothron
+					Only usable during Solar Eclipse
+					'''
 			}
 
 			Pincushion: {
 				DisplayName: Pincushion
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Nailhead
+					Only usable during Solar Eclipse
+					'''
 			}
 
 			PinkSlimeCrown: {
 				DisplayName: Pink Slime Crown
-				Tooltip: ""
+				Tooltip: Summons Pinky
 			}
 
 			PirateFlag: {
 				DisplayName: Pirate Flag
-				Tooltip: ""
-			}
-
-			Pirate: {
-				DisplayName: Pirate
-				Tooltip: ""
+				Tooltip: Summons Pirate Captain
 			}
 
 			PlunderedBooty: {
 				DisplayName: Plundered Booty
-				Tooltip: ""
+				Tooltip: Summons Flying Dutchman
 			}
 
 			RuneOrb: {
 				DisplayName: Rune Orb
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Rune Wizard
+					Only usable at night or underground
+					'''
 			}
 
 			ShadowflameIcon: {
 				DisplayName: Shadowflame Icon
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Goblin Summoner
+					Only usable during Goblin Army
+					'''
 			}
 
 			SlimyLockBox: {
 				DisplayName: Slimy Lock Box
-				Tooltip: ""
+				Tooltip: Summons Dungeon Slime
 			}
 
 			SuspiciousLookingChest: {
 				DisplayName: Suspicious Looking Chest
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Mimic
+					Summons Ice Mimic when in snow biome
+					'''
 			}
 
 			SuspiciousLookingLure: {
 				DisplayName: Suspicious Looking Lure
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Wandering Eye Fish and Zombie Merman
+					Only usable at night
+					'''
 			}
 
 			WormSnack: {
 				DisplayName: Worm Snack
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Giant Worm in pre-Hardmode
+					Summons Digger in Hardmode
+					Only usable underground
+					'''
 			}
 
 			GoreySpine: {
-				DisplayName: Gorey Spine
-				Tooltip: ""
+				DisplayName: Red Stained Spine
+				Tooltip: Summons the Brain of Cthulhu in any biome
 			}
 
 			MechEye: {
-				DisplayName: Mech Eye
-				Tooltip: ""
+				DisplayName: Some Kind of Metallic Eye
+				Tooltip: Summons the Twins
 			}
 
 			MechSkull: {
-				DisplayName: Mech Skull
-				Tooltip: ""
+				DisplayName: Some Kind of Metallic Skull
+				Tooltip: Summons Skeletron Prime
 			}
 
 			MechWorm: {
-				DisplayName: Mech Worm
-				Tooltip: ""
+				DisplayName: Some Kind of Metallic Worm
+				Tooltip: Summons the Destroyer
 			}
 
 			AncientSeal: {
 				DisplayName: Ancient Seal
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons ALL the bosses modded included
+					Can only be used at night
+					'Use at your own risk'
+					'''
 			}
 
 			CultistSummon: {
-				DisplayName: Cultist Summon
-				Tooltip: ""
+				DisplayName: Zealot's Possession
+				Tooltip:
+					'''
+					Summons the Lunatic Cultist
+					Does not spawn the pillars if Lunatic Cultist has been defeated before
+					'''
 			}
 
 			DeathBringerFairy: {
 				DisplayName: Death Bringer Fairy
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons all pre-hardmode bosses
+					Can only be used at night
+					Certain bosses will only spawn if you're in their specific biome
+					'''
 			}
 
 			FleshyDoll: {
 				DisplayName: Fleshy Doll
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons the Wall of Flesh
+					Make sure you use it in the Underworld
+					'''
 			}
 
 			JellyCrystal: {
 				DisplayName: Jelly Crystal
-				Tooltip: ""
+				Tooltip: Summons Queen Slime
 			}
 
 			MechanicalAmalgam: {
 				DisplayName: Mechanical Amalgam
-				Tooltip: ""
-			}
-
-			Mechanic: {
-				DisplayName: Mechanic
-				Tooltip: ""
+				Tooltip: Summons all 3 Mechanical bosses
 			}
 
 			MutantVoodoo: {
-				DisplayName: Mutant Voodoo
-				Tooltip: ""
+				DisplayName: Mutant Voodoo Doll
+				Tooltip: Summons ALL the bosses
 			}
 
 			PlanterasFruit: {
-				DisplayName: Planteras Fruit
-				Tooltip: ""
+				DisplayName: Plantera's Fruit
+				Tooltip: Summons Plantera
 			}
 
 			PrismaticPrimrose: {
 				DisplayName: Prismatic Primrose
-				Tooltip: ""
+				Tooltip: Summons the Empress of Light
 			}
 
 			SuspiciousSkull: {
 				DisplayName: Suspicious Skull
-				Tooltip: ""
+				Tooltip:
+					'''
+					Summons Skeletron without killing the Clothier
+					Summons the Dungeon Guardian during the day
+					'''
 			}
 
 			SlimyCrown: {
 				DisplayName: Slimy Crown
-				Tooltip: ""
+				Tooltip: Summons King Slime
 			}
 
 			SuspiciousEye: {
-				DisplayName: Suspicious Eye
-				Tooltip: ""
+				DisplayName: Eye That Could Be Seen As Suspicious
+				Tooltip: Summons the Eye of Cthulhu
 			}
 
 			EnergizerBee: {
-				DisplayName: Energizer Bee
-				Tooltip: ""
+				DisplayName: Buzzy Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Overstuffed Larva
+					'Smells like it tastes like honey'
+					'''
 			}
 
 			EnergizerBetsy: {
-				DisplayName: Energizer Betsy
-				Tooltip: ""
+				DisplayName: Draco Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Dragon Egg Trays
+					'You feel like you've waited three thousand years'
+					'''
 			}
 
 			EnergizerBrain: {
-				DisplayName: Energizer Brain
-				Tooltip: ""
+				DisplayName: Brainy Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Brain Storms
+					'You still feel dumb'
+					'''
 			}
 
 			EnergizerCultist: {
-				DisplayName: Energizer Cultist
-				Tooltip: ""
+				DisplayName: Insanity Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Zealot's Madness
+					'You're probably insane'
+					'''
 			}
 
 			EnergizerDarkMage: {
-				DisplayName: Energizer Dark Mage
-				Tooltip: ""
+				DisplayName: Mysterious Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Really Forbidden Tomes
+					'You feel like you've waited one thousand years'
+					'''
 			}
 
 			EnergizerDeer: {
-				DisplayName: Energizer Deer
-				Tooltip: ""
+				DisplayName: Deary Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Deer Amalgamations
+					'Makes you hungry'
+					'''
 			}
 
 			EnergizerDestroy: {
-				DisplayName: Energizer Destroy
-				Tooltip: ""
+				DisplayName: Destruction Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Seismic Actuator
+					'It makes you want to break some kids'
+					'''
 			}
 
 			EnergizerDG: {
-				DisplayName: Energizer D G
-				Tooltip: ""
+				DisplayName: Extra Boney Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Skull Chain Necklaces
+					'Reminds you of a mean cow'
+					'''
 			}
 
 			EnergizerEmpress: {
-				DisplayName: Energizer Empress
-				Tooltip: ""
+				DisplayName: Fairy Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Jars of Lacewings
+					'Wear eye protection when looking'
+					'''
 			}
 
 			EnergizerEye: {
-				DisplayName: Energizer Eye
-				Tooltip: ""
+				DisplayName: Optical Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Eyemalgamations
+					'It feels like it's watching you'
+					'''
 			}
 
 			EnergizerFish: {
-				DisplayName: Energizer Fish
-				Tooltip: ""
+				DisplayName: Fishy Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Truffle Worm Clumps
+					'You feel content'
+					'''
 			}
 
 			EnergizerGolem: {
-				DisplayName: Energizer Golem
-				Tooltip: ""
+				DisplayName: Lihzahrd Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Runic Power Cells
+					'You wish it was spelled "lizard"
+					'''
 			}
 
 			EnergizerMoon: {
-				DisplayName: Energizer Moon
-				Tooltip: ""
+				DisplayName: Lunar Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Runic Conscriptions
+					'You enjoy cheese'
+					'''
 			}
 
 			EnergizerPlant: {
-				DisplayName: Energizer Plant
-				Tooltip: ""
+				DisplayName: Leafy Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Heart of the Jungles
+					'Being a leaf sounds like a good time'
+					'''
 			}
 
 			EnergizerPrime: {
-				DisplayName: Energizer Prime
-				Tooltip: ""
+				DisplayName: Prime Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Primal Control Chips
+					'You feel like a new you'
+					'''
 			}
 
 			EnergizerQueenSlime: {
-				DisplayName: Energizer Queen Slime
-				Tooltip: ""
+				DisplayName: Crystalline Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Swarm Crystals
+					'It feels very slimy'
+					'''
 			}
 
 			EnergizerSkele: {
-				DisplayName: Energizer Skele
-				Tooltip: ""
+				DisplayName: Boney Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Skull Chain Necklaces
+					'Reminds you of a cow'
+					'''
 			}
 
 			EnergizerSlime: {
-				DisplayName: Energizer Slime
-				Tooltip: ""
+				DisplayName: Slimy Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Swarm Crowns
+					'It feels a bit slimy'
+					'''
 			}
 
 			EnergizerTwins: {
-				DisplayName: Energizer Twins
-				Tooltip: ""
+				DisplayName: Sibling Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Omnifocal Lens
+					'You wish you had more'
+					'''
 			}
 
 			EnergizerWall: {
-				DisplayName: Energizer Wall
-				Tooltip: ""
+				DisplayName: Wally Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Bundle of Dolls
+					'You feel claustrophobic'
+					'''
 			}
 
 			EnergizerWorm: {
-				DisplayName: Energizer Worm
-				Tooltip: ""
+				DisplayName: Wormy Energizer
+				Tooltip:
+					'''
+					Formed after using 10 Worm Chickens
+					'It's a little squishy'
+					'''
 			}
 
 			OverloadBee: {
-				DisplayName: Overload Bee
-				Tooltip: ""
+				DisplayName: Overstuffed Larva
+				Tooltip:
+					'''
+					Summons several Queen Bees
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadBetsy: {
-				DisplayName: Overload Betsy
-				Tooltip: ""
+				DisplayName: Dragon Egg Tray
+				Tooltip:
+					'''
+					Summons several Betsys
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadBrain: {
-				DisplayName: Overload Brain
-				Tooltip: ""
+				DisplayName: Brain Storm
+				Tooltip:
+					'''
+					Summons several Brains of Cthulhu
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadCultist: {
-				DisplayName: Overload Cultist
-				Tooltip: ""
+				DisplayName: Zealot's Madness
+				Tooltip:
+					'''
+					Summons several Lunatic Cultists
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadDarkMage: {
-				DisplayName: Overload Dark Mage
-				Tooltip: ""
+				DisplayName: Really Forbidden Tome
+				Tooltip:
+					'''
+					Summons several Dark Mages
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadDeer: {
-				DisplayName: Overload Deer
-				Tooltip: ""
+				DisplayName: Deer Amalgamation
+				Tooltip:
+					'''
+					Summons several Deerclops
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadDestroyer: {
-				DisplayName: Overload Destroyer
-				Tooltip: ""
+				DisplayName: Seismic Actuator
+				Tooltip:
+					'''
+					Summons several Destroyers
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadedSlimeRain: {
-				DisplayName: Overloaded Slime Rain
-				Tooltip: ""
+				DisplayName: Slimy Stormcaller
+				Tooltip:
+					'''
+					Summons an Overloaded Slime Rain
+					Use again to stop the event
+					'''
 			}
 
 			OverloadEmpress: {
-				DisplayName: Overload Empress
-				Tooltip: ""
+				DisplayName: Jar of Lacewings
+				Tooltip:
+					'''
+					Summons several Empresses of Light
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			Overloader: {
 				DisplayName: Overloader
-				Tooltip: ""
+				Tooltip:
+					'''
+					Used to craft swarm summons
+					When used, all summons in the stack will be consumed
+					The more consumed, the more bosses will spawn
+					A Trophy will drop every 10 kills
+					An Energizer will drop every 100 kills
+					'''
 			}
 
 			OverloadEye: {
-				DisplayName: Overload Eye
-				Tooltip: ""
+				DisplayName: Eyemalgamation
+				Tooltip:
+					'''
+					Summons several Eyes of Cthulhu
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadFish: {
-				DisplayName: Overload Fish
-				Tooltip: ""
+				DisplayName: Truffle Worm Clump
+				Tooltip:
+					'''
+					Summons several Duke Fishrons
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadFrostMoon: {
-				DisplayName: Overload Frost Moon
-				Tooltip: ""
+				DisplayName: Naughty Present Sack
+				Tooltip:
+					'''
+					Summons an Overloaded Frost Moon
+					Use again to stop the event
+					'''
 			}
 
 			OverloadGoblins: {
-				DisplayName: Overload Goblins
-				Tooltip: ""
+				DisplayName: Goblin War Banner
+				Tooltip:
+					'''
+					Summons an Overloaded Goblin Invasion
+					Use again to stop the event
+					'''
 			}
 
 			OverloadGolem: {
-				DisplayName: Overload Golem
-				Tooltip: ""
+				DisplayName: Runic Power Cell
+				Tooltip:
+					'''
+					Summons several Golems
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadMartians: {
-				DisplayName: Overload Martians
-				Tooltip: ""
+				DisplayName: Martian Communications Satellite
+				Tooltip:
+					'''
+					Summons an Overloaded Martian Invasion
+					Use again to stop the event
+					'''
 			}
 
 			OverloadMoon: {
-				DisplayName: Overload Moon
-				Tooltip: ""
+				DisplayName: Runic Inscription
+				Tooltip:
+					'''
+					Summons several Moon Lords
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadPirates: {
-				DisplayName: Overload Pirates
-				Tooltip: ""
+				DisplayName: Pirate's Bounty
+				Tooltip:
+					'''
+					Summons an Overloaded Pirate Invasion
+					Use again to stop the event
+					'''
 			}
 
 			OverloadPlant: {
-				DisplayName: Overload Plant
-				Tooltip: ""
+				DisplayName: Heart of the Jungle
+				Tooltip:
+					'''
+					Summons several Planteras
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadPrime: {
-				DisplayName: Overload Prime
-				Tooltip: ""
+				DisplayName: Primal Control Chip
+				Tooltip:
+					'''
+					Summons several Skeletron Primes
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadPumpkinMoon: {
-				DisplayName: Overload Pumpkin Moon
-				Tooltip: ""
+				DisplayName: Overloaded Pumpkin Moon Medallion
+				Tooltip:
+					'''
+					Summons an Overloaded Pumpkin Moon
+					Use again to stop the event
+					'''
 			}
 
 			OverloadQueenSlime: {
-				DisplayName: Overload Queen Slime
-				Tooltip: ""
+				DisplayName: Swarm Crystal
+				Tooltip:
+					'''
+					Summons several Queen Slimes
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadSkele: {
-				DisplayName: Overload Skele
-				Tooltip: ""
+				DisplayName: Skull Chain Necklace
+				Tooltip:
+					'''
+					Summons several Skeletrons during the night
+					Summons several Dungeon Guardians during the day
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadSlimeCrown: {
-				DisplayName: Overload Slime Crown
-				Tooltip: ""
+				DisplayName: Swarm Crown
+				Tooltip:
+					'''
+					Summons several King Slimes
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadTwins: {
-				DisplayName: Overload Twins
-				Tooltip: ""
+				DisplayName: Omnifocal Lens
+				Tooltip:
+					'''
+					Summons several sets of Twins
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadWall: {
-				DisplayName: Overload Wall
-				Tooltip: ""
+				DisplayName: Bundle of Dolls
+				Tooltip:
+					'''
+					Summons several Walls of Flesh
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			OverloadWorm: {
-				DisplayName: Overload Worm
-				Tooltip: ""
+				DisplayName: Worm Chicken
+				Tooltip:
+					'''
+					Summons several Eater of Worlds
+					Only Treasure Bags will be dropped
+					'''
 			}
 
 			TruffleWorm2: {
-				DisplayName: Truffle Worm2
-				Tooltip: ""
-			}
-
-			Truffle: {
-				DisplayName: Truffle
-				Tooltip: ""
+				DisplayName: Truffly Worm
+				Tooltip: Summons Duke Fishron without fishing
 			}
 
 			LihzahrdPowerCell2: {
-				DisplayName: Lihzahrd Power Cell2
-				Tooltip: ""
+				DisplayName: Lihzahrd Battery Pack
+				Tooltip: Summons the Golem without an altar
 			}
 
 			WormyFood: {
 				DisplayName: Wormy Food
-				Tooltip: ""
+				Tooltip: Summons the Eater of Worlds in any biome
 			}
 
 			CrimsonAltar: {
@@ -1273,8 +1648,12 @@ Mods: {
 			}
 
 			CrucibleCosmos: {
-				DisplayName: Crucible Cosmos
-				Tooltip: ""
+				DisplayName: Crucible of the Cosmos
+				Tooltip:
+					'''
+					Functions as every crafting station
+					'It seems to be hiding magnificent power'
+					'''
 			}
 
 			DemonAltar: {
@@ -1284,127 +1663,147 @@ Mods: {
 
 			EchPainting: {
 				DisplayName: Ech Painting
-				Tooltip: ""
+				Tooltip: "'Groalt W. Fai'"
 			}
 
 			ElementalAssembler: {
 				DisplayName: Elemental Assembler
-				Tooltip: ""
+				Tooltip: Functions as several basic crafting stations
 			}
 
 			GoldenDippingVat: {
 				DisplayName: Golden Dipping Vat
-				Tooltip: ""
+				Tooltip: Used to craft Gold Critters
 			}
 
 			MultitaskCenter: {
 				DisplayName: Multitask Center
-				Tooltip: ""
+				Tooltip: Functions as several basic crafting stations
 			}
 
 			Omnistation: {
 				DisplayName: Omnistation
-				Tooltip: ""
+				Tooltip:
+					'''
+					Can be reused infinitely
+					Effects of all vanilla buff stations
+					Grants Honey when touched
+					Greatly increases luck when nearby
+					'''
 			}
 
 			Omnistation2: {
-				DisplayName: Omnistation2
-				Tooltip: ""
-			}
-
-			PurityTotem: {
-				DisplayName: Purity Totem
-				Tooltip: ""
+				DisplayName: Omnistation
+				Tooltip:
+					'''
+					Can be reused infinitely
+					Effects of all vanilla buff stations
+					Grants Honey when touched
+					Greatly increases luck when nearby
+					'''
 			}
 
 			RegalStatue: {
 				DisplayName: Regal Statue
-				Tooltip: ""
+				Tooltip: Town NPCs respawn extremely quickly when nearby
 			}
 
 			Semistation: {
 				DisplayName: Semistation
-				Tooltip: ""
+				Tooltip:
+					'''
+					Can be reused infinitely
+					Effects of some vanilla buff stations
+					'''
 			}
 
 			SiblingPylon: {
 				DisplayName: Sibling Pylon
-				Tooltip: ""
+				Tooltip:
+					'''
+					Teleport to another pylon when Mutant, Abominationn, and Deviantt are nearby
+					You can only place one per type
+					'''
 			}
 
 			UnsafeBlueBrickWall: {
 				DisplayName: Unsafe Blue Brick Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeBlueSlabWall: {
 				DisplayName: Unsafe Blue Slab Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeBlueTileWall: {
 				DisplayName: Unsafe Blue Tile Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeGraniteWall: {
 				DisplayName: Unsafe Granite Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeGreenBrickWall: {
 				DisplayName: Unsafe Green Brick Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeGreenSlabWall: {
 				DisplayName: Unsafe Green Slab Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeGreenTileWall: {
 				DisplayName: Unsafe Green Tile Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeLihzahrdBrickWall: {
 				DisplayName: Unsafe Lihzahrd Brick Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeMarbleWall: {
 				DisplayName: Unsafe Marble Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafePinkBrickWall: {
 				DisplayName: Unsafe Pink Brick Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafePinkSlabWall: {
 				DisplayName: Unsafe Pink Slab Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafePinkTileWall: {
 				DisplayName: Unsafe Pink Tile Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			UnsafeSpiderWall: {
 				DisplayName: Unsafe Spider Wall
-				Tooltip: ""
+				Tooltip: Allows area-specific enemies to spawn
 			}
 
 			WalkingRick: {
 				DisplayName: Walking Rick
-				Tooltip: ""
+				Tooltip: "'Kien R. Oco'"
+			}
+
+			WiresPainting: {
+				DisplayName: Wires Painting
+				Tooltip: "'Look inside'"
 			}
 
 			WoodenToken: {
 				DisplayName: Wooden Token
-				Tooltip: ""
+				Tooltip: "'The sign of a true wood lover'"
 			}
 
 			AbominationnBody: {
@@ -1423,12 +1822,7 @@ Mods: {
 			}
 
 			AbominationnScythe: {
-				DisplayName: Abominationn Scythe
-				Tooltip: ""
-			}
-
-			Abominationn: {
-				DisplayName: Abominationn
+				DisplayName: Abominationn's Scythe
 				Tooltip: ""
 			}
 
@@ -1447,13 +1841,8 @@ Mods: {
 				Tooltip: ""
 			}
 
-			Deviantt: {
-				DisplayName: Deviantt
-				Tooltip: ""
-			}
-
 			LumberHat: {
-				DisplayName: Lumber Hat
+				DisplayName: LumberJack Hat
 				Tooltip: ""
 			}
 
@@ -1487,213 +1876,285 @@ Mods: {
 				Tooltip: ""
 			}
 
-			Mutant: {
-				DisplayName: Mutant
-				Tooltip: ""
+			LumberJaxe: {
+				DisplayName: The Lumber Jaxe
+				Tooltip:
+					'''
+					Hit enemies may drop wood when killed
+					'The former weapon of a true axe wielding hero'
+					'''
 			}
 
-			LumberJaxe: {
-				DisplayName: Lumber Jaxe
-				Tooltip: ""
+			Abominationn: {
+				DisplayName: Abominationn
+				Tooltip: "'I sure wish I was a boss.'"
 			}
 
 			Angler: {
 				DisplayName: Angler
-				Tooltip: ""
+				Tooltip: "'You'd be a great helper minion!'"
 			}
 
 			ArmsDealer: {
 				DisplayName: Arms Dealer
-				Tooltip: ""
+				Tooltip: "'Keep your hands off my gun, buddy!'"
 			}
 
 			Clothier: {
 				DisplayName: Clothier
-				Tooltip: ""
+				Tooltip: "'Thanks again for freeing me from my curse.'"
 			}
 
 			Cyborg: {
 				DisplayName: Cyborg
-				Tooltip: ""
+				Tooltip: "'My expedition efficiency was critically reduced when a projectile impacted my locomotive actuator.'"
 			}
 
 			Demolitionist: {
 				DisplayName: Demolitionist
-				Tooltip: ""
+				Tooltip: "'It's a good day to die!'"
+			}
+
+			Deviantt: {
+				DisplayName: Deviantt
+				Tooltip: "'Embrace suffering... and while you're at it, embrace another purchase!'"
 			}
 
 			Dryad: {
 				DisplayName: Dryad
-				Tooltip: ""
+				Tooltip: "'Be safe; Terraria needs you!'"
 			}
 
 			DyeTrader: {
 				DisplayName: Dye Trader
-				Tooltip: ""
+				Tooltip: "'My dear, what you're wearing is much too drab.'"
 			}
 
 			GoblinTinkerer: {
 				DisplayName: Goblin Tinkerer
-				Tooltip: ""
+				Tooltip: "'Looking for a gadgets expert? I'm your goblin!'"
 			}
 
 			Golfer: {
 				DisplayName: Golfer
-				Tooltip: ""
+				Tooltip: "'An early bird catches the worm, but an early hole catches the birdie.'"
 			}
 
 			Guide: {
 				DisplayName: Guide
-				Tooltip: ""
+				Tooltip: "'They say there is a person who will tell you how to survive in this land.'"
 			}
 
 			LumberJack: {
 				DisplayName: Lumber Jack
-				Tooltip: ""
+				Tooltip: "'I eat a bowl of woodchips for breakfast... without any milk.'"
+			}
+
+			Mechanic: {
+				DisplayName: Mechanic
+				Tooltip: "'Always buy more wire than you need!'"
 			}
 
 			Merchant: {
 				DisplayName: Merchant
-				Tooltip: ""
+				Tooltip: "'Did you say gold? I'll take that off of ya.'"
+			}
+
+			Mutant: {
+				DisplayName: Mutant
+				Tooltip: "'You're lucky I'm on your side.'"
 			}
 
 			Nurse: {
 				DisplayName: Nurse
-				Tooltip: ""
+				Tooltip: "'Show me where it hurts.'"
 			}
 
 			Painter: {
 				DisplayName: Painter
-				Tooltip: ""
+				Tooltip: "'I know the difference between turquoise and blue-green. But I won't tell you.'"
 			}
 
 			PartyGirl: {
 				DisplayName: Party Girl
-				Tooltip: ""
+				Tooltip: "'We have to talk. It's... it's about parties.'"
+			}
+
+			Pirate: {
+				DisplayName: Pirate
+				Tooltip: "'Stay off me booty, ya scallywag!'"
 			}
 
 			SantaClaus: {
 				DisplayName: Santa Claus
-				Tooltip: ""
+				Tooltip: "'What? You thought I wasn't real?'"
 			}
 
 			SkeletonMerchant: {
 				DisplayName: Skeleton Merchant
-				Tooltip: ""
+				Tooltip: "'You would not believe some of the things people throw at me... Wanna buy some of it?'"
 			}
 
 			Squirrel: {
 				DisplayName: Squirrel
-				Tooltip: ""
+				Tooltip: *squeak*
 			}
 
 			Steampunker: {
 				DisplayName: Steampunker
-				Tooltip: ""
+				Tooltip: "'Show me some gears!'"
 			}
 
 			Stylist: {
 				DisplayName: Stylist
-				Tooltip: ""
+				Tooltip: "'Did you even try to brush your hair today?'"
 			}
 
 			Tavernkeep: {
 				DisplayName: Tavernkeep
-				Tooltip: ""
+				Tooltip: "'What am I doing here...'"
 			}
 
 			TaxCollector: {
 				DisplayName: Tax Collector
-				Tooltip: ""
+				Tooltip: "'You again? Suppose you want more money!?'"
 			}
 
 			TravellingMerchant: {
 				DisplayName: Travelling Merchant
-				Tooltip: ""
+				Tooltip: "'I sell wares from places that might not even exist!'"
+			}
+
+			Truffle: {
+				DisplayName: Truffle
+				Tooltip: "'Everyone in this town feels a bit off.'"
 			}
 
 			WitchDoctor: {
 				DisplayName: Witch Doctor
-				Tooltip: ""
+				Tooltip: "'Which doctor am I? The Witch Doctor am I.'"
 			}
 
 			Wizard: {
 				DisplayName: Wizard
-				Tooltip: ""
+				Tooltip: "'Want me to pull a coin from behind your ear? No? Ok.'"
 			}
 
 			Zoologist: {
 				DisplayName: Zoologist
-				Tooltip: ""
+				Tooltip: "'I love animals, like, a lot!'"
 			}
 
 			Princess: {
 				DisplayName: Princess
-				Tooltip: ""
+				Tooltip: "'Pink is the best color anyone could ask for!'"
 			}
 
 			TownDog: {
 				DisplayName: Town Dog
-				Tooltip: ""
+				Tooltip: "'Woof!'"
 			}
 
 			TownCat: {
 				DisplayName: Town Cat
-				Tooltip: ""
+				Tooltip: "'Meow!'"
 			}
 
 			TownBunny: {
 				DisplayName: Town Bunny
-				Tooltip: ""
+				Tooltip: "'*Bunny noises*'"
+			}
+
+			SemiBridgifier: {
+				DisplayName: Semi-Bridgifier
+				Tooltip:
+					'''
+					Can be reused infinitely
+					Upgrades the platform you are standing on to use Semistations
+					Does NOT build a platform!
+					'''
+			}
+
+			PurityTotem: {
+				DisplayName: Purity Totem
+				Tooltip:
+					'''
+					Can be reused infinitely
+					Allows town NPCs to inhabit evil biomes
+					Prevents evil tiles from forming an evil biome
+					Prevents tombstones from forming Graveyards
+					'''
 			}
 		}
 
 		NPCs: {
 			Abominationn.DisplayName: Abominationn
 			Deviantt.DisplayName: Deviantt
-			LumberJack.DisplayName: Lumber Jack
+			LumberJack.DisplayName: LumberJack
 			Mutant.DisplayName: Mutant
 			Squirrel.DisplayName: Squirrel
 			SuperDummy.DisplayName: Super Dummy
 		}
 
 		Projectiles: {
-			CorruptNukeProj.DisplayName: Corrupt Nuke Proj
-			CorruptNukeSupremeProj.DisplayName: Corrupt Nuke Supreme Proj
-			CrimsonNukeProj.DisplayName: Crimson Nuke Proj
-			CrimsonNukeSupremeProj.DisplayName: Crimson Nuke Supreme Proj
-			DeathScythe.DisplayName: Death Scythe
+			CorruptNukeProj.DisplayName: CorruptRenewal
+			CorruptNukeSupremeProj.DisplayName: CorruptRenewalSupreme
+			CrimsonNukeProj.DisplayName: CrimsonRenewal
+			CrimsonNukeSupremeProj.DisplayName: CrimsonRenewalSupreme
+			DeathScythe.DisplayName: Abominationn Scythe
 			Explosion.DisplayName: Explosion
-			AltarExterminatorProj.DisplayName: Altar Exterminator Proj
+			AltarExterminatorProj.DisplayName: Altar Exterminator
 			AutoHouseProj.DisplayName: Auto House Proj
 			CityBuster.DisplayName: City Buster
-			DoubleObsInstaBridgeProj.DisplayName: Double Obs Insta Bridge Proj
+			DoubleObsInstaBridgeProj.DisplayName: Double Obsidian Instabridge
 			GraveBuster.DisplayName: Grave Buster
-			HalfInstaProj.DisplayName: Half Insta Proj
-			InstabridgeProj.DisplayName: Instabridge Proj
+			HalfInstaProj.DisplayName: Half Instavator
+			InstabridgeProj.DisplayName: Instabridge
 			InstaHouseVisual.DisplayName: Insta House Visual
-			InstaProj.DisplayName: Insta Proj
-			InstatrackProj.DisplayName: Instatrack Proj
-			LihzahrdInstactuationBombProj.DisplayName: Lihzahrd Instactuation Bomb Proj
-			MiniInstabridgeProj.DisplayName: Mini Instabridge Proj
-			ObsInstabridgeProj.DisplayName: Obs Instabridge Proj
-			OmniBridgifierProj.DisplayName: Omni Bridgifier Proj
-			SemiBridgifierProj.DisplayName: Semi Bridgifier Proj
-			ShurikenProj.DisplayName: Shuriken Proj
-			EyeProjectile.DisplayName: Eye Projectile
-			FakeHeart2Deviantt.DisplayName: Fake Heart2 Deviantt
-			FakeHeartDeviantt.DisplayName: Fake Heart Deviantt
-			FakeHeartMarkDeviantt.DisplayName: Fake Heart Mark Deviantt
-			HallowNukeProj.DisplayName: Hallow Nuke Proj
-			HallowNukeSupremeProj.DisplayName: Hallow Nuke Supreme Proj
-			LumberJaxe.DisplayName: Lumber Jaxe
-			MechEyeProjectile.DisplayName: Mech Eye Projectile
-			MushroomNukeProj.DisplayName: Mushroom Nuke Proj
-			MushroomNukeSupremeProj.DisplayName: Mushroom Nuke Supreme Proj
-			PhantasmalEyeProjectile.DisplayName: Phantasmal Eye Projectile
-			PurityNukeProj.DisplayName: Purity Nuke Proj
-			PurityNukeSupremeProj.DisplayName: Purity Nuke Supreme Proj
-			SpawnProj.DisplayName: Spawn Proj
+			InstaProj.DisplayName: Instavator
+			InstatrackProj.DisplayName: Instatrack
+			LihzahrdInstactuationBombProj.DisplayName: Lihzahrd Instactuation Bomb
+			MiniInstabridgeProj.DisplayName: Mini Instabridge
+			ObsInstabridgeProj.DisplayName: Obsidian Instabridge
+			OmniBridgifierProj.DisplayName: Omni-Bridgifier
+			ShurikenProj.DisplayName: Shuriken
+			EyeProjectile.DisplayName: EyeProjectile
+			FakeHeart2Deviantt.DisplayName: Fake Heart
+			FakeHeartDeviantt.DisplayName: Fake Heart
+			FakeHeartMarkDeviantt.DisplayName: Fake Heart
+			HallowNukeProj.DisplayName: HallowRenewal
+			HallowNukeSupremeProj.DisplayName: HallowRenewalSupreme
+			LumberJaxe.DisplayName: LumberJaxe
+			MechEyeProjectile.DisplayName: MechEyeProjectile
+			MushroomNukeProj.DisplayName: MushroomRenewal
+			MushroomNukeSupremeProj.DisplayName: MushroomRenewalSupreme
+			PhantasmalEyeProjectile.DisplayName: PhantasmalEyeProjectile
+			PurityNukeProj.DisplayName: PurityRenewal
+			PurityNukeSupremeProj.DisplayName: PurityRenewalSupreme
+			SpawnProj.DisplayName: Spawn
+			SemiBridgifierProj.DisplayName: Semi-Bridgifier
+		}
+
+		Tiles: {
+			CrimsonAltarSheet.MapEntry: Crimson Altar
+			CrucibleCosmosSheet.MapEntry: Crucible of the Cosmos
+			DemonAltarSheet.MapEntry: Demon Altar
+			ElementalAssemblerSheet.MapEntry: Elemental Assembler
+			GoldenDippingVatSheet.MapEntry: Golden Dipping Vat
+			MultitaskCenterSheet.MapEntry: Multitask Center
+			OmnistationSheet.MapEntry: Omnistation
+			OmnistationSheet2.MapEntry: Omnistation
+			RegalStatueSheet.MapEntry: Regal Statue
+			SemistationSheet.MapEntry: Semistation
+			SiblingPylonTile.MapEntry: Mods.Fargowiltas.MapObject.SiblingPylonTile
+			PurityTotemSheet.MapEntry: Purity Totem
+		}
+
+		Keybinds: {
+			"Quick Recall/Mirror.DisplayName": Mods.Fargowiltas.Keybinds.Quick Recall/Mirror.DisplayName
+			"Quick Rod of Discord.DisplayName": Mods.Fargowiltas.Keybinds.Quick Rod of Discord.DisplayName
+			"Quick Use Custom (Bottom Left Inventory Slot).DisplayName": Mods.Fargowiltas.Keybinds.Quick Use Custom (Bottom Left Inventory Slot).DisplayName
+			"Open Stat Sheet.DisplayName": Mods.Fargowiltas.Keybinds.Open Stat Sheet.DisplayName
 		}
 	}
 }
