@@ -149,11 +149,11 @@ Mods: {
 			DebuffFaderRatio: "[i:1612] Debuff Duration Fader Strength"
 			TransparentFriendlyProjectiles: "[i:1309] Transparent Friendly Projectiles"
 			TransparentFriendlyProjectilesTooltip: Use with vanilla setting for Quality at Medium or Low for best results
-			Mutant: "[i:5446] [c/ffffff:{$Mods.Fargowiltas.NPCName.Mutant} {$Mods.Fargowiltas.Config.CanSpawn}]"
-			Abom: "[i:5435] [c/ffffff:{$Mods.Fargowiltas.NPCName.Abominationn} {$Mods.Fargowiltas.Config.CanSpawn}]"
-			Devi: "[i:5439] [c/ffffff:{$Mods.Fargowiltas.NPCName.Deviantt} {$Mods.Fargowiltas.Config.CanSpawn}]"
-			Lumber: "[i:5443] [c/ffffff:{$Mods.Fargowiltas.NPCName.LumberJack} {$Mods.Fargowiltas.Config.CanSpawn}]"
-			Squirrel: "[i:239] [c/ffffff:{$Mods.Fargowiltas.NPCName.Squirrel} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Mutant: "[i:5446] [c/ffffff:{$Mods.Fargowiltas.NPCs.Mutant.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Abom: "[i:5435] [c/ffffff:{$Mods.Fargowiltas.NPCs.Abominationn.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Devi: "[i:5439] [c/ffffff:{$Mods.Fargowiltas.NPCs.Deviantt.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Lumber: "[i:5443] [c/ffffff:{$Mods.Fargowiltas.NPCs.LumberJack.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Squirrel: "[i:239] [c/ffffff:{$Mods.Fargowiltas.NPCs.Squirrel.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
 		}
 
 		RecipeGroups: {
