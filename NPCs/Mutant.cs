@@ -35,7 +35,7 @@ namespace Fargowiltas.NPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mutant");
+            // DisplayName.SetDefault("Mutant");
 
             Main.npcFrameCount[NPC.type] = 25;
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
@@ -129,7 +129,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override bool CanTownNPCSpawn(int numTownnpcs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantAlive"))
             {
@@ -364,11 +364,13 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             if (firstButton)
             {
-                shop = true;
+                //TODO: fix shops i didn't touch these at all
+
+                //shop = true;
 
                 switch (shopNum)
                 {
@@ -422,8 +424,10 @@ namespace Fargowiltas.NPCs
             nextSlot++;
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)
+        public override void ModifyActiveShop(string shopName, Item[] items)
         {
+            //TODO: fix shops i didn't touch these at all
+            /*
             AddItem(Main.expertMode, ModContent.ItemType<Overloader>(), 400000, ref shop, ref nextSlot);
 
             if (prehardmodeShop)
@@ -468,6 +472,7 @@ namespace Fargowiltas.NPCs
 
                 AddItem(true, ModContent.ItemType<AncientSeal>(), 100000000, ref shop, ref nextSlot);
             }
+            */
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -548,13 +553,13 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0)
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hitDirection, -2.5f, Scale: 0.8f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hit.HitDirection, -2.5f, Scale: 0.8f);
                 }
 
                 if (!Main.dedServ)
@@ -571,9 +576,9 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
+                for (int k = 0; k < hit.Damage / NPC.lifeMax * 50.0; k++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, Scale: 0.6f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hit.HitDirection, -1f, Scale: 0.6f);
                 }
             }
         }

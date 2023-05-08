@@ -30,7 +30,7 @@ namespace Fargowiltas.NPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Deviantt");
+            // DisplayName.SetDefault("Deviantt");
 
             Main.npcFrameCount[NPC.type] = 23;
             NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
@@ -100,7 +100,7 @@ namespace Fargowiltas.NPCs
             NPC.buffImmune[BuffID.Suffocation] = true;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
                 return false;
@@ -306,11 +306,13 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             if (firstButton)
             {
-                shop = true;
+                //TODO: fix shops i haven't touched this
+
+                //shop = true;
             }
             else if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode"))
             {
@@ -328,8 +330,10 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)
+        public override void ModifyActiveShop(string shopName, Item[] items)
         {
+            //TODO: fix shops i haven't touched this
+            /*
             if (Fargowiltas.ModLoaded["FargowiltasSoulsDLC"] && TryFind("FargowiltasSoulsDLC", "PandorasBox", out ModItem pandorasBox))
             {
                 shop.item[nextSlot].SetDefaults(pandorasBox.Type);
@@ -338,11 +342,11 @@ namespace Fargowiltas.NPCs
 
             if (Fargowiltas.ModLoaded["FargowiltasSouls"])
             {
-                /*if (TryFind("FargowiltasSouls", "EurusSock", out ModItem eurusSock))
-                {
-                    shop.item[nextSlot].SetDefaults(eurusSock.Type);
-                    nextSlot++;
-                }*/
+                //if (TryFind("FargowiltasSouls", "EurusSock", out ModItem eurusSock))
+                //{
+                //    shop.item[nextSlot].SetDefaults(eurusSock.Type);
+                //    nextSlot++;
+                //}
 
                 if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode") && TryFind("FargowiltasSouls", "EternityAdvisor", out ModItem advisor))
                 {
@@ -388,6 +392,7 @@ namespace Fargowiltas.NPCs
             AddItem(NPC.downedPlantBoss && FargoWorld.DownedBools["paladin"], ItemType<GrandCross>(), Item.buyPrice(0, 15), ref shop, ref nextSlot);
             AddItem(NPC.downedPlantBoss && FargoWorld.DownedBools["skeletonGun"], ItemType<AmalgamatedSkull>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
             AddItem(NPC.downedPlantBoss && FargoWorld.DownedBools["skeletonMage"], ItemType<AmalgamatedSpirit>(), Item.buyPrice(0, 30), ref shop, ref nextSlot);
+            */
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -430,13 +435,13 @@ namespace Fargowiltas.NPCs
             randomOffset = 0f;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0)
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * (float)hitDirection, -2.5f, 0, default, 0.8f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * (float)hit.HitDirection, -2.5f, 0, default, 0.8f);
                 }
 
                 if (!Main.dedServ)
@@ -453,9 +458,9 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
+                for (int k = 0; k < hit.Damage / NPC.lifeMax * 50.0; k++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, 0, default, 0.6f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hit.HitDirection, -1f, 0, default, 0.6f);
                 }
             }
         }

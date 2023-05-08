@@ -46,7 +46,7 @@ namespace Fargowiltas.NPCs
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Squirrel");
+			// DisplayName.SetDefault("Squirrel");
 			Main.npcFrameCount[NPC.type] = 6;
 			NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
 			NPCID.Sets.AttackFrameCount[NPC.type] = 4;
@@ -106,7 +106,7 @@ namespace Fargowiltas.NPCs
             NPC.dontTakeDamage = Main.bloodMoon;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             if (FargoGlobalNPC.AnyBossAlive())
             {
@@ -178,14 +178,18 @@ namespace Fargowiltas.NPCs
             }
         }
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
 			{
-				shop = true;
+                
+                //TODO: fix shops i didn't touch these at all
+
+				//shop = true;
 			}
             else
             {
+                //This is not part of TODO this was here before
                 /*if (Main.hardMode) //ask player why they don't have biocluster
                 {
                     bool playerHasBiocluster = false;
@@ -436,8 +440,10 @@ namespace Fargowiltas.NPCs
 
         const int maxShop = 40;
 
-        public override void SetupShop(Chest shop, ref int nextSlot)
+        public override void ModifyActiveShop(string shopName, Item[] items)
         {
+            //TODO: fix shops i didn't touch these at all
+            /*
             nextSlot = 0; //ignore pylon and anything else inserted into shop
 
             if (shopNum == 0 && TryFind("FargowiltasSouls/TopHatSquirrelCaught", out ModItem modItem)) //only on page 1
@@ -499,6 +505,7 @@ namespace Fargowiltas.NPCs
                 }
                 nextSlot++;
             }
+            */
         }
 
         public override bool CheckDead()

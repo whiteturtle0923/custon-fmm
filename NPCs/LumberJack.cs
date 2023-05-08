@@ -36,7 +36,7 @@ namespace Fargowiltas.NPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("LumberJack");
+            // DisplayName.SetDefault("LumberJack");
 
             Main.npcFrameCount[NPC.type] = 25;
 
@@ -92,7 +92,7 @@ namespace Fargowiltas.NPCs
             //}
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             return GetInstance<FargoConfig>().Lumber && FargoWorld.DownedBools.TryGetValue("lumberjack", out bool down) && down;
         }
@@ -167,13 +167,14 @@ namespace Fargowiltas.NPCs
             button2 = "Tree Treasures";
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             Player player = Main.LocalPlayer;
 
             if (firstButton)
             {
-                shop = true;
+                //TODO: fix shops i didn't touch these at all
+                //shop = true;
                 return;
             }
 
@@ -337,8 +338,10 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)
+        public override void ModifyActiveShop(string shopName, Item[] items)
         {
+            //TODO: fix shops i didn't touch these at all
+            /*
             shop.item[nextSlot].SetDefaults(ItemID.WoodPlatform);
             shop.item[nextSlot].shopCustomPrice = 5;
             nextSlot++;
@@ -416,6 +419,7 @@ namespace Fargowiltas.NPCs
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<WoodenToken>());
             shop.item[nextSlot].shopCustomPrice = 10000;
             nextSlot++;
+            */
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -447,13 +451,13 @@ namespace Fargowiltas.NPCs
             FargoWorld.DownedBools["lumberjack"] = true;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             if (NPC.life <= 0)
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hitDirection, -2.5f, Scale: 0.8f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hit.HitDirection, -2.5f, Scale: 0.8f);
                 }
 
                 if (!Main.dedServ)
@@ -470,9 +474,9 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                for (int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
+                for (int k = 0; k < hit.Damage / NPC.lifeMax * 50.0; k++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hitDirection, -1f, Scale: 0.6f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, hit.HitDirection, -1f, Scale: 0.6f);
                 }
             }
         }
