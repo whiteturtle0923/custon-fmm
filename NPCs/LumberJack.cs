@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.Items.Vanity;
+using Fargowiltas.Items.Weapons;
 using Fargowiltas.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -167,14 +168,15 @@ namespace Fargowiltas.NPCs
             button2 = "Tree Treasures";
         }
 
+        public const string ShopName = "Shop";
+
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             Player player = Main.LocalPlayer;
 
             if (firstButton)
             {
-                //TODO: fix shops i didn't touch these at all
-                //shop = true;
+                shopName = ShopName;
                 return;
             }
 
@@ -338,88 +340,34 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public override void AddShops()
+        {
+            var npcShop = new NPCShop(Type, ShopName)
+                .Add(new Item(ItemID.WoodPlatform) { shopCustomPrice = Item.buyPrice(copper: 5) })
+                .Add(new Item(ItemID.Wood) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ItemID.BorealWood) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ItemID.RichMahogany) { shopCustomPrice = Item.buyPrice(copper: 15) })
+                .Add(new Item(ItemID.PalmWood) { shopCustomPrice = Item.buyPrice(copper: 15) })
+                .Add(new Item(ItemID.Ebonwood) { shopCustomPrice = Item.buyPrice(copper: 15) })
+                .Add(new Item(ItemID.Shadewood) { shopCustomPrice = Item.buyPrice(copper: 15) })
+                .Add(new Item(ItemID.Pearlwood) { shopCustomPrice = Item.buyPrice(copper: 20) })
+                .Add(new Item(ItemID.SpookyWood) { shopCustomPrice = Item.buyPrice(copper: 50) }, Condition.DownedPumpking)
+                .Add(new Item(ItemID.Cactus) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ItemID.BambooBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ItemID.LivingWoodWand) { shopCustomPrice = Item.buyPrice(copper: 10000) })
+                .Add(new Item(ItemType<LumberjackMask>()) { shopCustomPrice = Item.buyPrice(copper: 10000) })
+                .Add(new Item(ItemType<LumberjackBody>()) { shopCustomPrice = Item.buyPrice(copper: 10000) })
+                .Add(new Item(ItemType<LumberjackPants>()) { shopCustomPrice = Item.buyPrice(copper: 10000) })
+                .Add(new Item(ItemType<Items.Weapons.LumberJaxe>()) { shopCustomPrice = Item.buyPrice(copper: 10000) })
+                .Add(new Item(ItemID.SharpeningStation) { shopCustomPrice = Item.buyPrice(copper: 100000) })
+                .Add(new Item(ItemType<WoodenToken>()) { shopCustomPrice = Item.buyPrice(copper: 10000) })
+                ;
+
+            npcShop.Register();
+        }
+
         public override void ModifyActiveShop(string shopName, Item[] items)
         {
-            //TODO: fix shops i didn't touch these at all
-            /*
-            shop.item[nextSlot].SetDefaults(ItemID.WoodPlatform);
-            shop.item[nextSlot].shopCustomPrice = 5;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Wood);
-            shop.item[nextSlot].shopCustomPrice = 10;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.BorealWood);
-            shop.item[nextSlot].shopCustomPrice = 10;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.RichMahogany);
-            shop.item[nextSlot].shopCustomPrice = 15;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.PalmWood);
-            shop.item[nextSlot].shopCustomPrice = 15;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Ebonwood);
-            shop.item[nextSlot].shopCustomPrice = 15;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Shadewood);
-            shop.item[nextSlot].shopCustomPrice = 15;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Pearlwood);
-            shop.item[nextSlot].shopCustomPrice = 20;
-            nextSlot++;
-
-            if (NPC.downedHalloweenKing)
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.SpookyWood);
-                shop.item[nextSlot].shopCustomPrice = 50;
-                nextSlot++;
-            }
-
-
-            shop.item[nextSlot].SetDefaults(ItemID.Cactus);
-            shop.item[nextSlot].shopCustomPrice = 10;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.BambooBlock);
-            shop.item[nextSlot].shopCustomPrice = 10;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.LivingWoodWand);
-            shop.item[nextSlot].shopCustomPrice = 10000;
-            nextSlot++;
-
-
-
-            shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackMask>());
-            shop.item[nextSlot].shopCustomPrice = 10000;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackBody>());
-            shop.item[nextSlot].shopCustomPrice = 10000;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ModContent.ItemType<LumberjackPants>());
-            shop.item[nextSlot].shopCustomPrice = 10000;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Weapons.LumberJaxe>());
-            shop.item[nextSlot].shopCustomPrice = 10000;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.SharpeningStation);
-            shop.item[nextSlot].shopCustomPrice = 100000;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ModContent.ItemType<WoodenToken>());
-            shop.item[nextSlot].shopCustomPrice = 10000;
-            nextSlot++;
-            */
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -436,7 +384,7 @@ namespace Fargowiltas.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ModContent.ProjectileType<LumberJaxe>();
+            projType = ModContent.ProjectileType<Projectiles.LumberJaxe>();
             attackDelay = 1;
         }
 

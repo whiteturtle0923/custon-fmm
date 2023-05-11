@@ -2156,8 +2156,19 @@ Mods: {
 			"Quick Use Custom (Bottom Left Inventory Slot).DisplayName": Mods.Fargowiltas.Keybinds.Quick Use Custom (Bottom Left Inventory Slot).DisplayName
 			"Open Stat Sheet.DisplayName": Mods.Fargowiltas.Keybinds.Open Stat Sheet.DisplayName
 		}
+
+		Conditions: {
+			BossDown: Mods.Fargowiltas.Conditions.BossDown
+			DutchmanDown: Mods.Fargowiltas.Conditions.DutchmanDown
+			MageDown: Mods.Fargowiltas.Conditions.MageDown
+			OgreDown: Mods.Fargowiltas.Conditions.OgreDown
+			BetsyDown: Mods.Fargowiltas.Conditions.BetsyDown
+			PillarsDown: Mods.Fargowiltas.Conditions.PillarsDown
+			Downed: Mods.Fargowiltas.Conditions.Downed
+		}
 	}
 }
+
 # this doesnt work rn
 TownNPCMood_Princess: {
 	LoveNPC_Fargowiltas/Abominationn: "{NPCName} tells great stories about his battles!"

@@ -13,14 +13,13 @@ using Fargowiltas.Projectiles;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using Fargowiltas.ShoppingBiomes;
+using Fargowiltas.Items.Summons.Abom;
 
 namespace Fargowiltas.NPCs
 {
     [AutoloadHead]
     public class Mutant : ModNPC
     {
-        private static bool prehardmodeShop;
-        private static bool hardmodeShop;
         private static int shopNum = 1;
 
         internal bool spawned;
@@ -364,27 +363,24 @@ namespace Fargowiltas.NPCs
             }
         }
 
+        public const string ShopName1 = "Pre Hardmode Shop";
+        public const string ShopName2 = "Hardmode Shop";
+        public const string ShopName3 = "Post Moon Lord Shop";
+
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             if (firstButton)
             {
-                //TODO: fix shops i didn't touch these at all
-
-                //shop = true;
-
                 switch (shopNum)
                 {
                     case 1:
-                        prehardmodeShop = true;
-                        hardmodeShop = false;
+                        shopName= ShopName1;
                         break;
                     case 2:
-                        hardmodeShop = true;
-                        prehardmodeShop = false;
+                        shopName = ShopName2;
                         break;
                     default:
-                        prehardmodeShop = false;
-                        hardmodeShop = false;
+                        shopName = ShopName3;
                         break;
                 }
             }
@@ -392,6 +388,55 @@ namespace Fargowiltas.NPCs
             {
                 shopNum++;
             }
+        }
+
+        public override void AddShops()
+        {
+            var npcShop1 = new NPCShop(Type, ShopName1)
+                .Add(new Item(ItemType<Overloader>()) { shopCustomPrice = Item.buyPrice(copper: 400000) }, Condition.InExpertMode)
+                .Add(new Item(ItemType<ModeToggle>()));
+
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && TryFind("FargowiltasSouls", "Masochist", out ModItem masochist))
+            {
+                npcShop1.Add(new Item(masochist.Type) { shopCustomPrice = Item.buyPrice(copper: 10000) }); //mutants gift
+            }
+
+            foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
+            {
+                //phm
+                if (summon.progression <= MutantSummonTracker.WallOfFlesh)
+                {
+                    npcShop1.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("Mods.Fargowiltas.Conditions.Downed", summon.downed));
+                }
+            }
+
+            var npcShop2 = new NPCShop(Type, ShopName2);
+
+            foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
+            {
+                //hm
+                if (summon.progression > MutantSummonTracker.WallOfFlesh && summon.progression <= MutantSummonTracker.Moonlord)
+                {
+                    npcShop2.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("Mods.Fargowiltas.Conditions.Downed", summon.downed));
+                }
+            }
+
+            var npcShop3 = new NPCShop(Type, ShopName3);
+
+            foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
+            {
+                //post ml
+                if (summon.progression > MutantSummonTracker.Moonlord)
+                {
+                    npcShop3.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("Mods.Fargowiltas.Conditions.Downed", summon.downed));
+                }
+            }
+
+            npcShop3.Add(new Item(ItemType<AncientSeal>()) { shopCustomPrice = Item.buyPrice(copper: 100000000) });
+
+            npcShop1.Register();
+            npcShop2.Register();
+            npcShop3.Register();
         }
 
         public static void AddItem(bool check, int itemType, int price, ref Chest shop, ref int nextSlot)
@@ -426,53 +471,6 @@ namespace Fargowiltas.NPCs
 
         public override void ModifyActiveShop(string shopName, Item[] items)
         {
-            //TODO: fix shops i didn't touch these at all
-            /*
-            AddItem(Main.expertMode, ModContent.ItemType<Overloader>(), 400000, ref shop, ref nextSlot);
-
-            if (prehardmodeShop)
-            {
-                AddItem(true, ModContent.ItemType<ModeToggle>(), -1, ref shop, ref nextSlot);
-
-                if (Fargowiltas.ModLoaded["FargowiltasSouls"] && TryFind("FargowiltasSouls", "Masochist", out ModItem masochist))
-                {
-                    AddItem(true, masochist.Type, 10000, ref shop, ref nextSlot); // mutants gift, dam meme namer
-                }
-
-                foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
-                {
-                    //phm
-                    if (summon.progression <= MutantSummonTracker.WallOfFlesh)
-                    {
-                        AddItem(summon.downed(), summon.itemId, summon.price, ref shop, ref nextSlot);
-                    }
-                }
-            }
-            else if (hardmodeShop)
-            {
-                foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
-                {
-                    //hm
-                    if (summon.progression > MutantSummonTracker.WallOfFlesh && summon.progression <= MutantSummonTracker.Moonlord)
-                    {
-                        AddItem(summon.downed(), summon.itemId, summon.price, ref shop, ref nextSlot);
-                    }
-                }
-            }
-            else
-            {
-                foreach (MutantSummonInfo summon in Fargowiltas.summonTracker.SortedSummons)
-                {
-                    //post ml
-                    if (summon.progression > MutantSummonTracker.Moonlord)
-                    {
-                        AddItem(summon.downed(), summon.itemId, summon.price, ref shop, ref nextSlot);
-                    }
-                }
-
-                AddItem(true, ModContent.ItemType<AncientSeal>(), 100000000, ref shop, ref nextSlot);
-            }
-            */
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
