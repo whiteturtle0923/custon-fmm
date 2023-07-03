@@ -190,7 +190,6 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                //This is not part of TODO this was here before
                 /*if (Main.hardMode) //ask player why they don't have biocluster
                 {
                     bool playerHasBiocluster = false;

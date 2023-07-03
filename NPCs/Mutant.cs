@@ -14,6 +14,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using Fargowiltas.ShoppingBiomes;
 using Fargowiltas.Items.Summons.Abom;
+using Fargowiltas.Items.Tiles;
 
 namespace Fargowiltas.NPCs
 {
@@ -433,6 +434,10 @@ namespace Fargowiltas.NPCs
             }
 
             npcShop3.Add(new Item(ItemType<AncientSeal>()) { shopCustomPrice = Item.buyPrice(copper: 100000000) });
+
+            npcShop1.Add(new Item(ItemType<SiblingPylon>()), new Condition("Mods.Fargowiltas.Conditions.SiblingPylon", () => (Condition.HappyEnough.IsMet() && NPC.AnyNPCs(NPCType<Mutant>()) && NPC.AnyNPCs(NPCType<Abominationn>())) && NPC.AnyNPCs(NPCType<Deviantt>())));
+            npcShop2.Add(new Item(ItemType<SiblingPylon>()), new Condition("Mods.Fargowiltas.Conditions.SiblingPylon", () => (Condition.HappyEnough.IsMet() && NPC.AnyNPCs(NPCType<Mutant>()) && NPC.AnyNPCs(NPCType<Abominationn>())) && NPC.AnyNPCs(NPCType<Deviantt>())));
+            npcShop3.Add(new Item(ItemType<SiblingPylon>()), new Condition("Mods.Fargowiltas.Conditions.SiblingPylon", () => (Condition.HappyEnough.IsMet() && NPC.AnyNPCs(NPCType<Mutant>()) && NPC.AnyNPCs(NPCType<Abominationn>())) && NPC.AnyNPCs(NPCType<Deviantt>())));
 
             npcShop1.Register();
             npcShop2.Register();

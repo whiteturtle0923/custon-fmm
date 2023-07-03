@@ -66,7 +66,6 @@ namespace Fargowiltas.Items.CaughtNPCs
             // Tooltip.SetDefault(NpcQuote);
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, Main.npcFrameCount[AssociatedNpcId]));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
-
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Item.type] = 5;
         }
 

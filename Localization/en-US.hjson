@@ -149,10 +149,10 @@ Mods: {
 			DebuffFaderRatio: "[i:1612] Debuff Duration Fader Strength"
 			TransparentFriendlyProjectiles: "[i:1309] Transparent Friendly Projectiles"
 			TransparentFriendlyProjectilesTooltip: Use with vanilla setting for Quality at Medium or Low for best results
-			Mutant: "[i:5446] [c/ffffff:{$Mods.Fargowiltas.NPCs.Mutant.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
-			Abom: "[i:5435] [c/ffffff:{$Mods.Fargowiltas.NPCs.Abominationn.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
-			Devi: "[i:5439] [c/ffffff:{$Mods.Fargowiltas.NPCs.Deviantt.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
-			Lumber: "[i:5443] [c/ffffff:{$Mods.Fargowiltas.NPCs.LumberJack.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Mutant: "[i:Fargowiltas/MutantMask] [c/ffffff:{$Mods.Fargowiltas.NPCs.Mutant.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Abom: "[i:Fargowiltas/AbominationnMask] [c/ffffff:{$Mods.Fargowiltas.NPCs.Abominationn.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Devi: "[i:Fargowiltas/DevianttMask] [c/ffffff:{$Mods.Fargowiltas.NPCs.Deviantt.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
+			Lumber: "[i:Fargowiltas/LumberjackMask] [c/ffffff:{$Mods.Fargowiltas.NPCs.LumberJack.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
 			Squirrel: "[i:239] [c/ffffff:{$Mods.Fargowiltas.NPCs.Squirrel.DisplayName} {$Mods.Fargowiltas.Config.CanSpawn}]"
 		}
 
@@ -2088,11 +2088,108 @@ Mods: {
 		}
 
 		NPCs: {
-			Abominationn.DisplayName: Abominationn
-			Deviantt.DisplayName: Deviantt
-			LumberJack.DisplayName: LumberJack
-			Mutant.DisplayName: Mutant
-			Squirrel.DisplayName: Squirrel
+			Abominationn: {
+				DisplayName: Abominationn
+
+				TownNPCMood: {
+					Content: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.Content}"
+					NoHome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.NoHome}"
+					FarFromHome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.FarFromHome}"
+					LoveSpace: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LoveSpace}"
+					DislikeCrowded: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.DislikeCrowded}"
+					HateCrowded: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.HateCrowded}"
+					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LoveBiome}"
+					LikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LikeBiome}"
+					DislikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.DislikeBiome}"
+					LoveNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LoveNPC}"
+					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LikeNPC}"
+					HateNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.HateNPC}"
+					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LikeNPC_Princess}"
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Abominationn}"
+				}
+			}
+
+			Deviantt: {
+				DisplayName: Deviantt
+
+				TownNPCMood: {
+					Content: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.Content}"
+					NoHome: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.NoHome}"
+					FarFromHome: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.FarFromHome}"
+					LoveSpace: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.LoveSpace}"
+					DislikeCrowded: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.DislikeCrowded}"
+					HateCrowded: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.HateCrowded}"
+					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.LoveBiome}"
+					LikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.LikeBiome}"
+					DislikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.DislikeBiome}"
+					HateBiome: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.HateBiome}"
+					LoveNPC: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.LoveNPC}"
+					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.LikeNPC}"
+					DislikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.DislikeNPC}"
+					HateNPC: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.HateNPC}"
+					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.LikeNPC_Princess}"
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Deviantt}"
+				}
+			}
+
+			LumberJack: {
+				DisplayName: LumberJack
+
+				TownNPCMood: {
+					Content: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.Content}"
+					NoHome: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.NoHome}"
+					FarFromHome: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.FarFromHome}"
+					LoveSpace: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LoveSpace}"
+					DislikeCrowded: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.DislikeCrowded}"
+					HateCrowded: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.HateCrowded}"
+					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LoveBiome}"
+					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LikeNPC}"
+					DislikeNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.DislikeNPC}"
+					HateNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.HateNPC}"
+					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LikeNPC_Princess}"
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/LumberJack}"
+				}
+			}
+
+			Mutant: {
+				DisplayName: Mutant
+
+				TownNPCMood: {
+					Content: "{$Mods.Fargowiltas.TownNPCMood.Mutant.Content}"
+					NoHome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.NoHome}"
+					FarFromHome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.FarFromHome}"
+					LoveSpace: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LoveSpace}"
+					DislikeCrowded: "{$Mods.Fargowiltas.TownNPCMood.Mutant.DislikeCrowded}"
+					HateCrowded: "{$Mods.Fargowiltas.TownNPCMood.Mutant.HateCrowded}"
+					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LoveBiome}"
+					LikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LikeBiome}"
+					DislikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.DislikeBiome}"
+					LoveNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LoveNPC}"
+					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LikeNPC}"
+					DislikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.DislikeNPC}"
+					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LikeNPC_Princess}"
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Mutant}"
+				}
+			}
+
+			Squirrel: {
+				DisplayName: Squirrel
+
+				TownNPCMood: {
+					Content: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.Content}"
+					NoHome: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.NoHome}"
+					FarFromHome: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.FarFromHome}"
+					LoveSpace: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.LoveSpace}"
+					DislikeCrowded: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.DislikeCrowded}"
+					HateCrowded: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.HateCrowded}"
+					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.LoveBiome}"
+					HateBiome: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.HateBiome}"
+					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.LikeNPC}"
+					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.LikeNPC_Princess}"
+					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Squirrel}"
+				}
+			}
+
 			SuperDummy.DisplayName: Super Dummy
 		}
 
@@ -2150,13 +2247,6 @@ Mods: {
 			PurityTotemSheet.MapEntry: Purity Totem
 		}
 
-		Keybinds: {
-			"Quick Recall/Mirror.DisplayName": Mods.Fargowiltas.Keybinds.Quick Recall/Mirror.DisplayName
-			"Quick Rod of Discord.DisplayName": Mods.Fargowiltas.Keybinds.Quick Rod of Discord.DisplayName
-			"Quick Use Custom (Bottom Left Inventory Slot).DisplayName": Mods.Fargowiltas.Keybinds.Quick Use Custom (Bottom Left Inventory Slot).DisplayName
-			"Open Stat Sheet.DisplayName": Mods.Fargowiltas.Keybinds.Open Stat Sheet.DisplayName
-		}
-
 		Conditions: {
 			BossDown: Mods.Fargowiltas.Conditions.BossDown
 			DutchmanDown: Mods.Fargowiltas.Conditions.DutchmanDown
@@ -2165,6 +2255,237 @@ Mods: {
 			BetsyDown: Mods.Fargowiltas.Conditions.BetsyDown
 			PillarsDown: Mods.Fargowiltas.Conditions.PillarsDown
 			Downed: Mods.Fargowiltas.Conditions.Downed
+			WormDown: Mods.Fargowiltas.Conditions.WormDown
+			PinkyDown: Mods.Fargowiltas.Conditions.PinkyDown
+			ScoutDown: Mods.Fargowiltas.Conditions.ScoutDown
+			DoctorDown: Mods.Fargowiltas.Conditions.DoctorDown
+			MinerDown: Mods.Fargowiltas.Conditions.MinerDown
+			TimDown: Mods.Fargowiltas.Conditions.TimDown
+			GnomeDown: Mods.Fargowiltas.Conditions.GnomeDown
+			GoldSlimeDown: Mods.Fargowiltas.Conditions.GoldSlimeDown
+			DungeonSlimeDown: Mods.Fargowiltas.Conditions.DungeonSlimeDown
+			MedusaDown: Mods.Fargowiltas.Conditions.MedusaDown
+			ClownDown: Mods.Fargowiltas.Conditions.ClownDown
+			NymphDown: Mods.Fargowiltas.Conditions.NymphDown
+			MothDown: Mods.Fargowiltas.Conditions.MothDown
+			RainbowSlimeDown: Mods.Fargowiltas.Conditions.RainbowSlimeDown
+			WyvernDown: Mods.Fargowiltas.Conditions.WyvernDown
+			RuneDown: Mods.Fargowiltas.Conditions.RuneDown
+			MimicDown: Mods.Fargowiltas.Conditions.MimicDown
+			MimicHallowDown: Mods.Fargowiltas.Conditions.MimicHallowDown
+			MimicCorruptDown: Mods.Fargowiltas.Conditions.MimicCorruptDown
+			MimicCrimsonDown: Mods.Fargowiltas.Conditions.MimicCrimsonDown
+			MimicJungleDown: Mods.Fargowiltas.Conditions.MimicJungleDown
+			IceGolemDown: Mods.Fargowiltas.Conditions.IceGolemDown
+			SandDown: Mods.Fargowiltas.Conditions.SandDown
+			DevilDown: Mods.Fargowiltas.Conditions.DevilDown
+			BloodFishDown: Mods.Fargowiltas.Conditions.BloodFishDown
+			BloodEelDown: Mods.Fargowiltas.Conditions.BloodEelDown
+			BloodGoblinDown: Mods.Fargowiltas.Conditions.BloodGoblinDown
+			BloodNautDown: Mods.Fargowiltas.Conditions.BloodNautDown
+			SummonerDown: Mods.Fargowiltas.Conditions.SummonerDown
+			PirateDown: Mods.Fargowiltas.Conditions.PirateDown
+			NailheadDown: Mods.Fargowiltas.Conditions.NailheadDown
+			MothronDown: Mods.Fargowiltas.Conditions.MothronDown
+			LeeDown: Mods.Fargowiltas.Conditions.LeeDown
+			PaladinDown: Mods.Fargowiltas.Conditions.PaladinDown
+			SkeleGunDown: Mods.Fargowiltas.Conditions.SkeleGunDown
+			SiblingPylon: Mods.Fargowiltas.Conditions.SiblingPylon
+		}
+
+		Configs: {
+			FargoConfig: {
+				DisplayName: Fargo Config
+
+				Mutant: {
+					Label: "{$Mods.Fargowiltas.Config.Mutant}"
+					Tooltip: ""
+				}
+
+				Abom: {
+					Label: "{$Mods.Fargowiltas.Config.Abom}"
+					Tooltip: ""
+				}
+
+				Devi: {
+					Label: "{$Mods.Fargowiltas.Config.Devi}"
+					Tooltip: ""
+				}
+
+				Lumber: {
+					Label: "{$Mods.Fargowiltas.Config.Lumber}"
+					Tooltip: ""
+				}
+
+				Squirrel: {
+					Label: "{$Mods.Fargowiltas.Config.Squirrel}"
+					Tooltip: ""
+				}
+
+				CatchNPCs: {
+					Label: "{$Mods.Fargowiltas.Config.CatchNPCs}"
+					Tooltip: ""
+				}
+
+				NPCSales: {
+					Label: "{$Mods.Fargowiltas.Config.NPCSales}"
+					Tooltip: ""
+				}
+
+				SaferBoundNPCs: {
+					Label: "{$Mods.Fargowiltas.Config.SaferBoundNPCs}"
+					Tooltip: ""
+				}
+
+				Halloween: {
+					Label: "{$Mods.Fargowiltas.Config.Halloween}"
+					Tooltip: ""
+				}
+
+				Christmas: {
+					Label: "{$Mods.Fargowiltas.Config.Christmas}"
+					Tooltip: ""
+				}
+
+				DrunkWorld: {
+					Label: "{$Mods.Fargowiltas.Config.DrunkWorld}"
+					Tooltip: ""
+				}
+
+				BeeWorld: {
+					Label: "{$Mods.Fargowiltas.Config.BeeWorld}"
+					Tooltip: ""
+				}
+
+				WorthyWorld: {
+					Label: "{$Mods.Fargowiltas.Config.WorthyWorld}"
+					Tooltip: ""
+				}
+
+				CelebrationWorld: {
+					Label: "{$Mods.Fargowiltas.Config.CelebrationWorld}"
+					Tooltip: ""
+				}
+
+				ConstantWorld: {
+					Label: "{$Mods.Fargowiltas.Config.ConstantWorld}"
+					Tooltip: ""
+				}
+
+				UnlimitedAmmo: {
+					Label: "{$Mods.Fargowiltas.Config.UnlimitedAmmo}"
+					Tooltip: ""
+				}
+
+				UnlimitedConsumableWeapons: {
+					Label: "{$Mods.Fargowiltas.Config.UnlimitedConsumableWeapons}"
+					Tooltip: ""
+				}
+
+				UnlimitedPotionBuffsOn120: {
+					Label: "{$Mods.Fargowiltas.Config.UnlimitedPotionBuffsOn120}"
+					Tooltip: "{$Mods.Fargowiltas.Config.UnlimitedPotionBuffsOn120Tooltip}"
+				}
+
+				ExtraBuffSlots: {
+					Label: "{$Mods.Fargowiltas.Config.ExtraBuffSlots}"
+					Tooltip: ""
+				}
+
+				ExpandedTooltips: {
+					Label: "{$Mods.Fargowiltas.Config.ExpandedTooltips}"
+					Tooltip: ""
+				}
+
+				AnglerQuestInstantReset: {
+					Label: "{$Mods.Fargowiltas.Config.AnglerQuestInstantReset}"
+					Tooltip: ""
+				}
+
+				ExtraLures: {
+					Label: "{$Mods.Fargowiltas.Config.ExtraLures}"
+					Tooltip: ""
+				}
+
+				StalkerMoneyTrough: {
+					Label: "{$Mods.Fargowiltas.Config.StalkerMoneyTrough}"
+					Tooltip: ""
+				}
+
+				RottenEggs: {
+					Label: "{$Mods.Fargowiltas.Config.RottenEggs}"
+					Tooltip: ""
+				}
+
+				BannerRecipes: {
+					Label: "{$Mods.Fargowiltas.Config.BannerRecipes}"
+					Tooltip: ""
+				}
+
+				IncreaseMaxStack: {
+					Label: "{$Mods.Fargowiltas.Config.IncreaseMaxStack}"
+					Tooltip: ""
+				}
+
+				ExtractSpeed: {
+					Label: "{$Mods.Fargowiltas.Config.ExtractSpeed}"
+					Tooltip: ""
+				}
+
+				Fountains: {
+					Label: "{$Mods.Fargowiltas.Config.Fountains}"
+					Tooltip: ""
+				}
+
+				BossZen: {
+					Label: "{$Mods.Fargowiltas.Config.BossZen}"
+					Tooltip: ""
+				}
+
+				PiggyBankAcc: {
+					Label: "{$Mods.Fargowiltas.Config.PiggyBankAcc}"
+					Tooltip: ""
+				}
+
+				FasterLavaFishing: {
+					Label: "{$Mods.Fargowiltas.Config.FasterLavaFishing}"
+					Tooltip: ""
+				}
+
+				TorchGodEX: {
+					Label: "{$Mods.Fargowiltas.Config.TorchGodEX}"
+					Tooltip: "{$Mods.Fargowiltas.Config.TorchGodEXTooltip}"
+				}
+
+				DebuffOpacity: {
+					Label: "{$Mods.Fargowiltas.Config.DebuffOpacity}"
+					Tooltip: ""
+				}
+
+				DebuffFaderRatio: {
+					Label: "{$Mods.Fargowiltas.Config.DebuffFaderRatio}"
+					Tooltip: ""
+				}
+
+				TransparentFriendlyProjectiles: {
+					Label: "{$Mods.Fargowiltas.Config.TransparentFriendlyProjectiles}"
+					Tooltip: "{$Mods.Fargowiltas.Config.TransparentFriendlyProjectilesTooltip}"
+				}
+			}
+
+			SeasonSelections: {
+				Tooltip: ""
+				Normal.Label: Normal
+				AlwaysOn.Label: Always On
+				AlwaysOff.Label: Always Off
+			}
+		}
+
+		Keybinds: {
+			"Quick Recall/Mirror.DisplayName": Quick Recall/Mirror
+			"Quick Rod of Discord.DisplayName": Quick Rod of Discord
+			"Quick Use Custom (Bottom Left Inventory Slot).DisplayName": Custom Quickuse (Bottom Left Inventory Slot)
+			"Open Stat Sheet.DisplayName": Open Stat Sheet
 		}
 	}
 }

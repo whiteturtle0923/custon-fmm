@@ -59,20 +59,20 @@ namespace Fargowiltas.Items.Tiles
 			AddMapEntry(Color.White, pylonName);
 		}
 
-		//TODO: shop stuff, idk
+		
 		
 		//public override NPCShop.Entry GetNPCShopEntry()/* tModPorter See ExamplePylonTile for an example. To register to specific NPC shops, use the new shop system directly in ModNPC.AddShop, GlobalNPC.ModifyShop or ModSystem.PostAddRecipes */
-		//{
-			/*
-			return isNPCHappyEnough && (npcType == ModContent.NPCType<Mutant>() || npcType == ModContent.NPCType<Abominationn>() || npcType == ModContent.NPCType<Deviantt>())
+		/*{
+			
+			return Condition.HappyEnough && (npcType == ModContent.NPCType<Mutant>() || npcType == ModContent.NPCType<Abominationn>() || npcType == ModContent.NPCType<Deviantt>())
 				&& NPC.AnyNPCs(ModContent.NPCType<Mutant>())
 				&& NPC.AnyNPCs(ModContent.NPCType<Abominationn>())
 				&& NPC.AnyNPCs(ModContent.NPCType<Deviantt>())
 				? ModContent.ItemType<SiblingPylon>()
 				: null;
-			*/
-		//}
-
+			
+		}
+		*/
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
 		public override bool RightClick(int i, int j)

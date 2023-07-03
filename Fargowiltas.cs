@@ -23,6 +23,7 @@ using Terraria.DataStructures;
 using Terraria.UI;
 using Terraria.Chat;
 using Fargowiltas.Items.Vanity;
+using static tModPorter.ProgressUpdate;
 
 namespace Fargowiltas
 {
@@ -67,15 +68,13 @@ namespace Fargowiltas
 //            HookIntoLoad();
         }
 
-        public void AddToggle(String toggle, String name, int item, String color)
+        public void AddToggle(String toggle, String name, String item, String color)
         {
-            //TODO: I don't know if this works.
-            /*
+            
             LocalizedText text = Language.GetOrRegister(toggle);
-            // text.SetDefault("[i:" + item + "] [c/" + color + ":" + name + "]");
+            text.Format("[i:" + item + "] [c/" + color + ":" + name + "]");
             Language.GetOrRegister(text.ToString());
-            LocalizationLoader.AddTranslation(text)/* tModPorter Note: Removed. Use Language.GetOrRegister ;*/
-            Language.GetOrRegister(toggle);
+            
         }
 
         public override void Load()
@@ -110,11 +109,11 @@ namespace Fargowiltas
                 ModLoaded.Add(mod, false);
             }
 
-            AddToggle("Mods.Fargowiltas.Config.Mutant", "{$Mods.Fargowiltas.NPCName.Mutant} {$Mods.Fargowiltas.Config.CanSpawn}", ModContent.ItemType<MutantMask>(), "ffffff");
-            AddToggle("Mods.Fargowiltas.Config.Abom", "{$Mods.Fargowiltas.NPCName.Abominationn} {$Mods.Fargowiltas.Config.CanSpawn}", ModContent.ItemType<AbominationnMask>(), "ffffff");
-            AddToggle("Mods.Fargowiltas.Config.Devi", "{$Mods.Fargowiltas.NPCName.Deviantt} {$Mods.Fargowiltas.Config.CanSpawn}", ModContent.ItemType<DevianttMask>(), "ffffff");
-            AddToggle("Mods.Fargowiltas.Config.Lumber", "{$Mods.Fargowiltas.NPCName.LumberJack} {$Mods.Fargowiltas.Config.CanSpawn}", ModContent.ItemType<LumberjackMask>(), "ffffff");
-            AddToggle("Mods.Fargowiltas.Config.Squirrel", "{$Mods.Fargowiltas.NPCName.Squirrel} {$Mods.Fargowiltas.Config.CanSpawn}", ItemID.TopHat, "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Mutant", "{$Mods.Fargowiltas.NPCName.Mutant} {$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/MutantMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Abom", "{$Mods.Fargowiltas.NPCName.Abominationn} {$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/AbominationMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Devi", "{$Mods.Fargowiltas.NPCName.Deviantt} {$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/DevianttMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Lumber", "{$Mods.Fargowiltas.NPCName.LumberJack} {$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/LumberjackMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Squirrel", "{$Mods.Fargowiltas.NPCName.Squirrel} {$Mods.Fargowiltas.Config.CanSpawn}", ItemID.TopHat.ToString(), "ffffff");
 
             CaughtNPCItem.RegisterItems(this);
 
