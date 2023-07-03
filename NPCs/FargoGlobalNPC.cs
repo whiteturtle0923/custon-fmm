@@ -549,60 +549,62 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.DyeTrader:
-                        FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
-                        if (modPlayer.FirstDyeIngredients["RedHusk"])
+                        if (player.TryGetModPlayer(out FargoPlayer modPlayer))
                         {
-                            AddItem(ItemID.RedHusk);
+                            if (modPlayer.FirstDyeIngredients["RedHusk"])
+                            {
+                                AddItem(ItemID.RedHusk);
+                            }
+                            if (modPlayer.FirstDyeIngredients["OrangeBloodroot"])
+                            {
+                                AddItem(ItemID.OrangeBloodroot);
+                            }
+                            if (modPlayer.FirstDyeIngredients["YellowMarigold"])
+                            {
+                                AddItem(ItemID.YellowMarigold);
+                            }
+                            if (modPlayer.FirstDyeIngredients["LimeKelp"])
+                            {
+                                AddItem(ItemID.LimeKelp);
+                            }
+                            if (modPlayer.FirstDyeIngredients["GreenMushroom"])
+                            {
+                                AddItem(ItemID.GreenMushroom);
+                            }
+                            if (modPlayer.FirstDyeIngredients["TealMushroom"])
+                            {
+                                AddItem(ItemID.TealMushroom);
+                            }
+                            if (modPlayer.FirstDyeIngredients["CyanHusk"])
+                            {
+                                AddItem(ItemID.CyanHusk);
+                            }
+                            if (modPlayer.FirstDyeIngredients["SkyBlueFlower"])
+                            {
+                                AddItem(ItemID.SkyBlueFlower);
+                            }
+                            if (modPlayer.FirstDyeIngredients["BlueBerries"])
+                            {
+                                AddItem(ItemID.BlueBerries);
+                            }
+                            if (modPlayer.FirstDyeIngredients["PurpleMucos"])
+                            {
+                                AddItem(ItemID.PurpleMucos);
+                            }
+                            if (modPlayer.FirstDyeIngredients["VioletHusk"])
+                            {
+                                AddItem(ItemID.VioletHusk);
+                            }
+                            if (modPlayer.FirstDyeIngredients["PinkPricklyPear"])
+                            {
+                                AddItem(ItemID.PinkPricklyPear);
+                            }
+                            if (modPlayer.FirstDyeIngredients["BlackInk"])
+                            {
+                                AddItem(ItemID.BlackInk);
+                            }
                         }
-                        if (modPlayer.FirstDyeIngredients["OrangeBloodroot"])
-                        {
-                            AddItem(ItemID.OrangeBloodroot);
-                        }
-                        if (modPlayer.FirstDyeIngredients["YellowMarigold"])
-                        {
-                            AddItem(ItemID.YellowMarigold);
-                        }
-                        if (modPlayer.FirstDyeIngredients["LimeKelp"])
-                        {
-                            AddItem(ItemID.LimeKelp);
-                        }
-                        if (modPlayer.FirstDyeIngredients["GreenMushroom"])
-                        {
-                            AddItem(ItemID.GreenMushroom);
-                        }
-                        if (modPlayer.FirstDyeIngredients["TealMushroom"])
-                        {
-                            AddItem(ItemID.TealMushroom);
-                        }
-                        if (modPlayer.FirstDyeIngredients["CyanHusk"])
-                        {
-                            AddItem(ItemID.CyanHusk);
-                        }
-                        if (modPlayer.FirstDyeIngredients["SkyBlueFlower"])
-                        {
-                            AddItem(ItemID.SkyBlueFlower);
-                        }
-                        if (modPlayer.FirstDyeIngredients["BlueBerries"])
-                        {
-                            AddItem(ItemID.BlueBerries);
-                        }
-                        if (modPlayer.FirstDyeIngredients["PurpleMucos"])
-                        {
-                            AddItem(ItemID.PurpleMucos);
-                        }
-                        if (modPlayer.FirstDyeIngredients["VioletHusk"])
-                        {
-                            AddItem(ItemID.VioletHusk);
-                        }
-                        if (modPlayer.FirstDyeIngredients["PinkPricklyPear"])
-                        {
-                            AddItem(ItemID.PinkPricklyPear);
-                        }
-                        if (modPlayer.FirstDyeIngredients["BlackInk"])
-                        {
-                            AddItem(ItemID.BlackInk);
-                        }
-
+                        
                         break;
 
                     case NPCID.Dryad:

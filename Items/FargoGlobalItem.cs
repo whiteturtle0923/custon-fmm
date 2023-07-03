@@ -192,16 +192,11 @@ namespace Fargowiltas.Items
                     break;
             }
 
-            //TODO Lockbox drops:
-            /*
-            if (context == lockBox)
+
+            if (item.type == ItemID.LockBox || item.type == ItemID.ObsidianLockbox)
             {
-                if (Main.rand.NextBool(7))
-                {
-                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Valor), ItemID.Valor);
-                }
+                itemLoot.Add(ItemDropRule.Common(ItemID.Valor, 7));
             }
-            */
 
         }
 
