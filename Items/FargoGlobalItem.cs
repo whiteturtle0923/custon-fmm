@@ -192,12 +192,6 @@ namespace Fargowiltas.Items
                     break;
             }
 
-
-            if (item.type == ItemID.LockBox || item.type == ItemID.ObsidianLockbox)
-            {
-                itemLoot.Add(ItemDropRule.Common(ItemID.Valor, 7));
-            }
-
         }
 
         public override void PostUpdate(Item item)
