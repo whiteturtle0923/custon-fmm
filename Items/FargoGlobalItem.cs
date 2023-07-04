@@ -288,7 +288,7 @@ namespace Fargowiltas.Items
         {
             if (item.type == ItemID.MusicBox && Main.curMusic > 0 && Main.curMusic <= 41)
             {
-                int itemId = 0;
+                int itemId;
 
                 //still better than vanilla (fear)
                 switch (Main.curMusic)
