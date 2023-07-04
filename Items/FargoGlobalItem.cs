@@ -271,18 +271,11 @@ namespace Fargowiltas.Items
 
             if (Informational.Contains(item.type))
             {
-                //TODO: this doesn't work.
-                player.GrantPrefixBenefits(item);
-                //player.ApplyEquipFunctional(item, false);
-                //player.VanillaUpdateInventory(item);
+                player.RefreshInfoAccsFromItemType(item);
             }
             else if (Construction.Contains(item.type))
             {
-                Item fakeItem = new Item();
-                fakeItem.SetDefaults(item.type);
-                //TODO: this doesn't work. maybe use GrantPrefixBenefits
-                player.ApplyEquipFunctional(fakeItem, true);
-                //player.VanillaUpdateEquip(fakeItem)/* tModPorter Note: Removed. Use either GrantPrefixBenefits (if Item.accessory) or GrantArmorBenefits (for armor slots) */;
+                player.ApplyEquipFunctional(item, true);
             }
         }
 
