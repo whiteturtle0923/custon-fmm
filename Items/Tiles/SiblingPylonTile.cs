@@ -137,7 +137,7 @@ namespace Fargowiltas.Items.Tiles
 		public override void DrawMapIcon(ref MapOverlayDrawContext context, ref string mouseOverText, TeleportPylonInfo pylonInfo, bool isNearPylon, Color drawColor, float deselectedScale, float selectedScale)
 		{
 			bool mouseOver = DefaultDrawMapIcon(ref context, mapIcon, pylonInfo.PositionInTiles.ToVector2() + new Vector2(1.5f, 2f), drawColor, deselectedScale, selectedScale);
-			DefaultMapClickHandle(mouseOver, pylonInfo, "Mods.Fargowiltas.ItemName.SiblingPylon", ref mouseOverText);
+			DefaultMapClickHandle(mouseOver, pylonInfo, "Mods.Fargowiltas.Items.SiblingPylon.DisplayName", ref mouseOverText);
 		}
 	}
 }

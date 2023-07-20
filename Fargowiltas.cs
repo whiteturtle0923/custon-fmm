@@ -109,11 +109,11 @@ namespace Fargowiltas
                 ModLoaded.Add(mod, false);
             }
 
-            AddToggle("Mods.Fargowiltas.Config.Mutant", "{$Mods.Fargowiltas.NPCName.Mutant} {$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/MutantMask", "ffffff");
-            AddToggle("Mods.Fargowiltas.Config.Abom", "{$Mods.Fargowiltas.NPCName.Abominationn} {$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/AbominationMask", "ffffff");
-            AddToggle("Mods.Fargowiltas.Config.Devi", "{$Mods.Fargowiltas.NPCName.Deviantt} {$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/DevianttMask", "ffffff");
-            AddToggle("Mods.Fargowiltas.Config.Lumber", "{$Mods.Fargowiltas.NPCName.LumberJack} {$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/LumberjackMask", "ffffff");
-            AddToggle("Mods.Fargowiltas.Config.Squirrel", "{$Mods.Fargowiltas.NPCName.Squirrel} {$Mods.Fargowiltas.Config.CanSpawn}", ItemID.TopHat.ToString(), "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Mutant", "{$Mods.Fargowiltas.NPCs.Mutant.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/MutantMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Abom", "{$Mods.Fargowiltas.NPCs.Abominationn.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/AbominationMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Devi", "{$Mods.Fargowiltas.NPCs.Deviantt.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/DevianttMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Lumber", "{$Mods.Fargowiltas.NPCs.LumberJack.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/LumberjackMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Squirrel", "{$Mods.Fargowiltas.NPCs.Squirrel.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", ItemID.TopHat.ToString(), "ffffff");
 
             CaughtNPCItem.RegisterItems(this);
 
