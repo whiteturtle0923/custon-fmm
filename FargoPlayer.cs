@@ -145,6 +145,10 @@ namespace Fargowiltas
 
             if (Fargowiltas.StatKey.JustPressed)
             {
+                if (!Main.playerInventory)
+                {
+                    Main.playerInventory = true;
+                }
                 Fargowiltas.UserInterfaceManager.ToggleStatSheet();
             }
         }
@@ -395,7 +399,6 @@ namespace Fargowiltas
                 Player.controlUseItem = true;
                 if (use && CombinedHooks.CanUseItem(Player, Player.inventory[Player.selectedItem]))
                 {
-                    //TODO: i THINK this works like before
                     if (Player.whoAmI == Main.myPlayer)
                         Player.ItemCheck();
                     //Player.ItemCheck(Main.myPlayer);

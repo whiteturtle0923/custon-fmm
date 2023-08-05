@@ -26,6 +26,7 @@ namespace Fargowiltas.Items.Summons.Mutant
                .AddIngredient(ItemID.Moonglow, 5)
                .AddIngredient(ItemID.Blinkroot, 5)
                .AddTile(TileID.DemonAltar)
+               .DisableDecraft()
                .Register();
         }
     }

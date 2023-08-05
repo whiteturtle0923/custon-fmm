@@ -68,7 +68,6 @@ namespace Fargowiltas.Items.Misc
                 }
 
                 //Main.fastForwardTime/* tModPorter Note: Removed. Suggestion: IsFastForwardingTime(), fastForwardTimeToDawn or fastForwardTimeToDusk */ = true;
-                //TODO: Bro they up and removed the fastForwardTime bool we can't just set it to true idk what to do we can make it fast forward to dawn or dusk but that's probably not what vanilla sundial does is it i'll just make it fast forward to night if it's day and day if it's night
                 if (Main.dayTime)
                     Main.fastForwardTimeToDusk = true;
                 else

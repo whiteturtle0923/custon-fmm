@@ -192,17 +192,6 @@ namespace Fargowiltas.Items
                     break;
             }
 
-            //TODO Lockbox drops:
-            /*
-            if (context == lockBox)
-            {
-                if (Main.rand.NextBool(7))
-                {
-                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Valor), ItemID.Valor);
-                }
-            }
-            */
-
         }
 
         public override void PostUpdate(Item item)
@@ -282,18 +271,11 @@ namespace Fargowiltas.Items
 
             if (Informational.Contains(item.type))
             {
-                //TODO: this doesn't work.
-                player.GrantPrefixBenefits(item);
-                //player.ApplyEquipFunctional(item, false);
-                //player.VanillaUpdateInventory(item);
+                player.RefreshInfoAccsFromItemType(item);
             }
             else if (Construction.Contains(item.type))
             {
-                Item fakeItem = new Item();
-                fakeItem.SetDefaults(item.type);
-                //TODO: this doesn't work. maybe use GrantPrefixBenefits
-                player.ApplyEquipFunctional(fakeItem, true);
-                //player.VanillaUpdateEquip(fakeItem)/* tModPorter Note: Removed. Use either GrantPrefixBenefits (if Item.accessory) or GrantArmorBenefits (for armor slots) */;
+                player.ApplyEquipFunctional(item, true);
             }
         }
 
@@ -306,7 +288,7 @@ namespace Fargowiltas.Items
         {
             if (item.type == ItemID.MusicBox && Main.curMusic > 0 && Main.curMusic <= 41)
             {
-                int itemId = 0;
+                int itemId;
 
                 //still better than vanilla (fear)
                 switch (Main.curMusic)
