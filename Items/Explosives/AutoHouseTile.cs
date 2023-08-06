@@ -26,6 +26,8 @@ namespace Fargowiltas.Items.Explosives
                 if (p != -1)
                     Projectile.NewProjectile(new EntitySource_TileBreak(i, j), i * 16 + 8, (j + 2) * 16, 0f, 0f, ModContent.ProjectileType<AutoHouseProj>(), 0, 0, p);
             }
+
+            noItem = true;
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
