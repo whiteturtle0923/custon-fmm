@@ -324,19 +324,45 @@ namespace Fargowiltas.NPCs
 
         public override void ModifyShop(NPCShop shop)
         {
-
             Player player = Main.LocalPlayer;
+
+            #region Conditions
+            //TODO: localization/proper text on conditions
+            Condition angler5 = new Condition("Finish 5 angler quests", () => player.anglerQuestsFinished >= 5);
+            Condition angler10 = new Condition("Finish 10 angler quests", () => player.anglerQuestsFinished >= 10);
+            Condition angler15 = new Condition("Finish 15 angler quests", () => player.anglerQuestsFinished >= 15);
+            Condition angler20 = new Condition("Finish 25 angler quests", () => player.anglerQuestsFinished >= 25);
+            Condition angler25 = new Condition("Finish 25 angler quests", () => player.anglerQuestsFinished >= 25);
+            Condition angler30 = new Condition("Finish 30 angler quests", () => player.anglerQuestsFinished >= 30);
+            Condition InRockOrDirtLayerHeight = new Condition("Be in the dirt or rock layer", () => Condition.InDirtLayerHeight.IsMet() || Condition.InRockLayerHeight.IsMet());
+            #endregion
+            
 
             if (GetInstance<FargoConfig>().NPCSales)
             {
-                void AddItem(int itemID, int customPrice = -1)
+                //Only use "condition" if the item has a single condition, otherwise use the "conditions" array.
+                void AddItem(int itemID, int customPrice = -1, Condition condition = null, Condition[] conditions = null)
                 {
-                    if (customPrice != -1)
-                        shop.Add(new Item(itemID) { shopCustomPrice = customPrice });
+                    if (condition != null)
+                    {
+                        conditions = new Condition[] { condition };
+                    }
+                    if (conditions != null)
+                    {
+                        if (customPrice != -1)
+                            shop.Add(new Item(itemID) { shopCustomPrice = customPrice }, conditions);
+                        else
+                            shop.Add(itemID, conditions);
+                    }
                     else
-                        shop.Add(itemID);
+                    {
+                        if (customPrice != -1)
+                            shop.Add(new Item(itemID) { shopCustomPrice = customPrice });
+                        else
+                            shop.Add(itemID);
+                    }
                 }
-                
+
                 switch (shop.NpcType)
                 {
                     case NPCID.PartyGirl:
@@ -350,20 +376,9 @@ namespace Fargowiltas.NPCs
                         AddItem(ItemID.PharaohsMask, Item.buyPrice(gold: 1));
                         AddItem(ItemID.PharaohsRobe, Item.buyPrice(gold: 1));
 
-                        if (player.anglerQuestsFinished >= 10)
-                        {
-                            AddItem(ItemID.AnglerHat);
-
-                            if (player.anglerQuestsFinished >= 15)
-                            {
-                                AddItem(ItemID.AnglerVest);
-
-                                if (player.anglerQuestsFinished >= 20)
-                                {
-                                    AddItem(ItemID.AnglerPants);
-                                }
-                            }
-                        }
+                        AddItem(ItemID.AnglerHat, condition: angler10);
+                        AddItem(ItemID.AnglerVest, condition: angler15);
+                        AddItem(ItemID.AnglerPants, condition: angler20);
 
                         AddItem(ItemID.BlueBrick, Item.buyPrice(silver: 1));
                         AddItem(ItemType<UnsafeBlueBrickWall>(), Item.buyPrice(copper: 25));
@@ -380,155 +395,114 @@ namespace Fargowiltas.NPCs
                         AddItem(ItemType<UnsafePinkSlabWall>(), Item.buyPrice(copper: 25));
                         AddItem(ItemType<UnsafePinkTileWall>(), Item.buyPrice(copper: 25));
 
-                        if (Main.LocalPlayer.inventory.Any(i => !i.IsAir && i.useAmmo == ItemID.Bone))
-                        {
-                            AddItem(ItemType<Items.Ammos.BrittleBone>());
-                        }
+                        AddItem(ItemType<Items.Ammos.BrittleBone>(), condition: new Condition("Have a weapon that uses Brittle Bones as ammunition in your inventory", () => Main.LocalPlayer.inventory.Any(i => !i.IsAir && i.useAmmo == ItemID.Bone)));
                         break;
 
                     case NPCID.Merchant:
-                        if (player.anglerQuestsFinished >= 5)
-                        {
-                            AddItem(ItemID.FuzzyCarrot);
+                        
+                        AddItem(ItemID.FuzzyCarrot, condition: angler5);
+                        AddItem(ItemID.AnglerEarring, condition: angler10);
+                        AddItem(ItemID.HighTestFishingLine, condition: angler10);
+                        AddItem(ItemID.TackleBox, condition: angler10);
+                        AddItem(ItemID.GoldenBugNet, condition: angler10);
+                        AddItem(ItemID.FishHook, condition: angler10);
 
-                            if (player.anglerQuestsFinished >= 10)
-                            {
-                                AddItem(ItemID.AnglerEarring);
-                                AddItem(ItemID.HighTestFishingLine);
-                                AddItem(ItemID.TackleBox);
-                                AddItem(ItemID.GoldenBugNet);
-                                AddItem(ItemID.FishHook);
+                        AddItem(ItemID.FinWings, conditions: new Condition[] { angler10, Condition.Hardmode });
+                        AddItem(ItemID.SuperAbsorbantSponge, conditions: new Condition[] { angler10, Condition.Hardmode }); ;
+                        AddItem(ItemID.BottomlessBucket, conditions: new Condition[] { angler10, Condition.Hardmode });
+                        AddItem(ItemID.HotlineFishingHook, conditions: new Condition[] { angler25, Condition.Hardmode });
+                        AddItem(ItemID.GoldenFishingRod, conditions: new Condition[] { angler30, Condition.Hardmode });
 
-                                if (Main.hardMode)
-                                {
-                                    AddItem(ItemID.FinWings);
-                                    AddItem(ItemID.SuperAbsorbantSponge);
-                                    AddItem(ItemID.BottomlessBucket);
-
-                                    if (player.anglerQuestsFinished >= 25)
-                                    {
-                                        AddItem(ItemID.HotlineFishingHook);
-
-                                        if (player.anglerQuestsFinished >= 30)
-                                        {
-                                            AddItem(ItemID.GoldenFishingRod);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        if (Main.LocalPlayer.inventory.Any(i => !i.IsAir && i.useAmmo == AmmoID.Dart))
-                        {
-                            AddItem(ItemID.Seed, 3);
-                        }
+                        AddItem(ItemID.Seed, 3, condition: new Condition("Have a weapon that uses seeds as ammunition in your inventory", () => Main.LocalPlayer.inventory.Any(i => !i.IsAir && i.useAmmo == AmmoID.Dart)));
                         break;
 
                     case NPCID.Painter:
 
-                        if (player.ZoneDungeon)
-                        {
+                        AddItem(ItemID.BloodMoonRising, condition: Condition.InDungeon);
+                        AddItem(ItemID.BoneWarp, condition: Condition.InDungeon);
+                        AddItem(ItemID.TheCreationoftheGuide, condition: Condition.InDungeon);
+                        AddItem(ItemID.TheCursedMan, condition: Condition.InDungeon);
+                        AddItem(ItemID.TheDestroyer, condition: Condition.InDungeon);
+                        AddItem(ItemID.Dryadisque, condition: Condition.InDungeon);
+                        AddItem(ItemID.TheEyeSeestheEnd, condition: Condition.InDungeon);
+                        AddItem(ItemID.FacingtheCerebralMastermind, condition: Condition.InDungeon);
+                        AddItem(ItemID.GloryoftheFire, condition: Condition.InDungeon);
+                        AddItem(ItemID.GoblinsPlayingPoker, condition: Condition.InDungeon);
+                        AddItem(ItemID.GreatWave, condition: Condition.InDungeon);
+                        AddItem(ItemID.TheGuardiansGaze, condition: Condition.InDungeon);
+                        AddItem(ItemID.TheHangedMan, condition: Condition.InDungeon);
+                        AddItem(ItemID.Impact, condition: Condition.InDungeon);
+                        AddItem(ItemID.ThePersistencyofEyes, condition: Condition.InDungeon);
+                        AddItem(ItemID.PoweredbyBirds, condition: Condition.InDungeon);
+                        AddItem(ItemID.TheScreamer, condition: Condition.InDungeon);
+                        AddItem(ItemID.SkellingtonJSkellingsworth, condition: Condition.InDungeon);
+                        AddItem(ItemID.SparkyPainting, condition: Condition.InDungeon);
+                        AddItem(ItemID.SomethingEvilisWatchingYou, condition: Condition.InDungeon);
+                        AddItem(ItemID.StarryNight, condition: Condition.InDungeon);
+                        AddItem(ItemID.TrioSuperHeroes, condition: Condition.InDungeon);
+                        AddItem(ItemID.TheTwinsHaveAwoken, condition: Condition.InDungeon);
+                        AddItem(ItemID.UnicornCrossingtheHallows, condition: Condition.InDungeon);
+                            
+                        AddItem(ItemID.AmericanExplosive, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.CrownoDevoursHisLunch, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.Discover, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.FatherofSomeone, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.FindingGold, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.GloriousNight, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.GuidePicasso, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.Land, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.TheMerchant, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.NurseLisa, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.OldMiner, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.RareEnchantment, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.Sunflowers, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.TerrarianGothic, condition: InRockOrDirtLayerHeight);
+                        AddItem(ItemID.Waldo, condition: InRockOrDirtLayerHeight);
 
-                            AddItem(ItemID.BloodMoonRising);
-                            AddItem(ItemID.BoneWarp);
-                            AddItem(ItemID.TheCreationoftheGuide);
-                            AddItem(ItemID.TheCursedMan);
-                            AddItem(ItemID.TheDestroyer);
-                            AddItem(ItemID.Dryadisque);
-                            AddItem(ItemID.TheEyeSeestheEnd);
-                            AddItem(ItemID.FacingtheCerebralMastermind);
-                            AddItem(ItemID.GloryoftheFire);
-                            AddItem(ItemID.GoblinsPlayingPoker);
-                            AddItem(ItemID.GreatWave);
-                            AddItem(ItemID.TheGuardiansGaze);
-                            AddItem(ItemID.TheHangedMan);
-                            AddItem(ItemID.Impact);
-                            AddItem(ItemID.ThePersistencyofEyes);
-                            AddItem(ItemID.PoweredbyBirds);
-                            AddItem(ItemID.TheScreamer);
-                            AddItem(ItemID.SkellingtonJSkellingsworth);
-                            AddItem(ItemID.SparkyPainting);
-                            AddItem(ItemID.SomethingEvilisWatchingYou);
-                            AddItem(ItemID.StarryNight);
-                            AddItem(ItemID.TrioSuperHeroes);
-                            AddItem(ItemID.TheTwinsHaveAwoken);
-                            AddItem(ItemID.UnicornCrossingtheHallows);
-                        }
-                        else if (player.ZoneRockLayerHeight || player.ZoneDirtLayerHeight)
-                        {
-
-                            AddItem(ItemID.AmericanExplosive);
-                            AddItem(ItemID.CrownoDevoursHisLunch);
-                            AddItem(ItemID.Discover);
-                            AddItem(ItemID.FatherofSomeone);
-                            AddItem(ItemID.FindingGold);
-                            AddItem(ItemID.GloriousNight);
-                            AddItem(ItemID.GuidePicasso);
-                            AddItem(ItemID.Land);
-                            AddItem(ItemID.TheMerchant);
-                            AddItem(ItemID.NurseLisa);
-                            AddItem(ItemID.OldMiner);
-                            AddItem(ItemID.RareEnchantment);
-                            AddItem(ItemID.Sunflowers);
-                            AddItem(ItemID.TerrarianGothic);
-                            AddItem(ItemID.Waldo);
-                        }
-                        else if (player.ZoneUnderworldHeight)
-                        {
-
-                            AddItem(ItemID.DarkSoulReaper);
-                            AddItem(ItemID.Darkness);
-                            AddItem(ItemID.DemonsEye);
-                            AddItem(ItemID.FlowingMagma);
-                            AddItem(ItemID.HandEarth);
-                            AddItem(ItemID.ImpFace);
-                            AddItem(ItemID.LakeofFire);
-                            AddItem(ItemID.LivingGore);
-                            AddItem(ItemID.OminousPresence);
-                            AddItem(ItemID.ShiningMoon);
-                            AddItem(ItemID.Skelehead);
-                            AddItem(ItemID.TrappedGhost);
-                        }
+                        AddItem(ItemID.DarkSoulReaper, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.Darkness, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.DemonsEye, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.FlowingMagma, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.HandEarth, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.ImpFace, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.LakeofFire, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.LivingGore, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.OminousPresence, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.ShiningMoon, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.Skelehead, condition: Condition.InUnderworldHeight);
+                        AddItem(ItemID.TrappedGhost, condition: Condition.InUnderworldHeight);
                         //deserttt
 
                         break;
 
                     case NPCID.Demolitionist:
                         AddItem(ItemType<BoomShuriken>(), Item.buyPrice(0, 0, 1, 25));
-                        if (Main.hardMode)
-                        {
-                            AddItem(ItemID.CopperOre);
-                            AddItem(ItemID.TinOre);
-                            AddItem(ItemID.IronOre);
-                            AddItem(ItemID.LeadOre);
-                            AddItem(ItemID.SilverOre);
-                            AddItem(ItemID.TungstenOre);
-                            AddItem(ItemID.GoldOre);
-                            AddItem(ItemID.PlatinumOre);
-                        }
-                        if (NPC.downedPlantBoss)
-                        {
-                            AddItem(ItemID.Meteorite);
-                            AddItem(ItemID.DemoniteOre);
-                            AddItem(ItemID.CrimtaneOre);
-                            AddItem(ItemID.Hellstone);
-                        }
-                        if (NPC.downedMoonlord)
-                        {
-                            AddItem(ItemID.CobaltOre);
-                            AddItem(ItemID.PalladiumOre);
-                            AddItem(ItemID.MythrilOre);
-                            AddItem(ItemID.OrichalcumOre);
-                            AddItem(ItemID.AdamantiteOre);
-                            AddItem(ItemID.TitaniumOre);
-                            AddItem(ItemID.ChlorophyteOre);
-                        }
+                        AddItem(ItemID.CopperOre, condition: Condition.Hardmode);
+                        AddItem(ItemID.TinOre, condition: Condition.Hardmode);
+                        AddItem(ItemID.IronOre, condition: Condition.Hardmode);
+                        AddItem(ItemID.LeadOre, condition: Condition.Hardmode);
+                        AddItem(ItemID.SilverOre, condition: Condition.Hardmode);
+                        AddItem(ItemID.TungstenOre, condition: Condition.Hardmode);
+                        AddItem(ItemID.GoldOre, condition: Condition.Hardmode);
+                        AddItem(ItemID.PlatinumOre, condition: Condition.Hardmode);
+
+                        AddItem(ItemID.Meteorite, condition: Condition.DownedPlantera);
+                        AddItem(ItemID.DemoniteOre, condition: Condition.DownedPlantera);
+                        AddItem(ItemID.CrimtaneOre, condition: Condition.DownedPlantera);
+                        AddItem(ItemID.Hellstone, condition: Condition.DownedPlantera);
+
+                        AddItem(ItemID.CobaltOre, condition: Condition.DownedMoonLord);
+                        AddItem(ItemID.PalladiumOre, condition: Condition.DownedMoonLord);
+                        AddItem(ItemID.MythrilOre, condition: Condition.DownedMoonLord);
+                        AddItem(ItemID.OrichalcumOre, condition: Condition.DownedMoonLord);
+                        AddItem(ItemID.AdamantiteOre, condition: Condition.DownedMoonLord);
+                        AddItem(ItemID.TitaniumOre, condition: Condition.DownedMoonLord);
+                        AddItem(ItemID.ChlorophyteOre, condition: Condition.DownedMoonLord);
 
                         break;
 
                     case NPCID.WitchDoctor:
-                        if (NPC.downedBoss3)
-                        {
+                        
                             bool alreadySellsTable = false;
                             foreach(NPCShop.Entry entry in shop.Entries)
                             {
@@ -540,89 +514,46 @@ namespace Fargowiltas.NPCs
                             }
 
                             if (!alreadySellsTable)
-                                AddItem(ItemID.BewitchingTable);
-                        }
+                                AddItem(ItemID.BewitchingTable, condition: Condition.DownedSkeletron);
                         break;
 
                     case NPCID.Steampunker:
-                        AddItem(WorldGen.crimson ? ItemID.PurpleSolution : ItemID.RedSolution);
+                        AddItem(ItemID.PurpleSolution, condition: Condition.CorruptWorld);
+                        AddItem(ItemID.RedSolution, condition: Condition.CrimsonWorld);
                         break;
 
                     case NPCID.DyeTrader:
                         if (player.TryGetModPlayer(out FargoPlayer modPlayer))
                         {
-                            if (modPlayer.FirstDyeIngredients["RedHusk"])
-                            {
-                                AddItem(ItemID.RedHusk);
-                            }
-                            if (modPlayer.FirstDyeIngredients["OrangeBloodroot"])
-                            {
-                                AddItem(ItemID.OrangeBloodroot);
-                            }
-                            if (modPlayer.FirstDyeIngredients["YellowMarigold"])
-                            {
-                                AddItem(ItemID.YellowMarigold);
-                            }
-                            if (modPlayer.FirstDyeIngredients["LimeKelp"])
-                            {
-                                AddItem(ItemID.LimeKelp);
-                            }
-                            if (modPlayer.FirstDyeIngredients["GreenMushroom"])
-                            {
-                                AddItem(ItemID.GreenMushroom);
-                            }
-                            if (modPlayer.FirstDyeIngredients["TealMushroom"])
-                            {
-                                AddItem(ItemID.TealMushroom);
-                            }
-                            if (modPlayer.FirstDyeIngredients["CyanHusk"])
-                            {
-                                AddItem(ItemID.CyanHusk);
-                            }
-                            if (modPlayer.FirstDyeIngredients["SkyBlueFlower"])
-                            {
-                                AddItem(ItemID.SkyBlueFlower);
-                            }
-                            if (modPlayer.FirstDyeIngredients["BlueBerries"])
-                            {
-                                AddItem(ItemID.BlueBerries);
-                            }
-                            if (modPlayer.FirstDyeIngredients["PurpleMucos"])
-                            {
-                                AddItem(ItemID.PurpleMucos);
-                            }
-                            if (modPlayer.FirstDyeIngredients["VioletHusk"])
-                            {
-                                AddItem(ItemID.VioletHusk);
-                            }
-                            if (modPlayer.FirstDyeIngredients["PinkPricklyPear"])
-                            {
-                                AddItem(ItemID.PinkPricklyPear);
-                            }
-                            if (modPlayer.FirstDyeIngredients["BlackInk"])
-                            {
-                                AddItem(ItemID.BlackInk);
-                            }
+                            AddItem(ItemID.RedHusk, condition: new Condition("Have picked up a Red Husk", () => modPlayer.FirstDyeIngredients["RedHusk"]));
+                            AddItem(ItemID.OrangeBloodroot, condition: new Condition("Have picked up an Orange Bloodroot", () => modPlayer.FirstDyeIngredients["OrangeBloodroot"]));
+                            AddItem(ItemID.YellowMarigold, condition: new Condition("Have picked up a Yellow Marigold", () => modPlayer.FirstDyeIngredients["YellowMarigold"]));
+                            AddItem(ItemID.LimeKelp, condition: new Condition("Have picked up a Lime Kelp", () => modPlayer.FirstDyeIngredients["Lime Kelp"]));
+                            AddItem(ItemID.GreenMushroom, condition: new Condition("Have picked up a Green Mushroom", () => modPlayer.FirstDyeIngredients["GreenMushroom"]));
+                            AddItem(ItemID.TealMushroom, condition: new Condition("Have picked up a Teal Mushroom", () => modPlayer.FirstDyeIngredients["TealMushroom"]));
+                            AddItem(ItemID.CyanHusk, condition: new Condition("Have picked up a Cyan Husk", () => modPlayer.FirstDyeIngredients["CyanHusk"]));
+                            AddItem(ItemID.SkyBlueFlower, condition: new Condition("Have picked up a Sky Blue Flower", () => modPlayer.FirstDyeIngredients["SkyBlueFlower"]));
+                            AddItem(ItemID.BlueBerries, condition: new Condition("Have picked up Blueberries", () => modPlayer.FirstDyeIngredients["BlueBerries"]));
+                            AddItem(ItemID.PurpleMucos, condition: new Condition("Have picked up a Purple Mucos", () => modPlayer.FirstDyeIngredients["PurpleMucos"]));
+                            AddItem(ItemID.VioletHusk, condition: new Condition("Have picked up a Violet Husk", () => modPlayer.FirstDyeIngredients["VioletHusk"]));
+                            AddItem(ItemID.PinkPricklyPear, condition: new Condition("Have picked up a Pink Prickly Pear", () => modPlayer.FirstDyeIngredients["PinkPricklyPear"]));
+                            AddItem(ItemID.BlackInk, condition: new Condition("Have picked up Black Ink", () => modPlayer.FirstDyeIngredients["BlackInk"]));
                         }
                         
                         break;
 
                     case NPCID.Dryad:
-                        if (Main.hardMode)
-                        {
-                            AddItem(ItemID.NaturesGift, Item.buyPrice(gold: 20));
-                            AddItem(ItemID.JungleRose, Item.buyPrice(gold: 10));
+                        AddItem(ItemID.NaturesGift, Item.buyPrice(gold: 20), condition: Condition.Hardmode);
+                        AddItem(ItemID.JungleRose, Item.buyPrice(gold: 10), condition: Condition.Hardmode);
 
-                            AddItem(ItemID.StrangePlant1, Item.buyPrice(gold: 5));
-                            AddItem(ItemID.StrangePlant2, Item.buyPrice(gold: 5));
-                            AddItem(ItemID.StrangePlant3, Item.buyPrice(gold: 5));
-                            AddItem(ItemID.StrangePlant4, Item.buyPrice(gold: 5));
-                        }
+                        AddItem(ItemID.StrangePlant1, Item.buyPrice(gold: 5), condition: Condition.Hardmode);
+                        AddItem(ItemID.StrangePlant2, Item.buyPrice(gold: 5), condition: Condition.Hardmode);
+                        AddItem(ItemID.StrangePlant3, Item.buyPrice(gold: 5), condition: Condition.Hardmode);
+                        AddItem(ItemID.StrangePlant4, Item.buyPrice(gold: 5), condition: Condition.Hardmode);
                         break;
 
                     case NPCID.Wizard:
-                        if (NPC.downedGolemBoss)
-                            AddItem(ItemID.SuperManaPotion);
+                        AddItem(ItemID.SuperManaPotion, condition: Condition.DownedGolem);
                         break;
                     
                 }
