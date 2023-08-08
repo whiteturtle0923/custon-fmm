@@ -345,7 +345,7 @@ namespace Fargowiltas.NPCs
                 {
                     if (condition != null)
                     {
-                        conditions.Append(condition);
+                        conditions = new Condition[] { condition };
                     }
                     if (conditions != null)
                     {
