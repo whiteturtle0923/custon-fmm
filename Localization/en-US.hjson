@@ -2266,6 +2266,7 @@ Mods: {
 			SandNukeSupremeProj.DisplayName: SandRenewalSupreme
 			SnowNukeProj.DisplayName: SnowRenewal
 			SnowNukeSupremeProj.DisplayName: SnowRenewalSupreme
+			WorldTokenProj.DisplayName: World Token Proj
 		}
 
 		Tiles: {

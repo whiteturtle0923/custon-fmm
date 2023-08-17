@@ -9,6 +9,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Items\Explosives\CityBuster.png" />
+    <None Remove="Items\Misc\ModeToggle_0.png" />
+    <None Remove="Items\Misc\ModeToggle_1.png" />
+    <None Remove="Items\Misc\ModeToggle_2.png" />
+    <None Remove="Items\Misc\ModeToggle_3.png" />
     <None Remove="Items\Renewals\DirtRenewal.png" />
     <None Remove="Items\Renewals\DirtRenewalSupreme.png" />
     <None Remove="Items\Renewals\SandRenewal.png" />
