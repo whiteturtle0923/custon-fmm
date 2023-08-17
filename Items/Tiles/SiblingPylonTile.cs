@@ -92,7 +92,7 @@ namespace Fargowiltas.Items.Tiles
 		{
 			ModContent.GetInstance<SiblingPylonTileEntity>().Kill(i, j);
 
-			Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 3, 4, ModContent.ItemType<SiblingPylon>());
+			//Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 3, 4, ModContent.ItemType<SiblingPylon>());
 		}
 
 		bool NearNPC(Vector2 tilePos, int npcType)
