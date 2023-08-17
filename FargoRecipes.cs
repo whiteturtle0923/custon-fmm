@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Fargowiltas.Items.Summons.VanillaCopy;
+using Fargowiltas.Items.Ammos.Bullets;
 
 namespace Fargowiltas
 {
@@ -27,8 +28,12 @@ namespace Fargowiltas
 
         public static void AddRecipeGroups()
         {
+            //Silver or Tungsten Pouch
+            RecipeGroup group = new RecipeGroup(() => AnyItem(ModContent.ItemType<SilverPouch>()), ModContent.ItemType<SilverPouch>(), ModContent.ItemType<TungstenPouch>());
+            RecipeGroup.RegisterGroup("Fargowiltas:AnySilverPouch", group);
+
             // Evil Wood
-            RecipeGroup group = new RecipeGroup(() => AnyItem("EvilWood"),  ItemID.Ebonwood, ItemID.Shadewood );
+            group = new RecipeGroup(() => AnyItem("EvilWood"),  ItemID.Ebonwood, ItemID.Shadewood );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
 
             //gold bar
