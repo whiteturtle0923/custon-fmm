@@ -379,6 +379,16 @@ namespace Fargowiltas
 
         public void AutoUseRod()
         {
+            //loop looking for Rod of Harmony first to make it take priority
+            for (int i = 0; i < Player.inventory.Length; i++)
+            {
+                if (Player.inventory[i].type == ItemID.RodOfHarmony)
+                {
+                    QuickUseItemAt(i);
+                    break;
+                }
+                
+            }
             for (int i = 0; i < Player.inventory.Length; i++)
             {
                 if (Player.inventory[i].type == ItemID.RodofDiscord)
@@ -386,6 +396,7 @@ namespace Fargowiltas
                     QuickUseItemAt(i);
                     break;
                 }
+
             }
         }
 
