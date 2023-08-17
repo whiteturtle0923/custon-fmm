@@ -9,6 +9,12 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Items\Explosives\CityBuster.png" />
+    <None Remove="Items\Renewals\DirtRenewal.png" />
+    <None Remove="Items\Renewals\DirtRenewalSupreme.png" />
+    <None Remove="Items\Renewals\SandRenewal.png" />
+    <None Remove="Items\Renewals\SandRenewalSupreme.png" />
+    <None Remove="Items\Renewals\SnowRenewal.png" />
+    <None Remove="Items\Renewals\SnowRenewalSupreme.png" />
     <None Remove="Items\Summons\Mutant\AncientSeal.png" />
     <None Remove="Projectiles\Explosives\CityBuster.png" />
   </ItemGroup>

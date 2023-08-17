@@ -72,4 +72,43 @@ namespace Fargowiltas.Projectiles
         {
         }
     }
+    public class SnowNukeProj : RenewalBaseProj
+    {
+        public SnowNukeProj() : base("SnowRenewal", ProjectileID.SnowSpray, 0, false)
+        {
+        }
+    }
+
+    public class SnowNukeSupremeProj : RenewalBaseProj
+    {
+        public SnowNukeSupremeProj() : base("SnowRenewalSupreme", ProjectileID.SnowSpray, 0, true)
+        {
+        }
+    }
+    public class SandNukeProj : RenewalBaseProj
+    {
+        public SandNukeProj() : base("SandRenewal", ProjectileID.SandSpray, 0, false)
+        {
+        }
+    }
+
+    public class SandNukeSupremeProj : RenewalBaseProj
+    {
+        public SandNukeSupremeProj() : base("SandRenewalSupreme", ProjectileID.SandSpray, 0, true)
+        {
+        }
+    }
+    public class DirtNukeProj : RenewalBaseProj
+    {
+        public DirtNukeProj() : base("DirtRenewal", ProjectileID.DirtSpray, 0, false)
+        {
+        }
+    }
+
+    public class DirtNukeSupremeProj : RenewalBaseProj
+    {
+        public DirtNukeSupremeProj() : base("DirtRenewalSupreme", ProjectileID.DirtSpray, 0, true)
+        {
+        }
+    }
 }
