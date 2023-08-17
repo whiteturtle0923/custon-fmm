@@ -19,6 +19,9 @@ namespace Fargowiltas.Items.Summons.Mutant
                                "\nCan only be used at night" +
                                "\n'Use at your own risk'"); */
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 8));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
 
         public override void SetDefaults()
