@@ -31,7 +31,7 @@ namespace Fargowiltas.Projectiles
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (target.type == NPCID.MourningWood || target.type == NPCID.Everscream)
+            if (target.type == NPCID.MourningWood || target.type == NPCID.Everscream || target.type == NPCID.Splinterling)
             {
                 modifiers.FinalDamage *= 10;
             }
