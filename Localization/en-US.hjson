@@ -680,6 +680,7 @@ Mods: {
 				DisplayName: Purity Renewal Supreme
 				Tooltip: Cleanses the entire world
 			}
+
 			SnowRenewal: {
 				DisplayName: Snow Renewal
 				Tooltip: Snows a large radius
@@ -689,6 +690,7 @@ Mods: {
 				DisplayName: Snow Renewal Supreme
 				Tooltip: Snows the entire world
 			}
+
 			SandRenewal: {
 				DisplayName: Desert Renewal
 				Tooltip: Sands a large radius
@@ -698,6 +700,7 @@ Mods: {
 				DisplayName: Desert Renewal Supreme
 				Tooltip: Sands the entire world
 			}
+
 			DirtRenewal: {
 				DisplayName: Forest Renewal
 				Tooltip: Dirts a large radius
