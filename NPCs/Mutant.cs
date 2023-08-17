@@ -444,38 +444,36 @@ namespace Fargowiltas.NPCs
             npcShop3.Register();
         }
 
-        public static void AddItem(bool check, int itemType, int price, ref Chest shop, ref int nextSlot)
+        public override void ModifyActiveShop(string shopName, Item[] items)
         {
-            if (!check || shop is null)
+            if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSouls))
             {
                 return;
             }
 
-            shop.item[nextSlot].SetDefaults(itemType);
-            shop.item[nextSlot].shopCustomPrice = price > 0 ? price : shop.item[nextSlot].value;
-
-            // Lowered prices with discount card and pact
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            if (shopName.Replace($"{Mod.Name}/{DisplayName}/", "") is ShopName1 or ShopName2 or ShopName3)
             {
-                float modifier = 1f;
-                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantDiscountCard"))
+                foreach (var item in items)
                 {
-                    modifier -= 0.2f;
-                }
+                    if (item is null || item.IsAir)
+                    {
+                        continue;
+                    }
 
-                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantPact"))
-                {
-                    modifier -= 0.3f;
-                }
+                    float modifier = 1f;
+                    if ((bool)fargoSouls.Call("MutantDiscountCard"))
+                    {
+                        modifier -= 0.2f;
+                    }
 
-                shop.item[nextSlot].shopCustomPrice = (int)(shop.item[nextSlot].shopCustomPrice * modifier);
+                    if ((bool)fargoSouls.Call("MutantPact"))
+                    {
+                        modifier -= 0.3f;
+                    }
+
+                    item.shopCustomPrice = (int)((item.shopCustomPrice ?? item.GetStoreValue()) * modifier);
+                }
             }
-
-            nextSlot++;
-        }
-
-        public override void ModifyActiveShop(string shopName, Item[] items)
-        {
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
