@@ -22,6 +22,8 @@ namespace Fargowiltas.Items.Summons.Mutant
 
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 8));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
+
+            ItemID.Sets.ItemNoGravity[Type] = true;
         }
 
         public override void SetDefaults()
