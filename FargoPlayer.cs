@@ -135,7 +135,10 @@ namespace Fargowiltas
 
             if (Fargowiltas.RodKey.JustPressed)
             {
-                AutoUseRod();
+                if (!(Fargowiltas.ModLoaded["FargowiltasSouls"] && (int)ModLoader.GetMod("FargowiltasSouls").Call("NoUsingItems") > 0))
+                {
+                    AutoUseRod();
+                }
             }
 
             if (Fargowiltas.HomeKey.JustPressed)
@@ -192,6 +195,7 @@ namespace Fargowiltas
 
         public override void PostUpdateMiscEffects()
         {
+            CanRodHotkey = true;
             if (ElementalAssemblerNearby > 0)
             {
                 ElementalAssemblerNearby -= 1;
