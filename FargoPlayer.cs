@@ -135,10 +135,7 @@ namespace Fargowiltas
 
             if (Fargowiltas.RodKey.JustPressed)
             {
-                if (Player.controlUseItem)
-                {
-                    AutoUseRod();
-                }
+                AutoUseRod();
             }
 
             if (Fargowiltas.HomeKey.JustPressed)

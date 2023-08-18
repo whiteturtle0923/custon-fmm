@@ -27,6 +27,8 @@ namespace Fargowiltas.Items.Tiles
             AddMapEntry(color, name);
         }
 
+        public override bool CanDrop(int i, int j) => false;
+
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = 1f;
