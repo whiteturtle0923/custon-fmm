@@ -195,7 +195,6 @@ namespace Fargowiltas
 
         public override void PostUpdateMiscEffects()
         {
-            CanRodHotkey = true;
             if (ElementalAssemblerNearby > 0)
             {
                 ElementalAssemblerNearby -= 1;
