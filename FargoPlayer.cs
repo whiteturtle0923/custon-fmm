@@ -135,7 +135,7 @@ namespace Fargowiltas
 
             if (Fargowiltas.RodKey.JustPressed)
             {
-                if (!(Fargowiltas.ModLoaded["FargowiltasSouls"] && (int)ModLoader.GetMod("FargowiltasSouls").Call("NoUsingItems") > 0))
+                if (Player.controlUseItem)
                 {
                     AutoUseRod();
                 }
