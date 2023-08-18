@@ -1061,7 +1061,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.TartarSauce, ItemID.IronCrate, 3, ItemID.IronCrateHard);
             AddCrateRecipe(ItemID.GingerBeard, ItemID.IronCrate, 3, ItemID.IronCrateHard);
             AddCrateRecipe(ItemID.CloudinaBottle, ItemID.IronCrate, 1, ItemID.IronCrateHard);
-            AddCrateRecipe(ItemID.LuckyHorseshoe, ItemID.IronCrate, 1, ItemID.IronCrateHard);
+            
 
             //gold
             AddCrateRecipe(ItemID.BandofRegeneration, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
@@ -1092,6 +1092,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.Starfury, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
             AddCrateRecipe(ItemID.CreativeWings, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
             AddCrateRecipe(ItemID.SkyMill, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
+            AddCrateRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
 
             //corrupt
             AddCrateRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 1, ItemID.CorruptFishingCrateHard);
