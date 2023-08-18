@@ -50,7 +50,15 @@ namespace Fargowilta
             _lastUpdateUIGameTime = gameTime;
 
             if (!Main.playerInventory)
+            {
                 CloseStatSheet();
+                CloseStatButton();
+            }
+            else
+            {
+                OpenStatButton();
+            }
+
 
             if (StatSheetUserInterface?.CurrentState != null)
                 StatSheetUserInterface.Update(gameTime);
@@ -62,6 +70,8 @@ namespace Fargowilta
         public void CloseStatSheet() => StatSheetUserInterface?.SetState(null);
         //public bool IsTogglerOpen() => TogglerUserInterface.CurrentState == StatSheet;
         public void OpenStatSheet() => StatSheetUserInterface.SetState(StatSheet);
+        public void OpenStatButton() => StatSheetTogglerUserInterface.SetState(StatButton);
+        public void CloseStatButton() => StatSheetTogglerUserInterface?.SetState(null);
 
         public void ToggleStatSheet()
         {
