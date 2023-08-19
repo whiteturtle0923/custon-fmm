@@ -2115,6 +2115,66 @@ Mods: {
 					Prevents tombstones from forming Graveyards
 					'''
 			}
+
+			HoneyRocketBox: {
+				Tooltip: ""
+				DisplayName: Honey Rocket Box
+			}
+
+			DryRocketBox: {
+				Tooltip: ""
+				DisplayName: Dry Rocket Box
+			}
+
+			ClusterRocket2Box: {
+				Tooltip: ""
+				DisplayName: Cluster Rocket2 Box
+			}
+
+			ClusterRocket1Box: {
+				Tooltip: ""
+				DisplayName: Cluster Rocket1 Box
+			}
+
+			LavaRocketBox: {
+				DisplayName: Lava Rocket Box
+				Tooltip: ""
+			}
+
+			MiniNuke1Box: {
+				DisplayName: Mini Nuke1 Box
+				Tooltip: ""
+			}
+
+			MiniNuke2Box: {
+				DisplayName: Mini Nuke2 Box
+				Tooltip: ""
+			}
+
+			Rocket1Box: {
+				DisplayName: Rocket1 Box
+				Tooltip: ""
+			}
+
+			Rocket2Box: {
+				DisplayName: Rocket2 Box
+				Tooltip: ""
+			}
+
+			Rocket3Box: {
+				DisplayName: Rocket3 Box
+				Tooltip: ""
+			}
+
+			Rocket4Box: {
+				DisplayName: Rocket4 Box
+				Tooltip: ""
+			}
+
+			WetRocketBox: {
+				DisplayName: Wet Rocket Box
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
