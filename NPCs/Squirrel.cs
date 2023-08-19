@@ -451,6 +451,14 @@ namespace Fargowiltas.NPCs
                 nextSlot++;
             }
 
+            
+
+            npcShop.Register();
+        }
+
+        public override void ModifyActiveShop(string shopName, Item[] items)
+        {
+            int nextSlot = 0; //ignore pylon and anything else inserted into shop ( how does this work in new system?
             List<int> sellableItems = GetSellableItems();
             int i = 0;
             int startOffset = shopNum * maxShop;
@@ -508,24 +516,16 @@ namespace Fargowiltas.NPCs
 
                 if (medals)
                 {
-                    npcShop.Add(new Item(type) { shopCustomPrice = Item.buyPrice(copper: price), shopSpecialCurrency = CustomCurrencyID.DefenderMedals });
+                    items[nextSlot] = new Item(type) { shopCustomPrice = Item.buyPrice(copper: price), shopSpecialCurrency = CustomCurrencyID.DefenderMedals };
                 }
                 else
                 {
-                    npcShop.Add(new Item(type) { shopCustomPrice = Item.buyPrice(copper: price)});
+                    items[nextSlot] = new Item(type) { shopCustomPrice = Item.buyPrice(copper: price) };
                 }
 
                 nextSlot++;
             }
-
-            npcShop.Register();
         }
-
-        public override void ModifyActiveShop(string shopName, Item[] items)
-        {
-            
-        }
-
         public override bool CheckDead()
         {
             if (!FargoWorld.DownedBools["squirrel"])
