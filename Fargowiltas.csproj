@@ -8,13 +8,29 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Items\Ammos\Rockets\ClusterRocket1Box.png" />
+    <None Remove="Items\Ammos\Rockets\ClusterRocket2Box.png" />
+    <None Remove="Items\Ammos\Rockets\DryRocketBox.png" />
+    <None Remove="Items\Ammos\Rockets\HoneyRocketBox.png" />
+    <None Remove="Items\Ammos\Rockets\LavaRocketBox.png" />
+    <None Remove="Items\Ammos\Rockets\MiniNuke1Box.png" />
+    <None Remove="Items\Ammos\Rockets\MiniNuke2Box.png" />
+    <None Remove="Items\Ammos\Rockets\Rocket1Box.png" />
+    <None Remove="Items\Ammos\Rockets\Rocket2Box.png" />
+    <None Remove="Items\Ammos\Rockets\Rocket3Box.png" />
+    <None Remove="Items\Ammos\Rockets\Rocket4Box.png" />
+    <None Remove="Items\Ammos\Rockets\WetRocketBox.png" />
     <None Remove="Items\Explosives\CityBuster.png" />
     <None Remove="Items\Misc\ModeToggle_0.png" />
     <None Remove="Items\Misc\ModeToggle_1.png" />
     <None Remove="Items\Misc\ModeToggle_2.png" />
     <None Remove="Items\Misc\ModeToggle_3.png" />
+    <None Remove="Items\Renewals\DesertRenewal.png" />
+    <None Remove="Items\Renewals\DesertRenewalSupreme.png" />
     <None Remove="Items\Renewals\DirtRenewal.png" />
     <None Remove="Items\Renewals\DirtRenewalSupreme.png" />
+    <None Remove="Items\Renewals\ForestRenewal.png" />
+    <None Remove="Items\Renewals\ForestRenewalSupreme.png" />
     <None Remove="Items\Renewals\SandRenewal.png" />
     <None Remove="Items\Renewals\SandRenewalSupreme.png" />
     <None Remove="Items\Renewals\SnowRenewal.png" />
