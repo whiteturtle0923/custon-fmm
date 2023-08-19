@@ -2,7 +2,6 @@ using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Summons.Abom;
 using Fargowiltas.Items.Summons.Deviantt;
 using Fargowiltas.Items.Tiles;
-using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -293,7 +292,7 @@ namespace Fargowiltas.NPCs
                 }
                 else if (item.ModItem.Name.EndsWith("Soul"))
                 {
-                    //go through recipes and look for a sellable material 
+                    //go through recipes and look for a sellable material
                     foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.HasResult(item.type)))
                     {
                         foreach (Item material in recipe.requiredItem)
@@ -329,16 +328,6 @@ namespace Fargowiltas.NPCs
             return ShopGroup.End;
         }
 
-        private int AddToDict(int type, ShopGroup group, SortedDictionary<int, Condition>[] itemCollections)
-        {
-            int groupCast = (int)group;
-            if (!itemCollections[groupCast].ContainsKey(type))
-            {
-                itemCollections[groupCast].Add(type, null);
-                return type;
-            }
-            return -1;
-        }
         private void AddToCollection(int type, ShopGroup group, List<int>[] itemCollections)
         {
             int groupCast = (int)group;
@@ -346,17 +335,13 @@ namespace Fargowiltas.NPCs
                 itemCollections[groupCast].Add(type);
         }
 
-        private int[] TryAddItem(Item item, SortedDictionary<int, Condition>[] itemCollections, out int parentItem, out bool ThirtyStack)
+        private void TryAddItem(Item item, List<int>[] itemCollections)
         {
-            int[] ItemsAdded = { };
-            
-            parentItem = -1;
-            ThirtyStack = false;
             ShopGroup shopGroup = SquirrelSells(item, out SquirrelSellType sellType);
             switch (sellType)
             {
                 case SquirrelSellType.SoldBySquirrel:
-                    ItemsAdded.Append(AddToDict(item.type, shopGroup, itemCollections));
+                    AddToCollection(item.type, shopGroup, itemCollections);
                     break;
 
                 case SquirrelSellType.SomeMaterialsSold:
@@ -365,22 +350,13 @@ namespace Fargowiltas.NPCs
                         foreach (Item material in recipe.requiredItem)
                         {
                             if (material.ModItem != null && material.ModItem.Name.EndsWith(shopGroup.ToString()))
-                            {
-                                parentItem = item.type;
-                                ItemsAdded.Append(AddToDict(material.type, shopGroup, itemCollections));
-                            }
+                                AddToCollection(material.type, shopGroup, itemCollections);
 
                             if (material.type == ItemID.CellPhone && TryFind("FargowiltasSouls", "WorldShaperSoul", out ModItem worldShaperSoul) && item.type == worldShaperSoul.Type)
-                            {
-                                parentItem = item.type;
-                                ItemsAdded.Append(AddToDict(material.type, ShopGroup.Other, itemCollections));
-                            }
+                                AddToCollection(material.type, ShopGroup.Other, itemCollections);
 
                             if (material.type == ItemID.Zenith && TryFind("FargowiltasSouls", "BerserkerSoul", out ModItem berserkerSoul) && item.type == berserkerSoul.Type)
-                            {
-                                parentItem = item.type;
-                                ItemsAdded.Append(AddToDict(material.type, ShopGroup.Other, itemCollections));
-                            }
+                                AddToCollection(material.type, ShopGroup.Other, itemCollections);
                         }
                     }
                     break;
@@ -393,80 +369,23 @@ namespace Fargowiltas.NPCs
                             if (material.type != ItemID.None)
                             {
                                 if (Main.recipe.Any(recipe => recipe.HasResult(material.type))) //only put in materials that have recipes themselves
-                                {
-                                    parentItem = item.type;
-                                    ItemsAdded.Append(AddToDict(material.type, shopGroup, itemCollections));
-                                    
-                                }
+                                    AddToCollection(material.type, shopGroup, itemCollections);
                             }
                         }
                     }
                     break;
 
                 case SquirrelSellType.SoldAtThirtyStack:
-                    ThirtyStack = true;
-                    ItemsAdded.Append(AddToDict(item.type, shopGroup, itemCollections));
+                    if (item.stack >= 30)
+                        AddToCollection(item.type, shopGroup, itemCollections);
                     break;
 
                 case SquirrelSellType.End:
                 default:
                     break;
-                
             }
-            return ItemsAdded;
         }
-        private Condition CheckInventory(int itemID, int count)
-        {
-            bool owns = false;
-            for (int i = 0; i < Main.maxPlayers; i++)
-            {
-                Player player = Main.player[i];
-                if (player.inventory.Any(item => item.type == itemID && item.stack >= count) || player.armor.Any(item => item.type == itemID && item.stack >= count) || player.bank.item.Any(item => item.type == itemID && item.stack >= count))
-                {
-                    owns = true;
-                }
-            }
-            //TODO: improve this condition name
-            return new Condition("Necessary Item Owned", () => owns);
-        }
-        private (List<int>, List<Condition>) GetItemsSoldWithCondition()
-        {
-            SortedDictionary<int, Condition>[] SoldWithCondition = new SortedDictionary<int, Condition>[(int)ShopGroup.End]; //so they can be grouped by category
-            for (int i = 0; i < SoldWithCondition.Length; i++)
-                SoldWithCondition[i] = new SortedDictionary<int, Condition>();
-            for (int i = 0; i < Main.maxPlayers; i++)
-            {
-                Player player = Main.player[i];
-                if (!player.active)
-                    continue;
-                for (int index = 1; index < ItemLoader.ItemCount; index++)
-                {
-                    Item item = ContentSamples.ItemsByType[index];
-                    int[] keys = TryAddItem(item, SoldWithCondition, out int parentItem, out bool ThirtyStack);
-                    foreach (int key in keys)
-                    {
-                        if (parentItem != -1)
-                        {
-                            SoldWithCondition.SetValue(CheckInventory(parentItem, ThirtyStack ? 30 : 1), key);
-                        }
-                        else
-                        {
-                            SoldWithCondition.SetValue(CheckInventory(key, ThirtyStack ? 30 : 1), key);
-                        }
-                    }
-                    
-                }
-            }
-            List<int> sellableItems = new List<int>();
-            List<Condition> conditions = new List<Condition>();
-            for (int i = 0; i < SoldWithCondition.Length; i++)
-            {
 
-                sellableItems.AddRange(SoldWithCondition[i].Keys);
-                conditions.AddRange(SoldWithCondition[i].Values);
-            }
-            return (sellableItems, conditions);
-        }
         private List<int> GetSellableItems()
         {
             List<int>[] itemCollections = new List<int>[(int)ShopGroup.End]; //so they can be grouped by category
@@ -478,7 +397,17 @@ namespace Fargowiltas.NPCs
                 Player player = Main.player[i];
                 if (!player.active)
                     continue;
-                    if (player.unlockedBiomeTorches)
+
+                foreach (Item item in player.inventory)
+                    TryAddItem(item, itemCollections);
+
+                foreach (Item item in player.armor)
+                    TryAddItem(item, itemCollections);
+
+                foreach (Item item in player.bank.item)
+                    TryAddItem(item, itemCollections);
+
+                if (player.unlockedBiomeTorches)
                     AddToCollection(ItemID.TorchGodsFavor, ShopGroup.Other, itemCollections);
             }
 
@@ -508,17 +437,43 @@ namespace Fargowiltas.NPCs
             }
             return sellableItems;
         }
-        public void AddToSquirrelShop(int type, NPCShop npcShop, Condition condition = null)
-        {
-            Item item = new Item(type);
-            int price;
-            bool medals = false;
 
-            if (item.makeNPC != 0)
+        const int maxShop = 40;
+
+        public override void AddShops()
+        {
+            var npcShop = new NPCShop(Type, ShopName);
+            int nextSlot = 0; //ignore pylon and anything else inserted into shop ( how does this work in new system?
+
+            if (shopNum == 0 && TryFind("FargowiltasSouls/TopHatSquirrelCaught", out ModItem modItem)) //only on page 1
             {
-                price = Item.buyPrice(gold: 10);
-                int[] pricier = new int[]
+                npcShop.Add(new Item(modItem.Type) { shopCustomPrice = Item.buyPrice(copper: 100000) });
+                nextSlot++;
+            }
+
+            List<int> sellableItems = GetSellableItems();
+            int i = 0;
+            int startOffset = shopNum * maxShop;
+            if (startOffset < 0)
+                startOffset = 0;
+
+            foreach (int type in sellableItems)
+            {
+                if (++i < startOffset) //skip up to the minimum
+                    continue;
+
+                if (nextSlot >= maxShop) //only fill shop up to capacity
+                    break;
+
+                Item item = new Item(type);
+                int price;
+                bool medals = false;
+
+                if (item.makeNPC != 0)
                 {
+                    price = Item.buyPrice(gold: 10);
+                    int[] pricier = new int[]
+                    {
                         ItemID.TruffleWorm,
                         ItemID.EmpressButterfly,
                         ItemID.GoldBird,
@@ -534,70 +489,32 @@ namespace Fargowiltas.NPCs
                         ItemID.SquirrelGold,
                         ItemID.GoldWaterStrider,
                         ItemID.GoldWorm
-                };
-                if (pricier.Contains(item.type))
-                    price *= 7;
-                else if (item.ModItem is Items.CaughtNPCs.CaughtNPCItem)
-                    price *= 3;
-            }
-            else if (type == ItemID.RodofDiscord)
-            {
-                price = 250;
-                medals = true;
-                //shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
-            }
-            else
-            {
-                price = item.value * 5;
-            }
+                    };
+                    if (pricier.Contains(item.type))
+                        price *= 7;
+                    else if (item.ModItem is Items.CaughtNPCs.CaughtNPCItem)
+                        price *= 3;
+                }
+                else if (type == ItemID.RodofDiscord)
+                {
+                    price = 250;
+                    medals = true;
+                    //shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
+                }
+                else
+                {
+                    price = item.value * 5;
+                }
 
-            if (medals)
-            {
+                if (medals)
+                {
+                    npcShop.Add(new Item(type) { shopCustomPrice = Item.buyPrice(copper: price), shopSpecialCurrency = CustomCurrencyID.DefenderMedals });
+                }
+                else
+                {
+                    npcShop.Add(new Item(type) { shopCustomPrice = Item.buyPrice(copper: price)});
+                }
 
-                npcShop.Add(new Item(type) { shopCustomPrice = Item.buyPrice(copper: price), shopSpecialCurrency = CustomCurrencyID.DefenderMedals }, condition);
-            }
-            else
-            {
-                npcShop.Add(new Item(type) { shopCustomPrice = Item.buyPrice(copper: price) }, condition);
-            }
-
-        }
-        const int maxShop = 40;
-
-        public override void AddShops()
-        {
-            var npcShop = new NPCShop(Type, ShopName);
-            int nextSlot = 0; //ignore pylon and anything else inserted into shop ( how does this work in new system?
-
-            if (shopNum == 0 && TryFind("FargowiltasSouls/TopHatSquirrelCaught", out ModItem modItem)) //only on page 1
-            {
-                npcShop.Add(new Item(modItem.Type) { shopCustomPrice = Item.buyPrice(copper: 100000) });
-                nextSlot++;
-            }
-            List<int> sellableItems = GetSellableItems();
-            (List<int> SoldWithCondition, List<Condition> conditions) = GetItemsSoldWithCondition();
-            int i = 0;
-            int startOffset = shopNum * maxShop;
-            if (startOffset < 0)
-                startOffset = 0;
-            foreach (int type in sellableItems)
-            {
-                if (++i < startOffset) //skip up to the minimum
-                    continue;
-
-                if (nextSlot >= maxShop) //only fill shop up to capacity
-                    break;
-                AddToSquirrelShop(type, npcShop);
-                nextSlot++;
-            }
-            for (int j = 0; j < SoldWithCondition.Count; j++)
-            {
-                if (++i < startOffset) //skip up to the minimum
-                    continue;
-
-                if (nextSlot >= maxShop) //only fill shop up to capacity
-                    break;
-                AddToSquirrelShop(SoldWithCondition[j], npcShop, conditions[j]);
                 nextSlot++;
             }
 
@@ -606,6 +523,7 @@ namespace Fargowiltas.NPCs
 
         public override void ModifyActiveShop(string shopName, Item[] items)
         {
+            
         }
 
         public override bool CheckDead()
