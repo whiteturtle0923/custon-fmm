@@ -11,6 +11,7 @@ NEW UPDATE - V 3.1
 -Lumberjack deals bonus damage to Mourning Wood, Everscream and Splinterlings
 -Several resprites
 
+-Squirrel shop fixed
 -Fixed multitiles dropping 2 items when destroyed
 -Way too many bugfixes to count
 
