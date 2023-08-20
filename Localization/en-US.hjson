@@ -576,7 +576,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permanently decreases maximum life by 20
-					Effects may not be reversible for characters that have used modded life-increasing items
+					Right click to reverse 1 use of this item
 					'''
 			}
 
