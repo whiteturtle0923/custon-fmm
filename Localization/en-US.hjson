@@ -575,8 +575,9 @@ Mods: {
 				DisplayName: Death Fruit
 				Tooltip:
 					'''
-					Permanently decreases maximum life by 20
-					Right click to reverse 1 use of this item
+					Left click to decrease the amount of Life Crystals, or Life Fruit if you have any, by 1
+					If both are 0, decreases base maximum health by 20, down to a minimum of 1
+					Right click to reverse 1 use of the latter effect
 					'''
 			}
 

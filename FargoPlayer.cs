@@ -42,7 +42,7 @@ namespace Fargowiltas
         public float StatSheetWingSpeed;
         public bool? CanHover = null;
 
-        public int DeathFruits;
+        public int DeathFruitHealth;
 
         internal Dictionary<string, bool> FirstDyeIngredients = new Dictionary<string, bool>();
 
@@ -83,7 +83,7 @@ namespace Fargowiltas
             }
 
             tag.Add(name, dyes);
-            tag.Add("DeathFruits", DeathFruits);
+            tag.Add("DeathFruitHealth", DeathFruitHealth);
 
             if (BattleCry)
                 tag.Add($"FargoBattleCry{Player.name}", true);
@@ -107,7 +107,7 @@ namespace Fargowiltas
                 FirstDyeIngredients[downedTag] = dyes.Contains(downedTag);
             }
 
-            DeathFruits = tag.GetInt("DeathFruits");
+            DeathFruitHealth = tag.GetInt("DeathFruitHealth");
             BattleCry = tag.ContainsKey($"FargoBattleCry{Player.name}");
             CalmingCry = tag.ContainsKey($"FargoCalmingCry{Player.name}");
         }
@@ -115,27 +115,27 @@ namespace Fargowiltas
         {
             ModPacket packet = Mod.GetPacket();
             packet.Write((byte)Player.whoAmI);
-            packet.Write((byte)DeathFruits);
+            packet.Write((byte)DeathFruitHealth);
             packet.Send(toWho, fromWho);
         }
 
         // Called in ExampleMod.Networking.cs
         public void ReceivePlayerSync(BinaryReader reader)
         {
-            DeathFruits = reader.ReadByte();
+            DeathFruitHealth = reader.ReadByte();
         }
 
         public override void CopyClientState(ModPlayer targetCopy)
         {
             FargoPlayer clone = (FargoPlayer)targetCopy;
-            clone.DeathFruits = DeathFruits;
+            clone.DeathFruitHealth = DeathFruitHealth;
         }
 
         public override void SendClientChanges(ModPlayer clientPlayer)
         {
             FargoPlayer clone = (FargoPlayer)clientPlayer;
 
-            if (DeathFruits != clone.DeathFruits)
+            if (DeathFruitHealth != clone.DeathFruitHealth)
                 SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
         }
         public override void ModifyStartingInventory(IReadOnlyDictionary<string, List<Item>> itemsByMod, bool mediumCoreDeath)
@@ -432,7 +432,7 @@ namespace Fargowiltas
         }
         public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
         {
-            health = StatModifier.Default with { Base = -20 * DeathFruits };
+            health = StatModifier.Default with { Base = -(DeathFruitHealth) };
             mana = StatModifier.Default;
         }
 
