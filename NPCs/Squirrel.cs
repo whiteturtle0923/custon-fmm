@@ -8,7 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Events;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.Localization;
@@ -22,6 +24,7 @@ namespace Fargowiltas.NPCs
 	{
         private static int shopNum;
         private static bool showCycleShop;
+        private static Profiles.StackedNPCProfile NPCProfile;
 
         public enum SquirrelSellType
         {
@@ -44,7 +47,6 @@ namespace Fargowiltas.NPCs
             End
         }
 
-        public override bool UsesPartyHat() => false;
 
         public override void SetStaticDefaults()
 		{
@@ -70,6 +72,10 @@ namespace Fargowiltas.NPCs
             NPC.Happiness.SetBiomeAffection<ForestBiome>(AffectionLevel.Love);
             NPC.Happiness.SetBiomeAffection<UndergroundBiome>(AffectionLevel.Hate);
             NPC.Happiness.SetNPCAffection<LumberJack>(AffectionLevel.Like);
+
+            NPCProfile = new Profiles.StackedNPCProfile(
+                new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Party")
+            );
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -84,8 +90,8 @@ namespace Fargowiltas.NPCs
 		{
 			NPC.townNPC = true;
 			NPC.friendly = true;
-			NPC.width = 50;
-			NPC.height = 32;
+            NPC.width = 44;
+			NPC.height = 42;
 			NPC.damage = 0;
 			NPC.defense = 0;
 			NPC.lifeMax = 100;
@@ -95,12 +101,6 @@ namespace Fargowiltas.NPCs
 
 			AnimationType = NPCID.Squirrel;
 			NPC.aiStyle = 7;
-
-            //if (GetInstance<FargoConfig>().CatchNPCs)
-            //{
-            //    Main.npcCatchable[NPC.type] = true;
-            //    NPC.catchItem = (short)mod.ItemType("Squirrel");
-            //}
         }
 
         public override void AI()
@@ -181,7 +181,7 @@ namespace Fargowiltas.NPCs
         }
 
         public const string ShopName = "Shop";
-
+        public override ITownNPCProfile TownNPCProfile() => NPCProfile;
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
@@ -190,32 +190,6 @@ namespace Fargowiltas.NPCs
             }
             else
             {
-                /*if (Main.hardMode) //ask player why they don't have biocluster
-                {
-                    bool playerHasBiocluster = false;
-                    int type = ModLoader.GetMod("FargowiltasSouls").ItemType("BionomicCluster");
-                    foreach (Item item in Main.LocalPlayer.inventory)
-                    {
-                        if (item.type == type)
-                        {
-                            playerHasBiocluster = true;
-                            break;
-                        }
-                    }
-                    foreach (Item item in Main.LocalPlayer.armor)
-                    {
-                        if (item.type == type)
-                        {
-                            playerHasBiocluster = true;
-                            break;
-                        }
-                    }
-                    if (!playerHasBiocluster)
-                    {
-                        CombatText.NewText(NPC.Hitbox, Color.White, $"[i:{type}]?", true);
-                    }
-                }*/
-
                 shopNum++;
             }
 
@@ -242,6 +216,7 @@ namespace Fargowiltas.NPCs
 
         public static ShopGroup SquirrelSells(Item item, out SquirrelSellType sellType)
         {
+            
             if (item.type == ItemID.Zenith)
             {
                 sellType = SquirrelSellType.CraftableMaterialsSold;
@@ -539,7 +514,7 @@ namespace Fargowiltas.NPCs
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D texture2D13 = Request<Texture2D>(Texture).Value;
+            Texture2D texture2D13 = (Texture2D)TownNPCProfile().GetTextureNPCShouldUse(NPC);
             //int num156 = Main.NPCTexture[NPC.type].Height / Main.NPCFrameCount[NPC.type]; //ypos of lower right corner of sprite to draw
             //int y3 = num156 * NPC.frame.Y; //ypos of upper left corner of sprite to draw
             Rectangle rectangle = NPC.frame;//new Rectangle(0, y3, texture2D13.Width, num156);
