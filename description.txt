@@ -9,6 +9,8 @@ NEW UPDATE - V 3.1
 -New World Token sprite which is based on current difficulty mode, and has a new unique visual effect on activation
 -Ancient Seal now floats
 -Lumberjack deals bonus damage to Mourning Wood, Everscream and Splinterlings
+-Lumberjack no longer sells Pearlwood in prehardmode, only in hardmode, since Pearlwood items were buffed
+-Squirrel town NPC now has party hat during parties
 -Several resprites
 
 -Squirrel shop fixed
