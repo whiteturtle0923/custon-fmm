@@ -13,7 +13,7 @@ NEW UPDATE - V 3.1
 -Squirrel town NPC now has party hat during parties
 -Added shimmer variant for Mutant town NPC
 -Added apples to Lumberjack town NPC's Tree Treasures
--Death Fruit effect can now be reversed by right-clicking with the item
+-Minor Death Fruit rework
 -Several resprites
 
 -Squirrel shop fixed
