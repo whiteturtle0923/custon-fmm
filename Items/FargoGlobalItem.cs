@@ -151,7 +151,7 @@ namespace Fargowiltas.Items
                     }
                 }
 
-                if (Squirrel.SquirrelSells(item, out Squirrel.SquirrelSellType sellType) != Squirrel.ShopGroup.End)
+                if (Squirrel.SquirrelSells(item, out SquirrelSellType sellType) != SquirrelShopGroup.End)
                 {
                     string text = Regex.Replace(sellType.ToString(), "([a-z])([A-Z])", "$1 $2");
                     line = new TooltipLine(Mod, "TooltipSquirrel",
