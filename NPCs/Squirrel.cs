@@ -402,7 +402,6 @@ namespace Fargowiltas.NPCs
             AddToCollection(ItemID.GemTreeRubySeed, ShopGroup.Acorn, itemCollections);
             AddToCollection(ItemID.GemTreeSapphireSeed, ShopGroup.Acorn, itemCollections);
             AddToCollection(ItemID.GemTreeTopazSeed, ShopGroup.Acorn, itemCollections);
-
             List<int> sellableItems = new List<int>();
             for (int i = 0; i < itemCollections.Length; i++)
             {

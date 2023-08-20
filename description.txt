@@ -11,6 +11,7 @@ NEW UPDATE - V 3.1
 -Lumberjack deals bonus damage to Mourning Wood, Everscream and Splinterlings
 -Lumberjack no longer sells Pearlwood in prehardmode, only in hardmode, since Pearlwood items were buffed
 -Squirrel town NPC now has party hat during parties
+-Added shimmer variant for Mutant town NPC
 -Several resprites
 
 -Squirrel shop fixed
