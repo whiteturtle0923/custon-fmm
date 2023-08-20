@@ -30,6 +30,13 @@ namespace Fargowiltas.Items.Misc
 
 			Item.UseSound = SoundID.Item27;
 		}
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.LifeFruit)
+                .AddCondition(Condition.NearShimmer) 
+                .Register();
+        }
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)
 		{
