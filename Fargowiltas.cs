@@ -539,7 +539,7 @@ namespace Fargowiltas
                         {
                             Main.npc[i].dontTakeDamage = false;
                             Main.npc[i].GetGlobalNPC<FargoGlobalNPC>().NoLoot = true;
-                            Main.npc[i].SimpleStrikeNPC(int.MaxValue, 0, false, 0, null, false, 0, true);
+                            Main.npc[i].StrikeInstantKill();
                             //Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
                         }
                     }
