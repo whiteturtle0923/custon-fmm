@@ -61,7 +61,6 @@ namespace Fargowiltas.Projectiles
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, speedX[i], speedY[i], projType, 0, 0, Main.myPlayer);
                 }
             }
-
             if (supreme)
             {
                 for (int x = -Main.maxTilesX; x < Main.maxTilesX; x++)

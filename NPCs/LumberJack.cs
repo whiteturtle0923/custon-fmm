@@ -24,6 +24,7 @@ namespace Fargowiltas.NPCs
         private bool dayOver;
         private bool nightOver;
 
+
         //public override bool Autoload(ref string name)
         //{
         //    name = "LumberJack";
@@ -49,6 +50,10 @@ namespace Fargowiltas.NPCs
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
             NPCID.Sets.HatOffsetY[NPC.type] = 2;
 
+            NPCID.Sets.ShimmerTownTransform[NPC.type] = true; // This set says that the Town NPC has a Shimmered form. Otherwise, the Town NPC will become transparent when touching Shimmer like other enemies.
+
+            NPCID.Sets.ShimmerTownTransform[Type] = true; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
+
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
                 Velocity = -1f,
@@ -61,6 +66,7 @@ namespace Fargowiltas.NPCs
             NPC.Happiness.SetNPCAffection<Squirrel>(AffectionLevel.Like);
             NPC.Happiness.SetNPCAffection(NPCID.Dryad, AffectionLevel.Dislike);
             NPC.Happiness.SetNPCAffection(NPCID.Demolitionist, AffectionLevel.Hate);
+
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -97,6 +103,7 @@ namespace Fargowiltas.NPCs
         {
             return GetInstance<FargoConfig>().Lumber && FargoWorld.DownedBools.TryGetValue("lumberjack", out bool down) && down;
         }
+
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
 
@@ -324,7 +331,7 @@ namespace Fargowiltas.NPCs
 
                     for (int i = 0; i < 5; i++)
                     {
-                        itemType = Main.rand.Next(new int[] { ItemID.Lemon, ItemID.Peach, ItemID.Apricot, ItemID.Grapefruit });
+                        itemType = Main.rand.Next(new int[] { ItemID.Lemon, ItemID.Peach, ItemID.Apricot, ItemID.Grapefruit, ItemID.Apple });
                         player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType);
                     }
                     player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Wood), ItemID.Wood, 50);
@@ -350,7 +357,7 @@ namespace Fargowiltas.NPCs
                 .Add(new Item(ItemID.PalmWood) { shopCustomPrice = Item.buyPrice(copper: 15) })
                 .Add(new Item(ItemID.Ebonwood) { shopCustomPrice = Item.buyPrice(copper: 15) })
                 .Add(new Item(ItemID.Shadewood) { shopCustomPrice = Item.buyPrice(copper: 15) })
-                .Add(new Item(ItemID.Pearlwood) { shopCustomPrice = Item.buyPrice(copper: 20) })
+                .Add(new Item(ItemID.Pearlwood) { shopCustomPrice = Item.buyPrice(copper: 20) }, Condition.Hardmode)
                 .Add(new Item(ItemID.SpookyWood) { shopCustomPrice = Item.buyPrice(copper: 50) }, Condition.DownedPumpking)
                 .Add(new Item(ItemID.Cactus) { shopCustomPrice = Item.buyPrice(copper: 10) })
                 .Add(new Item(ItemID.BambooBlock) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -439,6 +446,20 @@ namespace Fargowiltas.NPCs
         {
             if (npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn)
                 return ModContent.Request<Texture2D>("Fargowiltas/NPCs/LumberJack");
+            if (npc.IsABestiaryIconDummy && npc.ForcePartyHatOn)
+                return ModContent.Request<Texture2D>("Fargowiltas/NPCs/LumberJack_Party");
+
+            if (npc.IsShimmerVariant)
+            {
+                if (npc.altTexture == 1)
+                {
+                    return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Lumberjack_Shimmer_Party");
+                }
+                else
+                {
+                    return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Lumberjack_Shimmer");
+                }
+            }
 
             if (npc.altTexture == 1)
                 return ModContent.Request<Texture2D>("Fargowiltas/NPCs/LumberJack_Party");

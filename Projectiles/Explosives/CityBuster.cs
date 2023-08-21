@@ -18,8 +18,8 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void SetDefaults()
         {
-            Projectile.width = 30;
-            Projectile.height = 30;
+            Projectile.width = 26;
+            Projectile.height = 26;
             Projectile.aiStyle = 16;
             Projectile.friendly = true;
             Projectile.penetrate = -1;

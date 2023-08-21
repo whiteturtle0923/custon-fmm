@@ -17,8 +17,8 @@ Use at your own risk"); */
 
         public override void SetDefaults()
         {
-            Item.width = 11;
-            Item.height = 11;
+            Item.width = 30;
+            Item.height = 26;
             Item.maxStack = 99;
             Item.consumable = true;
             Item.useStyle = ItemUseStyleID.Swing;

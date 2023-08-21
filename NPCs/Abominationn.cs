@@ -20,6 +20,7 @@ namespace Fargowiltas.NPCs
     public class Abominationn : ModNPC
     {
         private bool canSayDefeatQuote = true;
+        private bool canSayMutantShimmerQuote = false;
         private int defeatQuoteTimer = 900;
 
         //public override bool Autoload(ref string name)
@@ -115,6 +116,14 @@ namespace Fargowiltas.NPCs
                 defeatQuoteTimer--;
             else
                 canSayDefeatQuote = false;
+            int mutant = NPC.FindFirstNPC(ModContent.NPCType<Mutant>());
+            if (mutant != -1)
+            {
+                if (!Main.npc[mutant].IsShimmerVariant)
+                {
+                    canSayMutantShimmerQuote = true;
+                }
+            }
         }
 
         public override List<string> SetNPCNameList()
@@ -132,7 +141,21 @@ namespace Fargowiltas.NPCs
                 return "You really defeated me... not bad. Now do it again without getting hit. Oh, and Copper Shortsword only.";
             }
 
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && Main.rand.NextBool(3))
+            int mutant = NPC.FindFirstNPC(ModContent.NPCType<Mutant>());
+            if (mutant != -1)
+            {
+                if (Main.npc[mutant].IsShimmerVariant)
+                {
+                    if (canSayMutantShimmerQuote)
+                    {
+                        canSayMutantShimmerQuote = false;
+                        return "He turned into a squirrel. Funniest thing I've ever seen.";
+                    }
+                    
+                }
+            }
+
+                if (Fargowiltas.ModLoaded["FargowiltasSouls"] && Main.rand.NextBool(3))
             {
                 if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("StyxArmor"))
                     return "What nostalgic armor you're wearing... No, it doesn't fit on me anymore. And its battery takes too long to charge.";
