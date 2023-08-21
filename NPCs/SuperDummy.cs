@@ -10,17 +10,14 @@ namespace Fargowiltas.NPCs
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Super Dummy");
-            
-            Main.QueueMainThreadAction( () =>
+
+            NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
-                NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-                {
-                    Hide = true
-                };
-                NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
-            });
-            
-            
+                Hide = true
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, bestiaryData);
+
+
         }
 
         public override void SetDefaults()
