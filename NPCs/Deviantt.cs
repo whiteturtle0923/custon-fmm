@@ -8,6 +8,7 @@ using Fargowiltas.ShoppingBiomes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
@@ -30,6 +31,8 @@ namespace Fargowiltas.NPCs
         //    return mod.Properties.Autoload;
         //}
 
+        private static Profiles.StackedNPCProfile NPCProfile;
+
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Deviantt");
@@ -41,6 +44,10 @@ namespace Fargowiltas.NPCs
             NPCID.Sets.AttackType[NPC.type] = 0;
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
+
+            NPCID.Sets.ShimmerTownTransform[NPC.type] = true; // This set says that the Town NPC has a Shimmered form. Otherwise, the Town NPC will become transparent when touching Shimmer like other enemies.
+
+            NPCID.Sets.ShimmerTownTransform[Type] = true; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
 
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
@@ -68,6 +75,11 @@ namespace Fargowiltas.NPCs
                     BuffID.Stinky
                 }
             });
+
+            NPCProfile = new Profiles.StackedNPCProfile(
+                new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture)),
+                new Profiles.DefaultNPCProfile(Texture + "_Shimmer", NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Shimmer")
+            );
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -102,6 +114,7 @@ namespace Fargowiltas.NPCs
             NPC.buffImmune[BuffID.Suffocation] = true;
         }
 
+        public override ITownNPCProfile TownNPCProfile() => NPCProfile;
         public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
@@ -466,7 +479,7 @@ namespace Fargowiltas.NPCs
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived"))
             {
-                Texture2D texture2D13 = Terraria.GameContent.TextureAssets.Npc[NPC.type].Value;
+                Texture2D texture = (Texture2D)TownNPCProfile().GetTextureNPCShouldUse(NPC);
                 Rectangle rectangle = NPC.frame;//new Rectangle(0, y3, texture2D13.Width, num156);
                 Vector2 origin2 = rectangle.Size() / 2f;
                 SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
@@ -485,7 +498,7 @@ namespace Fargowiltas.NPCs
 
                 float scale = (Main.mouseTextColor / 200f - 0.35f) * 0.5f + 1f;
                 scale *= NPC.scale;
-                Main.EntitySpriteDraw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY - 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), color26, NPC.rotation, origin2, scale, effects, 0);
+                Main.EntitySpriteDraw(texture, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY - 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), color26, NPC.rotation, origin2, scale, effects, 0);
             }
             //Main.EntitySpriteDraw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0);
             return true;
