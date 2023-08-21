@@ -24,6 +24,7 @@ namespace Fargowiltas.NPCs
         private bool dayOver;
         private bool nightOver;
 
+
         //public override bool Autoload(ref string name)
         //{
         //    name = "LumberJack";
@@ -49,6 +50,10 @@ namespace Fargowiltas.NPCs
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
             NPCID.Sets.HatOffsetY[NPC.type] = 2;
 
+            NPCID.Sets.ShimmerTownTransform[NPC.type] = true; // This set says that the Town NPC has a Shimmered form. Otherwise, the Town NPC will become transparent when touching Shimmer like other enemies.
+
+            NPCID.Sets.ShimmerTownTransform[Type] = true; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
+
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
                 Velocity = -1f,
@@ -61,6 +66,7 @@ namespace Fargowiltas.NPCs
             NPC.Happiness.SetNPCAffection<Squirrel>(AffectionLevel.Like);
             NPC.Happiness.SetNPCAffection(NPCID.Dryad, AffectionLevel.Dislike);
             NPC.Happiness.SetNPCAffection(NPCID.Demolitionist, AffectionLevel.Hate);
+
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -97,6 +103,7 @@ namespace Fargowiltas.NPCs
         {
             return GetInstance<FargoConfig>().Lumber && FargoWorld.DownedBools.TryGetValue("lumberjack", out bool down) && down;
         }
+
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
 
@@ -439,6 +446,20 @@ namespace Fargowiltas.NPCs
         {
             if (npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn)
                 return ModContent.Request<Texture2D>("Fargowiltas/NPCs/LumberJack");
+            if (npc.IsABestiaryIconDummy && npc.ForcePartyHatOn)
+                return ModContent.Request<Texture2D>("Fargowiltas/NPCs/LumberJack_Party");
+
+            if (npc.IsShimmerVariant)
+            {
+                if (npc.altTexture == 1)
+                {
+                    return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Lumberjack_Shimmer_Party");
+                }
+                else
+                {
+                    return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Lumberjack_Shimmer");
+                }
+            }
 
             if (npc.altTexture == 1)
                 return ModContent.Request<Texture2D>("Fargowiltas/NPCs/LumberJack_Party");

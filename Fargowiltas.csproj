@@ -36,6 +36,8 @@
     <None Remove="Items\Renewals\SnowRenewal.png" />
     <None Remove="Items\Renewals\SnowRenewalSupreme.png" />
     <None Remove="Items\Summons\Mutant\AncientSeal.png" />
+    <None Remove="NPCs\Lumberjack_Shimmer.png" />
+    <None Remove="NPCs\Lumberjack_Shimmer_Party.png" />
     <None Remove="NPCs\Mutant_Shimmer.png" />
     <None Remove="NPCs\Mutant_Shimmer_Party.png" />
     <None Remove="NPCs\Squirrel.png" />
