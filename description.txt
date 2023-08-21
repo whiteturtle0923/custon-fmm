@@ -2,7 +2,7 @@ This is a Quality of life mod that adds the Mutant town NPC who sells boss summo
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
 NEW UPDATE - V 3.1
-
+-Updated workshop icon
 -Added Sand, Snow and Forest Renewals and Supreme Renewals
 -Rod of Harmony now works with Quick Rod of Discord keybind
 -Tungsten Pouch sprite added
@@ -15,7 +15,6 @@ NEW UPDATE - V 3.1
 -Added apples to Lumberjack town NPC's Tree Treasures
 -Minor Death Fruit rework and added recipe
 -Several resprites
-
 -Squirrel shop fixed
 -Death Fruits fixed
 -Fixed multitiles dropping 2 items when destroyed
