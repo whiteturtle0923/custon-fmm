@@ -1,6 +1,26 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+NEW UPDATE - V 3.1
+
+-Added Sand, Snow and Forest Renewals and Supreme Renewals
+-Rod of Harmony now works with Quick Rod of Discord keybind
+-Tungsten Pouch sprite added
+-New World Token sprite which is based on current difficulty mode, and has a new unique visual effect on activation
+-Ancient Seal now floats
+-Lumberjack deals bonus damage to Mourning Wood, Everscream and Splinterlings
+-Lumberjack no longer sells Pearlwood in prehardmode, only in hardmode, since Pearlwood items were buffed
+-Squirrel town NPC now has party hat during parties
+-Added shimmer variant for Mutant town NPC
+-Added apples to Lumberjack town NPC's Tree Treasures
+-Minor Death Fruit rework and added recipe
+-Several resprites
+
+-Squirrel shop fixed
+-Death Fruits fixed
+-Fixed multitiles dropping 2 items when destroyed
+-Way too many bugfixes to count
+
 NEW UPDATE - V 3.0
 -Added Purity Totem
 -Updated to tmod 1.4.4

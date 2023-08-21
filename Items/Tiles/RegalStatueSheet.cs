@@ -23,10 +23,11 @@ namespace Fargowiltas.Items.Tiles
             AddMapEntry(new Color(200, 200, 200), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
         }
-
+        /*
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 16, ItemType<RegalStatue>());
         }
+        */
     }
 }

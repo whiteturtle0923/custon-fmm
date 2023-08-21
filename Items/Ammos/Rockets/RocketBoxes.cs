@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Fargowiltas.Items.Ammos.Rockets
 {
-    public abstract class RocketBag : BaseAmmo
+    public abstract class RocketBox : BaseAmmo
     {
         public abstract int RocketProjectile { get; }
         public abstract int SnowmanProjectile { get; }
@@ -24,7 +24,7 @@ namespace Fargowiltas.Items.Ammos.Rockets
         }
     }
 
-    class Rocket1Bag : RocketBag
+    class Rocket1Box : RocketBox
     {
         public override int AmmunitionItem => ItemID.RocketI;
         public override int RocketProjectile => ProjectileID.RocketI;
@@ -38,7 +38,7 @@ namespace Fargowiltas.Items.Ammos.Rockets
         }
     }
 
-    class Rocket2Bag : RocketBag
+    class Rocket2Box : RocketBox
     {
         public override int AmmunitionItem => ItemID.RocketII;
         public override int RocketProjectile => ProjectileID.RocketII;
@@ -52,7 +52,7 @@ namespace Fargowiltas.Items.Ammos.Rockets
         }
     }
 
-    class Rocket3Bag : RocketBag
+    class Rocket3Box : RocketBox
     {
         public override int AmmunitionItem => ItemID.RocketIII;
         public override int RocketProjectile => ProjectileID.RocketIII;
@@ -66,7 +66,7 @@ namespace Fargowiltas.Items.Ammos.Rockets
         }
     }
 
-    class Rocket4Bag : RocketBag
+    class Rocket4Box : RocketBox
     {
         public override int AmmunitionItem => ItemID.RocketIV;
         public override int RocketProjectile => ProjectileID.RocketIV;
@@ -80,7 +80,7 @@ namespace Fargowiltas.Items.Ammos.Rockets
         }
     }
 
-    class ClusterRocket1Bag : RocketBag
+    class ClusterRocket1Box : RocketBox
     {
         public override int AmmunitionItem => ItemID.ClusterRocketI;
         public override int RocketProjectile => ProjectileID.ClusterRocketI;
@@ -92,10 +92,9 @@ namespace Fargowiltas.Items.Ammos.Rockets
             base.SetStaticDefaults();
             // DisplayName.SetDefault("Endless Cluster Rocket I Bag");
         }
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 
-    class ClusterRocket2Bag : RocketBag
+    class ClusterRocket2Box : RocketBox
     {
         public override int AmmunitionItem => ItemID.ClusterRocketII;
         public override int RocketProjectile => ProjectileID.ClusterRocketII;
@@ -107,50 +106,45 @@ namespace Fargowiltas.Items.Ammos.Rockets
             base.SetStaticDefaults();
             // DisplayName.SetDefault("Endless Cluster Rocket II Bag");
         }
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 
-    class DryRocketBag : RocketBag
+    class DryRocketBox : RocketBox
     {
         public override int AmmunitionItem => ItemID.DryRocket;
         public override int RocketProjectile => ProjectileID.DryRocket;
         public override int SnowmanProjectile => ProjectileID.DrySnowmanRocket;
         public override int GrenadeProjectile => ProjectileID.DryGrenade;
         public override int MineProjectile => ProjectileID.DryMine;
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 
-    class WetRocketBag : RocketBag
+    class WetRocketBox : RocketBox
     {
         public override int AmmunitionItem => ItemID.WetRocket;
         public override int RocketProjectile => ProjectileID.WetRocket;
         public override int SnowmanProjectile => ProjectileID.WetSnowmanRocket;
         public override int GrenadeProjectile => ProjectileID.WetGrenade;
         public override int MineProjectile => ProjectileID.WetMine;
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 
-    class LavaRocketBag : RocketBag
+    class LavaRocketBox : RocketBox
     {
         public override int AmmunitionItem => ItemID.LavaRocket;
         public override int RocketProjectile => ProjectileID.LavaRocket;
         public override int SnowmanProjectile => ProjectileID.LavaSnowmanRocket;
         public override int GrenadeProjectile => ProjectileID.LavaGrenade;
         public override int MineProjectile => ProjectileID.LavaMine;
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 
-    class HoneyRocketBag : RocketBag
+    class HoneyRocketBox : RocketBox
     {
         public override int AmmunitionItem => ItemID.HoneyRocket;
         public override int RocketProjectile => ProjectileID.HoneyRocket;
         public override int SnowmanProjectile => ProjectileID.HoneySnowmanRocket;
         public override int GrenadeProjectile => ProjectileID.HoneyGrenade;
         public override int MineProjectile => ProjectileID.HoneyMine;
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 
-    class MiniNuke1Bag : RocketBag
+    class MiniNuke1Box : RocketBox
     {
         public override int AmmunitionItem => ItemID.MiniNukeI;
         public override int RocketProjectile => ProjectileID.MiniNukeRocketI;
@@ -162,10 +156,9 @@ namespace Fargowiltas.Items.Ammos.Rockets
             base.SetStaticDefaults();
             // DisplayName.SetDefault("Endless Mini Nuke I Bag");
         }
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 
-    class MiniNuke2Bag : RocketBag
+    class MiniNuke2Box : RocketBox
     {
         public override int AmmunitionItem => ItemID.MiniNukeII;
         public override int RocketProjectile => ProjectileID.MiniNukeRocketII;
@@ -177,6 +170,5 @@ namespace Fargowiltas.Items.Ammos.Rockets
             base.SetStaticDefaults();
             // DisplayName.SetDefault("Endless Mini Nuke II Bag");
         }
-        public override string Texture => "Fargowiltas/Items/Placeholder";
     }
 }

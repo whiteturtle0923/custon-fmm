@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Fargowiltas.Items.Summons.VanillaCopy;
+using Fargowiltas.Items.Ammos.Bullets;
 
 namespace Fargowiltas
 {
@@ -27,8 +28,12 @@ namespace Fargowiltas
 
         public static void AddRecipeGroups()
         {
+            //Silver or Tungsten Pouch
+            RecipeGroup group = new RecipeGroup(() => AnyItem(ModContent.ItemType<SilverPouch>()), ModContent.ItemType<SilverPouch>(), ModContent.ItemType<TungstenPouch>());
+            RecipeGroup.RegisterGroup("Fargowiltas:AnySilverPouch", group);
+
             // Evil Wood
-            RecipeGroup group = new RecipeGroup(() => AnyItem("EvilWood"),  ItemID.Ebonwood, ItemID.Shadewood );
+            group = new RecipeGroup(() => AnyItem("EvilWood"),  ItemID.Ebonwood, ItemID.Shadewood );
             RecipeGroup.RegisterGroup("Fargowiltas:AnyEvilWood", group);
 
             //gold bar
@@ -1056,7 +1061,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.TartarSauce, ItemID.IronCrate, 3, ItemID.IronCrateHard);
             AddCrateRecipe(ItemID.GingerBeard, ItemID.IronCrate, 3, ItemID.IronCrateHard);
             AddCrateRecipe(ItemID.CloudinaBottle, ItemID.IronCrate, 1, ItemID.IronCrateHard);
-            AddCrateRecipe(ItemID.LuckyHorseshoe, ItemID.IronCrate, 1, ItemID.IronCrateHard);
+            
 
             //gold
             AddCrateRecipe(ItemID.BandofRegeneration, ItemID.GoldenCrate, 1, ItemID.GoldenCrateHard);
@@ -1087,6 +1092,7 @@ namespace Fargowiltas
             AddCrateRecipe(ItemID.Starfury, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
             AddCrateRecipe(ItemID.CreativeWings, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
             AddCrateRecipe(ItemID.SkyMill, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
+            AddCrateRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
 
             //corrupt
             AddCrateRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 1, ItemID.CorruptFishingCrateHard);

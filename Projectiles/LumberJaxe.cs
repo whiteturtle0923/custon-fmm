@@ -29,6 +29,14 @@ namespace Fargowiltas.Projectiles
             Projectile.rotation += 0.3f;
         }
 
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (target.type == NPCID.MourningWood || target.type == NPCID.Everscream || target.type == NPCID.Splinterling)
+            {
+                modifiers.FinalDamage *= 10;
+            }
+            base.ModifyHitNPC(target, ref modifiers);
+        }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.Kill();

@@ -15,6 +15,8 @@ using Terraria.GameContent.Personalities;
 using Fargowiltas.ShoppingBiomes;
 using Fargowiltas.Items.Summons.Abom;
 using Fargowiltas.Items.Tiles;
+using Terraria.GameContent;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Fargowiltas.NPCs
 {
@@ -26,6 +28,7 @@ namespace Fargowiltas.NPCs
         internal bool spawned;
         private bool canSayDefeatQuote = true;
         private int defeatQuoteTimer = 900;
+        private static Profiles.StackedNPCProfile NPCProfile;
 
         //public override bool Autoload(ref string name)
         //{
@@ -44,6 +47,10 @@ namespace Fargowiltas.NPCs
             NPCID.Sets.AttackType[NPC.type] = 0;
             NPCID.Sets.AttackTime[NPC.type] = 90;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
+
+            NPCID.Sets.ShimmerTownTransform[NPC.type] = true; // This set says that the Town NPC has a Shimmered form. Otherwise, the Town NPC will become transparent when touching Shimmer like other enemies.
+
+            NPCID.Sets.ShimmerTownTransform[Type] = true; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
 
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
@@ -67,6 +74,11 @@ namespace Fargowiltas.NPCs
                     BuffID.Suffocation
                 }
             });
+
+            NPCProfile = new Profiles.StackedNPCProfile(
+                new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture)),
+                new Profiles.DefaultNPCProfile(Texture + "_Shimmer", NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Shimmer" + "_Party")
+            );
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -109,6 +121,8 @@ namespace Fargowiltas.NPCs
 
         public override bool CanGoToStatue(bool toKingStatue) => true;
 
+        public override ITownNPCProfile TownNPCProfile() => NPCProfile;
+
         public override void AI()
         {
             NPC.breath = 200;
@@ -127,7 +141,25 @@ namespace Fargowiltas.NPCs
                     NPC.defense = 360;
                 }
             }
+
+            if (NPC.IsShimmerVariant)
+            {
+                AnimationType = NPCID.Squirrel;
+                NPCID.Sets.CannotSitOnFurniture[NPC.type] = true;
+                Main.npcFrameCount[NPC.type] = 6;
+                NPC.width = 46;
+                NPC.height = 38;
+            }
+            else
+            {
+                AnimationType = NPCID.Guide;
+                NPCID.Sets.CannotSitOnFurniture[NPC.type] = false;
+                Main.npcFrameCount[NPC.type] = 25;
+                NPC.width = 18;
+                NPC.height = 40;
+            }
         }
+        public override bool UsesPartyHat() => !NPC.IsShimmerVariant;
 
         public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
@@ -444,38 +476,36 @@ namespace Fargowiltas.NPCs
             npcShop3.Register();
         }
 
-        public static void AddItem(bool check, int itemType, int price, ref Chest shop, ref int nextSlot)
+        public override void ModifyActiveShop(string shopName, Item[] items)
         {
-            if (!check || shop is null)
+            if (!ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSouls))
             {
                 return;
             }
 
-            shop.item[nextSlot].SetDefaults(itemType);
-            shop.item[nextSlot].shopCustomPrice = price > 0 ? price : shop.item[nextSlot].value;
-
-            // Lowered prices with discount card and pact
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
+            if (shopName.Replace($"{Mod.Name}/{DisplayName}/", "") is ShopName1 or ShopName2 or ShopName3)
             {
-                float modifier = 1f;
-                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantDiscountCard"))
+                foreach (var item in items)
                 {
-                    modifier -= 0.2f;
-                }
+                    if (item is null || item.IsAir)
+                    {
+                        continue;
+                    }
 
-                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("MutantPact"))
-                {
-                    modifier -= 0.3f;
-                }
+                    float modifier = 1f;
+                    if ((bool)fargoSouls.Call("MutantDiscountCard"))
+                    {
+                        modifier -= 0.2f;
+                    }
 
-                shop.item[nextSlot].shopCustomPrice = (int)(shop.item[nextSlot].shopCustomPrice * modifier);
+                    if ((bool)fargoSouls.Call("MutantPact"))
+                    {
+                        modifier -= 0.3f;
+                    }
+
+                    item.shopCustomPrice = (int)((item.shopCustomPrice ?? item.GetStoreValue()) * modifier);
+                }
             }
-
-            nextSlot++;
-        }
-
-        public override void ModifyActiveShop(string shopName, Item[] items)
-        {
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -585,5 +615,23 @@ namespace Fargowiltas.NPCs
                 }
             }
         }
+        
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            if (!NPC.IsShimmerVariant)
+            {
+                return base.PreDraw(spriteBatch, screenPos, drawColor);
+            }
+            Texture2D texture = (Texture2D)TownNPCProfile().GetTextureNPCShouldUse(NPC);
+            int frameYsize = texture.Height / Main.npcFrameCount[NPC.type];
+            int frameY = frameYsize * (NPC.frame.Y / NPC.frame.Height);
+            Rectangle rectangle = new Rectangle(0, frameY, texture.Width, frameYsize);
+            Vector2 origin2 = rectangle.Size() / 2f;
+            SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            spriteBatch.Draw(texture, NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY + 2), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
+            return false;
+        }
+        
+        
     }
 }

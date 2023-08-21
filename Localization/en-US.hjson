@@ -575,8 +575,9 @@ Mods: {
 				DisplayName: Death Fruit
 				Tooltip:
 					'''
-					Permanently decreases maximum life by 20
-					Effects may not be reversible for characters that have used modded life-increasing items
+					Left click to decrease the amount of Life Crystals, or Life Fruit if you have any, by 1
+					If both are 0, decreases base maximum health by 20, down to a minimum of 1
+					Right click to reverse 1 use of the latter effect
 					'''
 			}
 
@@ -679,6 +680,36 @@ Mods: {
 			PurityRenewalSupreme: {
 				DisplayName: Purity Renewal Supreme
 				Tooltip: Cleanses the entire world
+			}
+
+			SnowRenewal: {
+				DisplayName: Snow Renewal
+				Tooltip: Snows a large radius
+			}
+
+			SnowRenewalSupreme: {
+				DisplayName: Snow Renewal Supreme
+				Tooltip: Snows the entire world
+			}
+
+			SandRenewal: {
+				DisplayName: Desert Renewal
+				Tooltip: Sands a large radius
+			}
+
+			SandRenewalSupreme: {
+				DisplayName: Desert Renewal Supreme
+				Tooltip: Sands the entire world
+			}
+
+			DirtRenewal: {
+				DisplayName: Forest Renewal
+				Tooltip: Dirts a large radius
+			}
+
+			DirtRenewalSupreme: {
+				DisplayName: Forest Renewal Supreme
+				Tooltip: Dirts the entire world
 			}
 
 			Abeemination2: {
@@ -2085,6 +2116,66 @@ Mods: {
 					Prevents tombstones from forming Graveyards
 					'''
 			}
+
+			HoneyRocketBox: {
+				Tooltip: ""
+				DisplayName: Honey Rocket Box
+			}
+
+			DryRocketBox: {
+				Tooltip: ""
+				DisplayName: Dry Rocket Box
+			}
+
+			ClusterRocket2Box: {
+				Tooltip: ""
+				DisplayName: Cluster Rocket2 Box
+			}
+
+			ClusterRocket1Box: {
+				Tooltip: ""
+				DisplayName: Cluster Rocket1 Box
+			}
+
+			LavaRocketBox: {
+				DisplayName: Lava Rocket Box
+				Tooltip: ""
+			}
+
+			MiniNuke1Box: {
+				DisplayName: Mini Nuke1 Box
+				Tooltip: ""
+			}
+
+			MiniNuke2Box: {
+				DisplayName: Mini Nuke2 Box
+				Tooltip: ""
+			}
+
+			Rocket1Box: {
+				DisplayName: Rocket1 Box
+				Tooltip: ""
+			}
+
+			Rocket2Box: {
+				DisplayName: Rocket2 Box
+				Tooltip: ""
+			}
+
+			Rocket3Box: {
+				DisplayName: Rocket3 Box
+				Tooltip: ""
+			}
+
+			Rocket4Box: {
+				DisplayName: Rocket4 Box
+				Tooltip: ""
+			}
+
+			WetRocketBox: {
+				DisplayName: Wet Rocket Box
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
@@ -2230,6 +2321,13 @@ Mods: {
 			PurityNukeSupremeProj.DisplayName: PurityRenewalSupreme
 			SpawnProj.DisplayName: Spawn
 			SemiBridgifierProj.DisplayName: Semi-Bridgifier
+			DirtNukeProj.DisplayName: DirtRenewal
+			DirtNukeSupremeProj.DisplayName: DirtRenewalSupreme
+			SandNukeProj.DisplayName: SandRenewal
+			SandNukeSupremeProj.DisplayName: SandRenewalSupreme
+			SnowNukeProj.DisplayName: SnowRenewal
+			SnowNukeSupremeProj.DisplayName: SnowRenewalSupreme
+			WorldTokenProj.DisplayName: World Token Proj
 		}
 
 		Tiles: {

@@ -19,10 +19,11 @@ namespace Fargowiltas.Items.Tiles
             DustType = 7;
             TileID.Sets.DisableSmartCursor[Type] = true;
         }
-
+        /*
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<EchPainting>());
         }
+        */
     }
 }
