@@ -387,10 +387,6 @@ namespace Fargowiltas.NPCs
         public override void AddShops()
         {
             var npcShop = new NPCShop(Type, ShopName);
-            if (shopNum == 0 && ModContent.TryFind("FargowiltasSouls", "TopHatSquirrelCaught", out ModItem modItem)) //only on page 1
-            {
-                npcShop.Add(new Item(modItem.Type) { shopCustomPrice = Item.buyPrice(copper: 100000) });
-            }
 
             npcShop.Register();
         }
@@ -402,6 +398,11 @@ namespace Fargowiltas.NPCs
             int startOffset = shopNum * Chest.maxItems;
 
             List<int> sellableItems = GetSellableItems();
+            if (shopNum == 0 && ModContent.TryFind("FargowiltasSouls", "TopHatSquirrelCaught", out ModItem modItem)) //only on page 1
+            {
+                items[nextSlot] = new Item(modItem.Type) { shopCustomPrice = Item.buyPrice(copper: 100000) };
+                nextSlot++;
+            }
             foreach (int type in sellableItems)
             {
                 if (++index < startOffset) //skip up to the minimum

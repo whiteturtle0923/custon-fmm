@@ -17,6 +17,8 @@ using Fargowiltas.Items.Summons.Abom;
 using Fargowiltas.Items.Tiles;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
+using ReLogic.Content;
 
 namespace Fargowiltas.NPCs
 {
@@ -28,7 +30,12 @@ namespace Fargowiltas.NPCs
         internal bool spawned;
         private bool canSayDefeatQuote = true;
         private int defeatQuoteTimer = 900;
-        private static Profiles.StackedNPCProfile NPCProfile;
+
+
+        public override ITownNPCProfile TownNPCProfile()
+        {
+            return new MutantProfile();
+        }
 
         //public override bool Autoload(ref string name)
         //{
@@ -74,11 +81,6 @@ namespace Fargowiltas.NPCs
                     BuffID.Suffocation
                 }
             });
-
-            NPCProfile = new Profiles.StackedNPCProfile(
-                new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture)),
-                new Profiles.DefaultNPCProfile(Texture + "_Shimmer", NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Shimmer" + "_Party")
-            );
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -121,8 +123,6 @@ namespace Fargowiltas.NPCs
 
         public override bool CanGoToStatue(bool toKingStatue) => true;
 
-        public override ITownNPCProfile TownNPCProfile() => NPCProfile;
-
         public override void AI()
         {
             NPC.breath = 200;
@@ -141,23 +141,8 @@ namespace Fargowiltas.NPCs
                     NPC.defense = 360;
                 }
             }
-
-            if (NPC.IsShimmerVariant)
-            {
-                AnimationType = NPCID.Squirrel;
-                NPCID.Sets.CannotSitOnFurniture[NPC.type] = true;
-                Main.npcFrameCount[NPC.type] = 6;
-                NPC.width = 46;
-                NPC.height = 38;
-            }
-            else
-            {
-                AnimationType = NPCID.Guide;
-                NPCID.Sets.CannotSitOnFurniture[NPC.type] = false;
-                Main.npcFrameCount[NPC.type] = 25;
-                NPC.width = 18;
-                NPC.height = 40;
-            }
+            AnimationType = NPC.IsShimmerVariant ? -1 : NPCID.Guide;
+            NPCID.Sets.CannotSitOnFurniture[NPC.type] = NPC.ShimmeredTownNPCs[NPC.type];
         }
         public override bool UsesPartyHat() => !NPC.IsShimmerVariant;
 
@@ -615,23 +600,74 @@ namespace Fargowiltas.NPCs
                 }
             }
         }
-        
+
+        private const int SquirrelFrameCount = 6;
+        private int SquirrelFrame = 0;
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            if (!NPC.IsShimmerVariant)
-            {
-                return base.PreDraw(spriteBatch, screenPos, drawColor);
-            }
             Texture2D texture = (Texture2D)TownNPCProfile().GetTextureNPCShouldUse(NPC);
-            int frameYsize = texture.Height / Main.npcFrameCount[NPC.type];
-            int frameY = frameYsize * (NPC.frame.Y / NPC.frame.Height);
-            Rectangle rectangle = new Rectangle(0, frameY, texture.Width, frameYsize);
-            Vector2 origin2 = rectangle.Size() / 2f;
+            Rectangle rectangle = NPC.frame;
+            if (NPC.IsShimmerVariant)
+            {
+                NPC.spriteDirection = NPC.direction;
+                int height = 56; //we unfortunately have to explicitly set this value due to Restrictions
+                if (NPC.velocity.X == 0)
+                {
+                    SquirrelFrame = 0;
+                }
+                else
+                {
+                    NPC.frameCounter++;
+                    if (NPC.frameCounter >= 5)
+                    {
+                        NPC.frameCounter = 0;
+                        SquirrelFrame++;
+                        if (SquirrelFrame >= SquirrelFrameCount)
+                        {
+                            SquirrelFrame = 1;
+                        }
+                    }
+                }
+                rectangle.X = 0;
+                rectangle.Y = height * SquirrelFrame;
+                rectangle.Width = texture.Width;
+                rectangle.Height = height;
+            }
+            
+            Vector2 origin2 = NPC.frame.Size() / 2f;
             SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(texture, NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY + 2), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
+            spriteBatch.Draw(texture, NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY - 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
             return false;
         }
+
         
-        
+    }
+
+    public class MutantProfile : ITownNPCProfile
+    {
+        public int RollVariation() => 0;
+        public string GetNameForVariant(NPC npc) => npc.getNewNPCName();
+
+        public Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
+        {
+            if (npc.IsABestiaryIconDummy)
+                return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Mutant");
+
+            if (npc.IsShimmerVariant)
+            {
+                if (npc.altTexture == 1)
+                {
+                    return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Mutant_Shimmer_Party");
+                }
+                else
+                {
+                    return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Mutant_Shimmer");
+                }
+            }
+
+            return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Mutant");
+        }
+
+        public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("Fargowiltas/NPCs/Mutant_Head");
     }
 }

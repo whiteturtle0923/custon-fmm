@@ -44,27 +44,25 @@ namespace Fargowiltas.Projectiles
             if (projectile.bobber && projectile.owner == Main.myPlayer && GetInstance<FargoConfig>().ExtraLures && source is EntitySource_ItemUse)
             {
                 int split = 1;
+                int itemType = Main.player[Main.myPlayer].HeldItem.type;
 
-                switch (projectile.type)
+                //check held item type for fishing rods instead of projectile, since bobber projectiles are overridden by the Bobber items
+                switch (itemType)
                 {
-                    case ProjectileID.BobberFiberglass:
-                    case ProjectileID.BobberFisherOfSouls:
-                    case ProjectileID.BobberFleshcatcher:
-                    case ProjectileID.BobberBloody:
-                    case ProjectileID.BobberScarab:
-                        split = 2;
-                        break;
-
-                    case ProjectileID.BobberMechanics:
-                    case ProjectileID.BobbersittingDuck:
-                        split = 3;
-                        break;
-
-                    case ProjectileID.BobberHotline:
-                    case ProjectileID.BobberGolden:
+                    case ItemID.GoldenFishingRod:
                         split = 5;
                         break;
+                    case ItemID.SittingDucksFishingRod:
+                        split = 3;
+                        break;
+                    case ItemID.ScarabFishingRod:
+                        split = 2;
+                        break;
+                    default:
+                        split = 1;
+                        break;
                 }
+
 
                 if (Main.player[projectile.owner].HasBuff(BuffID.Fishing))
                     split++;

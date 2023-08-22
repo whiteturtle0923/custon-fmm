@@ -1,6 +1,16 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
+NEW UPDATE - V 3.1.1
+-Fixed Forest and Desert renewal sprites
+-Added Deviantt shimmer sprite
+-Fixed Mutant shimmer sprite sometimes breaking
+-Fixed super dummy loading error
+-Fixed fishing rods with extra lures not throwing extra lures if you have an alternate Bobber accessory equipped
+-Fixed Abominationn not clearing Celestial Pillars entirely
+-Fixed Squirrel not selling Top Hat Squirrel
+-Deviantt does less trolling
+
 NEW UPDATE - V 3.1
 -Updated workshop icon
 -Added Sand, Snow and Forest Renewals and Supreme Renewals
