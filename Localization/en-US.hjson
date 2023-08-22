@@ -2581,8 +2581,6 @@ Mods: {
 
 		Keybinds: {
 			"Quick Recall/Mirror.DisplayName": Quick Recall/Mirror
-			"Quick Rod of Discord.DisplayName": Quick Rod of Discord
-			"Quick Use Custom (Bottom Left Inventory Slot).DisplayName": Custom Quickuse (Bottom Left Inventory Slot)
 			"Open Stat Sheet.DisplayName": Open Stat Sheet
 		}
 	}

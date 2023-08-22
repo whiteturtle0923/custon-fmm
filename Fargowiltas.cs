@@ -33,9 +33,7 @@ namespace Fargowiltas
         internal static DevianttDialogueTracker dialogueTracker;
 
         // Hotkeys
-        internal static ModKeybind CustomKey;
         internal static ModKeybind HomeKey;
-        internal static ModKeybind RodKey;
 
         internal static ModKeybind StatKey;
 
@@ -86,8 +84,6 @@ namespace Fargowiltas
             dialogueTracker.AddVanillaDialogue();
 
             HomeKey = KeybindLoader.RegisterKeybind(this, "Quick Recall/Mirror", "Home");
-            RodKey = KeybindLoader.RegisterKeybind(this, "Quick Rod of Discord", "E");
-            CustomKey = KeybindLoader.RegisterKeybind(this, "Quick Use Custom (Bottom Left Inventory Slot)", "K");
 
             StatKey = KeybindLoader.RegisterKeybind(this, "Open Stat Sheet", "M");
 
@@ -216,8 +212,6 @@ namespace Fargowiltas
             dialogueTracker = null;
 
             HomeKey = null;
-            RodKey = null;
-            CustomKey = null;
             StatKey = null;
             mods = null;
             ModLoaded = null;
