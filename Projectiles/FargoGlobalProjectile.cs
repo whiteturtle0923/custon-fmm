@@ -53,9 +53,15 @@ namespace Fargowiltas.Projectiles
                         split = 5;
                         break;
                     case ItemID.SittingDucksFishingRod:
+                    case ItemID.MechanicsRod:
+                    case ItemID.HotlineFishingHook:
                         split = 3;
                         break;
                     case ItemID.ScarabFishingRod:
+                    case ItemID.FiberglassFishingPole:
+                    case ItemID.BloodFishingRod:
+                    case ItemID.Fleshcatcher:
+                    case ItemID.FisherofSouls:
                         split = 2;
                         break;
                     default:
