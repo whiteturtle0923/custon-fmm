@@ -1190,7 +1190,11 @@ Mods: {
 
 			MutantVoodoo: {
 				DisplayName: Mutant Voodoo Doll
-				Tooltip: Summons ALL the bosses
+				Tooltip: 
+				'''
+				Summons ALL the bosses
+				Can only be used at night
+				'''
 			}
 
 			PlanterasFruit: {
