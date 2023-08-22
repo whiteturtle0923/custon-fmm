@@ -141,14 +141,7 @@ namespace Fargowiltas.NPCs
                     NPC.defense = 360;
                 }
             }
-            if (NPC.IsShimmerVariant)
-            {
-                AnimationType = -1;
-            }
-            else
-            {
-                AnimationType = NPCID.Guide;
-            }
+            AnimationType = NPC.IsShimmerVariant ? -1 : NPCID.Guide;
             NPCID.Sets.CannotSitOnFurniture[NPC.type] = NPC.ShimmeredTownNPCs[NPC.type];
         }
         public override bool UsesPartyHat() => !NPC.IsShimmerVariant;
@@ -607,42 +600,43 @@ namespace Fargowiltas.NPCs
                 }
             }
         }
-        const int SquirrelFrameCount = 6;
-        public override void FindFrame(int frameHeight)
-        {
-            if (!NPC.IsShimmerVariant)
-            {
-                base.FindFrame(frameHeight);
-                return;
-            }
-            NPC.spriteDirection = NPC.direction;
-            Texture2D texture = (Texture2D)TownNPCProfile().GetTextureNPCShouldUse(NPC);
-            int height = texture.Height / SquirrelFrameCount;
-            if (NPC.velocity.X == 0)
-            {
-                NPC.frame.Y = 0;
-            }
-            else
-            {
-                NPC.frameCounter++;
-                if (NPC.frameCounter >= 5)
-                {
-                    NPC.frameCounter = 0;
-                    NPC.frame.Y += height;
-                    if (NPC.frame.Y >= height * SquirrelFrameCount - 1)
-                    {
-                        NPC.frame.Y = height;
-                    }
-                }
-            }
-        }
 
+        private const int SquirrelFrameCount = 6;
+        private int SquirrelFrame = 0;
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             Texture2D texture = (Texture2D)TownNPCProfile().GetTextureNPCShouldUse(NPC);
+            Rectangle rectangle = NPC.frame;
+            if (NPC.IsShimmerVariant)
+            {
+                NPC.spriteDirection = NPC.direction;
+                int height = 56; //we unfortunately have to explicitly set this value due to Restrictions
+                if (NPC.velocity.X == 0)
+                {
+                    SquirrelFrame = 0;
+                }
+                else
+                {
+                    NPC.frameCounter++;
+                    if (NPC.frameCounter >= 5)
+                    {
+                        NPC.frameCounter = 0;
+                        SquirrelFrame++;
+                        if (SquirrelFrame >= SquirrelFrameCount)
+                        {
+                            SquirrelFrame = 1;
+                        }
+                    }
+                }
+                rectangle.X = 0;
+                rectangle.Y = height * SquirrelFrame;
+                rectangle.Width = texture.Width;
+                rectangle.Height = height;
+            }
+            
             Vector2 origin2 = NPC.frame.Size() / 2f;
             SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            spriteBatch.Draw(texture, NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY), NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
+            spriteBatch.Draw(texture, NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY - 4), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0f);
             return false;
         }
 

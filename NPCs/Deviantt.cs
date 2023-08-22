@@ -7,6 +7,7 @@ using Fargowiltas.Projectiles;
 using Fargowiltas.ShoppingBiomes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
@@ -31,7 +32,10 @@ namespace Fargowiltas.NPCs
         //    return mod.Properties.Autoload;
         //}
 
-        private static Profiles.StackedNPCProfile NPCProfile;
+        public override ITownNPCProfile TownNPCProfile()
+        {
+            return new DevianttProfile();
+        }
 
         public override void SetStaticDefaults()
         {
@@ -76,10 +80,6 @@ namespace Fargowiltas.NPCs
                 }
             });
 
-            NPCProfile = new Profiles.StackedNPCProfile(
-                new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture)),
-                new Profiles.DefaultNPCProfile(Texture + "_Shimmer", NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Shimmer")
-            );
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -113,8 +113,6 @@ namespace Fargowiltas.NPCs
                 
             NPC.buffImmune[BuffID.Suffocation] = true;
         }
-
-        public override ITownNPCProfile TownNPCProfile() => NPCProfile;
         public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
@@ -135,7 +133,7 @@ namespace Fargowiltas.NPCs
             else
                 canSayDefeatQuote = false;
 
-            if (++trolling > 60 * 60)
+            if (++trolling > 180 * 60)
             {
                 trolling = -Main.rand.Next(30 * 60);
 
@@ -503,5 +501,25 @@ namespace Fargowiltas.NPCs
             //Main.EntitySpriteDraw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0);
             return true;
         }
+    }
+    public class DevianttProfile : ITownNPCProfile
+    {
+        public int RollVariation() => 0;
+        public string GetNameForVariant(NPC npc) => npc.getNewNPCName();
+
+        public Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
+        {
+            if (npc.IsABestiaryIconDummy)
+                return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Deviantt");
+
+            if (npc.IsShimmerVariant)
+            {
+                return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Deviantt_Shimmer");
+            }
+
+            return ModContent.Request<Texture2D>("Fargowiltas/NPCs/Deviantt");
+        }
+
+        public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("Fargowiltas/NPCs/Deviantt_Head");
     }
 }
