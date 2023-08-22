@@ -76,7 +76,8 @@ namespace Fargowiltas.NPCs
                 {
                     BuffID.Suffocation,
                     BuffID.Lovestruck,
-                    BuffID.Stinky
+                    BuffID.Stinky,
+                    BuffID.OnFire
                 }
             });
 
