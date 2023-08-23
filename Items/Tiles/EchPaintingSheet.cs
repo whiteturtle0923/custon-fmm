@@ -12,6 +12,7 @@ namespace Fargowiltas.Items.Tiles
         {
             Main.tileFrameImportant[Type] = true;
             Main.tileLavaDeath[Type] = true;
+            Main.tileSpelunker[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall);
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 36;
