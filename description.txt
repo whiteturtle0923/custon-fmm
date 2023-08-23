@@ -3,6 +3,8 @@ There are several other items such as infinite ammos, craftable instant builds f
 
 NEW UPDATE - V 3.1.1.1
 -Updated Altar Exterminator tooltip
+-Unlimited bait works
+-Sibling Pylon only requires two siblings nearby
 
 NEW UPDATE - V 3.1.1
 -Fixed Forest and Desert renewal sprites
