@@ -29,8 +29,8 @@ namespace Fargowiltas.Items.Misc
             Item.height = 32;
             Item.value = Item.buyPrice(1);
             Item.rare = ItemRarityID.Blue;
-            Item.useAnimation = 45;
-            Item.useTime = 45;
+            Item.useAnimation = 1;
+            Item.useTime = 1;
             Item.useStyle = ItemUseStyleID.HiddenAnimation;
             //Item.useStyle = ItemUseStyleID.Shoot;
             Item.consumable = false;
@@ -57,25 +57,26 @@ namespace Fargowiltas.Items.Misc
             {
                 case 0:
                     Main.GameMode = 1;
+                    ChangeAllPlayerDifficulty(0);
                     player.difficulty = 0;
                     text = "Expert mode is now enabled!";
                     break;
 
                 case 1:
                     Main.GameMode = 2;
-                    player.difficulty = 0;
+                    ChangeAllPlayerDifficulty(0);
                     text = "Master mode is now enabled!";
                     break;
 
                 case 2:
                     Main.GameMode = 3;
-                    player.difficulty = 3;
+                    ChangeAllPlayerDifficulty(3);
                     text = "Journey mode is now enabled!";
                     break;
 
                 default:
                     Main.GameMode = 0;
-                    player.difficulty = 0;
+                    ChangeAllPlayerDifficulty(0);
                     text = "Normal mode is now enabled!";
                     break;
             }
@@ -93,6 +94,19 @@ namespace Fargowiltas.Items.Misc
             SoundEngine.PlaySound(SoundID.Roar, player.Center);
 
             return true;
+        }
+
+        private static void ChangeAllPlayerDifficulty(byte diff)
+        {
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player player = Main.player[i];
+                if (player.active)
+                {
+                    player.difficulty = diff;
+                }
+            }
+            
         }
 
         /*
