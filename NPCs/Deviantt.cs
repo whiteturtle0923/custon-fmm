@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Fargowiltas.Common.Configs;
 using Fargowiltas.Items.Summons.Abom;
 using Fargowiltas.Items.Summons.Deviantt;
 using Fargowiltas.Items.Tiles;
@@ -119,7 +120,7 @@ namespace Fargowiltas.NPCs
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("DevianttAlive"))
                 return false;
 
-            return GetInstance<FargoConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() 
+            return GetInstance<FargoServerConfig>().Devi && !FargoGlobalNPC.AnyBossAlive() 
                 && ((FargoWorld.DownedBools.TryGetValue("rareEnemy", out bool value) && value)
                 || (Fargowiltas.ModLoaded["FargowiltasSouls"] && (bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode")));
         }
