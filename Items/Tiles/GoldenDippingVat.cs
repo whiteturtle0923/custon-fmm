@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using Fargowiltas.Common.Systems.Recipes;
 
 namespace Fargowiltas.Items.Tiles
 {
@@ -33,8 +34,8 @@ namespace Fargowiltas.Items.Tiles
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddRecipeGroup("Fargowiltas:AnyCookingPot")
-                .AddRecipeGroup("Fargowiltas:AnyGoldBar", 25)
+                .AddRecipeGroup(RecipeGroups.AnyCookingPot)
+                .AddRecipeGroup(RecipeGroups.AnyGoldBar, 25)
                 .AddIngredient(ItemID.GoldCoin, 25)
                 .AddIngredient(ItemID.GoldDust, 250)
                 .AddTile(TileID.MythrilAnvil)
@@ -51,13 +52,13 @@ namespace Fargowiltas.Items.Tiles
             AddCritter(ItemID.WaterStrider, ItemID.GoldWaterStrider);
             AddCritter(ItemID.Worm, ItemID.GoldWorm);
 
-            AddCritter("Squirrel", ItemID.SquirrelGold);
-            AddCritter("Butterfly", ItemID.GoldButterfly);
-            AddCritter("CommonFish", ItemID.GoldenCarp);
-            AddCritter("Dragonfly", ItemID.GoldDragonfly);
+            AddCritterFromGroup(RecipeGroups.AnySquirrel, ItemID.SquirrelGold);
+            AddCritterFromGroup(RecipeGroups.AnyButterfly, ItemID.GoldButterfly);
+            AddCritterFromGroup(RecipeGroups.AnyCommonFish, ItemID.GoldenCarp);
+            AddCritterFromGroup(RecipeGroups.AnyDragonfly, ItemID.GoldDragonfly);
         }
 
-        private void AddCritter(int critterID, int goldCritterID)
+        private static void AddCritter(int critterID, int goldCritterID)
         {
             Recipe.Create(goldCritterID)
                 .AddIngredient(critterID)
@@ -66,10 +67,10 @@ namespace Fargowiltas.Items.Tiles
                 .Register();
         }
 
-        private void AddCritter(string critterGroup, int goldCritterID)
+        private static void AddCritterFromGroup(int critterGroup, int goldCritterID)
         {
             Recipe.Create(goldCritterID)
-                .AddRecipeGroup($"Fargowiltas:Any{critterGroup}")
+                .AddRecipeGroup(critterGroup)
                 .AddIngredient(ItemID.GoldDust, 100)
                 .AddTile(ModContent.TileType<GoldenDippingVatSheet>())
                 .Register();

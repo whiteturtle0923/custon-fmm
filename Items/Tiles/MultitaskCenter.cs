@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Fargowiltas.Common.Systems.Recipes;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -34,13 +35,13 @@ namespace Fargowiltas.Items.Tiles
                 .AddIngredient(ItemID.WorkBench)
                 .AddIngredient(ItemID.HeavyWorkBench)
                 .AddIngredient(ItemID.Furnace)
-                .AddRecipeGroup("Fargowiltas:AnyAnvil")
+                .AddRecipeGroup(RecipeGroups.AnyAnvil)
                 .AddIngredient(ItemID.Bottle)
                 .AddIngredient(ItemID.Sawmill)
                 .AddIngredient(ItemID.Loom)
                 .AddIngredient(ItemID.WoodenTable)
                 .AddIngredient(ItemID.WoodenChair)
-                .AddRecipeGroup("Fargowiltas:AnyCookingPot")
+                .AddRecipeGroup(RecipeGroups.AnyCookingPot)
                 .AddIngredient(ItemID.WoodenSink)
                 .AddIngredient(ItemID.Keg)
                 .AddTile(TileID.WorkBenches)

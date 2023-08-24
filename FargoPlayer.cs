@@ -15,6 +15,7 @@ using Fargowiltas.Projectiles;
 using Fargowiltas.Items;
 using Terraria.GameContent.Events;
 using System.IO;
+using Fargowiltas.Common.Configs;
 
 ////using Fargowiltas.Toggler;
 
@@ -177,7 +178,7 @@ namespace Fargowiltas
 
         public override void PostUpdateBuffs()
         {
-            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            if (GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120)
             {
                 foreach (Item item in Player.bank.item)
                 {
@@ -190,7 +191,7 @@ namespace Fargowiltas
                 }
             }
 
-            if (GetInstance<FargoConfig>().PiggyBankAcc)
+            if (GetInstance<FargoServerConfig>().PiggyBankAcc)
             {
                 foreach (Item item in Player.bank.item)
                 {
@@ -255,7 +256,7 @@ namespace Fargowiltas
                 Player.ZoneJungle = true;
             }
 
-            if (GetInstance<FargoConfig>().Fountains)
+            if (GetInstance<FargoServerConfig>().Fountains)
             {
                 switch (Main.SceneMetrics.ActiveFountainColor)
                 {
