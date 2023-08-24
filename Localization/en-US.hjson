@@ -159,12 +159,8 @@ Mods: {
 		RecipeGroups: {
 			EvilWood: Evil Wood
 			CommonFish: Common Fish
-			Dragonfly: Dragonfly
-			Butterfly: Butterfly
 			CaughtNPC: Caught Town NPC
-			Banner: Banner
-			ArmoredBones: Armored Bones Banner
-			PirateBanner: Pirate Banner
+			ArmoredBonesBanner: Armored Bones Banner
 		}
 
 		MessageInfo: {
@@ -2178,6 +2174,16 @@ Mods: {
 
 			WetRocketBox: {
 				DisplayName: Wet Rocket Box
+				Tooltip: ""
+			}
+
+			DD2Bartender: {
+				DisplayName: D D2 Bartender
+				Tooltip: ""
+			}
+
+			BestiaryGirl: {
+				DisplayName: Bestiary Girl
 				Tooltip: ""
 			}
 		}
