@@ -15,6 +15,7 @@ using Fargowiltas.Projectiles;
 using Fargowiltas.Items;
 using Terraria.GameContent.Events;
 using System.IO;
+using Fargowiltas.Common.Configs;
 
 ////using Fargowiltas.Toggler;
 
@@ -159,15 +160,6 @@ namespace Fargowiltas
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Fargowiltas.CustomKey.JustPressed)
-            {
-                QuickUseItemAt(40);
-            }
-
-            if (Fargowiltas.RodKey.JustPressed)
-            {
-                AutoUseRod();
-            }
 
             if (Fargowiltas.HomeKey.JustPressed)
             {
@@ -186,7 +178,7 @@ namespace Fargowiltas
 
         public override void PostUpdateBuffs()
         {
-            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
+            if (GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120)
             {
                 foreach (Item item in Player.bank.item)
                 {
@@ -199,7 +191,7 @@ namespace Fargowiltas
                 }
             }
 
-            if (GetInstance<FargoConfig>().PiggyBankAcc)
+            if (GetInstance<FargoServerConfig>().PiggyBankAcc)
             {
                 foreach (Item item in Player.bank.item)
                 {
@@ -264,7 +256,7 @@ namespace Fargowiltas
                 Player.ZoneJungle = true;
             }
 
-            if (GetInstance<FargoConfig>().Fountains)
+            if (GetInstance<FargoServerConfig>().Fountains)
             {
                 switch (Main.SceneMetrics.ActiveFountainColor)
                 {
@@ -406,29 +398,6 @@ namespace Fargowiltas
                 QuickUseItemAt(recallPotion);
             else if (magicMirror != -1)
                 QuickUseItemAt(magicMirror);
-        }
-
-        public void AutoUseRod()
-        {
-            //loop looking for Rod of Harmony first to make it take priority
-            for (int i = 0; i < Player.inventory.Length; i++)
-            {
-                if (Player.inventory[i].type == ItemID.RodOfHarmony)
-                {
-                    QuickUseItemAt(i);
-                    break;
-                }
-                
-            }
-            for (int i = 0; i < Player.inventory.Length; i++)
-            {
-                if (Player.inventory[i].type == ItemID.RodofDiscord)
-                {
-                    QuickUseItemAt(i);
-                    break;
-                }
-
-            }
         }
         public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
         {

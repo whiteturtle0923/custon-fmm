@@ -1,3 +1,4 @@
+using Fargowiltas.Common.Configs;
 using Fargowiltas.Items.Tiles;
 using Microsoft.Xna.Framework;
 using System.Linq;
@@ -99,7 +100,7 @@ namespace Fargowiltas.Tiles
                 //check for == is so that all torches can update on the same tick
                 LastTorchUpdate = Main.GameUpdateCount;
 
-                if (ModContent.GetInstance<FargoConfig>().TorchGodEX
+                if (ModContent.GetInstance<FargoServerConfig>().TorchGodEX
                     && Main.LocalPlayer.ShoppingZone_BelowSurface //torch luck only applies underground
                     && !Main.LocalPlayer.ZoneDungeon && !Main.LocalPlayer.ZoneLihzhardTemple //torch luck doesnt apply here
                     )

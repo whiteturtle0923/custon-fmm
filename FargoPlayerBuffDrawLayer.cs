@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Fargowiltas.Common.Configs;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace Fargowiltas
             && !drawInfo.drawPlayer.dead 
             && !drawInfo.drawPlayer.ghost
             && drawInfo.shadow == 0 
-            && ModContent.GetInstance<FargoConfig>().DebuffOpacity > 0 
+            && ModContent.GetInstance<FargoClientConfig>().DebuffOpacity > 0 
             && drawInfo.drawPlayer.buffType.Count(d => Main.debuff[d] && !debuffsToIgnore.Contains(d)) > 0;
 
         public override Position GetDefaultPosition() => new Between();
@@ -75,7 +76,7 @@ namespace Fargowiltas
                         continue;
 
                     Texture2D buffIcon = TextureAssets.Buff[debuffID].Value;
-                    Color buffColor = Color.White * ModContent.GetInstance<FargoConfig>().DebuffOpacity;
+                    Color buffColor = Color.White * ModContent.GetInstance<FargoClientConfig>().DebuffOpacity;
 
 
                     int index = Array.FindIndex(player.buffType, id => id == debuffID);
@@ -84,7 +85,7 @@ namespace Fargowiltas
                     float rotation = (player.gravDir > 0 ? 0 : MathHelper.Pi) - player.fullRotation;
                     SpriteEffects effects = player.gravDir > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-                    float faderRatio = ModContent.GetInstance<FargoConfig>().DebuffFaderRatio;
+                    float faderRatio = ModContent.GetInstance<FargoClientConfig>().DebuffFaderRatio;
                     if (faderRatio > 0 && !Main.buffNoTimeDisplay[debuffID])
                     {
                         if (currentDuration <= 1) //probably either a persistent debuff or one that will clear soon
