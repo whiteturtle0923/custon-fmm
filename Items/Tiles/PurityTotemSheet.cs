@@ -14,7 +14,6 @@ namespace Fargowiltas.Items.Tiles
     {
         public const int TILES_NEGATED = 9000;
 
-        public virtual Color color => Color.Yellow;
 
         public override void SetStaticDefaults()
         {
@@ -26,7 +25,7 @@ namespace Fargowiltas.Items.Tiles
             TileObjectData.addTile(Type);
             LocalizedText name = CreateMapEntryName();
             // name.SetDefault("Purity Totem");
-            AddMapEntry(color, name);
+            AddMapEntry(Color.Yellow, name);
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

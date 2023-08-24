@@ -6,7 +6,6 @@ namespace Fargowiltas.Items.Tiles
 {
     public class PurityTotem : ModItem
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
 
         public override void SetStaticDefaults()
         {

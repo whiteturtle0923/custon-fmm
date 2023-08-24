@@ -2399,6 +2399,206 @@ Mods: {
 			"Quick Recall/Mirror.DisplayName": Quick Recall/Mirror
 			"Open Stat Sheet.DisplayName": Open Stat Sheet
 		}
+
+		Configs: {
+			FargoServerConfig: {
+				TorchGodEX: {
+					Tooltip: ""
+					Label: Torch God E X
+				}
+
+				FasterLavaFishing: {
+					Tooltip: ""
+					Label: Faster Lava Fishing
+				}
+
+				PiggyBankAcc: {
+					Tooltip: ""
+					Label: Piggy Bank Acc
+				}
+
+				BossZen: {
+					Tooltip: ""
+					Label: Boss Zen
+				}
+
+				Fountains: {
+					Tooltip: ""
+					Label: Fountains
+				}
+
+				ExtractSpeed: {
+					Tooltip: ""
+					Label: Extract Speed
+				}
+
+				IncreaseMaxStack: {
+					Tooltip: ""
+					Label: Increase Max Stack
+				}
+
+				BannerRecipes: {
+					Tooltip: ""
+					Label: Banner Recipes
+				}
+
+				RottenEggs: {
+					Tooltip: ""
+					Label: Rotten Eggs
+				}
+
+				StalkerMoneyTrough: {
+					Tooltip: ""
+					Label: Stalker Money Trough
+				}
+
+				ExtraLures: {
+					Tooltip: ""
+					Label: Extra Lures
+				}
+
+				AnglerQuestInstantReset: {
+					Tooltip: ""
+					Label: Angler Quest Instant Reset
+				}
+
+				ExtraBuffSlots: {
+					Tooltip: ""
+					Label: Extra Buff Slots
+				}
+
+				Headers: {
+					Misc: Extra Buff Slots Header
+					Unlimited: Unlimited Ammo Header
+					Seeds: Drunk World Header
+					Seasons: Halloween Header
+					TownNPCs: Mutant Header
+				}
+
+				UnlimitedPotionBuffsOn120: {
+					Tooltip: ""
+					Label: Unlimited Potion Buffs On120
+				}
+
+				UnlimitedConsumableWeapons: {
+					Tooltip: ""
+					Label: Unlimited Consumable Weapons
+				}
+
+				UnlimitedAmmo: {
+					Tooltip: ""
+					Label: Unlimited Ammo
+				}
+
+				ConstantWorld: {
+					Tooltip: ""
+					Label: Constant World
+				}
+
+				CelebrationWorld: {
+					Tooltip: ""
+					Label: Celebration World
+				}
+
+				WorthyWorld: {
+					Tooltip: ""
+					Label: Worthy World
+				}
+
+				BeeWorld: {
+					Tooltip: ""
+					Label: Bee World
+				}
+
+				DrunkWorld: {
+					Tooltip: ""
+					Label: Drunk World
+				}
+
+				Christmas: {
+					Tooltip: ""
+					Label: Christmas
+				}
+
+				Halloween: {
+					Tooltip: ""
+					Label: Halloween
+				}
+
+				SaferBoundNPCs: {
+					Tooltip: ""
+					Label: Safer Bound N P Cs
+				}
+
+				NPCSales: {
+					Tooltip: ""
+					Label: N P C Sales
+				}
+
+				CatchNPCs: {
+					Tooltip: ""
+					Label: Catch N P Cs
+				}
+
+				Squirrel: {
+					Tooltip: ""
+					Label: Squirrel
+				}
+
+				Lumber: {
+					Tooltip: ""
+					Label: Lumber
+				}
+
+				Devi: {
+					Tooltip: ""
+					Label: Devi
+				}
+
+				Abom: {
+					Tooltip: ""
+					Label: Abom
+				}
+
+				Mutant: {
+					Tooltip: ""
+					Label: Mutant
+				}
+
+				DisplayName: Fargo Server Config
+			}
+
+			SeasonSelections: {
+				AlwaysOff.Label: Always Off
+				AlwaysOn.Label: Always On
+				Normal.Label: Normal
+				Tooltip: ""
+			}
+
+			FargoClientConfig: {
+				DebuffFaderRatio: {
+					Tooltip: ""
+					Label: Debuff Fader Ratio
+				}
+
+				DebuffOpacity: {
+					Tooltip: ""
+					Label: Debuff Opacity
+				}
+
+				TransparentFriendlyProjectiles: {
+					Tooltip: ""
+					Label: Transparent Friendly Projectiles
+				}
+
+				ExpandedTooltips: {
+					Tooltip: ""
+					Label: Expanded Tooltips
+				}
+
+				DisplayName: Fargo Client Config
+			}
+		}
 	}
 }
 
