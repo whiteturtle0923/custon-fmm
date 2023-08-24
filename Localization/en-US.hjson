@@ -2176,16 +2176,6 @@ Mods: {
 				DisplayName: Wet Rocket Box
 				Tooltip: ""
 			}
-
-			DD2Bartender: {
-				DisplayName: D D2 Bartender
-				Tooltip: ""
-			}
-
-			BestiaryGirl: {
-				DisplayName: Bestiary Girl
-				Tooltip: ""
-			}
 		}
 
 		NPCs: {
