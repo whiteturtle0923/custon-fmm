@@ -310,7 +310,7 @@ Mods: {
 
 			Common.CanSpawn: Can Spawn
 		}
-
+	
 		RecipeGroups: {
 			EvilWood: Evil Wood
 			CommonFish: Common Fish
@@ -588,7 +588,11 @@ Mods: {
 
 			AltarExterminator: {
 				DisplayName: Altar Exterminator
-				Tooltip: Destroys all natural Demon Altars and Crimson Altars
+				Tooltip:
+					'''
+					Destroys all natural Demon Altars and Crimson Altars
+					'Also known as the Wraithmaker 200'
+					'''
 			}
 
 			AutoHouse: {
