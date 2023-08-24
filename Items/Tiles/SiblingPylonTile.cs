@@ -98,22 +98,12 @@ namespace Fargowiltas.Items.Tiles
 		bool NearNPC(Vector2 tilePos, int npcType)
 			=> Main.npc.Any(n => n.active && n.type == npcType && n.Distance(tilePos) < 1000);
 
-		bool NearEnoughSiblings(Vector2 tilePos)
-		{
-			int siblingsNearby = 0;
-			if (NearNPC(tilePos, ModContent.NPCType<Mutant>()))
-				siblingsNearby++;
-            if (NearNPC(tilePos, ModContent.NPCType<Abominationn>()))
-                siblingsNearby++;
-            if (NearNPC(tilePos, ModContent.NPCType<Deviantt>()))
-                siblingsNearby++;
-            return siblingsNearby >= 2;
-		}
-
         public override void ValidTeleportCheck_DestinationPostCheck(TeleportPylonInfo destinationPylonInfo, ref bool destinationPylonValid, ref string errorKey)
         {
 			Vector2 tilePos = destinationPylonInfo.PositionInTiles.ToWorldCoordinates();
-			if (!NearEnoughSiblings(tilePos))
+			if (!NearNPC(tilePos, ModContent.NPCType<Mutant>())
+				|| !NearNPC(tilePos, ModContent.NPCType<Abominationn>())
+				|| !NearNPC(tilePos, ModContent.NPCType<Deviantt>()))
 			{
 				destinationPylonValid = false;
 				errorKey = "Mods.Fargowiltas.MessageInfo.SiblingPylonNotNearSiblings";
@@ -123,7 +113,9 @@ namespace Fargowiltas.Items.Tiles
         public override void ValidTeleportCheck_NearbyPostCheck(TeleportPylonInfo nearbyPylonInfo, ref bool destinationPylonValid, ref bool anyNearbyValidPylon, ref string errorKey)
 		{
 			Vector2 tilePos = nearbyPylonInfo.PositionInTiles.ToWorldCoordinates();
-			if (!NearEnoughSiblings(tilePos))
+			if (!NearNPC(tilePos, ModContent.NPCType<Mutant>())
+				|| !NearNPC(tilePos, ModContent.NPCType<Abominationn>())
+				|| !NearNPC(tilePos, ModContent.NPCType<Deviantt>()))
             {
 				destinationPylonValid = false;
 				errorKey = "Mods.Fargowiltas.MessageInfo.NearbySiblingPylonNotNearSiblings";

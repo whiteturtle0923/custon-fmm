@@ -131,11 +131,6 @@ namespace Fargowiltas.Items
                         line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 30 stack in inventory, Piggy Bank, or Safe]");
                         tooltips.Add(line);
                     }
-                    else if (item.bait > 0)
-                    {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited use at 30 stack]");
-                        tooltips.Add(line);
-                    }
                     else if (item.type == ItemID.SharpeningStation
                             || item.type == ItemID.AmmoBox
                             || item.type == ItemID.CrystalBall
@@ -403,14 +398,6 @@ namespace Fargowiltas.Items
                 return false;
 
             return true;
-        }
-
-        public override bool? CanConsumeBait(Player player, Item bait)
-        {
-            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120 && bait.stack > 30)
-                return false;
-
-            return base.CanConsumeBait(player, bait);
         }
 
         public override bool ConsumeItem(Item item, Player player)
