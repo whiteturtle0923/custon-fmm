@@ -1,4 +1,3 @@
-using Fargowiltas.Common.Configs;
 using Microsoft.Xna.Framework;
 using System.Linq;
 using Terraria;
@@ -42,7 +41,7 @@ namespace Fargowiltas.Projectiles
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (projectile.bobber && projectile.owner == Main.myPlayer && GetInstance<FargoServerConfig>().ExtraLures && source is EntitySource_ItemUse)
+            if (projectile.bobber && projectile.owner == Main.myPlayer && GetInstance<FargoConfig>().ExtraLures && source is EntitySource_ItemUse)
             {
                 int split = 1;
                 int itemType = Main.player[Main.myPlayer].HeldItem.type;
@@ -81,7 +80,7 @@ namespace Fargowiltas.Projectiles
 
         public override bool PreAI(Projectile projectile)
         {
-            if (projectile.type == ProjectileID.FlyingPiggyBank && GetInstance<FargoServerConfig>().StalkerMoneyTrough)
+            if (projectile.type == ProjectileID.FlyingPiggyBank && GetInstance<FargoConfig>().StalkerMoneyTrough)
             {
                 Player player = Main.player[projectile.owner];
                 float dist = Vector2.Distance(projectile.Center, player.Center);
@@ -108,7 +107,7 @@ namespace Fargowiltas.Projectiles
                     lowRender = true;
             }
 
-            if (projectile.bobber && projectile.lavaWet && GetInstance<FargoServerConfig>().FasterLavaFishing)
+            if (projectile.bobber && projectile.lavaWet && GetInstance<FargoConfig>().FasterLavaFishing)
             {
                 if (projectile.ai[0] == 0 && projectile.ai[1] == 0 && projectile.localAI[1] < 600)
                     projectile.localAI[1]++;
@@ -119,7 +118,7 @@ namespace Fargowiltas.Projectiles
 
         public override void Kill(Projectile projectile, int timeLeft)
         {
-            if (projectile.type == ProjectileID.FlyingPiggyBank && GetInstance<FargoServerConfig>().StalkerMoneyTrough)
+            if (projectile.type == ProjectileID.FlyingPiggyBank && GetInstance<FargoConfig>().StalkerMoneyTrough)
             {
                 //functionally, this makes money trough toggle the piggy bank on/off
                 foreach (Projectile p in Main.projectile.Where(p => p.active && p.type == projectile.type && p.owner == projectile.owner))
@@ -162,14 +161,14 @@ namespace Fargowiltas.Projectiles
 
         public override Color? GetAlpha(Projectile projectile, Color lightColor)
         {
-            if (lowRender && !projectile.hostile && GetInstance<FargoClientConfig>().TransparentFriendlyProjectiles < 1)
+            if (lowRender && !projectile.hostile && GetInstance<FargoConfig>().TransparentFriendlyProjectiles < 1)
             {
                 Color? color = projectile.ModProjectile?.GetAlpha(lightColor);
                 if (color != null)
                 {
-                    return color.Value * GetInstance<FargoClientConfig>().TransparentFriendlyProjectiles;
+                    return color.Value * GetInstance<FargoConfig>().TransparentFriendlyProjectiles;
                 }
-                lightColor *= GetInstance<FargoClientConfig>().TransparentFriendlyProjectiles;
+                lightColor *= GetInstance<FargoConfig>().TransparentFriendlyProjectiles;
                 return lightColor;
             }
 

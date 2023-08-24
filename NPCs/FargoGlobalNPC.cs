@@ -17,7 +17,6 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Fargowiltas.Items.Explosives;
 using Fargowiltas.Items.Summons.Abom;
-using Fargowiltas.Common.Configs;
 
 namespace Fargowiltas.NPCs
 {
@@ -95,7 +94,7 @@ namespace Fargowiltas.NPCs
             if (target.dontTakeDamage && target.type == NPCType<Squirrel>())
                 return false;
             
-            if (target.friendly && GetInstance<FargoServerConfig>().SaferBoundNPCs && (target.type == NPCID.BoundGoblin || target.type == NPCID.BoundMechanic || target.type == NPCID.BoundWizard || target.type == NPCID.BartenderUnconscious || target.type == NPCID.GolferRescue))
+            if (target.friendly && GetInstance<FargoConfig>().SaferBoundNPCs && (target.type == NPCID.BoundGoblin || target.type == NPCID.BoundMechanic || target.type == NPCID.BoundWizard || target.type == NPCID.BartenderUnconscious || target.type == NPCID.GolferRescue))
                 return false;
             
             return base.CanHitNPC(npc, target);
@@ -333,7 +332,7 @@ namespace Fargowiltas.NPCs
             #endregion
             
 
-            if (GetInstance<FargoServerConfig>().NPCSales)
+            if (GetInstance<FargoConfig>().NPCSales)
             {
                 //Only use "condition" if the item has a single condition, otherwise use the "conditions" array.
                 void AddItem(int itemID, int customPrice = -1, Condition condition = null, Condition[] conditions = null)
@@ -658,7 +657,7 @@ namespace Fargowiltas.NPCs
                 maxSpawns = (int)(maxSpawns * 30f);
             }
 
-            if (AnyBossAlive() && GetInstance<FargoServerConfig>().BossZen && player.Distance(Main.npc[boss].Center) < 6000)
+            if (AnyBossAlive() && GetInstance<FargoConfig>().BossZen && player.Distance(Main.npc[boss].Center) < 6000)
             {
                 maxSpawns = 0;
             }
@@ -1400,7 +1399,7 @@ namespace Fargowiltas.NPCs
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-            if (GetInstance<FargoServerConfig>().RottenEggs && projectile.type == ProjectileID.RottenEgg && npc.townNPC)
+            if (GetInstance<FargoConfig>().RottenEggs && projectile.type == ProjectileID.RottenEgg && npc.townNPC)
             {
                 modifiers.FinalDamage *= 20;
                 //damage *= 20;
@@ -1410,7 +1409,7 @@ namespace Fargowiltas.NPCs
         public override void OnChatButtonClicked(NPC npc, bool firstButton)
         {
             // No angler check enables luiafk compatibility
-            if (GetInstance<FargoServerConfig>().AnglerQuestInstantReset && Main.anglerQuestFinished)
+            if (GetInstance<FargoConfig>().AnglerQuestInstantReset && Main.anglerQuestFinished)
             {
                 if (Main.netMode == NetmodeID.SinglePlayer)
                 {

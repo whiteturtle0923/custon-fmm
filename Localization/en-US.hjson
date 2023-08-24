@@ -127,8 +127,8 @@ Mods: {
 			UnlimitedHeader: Unlimited
 			UnlimitedAmmo: "[i:771] Unlimited Ammo at 3996+ in Hardmode"
 			UnlimitedConsumableWeapons: "[i:42] Unlimited Consumable Weapons at 3996+ in Hardmode"
-			UnlimitedPotionBuffsOn120: "[i:292] Unlimited Buffs when carried in certain stacks"
-			UnlimitedPotionBuffsOn120Tooltip: 30+ for potions, 3+ for class stations (e.g. Sharpening Table) and Slice of Cake
+			UnlimitedPotionBuffsOn120: "[i:292] Unlimited Buffs and Bait when carried in certain stacks"
+			UnlimitedPotionBuffsOn120Tooltip: 30+ for potions/bait, 3+ for class stations (e.g. Sharpening Table) and Slice of Cake
 			MiscHeader: Miscellaneous
 			ExtraBuffSlots: "[i:3000] Additional Buff Slots"
 			ExpandedTooltips: "[i:171] More tooltips indicate Mutant Mod changes"
@@ -159,8 +159,12 @@ Mods: {
 		RecipeGroups: {
 			EvilWood: Evil Wood
 			CommonFish: Common Fish
+			Dragonfly: Dragonfly
+			Butterfly: Butterfly
 			CaughtNPC: Caught Town NPC
-			ArmoredBonesBanner: Armored Bones Banner
+			Banner: Banner
+			ArmoredBones: Armored Bones Banner
+			PirateBanner: Pirate Banner
 		}
 
 		MessageInfo: {
@@ -2393,6 +2397,194 @@ Mods: {
 			PaladinDown: Mods.Fargowiltas.Conditions.PaladinDown
 			SkeleGunDown: Mods.Fargowiltas.Conditions.SkeleGunDown
 			SiblingPylon: Mods.Fargowiltas.Conditions.SiblingPylon
+		}
+
+		Configs: {
+			FargoConfig: {
+				DisplayName: Fargo Config
+
+				Mutant: {
+					Label: "{$Mods.Fargowiltas.Config.Mutant}"
+					Tooltip: ""
+				}
+
+				Abom: {
+					Label: "{$Mods.Fargowiltas.Config.Abom}"
+					Tooltip: ""
+				}
+
+				Devi: {
+					Label: "{$Mods.Fargowiltas.Config.Devi}"
+					Tooltip: ""
+				}
+
+				Lumber: {
+					Label: "{$Mods.Fargowiltas.Config.Lumber}"
+					Tooltip: ""
+				}
+
+				Squirrel: {
+					Label: "{$Mods.Fargowiltas.Config.Squirrel}"
+					Tooltip: ""
+				}
+
+				CatchNPCs: {
+					Label: "{$Mods.Fargowiltas.Config.CatchNPCs}"
+					Tooltip: ""
+				}
+
+				NPCSales: {
+					Label: "{$Mods.Fargowiltas.Config.NPCSales}"
+					Tooltip: ""
+				}
+
+				SaferBoundNPCs: {
+					Label: "{$Mods.Fargowiltas.Config.SaferBoundNPCs}"
+					Tooltip: ""
+				}
+
+				Halloween: {
+					Label: "{$Mods.Fargowiltas.Config.Halloween}"
+					Tooltip: ""
+				}
+
+				Christmas: {
+					Label: "{$Mods.Fargowiltas.Config.Christmas}"
+					Tooltip: ""
+				}
+
+				DrunkWorld: {
+					Label: "{$Mods.Fargowiltas.Config.DrunkWorld}"
+					Tooltip: ""
+				}
+
+				BeeWorld: {
+					Label: "{$Mods.Fargowiltas.Config.BeeWorld}"
+					Tooltip: ""
+				}
+
+				WorthyWorld: {
+					Label: "{$Mods.Fargowiltas.Config.WorthyWorld}"
+					Tooltip: ""
+				}
+
+				CelebrationWorld: {
+					Label: "{$Mods.Fargowiltas.Config.CelebrationWorld}"
+					Tooltip: ""
+				}
+
+				ConstantWorld: {
+					Label: "{$Mods.Fargowiltas.Config.ConstantWorld}"
+					Tooltip: ""
+				}
+
+				UnlimitedAmmo: {
+					Label: "{$Mods.Fargowiltas.Config.UnlimitedAmmo}"
+					Tooltip: ""
+				}
+
+				UnlimitedConsumableWeapons: {
+					Label: "{$Mods.Fargowiltas.Config.UnlimitedConsumableWeapons}"
+					Tooltip: ""
+				}
+
+				UnlimitedPotionBuffsOn120: {
+					Label: "{$Mods.Fargowiltas.Config.UnlimitedPotionBuffsOn120}"
+					Tooltip: "{$Mods.Fargowiltas.Config.UnlimitedPotionBuffsOn120Tooltip}"
+				}
+
+				ExtraBuffSlots: {
+					Label: "{$Mods.Fargowiltas.Config.ExtraBuffSlots}"
+					Tooltip: ""
+				}
+
+				ExpandedTooltips: {
+					Label: "{$Mods.Fargowiltas.Config.ExpandedTooltips}"
+					Tooltip: ""
+				}
+
+				AnglerQuestInstantReset: {
+					Label: "{$Mods.Fargowiltas.Config.AnglerQuestInstantReset}"
+					Tooltip: ""
+				}
+
+				ExtraLures: {
+					Label: "{$Mods.Fargowiltas.Config.ExtraLures}"
+					Tooltip: ""
+				}
+
+				StalkerMoneyTrough: {
+					Label: "{$Mods.Fargowiltas.Config.StalkerMoneyTrough}"
+					Tooltip: ""
+				}
+
+				RottenEggs: {
+					Label: "{$Mods.Fargowiltas.Config.RottenEggs}"
+					Tooltip: ""
+				}
+
+				BannerRecipes: {
+					Label: "{$Mods.Fargowiltas.Config.BannerRecipes}"
+					Tooltip: ""
+				}
+
+				IncreaseMaxStack: {
+					Label: "{$Mods.Fargowiltas.Config.IncreaseMaxStack}"
+					Tooltip: ""
+				}
+
+				ExtractSpeed: {
+					Label: "{$Mods.Fargowiltas.Config.ExtractSpeed}"
+					Tooltip: ""
+				}
+
+				Fountains: {
+					Label: "{$Mods.Fargowiltas.Config.Fountains}"
+					Tooltip: ""
+				}
+
+				BossZen: {
+					Label: "{$Mods.Fargowiltas.Config.BossZen}"
+					Tooltip: ""
+				}
+
+				PiggyBankAcc: {
+					Label: "{$Mods.Fargowiltas.Config.PiggyBankAcc}"
+					Tooltip: ""
+				}
+
+				FasterLavaFishing: {
+					Label: "{$Mods.Fargowiltas.Config.FasterLavaFishing}"
+					Tooltip: ""
+				}
+
+				TorchGodEX: {
+					Label: "{$Mods.Fargowiltas.Config.TorchGodEX}"
+					Tooltip: "{$Mods.Fargowiltas.Config.TorchGodEXTooltip}"
+				}
+
+				DebuffOpacity: {
+					Label: "{$Mods.Fargowiltas.Config.DebuffOpacity}"
+					Tooltip: ""
+				}
+
+				DebuffFaderRatio: {
+					Label: "{$Mods.Fargowiltas.Config.DebuffFaderRatio}"
+					Tooltip: ""
+				}
+
+				TransparentFriendlyProjectiles: {
+					Label: "{$Mods.Fargowiltas.Config.TransparentFriendlyProjectiles}"
+					Tooltip: "{$Mods.Fargowiltas.Config.TransparentFriendlyProjectilesTooltip}"
+				}
+			}
+
+			SeasonSelections: {
+				Tooltip: ""
+				Normal.Label: Normal
+				AlwaysOn.Label: Always On
+				AlwaysOff.Label: Always Off
+			}
 		}
 
 		Keybinds: {

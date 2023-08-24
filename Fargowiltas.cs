@@ -1,21 +1,29 @@
-﻿using Fargowilta;
-using Fargowiltas.Common.Configs;
-using Fargowiltas.Items.CaughtNPCs;
-using Fargowiltas.Items.Misc;
-using Fargowiltas.Items.Tiles;
-using Fargowiltas.NPCs;
-using Fargowiltas.Projectiles;
-using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Threading;
+using Fargowiltas.NPCs;
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Chat;
 using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Fargowiltas.Items.Misc;
+using Fargowiltas.Items.Tiles;
+using Fargowiltas.Projectiles;
+using Fargowilta;
+using Fargowiltas.Items.CaughtNPCs;
+using MonoMod.Cil;
+using MonoMod.RuntimeDetour;
+using MonoMod.RuntimeDetour.HookGen;
+using Terraria.DataStructures;
+using Terraria.UI;
+using Terraria.Chat;
+using Fargowiltas.Items.Vanity;
+using static tModPorter.ProgressUpdate;
 
 namespace Fargowiltas
 {
@@ -45,7 +53,7 @@ namespace Fargowiltas
 
         internal static Fargowiltas Instance;
 
-        public override uint ExtraPlayerBuffSlots => ModContent.GetInstance<FargoServerConfig>().ExtraBuffSlots;
+        public override uint ExtraPlayerBuffSlots => ModContent.GetInstance<FargoConfig>().ExtraBuffSlots;
 
         public Fargowiltas()
         {
@@ -56,6 +64,15 @@ namespace Fargowiltas
 //                AutoloadSounds = true,
 //            }; 
 //            HookIntoLoad();
+        }
+
+        public void AddToggle(String toggle, String name, String item, String color)
+        {
+            
+            LocalizedText text = Language.GetOrRegister(toggle);
+            text.Format("[i:" + item + "] [c/" + color + ":" + name + "]");
+            Language.GetOrRegister(text.ToString());
+            
         }
 
         public override void Load()
@@ -88,6 +105,12 @@ namespace Fargowiltas
                 ModLoaded.Add(mod, false);
             }
 
+            AddToggle("Mods.Fargowiltas.Config.Mutant", "{$Mods.Fargowiltas.NPCs.Mutant.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/MutantMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Abom", "{$Mods.Fargowiltas.NPCs.Abominationn.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/AbominationMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Devi", "{$Mods.Fargowiltas.NPCs.Deviantt.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/DevianttMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Lumber", "{$Mods.Fargowiltas.NPCs.LumberJack.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", "Fargowiltas/LumberjackMask", "ffffff");
+            AddToggle("Mods.Fargowiltas.Config.Squirrel", "{$Mods.Fargowiltas.NPCs.Squirrel.DisplayName{$Mods.Fargowiltas.Config.CanSpawn}", ItemID.TopHat.ToString(), "ffffff");
+
             CaughtNPCItem.RegisterItems(this);
 
             // DD2 Banner Effect hack
@@ -111,7 +134,7 @@ namespace Fargowiltas
             var wormholes = GetWormholes(self).ToList();
 
             if (
-                ModContent.GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120
+                ModContent.GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120
                 && wormholes.Select(x => x.stack).Sum() >= 30
             )
             {

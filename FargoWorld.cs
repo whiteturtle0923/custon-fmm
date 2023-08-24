@@ -12,7 +12,6 @@ using static Terraria.ModLoader.ModContent;
 using Fargowiltas.Items.Tiles;
 using System;
 using Terraria.GameContent.Events;
-using Fargowiltas.Common.Configs;
 
 namespace Fargowiltas
 {
@@ -92,11 +91,11 @@ namespace Fargowiltas
 
         public override void PreWorldGen()
         {
-            SetWorldBool(GetInstance<FargoServerConfig>().DrunkWorld, ref Main.drunkWorld) ;
-            SetWorldBool(GetInstance<FargoServerConfig>().BeeWorld, ref Main.notTheBeesWorld);
-            SetWorldBool(GetInstance<FargoServerConfig>().WorthyWorld, ref Main.getGoodWorld);
-            SetWorldBool(GetInstance<FargoServerConfig>().CelebrationWorld, ref Main.tenthAnniversaryWorld);
-            SetWorldBool(GetInstance<FargoServerConfig>().ConstantWorld, ref Main.dontStarveWorld);
+            setWorldBool(GetInstance<FargoConfig>().DrunkWorld, ref Main.drunkWorld) ;
+            setWorldBool(GetInstance<FargoConfig>().BeeWorld, ref Main.notTheBeesWorld);
+            setWorldBool(GetInstance<FargoConfig>().WorthyWorld, ref Main.getGoodWorld);
+            setWorldBool(GetInstance<FargoConfig>().CelebrationWorld, ref Main.tenthAnniversaryWorld);
+            setWorldBool(GetInstance<FargoConfig>().ConstantWorld, ref Main.dontStarveWorld);
 
             foreach (string tag in tags)
             {
@@ -106,7 +105,7 @@ namespace Fargowiltas
             WoodChopped = 0;
         }
 
-        private void SetWorldBool(SeasonSelections toggle, ref bool flag)
+        private void setWorldBool(SeasonSelections toggle, ref bool flag)
         {
             switch (toggle)
             {
@@ -209,15 +208,15 @@ namespace Fargowiltas
             //SeasonSelections xmas = GetInstance<FargoConfig>().Christmas;
 
 
-            SetWorldBool(GetInstance<FargoServerConfig>().Halloween, ref Main.halloween);
-            SetWorldBool(GetInstance<FargoServerConfig>().Christmas, ref Main.xMas);
+            setWorldBool(GetInstance<FargoConfig>().Halloween, ref Main.halloween);
+            setWorldBool(GetInstance<FargoConfig>().Christmas, ref Main.xMas);
 
             //seeds
-            SetWorldBool(GetInstance<FargoServerConfig>().DrunkWorld, ref Main.drunkWorld);
-            SetWorldBool(GetInstance<FargoServerConfig>().BeeWorld, ref Main.notTheBeesWorld);
-            SetWorldBool(GetInstance<FargoServerConfig>().WorthyWorld, ref Main.getGoodWorld);
-            SetWorldBool(GetInstance<FargoServerConfig>().CelebrationWorld, ref Main.tenthAnniversaryWorld);
-            SetWorldBool(GetInstance<FargoServerConfig>().ConstantWorld, ref Main.dontStarveWorld);
+            setWorldBool(GetInstance<FargoConfig>().DrunkWorld, ref Main.drunkWorld);
+            setWorldBool(GetInstance<FargoConfig>().BeeWorld, ref Main.notTheBeesWorld);
+            setWorldBool(GetInstance<FargoConfig>().WorthyWorld, ref Main.getGoodWorld);
+            setWorldBool(GetInstance<FargoConfig>().CelebrationWorld, ref Main.tenthAnniversaryWorld);
+            setWorldBool(GetInstance<FargoConfig>().ConstantWorld, ref Main.dontStarveWorld);
 
             if (Matsuri)
             {
@@ -330,7 +329,19 @@ namespace Fargowiltas
 
         public override void AddRecipes()
         {
+            base.AddRecipes();
+
             Fargowiltas.summonTracker.FinalizeSummonData();
+
+            FargoRecipes recipes = new FargoRecipes(Fargowiltas.Instance);
+            recipes.AddRecipes();
+        }
+
+        public override void AddRecipeGroups()
+        {
+            base.AddRecipeGroups();
+
+            FargoRecipes.AddRecipeGroups();
         }
     }
 }

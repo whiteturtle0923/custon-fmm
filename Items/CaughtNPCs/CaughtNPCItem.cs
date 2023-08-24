@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Fargowiltas.Common.Configs;
 using Fargowiltas.NPCs;
 using Terraria;
 using Terraria.DataStructures;
@@ -209,7 +208,7 @@ namespace Fargowiltas.Items.CaughtNPCs
         public override void SetDefaults(NPC npc)
         {
             int type = npc.type;
-            if (CaughtNPCItem.CaughtTownies.ContainsKey(type) && ModContent.GetInstance<FargoServerConfig>().CatchNPCs)
+            if (CaughtNPCItem.CaughtTownies.ContainsKey(type) && ModContent.GetInstance<FargoConfig>().CatchNPCs)
             {
                 npc.catchItem = (short)CaughtNPCItem.CaughtTownies.FirstOrDefault(x => x.Key.Equals(type)).Value;
                 if (!Main.npcCatchable[type])

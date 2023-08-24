@@ -4,7 +4,6 @@ using Terraria.Localization;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Fargowiltas.Common.Systems.Recipes;
 
 namespace Fargowiltas.Items.Tiles
 {
@@ -49,8 +48,8 @@ namespace Fargowiltas.Items.Tiles
                 .AddIngredient(ItemID.BoneWelder)
                 .AddIngredient(ItemID.LavaBucket)
                 .AddIngredient(ItemID.HoneyBucket)
-                .AddRecipeGroup(RecipeGroups.AnyTombstone)
-                .AddRecipeGroup(RecipeGroups.AnyDemonAltar)
+                .AddRecipeGroup("Fargowiltas:AnyTombstone")
+                .AddRecipeGroup("Fargowiltas:AnyDemonAltar")
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

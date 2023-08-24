@@ -4,7 +4,6 @@ using Terraria.Localization;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Fargowiltas.Common.Systems.Recipes;
 
 namespace Fargowiltas.Items.Tiles
 {
@@ -52,9 +51,9 @@ namespace Fargowiltas.Items.Tiles
                 .AddIngredient(ModContent.ItemType<MultitaskCenter>())
                 .AddIngredient(ModContent.ItemType<ElementalAssembler>())
 				.AddIngredient(ModContent.ItemType<GoldenDippingVat>())
-                .AddRecipeGroup(RecipeGroups.AnyForge)
-                .AddRecipeGroup(RecipeGroups.AnyHMAnvil)
-                .AddRecipeGroup(RecipeGroups.AnyBookcase)
+                .AddRecipeGroup("Fargowiltas:AnyForge")
+                .AddRecipeGroup("Fargowiltas:AnyHMAnvil")
+                .AddRecipeGroup("Fargowiltas:AnyBookcase")
                 .AddIngredient(ItemID.CrystalBall)
                 .AddIngredient(ItemID.Autohammer)
                 .AddIngredient(ItemID.BlendOMatic)

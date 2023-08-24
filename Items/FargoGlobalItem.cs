@@ -11,7 +11,6 @@ using Fargowiltas.Items.Ammos.Rockets;
 using System.Text.RegularExpressions;
 using System.Linq;
 using Terraria.GameContent.ItemDropRules;
-using Fargowiltas.Common.Configs;
 
 namespace Fargowiltas.Items
 {
@@ -35,47 +34,47 @@ namespace Fargowiltas.Items
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            var fargoServerConfig = GetInstance<FargoServerConfig>();
+            FargoConfig fargoConfig = GetInstance<FargoConfig>();
 
-            if (GetInstance<FargoClientConfig>().ExpandedTooltips)
+            if (fargoConfig.ExpandedTooltips)
             {
                 TooltipLine line;
 
                 switch (item.type)
                 {
                     case ItemID.PureWaterFountain:
-                        if (fargoServerConfig.Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Ocean"));
                         break;
 
                     case ItemID.OasisFountain:
                     case ItemID.DesertWaterFountain:
-                        if (fargoServerConfig.Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Desert"));
                         break;
 
                     case ItemID.JungleWaterFountain:
-                        if (fargoServerConfig.Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Jungle"));
                         break;
 
                     case ItemID.IcyWaterFountain:
-                        if (fargoServerConfig.Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Snow"));
                         break;
 
                     case ItemID.CorruptWaterFountain:
-                        if (fargoServerConfig.Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Corruption"));
                         break;
 
                     case ItemID.CrimsonWaterFountain:
-                        if (fargoServerConfig.Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Crimson"));
                         break;
 
                     case ItemID.HallowedWaterFountain:
-                        if (fargoServerConfig.Fountains)
+                        if (fargoConfig.Fountains)
                             tooltips.Add(FountainTooltip("Hallow (in hardmode only)"));
                         break;
 
@@ -84,13 +83,13 @@ namespace Fargowiltas.Items
                     case ItemID.BugNet:
                     case ItemID.GoldenBugNet:
                     case ItemID.FireproofBugNet:
-                        if (fargoServerConfig.CatchNPCs)
+                        if (fargoConfig.CatchNPCs)
                             tooltips.Add(new TooltipLine(Mod, "Tooltip0", "[i:1991] [c/AAAAAA:Can also catch townsfolk]"));
                         break;
 
                 }
 
-                if (fargoServerConfig.ExtraLures)
+                if (fargoConfig.ExtraLures)
                 {
                     if (item.type == ItemID.FishingPotion)
                     {
@@ -117,7 +116,7 @@ namespace Fargowiltas.Items
                     }
                 }
 
-                if (fargoServerConfig.TorchGodEX && item.type == ItemID.TorchGodsFavor)
+                if (fargoConfig.TorchGodEX && item.type == ItemID.TorchGodsFavor)
                 {
                     line = new TooltipLine(Mod, "TooltipTorchGod1", "[i:5043] [c/AAAAAA:Automatically swaps placed torches to boost luck]");
                     tooltips.Add(line);
@@ -125,7 +124,7 @@ namespace Fargowiltas.Items
                     tooltips.Add(line);
                 }
 
-                if (fargoServerConfig.UnlimitedPotionBuffsOn120 && item.maxStack > 1)
+                if (fargoConfig.UnlimitedPotionBuffsOn120 && item.maxStack > 1)
                 {
                     if (item.buffType != 0)
                     {
@@ -148,7 +147,7 @@ namespace Fargowiltas.Items
                     }
                 }
 
-                if (fargoServerConfig.PiggyBankAcc)
+                if (fargoConfig.PiggyBankAcc)
                 {
                     if (Informational.Contains(item.type) || Construction.Contains(item.type))
                     {
@@ -169,7 +168,7 @@ namespace Fargowiltas.Items
 
         public override void SetDefaults(Item item)
         {
-            if (GetInstance<FargoServerConfig>().IncreaseMaxStack)
+            if (GetInstance<FargoConfig>().IncreaseMaxStack)
             {
                 if (item.maxStack > 10 && (item.maxStack != 100) && !(item.type >= ItemID.CopperCoin && item.type <= ItemID.PlatinumCoin))
                 {
@@ -202,7 +201,7 @@ namespace Fargowiltas.Items
 
         public override void PostUpdate(Item item)
         {
-            if (GetInstance<FargoServerConfig>().Halloween == SeasonSelections.AlwaysOn && GetInstance<FargoServerConfig>().Christmas == SeasonSelections.AlwaysOn && firstTick)
+            if (GetInstance<FargoConfig>().Halloween == SeasonSelections.AlwaysOn && GetInstance<FargoConfig>().Christmas == SeasonSelections.AlwaysOn && firstTick)
             {
                 if (Array.IndexOf(Hearts, item.type) >= 0)
                 {
@@ -222,7 +221,7 @@ namespace Fargowiltas.Items
         {
             if (item.type == ItemID.SiltBlock || item.type == ItemID.SlushBlock || item.type == ItemID.DesertFossil)
             {
-                if (GetInstance<FargoServerConfig>().ExtractSpeed && player.GetModPlayer<FargoPlayer>().extractSpeed)
+                if (GetInstance<FargoConfig>().ExtractSpeed && player.GetModPlayer<FargoPlayer>().extractSpeed)
                 {
                     item.useTime = 2;
                     item.useAnimation = 3;
@@ -239,7 +238,7 @@ namespace Fargowiltas.Items
 
         public static void TryUnlimBuff(Item item, Player player)
         {
-            if (item.IsAir || !GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120)
+            if (item.IsAir || !GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120)
                 return;
 
             if (item.stack >= 30 && item.buffType != 0)
@@ -272,7 +271,7 @@ namespace Fargowiltas.Items
         static int[] Construction = { ItemID.Toolbelt, ItemID.Toolbox, ItemID.ExtendoGrip, ItemID.PaintSprayer, ItemID.BrickLayer, ItemID.PortableCementMixer, ItemID.ActuationAccessory, ItemID.ArchitectGizmoPack };
         public static void TryPiggyBankAcc(Item item, Player player)
         {
-            if (item.IsAir || item.maxStack > 1 || !GetInstance<FargoServerConfig>().PiggyBankAcc)
+            if (item.IsAir || item.maxStack > 1 || !GetInstance<FargoConfig>().PiggyBankAcc)
                 return;
 
             if (Informational.Contains(item.type))
@@ -400,7 +399,7 @@ namespace Fargowiltas.Items
 
         public override bool CanBeConsumedAsAmmo(Item ammo, Item weapon, Player player)
         {
-            if (GetInstance<FargoServerConfig>().UnlimitedAmmo && Main.hardMode && ammo.ammo != 0 && ammo.stack >= 3996)
+            if (GetInstance<FargoConfig>().UnlimitedAmmo && Main.hardMode && ammo.ammo != 0 && ammo.stack >= 3996)
                 return false;
 
             return true;
@@ -416,9 +415,9 @@ namespace Fargowiltas.Items
 
         public override bool ConsumeItem(Item item, Player player)
         {
-            if (GetInstance<FargoServerConfig>().UnlimitedConsumableWeapons && Main.hardMode && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
+            if (GetInstance<FargoConfig>().UnlimitedConsumableWeapons && Main.hardMode && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
                 return false;
-            if (GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120 && (item.buffType > 0 || item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion) && (item.stack >= 30 || player.inventory.Any(i => i.type == item.type && !i.IsAir && i.stack >= 30)))
+            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120 && (item.buffType > 0 || item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion) && (item.stack >= 30 || player.inventory.Any(i => i.type == item.type && !i.IsAir && i.stack >= 30)))
                 return false;
             return true;
         }

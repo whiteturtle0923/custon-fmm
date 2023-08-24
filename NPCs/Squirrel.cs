@@ -1,4 +1,3 @@
-using Fargowiltas.Common.Configs;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Microsoft.Xna.Framework;
@@ -114,7 +113,7 @@ namespace Fargowiltas.NPCs
                 return Main.player.Any(p => p.active && p.HasItem(modItem.Type));
             }
 
-            return ModContent.GetInstance<FargoServerConfig>().Squirrel;
+            return ModContent.GetInstance<FargoConfig>().Squirrel;
         }
 
         public override string GetChat()

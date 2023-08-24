@@ -1,5 +1,4 @@
-﻿using Fargowiltas.Common.Systems.Recipes;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -37,7 +36,7 @@ namespace Fargowiltas.Items.Explosives
             CreateRecipe()
                 .AddIngredient(ItemID.Dynamite, 5)
                 .AddIngredient(ItemID.FallenStar, 1)
-                .AddRecipeGroup(RecipeGroups.AnyTombstone)
+                .AddRecipeGroup("Fargowiltas:AnyTombstone")
                 .AddTile(TileID.Anvils)
                 .Register();
         }
