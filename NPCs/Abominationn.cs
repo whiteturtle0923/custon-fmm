@@ -13,6 +13,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using Fargowiltas.ShoppingBiomes;
 using Fargowiltas.Items.Tiles;
+using Fargowiltas.Common.Configs;
 
 namespace Fargowiltas.NPCs
 {
@@ -104,7 +105,7 @@ namespace Fargowiltas.NPCs
             {
                 return false;
             }
-            return GetInstance<FargoConfig>().Abom && NPC.downedGoblins && !FargoGlobalNPC.AnyBossAlive();
+            return GetInstance<FargoServerConfig>().Abom && NPC.downedGoblins && !FargoGlobalNPC.AnyBossAlive();
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;

@@ -1,4 +1,5 @@
-﻿using Fargowiltas.Utilities;
+﻿using Fargowiltas.Common.Configs;
+using Fargowiltas.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,7 +13,7 @@ namespace Fargowiltas.Common.Systems.Recipes
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModContent.GetInstance<FargoConfig>().BannerRecipes;
+            return ModContent.GetInstance<FargoServerConfig>().BannerRecipes;
         }
 
         public override void AddRecipeGroups()
