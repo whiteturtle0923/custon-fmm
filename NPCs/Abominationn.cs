@@ -95,7 +95,7 @@ namespace Fargowiltas.NPCs
             //    Main.npcCatchable[NPC.type] = true;
             //    NPC.catchItem = (short)mod.ItemType("Abominationn");
             //}
-                
+
             NPC.buffImmune[BuffID.Suffocation] = true;
         }
 
@@ -152,11 +152,11 @@ namespace Fargowiltas.NPCs
                         canSayMutantShimmerQuote = false;
                         return "He turned into a squirrel. Funniest thing I've ever seen.";
                     }
-                    
+
                 }
             }
 
-                if (Fargowiltas.ModLoaded["FargowiltasSouls"] && Main.rand.NextBool(3))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && Main.rand.NextBool(3))
             {
                 if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("StyxArmor"))
                     return "What nostalgic armor you're wearing... No, it doesn't fit on me anymore. And its battery takes too long to charge.";
@@ -274,14 +274,11 @@ namespace Fargowiltas.NPCs
                  .Add(new Item(ItemType<MartianMemoryStick>()) { shopCustomPrice = Item.buyPrice(copper: 300000) }, Condition.DownedMartians)
                  .Add(new Item(ItemType<PillarSummon>()) { shopCustomPrice = Item.buyPrice(copper: 750000) }, new Condition("Mods.Fargowiltas.Conditions.PillarsDown", () => NPC.downedTowers))
                  .Add(new Item(ItemType<AbominationnScythe>()) { shopCustomPrice = Item.buyPrice(copper: 50000) }, new Condition("Mods.Fargowiltas.Conditions.PillarsDown", () => NPC.downedTowers))
-                 .Add(new Item(ItemType<SiblingPylon>()), new Condition("Mods.Fargowiltas.Conditions.SiblingPylon",  () => (Condition.HappyEnough.IsMet() && NPC.AnyNPCs(NPCType<Mutant>()) && NPC.AnyNPCs(NPCType<Abominationn>())) && NPC.AnyNPCs(NPCType<Deviantt>())))
+                .Add(new Item(ItemType<SiblingPylon>()), Condition.HappyEnough, Condition.NpcIsPresent(NPCType<Mutant>()), Condition.NpcIsPresent(NPCType<Abominationn>()), Condition.NpcIsPresent(NPCType<Deviantt>()))
+
             ;
 
             npcShop.Register();
-        }
-
-        public override void ModifyActiveShop(string shopName, Item[] items)
-        {
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
