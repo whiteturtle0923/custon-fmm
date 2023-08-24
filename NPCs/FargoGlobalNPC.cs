@@ -328,12 +328,6 @@ namespace Fargowiltas.NPCs
 
             #region Conditions
             //TODO: localization/proper text on conditions
-            Condition angler5 = new Condition("Finish 5 angler quests", () => player.anglerQuestsFinished >= 5);
-            Condition angler10 = new Condition("Finish 10 angler quests", () => player.anglerQuestsFinished >= 10);
-            Condition angler15 = new Condition("Finish 15 angler quests", () => player.anglerQuestsFinished >= 15);
-            Condition angler20 = new Condition("Finish 25 angler quests", () => player.anglerQuestsFinished >= 25);
-            Condition angler25 = new Condition("Finish 25 angler quests", () => player.anglerQuestsFinished >= 25);
-            Condition angler30 = new Condition("Finish 30 angler quests", () => player.anglerQuestsFinished >= 30);
             Condition InRockOrDirtLayerHeight = new Condition("Be in the dirt or rock layer", () => Condition.InDirtLayerHeight.IsMet() || Condition.InRockLayerHeight.IsMet());
             #endregion
             
@@ -376,10 +370,6 @@ namespace Fargowiltas.NPCs
                         AddItem(ItemID.PharaohsMask, Item.buyPrice(gold: 1));
                         AddItem(ItemID.PharaohsRobe, Item.buyPrice(gold: 1));
 
-                        AddItem(ItemID.AnglerHat, condition: angler10);
-                        AddItem(ItemID.AnglerVest, condition: angler15);
-                        AddItem(ItemID.AnglerPants, condition: angler20);
-
                         AddItem(ItemID.BlueBrick, Item.buyPrice(silver: 1));
                         AddItem(ItemType<UnsafeBlueBrickWall>(), Item.buyPrice(copper: 25));
                         AddItem(ItemType<UnsafeBlueSlabWall>(), Item.buyPrice(copper: 25));
@@ -399,20 +389,6 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.Merchant:
-                        
-                        AddItem(ItemID.FuzzyCarrot, condition: angler5);
-                        AddItem(ItemID.AnglerEarring, condition: angler10);
-                        AddItem(ItemID.HighTestFishingLine, condition: angler10);
-                        AddItem(ItemID.TackleBox, condition: angler10);
-                        AddItem(ItemID.GoldenBugNet, condition: angler10);
-                        AddItem(ItemID.FishHook, condition: angler10);
-
-                        AddItem(ItemID.FinWings, conditions: new Condition[] { angler10, Condition.Hardmode });
-                        AddItem(ItemID.SuperAbsorbantSponge, conditions: new Condition[] { angler10, Condition.Hardmode }); ;
-                        AddItem(ItemID.BottomlessBucket, conditions: new Condition[] { angler10, Condition.Hardmode });
-                        AddItem(ItemID.HotlineFishingHook, conditions: new Condition[] { angler25, Condition.Hardmode });
-                        AddItem(ItemID.GoldenFishingRod, conditions: new Condition[] { angler30, Condition.Hardmode });
-
                         AddItem(ItemID.Seed, 3, condition: new Condition("Have a weapon that uses seeds as ammunition in your inventory", () => Main.LocalPlayer.inventory.Any(i => !i.IsAir && i.useAmmo == AmmoID.Dart)));
                         break;
 
@@ -556,6 +532,86 @@ namespace Fargowiltas.NPCs
                         AddItem(ItemID.SuperManaPotion, condition: Condition.DownedGolem);
                         break;
                     
+                }
+            }
+        }
+
+        public override void ModifyActiveShop(NPC npc, string shopName, Item[] items) //fishing quest items didn't work in AddItems for some reason, so they're going here
+        {
+            void AddItem(int itemID, int slot, int customPrice = -1)
+            {
+                if (customPrice == -1)
+                {
+                    items[slot] = new Item(itemID);
+                }
+                else
+                {
+                    items[slot] = new Item(itemID) { shopCustomPrice = Item.buyPrice(copper: customPrice) };
+                }
+
+            }
+            Player player = Main.LocalPlayer;
+            if (npc.type == NPCID.Merchant)
+            {
+                for (int i = 0; i < items.Length; i++)
+                {
+                    
+                    if (!items[i].IsAir)
+                    {
+                        continue;
+                    }
+                    if (player.anglerQuestsFinished >= 5)
+                    {
+                        AddItem(ItemID.FuzzyCarrot, i);
+                        
+                        
+                        if (player.anglerQuestsFinished >= 10)
+                        {
+                            AddItem(ItemID.AnglerEarring, i);
+                            AddItem(ItemID.HighTestFishingLine, i);
+                            AddItem(ItemID.TackleBox, i);
+                            AddItem(ItemID.GoldenBugNet, i);
+                            AddItem(ItemID.FishHook, i);
+                            if (Main.hardMode)
+                            {
+                                AddItem(ItemID.FinWings, i);
+                                AddItem(ItemID.SuperAbsorbantSponge, i);
+                                AddItem(ItemID.BottomlessBucket, i);
+                                if (player.anglerQuestsFinished < 25)
+                                {
+                                    AddItem(ItemID.HotlineFishingHook, i);
+                                    if (player.anglerQuestsFinished < 30)
+                                    {
+                                        AddItem(ItemID.GoldenFishingRod, i);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if (npc.type == NPCID.Clothier)
+            {
+                for (int i = 0; i < items.Length; i++)
+                {
+
+                    if (!items[i].IsAir)
+                    {
+                        continue;
+                    }
+                    if (player.anglerQuestsFinished >= 10)
+                    {
+
+                        AddItem(ItemID.AnglerHat, i);
+                        if (player.anglerQuestsFinished >= 15)
+                        {
+                            AddItem(ItemID.AnglerVest, i);
+                            if (player.anglerQuestsFinished >= 20)
+                            {
+                                AddItem(ItemID.AnglerPants, i);
+                            }
+                        }
+                    }
                 }
             }
         }
