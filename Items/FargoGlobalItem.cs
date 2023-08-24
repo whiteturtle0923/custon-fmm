@@ -408,7 +408,7 @@ namespace Fargowiltas.Items
 
         public override bool? CanConsumeBait(Player player, Item bait)
         {
-            if (GetInstance<FargoConfig>().UnlimitedPotionBuffsOn120 && bait.stack > 30)
+            if (GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120 && bait.stack > 30)
                 return false;
 
             return base.CanConsumeBait(player, bait);
