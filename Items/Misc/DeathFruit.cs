@@ -10,7 +10,7 @@ namespace Fargowiltas.Items.Misc
 {
 	public class DeathFruit : ModItem
 	{
-        SoundStyle DeathFruitSound = new SoundStyle("Fargowiltas/Sounds/DeathFruit");
+        SoundStyle DeathFruitSound = new SoundStyle("Fargowiltas/Assets/Sounds/DeathFruit");
         public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Death Fruit");

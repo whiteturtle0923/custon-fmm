@@ -12,7 +12,6 @@ using Fargowiltas.Items.Summons.Mutant;
 using Fargowiltas.Projectiles;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
-using Fargowiltas.ShoppingBiomes;
 using Fargowiltas.Items.Summons.Abom;
 using Fargowiltas.Items.Tiles;
 using Terraria.GameContent;
@@ -20,6 +19,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 using ReLogic.Content;
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Content.Biomes;
 
 namespace Fargowiltas.NPCs
 {
@@ -584,13 +584,13 @@ namespace Fargowiltas.NPCs
                 if (!Main.dedServ)
                 {
                     Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/MutantGore3").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/MutantGore3").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/MutantGore2").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/MutantGore2").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/MutantGore1").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/MutantGore1").Type);
                 }
             }
             else

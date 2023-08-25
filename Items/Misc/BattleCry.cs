@@ -101,7 +101,7 @@ namespace Fargowiltas.Items.Misc
             }
 
             if (!Main.dedServ)
-                SoundEngine.PlaySound(new SoundStyle("Fargowiltas/Sounds/Horn"), player.Center);
+                SoundEngine.PlaySound(new SoundStyle("Fargowiltas/Assets/Sounds/Horn"), player.Center);
 
             return true;
         }
