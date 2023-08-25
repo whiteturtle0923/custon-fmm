@@ -13,7 +13,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 {
     public class CaughtNPCItem : ModItem
     {
-        public static Dictionary<int, int> CaughtTownies = new Dictionary<int, int>();
+        internal static Dictionary<int, int> CaughtTownies = new();
 
         public override string Name => _name;
 
