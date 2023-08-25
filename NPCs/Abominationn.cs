@@ -11,9 +11,9 @@ using Terraria.Audio;
 using Fargowiltas.Items.Vanity;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
-using Fargowiltas.ShoppingBiomes;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Content.Biomes;
 
 namespace Fargowiltas.NPCs
 {
@@ -89,13 +89,6 @@ namespace Fargowiltas.NPCs
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
             AnimationType = NPCID.Guide;
-
-            //if (GetInstance<FargoConfig>().CatchNPCs)
-            //{
-            //    Main.npcCatchable[NPC.type] = true;
-            //    NPC.catchItem = (short)mod.ItemType("Abominationn");
-            //}
-
             NPC.buffImmune[BuffID.Suffocation] = true;
         }
 
@@ -274,7 +267,7 @@ namespace Fargowiltas.NPCs
                  .Add(new Item(ItemType<MartianMemoryStick>()) { shopCustomPrice = Item.buyPrice(copper: 300000) }, Condition.DownedMartians)
                  .Add(new Item(ItemType<PillarSummon>()) { shopCustomPrice = Item.buyPrice(copper: 750000) }, new Condition("Mods.Fargowiltas.Conditions.PillarsDown", () => NPC.downedTowers))
                  .Add(new Item(ItemType<AbominationnScythe>()) { shopCustomPrice = Item.buyPrice(copper: 50000) }, new Condition("Mods.Fargowiltas.Conditions.PillarsDown", () => NPC.downedTowers))
-                .Add(new Item(ItemType<SiblingPylon>()), Condition.HappyEnough, Condition.NpcIsPresent(NPCType<Mutant>()), Condition.NpcIsPresent(NPCType<Abominationn>()), Condition.NpcIsPresent(NPCType<Deviantt>()))
+                .Add(new Item(ItemType<SiblingPylon>()), Condition.HappyEnoughToSellPylons, Condition.NpcIsPresent(NPCType<Mutant>()), Condition.NpcIsPresent(NPCType<Deviantt>()))
 
             ;
 
@@ -320,13 +313,13 @@ namespace Fargowiltas.NPCs
                 if (!Main.dedServ)
                 {
                     Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore3").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/AbomGore3").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore2").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/AbomGore2").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore1").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/AbomGore1").Type);
                 }
             }
             else

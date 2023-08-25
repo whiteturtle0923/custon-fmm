@@ -88,7 +88,7 @@ namespace Fargowiltas
                 ModLoaded.Add(mod, false);
             }
 
-            CaughtNPCItem.RegisterItems(this);
+            CaughtNPCItem.RegisterItems();
 
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
