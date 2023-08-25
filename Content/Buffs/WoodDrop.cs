@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Buffs
+namespace Fargowiltas.Content.Buffs
 {
     public class WoodDrop : ModBuff
     {

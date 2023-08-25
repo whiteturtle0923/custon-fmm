@@ -1092,7 +1092,7 @@ namespace Fargowiltas.NPCs
         public override bool CheckDead(NPC npc)
         {
             // Lumber Jaxe
-            if (npc.FindBuffIndex(ModContent.BuffType<WoodDrop>()) != -1)
+            if (npc.FindBuffIndex(ModContent.BuffType<Content.Buffs.WoodDrop>()) != -1)
             {
                 Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, ItemID.Wood, Main.rand.Next(10, 30));
             }

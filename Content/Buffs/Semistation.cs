@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Buffs
+namespace Fargowiltas.Content.Buffs
 {
     public class Semistation : ModBuff
     {

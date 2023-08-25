@@ -310,7 +310,7 @@ Mods: {
 
 			Common.CanSpawn: Can Spawn
 		}
-	
+
 		RecipeGroups: {
 			EvilWood: Evil Wood
 			CommonFish: Common Fish

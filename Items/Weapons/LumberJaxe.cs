@@ -1,3 +1,4 @@
+using Fargowiltas.Content.Buffs;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -35,7 +36,7 @@ namespace Fargowiltas.Items.Weapons
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffType<Buffs.WoodDrop>(), 600);
+            target.AddBuff(BuffType<WoodDrop>(), 600);
         }
     }
 }
