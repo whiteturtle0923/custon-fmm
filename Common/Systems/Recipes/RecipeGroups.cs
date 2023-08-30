@@ -1,6 +1,8 @@
 ﻿using Fargowiltas.Items.Ammos.Bullets;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.Utilities;
+using System;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -48,8 +50,14 @@ namespace Fargowiltas.Common.Systems.Recipes
                 ItemID.LivingWoodBookcase, ItemID.MarbleBookcase, ItemID.MeteoriteBookcase, ItemID.MushroomBookcase,
                 ItemID.ObsidianBookcase, ItemID.PalmWoodBookcase, ItemID.PearlwoodBookcase, ItemID.PinkDungeonBookcase,
                 ItemID.PumpkinBookcase, ItemID.RichMahoganyBookcase, ItemID.ShadewoodBookcase, ItemID.SkywareBookcase,
-                ItemID.SlimeBookcase, ItemID.SpookyBookcase, ItemID.SteampunkBookcase
+                ItemID.SlimeBookcase, ItemID.SpookyBookcase, ItemID.SteampunkBookcase, ItemID.AshWoodBookcase
             );
+            //book cases
+            /*
+            group = new RecipeGroup(() => RecipeHelper.GenerateAnyItemRecipeGroupText(ItemID.Bookcase),
+                ContentSamples.ItemsByType.Keys.Where(i => (ContentSamples.ItemsByType[i].Name.Contains("Bookcase"))).Cast<int>().ToArray()
+            );
+            */
             AnyBookcase = RecipeGroup.RegisterGroup("Fargowiltas:AnyBookcase", group);
 
             group = new RecipeGroup(() => RecipeHelper.GenerateAnyItemRecipeGroupText(ItemID.CookingPot), ItemID.CookingPot, ItemID.Cauldron);
