@@ -258,14 +258,14 @@ namespace Fargowiltas.Common.Systems.Recipes
 
         private static void AddGrabBagRecipes()
         {
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.DogWhistle, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.Toolbox, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.HandWarmer, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.RedRyder, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneSword, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneHook, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.FruitcakeChakram, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.UnluckyYarn, TileID.WorkBenches, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.DogWhistle, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.Toolbox, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.HandWarmer, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.RedRyder, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneSword, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneHook, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.FruitcakeChakram, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.UnluckyYarn, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.BatHook, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.RottenEgg, TileID.WorkBenches, ingredientAmount: 2, resultAmount: 25, disableDecraft: true);
 
