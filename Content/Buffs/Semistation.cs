@@ -1,16 +1,13 @@
-using Fargowiltas.Items.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Fargowiltas.Buffs
+namespace Fargowiltas.Content.Buffs
 {
     public class Semistation : ModBuff
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Semistation");
-            // Description.SetDefault("Effects of some vanilla stations");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }

@@ -199,8 +199,8 @@ Mods: {
 				}
 
 				UnlimitedPotionBuffsOn120: {
-					Label: "[i:292] Unlimited Buffs/Bait when carried in certain stacks"
-					Tooltip: 30+ for potions/bait, 3+ for class stations (e.g. Sharpening Table) and Slice of Cake
+					Label: "[i:292] Unlimited Buffs and Bait when carried in certain stacks"
+					Tooltip: 30+ for potions and bait, 3+ for class stations (e.g. Sharpening Table) and Slice of Cake
 				}
 
 				ExtraBuffSlots: {
@@ -273,10 +273,43 @@ Mods: {
 					Seasons: Seasons
 					Seeds: Seeds
 					Unlimited: Unlimited
-					}
+					Misc: Miscellaneous
 				}
 			}
-			
+
+			FargoClientConfig: {
+				DisplayName: Client Config
+
+				ExpandedTooltips: {
+					Label: "[i:171] More tooltips indicate Mutant Mod changes"
+					Tooltip: ""
+				}
+
+				DebuffOpacity: {
+					Label: "[i:1612] Debuff Display Max Opacity"
+					Tooltip: ""
+				}
+
+				DebuffFaderRatio: {
+					Label: "[i:1612] Debuff Duration Fader Strength"
+					Tooltip: ""
+				}
+
+				TransparentFriendlyProjectiles: {
+					Label: "[i:1309] Transparent Friendly Projectiles"
+					Tooltip: Use with vanilla setting for Quality at Medium or Low for best results
+				}
+			}
+
+			SeasonSelections: {
+				Tooltip: ""
+				Normal.Label: Normal
+				AlwaysOn.Label: Always On
+				AlwaysOff.Label: Always Off
+			}
+
+			Common.CanSpawn: Can Spawn
+		}
 
 		RecipeGroups: {
 			EvilWood: Evil Wood
@@ -2521,14 +2554,6 @@ Mods: {
 			"Quick Recall/Mirror.DisplayName": Quick Recall/Mirror
 			"Open Stat Sheet.DisplayName": Open Stat Sheet
 		}
-
-			SeasonSelections: {
-				AlwaysOff.Label: Always Off
-				AlwaysOn.Label: Always On
-				Normal.Label: Normal
-				Tooltip: ""
-			}
-
 	}
 }
 

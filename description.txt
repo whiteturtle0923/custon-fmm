@@ -1,10 +1,19 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
-NEW UPDATE - V 3.1.1.1
+NEW UPDATE - V 3.1.2
+-Added several banner-to-food recipes
+-Modified some banner recipes to be hardmode-exclusive
+-All banners are now crafted into their respective items at Solidifier, rather than requiring a mythril anvil and/or an extra item
+-Removed Quick Use Rod and Quick Use Custom because they break everything they touch
+-Deviantt is now immune to On Fire
+-Fixed extra fishing rod lures
+-Mutant Voodoo Doll specifies that it can only be used at night
+-Made mod paintings spelunkerable
 -Updated Altar Exterminator tooltip
 -Unlimited bait works
 -Sibling Pylon only requires two siblings nearby
+-Resprited Sibling Pylon and Purity Totem
 
 NEW UPDATE - V 3.1.1
 -Fixed Forest and Desert renewal sprites

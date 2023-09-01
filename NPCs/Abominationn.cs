@@ -11,9 +11,9 @@ using Terraria.Audio;
 using Fargowiltas.Items.Vanity;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
-using Fargowiltas.ShoppingBiomes;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Content.Biomes;
 
 namespace Fargowiltas.NPCs
 {
@@ -89,13 +89,6 @@ namespace Fargowiltas.NPCs
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.5f;
             AnimationType = NPCID.Guide;
-
-            //if (GetInstance<FargoConfig>().CatchNPCs)
-            //{
-            //    Main.npcCatchable[NPC.type] = true;
-            //    NPC.catchItem = (short)mod.ItemType("Abominationn");
-            //}
-                
             NPC.buffImmune[BuffID.Suffocation] = true;
         }
 
@@ -152,11 +145,11 @@ namespace Fargowiltas.NPCs
                         canSayMutantShimmerQuote = false;
                         return "He turned into a squirrel. Funniest thing I've ever seen.";
                     }
-                    
+
                 }
             }
 
-                if (Fargowiltas.ModLoaded["FargowiltasSouls"] && Main.rand.NextBool(3))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && Main.rand.NextBool(3))
             {
                 if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("StyxArmor"))
                     return "What nostalgic armor you're wearing... No, it doesn't fit on me anymore. And its battery takes too long to charge.";
@@ -274,14 +267,11 @@ namespace Fargowiltas.NPCs
                  .Add(new Item(ItemType<MartianMemoryStick>()) { shopCustomPrice = Item.buyPrice(copper: 300000) }, Condition.DownedMartians)
                  .Add(new Item(ItemType<PillarSummon>()) { shopCustomPrice = Item.buyPrice(copper: 750000) }, new Condition("Mods.Fargowiltas.Conditions.PillarsDown", () => NPC.downedTowers))
                  .Add(new Item(ItemType<AbominationnScythe>()) { shopCustomPrice = Item.buyPrice(copper: 50000) }, new Condition("Mods.Fargowiltas.Conditions.PillarsDown", () => NPC.downedTowers))
-                 .Add(new Item(ItemType<SiblingPylon>()), new Condition("Mods.Fargowiltas.Conditions.SiblingPylon",  () => (Condition.HappyEnough.IsMet() && NPC.AnyNPCs(NPCType<Mutant>()) && NPC.AnyNPCs(NPCType<Abominationn>())) && NPC.AnyNPCs(NPCType<Deviantt>())))
+                .Add(new Item(ItemType<SiblingPylon>()), Condition.HappyEnoughToSellPylons, Condition.NpcIsPresent(NPCType<Mutant>()), Condition.NpcIsPresent(NPCType<Deviantt>()))
+
             ;
 
             npcShop.Register();
-        }
-
-        public override void ModifyActiveShop(string shopName, Item[] items)
-        {
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -323,13 +313,13 @@ namespace Fargowiltas.NPCs
                 if (!Main.dedServ)
                 {
                     Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore3").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/AbomGore3").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore2").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/AbomGore2").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/AbomGore1").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/AbomGore1").Type);
                 }
             }
             else
