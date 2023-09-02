@@ -165,6 +165,7 @@ namespace Fargowiltas.NPCs
         private static int[] ItemsSoldDirectly => new int[]
         {
             ItemID.CellPhone,
+            ItemID.Shellphone,
             ItemID.AnkhShield,
             ItemID.RodofDiscord,
             ItemID.TerrasparkBoots,
