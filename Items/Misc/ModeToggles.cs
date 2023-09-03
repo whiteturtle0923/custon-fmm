@@ -32,6 +32,7 @@ namespace Fargowiltas.Items.Misc
             Item.useAnimation = 10;
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.HiddenAnimation;
+            Item.noUseGraphic = true;
             //Item.useStyle = ItemUseStyleID.Shoot;
             Item.consumable = false;
             Item.shoot = ModContent.ProjectileType<WorldTokenProj>();
