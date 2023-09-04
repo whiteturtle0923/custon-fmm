@@ -222,6 +222,7 @@ namespace Fargowiltas.NPCs
                     player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Pearlwood), ItemID.Pearlwood, 50);
 
                     //add prismatic lacewing if post plantera
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.EmpressButterfly), ItemID.EmpressButterfly, 1);
                 }
                 else if (player.ZoneGlowshroom && Main.hardMode)
                 {
