@@ -187,7 +187,14 @@ namespace Fargowiltas.Items
                     break;
 
                 case ItemID.WoodenCrate:
-                    itemLoot.Add(ItemDropRule.OneFromOptions(40, ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang));
+                    if (!Main.remixWorld && !Main.zenithWorld)
+                    {
+                        itemLoot.Add(ItemDropRule.OneFromOptions(40, ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang));
+                    }
+                    else
+                    {
+                        itemLoot.Add(ItemDropRule.OneFromOptions(40, ItemID.Spear, ItemID.Blowpipe, ItemID.WoodenBoomerang));
+                    }
 
                     break;
 
