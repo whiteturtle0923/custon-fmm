@@ -139,10 +139,13 @@ namespace Fargowiltas.Items.Tiles
 			g = 255f / 255f * 0.75f;
 			b = 191f / 255f * 0.75f;
 		}
-
+		public override bool AutoSelect(int i, int j, Item item)
+		{
+			return base.AutoSelect(i, j, item);
+		}
 		public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch)
 		{
-			DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(0f, -12f), Color.White * 0.1f, Color.White, 4, CrystalVerticalFrameCount);
+			DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, Vector2.UnitX * -1 + Vector2.UnitY * -12, Color.White * 0.1f, Color.White, 4, CrystalVerticalFrameCount);
 		}
 
 		public override void DrawMapIcon(ref MapOverlayDrawContext context, ref string mouseOverText, TeleportPylonInfo pylonInfo, bool isNearPylon, Color drawColor, float deselectedScale, float selectedScale)
