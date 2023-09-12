@@ -2503,7 +2503,7 @@ Mods: {
 			OmnistationSheet2.MapEntry: Omnistation
 			RegalStatueSheet.MapEntry: Regal Statue
 			SemistationSheet.MapEntry: Semistation
-			SiblingPylonTile.MapEntry: Mods.Fargowiltas.MapObject.SiblingPylonTile
+			SiblingPylonTile.MapEntry: Sibling Pylon
 			PurityTotemSheet.MapEntry: Purity Totem
 		}
 
