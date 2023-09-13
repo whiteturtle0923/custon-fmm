@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using Terraria.GameContent.ItemDropRules;
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Items.Ammos.Coins;
 
 namespace Fargowiltas.Items
 {
@@ -32,7 +33,29 @@ namespace Fargowiltas.Items
         //public override bool CloneNewInstances => true;
 
         TooltipLine FountainTooltip(string biome) => new TooltipLine(Mod, "Tooltip0", $"[i:909] [c/AAAAAA:Forces surrounding biome state to {biome} upon activation]");
-
+        public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed, ref StatModifier damage, ref float knockback)
+        {
+            //coin gun is broken as fucking shit codingwise so i'm fixing it
+            if (weapon.type == ItemID.CoinGun)
+            {
+                if (ammo.type == ItemID.CopperCoin || ammo.type == ModContent.ItemType<CopperCoinBag>())
+                {
+                    type = ProjectileID.CopperCoin;
+                }
+                if (ammo.type == ItemID.SilverCoin || ammo.type == ModContent.ItemType<SilverCoinBag>())
+                {
+                    type = ProjectileID.SilverCoin;
+                }
+                if (ammo.type == ItemID.GoldCoin || ammo.type == ModContent.ItemType<GoldCoinBag>())
+                {
+                    type = ProjectileID.GoldCoin;
+                }
+                if (ammo.type == ItemID.PlatinumCoin || ammo.type == ModContent.ItemType<PlatinumCoinBag>())
+                {
+                    type = ProjectileID.PlatinumCoin;
+                }
+            }
+        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             var fargoServerConfig = GetInstance<FargoServerConfig>();
