@@ -51,11 +51,11 @@ namespace Fargowiltas.Projectiles
                 switch (itemType)
                 {
                     case ItemID.GoldenFishingRod:
+                    case ItemID.HotlineFishingHook:
                         split = 5;
                         break;
                     case ItemID.SittingDucksFishingRod:
                     case ItemID.MechanicsRod:
-                    case ItemID.HotlineFishingHook:
                         split = 3;
                         break;
                     case ItemID.ScarabFishingRod:

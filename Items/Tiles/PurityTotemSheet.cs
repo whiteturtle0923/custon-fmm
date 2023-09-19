@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -27,7 +28,7 @@ namespace Fargowiltas.Items.Tiles
             // name.SetDefault("Purity Totem");
             AddMapEntry(Color.Yellow, name);
         }
-
+        public override bool CanDrop(int i, int j) => false;
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = 1f;

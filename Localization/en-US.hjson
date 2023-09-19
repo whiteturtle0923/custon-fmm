@@ -200,7 +200,7 @@ Mods: {
 
 				UnlimitedPotionBuffsOn120: {
 					Label: "[i:292] Unlimited Buffs and Bait when carried in certain stacks"
-					Tooltip: 30+ for potions and bait, 3+ for class stations (e.g. Sharpening Table) and Slice of Cake
+					Tooltip: 30+ for potions and bait
 				}
 
 				ExtraBuffSlots: {
@@ -2351,6 +2351,7 @@ Mods: {
 					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LoveBiome}"
 					LikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LikeBiome}"
 					DislikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.DislikeBiome}"
+					HateBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.HateBiome}"
 					LoveNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LoveNPC}"
 					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LikeNPC}"
 					HateNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.HateNPC}"
@@ -2393,6 +2394,7 @@ Mods: {
 					DislikeCrowded: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.DislikeCrowded}"
 					HateCrowded: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.HateCrowded}"
 					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LoveBiome}"
+					HateBiome: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.HateBiome}"
 					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LikeNPC}"
 					DislikeNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.DislikeNPC}"
 					HateNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.HateNPC}"
@@ -2414,6 +2416,7 @@ Mods: {
 					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LoveBiome}"
 					LikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LikeBiome}"
 					DislikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.DislikeBiome}"
+					HateBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.HateBiome}"
 					LoveNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LoveNPC}"
 					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LikeNPC}"
 					DislikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.DislikeNPC}"
@@ -2500,7 +2503,7 @@ Mods: {
 			OmnistationSheet2.MapEntry: Omnistation
 			RegalStatueSheet.MapEntry: Regal Statue
 			SemistationSheet.MapEntry: Semistation
-			SiblingPylonTile.MapEntry: Mods.Fargowiltas.MapObject.SiblingPylonTile
+			SiblingPylonTile.MapEntry: Sibling Pylon
 			PurityTotemSheet.MapEntry: Purity Totem
 		}
 

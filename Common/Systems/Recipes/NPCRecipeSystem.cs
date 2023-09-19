@@ -272,13 +272,16 @@ namespace Fargowiltas.Common.Systems.Recipes
             recipe.Register();
 
             // Uncommon - 1 merchant, 2x price
-            recipe = Recipe.Create(ItemID.Katana);
-            recipe.AddIngredient(null, "TravellingMerchant");
-            recipe.AddIngredient(ItemID.GoldCoin, 20);
-            recipe.AddRecipeGroup(RecipeGroupID.IronBar, 5);
-            recipe.AddTile(TileID.TinkerersWorkbench);
-            recipe.DisableDecraft();
-            recipe.Register();
+            if (!Main.zenithWorld && !Main.remixWorld)
+            {
+                recipe = Recipe.Create(ItemID.Katana);
+                recipe.AddIngredient(null, "TravellingMerchant");
+                recipe.AddIngredient(ItemID.GoldCoin, 20);
+                recipe.AddRecipeGroup(RecipeGroupID.IronBar, 5);
+                recipe.AddTile(TileID.TinkerersWorkbench);
+                recipe.DisableDecraft();
+                recipe.Register();
+            }
 
             recipe = Recipe.Create(ItemID.ActuationAccessory);
             recipe.AddIngredient(null, "TravellingMerchant");

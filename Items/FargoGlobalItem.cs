@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using Terraria.GameContent.ItemDropRules;
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Items.Ammos.Coins;
 
 namespace Fargowiltas.Items
 {
@@ -32,7 +33,29 @@ namespace Fargowiltas.Items
         //public override bool CloneNewInstances => true;
 
         TooltipLine FountainTooltip(string biome) => new TooltipLine(Mod, "Tooltip0", $"[i:909] [c/AAAAAA:Forces surrounding biome state to {biome} upon activation]");
-
+        public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed, ref StatModifier damage, ref float knockback)
+        {
+            //coin gun is broken as fucking shit codingwise so i'm fixing it
+            if (weapon.type == ItemID.CoinGun)
+            {
+                if (ammo.type == ItemID.CopperCoin || ammo.type == ModContent.ItemType<CopperCoinBag>())
+                {
+                    type = ProjectileID.CopperCoin;
+                }
+                if (ammo.type == ItemID.SilverCoin || ammo.type == ModContent.ItemType<SilverCoinBag>())
+                {
+                    type = ProjectileID.SilverCoin;
+                }
+                if (ammo.type == ItemID.GoldCoin || ammo.type == ModContent.ItemType<GoldCoinBag>())
+                {
+                    type = ProjectileID.GoldCoin;
+                }
+                if (ammo.type == ItemID.PlatinumCoin || ammo.type == ModContent.ItemType<PlatinumCoinBag>())
+                {
+                    type = ProjectileID.PlatinumCoin;
+                }
+            }
+        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             var fargoServerConfig = GetInstance<FargoServerConfig>();
@@ -187,7 +210,14 @@ namespace Fargowiltas.Items
                     break;
 
                 case ItemID.WoodenCrate:
-                    itemLoot.Add(ItemDropRule.OneFromOptions(40, ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang));
+                    if (!Main.remixWorld && !Main.zenithWorld)
+                    {
+                        itemLoot.Add(ItemDropRule.OneFromOptions(40, ItemID.Spear, ItemID.Blowpipe, ItemID.WandofSparking, ItemID.WoodenBoomerang));
+                    }
+                    else
+                    {
+                        itemLoot.Add(ItemDropRule.OneFromOptions(40, ItemID.Spear, ItemID.Blowpipe, ItemID.WoodenBoomerang));
+                    }
 
                     break;
 
@@ -252,7 +282,7 @@ namespace Fargowiltas.Items
                 else if (item.type == ItemID.LuckPotionGreater)
                     player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.2f);
             }
-
+            /*
             if (item.stack >= 3)
             {
                 if (item.type == ItemID.SharpeningStation)
@@ -266,6 +296,7 @@ namespace Fargowiltas.Items
                 else if (item.type == ItemID.SliceOfCake)
                     player.AddBuff(BuffID.SugarRush, 2);
             }
+            */
         }
 
         static int[] Informational = { ItemID.DPSMeter, ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.Ruler, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone };

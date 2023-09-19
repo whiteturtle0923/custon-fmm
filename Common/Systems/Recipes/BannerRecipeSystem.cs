@@ -473,7 +473,10 @@ namespace Fargowiltas.Common.Systems.Recipes
         private static void AddBannerToWeaponRecipes()
         {
             AddBannerGroupToItemRecipe(AnyBatBanner, ItemID.BatBat);
-            AddBannerToItemRecipe(ItemID.BatBanner, ItemID.ChainKnife);
+            if (!Main.zenithWorld && !Main.remixWorld)
+            {
+                AddBannerToItemRecipe(ItemID.BatBanner, ItemID.ChainKnife);
+            }
             AddBannerToItemRecipe(ItemID.BloodCrawlerBanner, ItemID.TentacleSpike, bannerAmount: 2);
             AddBannerToItemRecipe(ItemID.CrawdadBanner, ItemID.Rally);
             AddBannerToItemRecipe(ItemID.CrimeraBanner, ItemID.TentacleSpike, bannerAmount: 2);
@@ -505,7 +508,10 @@ namespace Fargowiltas.Common.Systems.Recipes
             AddBannerToItemRecipe(ItemID.BlackRecluseBanner, ItemID.PoisonStaff, conditions: Condition.Hardmode);
             AddBannerToItemRecipe(ItemID.BloodZombieBanner, ItemID.KOCannon, bannerAmount: 4, conditions: Condition.Hardmode);
             AddBannerToItemRecipe(ItemID.ClownBanner, ItemID.KOCannon, bannerAmount: 4, conditions: Condition.Hardmode);
-            AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.ChainKnife, conditions: Condition.Hardmode);
+            if (!Main.zenithWorld && !Main.remixWorld)
+            {
+                AddBannerToItemRecipe(ItemID.GiantBatBanner, ItemID.ChainKnife, conditions: Condition.Hardmode);
+            }
             AddBannerToItemRecipe(ItemID.IcyMermanBanner, ItemID.FrostStaff, conditions: Condition.Hardmode);
             AddBannerToItemRecipe(ItemID.MedusaBanner, ItemID.MedusaHead, conditions: Condition.Hardmode);
             AddBannerToItemRecipe(ItemID.MimicBanner, ItemID.FlowerofFrost, conditions: Condition.Hardmode);
