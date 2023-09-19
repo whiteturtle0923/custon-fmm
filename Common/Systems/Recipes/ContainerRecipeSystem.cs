@@ -277,10 +277,11 @@ namespace Fargowiltas.Common.Systems.Recipes
             RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneSword, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneHook, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.FruitcakeChakram, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            
             RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.UnluckyYarn, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.BatHook, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.BatHook, TileID.WorkBenches, ingredientAmount: 25, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.RottenEgg, TileID.WorkBenches, ingredientAmount: 2, resultAmount: 25, disableDecraft: true);
-
+            
             RecipeHelper.CreateSimpleRecipe(ItemID.HerbBag, ItemID.Daybloom, TileID.WorkBenches, resultAmount: 5, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.HerbBag, ItemID.Moonglow, TileID.WorkBenches, resultAmount: 5, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.HerbBag, ItemID.Blinkroot, TileID.WorkBenches, resultAmount: 5, disableDecraft: true);
