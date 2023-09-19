@@ -282,7 +282,7 @@ namespace Fargowiltas.Items
                 else if (item.type == ItemID.LuckPotionGreater)
                     player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.2f);
             }
-
+            /*
             if (item.stack >= 3)
             {
                 if (item.type == ItemID.SharpeningStation)
@@ -296,6 +296,7 @@ namespace Fargowiltas.Items
                 else if (item.type == ItemID.SliceOfCake)
                     player.AddBuff(BuffID.SugarRush, 2);
             }
+            */
         }
 
         static int[] Informational = { ItemID.DPSMeter, ItemID.CopperWatch, ItemID.TinWatch, ItemID.TungstenWatch, ItemID.SilverWatch, ItemID.GoldWatch, ItemID.PlatinumWatch, ItemID.DepthMeter, ItemID.Compass, ItemID.Radar, ItemID.LifeformAnalyzer, ItemID.TallyCounter, ItemID.MetalDetector, ItemID.Stopwatch, ItemID.Ruler, ItemID.FishermansGuide, ItemID.Sextant, ItemID.WeatherRadio, ItemID.GPS, ItemID.REK, ItemID.GoblinTech, ItemID.FishFinder, ItemID.PDA, ItemID.CellPhone };

@@ -200,7 +200,7 @@ Mods: {
 
 				UnlimitedPotionBuffsOn120: {
 					Label: "[i:292] Unlimited Buffs and Bait when carried in certain stacks"
-					Tooltip: 30+ for potions and bait, 3+ for class stations (e.g. Sharpening Table) and Slice of Cake
+					Tooltip: 30+ for potions and bait
 				}
 
 				ExtraBuffSlots: {
