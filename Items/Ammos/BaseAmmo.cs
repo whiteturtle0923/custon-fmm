@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using Fargowiltas.Items.Ammos.Rockets;
+using System.Text.RegularExpressions;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,6 +9,7 @@ namespace Fargowiltas.Items.Ammos
     public abstract class BaseAmmo : ModItem
     {
         public abstract int AmmunitionItem { get; }
+
 
         public override void SetStaticDefaults()
         {
@@ -28,10 +30,12 @@ namespace Fargowiltas.Items.Ammos
 
         public override void AddRecipes()
         {
-            CreateRecipe()
+            int amount = Item.type == ModContent.ItemType<MiniNuke1Box>() || Item.type == ModContent.ItemType<MiniNuke2Box>() ? 2 : 1;
+            CreateRecipe(amount)
                 .AddIngredient(AmmunitionItem, 3996)
                 .AddTile(TileID.CrystalBall)
                 .Register();
+                
         }
     }
 }

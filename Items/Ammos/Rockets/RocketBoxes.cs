@@ -151,10 +151,17 @@ namespace Fargowiltas.Items.Ammos.Rockets
         public override int SnowmanProjectile => ProjectileID.MiniNukeSnowmanRocketI;
         public override int GrenadeProjectile => ProjectileID.MiniNukeGrenadeI;
         public override int MineProjectile => ProjectileID.MiniNukeMineI;
+
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
             // DisplayName.SetDefault("Endless Mini Nuke I Bag");
+
+        }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            Item.maxStack = 2;
         }
     }
 
@@ -169,6 +176,11 @@ namespace Fargowiltas.Items.Ammos.Rockets
         {
             base.SetStaticDefaults();
             // DisplayName.SetDefault("Endless Mini Nuke II Bag");
+        }
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            Item.maxStack = 2;
         }
     }
 }

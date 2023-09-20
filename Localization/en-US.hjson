@@ -2278,61 +2278,61 @@ Mods: {
 
 			HoneyRocketBox: {
 				Tooltip: ""
-				DisplayName: Honey Rocket Box
+				DisplayName: Endless Honey Rocket Box
 			}
 
 			DryRocketBox: {
 				Tooltip: ""
-				DisplayName: Dry Rocket Box
+				DisplayName: Endless Dry Rocket Box
 			}
 
 			ClusterRocket2Box: {
 				Tooltip: ""
-				DisplayName: Cluster Rocket2 Box
+				DisplayName: Endless Cluster Rocket II Box
 			}
 
 			ClusterRocket1Box: {
 				Tooltip: ""
-				DisplayName: Cluster Rocket1 Box
+				DisplayName: Endless Cluster Rocket I Box
 			}
 
 			LavaRocketBox: {
-				DisplayName: Lava Rocket Box
+				DisplayName: Endless Lava Rocket Box
 				Tooltip: ""
 			}
 
 			MiniNuke1Box: {
-				DisplayName: Mini Nuke1 Box
+				DisplayName: Endless Mini Nuke I Box
 				Tooltip: ""
 			}
 
 			MiniNuke2Box: {
-				DisplayName: Mini Nuke2 Box
+				DisplayName: Endless Mini Nuke II Box
 				Tooltip: ""
 			}
 
 			Rocket1Box: {
-				DisplayName: Rocket1 Box
+				DisplayName: Endless Rocket I Box
 				Tooltip: ""
 			}
 
 			Rocket2Box: {
-				DisplayName: Rocket2 Box
+				DisplayName: Endless Rocket II Box
 				Tooltip: ""
 			}
 
 			Rocket3Box: {
-				DisplayName: Rocket3 Box
+				DisplayName: Endless Rocket III Box
 				Tooltip: ""
 			}
 
 			Rocket4Box: {
-				DisplayName: Rocket4 Box
+				DisplayName: Endless Rocket IV Box
 				Tooltip: ""
 			}
 
 			WetRocketBox: {
-				DisplayName: Wet Rocket Box
+				DisplayName: Endless Wet Rocket Box
 				Tooltip: ""
 			}
 		}
