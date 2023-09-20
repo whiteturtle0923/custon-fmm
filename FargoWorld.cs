@@ -13,6 +13,7 @@ using Fargowiltas.Items.Tiles;
 using System;
 using Terraria.GameContent.Events;
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Projectiles;
 
 namespace Fargowiltas
 {
@@ -149,6 +150,9 @@ namespace Fargowiltas
 
         public override void OnWorldUnload()
         {
+            FargoGlobalProjectile.CannotDestroyRectangle = new();
+            FargoGlobalProjectile.CannotDestroyTileTypes = new();
+            FargoGlobalProjectile.CannotDestroyWallTypes = new();
             ResetFlags();
         }
 
