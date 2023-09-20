@@ -157,7 +157,7 @@ namespace Fargowiltas.Items
                     }
                     else if (item.bait > 0)
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited use at 30 stack]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:5139] [c/AAAAAA:Unlimited use at 30 stack]");
                         tooltips.Add(line);
                     }
                     else if (item.type == ItemID.SharpeningStation
@@ -439,7 +439,7 @@ namespace Fargowiltas.Items
 
         public override bool? CanConsumeBait(Player player, Item bait)
         {
-            if (GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120 && bait.stack > 30)
+            if (GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120 && bait.stack >= 30)
                 return false;
 
             return base.CanConsumeBait(player, bait);
