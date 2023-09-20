@@ -188,7 +188,8 @@ namespace Fargowiltas.Projectiles
             bool noChloro = tile.TileType == TileID.Chlorophyte && !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             bool noLihzahrd = (tile.TileType == TileID.LihzahrdBrick || tile.WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
 
-            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMagicStorage(tile))
+
+            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMagicStorage(tile) || Fargowiltas.Instance.CannotDestroyTileTypes.Contains(tile.TileType) || Fargowiltas.Instance.CannotDestroyWallTypes.Contains(tile.WallType))
                 return false;
 
             return true;
