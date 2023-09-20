@@ -1,5 +1,6 @@
 using Fargowiltas.Common.Configs;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
@@ -14,6 +15,10 @@ namespace Fargowiltas.Projectiles
         public override bool InstancePerEntity => true;
         private bool firstTick = true;
         public bool lowRender;
+
+        public static HashSet<int> CannotDestroyTileTypes = new HashSet<int>();
+        public static HashSet<int> CannotDestroyWallTypes = new HashSet<int>();
+        public static HashSet<Rectangle> CannotDestroyRectangle = new HashSet<Rectangle>();
 
         public override void SetDefaults(Projectile projectile)
         {
@@ -176,8 +181,20 @@ namespace Fargowiltas.Projectiles
             return base.GetAlpha(projectile, lightColor);
         }
 
-        public static bool OkayToDestroyTile(Tile tile) // Testing for blocks that should not be destroyed
+        public static bool OkayToDestroyTile(int x, int y) // Testing for blocks that should not be destroyed
         {
+            Tile tile = Main.tile[x, y];
+            if (tile == null)
+            {
+                return false;
+            }
+            foreach (Rectangle rect in CannotDestroyRectangle)
+            {
+                if (rect.Contains(x * 16, y * 16))
+                {
+                    return false;
+                }
+            }
             bool noDungeon = !NPC.downedBoss3 &&
                 (tile.TileType == TileID.BlueDungeonBrick || tile.TileType == TileID.GreenDungeonBrick || tile.TileType == TileID.PinkDungeonBrick
                 || tile.WallType == WallID.BlueDungeonSlabUnsafe || tile.WallType == WallID.BlueDungeonTileUnsafe || tile.WallType == WallID.BlueDungeonUnsafe
@@ -187,9 +204,9 @@ namespace Fargowiltas.Projectiles
             bool noHMOre = (tile.TileType == TileID.Cobalt || tile.TileType == TileID.Palladium || tile.TileType == TileID.Mythril || tile.TileType == TileID.Orichalcum || tile.TileType == TileID.Adamantite || tile.TileType == TileID.Titanium) && !NPC.downedMechBossAny;
             bool noChloro = tile.TileType == TileID.Chlorophyte && !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             bool noLihzahrd = (tile.TileType == TileID.LihzahrdBrick || tile.WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
-
-
-            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMagicStorage(tile) || Fargowiltas.Instance.CannotDestroyTileTypes.Contains(tile.TileType) || Fargowiltas.Instance.CannotDestroyWallTypes.Contains(tile.WallType))
+            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMagicStorage(tile) || 
+                CannotDestroyTileTypes.Contains(tile.TileType) || 
+                CannotDestroyWallTypes.Contains(tile.WallType))
                 return false;
 
             return true;

@@ -52,11 +52,10 @@ namespace Fargowiltas.Projectiles.Explosives
                         continue;
 
                     Tile tile = Main.tile[xPosition, yPosition];
-
                     if (tile == null)
                         continue;
 
-                    if (!FargoGlobalProjectile.OkayToDestroyTile(tile))
+                    if (!FargoGlobalProjectile.OkayToDestroyTile(xPosition, yPosition))
                         continue;
 
                     if (y == -20 || y == 0)

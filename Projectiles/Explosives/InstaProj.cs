@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace Fargowiltas.Projectiles.Explosives
 {
@@ -67,7 +68,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     if (tile == null)
                         continue;
 
-                    if (!FargoGlobalProjectile.OkayToDestroyTile(tile))
+                    if (!FargoGlobalProjectile.OkayToDestroyTile(xPosition, y))
                         continue;
 
                     FargoGlobalTile.ClearEverything(xPosition, y, false);

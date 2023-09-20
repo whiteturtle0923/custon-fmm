@@ -47,8 +47,6 @@ namespace Fargowiltas
 
         public override uint ExtraPlayerBuffSlots => ModContent.GetInstance<FargoServerConfig>().ExtraBuffSlots;
 
-        public HashSet<int> CannotDestroyTileTypes = new HashSet<int>();
-        public HashSet<int> CannotDestroyWallTypes = new HashSet<int>();
 
         public Fargowiltas()
         {
@@ -248,22 +246,31 @@ namespace Fargowiltas
                     //case "DebuffDisplay":
                     //    ModContent.GetInstance<FargoConfig>().DebuffDisplay = (bool)args[1];
                     //    break;
-                    case "AddIndestructibleTile":
+                    case "AddIndestructibleRectangle":
+                        {
+                            if (args[1].GetType() == typeof(Rectangle))
+                            {
+                                Rectangle rectangle = (Rectangle)args[1];
+                                FargoGlobalProjectile.CannotDestroyRectangle.Add(rectangle);
+                            }
+                        }
+                        break;
+                    case "AddIndestructibleTileType":
                         {
                             if (args[1].GetType() == typeof(int))
                             {
                                 int tile = (int)args[1];
-                                CannotDestroyTileTypes.Add(tile);
+                                FargoGlobalProjectile.CannotDestroyTileTypes.Add(tile);
 
 
                             }
                             
                         }
                         break;
-                    case "AddIndestructibleWall":
+                    case "AddIndestructibleWallType":
                         {
                             int wall = (int)args[1];
-                            CannotDestroyWallTypes.Add(wall);
+                            FargoGlobalProjectile.CannotDestroyWallTypes.Add(wall);
                         }
                         break;
                     case "SwarmActive":
