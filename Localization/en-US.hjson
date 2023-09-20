@@ -2335,6 +2335,15 @@ Mods: {
 				DisplayName: Endless Wet Rocket Box
 				Tooltip: ""
 			}
+
+			InstaPond: {
+				DisplayName: Instalake
+				Tooltip:
+					'''
+					Drops a bomb that creates a 150x50 body of water below it
+					Do not use if any important building is below
+					'''
+			}
 		}
 
 		NPCs: {
@@ -2490,6 +2499,7 @@ Mods: {
 			SnowNukeProj.DisplayName: SnowRenewal
 			SnowNukeSupremeProj.DisplayName: SnowRenewalSupreme
 			WorldTokenProj.DisplayName: World Token Proj
+			InstaPondProj.DisplayName: Insta Pond Proj
 		}
 
 		Tiles: {
