@@ -150,9 +150,9 @@ namespace Fargowiltas
 
         public override void OnWorldUnload()
         {
-            FargoGlobalProjectile.CannotDestroyRectangle = new();
-            FargoGlobalProjectile.CannotDestroyTileTypes = new();
-            FargoGlobalProjectile.CannotDestroyWallTypes = new();
+            FargoGlobalProjectile.CannotDestroyRectangle.Clear();
+            FargoGlobalProjectile.CannotDestroyTileTypes.Clear();
+            FargoGlobalProjectile.CannotDestroyWallTypes.Clear();
             ResetFlags();
         }
 
