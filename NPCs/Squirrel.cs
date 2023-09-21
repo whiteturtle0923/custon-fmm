@@ -165,6 +165,7 @@ namespace Fargowiltas.NPCs
         private static int[] ItemsSoldDirectly => new int[]
         {
             ItemID.CellPhone,
+            ItemID.Shellphone,
             ItemID.AnkhShield,
             ItemID.RodofDiscord,
             ItemID.TerrasparkBoots,
@@ -491,13 +492,22 @@ namespace Fargowiltas.NPCs
                 return true;
             }
 
+            
             Rectangle frame = NPC.frame;
             SpriteEffects effects = NPC.spriteDirection < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            Vector2 position = NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY + 2);
+            //Vector2 position = NPC.Center - screenPos + new Vector2(0f, NPC.gfxOffY + 2);
             float scale = (Main.mouseTextColor / 200f - 0.35f) * 0.3f + 0.9f;
-
+            //glow
+            for (int j = 0; j < 12; j++)
+            {
+                Vector2 afterimageOffset = (MathHelper.TwoPi * j / 12f).ToRotationVector2() * 4f;
+                Color glowColor = Color.Red with { A = 0 };
+                Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+                Main.EntitySpriteDraw(texture, NPC.Center + afterimageOffset - screenPos + (Vector2.UnitY * NPC.gfxOffY), NPC.frame, glowColor, NPC.rotation, new Vector2(texture.Width / 2, texture.Height / 2 / Main.npcFrameCount[NPC.type]), NPC.scale, effects, 0f);
+            }
+            /*
             spriteBatch.Draw(GlowAsset.Value, position, frame, Color.White * NPC.Opacity, NPC.rotation, frame.Size() / 2f, scale, effects, 0f);
-
+            */
             return true;
         }
 

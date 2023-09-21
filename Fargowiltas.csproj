@@ -42,6 +42,7 @@
     <None Remove="NPCs\Mutant_Shimmer.png" />
     <None Remove="NPCs\Mutant_Shimmer_Party.png" />
     <None Remove="NPCs\Squirrel.png" />
+    <None Remove="NPCs\Squirrel_Eyes.png" />
     <None Remove="NPCs\Squirrel_Party.png" />
     <None Remove="Projectiles\Explosives\CityBuster.png" />
   </ItemGroup>

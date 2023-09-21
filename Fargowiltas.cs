@@ -47,6 +47,7 @@ namespace Fargowiltas
 
         public override uint ExtraPlayerBuffSlots => ModContent.GetInstance<FargoServerConfig>().ExtraBuffSlots;
 
+
         public Fargowiltas()
         {
 //            Properties = new ModProperties()
@@ -87,7 +88,6 @@ namespace Fargowiltas
             {
                 ModLoaded.Add(mod, false);
             }
-
             CaughtNPCItem.RegisterItems();
 
             // DD2 Banner Effect hack
@@ -246,7 +246,33 @@ namespace Fargowiltas
                     //case "DebuffDisplay":
                     //    ModContent.GetInstance<FargoConfig>().DebuffDisplay = (bool)args[1];
                     //    break;
+                    case "AddIndestructibleRectangle":
+                        {
+                            if (args[1].GetType() == typeof(Rectangle))
+                            {
+                                Rectangle rectangle = (Rectangle)args[1];
+                                FargoGlobalProjectile.CannotDestroyRectangle.Add(rectangle);
+                            }
+                        }
+                        break;
+                    case "AddIndestructibleTileType":
+                        {
+                            if (args[1].GetType() == typeof(int))
+                            {
+                                int tile = (int)args[1];
+                                FargoGlobalProjectile.CannotDestroyTileTypes.Add(tile);
 
+
+                            }
+                            
+                        }
+                        break;
+                    case "AddIndestructibleWallType":
+                        {
+                            int wall = (int)args[1];
+                            FargoGlobalProjectile.CannotDestroyWallTypes.Add(wall);
+                        }
+                        break;
                     case "SwarmActive":
                         return SwarmActive;
 

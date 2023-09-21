@@ -1,5 +1,6 @@
 using Fargowiltas.Tiles;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -8,16 +9,16 @@ using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace Fargowiltas.Projectiles.Explosives
 {
-    public class HalfInstaProj : ModProjectile
+    public class InstaPondProj : ModProjectile
     {
+        public override string Texture => "Fargowiltas/Items/Explosives/InstaPond";
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Half Instavator");
         }
 
         public override void SetDefaults()
         {
-            Projectile.width = 20;
+            Projectile.width = 34;
             Projectile.height = 36;
             Projectile.aiStyle = 16;
             Projectile.friendly = true;
@@ -45,45 +46,49 @@ namespace Fargowiltas.Projectiles.Explosives
 
         public override void Kill(int timeLeft)
         {
-            Vector2 position = Projectile.Center;
-            SoundEngine.PlaySound(SoundID.Item14, position);
+            SoundEngine.PlaySound(SoundID.Item15, Projectile.Center);
+            SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 return;
             }
 
-            //cavern height plus halfway to hell
-            int yEndpoint = (int)(Main.rockLayer + (Main.maxTilesY - 200 - Main.rockLayer) / 2);
+            Vector2 position = Projectile.Center;
+            int width = 150;
+            int height = 50;
 
-            // Five across
-            for (int x = -2; x <= 2; x++)
+            for (int x = -width/2; x <= width/2; x++)
             {
-                for (int y = (int)(1 + position.Y / 16.0f); y <= yEndpoint; y++)
+                for (int y = 0; y <= height; y++)
                 {
                     int xPosition = (int)(x + position.X / 16.0f);
+                    int yPosition = (int)(y + position.Y / 16.0f);
 
-                    if (xPosition < 0 || xPosition >= Main.maxTilesX || y < 0 || y >= Main.maxTilesY)
+                    if (xPosition < 0 || xPosition >= Main.maxTilesX || yPosition < 0 || yPosition >= Main.maxTilesY)
                         continue;
 
-                    Tile tile = Main.tile[xPosition, y];
-
+                    Tile tile = Main.tile[xPosition, yPosition];
                     if (tile == null)
                         continue;
 
-                    if (!FargoGlobalProjectile.OkayToDestroyTile(xPosition, y))
+                    if (!FargoGlobalProjectile.OkayToDestroyTile(xPosition, yPosition) || FargoGlobalProjectile.TileIsLiterallyAir(tile))
                         continue;
 
-                    FargoGlobalTile.ClearEverything(xPosition, y, false);
-
-                    if (x == 0)
+                    FargoGlobalTile.ClearTileAndLiquid(xPosition, yPosition);
+                    if (y == height || Math.Abs(x) == width/2)
                     {
-                        WorldGen.PlaceTile(xPosition, y, TileID.Rope);
+                        WorldGen.PlaceTile(xPosition, yPosition, TileID.StoneSlab);
                     }
-
-                    NetMessage.SendTileSquare(-1, xPosition, y, 1);
+                    else
+                    {
+                        WorldGen.PlaceLiquid(xPosition, yPosition, (byte)LiquidID.Water, byte.MaxValue);
+                    }
+                    
                 }
             }
+
+            Main.refreshMap = true;
         }
     }
 }

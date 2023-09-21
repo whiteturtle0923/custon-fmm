@@ -200,7 +200,7 @@ Mods: {
 
 				UnlimitedPotionBuffsOn120: {
 					Label: "[i:292] Unlimited Buffs and Bait when carried in certain stacks"
-					Tooltip: 30+ for potions and bait, 3+ for class stations (e.g. Sharpening Table) and Slice of Cake
+					Tooltip: 30+ for potions and bait
 				}
 
 				ExtraBuffSlots: {
@@ -2278,62 +2278,71 @@ Mods: {
 
 			HoneyRocketBox: {
 				Tooltip: ""
-				DisplayName: Honey Rocket Box
+				DisplayName: Endless Honey Rocket Box
 			}
 
 			DryRocketBox: {
 				Tooltip: ""
-				DisplayName: Dry Rocket Box
+				DisplayName: Endless Dry Rocket Box
 			}
 
 			ClusterRocket2Box: {
 				Tooltip: ""
-				DisplayName: Cluster Rocket2 Box
+				DisplayName: Endless Cluster Rocket II Box
 			}
 
 			ClusterRocket1Box: {
 				Tooltip: ""
-				DisplayName: Cluster Rocket1 Box
+				DisplayName: Endless Cluster Rocket I Box
 			}
 
 			LavaRocketBox: {
-				DisplayName: Lava Rocket Box
+				DisplayName: Endless Lava Rocket Box
 				Tooltip: ""
 			}
 
 			MiniNuke1Box: {
-				DisplayName: Mini Nuke1 Box
+				DisplayName: Endless Mini Nuke I Box
 				Tooltip: ""
 			}
 
 			MiniNuke2Box: {
-				DisplayName: Mini Nuke2 Box
+				DisplayName: Endless Mini Nuke II Box
 				Tooltip: ""
 			}
 
 			Rocket1Box: {
-				DisplayName: Rocket1 Box
+				DisplayName: Endless Rocket I Box
 				Tooltip: ""
 			}
 
 			Rocket2Box: {
-				DisplayName: Rocket2 Box
+				DisplayName: Endless Rocket II Box
 				Tooltip: ""
 			}
 
 			Rocket3Box: {
-				DisplayName: Rocket3 Box
+				DisplayName: Endless Rocket III Box
 				Tooltip: ""
 			}
 
 			Rocket4Box: {
-				DisplayName: Rocket4 Box
+				DisplayName: Endless Rocket IV Box
 				Tooltip: ""
 			}
 
 			WetRocketBox: {
-				DisplayName: Wet Rocket Box
+				DisplayName: Endless Wet Rocket Box
 				Tooltip: ""
+			}
+
+			InstaPond: {
+				DisplayName: Instalake
+				Tooltip:
+					'''
+					Drops a bomb that creates a 150x50 body of water below it
+					Do not use if any important building is below
+					'''
 			}
 		}
 
@@ -2351,6 +2360,7 @@ Mods: {
 					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LoveBiome}"
 					LikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LikeBiome}"
 					DislikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.DislikeBiome}"
+					HateBiome: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.HateBiome}"
 					LoveNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LoveNPC}"
 					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LikeNPC}"
 					HateNPC: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.HateNPC}"
@@ -2393,6 +2403,7 @@ Mods: {
 					DislikeCrowded: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.DislikeCrowded}"
 					HateCrowded: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.HateCrowded}"
 					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LoveBiome}"
+					HateBiome: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.HateBiome}"
 					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LikeNPC}"
 					DislikeNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.DislikeNPC}"
 					HateNPC: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.HateNPC}"
@@ -2414,6 +2425,7 @@ Mods: {
 					LoveBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LoveBiome}"
 					LikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LikeBiome}"
 					DislikeBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.DislikeBiome}"
+					HateBiome: "{$Mods.Fargowiltas.TownNPCMood.Mutant.HateBiome}"
 					LoveNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LoveNPC}"
 					LikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LikeNPC}"
 					DislikeNPC: "{$Mods.Fargowiltas.TownNPCMood.Mutant.DislikeNPC}"
@@ -2487,6 +2499,7 @@ Mods: {
 			SnowNukeProj.DisplayName: SnowRenewal
 			SnowNukeSupremeProj.DisplayName: SnowRenewalSupreme
 			WorldTokenProj.DisplayName: World Token Proj
+			InstaPondProj.DisplayName: Insta Pond Proj
 		}
 
 		Tiles: {
@@ -2500,7 +2513,7 @@ Mods: {
 			OmnistationSheet2.MapEntry: Omnistation
 			RegalStatueSheet.MapEntry: Regal Statue
 			SemistationSheet.MapEntry: Semistation
-			SiblingPylonTile.MapEntry: Mods.Fargowiltas.MapObject.SiblingPylonTile
+			SiblingPylonTile.MapEntry: Sibling Pylon
 			PurityTotemSheet.MapEntry: Purity Totem
 		}
 

@@ -222,6 +222,7 @@ namespace Fargowiltas.NPCs
                     player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.Pearlwood), ItemID.Pearlwood, 50);
 
                     //add prismatic lacewing if post plantera
+                    player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.EmpressButterfly), ItemID.EmpressButterfly, 1);
                 }
                 else if (player.ZoneGlowshroom && Main.hardMode)
                 {
@@ -259,9 +260,10 @@ namespace Fargowiltas.NPCs
                 }
                 else if (player.ZoneUnderworldHeight)
                 {
-                    quote = "I looked around here for a while and didn't find any trees. I did find these little guys though. Maybe you'll want them?";
+                    quote = "I looked around here for a while and eventually found some weird, ashy trees. Very fragile. I also found these little guys. Please take them, they're hot to hold.";
                     for (int i = 0; i < 5; i++)
                     {
+                        player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.AshWood), ItemID.AshWood, 50);
                         itemType = Main.rand.Next(new int[] { ItemID.HellButterfly, ItemID.MagmaSnail, ItemID.Lavafly });
                         player.QuickSpawnItem(player.GetSource_OpenItem(itemType), itemType);
                     }
@@ -358,6 +360,7 @@ namespace Fargowiltas.NPCs
                 .Add(new Item(ItemID.PalmWood) { shopCustomPrice = Item.buyPrice(copper: 15) })
                 .Add(new Item(ItemID.Ebonwood) { shopCustomPrice = Item.buyPrice(copper: 15) })
                 .Add(new Item(ItemID.Shadewood) { shopCustomPrice = Item.buyPrice(copper: 15) })
+                .Add(new Item(ItemID.AshWood) { shopCustomPrice = Item.buyPrice(copper: 20) })
                 .Add(new Item(ItemID.Pearlwood) { shopCustomPrice = Item.buyPrice(copper: 20) }, Condition.Hardmode)
                 .Add(new Item(ItemID.SpookyWood) { shopCustomPrice = Item.buyPrice(copper: 50) }, Condition.DownedPumpking)
                 .Add(new Item(ItemID.Cactus) { shopCustomPrice = Item.buyPrice(copper: 10) })
@@ -419,13 +422,13 @@ namespace Fargowiltas.NPCs
                 if (!Main.dedServ)
                 {
                     Vector2 pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/LumberGore3").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Content/Gores/LumberGore3").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/LumberGore2").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Content/Gores/LumberGore2").Type);
 
                     pos = NPC.position + new Vector2(Main.rand.Next(NPC.width - 8), Main.rand.Next(NPC.height / 2));
-                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Gores/LumberGore1").Type);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, ModContent.Find<ModGore>("Fargowiltas/Content/Gores/LumberGore1").Type);
                 }
             }
             else

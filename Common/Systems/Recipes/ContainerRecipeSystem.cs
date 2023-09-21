@@ -17,13 +17,25 @@ namespace Fargowiltas.Common.Systems.Recipes
             AddBiomeKeyRecipes();
 
             // Treasure magnet I HATE TREASURE MAGNET TEAR OFF ALL OF YOUR FLESH
-            CreateTreasureGroupRecipe(ItemID.TreasureMagnet,
+            if (!Main.zenithWorld && !Main.remixWorld)
+            {
+                CreateTreasureGroupRecipe(ItemID.TreasureMagnet,
                 ItemID.DarkLance,
                 ItemID.HellwingBow,
                 ItemID.Flamelash,
                 ItemID.FlowerofFire,
                 ItemID.Sunfury
             );
+            }
+            else
+            {
+                CreateTreasureGroupRecipe(ItemID.TreasureMagnet,
+                ItemID.DarkLance,
+                ItemID.HellwingBow,
+                ItemID.Flamelash,
+                ItemID.Sunfury
+            );
+            }
         }
 
         private static void AddPreHMTreasureBagRecipes()
@@ -258,17 +270,18 @@ namespace Fargowiltas.Common.Systems.Recipes
 
         private static void AddGrabBagRecipes()
         {
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.DogWhistle, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.Toolbox, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.HandWarmer, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.RedRyder, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneSword, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneHook, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.FruitcakeChakram, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.UnluckyYarn, TileID.WorkBenches, disableDecraft: true);
-            RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.BatHook, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.DogWhistle, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.Toolbox, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.HandWarmer, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.RedRyder, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneSword, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.CandyCaneHook, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.Present, ItemID.FruitcakeChakram, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            
+            RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.UnluckyYarn, TileID.WorkBenches, ingredientAmount: 10, disableDecraft: true);
+            RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.BatHook, TileID.WorkBenches, ingredientAmount: 25, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.GoodieBag, ItemID.RottenEgg, TileID.WorkBenches, ingredientAmount: 2, resultAmount: 25, disableDecraft: true);
-
+            
             RecipeHelper.CreateSimpleRecipe(ItemID.HerbBag, ItemID.Daybloom, TileID.WorkBenches, resultAmount: 5, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.HerbBag, ItemID.Moonglow, TileID.WorkBenches, resultAmount: 5, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(ItemID.HerbBag, ItemID.Blinkroot, TileID.WorkBenches, resultAmount: 5, disableDecraft: true);
@@ -290,7 +303,10 @@ namespace Fargowiltas.Common.Systems.Recipes
             CreateCrateRecipe(ItemID.ClimbingClaws, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
             CreateCrateRecipe(ItemID.Radar, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
             CreateCrateRecipe(ItemID.WoodenBoomerang, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
-            CreateCrateRecipe(ItemID.WandofSparking, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            if (!Main.remixWorld && !Main.zenithWorld)
+            {
+                CreateCrateRecipe(ItemID.WandofSparking, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
+            }
             CreateCrateRecipe(ItemID.Spear, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
             CreateCrateRecipe(ItemID.Blowpipe, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
             CreateCrateRecipe(ItemID.PortableStool, ItemID.WoodenCrate, 3, ItemID.WoodenCrateHard);
@@ -358,7 +374,10 @@ namespace Fargowiltas.Common.Systems.Recipes
             CreateCrateRecipe(ItemID.Muramasa, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
             CreateCrateRecipe(ItemID.CobaltShield, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
             CreateCrateRecipe(ItemID.MagicMissile, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
-            CreateCrateRecipe(ItemID.AquaScepter, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
+            if (!Main.zenithWorld && !Main.remixWorld)
+            {
+                CreateCrateRecipe(ItemID.AquaScepter, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
+            }
             CreateCrateRecipe(ItemID.Valor, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
             CreateCrateRecipe(ItemID.Handgun, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
             CreateCrateRecipe(ItemID.ShadowKey, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
@@ -368,7 +387,10 @@ namespace Fargowiltas.Common.Systems.Recipes
             CreateCrateRecipe(ItemID.BewitchingTable, ItemID.DungeonFishingCrate, 1, ItemID.DungeonFishingCrateHard, ItemID.GoldenKey);
 
             //frozen crate
-            CreateCrateRecipe(ItemID.SnowballCannon, ItemID.FrozenCrate, 1, ItemID.FrozenCrateHard);
+            if (!Main.zenithWorld && !Main.remixWorld)
+            {
+                CreateCrateRecipe(ItemID.SnowballCannon, ItemID.FrozenCrate, 1, ItemID.FrozenCrateHard);
+            }
             CreateCrateRecipe(ItemID.BlizzardinaBottle, ItemID.FrozenCrate, 1, ItemID.FrozenCrateHard);
             CreateCrateRecipe(ItemID.IceBlade, ItemID.FrozenCrate, 1, ItemID.FrozenCrateHard);
             CreateCrateRecipe(ItemID.IceSkates, ItemID.FrozenCrate, 1, ItemID.FrozenCrateHard);
@@ -396,7 +418,10 @@ namespace Fargowiltas.Common.Systems.Recipes
             CreateCrateRecipe(ItemID.DarkLance, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             CreateCrateRecipe(ItemID.HellwingBow, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             CreateCrateRecipe(ItemID.Flamelash, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
-            CreateCrateRecipe(ItemID.FlowerofFire, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
+            if (!Main.zenithWorld && !Main.remixWorld)
+            {
+                CreateCrateRecipe(ItemID.FlowerofFire, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
+            }
             CreateCrateRecipe(ItemID.Sunfury, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
             CreateCrateRecipe(ItemID.TreasureMagnet, ItemID.LavaCrate, 1, ItemID.LavaCrateHard, ItemID.ShadowKey);
 
