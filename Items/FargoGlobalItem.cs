@@ -160,6 +160,7 @@ namespace Fargowiltas.Items
                         line = new TooltipLine(Mod, "TooltipUnlim", "[i:5139] [c/AAAAAA:Unlimited use at 30 stack]");
                         tooltips.Add(line);
                     }
+                    /*
                     else if (item.type == ItemID.SharpeningStation
                             || item.type == ItemID.AmmoBox
                             || item.type == ItemID.CrystalBall
@@ -169,6 +170,7 @@ namespace Fargowiltas.Items
                         line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 3 stack in inventory, Piggy Bank, or Safe]");
                         tooltips.Add(line);
                     }
+                    */
                 }
 
                 if (fargoServerConfig.PiggyBankAcc)
