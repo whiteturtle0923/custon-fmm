@@ -55,7 +55,7 @@ namespace Fargowiltas.Projectiles.Explosives
                     if (tile == null)
                         continue;
 
-                    if (!FargoGlobalProjectile.OkayToDestroyTile(xPosition, yPosition))
+                    if (!FargoGlobalProjectile.OkayToDestroyTileAt(xPosition, yPosition))
                         continue;
 
                     if (y == -20 || y == 0)

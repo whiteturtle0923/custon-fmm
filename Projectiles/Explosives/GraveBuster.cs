@@ -62,7 +62,7 @@ namespace Fargowiltas.Projectiles.Explosives
 
                     Tile tile = Main.tile[xPosition, yPosition];
 
-                    if (tile.TileType == TileID.Tombstones && FargoGlobalProjectile.OkayToDestroyTile(xPosition, yPosition))
+                    if (tile.TileType == TileID.Tombstones && FargoGlobalProjectile.OkayToDestroyTileAt(xPosition, yPosition))
                         FargoGlobalTile.ClearTileAndLiquid(xPosition, yPosition);
                 }
             }
