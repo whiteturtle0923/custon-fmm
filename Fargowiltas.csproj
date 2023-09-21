@@ -8,6 +8,10 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Items\Ammos\Coins\CopperCoinBag.png" />
+    <None Remove="Items\Ammos\Coins\GoldCoinBag.png" />
+    <None Remove="Items\Ammos\Coins\PlatinumCoinBag.png" />
+    <None Remove="Items\Ammos\Coins\SilverCoinBag.png" />
     <None Remove="Items\Ammos\Rockets\ClusterRocket1Box.png" />
     <None Remove="Items\Ammos\Rockets\ClusterRocket2Box.png" />
     <None Remove="Items\Ammos\Rockets\DryRocketBox.png" />

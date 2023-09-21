@@ -477,22 +477,22 @@ Mods: {
 			}
 
 			CopperCoinBag: {
-				DisplayName: Endless Copper Coin Bag
+				DisplayName: Endless Copper Coin Safe
 				Tooltip: ""
 			}
 
 			GoldCoinBag: {
-				DisplayName: Endless Gold Coin Bag
+				DisplayName: Endless Gold Coin Safe
 				Tooltip: ""
 			}
 
 			PlatinumCoinBag: {
-				DisplayName: Endless Platinum Coin Bag
+				DisplayName: Endless Platinum Coin Safe
 				Tooltip: ""
 			}
 
 			SilverCoinBag: {
-				DisplayName: Endless Silver Coin Bag
+				DisplayName: Endless Silver Coin Safe
 				Tooltip: ""
 			}
 

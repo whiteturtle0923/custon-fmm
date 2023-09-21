@@ -9,7 +9,7 @@ namespace Fargowiltas.Items.Ammos.Coins
 {
     abstract class CoinBag : BaseAmmo
     {
-        public override string Texture => "Fargowiltas/Items/Placeholder";
+        //public override string Texture => "Fargowiltas/Items/Placeholder";
         public override void SetDefaults()
         {
             base.SetDefaults();
