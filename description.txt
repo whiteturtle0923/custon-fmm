@@ -1,49 +1,22 @@
 This is a Quality of life mod that adds the Mutant town NPC who sells boss summons of nearly every mod
 There are several other items such as infinite ammos, craftable instant builds for common world infrastructure like skybridges, obsidian underworld bridges, hellevators, unlimited potions, increased spawn rates toggle item, and more!
 
-NEW UPDATE - V 3.1.2
--Added several banner-to-food recipes
--Modified some banner recipes to be hardmode-exclusive
--All banners are now crafted into their respective items at Solidifier, rather than requiring a mythril anvil and/or an extra item
--Removed Quick Use Rod and Quick Use Custom because they break everything they touch
--Deviantt is now immune to On Fire
--Fixed extra fishing rod lures
--Mutant Voodoo Doll specifies that it can only be used at night
--Made mod paintings spelunkerable
--Updated Altar Exterminator tooltip
--Unlimited bait works
--Sibling Pylon only requires two siblings nearby
--Resprited Sibling Pylon and Purity Totem
-
-NEW UPDATE - V 3.1.1
--Fixed Forest and Desert renewal sprites
--Added Deviantt shimmer sprite
--Fixed Mutant shimmer sprite sometimes breaking
--Fixed super dummy loading error
--Fixed fishing rods with extra lures not throwing extra lures if you have an alternate Bobber accessory equipped
--Fixed Abominationn not clearing Celestial Pillars entirely
--Fixed Squirrel not selling Top Hat Squirrel
--Deviantt does less trolling
-
-NEW UPDATE - V 3.1
--Updated workshop icon
--Added Sand, Snow and Forest Renewals and Supreme Renewals
--Rod of Harmony now works with Quick Rod of Discord keybind
--Tungsten Pouch sprite added
--New World Token sprite which is based on current difficulty mode, and has a new unique visual effect on activation
--Ancient Seal now floats
--Lumberjack deals bonus damage to Mourning Wood, Everscream and Splinterlings
--Lumberjack no longer sells Pearlwood in prehardmode, only in hardmode, since Pearlwood items were buffed
--Squirrel town NPC now has party hat during parties
--Added shimmer variant for Mutant town NPC
--Added apples to Lumberjack town NPC's Tree Treasures
--Minor Death Fruit rework and added recipe
--Several resprites
--Squirrel shop fixed
--Death Fruits fixed
--Fixed multitiles dropping 2 items when destroyed
--Way too many bugfixes to count
-
-NEW UPDATE - V 3.0
--Added Purity Totem
--Updated to tmod 1.4.4
+NEW UPDATE - V 3.1.3
+-Added Instalake
+-Added Ash Wood Bookcase to "Any Bookcase" recipe ingredient group
+-Increased world token animation time
+-Added Ashwood to Lumberjack shop and Underworld Tree Treasures
+-Shellphone added to squirrel shop
+-Removed all items that were tier-shifted to hardmode from custom recipes in Dont Dig Up/Zenith seeds
+-Removed permanent stations at 3stack
+-Changed "unlimited bait" icon from Piggy Bank to Fishing Bobber
+-Mini Nukes create and stack as 2 instead of 1
+-Added three Mod Calls, "AddIndestructibleRectangle", "AddIndestructibleTile" and "AddIndestructibleWall" for registering tiles to not be destroyed by Instant items
+-Fixed Hotline Fishing Hook firing 3 and not 5 hooks
+-Fixed Unlimited Bait requiring 31 and not 30-stack
+-Fixed Sibling Pylon crystal being offset a single pixel, and hover highlight displaying incorrectly
+-Fixed incorrect required ingredient amount for several grab bag recipes
+-Fixed Purity Totem being dropped when mined even though it's infinitely reusable
+-Fixed Squirrel blood moon glow issue
+-Fixed some texture loading errors
+-Fixed some text errors
