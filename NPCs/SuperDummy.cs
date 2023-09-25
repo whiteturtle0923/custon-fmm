@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,10 +34,13 @@ namespace Fargowiltas.NPCs
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => false;
-
+        public override void OnSpawn(IEntitySource source)
+        {
+            NPC.life = NPC.lifeMax = int.MaxValue;
+        }
         public override void AI()
         {
-            NPC.life = NPC.lifeMax;
+            NPC.life = NPC.lifeMax = int.MaxValue;
 
             if (FargoGlobalNPC.AnyBossAlive())
             {
