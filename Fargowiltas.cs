@@ -80,7 +80,8 @@ namespace Fargowiltas
                 "FargowiltasSoulsDLC",
                 "ThoriumMod",
                 "CalamityMod",
-                "MagicStorage"
+                "MagicStorage",
+                "WikiThis"
             };
 
             ModLoaded = new Dictionary<string, bool>();
@@ -208,6 +209,25 @@ namespace Fargowiltas
             catch (Exception e)
             {
                 Logger.Error("Fargowiltas PostSetupContent Error: " + e.StackTrace + e.Message);
+            }
+
+            if (ModLoader.TryGetMod("Wikithis", out Mod wikithis) && !Main.dedServ)
+            {
+                wikithis.Call("AddModURL", this, "https://terrariamods.wiki.gg/wiki/Fargo%27s_Mod{}");
+
+                // You can also use call ID for some calls!
+                //wikithis.Call(0, this, "https://examplemod.wiki.gg/wiki/{}");
+
+                // Alternatively, you can use this instead, if your wiki is on terrariamods.fandom.com
+                //wikithis.Call(0, this, "https://terrariamods.fandom.com/wiki/Example_Mod/{}");
+                //wikithis.Call("AddModURL", this, "https://terrariamods.fandom.com/wiki/Example_Mod/{}");
+
+                // If there wiki on other languages (such as russian, spanish, chinese, etch), then you can also call that:
+                //wikithis.Call(0, this, "https://examplemod.wiki.gg/zh/wiki/{}", GameCulture.CultureName.Chinese)
+
+                // If you want to replace default icon for your mod, then call this. Icon should be 30x30, either way it will be cut.
+                //wikithis.Call("AddWikiTexture", this, ModContent.Request<Texture2D>(pathToIcon));
+                //wikithis.Call(3, this, ModContent.Request<Texture2D>(pathToIcon));
             }
 
             //            Mod censusMod = ModLoader.GetMod("Census");
