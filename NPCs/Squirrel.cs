@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
@@ -91,7 +92,11 @@ namespace Fargowiltas.NPCs
         {
             return new List<string> { "Rick", "Acorn", "Puff", "Coco", "Truffle", "Furgo", "Squeaks" };
         }
-
+        public override void OnSpawn(IEntitySource source)
+        {
+            FargoWorld.DownedBools["squirrel"] = true;
+            base.OnSpawn(source);
+        }
         public override void AI()
         {
             NPC.dontTakeDamage = Main.bloodMoon;
@@ -99,22 +104,22 @@ namespace Fargowiltas.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
-            if (FargoGlobalNPC.AnyBossAlive())
+            if (FargoGlobalNPC.AnyBossAlive() || !ModContent.GetInstance<FargoServerConfig>().Squirrel)
             {
                 return false;
             }
-
             if (FargoWorld.DownedBools["squirrel"])
             {
                 return true;
             }
 
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ModContent.TryFind("FargowiltasSouls", "TopHatSquirrelCaught", out ModItem modItem))
+            if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ModContent.TryFind("FargowiltasSouls", "TopHatSquirrelCaught", out ModItem modItem) && 
+                Main.player.Any(p => p.active && p.HasItem(modItem.Type)))
             {
-                return Main.player.Any(p => p.active && p.HasItem(modItem.Type));
+                return true;
             }
 
-            return ModContent.GetInstance<FargoServerConfig>().Squirrel;
+            return false;
         }
 
         public override string GetChat()
