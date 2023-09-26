@@ -54,7 +54,7 @@ namespace Fargowiltas.Projectiles
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int num468 = 0; num468 < 20; num468++)
             {

@@ -324,7 +324,7 @@ namespace Fargowiltas.Projectiles.Explosives
                 NetMessage.SendTileSquare(-1, xPosition, yPosition, 1);
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Vector2 position = Projectile.Center;
             SoundEngine.PlaySound(SoundID.Item14, position);

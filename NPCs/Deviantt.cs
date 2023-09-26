@@ -71,17 +71,20 @@ namespace Fargowiltas.NPCs
             NPC.Happiness.SetNPCAffection(NPCID.BestiaryGirl, AffectionLevel.Dislike);
             NPC.Happiness.SetNPCAffection(NPCID.Angler, AffectionLevel.Hate);
 
-            NPCID.Sets.DebuffImmunitySets.Add(NPC.type, new Terraria.DataStructures.NPCDebuffImmunityData
-            {
-                SpecificallyImmuneTo = new int[]
-                {
-                    BuffID.Suffocation,
-                    BuffID.Lovestruck,
-                    BuffID.Stinky,
-                    BuffID.OnFire
-                }
-            });
+            //new
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Suffocation] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Lovestruck] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Stinky] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.OnFire] = true;
+            //var2
 
+            NPC.AddDebuffImmunities(new List<int>()
+            {
+                BuffID.Suffocation,
+                BuffID.Lovestruck,
+                BuffID.Stinky,
+                BuffID.OnFire
+            });
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

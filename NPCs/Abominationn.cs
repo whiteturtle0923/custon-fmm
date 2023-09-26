@@ -58,12 +58,9 @@ namespace Fargowiltas.NPCs
             NPC.Happiness.SetNPCAffection<Deviantt>(AffectionLevel.Like);
             NPC.Happiness.SetNPCAffection(NPCID.Nurse, AffectionLevel.Hate);
 
-            NPCID.Sets.DebuffImmunitySets.Add(NPC.type, new Terraria.DataStructures.NPCDebuffImmunityData
+            NPC.AddDebuffImmunities(new List<int>()
             {
-                SpecificallyImmuneTo = new int[]
-                {
-                    BuffID.Suffocation
-                }
+                 BuffID.Suffocation
             });
         }
 

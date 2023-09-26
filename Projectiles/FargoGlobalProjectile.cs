@@ -122,7 +122,7 @@ namespace Fargowiltas.Projectiles
             return true;
         }
 
-        public override void Kill(Projectile projectile, int timeLeft)
+        public override void OnKill(Projectile projectile, int timeLeft)
         {
             if (projectile.type == ProjectileID.FlyingPiggyBank && GetInstance<FargoServerConfig>().StalkerMoneyTrough)
             {

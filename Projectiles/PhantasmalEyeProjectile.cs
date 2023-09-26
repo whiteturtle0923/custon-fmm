@@ -91,7 +91,7 @@ namespace Fargowiltas.Projectiles
             Projectile.localAI[1] += 0.25f;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/Zombie_103"), Projectile.Center);
 

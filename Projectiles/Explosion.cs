@@ -31,7 +31,7 @@ namespace Fargowiltas.Projectiles
             AIType = ProjectileID.Bullet;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
             Projectile.position = Projectile.Center;

@@ -20,6 +20,7 @@ using System.Linq;
 using ReLogic.Content;
 using Fargowiltas.Common.Configs;
 using Fargowiltas.Content.Biomes;
+using Terraria.DataStructures;
 
 namespace Fargowiltas.NPCs
 {
@@ -75,12 +76,9 @@ namespace Fargowiltas.NPCs
             NPC.Happiness.SetNPCAffection<Deviantt>(AffectionLevel.Like);
             NPC.Happiness.SetNPCAffection<LumberJack>(AffectionLevel.Dislike);
 
-            NPCID.Sets.DebuffImmunitySets.Add(NPC.type, new Terraria.DataStructures.NPCDebuffImmunityData
+            NPC.AddDebuffImmunities(new List<int>()
             {
-                SpecificallyImmuneTo = new int[]
-                {
-                    BuffID.Suffocation
-                }
+                 BuffID.Suffocation
             });
         }
 

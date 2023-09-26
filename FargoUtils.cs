@@ -22,7 +22,13 @@ namespace Fargowiltas
                 list.Add(type);
             }
         }
-
+        public static void AddDebuffImmunities(this NPC npc, List<int> debuffs)
+        {
+            foreach (int buffType in debuffs)
+            {
+                NPCID.Sets.SpecificDebuffImmunity[npc.type][buffType] = true;
+            }
+        }
         public static void TryDowned(NPC npc, string seller, Color color, params string[] names)
         {
             TryDowned(npc, seller, color, true, names);

@@ -30,7 +30,7 @@ namespace Fargowiltas.Projectiles.Explosives
             return false;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Vector2 position = Projectile.Center;
             SoundEngine.PlaySound(SoundID.Item14, position);
