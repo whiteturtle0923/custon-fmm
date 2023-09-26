@@ -29,6 +29,10 @@ namespace Fargowiltas
 
         internal static ModKeybind StatKey;
 
+        internal static ModKeybind DashKey;
+
+        internal static ModKeybind SetBonusKey;
+
         public static UIManager UserInterfaceManager => Instance._userInterfaceManager;
         private UIManager _userInterfaceManager;
 
@@ -70,6 +74,12 @@ namespace Fargowiltas
             HomeKey = KeybindLoader.RegisterKeybind(this, "Quick Recall/Mirror", "Home");
 
             StatKey = KeybindLoader.RegisterKeybind(this, "Open Stat Sheet", "M");
+
+            DashKey = KeybindLoader.RegisterKeybind(this, "Dash Key", "C");
+
+            SetBonusKey = KeybindLoader.RegisterKeybind(this, "Set Bonus (Double Tap Up/Down) Key", "V");
+
+            Terraria.On_Player.DoCommonDashHandle += OnVanillaDash;
 
             _userInterfaceManager = new UIManager();
             _userInterfaceManager.LoadUI();
@@ -186,6 +196,7 @@ namespace Fargowiltas
 
         public override void Unload()
         {
+            Terraria.On_Player.DoCommonDashHandle -= OnVanillaDash;
             summonTracker = null;
             dialogueTracker = null;
 
@@ -658,6 +669,61 @@ namespace Fargowiltas
             }
 
             return 200;
+        }
+        private static void OnVanillaDash(Terraria.On_Player.orig_DoCommonDashHandle orig, Terraria.Player player, out int dir, out bool dashing, Player.DashStartAction dashStartAction)
+        {
+            dir = 0;
+            if (player.whoAmI != Main.myPlayer || !ModContent.GetInstance<FargoClientConfig>().DashKeyEnabled)
+                orig.Invoke(player, out dir, out dashing, dashStartAction);
+            else if (DashKey.JustPressed)
+            {
+                FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
+                if (player.controlRight && player.controlLeft)
+                {
+                    dir = modPlayer.latestXDirPressed;
+                }
+                else if (player.controlRight)
+                {
+                    dir = 1;
+                }
+                else if (player.controlLeft)
+                {
+                    dir = -1;
+                }
+                else if (modPlayer.latestXDirReleased != 0)
+                {
+                    dir = modPlayer.latestXDirReleased;
+                }
+                else
+                {
+                    dir = player.direction;
+                }
+                player.direction = dir;
+                dashing = true;
+                if (player.dashTime > 0)
+                {
+                    player.dashTime--;
+                }
+                if (player.dashTime < 0)
+                {
+                    player.dashTime++;
+                }
+                if ((player.dashTime <= 0 && player.direction == -1) || (player.dashTime >= 0 && player.direction == 1))
+                {
+                    player.dashTime = 15;
+                    return;
+                }
+                dashing = true;
+                player.dashTime = 0;
+                player.timeSinceLastDashStarted = 0;
+                if (dashStartAction != null)
+                    dashStartAction?.Invoke(dir);
+            }
+            else
+            {
+                dir = 0;
+                dashing = false;
+            }
         }
 
         //        private static void HookIntoLoad()

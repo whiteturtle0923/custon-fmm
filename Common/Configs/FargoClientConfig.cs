@@ -12,6 +12,12 @@ namespace Fargowiltas.Common.Configs
         [DefaultValue(true)]
         public bool ExpandedTooltips;
 
+        [DefaultValue(false)]
+        public bool DashKeyEnabled;
+
+        [DefaultValue(false)]
+        public bool SetBonusKeyEnabled;
+
         [DefaultValue(1f)]
         [Slider]
         public float TransparentFriendlyProjectiles;
@@ -23,6 +29,7 @@ namespace Fargowiltas.Common.Configs
         [DefaultValue(0.75f)]
         [Slider]
         public float DebuffFaderRatio;
+        
 
         [OnDeserialized]
         internal void OnDeserializedMethod(StreamingContext context)

@@ -285,6 +285,16 @@ Mods: {
 					Tooltip: ""
 				}
 
+				DashKeyEnabled: {
+					Label: "[i:3097] Dash Key instead of double tap"
+					Tooltip: Enable this to have dashes use the Dash Key instead of the normal double-tap method.
+				}
+
+				SetBonusKeyEnabled: {
+					Label: "[i:3776] Set Bonus Key instead of double tap"
+					Tooltip: Enable this to have dashes use the Set Bonus Key instead of the normal double-tap method.
+				}
+
 				DebuffOpacity: {
 					Label: "[i:1612] Debuff Display Max Opacity"
 					Tooltip: ""
@@ -2566,6 +2576,8 @@ Mods: {
 		Keybinds: {
 			"Quick Recall/Mirror.DisplayName": Quick Recall/Mirror
 			"Open Stat Sheet.DisplayName": Open Stat Sheet
+			"Dash Key.DisplayName": Dash Key
+			"Set Bonus (Double Tap Up/Down) Key.DisplayName": Set Bonus (Double Tap Up/Down) Key
 		}
 	}
 }

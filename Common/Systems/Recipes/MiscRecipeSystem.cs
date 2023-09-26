@@ -1,4 +1,5 @@
-﻿using Fargowiltas.Utilities;
+﻿using Fargowiltas.Items.Summons;
+using Fargowiltas.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,11 @@ namespace Fargowiltas.Common.Systems.Recipes
                     recipe.RemoveIngredient(legs);
                     recipe.AddIngredient(ItemID.ChlorophyteGreaves);
                 }
+            }
+            //disable shimmer decraft for all summon items
+            foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.createItem.ModItem != null && recipe.createItem.ModItem is BaseSummon))
+            {
+                recipe.DisableDecraft();
             }
         }
 

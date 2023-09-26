@@ -157,9 +157,32 @@ namespace Fargowiltas
             extractSpeed = false;
             HasDrawnDebuffLayer = false;
         }
-
+        public int latestXDirPressed = 0;
+        public int latestXDirReleased = 0;
+        private bool LeftLastPressed = false;
+        private bool RightLastPressed = false;
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
+            Main.NewText("press " + latestXDirPressed);
+            Main.NewText("release " + latestXDirReleased);
+            if (Main.LocalPlayer.controlLeft && !LeftLastPressed)
+            {
+                latestXDirPressed =  -1;
+            }
+            if (Main.LocalPlayer.controlRight && !RightLastPressed)
+            {
+                latestXDirPressed = 1;
+            }
+            if (!Main.LocalPlayer.controlLeft && LeftLastPressed)
+            {
+                latestXDirReleased = -1;
+            }
+            if (!Main.LocalPlayer.controlRight && RightLastPressed)
+            {
+                latestXDirReleased = 1;
+            }
+            LeftLastPressed = Main.LocalPlayer.controlLeft;
+            RightLastPressed = Main.LocalPlayer.controlRight;
 
             if (Fargowiltas.HomeKey.JustPressed)
             {

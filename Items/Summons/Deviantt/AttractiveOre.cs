@@ -29,7 +29,7 @@ namespace Fargowiltas.Items.Summons.Deviantt
             {
                 CreateRecipe()
                     .AddIngredient(ItemID.DeadMansChest)
-					.AddIngredient(ItemID.MiningHelmet)
+                    .AddIngredient(ItemID.MiningHelmet)
                     .AddIngredient(ItemID.SpelunkerPotion)
                     .AddIngredient(ItemID.GoldCoin, 3)
                     .AddIngredient(modItem.Type)
