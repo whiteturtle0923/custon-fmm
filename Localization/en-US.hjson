@@ -285,12 +285,12 @@ Mods: {
 					Tooltip: ""
 				}
 
-				DashKeyEnabled: {
+				DoubleTapDashDisabled: {
 					Label: "[i:3097] Disable double-tap for dashes"
 					Tooltip: Prevent dashes from using the normal double-tap keybind. The Dash key is available regardless of this config.
 				}
 
-				SetBonusKeyEnabled: {
+				DoubleTapSetBonusDisabled: {
 					Label: "[i:3776] Disable double-tap for Set Bonuses"
 					Tooltip: Prevent set bonuses from using the normal double-tap keybind. The Set Bonus key is available regardless of this config.
 				}
@@ -308,16 +308,6 @@ Mods: {
 				TransparentFriendlyProjectiles: {
 					Label: "[i:1309] Transparent Friendly Projectiles"
 					Tooltip: Use with vanilla setting for Quality at Medium or Low for best results
-				}
-
-				DoubleTapDashDisabled: {
-					Label: Double Tap Dash Disabled
-					Tooltip: ""
-				}
-
-				DoubleTapSetBonusDisabled: {
-					Label: Double Tap Set Bonus Disabled
-					Tooltip: ""
 				}
 			}
 
@@ -2587,7 +2577,7 @@ Mods: {
 			"Quick Recall/Mirror.DisplayName": Quick Recall/Mirror
 			"Open Stat Sheet.DisplayName": Open Stat Sheet
 			"Dash Key.DisplayName": Dash Key
-			"Set Bonus (Double Tap Up/Down) Key.DisplayName": Set Bonus (Double Tap Up/Down) Key
+			"Set Bonus (Double Tap Up/Down) Key.DisplayName": Set Bonus Key
 		}
 	}
 }

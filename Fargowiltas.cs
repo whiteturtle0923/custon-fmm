@@ -199,6 +199,8 @@ namespace Fargowiltas
         public override void Unload()
         {
             Terraria.On_Player.DoCommonDashHandle -= OnVanillaDash;
+            Terraria.On_Player.KeyDoubleTap -= OnVanillaDoubleTapSetBonus;
+            Terraria.On_Player.KeyHoldDown -= OnVanillaHoldSetBonus;
             summonTracker = null;
             dialogueTracker = null;
 
