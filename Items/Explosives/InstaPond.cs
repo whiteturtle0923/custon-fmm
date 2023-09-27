@@ -14,8 +14,8 @@ namespace Fargowiltas.Items.Explosives
 
         public override void SetDefaults()
         {
-            Item.width = 34;
-            Item.height = 36;
+            Item.width = 46;
+            Item.height = 48;
             Item.maxStack = 99;
             Item.consumable = true;
             Item.useStyle = ItemUseStyleID.Swing;
