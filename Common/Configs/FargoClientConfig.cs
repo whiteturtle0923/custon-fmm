@@ -13,10 +13,10 @@ namespace Fargowiltas.Common.Configs
         public bool ExpandedTooltips;
 
         [DefaultValue(false)]
-        public bool DashKeyEnabled;
+        public bool DoubleTapDashDisabled;
 
         [DefaultValue(false)]
-        public bool SetBonusKeyEnabled;
+        public bool DoubleTapSetBonusDisabled;
 
         [DefaultValue(1f)]
         [Slider]

@@ -79,8 +79,6 @@ namespace Fargowiltas
 
             SetBonusKey = KeybindLoader.RegisterKeybind(this, "Set Bonus (Double Tap Up/Down) Key", "V");
 
-            Terraria.On_Player.DoCommonDashHandle += OnVanillaDash;
-
             _userInterfaceManager = new UIManager();
             _userInterfaceManager.LoadUI();
 
@@ -103,7 +101,11 @@ namespace Fargowiltas
 
             // DD2 Banner Effect hack
             ItemID.Sets.BannerStrength = ItemID.Sets.Factory.CreateCustomSet(new ItemID.BannerEffect(1f));
-            
+
+            Terraria.On_Player.DoCommonDashHandle += OnVanillaDash;
+            Terraria.On_Player.KeyDoubleTap += OnVanillaDoubleTapSetBonus;
+            Terraria.On_Player.KeyHoldDown += OnVanillaHoldSetBonus;
+
             Terraria.On_Recipe.FindRecipes += FindRecipes_ElementalAssemblerGraveyardHack;
             Terraria.On_WorldGen.CountTileTypesInArea += CountTileTypesInArea_PurityTotemHack;
             Terraria.On_SceneMetrics.ExportTileCountsToMain += ExportTileCountsToMain_PurityTotemHack;
@@ -673,8 +675,15 @@ namespace Fargowiltas
         private static void OnVanillaDash(Terraria.On_Player.orig_DoCommonDashHandle orig, Terraria.Player player, out int dir, out bool dashing, Player.DashStartAction dashStartAction)
         {
             dir = 0;
-            if (player.whoAmI != Main.myPlayer || !ModContent.GetInstance<FargoClientConfig>().DashKeyEnabled)
+            dashing = false;
+            if (player.whoAmI == Main.myPlayer && !ModContent.GetInstance<FargoClientConfig>().DoubleTapDashDisabled)
+            {
                 orig.Invoke(player, out dir, out dashing, dashStartAction);
+            }
+            if (player.whoAmI != Main.myPlayer)
+            {
+                orig.Invoke(player, out dir, out dashing, dashStartAction);
+            }
             else if (DashKey.JustPressed)
             {
                 FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
@@ -719,12 +728,23 @@ namespace Fargowiltas
                 if (dashStartAction != null)
                     dashStartAction?.Invoke(dir);
             }
-            else
+        }
+        private static void OnVanillaDoubleTapSetBonus(On_Player.orig_KeyDoubleTap orig, Player player, int keyDir)
+        {
+            if (!ModContent.GetInstance<FargoClientConfig>().DoubleTapSetBonusDisabled || SetBonusKey.JustPressed)
             {
-                dir = 0;
-                dashing = false;
+                orig.Invoke(player, keyDir);
             }
         }
+        private static void OnVanillaHoldSetBonus(On_Player.orig_KeyHoldDown orig, Player player, int keyDir, int holdTime)
+        {
+            if (!ModContent.GetInstance<FargoClientConfig>().DoubleTapSetBonusDisabled || SetBonusKey.Current)
+            {
+                orig.Invoke(player, keyDir, holdTime);
+            }
+        }
+
+
 
         //        private static void HookIntoLoad()
         //        {

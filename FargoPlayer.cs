@@ -161,10 +161,23 @@ namespace Fargowiltas
         public int latestXDirReleased = 0;
         private bool LeftLastPressed = false;
         private bool RightLastPressed = false;
+        int lastSetBonusTimer = 0;
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            Main.NewText("press " + latestXDirPressed);
-            Main.NewText("release " + latestXDirReleased);
+            int setbonusDir = Main.ReversedUpDownArmorSetBonuses ? 1 : 0;
+            if (Fargowiltas.SetBonusKey.JustPressed)
+            {
+                Main.LocalPlayer.KeyDoubleTap(setbonusDir);
+            }
+            if (Fargowiltas.SetBonusKey.Current)
+            {
+                if (Main.LocalPlayer.holdDownCardinalTimer[setbonusDir] != lastSetBonusTimer + 1)//don't double dip when holding normal set bonus key
+                {
+                    Main.LocalPlayer.holdDownCardinalTimer[setbonusDir]++;
+                }
+                Main.LocalPlayer.KeyHoldDown(setbonusDir, Main.LocalPlayer.holdDownCardinalTimer[setbonusDir]);
+                lastSetBonusTimer = Main.LocalPlayer.holdDownCardinalTimer[setbonusDir];
+            }
             if (Main.LocalPlayer.controlLeft && !LeftLastPressed)
             {
                 latestXDirPressed =  -1;
