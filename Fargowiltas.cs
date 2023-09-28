@@ -367,8 +367,6 @@ namespace Fargowiltas
                     case "LowRenderProj":
                         ((Projectile)args[1]).GetGlobalProjectile<FargoGlobalProjectile>().lowRender = true;
                         break;
-                    case "DashKeyJustPressed":
-                        return DashKey.JustPressed;
                 }
 
             }
@@ -690,7 +688,7 @@ namespace Fargowiltas
             }
             else if (DashKey.JustPressed)
             {
-                FargoPlayer modPlayer = player.GetModPlayer<FargoPlayer>();
+                InputManager modPlayer = player.GetModPlayer<InputManager>();
                 if (player.controlRight && player.controlLeft)
                 {
                     dir = modPlayer.latestXDirPressed;
@@ -732,6 +730,7 @@ namespace Fargowiltas
                 if (dashStartAction != null)
                     dashStartAction?.Invoke(dir);
             }
+
         }
         private static void OnVanillaDoubleTapSetBonus(On_Player.orig_KeyDoubleTap orig, Player player, int keyDir)
         {
