@@ -367,10 +367,6 @@ namespace Fargowiltas
                     case "LowRenderProj":
                         ((Projectile)args[1]).GetGlobalProjectile<FargoGlobalProjectile>().lowRender = true;
                         break;
-                    case "DashKeyJustPressed":
-                        return DashKey.JustPressed;
-                    case "SetBonusKeyJustPressed":
-                        return SetBonusKey.JustPressed;
                 }
 
             }
