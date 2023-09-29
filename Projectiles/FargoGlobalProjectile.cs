@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 
 namespace Fargowiltas.Projectiles
@@ -195,7 +196,16 @@ namespace Fargowiltas.Projectiles
             bool noHMOre = (tile.TileType == TileID.Cobalt || tile.TileType == TileID.Palladium || tile.TileType == TileID.Mythril || tile.TileType == TileID.Orichalcum || tile.TileType == TileID.Adamantite || tile.TileType == TileID.Titanium) && !NPC.downedMechBossAny;
             bool noChloro = tile.TileType == TileID.Chlorophyte && !(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3);
             bool noLihzahrd = (tile.TileType == TileID.LihzahrdBrick || tile.WallType == WallID.LihzahrdBrickUnsafe) && !NPC.downedGolemBoss;
-            if (noDungeon || noHMOre || noChloro || noLihzahrd || TileBelongsToMagicStorage(tile) ||
+            bool noAbyss = false;
+
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+            {
+                calamity.TryFind("AbyssGravel", out ModTile gravel);
+                calamity.TryFind("Voidstone", out ModTile voidstone);
+                noAbyss = tile.TileType == gravel.Type || tile.TileType == voidstone.Type;
+            }
+
+            if (noDungeon || noHMOre || noChloro || noLihzahrd || noAbyss || TileBelongsToMagicStorage(tile) ||
                 CannotDestroyTileTypes.Contains(tile.TileType) ||
                 CannotDestroyWallTypes.Contains(tile.WallType))
                 return false;

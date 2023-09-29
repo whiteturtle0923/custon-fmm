@@ -296,10 +296,7 @@ namespace Fargowiltas
                             {
                                 int tile = (int)args[1];
                                 FargoGlobalProjectile.CannotDestroyTileTypes.Add(tile);
-
-
                             }
-                            
                         }
                         break;
                     case "AddIndestructibleWallType":
