@@ -204,7 +204,7 @@ namespace Fargowiltas.Projectiles
                 calamity.TryFind("Voidstone", out ModTile voidstone);
                 noAbyss = tile.TileType == gravel.Type || tile.TileType == voidstone.Type;
             }
-
+            
             if (noDungeon || noHMOre || noChloro || noLihzahrd || noAbyss || TileBelongsToMagicStorage(tile) ||
                 CannotDestroyTileTypes.Contains(tile.TileType) ||
                 CannotDestroyWallTypes.Contains(tile.WallType))
@@ -225,6 +225,10 @@ namespace Fargowiltas.Projectiles
                 {
                     return false;
                 }
+            }
+            if (!GenVars.structures.CanPlace(new(x, y, 1, 1), 0))
+            {
+                return false;
             }
             return OkayToDestroyTile(tile);
         }
