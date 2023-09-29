@@ -386,7 +386,12 @@ namespace Fargowiltas
             {
                 // Regal statue
                 case 1:
-                    FargoWorld.CurrentSpawnRateTile[whoAmI] = reader.ReadBoolean();
+                    {
+                        if (whoAmI >= 0 && whoAmI < FargoWorld.CurrentSpawnRateTile.Length)
+                        {
+                            FargoWorld.CurrentSpawnRateTile[whoAmI] = reader.ReadBoolean();
+                        }                        
+                    }
                     break;
 
                 // Abominationn clear events
@@ -415,7 +420,7 @@ namespace Fargowiltas
                     {
                         int n = reader.ReadInt32();
                         int lifeMax = reader.ReadInt32();
-                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                        if (Main.netMode == NetmodeID.MultiplayerClient && n >= 0 && n < Main.maxNPCs)
                             Main.npc[n].lifeMax = lifeMax;
                     }
                     break;
@@ -426,7 +431,7 @@ namespace Fargowiltas
                     {
                         for (int i = 0; i < Main.maxNPCs; i++)
                         {
-                            if (Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
+                            if (Main.npc[i] != null && Main.npc[i].active && Main.npc[i].type == ModContent.NPCType<NPCs.SuperDummy>())
                             {
                                 NPC npc = Main.npc[i];
                                 npc.life = 0;
