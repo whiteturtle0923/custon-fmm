@@ -364,6 +364,9 @@ namespace Fargowiltas
                     case "LowRenderProj":
                         ((Projectile)args[1]).GetGlobalProjectile<FargoGlobalProjectile>().lowRender = true;
                         break;
+
+                    case "DoubleTapDashDisabled":
+                        return ModContent.GetInstance<FargoClientConfig>().DoubleTapDashDisabled;
                 }
 
             }
