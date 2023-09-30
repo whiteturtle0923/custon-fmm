@@ -1,0 +1,14 @@
+NEW UPDATE - V 3.2
+-Updated to Tmod's October update
+-Added Dash Key and Set Bonus Key
+-Added config to disable the double-click trigger for Dashes and Set Bonuses
+-Removed "Unlimited use" tooltip for stations
+-Made sure Super Dummy life can never go above integer limit
+-Fixed gore loading errors
+-Caught NPC item can only be used if they wouldn't collide with a tile when spawned
+-Fixed Squirrel spawn conditions
+-Lumberjack Tree Treasures gives Spicy Pepper or Pomegranate in Underworld
+-Added WikiThis support
+-Resprited Instapond
+-Made Calamity abyss gravel and voidstone indestructible by Insta items
+-Safeguarded against index errors in HandlePacket method
