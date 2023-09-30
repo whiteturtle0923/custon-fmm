@@ -77,7 +77,7 @@ namespace Fargowiltas.UI
 
             AddStat($"Melee Damage: {Damage(DamageClass.Melee)}%", ItemID.CopperBroadsword);
             AddStat($"Melee Critical: {Crit(DamageClass.Melee)}%", ItemID.CopperBroadsword);
-            AddStat($"Melee Speed: {(int)(1f / player.GetAttackSpeed(DamageClass.Melee) * 100)}%", ItemID.CopperBroadsword);
+            AddStat($"Melee Speed: {(int)Math.Round(player.GetAttackSpeed(DamageClass.Melee) * 100)}%", ItemID.CopperBroadsword);
             AddStat($"Ranged Damage: {Damage(DamageClass.Ranged)}%", ItemID.CopperBow);
             AddStat($"Ranged Critical: {Crit(DamageClass.Ranged)}%", ItemID.CopperBow);
             AddStat($"Magic Damage: {Damage(DamageClass.Magic)}%", ItemID.WandofSparking);
@@ -104,7 +104,7 @@ namespace Fargowiltas.UI
             AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.Torch);
             AddStat($"Fishing Quests: {player.anglerQuestsFinished}", ItemID.AnglerEarring);
             AddStat($"Battle Cry: {(modPlayer.BattleCry ? "[c/ff0000:Battle]" : (modPlayer.CalmingCry ? "[c/00ffff:Calming]" : "None"))}", ModContent.ItemType<BattleCry>());
-            AddStat($"Max Speed: {(int)((player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 6)} mph", ItemID.HermesBoots);
+            AddStat($"Max Speed: {(int)((player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 3)} mph", ItemID.HermesBoots);
 
             string RenderWingStat(double stat) => stat <= 0 ? "???" : stat.ToString();
             AddStat(player.wingTimeMax / 60 > 60 || player.empressBrooch ? "Wing Time: Yes" : $"Wing Time: {RenderWingStat(Math.Round(player.wingTimeMax / 60.0, 2))} sec", ItemID.AngelWings);
