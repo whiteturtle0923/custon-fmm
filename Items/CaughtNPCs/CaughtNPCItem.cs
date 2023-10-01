@@ -89,7 +89,7 @@ namespace Fargowiltas.Items.CaughtNPCs
 
         public override bool CanUseItem(Player player)
         {
-            return player.IsTileWithinRange(Player.tileTargetX, Player.tileTargetY) && Collision.SolidCollision(Main.MouseWorld - player.DefaultSize / 2, (int)player.DefaultSize.X, (int)player.DefaultSize.Y) && NPC.CountNPCS(AssociatedNpcId) < 5;
+            return player.IsTileWithinRange(Player.tileTargetX, Player.tileTargetY) && !Collision.SolidCollision(Main.MouseWorld - player.DefaultSize / 2, (int)player.DefaultSize.X, (int)player.DefaultSize.Y) && NPC.CountNPCS(AssociatedNpcId) < 5;
         }
 
         public override bool? UseItem(Player player)
