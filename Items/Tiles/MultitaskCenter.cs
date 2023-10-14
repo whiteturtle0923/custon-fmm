@@ -39,10 +39,10 @@ namespace Fargowiltas.Items.Tiles
                 .AddIngredient(ItemID.Bottle)
                 .AddIngredient(ItemID.Sawmill)
                 .AddIngredient(ItemID.Loom)
-                .AddIngredient(ItemID.WoodenTable)
-                .AddIngredient(ItemID.WoodenChair)
+                .AddRecipeGroup(RecipeGroups.AnyWoodenTable)
+                .AddRecipeGroup(RecipeGroups.AnyWoodenChair)
                 .AddRecipeGroup(RecipeGroups.AnyCookingPot)
-                .AddIngredient(ItemID.WoodenSink)
+                .AddRecipeGroup(RecipeGroups.AnyWoodenSink)
                 .AddIngredient(ItemID.Keg)
                 .AddTile(TileID.WorkBenches)
                 .Register();

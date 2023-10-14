@@ -1,4 +1,4 @@
-﻿using Fargowiltas.Items.Ammos.Bullets;
+using Fargowiltas.Items.Ammos.Bullets;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.Utilities;
 using System;
@@ -12,7 +12,7 @@ namespace Fargowiltas.Common.Systems.Recipes
     public class RecipeGroups : ModSystem
     {
         internal static int AnyGoldBar;
-        internal static int AnyDemonAltar, AnyAnvil, AnyHMAnvil, AnyForge, AnyBookcase, AnyCookingPot, AnyTombstone;
+        internal static int AnyDemonAltar, AnyAnvil, AnyHMAnvil, AnyForge, AnyBookcase, AnyCookingPot, AnyTombstone, AnyWoodenTable, AnyWoodenChair, AnyWoodenSink;
         internal static int AnyButterfly, AnySquirrel, AnyCommonFish, AnyDragonfly, AnyBird, AnyDuck;
 
         public override void AddRecipeGroups()
@@ -137,6 +137,57 @@ namespace Fargowiltas.Common.Systems.Recipes
                 ItemID.RichGravestone5
             );
             AnyTombstone = RecipeGroup.RegisterGroup("Fargowiltas:AnyTombstone", group);
+           
+            //wooden tables
+            group = new RecipeGroup(() => RecipeHelper.GenerateAnyItemRecipeGroupText(ItemID.WoodenTable),
+                ItemID.WoodenTable,
+                ItemID.BorealWoodTable,
+                ItemID.AshWoodTable,
+                ItemID.RichMahoganyTable,
+                ItemID.LivingWoodTable,
+                ItemID.PearlwoodTable,
+                ItemID.SpookyTable,
+                ItemID.EbonwoodTable,
+                ItemID.ShadewoodTable,
+                ItemID.PalmWoodTable,
+                ItemID.DynastyTable,
+                ItemID.BambooTable
+            );
+            AnyWoodenTable = RecipeGroup.RegisterGroup("Fargowiltas:AnyWoodenTable", group);
+
+            //wooden chairs
+            group = new RecipeGroup(() => RecipeHelper.GenerateAnyItemRecipeGroupText(ItemID.WoodenChair),
+                ItemID.WoodenChair,
+                ItemID.BorealWoodChair,
+                ItemID.AshWoodChair,
+                ItemID.RichMahoganyChair,
+                ItemID.LivingWoodChair,
+                ItemID.PearlwoodChair,
+                ItemID.SpookyChair,
+                ItemID.EbonwoodChair,
+                ItemID.ShadewoodChair,
+                ItemID.PalmWoodChair,
+                ItemID.DynastyChair,
+                ItemID.BambooChair
+            );
+            AnyWoodenChair = RecipeGroup.RegisterGroup("Fargowiltas:AnyWoodenChair", group);
+           
+            //wooden sinks
+            group = new RecipeGroup(() => RecipeHelper.GenerateAnyItemRecipeGroupText(ItemID.WoodenSink),
+                ItemID.WoodenSink,
+                ItemID.BorealWoodSink,
+                ItemID.AshWoodSink,
+                ItemID.RichMahoganySink,
+                ItemID.LivingWoodSink,
+                ItemID.PearlwoodSink,
+                ItemID.SpookySink,
+                ItemID.EbonwoodSink,
+                ItemID.ShadewoodSink,
+                ItemID.PalmWoodSink,
+                ItemID.DynastySink,
+                ItemID.BambooSink
+            );
+            AnyWoodenSink = RecipeGroup.RegisterGroup("Fargowiltas:AnyWoodenSink", group);
         }
     }
 }
