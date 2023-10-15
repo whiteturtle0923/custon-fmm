@@ -1,4 +1,4 @@
-﻿using Terraria.ID;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using System.Collections.Generic;
@@ -49,6 +49,7 @@ namespace Fargowiltas.Items.Tiles
                 .AddIngredient(ItemID.BoneWelder)
                 .AddIngredient(ItemID.LavaBucket)
                 .AddIngredient(ItemID.HoneyBucket)
+                .AddIngredient(ItemID.TeaKettle)
                 .AddRecipeGroup(RecipeGroups.AnyTombstone)
                 .AddRecipeGroup(RecipeGroups.AnyDemonAltar)
                 .AddTile(TileID.WorkBenches)
