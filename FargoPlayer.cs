@@ -386,6 +386,7 @@ namespace Fargowiltas
                     case ItemID.MagicMirror:
                     case ItemID.IceMirror:
                     case ItemID.CellPhone:
+                    case ItemID.Shellphone:
                         magicMirror = i;
                         break;
                 }
