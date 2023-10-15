@@ -201,6 +201,13 @@ namespace Fargowiltas
             Terraria.On_Player.DoCommonDashHandle -= OnVanillaDash;
             Terraria.On_Player.KeyDoubleTap -= OnVanillaDoubleTapSetBonus;
             Terraria.On_Player.KeyHoldDown -= OnVanillaHoldSetBonus;
+
+            Terraria.On_Recipe.FindRecipes -= FindRecipes_ElementalAssemblerGraveyardHack;
+            Terraria.On_WorldGen.CountTileTypesInArea -= CountTileTypesInArea_PurityTotemHack;
+            Terraria.On_SceneMetrics.ExportTileCountsToMain -= ExportTileCountsToMain_PurityTotemHack;
+            Terraria.On_Player.HasUnityPotion -= OnHasUnityPotion;
+            Terraria.On_Player.TakeUnityPotion -= OnTakeUnityPotion;
+
             summonTracker = null;
             dialogueTracker = null;
 
