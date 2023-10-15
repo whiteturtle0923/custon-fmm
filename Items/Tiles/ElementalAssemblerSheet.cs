@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -24,7 +24,7 @@ namespace Fargowiltas.Items.Tiles
             AddMapEntry(new Color(200, 200, 200), name);
             TileID.Sets.DisableSmartCursor[Type] = true;
             //counts as
-            AdjTiles = new int[] { TileID.Hellforge, TileID.Furnaces, TileID.AlchemyTable, TileID.TinkerersWorkbench, TileID.ImbuingStation, TileID.DyeVat, TileID.LivingLoom, TileID.GlassKiln, TileID.IceMachine, TileID.HoneyDispenser, TileID.SkyMill, TileID.Solidifier, TileID.BoneWelder, TileID.Bottles, TileID.DemonAltar, TileID.Tombstones };
+            AdjTiles = new int[] { TileID.Hellforge, TileID.Furnaces, TileID.AlchemyTable, TileID.TinkerersWorkbench, TileID.ImbuingStation, TileID.DyeVat, TileID.LivingLoom, TileID.GlassKiln, TileID.IceMachine, TileID.HoneyDispenser, TileID.SkyMill, TileID.Solidifier, TileID.BoneWelder, TileID.Bottles, TileID.DemonAltar, TileID.Tombstones, TileID.TeaKettle };
             
             TileID.Sets.CountsAsHoneySource[Type] = true;
             TileID.Sets.CountsAsLavaSource[Type] = true;
