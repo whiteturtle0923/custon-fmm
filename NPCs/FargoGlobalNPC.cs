@@ -325,16 +325,15 @@ namespace Fargowiltas.NPCs
 
         public override void ModifyShop(NPCShop shop)
         {
-            Player player = Main.LocalPlayer;
 
             #region Conditions
             //TODO: localization/proper text on conditions
-            Condition angler5 = new Condition("Finish 5 angler quests", () => player.anglerQuestsFinished >= 5);
-            Condition angler10 = new Condition("Finish 10 angler quests", () => player.anglerQuestsFinished >= 10);
-            Condition angler15 = new Condition("Finish 15 angler quests", () => player.anglerQuestsFinished >= 15);
-            Condition angler20 = new Condition("Finish 25 angler quests", () => player.anglerQuestsFinished >= 25);
-            Condition angler25 = new Condition("Finish 25 angler quests", () => player.anglerQuestsFinished >= 25);
-            Condition angler30 = new Condition("Finish 30 angler quests", () => player.anglerQuestsFinished >= 30);
+            Condition angler5 = new Condition("Finish 5 angler quests", () => Main.LocalPlayer.anglerQuestsFinished >= 5);
+            Condition angler10 = new Condition("Finish 10 angler quests", () => Main.LocalPlayer.anglerQuestsFinished >= 10);
+            Condition angler15 = new Condition("Finish 15 angler quests", () => Main.LocalPlayer.anglerQuestsFinished >= 15);
+            Condition angler20 = new Condition("Finish 25 angler quests", () => Main.LocalPlayer.anglerQuestsFinished >= 25);
+            Condition angler25 = new Condition("Finish 25 angler quests", () => Main.LocalPlayer.anglerQuestsFinished >= 25);
+            Condition angler30 = new Condition("Finish 30 angler quests", () => Main.LocalPlayer.anglerQuestsFinished >= 30);
             Condition InRockOrDirtLayerHeight = new Condition("Be in the dirt or rock layer", () => Condition.InDirtLayerHeight.IsMet() || Condition.InRockLayerHeight.IsMet());
             #endregion
             
@@ -524,23 +523,20 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.DyeTrader:
-                        if (player.TryGetModPlayer(out FargoPlayer modPlayer))
-                        {
-                            AddItem(ItemID.RedHusk, condition: new Condition("Have picked up a Red Husk", () => modPlayer.FirstDyeIngredients["RedHusk"]));
-                            AddItem(ItemID.OrangeBloodroot, condition: new Condition("Have picked up an Orange Bloodroot", () => modPlayer.FirstDyeIngredients["OrangeBloodroot"]));
-                            AddItem(ItemID.YellowMarigold, condition: new Condition("Have picked up a Yellow Marigold", () => modPlayer.FirstDyeIngredients["YellowMarigold"]));
-                            AddItem(ItemID.LimeKelp, condition: new Condition("Have picked up a Lime Kelp", () => modPlayer.FirstDyeIngredients["Lime Kelp"]));
-                            AddItem(ItemID.GreenMushroom, condition: new Condition("Have picked up a Green Mushroom", () => modPlayer.FirstDyeIngredients["GreenMushroom"]));
-                            AddItem(ItemID.TealMushroom, condition: new Condition("Have picked up a Teal Mushroom", () => modPlayer.FirstDyeIngredients["TealMushroom"]));
-                            AddItem(ItemID.CyanHusk, condition: new Condition("Have picked up a Cyan Husk", () => modPlayer.FirstDyeIngredients["CyanHusk"]));
-                            AddItem(ItemID.SkyBlueFlower, condition: new Condition("Have picked up a Sky Blue Flower", () => modPlayer.FirstDyeIngredients["SkyBlueFlower"]));
-                            AddItem(ItemID.BlueBerries, condition: new Condition("Have picked up Blueberries", () => modPlayer.FirstDyeIngredients["BlueBerries"]));
-                            AddItem(ItemID.PurpleMucos, condition: new Condition("Have picked up a Purple Mucos", () => modPlayer.FirstDyeIngredients["PurpleMucos"]));
-                            AddItem(ItemID.VioletHusk, condition: new Condition("Have picked up a Violet Husk", () => modPlayer.FirstDyeIngredients["VioletHusk"]));
-                            AddItem(ItemID.PinkPricklyPear, condition: new Condition("Have picked up a Pink Prickly Pear", () => modPlayer.FirstDyeIngredients["PinkPricklyPear"]));
-                            AddItem(ItemID.BlackInk, condition: new Condition("Have picked up Black Ink", () => modPlayer.FirstDyeIngredients["BlackInk"]));
-                        }
-                        
+                        AddItem(ItemID.RedHusk, condition: new Condition("Have picked up a Red Husk", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["RedHusk"]));
+                        AddItem(ItemID.OrangeBloodroot, condition: new Condition("Have picked up an Orange Bloodroot", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["OrangeBloodroot"]));
+                        AddItem(ItemID.YellowMarigold, condition: new Condition("Have picked up a Yellow Marigold", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["YellowMarigold"]));
+                        AddItem(ItemID.LimeKelp, condition: new Condition("Have picked up a Lime Kelp", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["Lime Kelp"]));
+                        AddItem(ItemID.GreenMushroom, condition: new Condition("Have picked up a Green Mushroom", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["GreenMushroom"]));
+                        AddItem(ItemID.TealMushroom, condition: new Condition("Have picked up a Teal Mushroom", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["TealMushroom"]));
+                        AddItem(ItemID.CyanHusk, condition: new Condition("Have picked up a Cyan Husk", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["CyanHusk"]));
+                        AddItem(ItemID.SkyBlueFlower, condition: new Condition("Have picked up a Sky Blue Flower", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["SkyBlueFlower"]));
+                        AddItem(ItemID.BlueBerries, condition: new Condition("Have picked up Blueberries", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["BlueBerries"]));
+                        AddItem(ItemID.PurpleMucos, condition: new Condition("Have picked up a Purple Mucos", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["PurpleMucos"]));
+                        AddItem(ItemID.VioletHusk, condition: new Condition("Have picked up a Violet Husk", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["VioletHusk"]));
+                        AddItem(ItemID.PinkPricklyPear, condition: new Condition("Have picked up a Pink Prickly Pear", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["PinkPricklyPear"]));
+                        AddItem(ItemID.BlackInk, condition: new Condition("Have picked up Black Ink", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["BlackInk"]));
+
                         break;
 
                     case NPCID.Dryad:
