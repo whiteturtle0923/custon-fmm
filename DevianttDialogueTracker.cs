@@ -178,7 +178,7 @@ namespace Fargowiltas
             //AddDialogue("Found any Top Hat Squirrels yet? Keep one in your inventory and maybe a special friend will show up!",
             //    HelpDialogueType.Misc, (name) => !NPC.AnyNPCs(ModContent.NPCType<Squirrel>()));
 
-            AddDialogue("I don't have any more Life Crystals for you, but I think my big brother left some in the fat slime king. Maybe he'll share if you beat it up!",
+            AddDialogue("I don't have any Life Crystals for you, but I think my big brother left some in the fat slime king. Maybe he'll share if you beat it up!",
                 HelpDialogueType.Misc, (name) => Main.LocalPlayer.statLifeMax < 400);
 
             AddDialogue("Watch out for those fish! Sharks will leave you alone if you leave them alone, but piranhas go wild when they smell blood. They can jump out of water to get you!",
