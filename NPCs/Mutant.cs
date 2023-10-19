@@ -342,6 +342,7 @@ namespace Fargowiltas.NPCs
             return Main.rand.Next(dialogue);
         }
 
+        private bool AnyHardmodeSummon => Fargowiltas.summonTracker.SortedSummons.Any(s => s.progression >= MutantSummonTracker.WallOfFlesh);
         public override void SetChatButtons(ref string button, ref string button2)
         {
             switch (shopNum)
@@ -359,7 +360,7 @@ namespace Fargowiltas.NPCs
                     break;
             }
 
-            if (Main.hardMode)
+            if (AnyHardmodeSummon)
             {
                 button2 = "Cycle Shop";
             }
@@ -391,7 +392,7 @@ namespace Fargowiltas.NPCs
                 switch (shopNum)
                 {
                     case 1:
-                        shopName= ShopName1;
+                        shopName = ShopName1;
                         break;
                     case 2:
                         shopName = ShopName2;
@@ -401,7 +402,7 @@ namespace Fargowiltas.NPCs
                         break;
                 }
             }
-            else if (!firstButton && Main.hardMode)
+            else if (!firstButton && AnyHardmodeSummon)
             {
                 shopNum++;
             }
