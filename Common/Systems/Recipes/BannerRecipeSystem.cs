@@ -227,6 +227,7 @@ namespace Fargowiltas.Common.Systems.Recipes
             AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningPants);
             AddBannerToItemRecipe(ItemID.UndeadMinerBanner, ItemID.MiningShirt);
             AddBannerToItemRecipe(ItemID.UndeadVikingBanner, ItemID.VikingHelmet);
+            AddBannerToItemRecipe(ItemID.ArmoredVikingBanner, ItemID.VikingHelmet);
 
             // Vanity
             AddBannerToItemRecipe(ItemID.PiranhaBanner, ItemID.RobotHat);
