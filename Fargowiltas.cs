@@ -692,18 +692,19 @@ namespace Fargowiltas
             if (ModContent.GetInstance<FargoClientConfig>().DoubleTapDashDisabled)
             {
                 player.dashTime = 0;
+                /*
                 if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
                 {
-                    foreach (ModPlayer modPlayer in player.ModPlayers)
+                    Main.NewText(calamity);
+                    if (calamity.TryFind("CalamityPlayer", out ModPlayer modPlayer))
                     {
-                        if (modPlayer != null && modPlayer.Name == "CalamityPlayer")
-                        {
-                            FieldInfo dashTimeMod = modPlayer.GetType().GetField("dashTimeMod");
-                            if (dashTimeMod != null)
-                                dashTimeMod.SetValue(modPlayer, 0);
-                        }
+                        FieldInfo dashTimeMod = modPlayer.GetType().GetField("dashTimeMod");
+                        Main.NewText(dashTimeMod.Name);
+                        if (dashTimeMod != null)
+                            dashTimeMod.SetValue(modPlayer, 0);
                     }
                 }
+                */
             }
                 
 
