@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Terraria;
 using Terraria.Chat;
 using Terraria.GameContent.Events;
@@ -688,17 +689,27 @@ namespace Fargowiltas
         }
         private static void OnVanillaDash(Terraria.On_Player.orig_DoCommonDashHandle orig, Terraria.Player player, out int dir, out bool dashing, Player.DashStartAction dashStartAction)
         {
-            dir = 0;
-            dashing = false;
-            if (player.whoAmI == Main.myPlayer && !ModContent.GetInstance<FargoClientConfig>().DoubleTapDashDisabled)
+            if (ModContent.GetInstance<FargoClientConfig>().DoubleTapDashDisabled)
             {
-                orig.Invoke(player, out dir, out dashing, dashStartAction);
+                player.dashTime = 0;
+                if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+                {
+                    foreach (ModPlayer modPlayer in player.ModPlayers)
+                    {
+                        if (modPlayer != null && modPlayer.Name == "CalamityPlayer")
+                        {
+                            FieldInfo dashTimeMod = modPlayer.GetType().GetField("dashTimeMod");
+                            if (dashTimeMod != null)
+                                dashTimeMod.SetValue(modPlayer, 0);
+                        }
+                    }
+                }
             }
-            if (player.whoAmI != Main.myPlayer)
-            {
-                orig.Invoke(player, out dir, out dashing, dashStartAction);
-            }
-            else if (DashKey.JustPressed)
+                
+
+            orig.Invoke(player, out dir, out dashing, dashStartAction);
+
+            if (player.whoAmI == Main.myPlayer && DashKey.JustPressed)
             {
                 InputManager modPlayer = player.GetModPlayer<InputManager>();
                 if (player.controlRight && player.controlLeft)
