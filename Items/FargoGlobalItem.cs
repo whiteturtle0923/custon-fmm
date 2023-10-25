@@ -72,7 +72,7 @@ namespace Fargowiltas.Items
                     foreach (var entry in shop.ActiveEntries.Where(e => !e.Item.IsAir && e.Item.type == item.type))
                     {
                         Item npcItem = null;
-                        foreach (var tryNPCItem in ContentSamples.ItemsByType.Where(i => i.Value.ModItem != null && i.Value.ModItem is CaughtNPCItem item1 && item1.AssociatedNpcId == shop.NpcType))
+                        foreach (var tryNPCItem in ContentSamples.ItemsByType.Where(i => i.Value.ModItem != null && i.Value.ModItem is CaughtNPCItem modItem && modItem.AssociatedNpcId == shop.NpcType))
                         {
                             npcItem = tryNPCItem.Value;
                             break;
