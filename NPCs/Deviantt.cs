@@ -400,6 +400,7 @@ namespace Fargowiltas.NPCs
 
         public override void ModifyActiveShop(string shopName, Item[] items)
         {
+            
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

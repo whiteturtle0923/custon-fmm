@@ -424,7 +424,7 @@ namespace Fargowiltas.NPCs
                 //phm
                 if (summon.progression <= MutantSummonTracker.WallOfFlesh)
                 {
-                    npcShop1.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("Mods.Fargowiltas.Conditions.Downed", summon.downed));
+                    npcShop1.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("After the boss has been defeated", summon.downed));
                 }
             }
 
@@ -435,7 +435,7 @@ namespace Fargowiltas.NPCs
                 //hm
                 if (summon.progression > MutantSummonTracker.WallOfFlesh && summon.progression <= MutantSummonTracker.Moonlord)
                 {
-                    npcShop2.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("Mods.Fargowiltas.Conditions.Downed", summon.downed));
+                    npcShop2.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("After the boss has been defeated", summon.downed));
                 }
             }
 
@@ -446,7 +446,7 @@ namespace Fargowiltas.NPCs
                 //post ml
                 if (summon.progression > MutantSummonTracker.Moonlord)
                 {
-                    npcShop3.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("Mods.Fargowiltas.Conditions.Downed", summon.downed));
+                    npcShop3.Add(new Item(summon.itemId) { shopCustomPrice = Item.buyPrice(copper: summon.price) }, new Condition("After the boss has been defeated", summon.downed));
                 }
             }
 

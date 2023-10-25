@@ -13,6 +13,7 @@ using System.Linq;
 using Terraria.GameContent.ItemDropRules;
 using Fargowiltas.Common.Configs;
 using Fargowiltas.Items.Ammos.Coins;
+using Fargowiltas.Items.CaughtNPCs;
 
 namespace Fargowiltas.Items
 {
@@ -64,6 +65,43 @@ namespace Fargowiltas.Items
             {
                 TooltipLine line;
 
+
+                List<string> registered = new();
+                foreach (var shop in NPCShopDatabase.AllShops)
+                {
+                    foreach (var entry in shop.ActiveEntries.Where(e => !e.Item.IsAir && e.Item.type == item.type))
+                    {
+                        Item npcItem = null;
+                        foreach (var tryNPCItem in ContentSamples.ItemsByType.Where(i => i.Value.ModItem != null && i.Value.ModItem is CaughtNPCItem item1 && item1.AssociatedNpcId == shop.NpcType))
+                        {
+                            npcItem = tryNPCItem.Value;
+                            break;
+                        }
+                        if (npcItem == null)
+                        {
+                            npcItem = item;
+                        }
+                        string conditions = "";
+                        int i = 0;
+                        foreach (var condition in entry.Conditions)
+                        {
+                            string grammar = i > 0 ? ", " : "";
+                            conditions += grammar + condition.Description.Value;
+                            i++;
+                        }
+                        string conditionLine = i > 0 ? ": " + conditions : "";
+                        string npcName = ContentSamples.NpcsByNetId[shop.NpcType].FullName;
+
+                        string text = $"[i:{npcItem.type}] [c/AAAAAA:Sold By {npcName}{conditionLine}]";
+                        if (registered.Contains(text)) //sometimes it makes duplicates otherwise
+                            continue;
+                        line = new TooltipLine(Mod, "TooltipNPCSold", text);
+                        tooltips.Add(line);
+                        registered.Add(text);
+                        break; //only one line per npc
+                    }
+                }
+                
                 switch (item.type)
                 {
                     case ItemID.PureWaterFountain:
