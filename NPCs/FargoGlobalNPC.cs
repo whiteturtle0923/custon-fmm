@@ -526,7 +526,7 @@ namespace Fargowiltas.NPCs
                         AddItem(ItemID.RedHusk, condition: new Condition("Have picked up a Red Husk", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["RedHusk"]));
                         AddItem(ItemID.OrangeBloodroot, condition: new Condition("Have picked up an Orange Bloodroot", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["OrangeBloodroot"]));
                         AddItem(ItemID.YellowMarigold, condition: new Condition("Have picked up a Yellow Marigold", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["YellowMarigold"]));
-                        AddItem(ItemID.LimeKelp, condition: new Condition("Have picked up a Lime Kelp", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["Lime Kelp"]));
+                        AddItem(ItemID.LimeKelp, condition: new Condition("Have picked up a Lime Kelp", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["LimeKelp"]));
                         AddItem(ItemID.GreenMushroom, condition: new Condition("Have picked up a Green Mushroom", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["GreenMushroom"]));
                         AddItem(ItemID.TealMushroom, condition: new Condition("Have picked up a Teal Mushroom", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["TealMushroom"]));
                         AddItem(ItemID.CyanHusk, condition: new Condition("Have picked up a Cyan Husk", () => Main.LocalPlayer.GetModPlayer<FargoPlayer>().FirstDyeIngredients["CyanHusk"]));
