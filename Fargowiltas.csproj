@@ -37,8 +37,10 @@
     <None Remove="Items\Renewals\SandRenewalSupreme.png" />
     <None Remove="Items\Renewals\SnowRenewal.png" />
     <None Remove="Items\Renewals\SnowRenewalSupreme.png" />
+    <None Remove="Items\Summons\Abom\OverloadDarkMage.png" />
     <None Remove="Items\Summons\Deviantt\mutant_icon.png" />
     <None Remove="Items\Summons\Mutant\AncientSeal.png" />
+    <None Remove="Items\Summons\SwarmSummons\OverloadDarkMage.png" />
     <None Remove="Items\Tiles\PurityTotem.png" />
     <None Remove="Items\Tiles\PurityTotemSheet.png" />
     <None Remove="Items\Tiles\SiblingPylonTile_Crystal.png" />
