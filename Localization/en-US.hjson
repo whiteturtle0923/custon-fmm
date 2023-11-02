@@ -2377,6 +2377,8 @@ Mods: {
 					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.Abominationn.LikeNPC_Princess}"
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Abominationn}"
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			Deviantt: {
@@ -2400,6 +2402,8 @@ Mods: {
 					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.Deviantt.LikeNPC_Princess}"
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Deviantt}"
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			LumberJack: {
@@ -2420,6 +2424,8 @@ Mods: {
 					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.LumberJack.LikeNPC_Princess}"
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/LumberJack}"
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			Mutant: {
@@ -2442,6 +2448,8 @@ Mods: {
 					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.Mutant.LikeNPC_Princess}"
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Mutant}"
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			Squirrel: {
@@ -2460,6 +2468,8 @@ Mods: {
 					LikeNPC_Princess: "{$Mods.Fargowiltas.TownNPCMood.Squirrel.LikeNPC_Princess}"
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Squirrel}"
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 
 			SuperDummy.DisplayName: Super Dummy

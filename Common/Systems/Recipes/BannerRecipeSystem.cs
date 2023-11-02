@@ -267,9 +267,9 @@ namespace Fargowiltas.Common.Systems.Recipes
             AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.MummyShirt, conditions: Condition.Hardmode);
             AddBannerToItemRecipe(ItemID.LightMummyBanner, ItemID.MummyPants, conditions: Condition.Hardmode);
 
-            AddBannerToItemRecipe(AnyPirateBanner, ItemID.SailorHat, conditions: Condition.DownedPirates);
-            AddBannerToItemRecipe(AnyPirateBanner, ItemID.SailorShirt, conditions: Condition.DownedPirates);
-            AddBannerToItemRecipe(AnyPirateBanner, ItemID.SailorPants, conditions: Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorHat, conditions: Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorShirt, conditions: Condition.DownedPirates);
+            AddBannerGroupToItemRecipe(AnyPirateBanner, ItemID.SailorPants, conditions: Condition.DownedPirates);
 
             AddBannerToItemRecipe(ItemID.TacticalSkeletonBanner, ItemID.SWATHelmet, conditions: Condition.DownedPlantera);
             AddBannerToItemRecipe(ItemID.ZombieElfBanner, ItemID.ElfHat, conditions: Condition.DownedPlantera);
