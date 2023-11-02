@@ -35,9 +35,8 @@ namespace Fargowiltas.Items.Tiles
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
-            r = 1f;
-            g = 1f;
-            b = 1f;
+            float strength = Main.rand.NextFloat(0.9f, 1f);
+            r = g = b = strength;
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num)
@@ -57,17 +56,10 @@ namespace Fargowiltas.Items.Tiles
             {
                 frameCounter = 0;
                 frame++;
-                frame %= 12;
+                frame %= 8;
             }
 
-            if ((frame >= 1 && frame <= 4))// || frame == 6 || frame == 8)
-            {
-                Main.tileLighted[Type] = true;
-            }
-            else
-            {
-                Main.tileLighted[Type] = false;
-            }
+            Main.tileLighted[Type] = true;
         }
 
         public override void NearbyEffects(int i, int j, bool closer)
