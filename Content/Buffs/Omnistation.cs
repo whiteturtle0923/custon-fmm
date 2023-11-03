@@ -50,6 +50,7 @@ namespace Fargowiltas.Content.Buffs
 
                 //ladybug
                 player.ladyBugLuckTimeLeft = 24 * 60 * 60;
+                player.AddBuff(BuffID.SugarRush, 2);
             }
 
             int type = Framing.GetTileSafely(player.Center).TileType;

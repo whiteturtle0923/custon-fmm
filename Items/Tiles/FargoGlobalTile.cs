@@ -1,6 +1,7 @@
 using Fargowiltas.Common.Configs;
 using Fargowiltas.Items.Tiles;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
@@ -90,7 +91,6 @@ namespace Fargowiltas.Tiles
             Desert = 16,
             Coral = 17
         };
-
         public override void NearbyEffects(int i, int j, int type, bool closer)
         {
             if (closer && TileID.Sets.Torch[type] && !Main.dedServ
@@ -144,6 +144,27 @@ namespace Fargowiltas.Tiles
                     }
                 }
             }
+            
+            switch (type)
+            {
+                case TileID.SharpeningStation:
+                    Main.LocalPlayer.AddBuff(BuffID.Sharpened, 2);
+                    break;
+                case TileID.AmmoBox:
+                    Main.LocalPlayer.AddBuff(BuffID.AmmoBox, 2);
+                    break;
+                case TileID.CrystalBall:
+                    Main.LocalPlayer.AddBuff(BuffID.Clairvoyance, 2);
+                    break;
+                case TileID.BewitchingTable:
+                    Main.LocalPlayer.AddBuff(BuffID.Bewitched, 2);
+                    break;
+                case TileID.WarTable:
+                    Main.LocalPlayer.AddBuff(BuffID.WarTable, 2);
+                    break;
+            }
+                            
+
         }
 
         internal static void DestroyChest(int x, int y)

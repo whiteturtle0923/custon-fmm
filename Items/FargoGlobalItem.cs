@@ -57,6 +57,14 @@ namespace Fargowiltas.Items
                 }
             }
         }
+        public static List<int> BuffStations = new List<int>
+        {
+            ItemID.SharpeningStation,
+            ItemID.AmmoBox,
+            ItemID.CrystalBall,
+            ItemID.BewitchingTable,
+            ItemID.WarTable,
+        };
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             var fargoServerConfig = GetInstance<FargoServerConfig>();
@@ -199,13 +207,9 @@ namespace Fargowiltas.Items
                         tooltips.Add(line);
                     }
                     
-                    else if (item.type == ItemID.SharpeningStation
-                            || item.type == ItemID.AmmoBox
-                            || item.type == ItemID.CrystalBall
-                            || item.type == ItemID.BewitchingTable
-                            || item.type == ItemID.SliceOfCake)
+                    else if (BuffStations.Contains(item.type))
                     {
-                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Unlimited buff at 3 stack in inventory, Piggy Bank, or Safe]");
+                        line = new TooltipLine(Mod, "TooltipUnlim", "[i:87] [c/AAAAAA:Permanently provides effect to nearby players]");
                         tooltips.Add(line);
                     }
                     
@@ -321,20 +325,6 @@ namespace Fargowiltas.Items
                     player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.1f);
                 else if (item.type == ItemID.LuckPotionGreater)
                     player.GetModPlayer<FargoPlayer>().luckPotionBoost = Math.Max(player.GetModPlayer<FargoPlayer>().luckPotionBoost, 0.2f);
-            }
-            
-            if (item.stack >= 3)
-            {
-                if (item.type == ItemID.SharpeningStation)
-                    player.AddBuff(BuffID.Sharpened, 2);
-                else if (item.type == ItemID.AmmoBox)
-                    player.AddBuff(BuffID.AmmoBox, 2);
-                else if (item.type == ItemID.CrystalBall)
-                    player.AddBuff(BuffID.Clairvoyance, 2);
-                else if (item.type == ItemID.BewitchingTable)
-                    player.AddBuff(BuffID.Bewitched, 2);
-                else if (item.type == ItemID.SliceOfCake)
-                    player.AddBuff(BuffID.SugarRush, 2);
             }
             
         }
