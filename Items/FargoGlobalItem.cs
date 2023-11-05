@@ -14,6 +14,7 @@ using Terraria.GameContent.ItemDropRules;
 using Fargowiltas.Common.Configs;
 using Fargowiltas.Items.Ammos.Coins;
 using Fargowiltas.Items.CaughtNPCs;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Fargowiltas.Items
 {
@@ -65,6 +66,13 @@ namespace Fargowiltas.Items
             ItemID.BewitchingTable,
             ItemID.WarTable,
         };
+        //For the shop sale tooltip system.
+        internal class ShopTooltip
+        {
+            public List<int> NpcItemIDs = new();
+            public List<string> NpcNames = new();
+            public string Condition;
+        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             var fargoServerConfig = GetInstance<FargoServerConfig>();
@@ -73,8 +81,9 @@ namespace Fargowiltas.Items
             {
                 TooltipLine line;
 
-
-                List<string> registered = new();
+                //Shop sale tooltips. Very engineered. Adds tooltips to ALL npc shop sales. Aims to handle any edge case as well as possible.
+                
+                List<ShopTooltip> registeredShopTooltips = new();
                 foreach (var shop in NPCShopDatabase.AllShops)
                 {
                     foreach (var entry in shop.ActiveEntries.Where(e => !e.Item.IsAir && e.Item.type == item.type))
@@ -85,10 +94,12 @@ namespace Fargowiltas.Items
                             npcItem = tryNPCItem.Value;
                             break;
                         }
+                        
                         if (npcItem == null)
                         {
                             npcItem = item;
                         }
+                        
                         string conditions = "";
                         int i = 0;
                         foreach (var condition in entry.Conditions)
@@ -100,16 +111,63 @@ namespace Fargowiltas.Items
                         string conditionLine = i > 0 ? ": " + conditions : "";
                         string npcName = ContentSamples.NpcsByNetId[shop.NpcType].FullName;
 
-                        string text = $"[i:{npcItem.type}] [c/AAAAAA:Sold By {npcName}{conditionLine}]";
-                        if (registered.Contains(text)) //sometimes it makes duplicates otherwise
+
+                        
+                        if (registeredShopTooltips.Any(t => t.NpcNames.Any(n => n == npcName) && t.Condition == conditionLine)) //sometimes it makes duplicates otherwise
                             continue;
-                        line = new TooltipLine(Mod, "TooltipNPCSold", text);
-                        tooltips.Add(line);
-                        registered.Add(text);
+
+                        bool registered = false;
+                        
+                        foreach (ShopTooltip regTooltip in registeredShopTooltips)
+                        {
+                            if (regTooltip.Condition == conditionLine && !regTooltip.NpcNames.Contains(npcName))
+                            {
+                                regTooltip.NpcNames.Add(npcName);
+                                regTooltip.NpcItemIDs.Add(npcItem.type);
+                                registered = true;
+                                break;
+                            }
+                        }
+                        if (!registered)
+                        {
+                            ShopTooltip tooltip = new();
+                            tooltip.NpcItemIDs.Add(npcItem.type);
+                            tooltip.NpcNames.Add(npcName);
+                            tooltip.Condition = conditionLine;
+                            registeredShopTooltips.Add(tooltip);
+                        }
+                        
                         break; //only one line per npc
                     }
                 }
-                
+                foreach (ShopTooltip tooltip in registeredShopTooltips)
+                {
+
+                    List<int> displayIDs = tooltip.NpcItemIDs.Where(i => i != item.type)?.ToList();
+                    int id = item.type;
+                    if (displayIDs.Any())
+                    {
+                        int timer = (int)(Main.GlobalTimeWrappedHourly * 60);
+                        int index = timer / 60;
+                        index %= displayIDs.Count;
+                        id = displayIDs[index];
+                    }
+                    
+                    string names = "";
+                    int i = 0;
+                    foreach (string npcName in tooltip.NpcNames)
+                    {
+                        string grammar = i > 0 ? ", " : "";
+                        names += grammar + npcName;
+                        i++;
+                    }
+                    if (i > 5)
+                        names = "several vendors";
+                    string text = $"[i:{id}] [c/AAAAAA:Sold By {names}{tooltip.Condition}]";
+                    line = new TooltipLine(Mod, "TooltipNPCSold", text);
+                    tooltips.Add(line);
+                }
+
                 switch (item.type)
                 {
                     case ItemID.PureWaterFountain:
