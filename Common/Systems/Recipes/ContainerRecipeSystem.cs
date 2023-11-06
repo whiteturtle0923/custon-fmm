@@ -352,6 +352,7 @@ namespace Fargowiltas.Common.Systems.Recipes
             CreateCrateRecipe(ItemID.CreativeWings, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
             CreateCrateRecipe(ItemID.SkyMill, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
             CreateCrateRecipe(ItemID.LuckyHorseshoe, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
+            CreateCrateRecipe(ItemID.CelestialMagnet, ItemID.FloatingIslandFishingCrate, 1, ItemID.FloatingIslandFishingCrateHard);
 
             //corrupt
             CreateCrateRecipe(ItemID.BallOHurt, ItemID.CorruptFishingCrate, 1, ItemID.CorruptFishingCrateHard);
