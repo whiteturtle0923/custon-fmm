@@ -342,9 +342,18 @@ namespace Fargowiltas.NPCs
             return Main.rand.Next(dialogue);
         }
 
-        private bool AnyHardmodeSummon => Fargowiltas.summonTracker.SortedSummons.Any(s => s.progression >= MutantSummonTracker.WallOfFlesh);
+        private bool AnyHardmodeSummon => Main.hardMode || Fargowiltas.summonTracker.SortedSummons.Any(s => s.progression >= MutantSummonTracker.WallOfFlesh && s.downed.Invoke());
+        private bool AnyPostMLSummon => NPC.downedMoonlord || Fargowiltas.summonTracker.SortedSummons.Any(s => s.progression >= MutantSummonTracker.Moonlord && s.downed.Invoke());
         public override void SetChatButtons(ref string button, ref string button2)
         {
+            if (AnyHardmodeSummon)
+            {
+                button2 = "Cycle Shop";
+            }
+            else
+            {
+                shopNum = 1;
+            }
             switch (shopNum)
             {
                 case 1:
@@ -360,12 +369,9 @@ namespace Fargowiltas.NPCs
                     break;
             }
 
-            if (AnyHardmodeSummon)
-            {
-                button2 = "Cycle Shop";
-            }
+            
 
-            if (NPC.downedMoonlord)
+            if (AnyPostMLSummon)
             {
                 if (shopNum >= 4)
                 {

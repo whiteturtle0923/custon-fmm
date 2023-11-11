@@ -12,7 +12,7 @@ namespace Fargowiltas.UI
 {
     public class StatSheetUI : UIState
     {
-        public const int BackWidth = 600;
+        public const int BackWidth = 650;
         public const int BackHeight = 25 * HowManyPerColumn + 26 + 4; //row height * stat rows + search bar + padding
         public const int HowManyPerColumn = 14;
         public const int HowManyColumns = 2;
@@ -100,7 +100,19 @@ namespace Fargowiltas.UI
             AddStat($"Mana: {player.statManaMax2}", ItemID.ManaCrystal);
             AddStat($"Mana Regen: {player.manaRegen / 2}/sec", ItemID.ManaCrystal);
             AddStat($"Defense: {player.statDefense}", ItemID.CobaltShield);
-            AddStat($"Damage Reduction: {Math.Round(player.endurance * 100)}%", ItemID.WormScarf);
+            float drCap = 100;
+            if (ModLoader.TryGetMod("FargowiltasSouls", out Mod soulsMod))
+            {
+                if (soulsMod.Version >= Version.Parse("1.6.1"))
+                {
+                    if ((bool)soulsMod.Call("EternityMode"))
+                    {
+                        drCap = 75;
+                    }
+                }
+            }
+            string cap = drCap < 100 ? $" (cap {drCap}%)" : "";
+            AddStat($"Damage Reduction: {Math.Round(player.endurance * 100)}%" + cap, ItemID.WormScarf);
             AddStat($"Luck: {Math.Round(player.luck, 2)}", ItemID.Torch);
             AddStat($"Fishing Quests: {player.anglerQuestsFinished}", ItemID.AnglerEarring);
             AddStat($"Battle Cry: {(modPlayer.BattleCry ? "[c/ff0000:Battle]" : (modPlayer.CalmingCry ? "[c/00ffff:Calming]" : "None"))}", ModContent.ItemType<BattleCry>());
