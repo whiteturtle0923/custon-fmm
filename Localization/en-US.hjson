@@ -2582,6 +2582,7 @@ Mods: {
 			PaladinDown: After defeating a Paladin and Plantera
 			SkeleGunDown: After defeating a Necromancer, Diabloist or Ragged Caster, After defeating Plantera
 			SiblingPylon: If all siblings are present
+			BossDown: After defeating any boss
 		}
 
 		Keybinds: {
