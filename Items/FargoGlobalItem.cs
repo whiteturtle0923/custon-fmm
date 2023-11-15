@@ -533,11 +533,18 @@ namespace Fargowiltas.Items
             return base.CanConsumeBait(player, bait);
         }
 
+        public static List<int> NonBuffPotions = new List<int>
+        {
+            ItemID.RecallPotion,
+            ItemID.PotionOfReturn,
+            ItemID.WormholePotion,
+            ItemID.TeleportationPotion
+        };
         public override bool ConsumeItem(Item item, Player player)
         {
             if (GetInstance<FargoServerConfig>().UnlimitedConsumableWeapons && Main.hardMode && item.damage > 0 && item.ammo == 0 && item.stack >= 3996)
                 return false;
-            if (GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120 && (item.buffType > 0 || item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion) && (item.stack >= 30 || player.inventory.Any(i => i.type == item.type && !i.IsAir && i.stack >= 30)))
+            if (GetInstance<FargoServerConfig>().UnlimitedPotionBuffsOn120 && (item.buffType > 0 || NonBuffPotions.Contains(item.type)) && (item.stack >= 30 || player.inventory.Any(i => i.type == item.type && !i.IsAir && i.stack >= 30)))
                 return false;
             return true;
         }

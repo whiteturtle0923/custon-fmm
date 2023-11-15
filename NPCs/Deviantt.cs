@@ -347,14 +347,6 @@ namespace Fargowiltas.NPCs
                 npcShop.Add(new Item(pandorasBox.Type));
             }
 
-            if (Fargowiltas.ModLoaded["FargowiltasSouls"])
-            {
-                if ((bool)ModLoader.GetMod("FargowiltasSouls").Call("EternityMode") && TryFind("FargowiltasSouls", "EternityAdvisor", out ModItem advisor))
-                {
-                    npcShop.Add(new Item(advisor.Type) { shopCustomPrice = Item.buyPrice(copper: 10000) });
-                }
-            }
-
             npcShop
                 .Add(new Item(ItemType<WormSnack>()) { shopCustomPrice = Item.buyPrice(copper: 20000) }, new Condition("Mods.Fargowiltas.Conditions.WormDown", () => FargoWorld.DownedBools["worm"]))
                 .Add(new Item(ItemType<PinkSlimeCrown>()) { shopCustomPrice = Item.buyPrice(copper: 50000) }, new Condition("Mods.Fargowiltas.Conditions.PinkyDown", () => FargoWorld.DownedBools["pinky"]))

@@ -1,4 +1,5 @@
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Items;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Microsoft.Xna.Framework;
@@ -199,8 +200,8 @@ namespace Fargowiltas.NPCs
                 return SquirrelShopGroup.Other;
             }
 
-            bool buffOrTeleportPotion = (item.buffType != 0 && item.type != ItemID.GrilledSquirrel) || item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion;
-            if (buffOrTeleportPotion && item.maxStack >= 30)
+            bool Potion = (item.buffType != 0 && item.type != ItemID.GrilledSquirrel) || FargoGlobalItem.NonBuffPotions.Contains(item.type);
+            if (Potion && item.maxStack >= 30)
             {
                 sellType = SquirrelSellType.SoldAtThirtyStack;
                 return SquirrelShopGroup.Potion;
