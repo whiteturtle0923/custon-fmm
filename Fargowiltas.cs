@@ -329,7 +329,7 @@ namespace Fargowiltas
 
                             int itemID = (int)args[1];
                             Func<string> TextFunction = (Func<string>)args[2];
-                            ModStats.Append(new StatSheetUI.Stat(itemID, TextFunction));
+                            ModStats.Add(new StatSheetUI.Stat(itemID, TextFunction));
                         }
                         break;
                     case "SwarmActive":
