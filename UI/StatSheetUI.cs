@@ -12,8 +12,8 @@ namespace Fargowiltas.UI
 {
     public class StatSheetUI : UIState
     {
-        public const int BackWidth = 650;
-        public const int BackHeight = 25 * HowManyPerColumn + 26 + 4; //row height * stat rows + search bar + padding
+        public int BackWidth = 650;
+        public int BackHeight = 25 * HowManyPerColumn + 26 + 4; //row height * stat rows + search bar + padding
         public const int HowManyPerColumn = 14;
         public const int HowManyColumns = 2;
 
@@ -23,6 +23,18 @@ namespace Fargowiltas.UI
         public UISearchBar SearchBar;
         public UIDragablePanel BackPanel;
         public UIPanel InnerPanel;
+
+        public class Stat
+        {
+            public int ItemID;
+            public Func<string> TextFunction;
+
+            public Stat(int itemID, Func<string> textFunction)
+            {
+                ItemID = itemID;
+                TextFunction = textFunction;
+            }
+        }
 
         public override void OnInitialize()
         {
@@ -123,16 +135,25 @@ namespace Fargowiltas.UI
             AddStat($"Wing Max Speed: {RenderWingStat(Math.Round(modPlayer.StatSheetWingSpeed * 32 / 6.25))} mph", ItemID.AngelWings);
             AddStat($"Wing Ascent Modifier: {RenderWingStat(Math.Round(modPlayer.StatSheetMaxAscentMultiplier * 100))}%", ItemID.AngelWings);
             AddStat($"Wing Can Hover: {(modPlayer.CanHover == null ? "???" : modPlayer.CanHover)}", ItemID.AngelWings);
+
+            foreach (Stat stat in Fargowiltas.Instance.ModStats)
+            {
+                AddStat(stat.TextFunction.Invoke(), stat.ItemID);
+            }
         }
 
         public void AddStat(string text, int item = -1)
         {
             int left = 8 + ColumnCounter * ((BackWidth - 8) / HowManyColumns);
             int top = 8 + LineCounter * (23); // I don't know why but 23 works perfectly
-            if (++LineCounter == HowManyPerColumn)
+
+            //this is before linecounter++ to display correctly:
+            BackHeight = 25 * (LineCounter + 1) + 26 + 4; //row height * stat rows + search bar + padding
+
+            if (++ColumnCounter == HowManyColumns)
             {
-                ColumnCounter++;
-                LineCounter = 0;
+                LineCounter++;
+                ColumnCounter = 0;
             }
 
             UIText ui = new UIText(item > -1 ? $"[i:{item}] {text}" : text);
@@ -152,6 +173,11 @@ namespace Fargowiltas.UI
                     // Gray out text when filtered by search
                     ui.TextColor = Color.Gray * 1.5f;
             }
+
+            
+
+            BackPanel.Height.Set(BackHeight, 0f);
+            InnerPanel.Height.Set(BackHeight - 12 - 28, 0);
 
             InnerPanel.Append(ui);
         }

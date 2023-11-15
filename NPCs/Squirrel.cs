@@ -114,6 +114,9 @@ namespace Fargowiltas.NPCs
                 return true;
             }
 
+            if (!Fargowiltas.ModLoaded["FargowiltasSouls"] && NPC.downedSlimeKing)
+                return true;
+
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ModContent.TryFind("FargowiltasSouls", "TopHatSquirrelCaught", out ModItem modItem) && 
                 Main.player.Any(p => p.active && p.HasItem(modItem.Type)))
             {

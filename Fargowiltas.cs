@@ -5,6 +5,7 @@ using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Fargowiltas.NPCs;
 using Fargowiltas.Projectiles;
+using Fargowiltas.UI;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,9 @@ namespace Fargowiltas
         // Mod loaded bools
         internal static Dictionary<string, bool> ModLoaded;
         internal static Dictionary<int, string> ModRareEnemies = new Dictionary<int, string>();
+
+        public List<StatSheetUI.Stat> ModStats;
+
         private string[] mods;
 
         internal static Fargowiltas Instance;
@@ -67,6 +71,9 @@ namespace Fargowiltas
         public override void Load()
         {
             Instance = this;
+
+            ModStats = new();
+            
 
             summonTracker = new MutantSummonTracker();
             dialogueTracker = new DevianttDialogueTracker();
@@ -311,6 +318,18 @@ namespace Fargowiltas
                         {
                             int wall = (int)args[1];
                             FargoGlobalProjectile.CannotDestroyWallTypes.Add(wall);
+                        }
+                        break;
+                    case "AddStat":
+                        {
+                            if (args[1].GetType() != typeof(int))
+                                throw new Exception($"Call Error (Fargo Mutant Mod AddStat): args[1] must be of type int");
+                            if (args[2].GetType() != typeof(Func<string>))
+                                throw new Exception($"Call Error (Fargo Mutant Mod AddStat): args[2] must be of type Func<string>");
+
+                            int itemID = (int)args[1];
+                            Func<string> TextFunction = (Func<string>)args[2];
+                            ModStats.Append(new StatSheetUI.Stat(itemID, TextFunction));
                         }
                         break;
                     case "SwarmActive":
