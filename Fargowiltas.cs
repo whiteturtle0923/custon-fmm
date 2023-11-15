@@ -26,13 +26,13 @@ namespace Fargowiltas
         internal static DevianttDialogueTracker dialogueTracker;
 
         // Hotkeys
-        internal static ModKeybind HomeKey;
+        public static ModKeybind HomeKey;
 
-        internal static ModKeybind StatKey;
+        public static ModKeybind StatKey;
 
-        internal static ModKeybind DashKey;
+        public static ModKeybind DashKey;
 
-        internal static ModKeybind SetBonusKey;
+        public static ModKeybind SetBonusKey;
 
         public static UIManager UserInterfaceManager => Instance._userInterfaceManager;
         private UIManager _userInterfaceManager;
