@@ -741,7 +741,7 @@ Mods: {
 				Tooltip:
 					'''
 					Left click to decrease the amount of Life Crystals, or Life Fruit if you have any, by 1
-					If both are 0, decreases base maximum health by 20, down to a minimum of 1
+					If both are 0, decreases base maximum health by 20, down to a minimum of 20
 					Right click to reverse 1 use of the latter effect
 					'''
 			}
