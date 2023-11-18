@@ -8,6 +8,7 @@ NEW UPDATE - V 3.2.1.1
 -Fixed some incorrect tooltips
 -Fixed issue with the Friendly Projectile Transparency config with some projectiles
 -Moved several instances of explicitly defined text to localization file
+-A few resprites
 
 NEW UPDATE - V 3.2.1
 -Added new "sold by" tooltips to ALL sold items, including modded
