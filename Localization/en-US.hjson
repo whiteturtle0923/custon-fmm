@@ -2432,6 +2432,7 @@ Mods: {
 				}
 
 				Census.SpawnCondition: Conditions unknown
+				TreeTreasures: Tree Treasures
 			}
 
 			Mutant: {
