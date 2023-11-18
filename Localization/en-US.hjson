@@ -2408,6 +2408,7 @@ Mods: {
 				}
 
 				Census.SpawnCondition: Conditions unknown
+				HelpButton: Help
 			}
 
 			LumberJack: {
@@ -2454,6 +2455,11 @@ Mods: {
 				}
 
 				Census.SpawnCondition: Conditions unknown
+
+				CycleShop: Cycle Shop
+				PreHM: Pre Hardmode:
+				HM: Hardmode
+				PostML: Post Moon Lord
 			}
 
 			Squirrel: {
