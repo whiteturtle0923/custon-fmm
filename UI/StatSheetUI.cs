@@ -1,10 +1,12 @@
 ﻿using Fargowiltas.Items.Misc;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -87,7 +89,7 @@ namespace Fargowiltas.UI
             double Damage(DamageClass damageClass) => Math.Round(player.GetTotalDamage(damageClass).Additive * player.GetTotalDamage(damageClass).Multiplicative * 100 - 100);
             int Crit(DamageClass damageClass) => (int)player.GetTotalCritChance(damageClass);
 
-            AddStat($"Melee Damage: {Damage(DamageClass.Melee)}%", ItemID.CopperBroadsword);
+            AddStat("MeleeDamage", ItemID.CopperBroadsword, Damage(DamageClass.Melee));
             AddStat($"Melee Critical: {Crit(DamageClass.Melee)}%", ItemID.CopperBroadsword);
             AddStat($"Melee Speed: {(int)Math.Round(player.GetAttackSpeed(DamageClass.Melee) * 100)}%", ItemID.CopperBroadsword);
             AddStat($"Ranged Damage: {Damage(DamageClass.Ranged)}%", ItemID.CopperBow);
@@ -134,13 +136,16 @@ namespace Fargowiltas.UI
             AddStat(player.wingTimeMax / 60 > 60 || player.empressBrooch ? "Wing Time: Yes" : $"Wing Time: {RenderWingStat(Math.Round(player.wingTimeMax / 60.0, 2))} sec", ItemID.AngelWings);
             AddStat($"Wing Max Speed: {RenderWingStat(Math.Round(modPlayer.StatSheetWingSpeed * 32 / 6.25))} mph", ItemID.AngelWings);
             AddStat($"Wing Ascent Modifier: {RenderWingStat(Math.Round(modPlayer.StatSheetMaxAscentMultiplier * 100))}%", ItemID.AngelWings);
-            AddStat($"Wing Can Hover: {(modPlayer.CanHover == null ? "???" : modPlayer.CanHover)}", ItemID.AngelWings);
+            AddStat("WingHover", ItemID.AngelWings, modPlayer.CanHover == null ? Language.GetTextValue("Mods.Fargowiltas.UI.WingHoverNull") :
+                (bool)modPlayer.CanHover ? Language.GetTextValue("Mods.Fargowiltas.UI.WingHoverTrue") : Language.GetTextValue("Mods.Fargowiltas.UI.WingHoverFalse"));
 
             foreach (Stat stat in Fargowiltas.Instance.ModStats)
             {
                 AddStat(stat.TextFunction.Invoke(), stat.ItemID);
             }
         }
+
+        public void AddStat(string key, int item = -1, params object[] args) => AddStat(Language.GetTextValue($"Mods.Fargowiltas.UI.{key}", args), item);
 
         public void AddStat(string text, int item = -1)
         {

@@ -328,6 +328,16 @@ Mods: {
 			ArmoredBonesBanner: Armored Bones Banner
 		}
 
+		UI: {
+			StatButton: Stat Sheet
+			SearchText: Search...
+			MeleeDamage: Melee Damage: {0}%
+			WingHover: Wing Can Hover: {0}
+			WingHoverNull: ???
+			WingHoverTrue: True
+			WingHoverFalse: False
+		}
+
 		MessageInfo: {
 			SiblingPylonNotNearSiblings: That pylon needs the mutated siblings to function.
 			NearbySiblingPylonNotNearSiblings: The nearby pylon needs the mutated siblings to function.
