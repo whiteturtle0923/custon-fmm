@@ -2458,7 +2458,7 @@ Mods: {
 
 				Census.SpawnCondition: Conditions unknown
 				CycleShop: Cycle Shop
-				PreHM: Pre Hardmode:
+				PreHM: Pre Hardmode
 				HM: Hardmode
 				PostML: Post Moon Lord
 			}
