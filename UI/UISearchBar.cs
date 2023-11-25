@@ -12,6 +12,8 @@ namespace Fargowiltas.UI
 {
     public class UISearchBar : UIElement
     {
+        public string HintText => Language.GetTextValue("Mods.Fargowiltas.UI.SearchText");
+
         public bool IsEmpty => string.IsNullOrEmpty(Input);
 
         public UIPanel BackPanel;
@@ -87,7 +89,7 @@ namespace Fargowiltas.UI
 
             if (string.IsNullOrEmpty(displayText) && !Focused)
             {
-                Utils.DrawBorderString(spriteBatch, Language.GetTextValue("Mods.Fargowiltas.UI.SearchText"), position, Color.DarkGray);
+                Utils.DrawBorderString(spriteBatch, HintText, position, Color.DarkGray);
             }
 
             if (Focused && ++CursorBlinkTimer >= 20)
