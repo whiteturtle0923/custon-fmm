@@ -54,7 +54,7 @@ namespace Fargowiltas.NPCs
 
             NPCID.Sets.ShimmerTownTransform[Type] = true; // Allows for this NPC to have a different texture after touching the Shimmer liquid.
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Velocity = -1f,
                 Direction = -1
@@ -228,15 +228,15 @@ namespace Fargowiltas.NPCs
                 && !(bool)ModLoader.GetMod("FargowiltasSouls").Call("GiftsReceived"))
             {
                 ModLoader.GetMod("FargowiltasSouls").Call("GiveDevianttGifts");
-                return Main.npcChatText = "This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?";
+                return Main.npcChatText = DeviChat("GiveGifts");
             }
 
             if (Main.notTheBeesWorld)
             {
-                string text = "IT'S THE FUNNY BEE WORLD!";
+                string text = DeviChat("NTB");
                 int max = Main.rand.Next(10, 50);
                 for (int i = 0; i < max; i++)
-                    text += " " + Main.rand.Next(new string[] { "HA", "HA", "HEE", "HOO", "HEH", "HAH" });
+                    text += DeviChat("NTB" + Main.rand.Next(new string[] { "HA", "HA", "HEE", "HOO", "HEH", "HAH" }));
                 text += "!";
                 return text;
             }
@@ -324,7 +324,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public const string ShopName = "Shop";
+        public string ShopName => Language.GetTextValue("LegacyInterface.28");
 
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
@@ -499,6 +499,8 @@ namespace Fargowiltas.NPCs
             //Main.EntitySpriteDraw(texture2D13, NPC.Center - Main.screenPosition + new Vector2(0f, NPC.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), NPC.GetAlpha(drawColor), NPC.rotation, origin2, NPC.scale, effects, 0);
             return true;
         }
+
+        private static string DeviChat(string key, params object[] args) => Language.GetTextValue($"Mods.Fargowiltas.NPCs.Deviantt.Chat.{key}", args);
     }
     public class DevianttProfile : ITownNPCProfile
     {

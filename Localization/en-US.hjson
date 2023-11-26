@@ -2488,6 +2488,16 @@ Mods: {
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Deviantt}"
 				}
 
+				Chat: {
+					GiveGifts: This world looks tougher than usual, so you can have these on the house just this once! Talk to me if you need any tips, yeah?
+					NTB: IT'S THE FUNNY BEE WORLD!
+					NTBHA: " HA"
+					NTBHEE: " HEE"
+					NTBHOO: " HOO"
+					NTBHEH: " HEH"
+					NTBHAH: " HAH"
+				}
+
 				Census.SpawnCondition: Conditions unknown
 				HelpButton: Help
 			}

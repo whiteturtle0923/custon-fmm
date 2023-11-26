@@ -45,7 +45,7 @@ namespace Fargowiltas.NPCs
 
             NPCID.Sets.CannotSitOnFurniture[Type] = true;
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Velocity = -1f,
                 Direction = -1
