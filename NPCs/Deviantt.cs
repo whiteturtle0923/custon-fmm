@@ -237,7 +237,7 @@ namespace Fargowiltas.NPCs
                 int max = Main.rand.Next(10, 50);
                 for (int i = 0; i < max; i++)
                     text += DeviChat("NTB" + Main.rand.Next(new string[] { "HA", "HA", "HEE", "HOO", "HEH", "HAH" }));
-                text += "!";
+                text += Language.GetTextValue("Mods.Fargowiltas.MessageInfo.Common.Exclamation");
                 return text;
             }
 

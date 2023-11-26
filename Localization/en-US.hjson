@@ -356,8 +356,7 @@ Mods: {
 			Luck: Luck: {0}
 			FishingQuests: Fishing Quests: {0}
 			BattleCry: Battle Cry: {0}
-			BattleCryBattle: Battle
-			BattleCryCalming: Calming
+			// BattleCryBattle & BattleCryCalming are in MessageInfo
 			BattleCryNone: None
 			MaxSpeed: Max Speed: {0} mph
 			WingNull: ???
@@ -372,6 +371,17 @@ Mods: {
 		}
 
 		MessageInfo: {
+			Common: {
+				Exclamation: !
+				Period: .
+			}
+
+			BattleCryBattle: Battle
+			BattleCryCalming: Calming
+			BattleCryActivated: activated
+			BattleCryDeactivated: deactivated
+			// {Battle / Calming} Cry {activated / deactivated} for {playerName}{punctuation}
+			BattleCry: "{0} Cry {1} for {2}{3}"
 			SiblingPylonNotNearSiblings: That pylon needs the mutated siblings to function.
 			NearbySiblingPylonNotNearSiblings: The nearby pylon needs the mutated siblings to function.
 		}

@@ -128,8 +128,8 @@ namespace Fargowiltas.UI
             AddStat("DamageReduction", ItemID.WormScarf, Math.Round(player.endurance * 100), cap);
             AddStat("Luck", ItemID.Torch, Math.Round(player.luck, 2));
             AddStat("FishingQuests", ItemID.AnglerEarring, player.anglerQuestsFinished);
-            AddStat("BattleCry", ModContent.ItemType<BattleCry>(), modPlayer.BattleCry ? $"[c/ff0000:{Language.GetTextValue("Mods.Fargowiltas.UI.BattleCryBattle")}]" : 
-                modPlayer.CalmingCry ? $"[c/00ffff:{Language.GetTextValue("Mods.Fargowiltas.UI.BattleCryCalming")}]" : Language.GetTextValue("Mods.Fargowiltas.UI.BattleCryNone"));
+            AddStat("BattleCry", ModContent.ItemType<BattleCry>(), modPlayer.BattleCry ? $"[c/ff0000:{Language.GetTextValue("Mods.Fargowiltas.MessageInfo.BattleCryBattle")}]" : 
+                modPlayer.CalmingCry ? $"[c/00ffff:{Language.GetTextValue("Mods.Fargowiltas.MessageInfo.BattleCryCalming")}]" : Language.GetTextValue("Mods.Fargowiltas.UI.BattleCryNone"));
             AddStat("MaxSpeed", ItemID.HermesBoots, (int)((player.accRunSpeed + player.maxRunSpeed) / 2f * player.moveSpeed * 3));
 
             string RenderWingStat(double stat) => stat <= 0 ? Language.GetTextValue("Mods.Fargowiltas.UI.WingNull") : stat.ToString();
