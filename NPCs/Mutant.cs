@@ -647,7 +647,7 @@ namespace Fargowiltas.NPCs
             return false;
         }
 
-        
+        private static string MutantChat(string key, params object[] args) => Language.GetTextValue($"Mods.Fargowiltas.NPCs.Mutant.Chat.{key}", args);
     }
 
     public class MutantProfile : ITownNPCProfile

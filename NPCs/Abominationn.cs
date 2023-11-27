@@ -179,7 +179,7 @@ namespace Fargowiltas.NPCs
             button2 = Language.GetTextValue("Mods.Fargowiltas.NPCs.Abominationn.CancelEvent");
         }
 
-        public string ShopName => Language.GetTextValue("LegacyInterface.28");
+        public const string ShopName = "Shop";
 
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {

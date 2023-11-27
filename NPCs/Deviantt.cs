@@ -308,7 +308,7 @@ namespace Fargowiltas.NPCs
             }
         }
 
-        public string ShopName => Language.GetTextValue("LegacyInterface.28");
+        public const string ShopName = "Shop";
 
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
