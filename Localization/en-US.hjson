@@ -2725,6 +2725,13 @@ Mods: {
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Squirrel}"
 				}
 
+				Chat: {
+					BloodMoon: "[c/FF0000:You will suffer.]"
+					Normal1: *squeak*
+					Normal2: *chitter*
+					Normal3: *crunch crunch*
+				}
+
 				Census.SpawnCondition: Conditions unknown
 			}
 
