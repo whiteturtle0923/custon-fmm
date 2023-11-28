@@ -2626,6 +2626,81 @@ Mods: {
 					Princess_LovesNPC: "{$TownNPCMood_Princess.LoveNPC_Fargowiltas/Mutant}"
 				}
 
+				Chat: {
+					EternityDefeat: Congratulations. You truly embraced eternity... at least, I think you did? So what happens next? Ascend from this plane of existence? Fight a transcendent cat-like entity? Destroy the world? All the power's in your hands now.
+					Defeat: Good work beating me, I guess. I still feel like stretching my wings... Why don't we go at it for real next time?
+					MutantArmor: Nice armor you have, very realistic skin. As a matter of fact, mind if I borrow it? Your skin, that is.
+					SoulsPostML: Now that you've defeated the big guy, I'd say it's time to start collecting those materials!
+					DefeatCommon: What's that? You want to fight me? ...sure, I guess.
+					DefeatAbom: What's that? You want to fight me? ...maybe if I had a reason.
+					SoulsModDisabled: What's that? You want to fight me? ...you're not worthy you rat.
+					PumpkinMoon: A bit spooky tonight, isn't it.
+					FrostMoon: I'd ask for a coat, but I don't think you have any my size.
+					SlimeRain: Weather seems odd today, wouldn't you agree?
+					BloodMoon1: Lovely night, isn't it?
+					BloodMoon2: I hope the constant arguing I'm hearing isn't my fault.
+					NightTime: I'd follow and help, but I'd much rather sit around right now.
+					Party: "{0} is the one who invited me, I don't understand why though."
+					PartyWithoutPartyGirl: I don't know what everyone's so happy about, but as long as nobody mistakes me for a Pigronata, I'm happy too.
+					Nurse: Whenever we're alone, {0} keeps throwing syringes at me, no matter how many times I tell her to stop!
+					WitchDoctor: Please go tell {0} to drop the 'mystical' shtick, I mean, come on! I get it, you make tainted water or something.
+					Dryad: Why does {0}'s outfit make my wings flutter?
+					Stylist: "{0} once gave me a wig... I look hideous with long hair."
+					Truffle: That mutated mushroom seems like my type of fella.
+					TaxCollector: "{0} keeps asking me for money, but he won't accept my spawners!"
+					Guide: Any idea why {0} is always cowering in fear when I get near him?
+					WitchDoctorTruffleCyborg: If any of us could play instruments, I'd totally start a band with {0}, {1}, and {2}.
+					PartyGirl: Man, {0}'s confetti keeps getting stuck to my wings.
+					Demolitionist: I'm surprised {0} hasn't blown a hole in the floor yet, on second thought that sounds fun.
+					Tavernkeep: "{0} keeps suggesting I drink some beer, something tells me he wouldn't like me when I'm drunk though."
+					DyeTrader: "{0} wants to see what I would look like in blue... I don't know how to feel."
+					Normal1: Savagery, barbarism, bloodthirst, that's what I like seeing in people.
+					Normal2: The stronger you get, the more stuff I sell. Makes sense, right?
+					Normal3: There's something all of you have that I don't... Death perception, I think it's called?
+					Normal4: It would be pretty cool if I sold a summon for myself...
+					Normal5: The only way to get stronger is to keep buying from me and in bulk too!
+					Normal6: Why are you looking at me like that, all I did was eat an apple.
+					Normal7: Don't bother with anyone else, all you'll ever need is right here.
+					Normal8: You're lucky I'm on your side.
+					Normal9: Why yes I would love a ham and swiss sandwich.
+					Normal10: Should I start wearing clothes? ...Nah.
+					Normal11: It's not like I can actually use all the gold you're spending.
+					Normal12: Violence for violence is the law of the beast.
+					Normal13: Those guys really need to get more creative. All of their first bosses are desert themed!
+					Normal14: You say you want to know how a Mutant and Abominationn are brothers? You're better off not knowing.
+					Normal15: I'm all you need for a calamity.
+					Normal16: Everything shall bow before me! ...after you make this purchase.
+					Normal17: It's clear that I'm helping you out, but uh.. what's in this for me? A house you say? I eat zombies for breakfast.
+					Normal18: Can I jump? No, I don't have something called a 'spacebar'.
+					Normal19: Got your nose, I needed one to replace mine.
+					Normal20: What's a Terry?
+					Normal21: Why do so many creatures carry around a weird looking blue doll? The world may never know.
+					Normal22: Impending doom approaches. ...If you don't buy anything of course.
+					Normal23: I've heard of a '3rd dimension', I wonder what that looks like.
+					Normal24: Boy don't I look fabulous today.
+					Normal25: You have fewer friends than I do eyes.
+					Normal26: The ocean is a dangerous place, I wonder where Diver is?
+					Normal27: Do you know what an Ee-arth is?
+					Normal28: I can't even spell 'apotheosis', do you expect me to know what it is?
+					Normal29: Where do monsters get their gold from? ...I don't have pockets you know.
+					Normal30: Dogs are cool and all, but cats don't try to bite my brain.
+					Normal31: Beware the green dragon... What's that face mean?
+					Normal32: Where is this O-hi-o I keep hearing about.
+					Normal33: I've told you 56 times already, I'm busy... Oh wait you want to buy something, I suppose I have time.
+					Normal34: I've heard of a 'Soul of Souls' that only exists in 2015.
+					Normal35: Adding EX after everything makes it way more difficult.
+					Normal36: I think that all modern art looks great, especially the bloody stuff.
+					Normal37: How many guides does it take to change a lightbulb? ... I don't know, how about you ask him.
+					Normal38: Good thing I don't have a bed, I'd probably never leave it.
+					Normal39: What's this about an update? Sounds rare.
+					Normal40: If you need me I'll be slacking off somewhere.
+					Normal41: What do you mean who is Fargo!
+					Normal42: Have you seen the ech cat?
+					Normal43: I don't understand music nowadays, I prefer some smooth jazz... or the dying screams of monsters.
+					Normal44: Cthulhu's got nothing on me!
+					Normal45: I heard of a rumor of infinite use boss summons. Makes me sick..
+				}
+
 				Census.SpawnCondition: Conditions unknown
 				CycleShop: Cycle Shop
 				PreHM: Pre Hardmode
