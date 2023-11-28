@@ -535,6 +535,6 @@ namespace Fargowiltas.NPCs
         }
 
 
-        private static string SquirrelChat(string key, params object[] args) => Language.GetTextValue($"Mods.Fargowiltas.NPCs.Squirrel.Chat.{key}");
+        private static string SquirrelChat(string key) => Language.GetTextValue($"Mods.Fargowiltas.NPCs.Squirrel.Chat.{key}");
     }
 }
