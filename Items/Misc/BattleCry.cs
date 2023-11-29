@@ -33,11 +33,11 @@ namespace Fargowiltas.Items.Misc
 
         public static void GenerateText(bool isBattle, Player player, bool cry)
         {
-            string cryToggled = Language.GetTextValue($"Mods.Fargowiltas.MessageInfo.BattleCry{(isBattle ? "Battle" : "Calming")}");
-            string toggle = Language.GetTextValue($"Mods.Fargowiltas.MessageInfo.BattleCry{(cry? "Activated" : "Deactivated")}");
+            string cryToggled = Language.GetTextValue($"Mods.Fargowiltas.Items.BattleCry.{(isBattle ? "Battle" : "Calming")}");
+            string toggle = Language.GetTextValue($"Mods.Fargowiltas.Items.BattleCry.{(cry? "Activated" : "Deactivated")}");
             string punctuation = Language.GetTextValue($"Mods.Fargowiltas.MessageInfo.Common.{(isBattle ? "Exclamation" : "Period")}");
 
-            string text = Language.GetTextValue("Mods.Fargowiltas.MessageInfo.BattleCry", cryToggled, toggle, player.name, punctuation);
+            string text = Language.GetTextValue("Mods.Fargowiltas.Items.BattleCry.CryText", cryToggled, toggle, player.name, punctuation);
             Color color = isBattle ? new Color(255, 0, 0) : new Color(0, 255, 255);
 
             FargoUtils.PrintText(text, color);

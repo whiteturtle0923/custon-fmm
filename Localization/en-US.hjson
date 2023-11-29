@@ -1,4 +1,4 @@
-# You may find this .hjson file approach to translations easier for your mod.
+﻿# You may find this .hjson file approach to translations easier for your mod.
 # .hjson files contain translations for the language specified in the filename. (Make sure this file is UTF-8 encoded only.)
 # The possible languages are: English ("en-US"), German ("de-DE"), Italian ("it-IT"), French ("fr-FR"), Spanish ("es-ES"), Russian ("ru-RU"), Chinese ("zh-Hans"), Portuguese ("pt-BR"), and Polish ("pl-PL")
 # Here in ExampleMod we have organized these files in a folder called Localization. A single file per language makes it extremely easy to to integrate and maintain translations.
@@ -356,7 +356,7 @@ Mods: {
 			Luck: Luck: {0}
 			FishingQuests: Fishing Quests: {0}
 			BattleCry: Battle Cry: {0}
-			// BattleCryBattle & BattleCryCalming are in MessageInfo
+			// Battle & Calming are in Items.BattleCry
 			BattleCryNone: None
 			MaxSpeed: Max Speed: {0} mph
 			WingNull: ???
@@ -376,12 +376,6 @@ Mods: {
 				Period: .
 			}
 
-			BattleCryBattle: Battle
-			BattleCryCalming: Calming
-			BattleCryActivated: activated
-			BattleCryDeactivated: deactivated
-			// {Battle / Calming} Cry {activated / deactivated} for {playerName}{punctuation}
-			BattleCry: "{0} Cry {1} for {2}{3}"
 			SiblingPylonNotNearSiblings: That pylon needs the mutated siblings to function.
 			NearbySiblingPylonNotNearSiblings: The nearby pylon needs the mutated siblings to function.
 		}
@@ -787,6 +781,12 @@ Mods: {
 					Left click to toggle 10x increased spawn rates
 					Right click to toggle 10x decreased spawn rates
 					'''
+				Battle: Battle
+				Calming: Calming
+				Activated: activated
+				Deactivated: deactivated
+				// {Battle / Calming} Cry {activated / deactivated} for {playerName}{punctuation}
+				CryText: "{0} Cry {1} for {2}{3}"
 			}
 
 			DeathFruit: {
@@ -806,6 +806,7 @@ Mods: {
 					DEBUG ITEM
 					Researches everything
 					'''
+				ResearchText: researched {0} items
 			}
 
 			MapViewer: {
