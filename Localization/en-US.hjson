@@ -2846,6 +2846,7 @@ Mods: {
 			SkeleGunDown: After defeating a Necromancer, Diabloist or Ragged Caster, After defeating Plantera
 			SiblingPylon: If all siblings are present
 			BossDown: After defeating any boss
+			DownedTheBoss: After the boss has been defeated
 			Angler5: Finish 5 angler quests
 			Angler10: Finish 10 angler quests
 			Angler15: Finish 15 angler quests
@@ -2854,7 +2855,7 @@ Mods: {
 			Angler30: Finish 30 angler quests
 			InRockOrDirtLayerHeight: While underground
 			BrittleBone: Have a weapon that uses Brittle Bones as ammunition in your inventory
-			seeds: Have a weapon that uses seeds as ammunition in your inventory
+			Seeds: Have a weapon that uses seeds as ammunition in your inventory
 			RedHusk: After having picked up a Red Husk
 			OrangeBloodroot: After having picked up an Orange Bloodroot
 			YellowMarigold: After having picked up a Yellow Marigold
