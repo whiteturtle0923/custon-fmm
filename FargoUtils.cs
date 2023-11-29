@@ -88,6 +88,8 @@ namespace Fargowiltas
 
         public static void PrintLocalization(string key, params object[] args) => PrintText(Language.GetTextValue($"Mods.Fargowiltas.{key}", args));
 
+        public static void PrintLocalization(string key, Color color, params object[] args) => PrintText(Language.GetTextValue($"Mods.Fargowiltas.{key}", args), color);
+
         public static void SpawnBossNetcoded(Player player, int bossType)
         {
             if (player.whoAmI == Main.myPlayer)
