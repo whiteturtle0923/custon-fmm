@@ -502,19 +502,18 @@ namespace Fargowiltas.NPCs
                         break;
 
                     case NPCID.WitchDoctor:
-                        
-                            bool alreadySellsTable = false;
-                            foreach(NPCShop.Entry entry in shop.Entries)
+                        bool alreadySellsTable = false;
+                        foreach(NPCShop.Entry entry in shop.Entries)
+                        {
+                            if (!entry.Item.IsAir && entry.Item.type == ItemID.BewitchingTable)
                             {
-                                if (!entry.Item.IsAir && entry.Item.type == ItemID.BewitchingTable)
-                                {
-                                    alreadySellsTable = true;
-                                    break;
-                                }
+                                alreadySellsTable = true;
+                                break;
                             }
+                        }
 
-                            if (!alreadySellsTable)
-                                AddItem(ItemID.BewitchingTable, condition: Condition.DownedSkeletron);
+                        if (!alreadySellsTable)
+                            AddItem(ItemID.BewitchingTable, condition: Condition.DownedSkeletron);
                         break;
 
                     case NPCID.Steampunker:

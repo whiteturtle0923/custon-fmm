@@ -2879,6 +2879,13 @@ Mods: {
 		}
 
 		ExpandedTooltips: {
+			FountainOcean: Forces surrounding biome state to Ocean upon activation
+			FountainDesert: Forces surrounding biome state to Desert upon activation
+			FountainJungle: Forces surrounding biome state to Jungle upon activation
+			FountainSnow: Forces surrounding biome state to Snow upon activation
+			FountainCorruption: Forces surrounding biome state to Corruption upon activation
+			FountainCrimson: Forces surrounding biome state to Crimson upon activation
+			FountainHallow: Forces surrounding biome state to Hallow (in hardmode only) upon activation
 			CatchNPCs: Can also catch townsfolk
 			ExtraLure1: Also grants one extra lure
 			Lures2: This rod fires 2 lures
@@ -2890,6 +2897,10 @@ Mods: {
 			UnlimitedUse30: Unlimited use at 30 stack
 			PermanentEffectNearby: Permanently provides effect to nearby players
 			WorksFromBanks: Works from Piggy Bank and Safe
+			SoldBySquirrel: Sold By Squirrel
+			SomeMaterialsSold: Some Materials Sold
+			CraftableMaterialsSold: Craftable Materials Sold
+			SoldAtThirtyStack: Sold At Thirty Stack
 			SoldBy: Sold By
 			SeveralVendors: several vendors
 		}
