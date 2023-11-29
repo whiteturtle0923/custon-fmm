@@ -2735,30 +2735,6 @@ Mods: {
 				Census.SpawnCondition: Conditions unknown
 			}
 
-			GlobalNPC: {
-				angler5: Finish 5 angler quests
-				angler10: Finish 10 angler quests
-				angler15: Finish 15 angler quests
-				angler20: Finish 20 angler quests(in fact 25)
-				angler25: Finish 25 angler quests
-				angler30: Finish 30 angler quests
-				InRockOrDirtLayerHeight: While underground
-				BrittleBone: Have a weapon that uses Brittle Bones as ammunition in your inventory
-				seeds: Have a weapon that uses seeds as ammunition in your inventory
-				RedHusk: After having picked up a Red Husk
-				OrangeBloodroot: After having picked up an Orange Bloodroot
-				YellowMarigold: After having picked up a Yellow Marigold
-				LimeKelp: After having picked up a Lime Kelp
-				GreenMushroom: After having picked up a Green Mushroom
-				TealMushroom: After having picked up a Teal Mushroom
-				CyanHusk: After having picked up a Cyan Husk
-				SkyBlueFlower: After having picked up a Sky Blue Flower
-				BlueBerries: After having picked up Blueberries
-				PurpleMucos: After having picked up Purple Mucos
-				VioletHusk: After having picked up a Violet Husk
-				PinkPricklyPear: After having picked up a Pink Prickly Pear
-				BlackInk: After having picked up Black Ink
-			}
 			SuperDummy.DisplayName: Super Dummy
 		}
 
@@ -2870,6 +2846,28 @@ Mods: {
 			SkeleGunDown: After defeating a Necromancer, Diabloist or Ragged Caster, After defeating Plantera
 			SiblingPylon: If all siblings are present
 			BossDown: After defeating any boss
+			Angler5: Finish 5 angler quests
+			Angler10: Finish 10 angler quests
+			Angler15: Finish 15 angler quests
+			Angler20: Finish 20 angler quests(in fact 25)
+			Angler25: Finish 25 angler quests
+			Angler30: Finish 30 angler quests
+			InRockOrDirtLayerHeight: While underground
+			BrittleBone: Have a weapon that uses Brittle Bones as ammunition in your inventory
+			seeds: Have a weapon that uses seeds as ammunition in your inventory
+			RedHusk: After having picked up a Red Husk
+			OrangeBloodroot: After having picked up an Orange Bloodroot
+			YellowMarigold: After having picked up a Yellow Marigold
+			LimeKelp: After having picked up a Lime Kelp
+			GreenMushroom: After having picked up a Green Mushroom
+			TealMushroom: After having picked up a Teal Mushroom
+			CyanHusk: After having picked up a Cyan Husk
+			SkyBlueFlower: After having picked up a Sky Blue Flower
+			BlueBerries: After having picked up Blueberries
+			PurpleMucos: After having picked up Purple Mucos
+			VioletHusk: After having picked up a Violet Husk
+			PinkPricklyPear: After having picked up a Pink Prickly Pear
+			BlackInk: After having picked up Black Ink
 		}
 
 		Keybinds: {
