@@ -379,6 +379,17 @@ Mods: {
 			SiblingPylonNotNearSiblings: That pylon needs the mutated siblings to function.
 			NearbySiblingPylonNotNearSiblings: The nearby pylon needs the mutated siblings to function.
 			NewItemUnlocked: A new item has been unlocked in {0}'s shop!
+			// Cancel Event
+			CancelEvent: The invaders have left!
+			CancelPumpkinMoon: The Pumpkin Moon is lowering...
+			CancelFrostMoon: The Frost Moon is lowering...
+			CancelEclipse: A solar eclipse is not happening!
+			CancelBloodMoon: The blood moon is descending...
+			CancelWindyDay: The wind has ended!
+			CancelOOA: The Old One's Army is leaving!
+			CancelSandstorm: The sandstorm has ended!
+			CancelLunarEvent: Celestial creatures are not invading!
+			CancelRain: The rain has ended!
 		}
 
 		Buffs: {
@@ -386,7 +397,7 @@ Mods: {
 				DisplayName: Omnistation
 				Description: Effects of all vanilla stations
 			}
-
+				
 			Semistation: {
 				DisplayName: Semistation
 				Description: Effects of some vanilla stations
