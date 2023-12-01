@@ -398,7 +398,7 @@ Mods: {
 			StartLunarEvent: The Celestial Pillars have awoken!
 			StartRain: Rain clouds cover the sky.
 			AncientSeal: Every boss has awoken!
-			SeveralBossesAwoken: "Several bosses have awoken!"
+			SeveralBossesAwoken: Several bosses have awoken!
 		}
 
 		Buffs: {
