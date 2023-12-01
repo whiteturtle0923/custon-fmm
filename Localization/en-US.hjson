@@ -390,6 +390,15 @@ Mods: {
 			CancelSandstorm: The sandstorm has ended!
 			CancelLunarEvent: Celestial creatures are not invading!
 			CancelRain: The rain has ended!
+			// Summons
+			StartWindyDay: The wind begins howling.
+			StartSandStorm: A sandstorm has begun.
+			StartLanternNight: Lantern Night rate increased!
+			StopLanternNight: Lantern Night rate restored to default.
+			StartLunarEvent: The Celestial Pillars have awoken!
+			StartRain: Rain clouds cover the sky.
+			AncientSeal: Every boss has awoken!
+			SeveralBossesAwoken: "Several bosses have awoken!"
 		}
 
 		Buffs: {
@@ -397,7 +406,7 @@ Mods: {
 				DisplayName: Omnistation
 				Description: Effects of all vanilla stations
 			}
-				
+
 			Semistation: {
 				DisplayName: Semistation
 				Description: Effects of some vanilla stations
