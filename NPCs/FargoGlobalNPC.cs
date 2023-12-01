@@ -1325,7 +1325,7 @@ namespace Fargowiltas.NPCs
 
             if (npc.type == NPCID.DD2Betsy && !PandoraActive)
             {
-                FargoUtils.PrintText("Betsy has been defeated!", new Color(175, 75, 0));
+                FargoUtils.PrintText(Language.GetTextValue("Announcement.HasBeenDefeated_Single", Lang.GetNPCNameValue(NPCID.DD2Betsy)), new Color(175, 75, 0));
                 FargoWorld.DownedBools["betsy"] = true;
             }
 
@@ -1459,13 +1459,13 @@ namespace Fargowiltas.NPCs
 
             if (Main.netMode == NetmodeID.Server)
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Killed: " + Fargowiltas.SwarmKills), new Color(206, 12, 15));
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Total: " + Fargowiltas.SwarmTotal), new Color(206, 12, 15));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.Fargowiltas.MessageInfo.SwarmKilled", Fargowiltas.SwarmKills), new Color(206, 12, 15));
+                ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.Fargowiltas.MessageInfo.SwarmTotal", Fargowiltas.SwarmTotal), new Color(206, 12, 15));
             }
             else
             {
-                Main.NewText("Killed: " + Fargowiltas.SwarmKills, new Color(206, 12, 15));
-                Main.NewText("Total: " + Fargowiltas.SwarmTotal, new Color(206, 12, 15));
+                Main.NewText(Language.GetTextValue("Mods.Fargowiltas.MessageInfo.SwarmKilled", Fargowiltas.SwarmKills), new Color(206, 12, 15));
+                Main.NewText(Language.GetTextValue("Mods.Fargowiltas.MessageInfo.SwarmTotal", Fargowiltas.SwarmTotal), new Color(206, 12, 15));
             }
 
             if (minion != -1 && NPC.CountNPCS(minion) >= Fargowiltas.SwarmSpawned)
@@ -1534,11 +1534,11 @@ namespace Fargowiltas.NPCs
             {
                 if (Main.netMode == NetmodeID.Server)
                 {
-                    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The swarm has been defeated!"), new Color(206, 12, 15));
+                    ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.Fargowiltas.MessageInfo.SwarmDefeated"), new Color(206, 12, 15));
                 }
                 else
                 {
-                    Main.NewText("The swarm has been defeated!", new Color(206, 12, 15));
+                    Main.NewText(Language.GetTextValue("Mods.Fargowiltas.MessageInfo.SwarmDefeated"), new Color(206, 12, 15));
                 }
 
                 for (int i = 0; i < Main.maxNPCs; i++)
