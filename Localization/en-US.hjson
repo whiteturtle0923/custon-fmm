@@ -2933,10 +2933,10 @@ Mods: {
 		}
 
 		Keybinds: {
-			"Quick Recall/Mirror.DisplayName": Quick Recall/Mirror
-			"Open Stat Sheet.DisplayName": Open Stat Sheet
-			"Dash Key.DisplayName": Dash Key
-			"Set Bonus (Double Tap Up/Down) Key.DisplayName": Set Bonus Key
+			Home.DisplayName: Quick Recall/Mirror
+			Stat.DisplayName: Open Stat Sheet
+			Dash.DisplayName: Dash Key
+			SetBonus.DisplayName: Set Bonus Key
 		}
 
 		ExpandedTooltips: {

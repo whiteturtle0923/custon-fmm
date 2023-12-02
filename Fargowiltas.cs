@@ -79,13 +79,13 @@ namespace Fargowiltas
             dialogueTracker = new DevianttDialogueTracker();
             dialogueTracker.AddVanillaDialogue();
 
-            HomeKey = KeybindLoader.RegisterKeybind(this, "Quick Recall/Mirror", "Home");
+            HomeKey = KeybindLoader.RegisterKeybind(this, "Home", "Home");
 
-            StatKey = KeybindLoader.RegisterKeybind(this, "Open Stat Sheet", "M");
+            StatKey = KeybindLoader.RegisterKeybind(this, "Stat", "M");
 
-            DashKey = KeybindLoader.RegisterKeybind(this, "Dash Key", "C");
+            DashKey = KeybindLoader.RegisterKeybind(this, "Dash", "C");
 
-            SetBonusKey = KeybindLoader.RegisterKeybind(this, "Set Bonus (Double Tap Up/Down) Key", "V");
+            SetBonusKey = KeybindLoader.RegisterKeybind(this, "SetBonus", "V");
 
             _userInterfaceManager = new UIManager();
             _userInterfaceManager.LoadUI();
