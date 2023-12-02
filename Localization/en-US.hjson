@@ -16,7 +16,8 @@ Mods: {
 			Squirrel: This dapper critter sells duplicates of valuable items that it notices in inventories. Won't divulge how it gets them, mostly because it can't speak.
 		}
 
-		Biome.Sky: Sky BIOMEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+		// Used for TownNPCMood "{BiomeName}" Format (unused now)
+		Biome.Sky: Sky
 
 		#This is what displays during all of an NPC's happiness levels. Note that the localization key for these should always be "TownNPCMood.*NPCName*.*Mood*" or else it won't display properly.
 		TownNPCMood: {
@@ -434,9 +435,9 @@ Mods: {
 			OverloadMartiansStop: The martians have calmed down!
 			OverloadPiratesStop: The pirates have calmed down!
 			// Swarm Misc
-			SwarmKilled: "Killed: {0}"
-			SwarmTotal: "Total: {0}"
-			SwarmDefeated: "The swarm has been defeated!"
+			SwarmKilled: Killed: {0}
+			SwarmTotal: Total: {0}
+			SwarmDefeated: The swarm has been defeated!
 		}
 
 		Buffs: {
