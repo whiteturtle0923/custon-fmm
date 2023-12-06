@@ -37,7 +37,7 @@ namespace Fargowiltas.Items
 
         //public override bool CloneNewInstances => true;
 
-        TooltipLine FountainTooltip(string biome) => new TooltipLine(Mod, "Tooltip0", $"[i:909] [c/AAAAAA:Forces surrounding biome state to {biome} upon activation]");
+        TooltipLine FountainTooltip(string biome) => new TooltipLine(Mod, "Tooltip0", $"[i:909] [c/AAAAAA:{ExpandedTooltipLoc($"Fountain{biome}")}]");
         public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed, ref StatModifier damage, ref float knockback)
         {
             //coin gun is broken as fucking shit codingwise so i'm fixing it
@@ -206,7 +206,7 @@ namespace Fargowiltas.Items
 
                     case ItemID.HallowedWaterFountain:
                         if (fargoServerConfig.Fountains)
-                            tooltips.Add(FountainTooltip("Hallow (in hardmode only)"));
+                            tooltips.Add(FountainTooltip("Hallow"));
                         break;
 
                     //cavern fountain?
@@ -287,9 +287,8 @@ namespace Fargowiltas.Items
 
                 if (Squirrel.SquirrelSells(item, out SquirrelSellType sellType) != SquirrelShopGroup.End)
                 {
-                    string text = Regex.Replace(sellType.ToString(), "([a-z])([A-Z])", "$1 $2");
                     line = new TooltipLine(Mod, "TooltipSquirrel",
-                        $"[i:{CaughtNPCs.CaughtNPCItem.CaughtTownies[NPCType<Squirrel>()]}] [c/AAAAAA:{text}]");
+                        $"[i:{CaughtNPCs.CaughtNPCItem.CaughtTownies[NPCType<Squirrel>()]}] [c/AAAAAA:{ExpandedTooltipLoc(sellType.ToString())}]");
                     tooltips.Add(line);
                 }
             }

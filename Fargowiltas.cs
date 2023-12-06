@@ -79,13 +79,13 @@ namespace Fargowiltas
             dialogueTracker = new DevianttDialogueTracker();
             dialogueTracker.AddVanillaDialogue();
 
-            HomeKey = KeybindLoader.RegisterKeybind(this, "Quick Recall/Mirror", "Home");
+            HomeKey = KeybindLoader.RegisterKeybind(this, "Home", "Home");
 
-            StatKey = KeybindLoader.RegisterKeybind(this, "Open Stat Sheet", "M");
+            StatKey = KeybindLoader.RegisterKeybind(this, "Stat", "M");
 
-            DashKey = KeybindLoader.RegisterKeybind(this, "Dash Key", "C");
+            DashKey = KeybindLoader.RegisterKeybind(this, "Dash", "C");
 
-            SetBonusKey = KeybindLoader.RegisterKeybind(this, "Set Bonus (Double Tap Up/Down) Key", "V");
+            SetBonusKey = KeybindLoader.RegisterKeybind(this, "SetBonus", "V");
 
             _userInterfaceManager = new UIManager();
             _userInterfaceManager.LoadUI();
@@ -528,38 +528,38 @@ namespace Fargowiltas
                 if (Main.invasionType != 0)
                 {
                     Main.invasionType = 0;
-                    FargoUtils.PrintText("The invaders have left!", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelEvent", new Color(175, 75, 255));
                 }
 
                 if (Main.pumpkinMoon)
                 {
                     Main.pumpkinMoon = false;
-                    FargoUtils.PrintText("The Pumpkin Moon is lowering...", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelPumpkinMoon", new Color(175, 75, 255));
                 }
 
                 if (Main.snowMoon)
                 {
                     Main.snowMoon = false;
-                    FargoUtils.PrintText("The Frost Moon is lowering...", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelFrostMoon", new Color(175, 75, 255));
                 }
 
                 if (Main.eclipse)
                 {
                     Main.eclipse = false;
-                    FargoUtils.PrintText("A solar eclipse is not happening!", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelEclipse", new Color(175, 75, 255));
                 }
 
                 if (Main.bloodMoon)
                 {
                     Main.bloodMoon = false;
-                    FargoUtils.PrintText("The blood moon is descending...", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelBloodMoon", new Color(175, 75, 255));
                 }
 
                 if (Main.WindyEnoughForKiteDrops)
                 {
                     Main.windSpeedTarget = 0;
                     Main.windSpeedCurrent = 0;
-                    FargoUtils.PrintText("The wind has ended!", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelWindyDay", new Color(175, 75, 255));
                 }
 
                 if (Main.slimeRain)
@@ -575,7 +575,7 @@ namespace Fargowiltas
                 if (DD2Event.Ongoing && Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     DD2Event.StopInvasion();
-                    FargoUtils.PrintText("The Old One's Army is leaving!", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelOOA", new Color(175, 75, 255));
                 }
 
                 if (Sandstorm.Happening)
@@ -583,7 +583,7 @@ namespace Fargowiltas
                     Sandstorm.Happening = false;
                     Sandstorm.TimeLeft = 0;
                     Sandstorm.IntendedSeverity = 0;
-                    FargoUtils.PrintText("The sandstorm has ended!", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelSandstorm", new Color(175, 75, 255));
                 }
 
                 if (NPC.downedTowers && (NPC.LunarApocalypseIsUp || NPC.ShieldStrengthTowerNebula > 0 || NPC.ShieldStrengthTowerSolar > 0 || NPC.ShieldStrengthTowerStardust > 0 || NPC.ShieldStrengthTowerVortex > 0))
@@ -607,7 +607,7 @@ namespace Fargowiltas
                             //Main.npc[i].StrikeNPCNoInteraction(int.MaxValue, 0f, 0);
                         }
                     }
-                    FargoUtils.PrintText("Celestial creatures are not invading!", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelLunarEvent", new Color(175, 75, 255));
                 }
 
                 if (Main.IsItRaining || Main.IsItStorming)
@@ -616,7 +616,7 @@ namespace Fargowiltas
                     Main.cloudAlpha = 0;
                     if (Main.netMode == NetmodeID.Server)
                         Main.SyncRain();
-                    FargoUtils.PrintText("The rain has ended!", 175, 75, 255);
+                    FargoUtils.PrintLocalization("MessageInfo.CancelRain", new Color(175, 75, 255));
                 }
 
                 FargoWorld.AbomClearCD = 7200;
@@ -676,12 +676,12 @@ namespace Fargowiltas
                     {
                         if (Main.netMode == NetmodeID.SinglePlayer)
                         {
-                            Main.NewText(npcName + " have awoken!", 175, 75);
+                            Main.NewText(Language.GetTextValue("Mods.Fargowiltas.MessageInfo.HaveAwoken", npcName), 175, 75);
                         }
                         else
                         if (Main.netMode == NetmodeID.Server)
                         {
-                            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255));
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Mods.Fargowiltas.MessageInfo.HaveAwoken", npcName), new Color(175, 75, 255));
                         }
                     }
                     else
@@ -693,7 +693,7 @@ namespace Fargowiltas
                         else
                         if (Main.netMode == NetmodeID.Server)
                         {
-                            ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[] { NetworkText.FromLiteral(npcName) }), new Color(175, 75, 255));
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", npcName), new Color(175, 75, 255));
                         }
                     }
                 }
