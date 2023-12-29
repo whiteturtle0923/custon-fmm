@@ -1,6 +1,7 @@
 using Terraria.GameInput;
 using Terraria;
 using Terraria.ModLoader;
+using Fargowiltas.Common.Configs;
 
 namespace Fargowiltas
 {
@@ -26,6 +27,11 @@ namespace Fargowiltas
                 }
                 Main.LocalPlayer.KeyHoldDown(setbonusDir, Main.LocalPlayer.holdDownCardinalTimer[setbonusDir]);
                 lastSetBonusTimer = Main.LocalPlayer.holdDownCardinalTimer[setbonusDir];
+            }
+            else
+            {
+                if (ModContent.GetInstance<FargoClientConfig>().DoubleTapSetBonusDisabled)
+                    Main.LocalPlayer.doubleTapCardinalTimer[0] = Main.LocalPlayer.doubleTapCardinalTimer[1] = 0;
             }
             if (Main.LocalPlayer.controlLeft && !LeftLastPressed)
             {

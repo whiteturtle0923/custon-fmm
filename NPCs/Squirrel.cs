@@ -1,4 +1,5 @@
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Items;
 using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Tiles;
 using Microsoft.Xna.Framework;
@@ -44,7 +45,7 @@ namespace Fargowiltas.NPCs
 
             NPCID.Sets.CannotSitOnFurniture[Type] = true;
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Velocity = -1f,
                 Direction = -1
@@ -113,6 +114,9 @@ namespace Fargowiltas.NPCs
                 return true;
             }
 
+            if (!Fargowiltas.ModLoaded["FargowiltasSouls"] && NPC.downedSlimeKing)
+                return true;
+
             if (Fargowiltas.ModLoaded["FargowiltasSouls"] && ModContent.TryFind("FargowiltasSouls", "TopHatSquirrelCaught", out ModItem modItem) && 
                 Main.player.Any(p => p.active && p.HasItem(modItem.Type)))
             {
@@ -128,14 +132,14 @@ namespace Fargowiltas.NPCs
 
             if (Main.bloodMoon)
             {
-                return "[c/FF0000:You will suffer.]";
+                return SquirrelChat("BloodMoon");
             }
 
             return Main.rand.Next(3) switch
             {
-                0 => "*squeak*",
-                1 => "*chitter*",
-                _ => "*crunch crunch*",
+                0 => SquirrelChat("Normal1"),
+                1 => SquirrelChat("Normal2"),
+                _ => SquirrelChat("Normal3"),
             };
         }
 
@@ -145,7 +149,7 @@ namespace Fargowiltas.NPCs
             if (showCycleShop)
             {
                 button += $" {shopNum + 1}";
-                button2 = "Cycle Shop";
+                button2 = Language.GetTextValue("Mods.Fargowiltas.NPCs.Mutant.CycleShop");
             }
         }
 
@@ -199,8 +203,8 @@ namespace Fargowiltas.NPCs
                 return SquirrelShopGroup.Other;
             }
 
-            bool buffOrTeleportPotion = (item.buffType != 0 && item.type != ItemID.GrilledSquirrel) || item.type == ItemID.RecallPotion || item.type == ItemID.PotionOfReturn || item.type == ItemID.WormholePotion;
-            if (buffOrTeleportPotion && item.maxStack >= 30)
+            bool Potion = (item.buffType != 0 && item.type != ItemID.GrilledSquirrel) || FargoGlobalItem.NonBuffPotions.Contains(item.type);
+            if (Potion && item.maxStack >= 30)
             {
                 sellType = SquirrelSellType.SoldAtThirtyStack;
                 return SquirrelShopGroup.Potion;
@@ -529,5 +533,8 @@ namespace Fargowiltas.NPCs
 
             spriteBatch.Draw(EyesAsset.Value, position, frame, Color.White * NPC.Opacity, NPC.rotation, frame.Size() / 2f, NPC.scale, effects, 0f);
         }
+
+
+        private static string SquirrelChat(string key) => Language.GetTextValue($"Mods.Fargowiltas.NPCs.Squirrel.Chat.{key}");
     }
 }
