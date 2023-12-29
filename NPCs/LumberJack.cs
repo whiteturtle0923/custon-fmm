@@ -140,7 +140,7 @@ namespace Fargowiltas.NPCs
                 "I'm a lumberjack and I'm okay, I sleep all night and I work all day!",
                 "You won't ever need an axe again with me around.",
                 "I have heard of people cutting trees with fish, who does that?",
-                "You wanna see me work without my shirt on? Maybe in 2030.",
+                //"You wanna see me work without my shirt on? Maybe in 2030.", shimmer sprite real
                 "You ever seen the world tree?",
                 "You want what? ...Sorry that's not the kind of wood I'm selling.",
                 "Why don't I sell acorns? ...I replant all the trees I chop, don't you?",
