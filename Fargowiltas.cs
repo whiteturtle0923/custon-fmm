@@ -411,6 +411,9 @@ namespace Fargowiltas
 
             switch (messageType)
             {
+                case 0:
+                    FargoNet.HandlePacket(reader, messageType);
+                    break;
                 // Regal statue
                 case 1:
                     {
