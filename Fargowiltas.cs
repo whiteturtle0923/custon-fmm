@@ -81,7 +81,7 @@ namespace Fargowiltas
 
             HomeKey = KeybindLoader.RegisterKeybind(this, "Home", "Home");
 
-            StatKey = KeybindLoader.RegisterKeybind(this, "Stat", "M");
+            StatKey = KeybindLoader.RegisterKeybind(this, "Stat", "RightShift");
 
             DashKey = KeybindLoader.RegisterKeybind(this, "Dash", "C");
 
