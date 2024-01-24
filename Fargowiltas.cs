@@ -11,10 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using Terraria;
 using Terraria.Chat;
 using Terraria.GameContent.Events;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.Graphics;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -67,6 +68,7 @@ namespace Fargowiltas
 //            }; 
 //            HookIntoLoad();
         }
+
 
         public override void Load()
         {
@@ -877,3 +879,4 @@ namespace Fargowiltas
         //        }
     }
 }
+

@@ -2943,7 +2943,8 @@ Mods: {
 			MothronDown: After defeating a Mothron and all Mechanical Bosses
 			LeeDown: After defeating a Bone Lee and Plantera
 			PaladinDown: After defeating a Paladin and Plantera
-			SkeleGunDown: After defeating a Necromancer, Diabloist or Ragged Caster, After defeating Plantera
+			SkeleGunDown: After defeating a Skeleton Sniper, Tactical Skeleton or Skeleton Commando, After defeating Plantera
+			SkeleMagesDown: After defeating a Necromancer, Diabloist or Ragged Caster, After defeating Plantera
 			SiblingPylon: If all siblings are present
 			BossDown: After defeating any boss
 			DownedTheBoss: After the boss has been defeated
