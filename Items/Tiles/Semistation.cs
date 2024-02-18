@@ -35,6 +35,7 @@ Effects of some vanilla buff stations"); */
                 .AddIngredient(ItemID.Campfire, 5)
                 .AddIngredient(ItemID.HeartLantern, 5)
                 .AddIngredient(ItemID.StarinaBottle, 5)
+                .AddIngredient(ItemID.BastStatue, 5)
                 .AddTile(TileID.Anvils)
                 .Register();
         }
