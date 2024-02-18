@@ -36,6 +36,11 @@ namespace Fargowiltas.Content.Buffs
                 Main.SceneMetrics.HasStarInBottle = false;
                 player.buffImmune[BuffID.StarInBottle] = true;
                 player.manaRegenBonus += 2;
+                
+                //bast
+                Main.SceneMetrics.HasCatBast = false;
+                player.buffImmune[BuffID.CatBast] = true;
+                player.statDefense += 5;
             }
         }
     }
